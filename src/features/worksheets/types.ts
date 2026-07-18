@@ -1,7 +1,8 @@
 export type WorksheetMode = "trace" | "write" | "quiz";
 export type GridStyle = "tian" | "mi";
 export type GridDensity = "large" | "standard" | "compact";
-export type PaperSize = "a4" | "letter";
+export type WorksheetProfile = "kids" | "adult" | "tablet" | "brush";
+export type PaperSize = "a4" | "letter" | "tablet";
 export type WorksheetDifficulty = "beginner" | "advanced";
 export type PrintMargin = "normal" | "narrow";
 export type EntryStatus = "complete" | "needs-review";
@@ -15,8 +16,11 @@ export interface WorksheetEntry {
 }
 
 export interface WorksheetSettings {
+  profile: WorksheetProfile;
+  cellSize: number;
   mode: WorksheetMode;
   grid: GridStyle;
+  /** @deprecated Migrated to profile and cellSize in worksheet snapshots v2. */
   gridDensity: GridDensity;
   showPinyin: boolean;
   showStrokeOrder: boolean;
@@ -41,12 +45,14 @@ export interface WorksheetTemplate {
 }
 
 export interface WorksheetSnapshot {
-  version: 1;
+  version: 2;
   entries: WorksheetEntry[];
   settings: WorksheetSettings;
 }
 
 export const defaultWorksheetSettings: WorksheetSettings = {
+  profile: "kids",
+  cellSize: 22,
   mode: "write",
   grid: "tian",
   gridDensity: "standard",
