@@ -96,6 +96,7 @@ export function HomePage() {
                   entries={template.entries.slice(0, 3)}
                   title={template.title}
                   chineseTitle={template.chineseTitle}
+                  profile={template.recommendedProfile}
                   className="shadow-sm"
                 />
                 <h3 className="hs-display mt-4 text-lg font-bold">
@@ -105,7 +106,7 @@ export function HomePage() {
                   {template.age} · {template.wordCount} words
                 </p>
                 <Link
-                  href={`/generator?template=${template.slug}`}
+                  href={`/generator?template=${template.slug}&profile=${template.recommendedProfile}`}
                   className="hs-secondary-button mt-3 w-full text-sm"
                 >
                   Use template

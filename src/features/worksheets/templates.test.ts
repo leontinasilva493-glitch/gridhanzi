@@ -18,7 +18,22 @@ test("the curated library contains 20 complete classroom-ready templates", () =>
       template.entries.every((entry) => entry.status === "complete"),
       `${template.slug} contains unresolved vocabulary`,
     );
+    assert.ok(
+      ["kids", "adult"].includes(template.recommendedProfile),
+      `${template.slug} needs a recommended writing profile`,
+    );
   }
+
+  assert.equal(
+    worksheetTemplates.find((template) => template.slug === "family")
+      ?.recommendedProfile,
+    "kids",
+  );
+  assert.equal(
+    worksheetTemplates.find((template) => template.slug === "hsk-1")
+      ?.recommendedProfile,
+    "adult",
+  );
 });
 
 test("filterWorksheetTemplates filters by search, category, level, and age", () => {

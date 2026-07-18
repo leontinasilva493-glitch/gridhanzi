@@ -12,9 +12,11 @@ import {
   paginateLearnUnits,
   paginatePracticeEntries,
   paginateTestEntries,
+  resolveWorksheetLayout,
   splitEntryIntoCharacterUnits,
   type CharacterPracticeUnit,
   type PracticeCell,
+  type WorksheetLayoutSpec,
 } from "../layout";
 import { getWorksheetPaperAttributes } from "../print";
 import { buildCumulativeStrokeFrames } from "../stroke-utils";
@@ -35,11 +37,13 @@ export function GridCell({
   grid,
   traceLevel,
   className,
+  style,
 }: {
   children?: React.ReactNode;
   grid: GridStyle;
   traceLevel?: PracticeCell["traceLevel"];
   className?: string;
+  style?: React.CSSProperties;
 }) {
   return (
     <span
@@ -50,6 +54,7 @@ export function GridCell({
       data-grid={grid}
       data-trace={Boolean(traceLevel)}
       data-trace-level={traceLevel}
+      style={style}
     >
       <span className="relative z-10">{children}</span>
     </span>
@@ -61,6 +66,7 @@ export function WorksheetPaper({
   settings,
   compact = false,
   showBackground = true,
+  showAnswers = true,
   className,
   onPageCountChange,
 }: {
@@ -68,6 +74,7 @@ export function WorksheetPaper({
   settings: WorksheetSettings;
   compact?: boolean;
   showBackground?: boolean;
+  showAnswers?: boolean;
   className?: string;
   onPageCountChange?: (pageCount: number) => void;
 }) {
@@ -78,13 +85,24 @@ export function WorksheetPaper({
       ),
     [entries],
   );
+  const strokeCharacterUnits = useMemo(
+    () => (compact ? characterUnits.slice(0, 4) : characterUnits),
+    [characterUnits, compact],
+  );
   const uniqueCharacters = useMemo(
-    () => Array.from(new Set(characterUnits.map((unit) => unit.character))),
-    [characterUnits],
+    () =>
+      Array.from(
+        new Set(strokeCharacterUnits.map((unit) => unit.character)),
+      ),
+    [strokeCharacterUnits],
   );
   const characterKey = uniqueCharacters.join("");
   const shouldLoadStrokes =
-    !compact && settings.mode === "trace" && settings.showStrokeOrder;
+    settings.mode === "trace" && settings.showStrokeOrder && showAnswers;
+  const layout = useMemo(
+    () => resolveWorksheetLayout(settings),
+    [settings],
+  );
   const [strokeState, setStrokeState] = useState<{
     key: string;
     ready: boolean;
@@ -159,61 +177,41 @@ export function WorksheetPaper({
     (strokeState.ready && strokeState.key === characterKey);
 
   const pages = useMemo(() => {
-    if (compact) {
-      const previewDensity =
-        settings.mode === "write" ? settings.gridDensity : "standard";
-      return [
-        {
-          kind: "practice" as const,
-          units: paginatePracticeEntries(entries, previewDensity)
-            .flat()
-            .slice(0, 4),
-        },
-      ];
-    }
-
+    let resolvedPages;
     if (settings.mode === "write") {
-      return paginatePracticeEntries(entries, settings.gridDensity).map(
+      resolvedPages = paginatePracticeEntries(entries, layout).map(
         (units) => ({ kind: "practice" as const, units }),
       );
-    }
-
-    if (settings.mode === "quiz") {
-      return paginateTestEntries(entries).map((pageEntries) => ({
+    } else if (settings.mode === "quiz") {
+      resolvedPages = paginateTestEntries(entries, layout).map((pageEntries) => ({
         kind: "test" as const,
         entries: pageEntries,
       }));
-    }
-
-    if (!strokesReady) {
-      return Array.from(
-        { length: Math.max(1, Math.ceil(characterUnits.length / 2)) },
-        (_, pageIndex) => ({
-          kind: "learn" as const,
-          units: characterUnits.slice(pageIndex * 2, pageIndex * 2 + 2),
-        }),
+    } else {
+      const strokeCounts = new Map(
+        uniqueCharacters.map((character) => [
+          character,
+          strokesReady ? (strokeState.data.get(character)?.length ?? 0) : 0,
+        ]),
       );
+      resolvedPages = paginateLearnUnits(
+        strokeCharacterUnits,
+        strokeCounts,
+        settings.showStrokeOrder && showAnswers,
+        layout,
+      ).map((units) => ({ kind: "learn" as const, units }));
     }
 
-    const strokeCounts = new Map(
-      uniqueCharacters.map((character) => [
-        character,
-        strokeState.data.get(character)?.length ?? 0,
-      ]),
-    );
-    return paginateLearnUnits(
-      characterUnits,
-      strokeCounts,
-      settings.showStrokeOrder,
-    ).map((units) => ({ kind: "learn" as const, units }));
+    return compact ? resolvedPages.slice(0, 1) : resolvedPages;
   }, [
-    characterUnits,
     compact,
     entries,
-    settings.gridDensity,
+    layout,
     settings.mode,
     settings.showStrokeOrder,
+    showAnswers,
     strokeState.data,
+    strokeCharacterUnits,
     strokesReady,
     uniqueCharacters,
   ]);
@@ -239,6 +237,7 @@ export function WorksheetPaper({
           settings={settings}
           compact={compact}
           showBackground={showBackground}
+          layout={layout}
           pageNumber={pageIndex + 1}
           pageCount={renderedPages.length}
           className={className}
@@ -248,12 +247,16 @@ export function WorksheetPaper({
               units={page.units}
               settings={settings}
               compact={compact}
+              layout={layout}
+              showAnswers={showAnswers}
             />
           ) : page.kind === "test" ? (
             <TestWorksheetPage
               entries={page.entries}
               settings={settings}
-              pageOffset={pageIndex * 10}
+              layout={layout}
+              compact={compact}
+              pageOffset={pageIndex * layout.testEntriesPerPage}
             />
           ) : (
             <LearnWorksheetPage
@@ -262,6 +265,8 @@ export function WorksheetPaper({
               strokesReady={strokesReady}
               strokeData={strokeState.data}
               transform={strokeState.transform}
+              layout={layout}
+              showAnswers={showAnswers}
             />
           )}
         </WorksheetPageFrame>
@@ -274,6 +279,7 @@ function WorksheetPageFrame({
   settings,
   compact,
   showBackground,
+  layout,
   pageNumber,
   pageCount,
   className,
@@ -282,6 +288,7 @@ function WorksheetPageFrame({
   settings: WorksheetSettings;
   compact: boolean;
   showBackground: boolean;
+  layout: WorksheetLayoutSpec;
   pageNumber: number;
   pageCount: number;
   className?: string;
@@ -290,16 +297,15 @@ function WorksheetPageFrame({
   return (
     <article
       className={cn(
-        "hs-paper mx-auto aspect-[210/297] w-full overflow-hidden",
-        compact
-          ? "p-[5%]"
-          : settings.printMargin === "narrow"
-            ? "p-[3.5%]"
-            : "p-[5.2%]",
-        settings.paperSize === "letter" && "aspect-[8.5/11]",
+        "hs-paper mx-auto w-full overflow-hidden",
         className,
       )}
+      style={{
+        aspectRatio: `${layout.pageWidth} / ${layout.pageHeight}`,
+        padding: `${(layout.margin / layout.pageWidth) * 100}%`,
+      }}
       aria-label={`Worksheet preview page ${pageNumber} of ${pageCount}`}
+      data-compact={compact}
       {...getWorksheetPaperAttributes(settings, showBackground)}
     >
       <header
@@ -355,23 +361,22 @@ function PracticeWorksheetPage({
   units,
   settings,
   compact,
+  layout,
+  showAnswers,
 }: {
   units: CharacterPracticeUnit[];
   settings: WorksheetSettings;
   compact: boolean;
+  layout: WorksheetLayoutSpec;
+  showAnswers: boolean;
 }) {
-  const density =
-    compact && settings.mode !== "write"
-      ? "standard"
-      : settings.gridDensity;
-
   return (
     <div
       className={cn(
         "hs-practice-page space-y-[1.7%]",
         compact && "space-y-[2.2%]",
       )}
-      data-density={density}
+      data-profile={layout.profile}
     >
       {units.map((unit) => (
         <section
@@ -384,7 +389,7 @@ function PracticeWorksheetPage({
               itemNumber={unit.entryNumber}
               english={unit.english}
               pinyin={unit.pinyin}
-              word={unit.word}
+              word={showAnswers ? unit.word : ""}
               showPinyin={settings.showPinyin}
               compact={compact}
             />
@@ -392,22 +397,23 @@ function PracticeWorksheetPage({
             <div className={cn("h-[0.32rem]", compact && "h-[0.18rem]")} />
           )}
           <div
-            className="grid gap-[0.65%]"
-            style={{
-              gridTemplateColumns: `repeat(${buildPracticeCells(unit.character, density).length}, minmax(0, 1fr))`,
-            }}
+            className="grid justify-center"
+            style={getPracticeGridStyle(layout)}
           >
-            {buildPracticeCells(unit.character, density).map((cell, cellIndex) => (
+            {buildPracticeCells(unit.character, layout).map((cell, cellIndex) => (
               <GridCell
                 key={`${unit.id}-${cellIndex}`}
                 grid={settings.grid}
                 traceLevel={cell.traceLevel}
                 className={cn(
                   cell.kind === "model" && "font-bold",
-                  density === "compact" && "text-[clamp(0.9rem,2vw,1.75rem)]",
+                  layout.profile === "adult" &&
+                    "text-[clamp(0.78rem,1.75vw,1.35rem)]",
+                  layout.profile === "brush" &&
+                    "text-[clamp(1.4rem,3.8vw,3.1rem)]",
                 )}
               >
-                {cell.value}
+                {showAnswers ? cell.value : ""}
               </GridCell>
             ))}
           </div>
@@ -454,12 +460,16 @@ function LearnWorksheetPage({
   strokesReady,
   strokeData,
   transform,
+  layout,
+  showAnswers,
 }: {
   units: CharacterPracticeUnit[];
   settings: WorksheetSettings;
   strokesReady: boolean;
   strokeData: StrokeDataMap;
   transform: TransformData | null;
+  layout: WorksheetLayoutSpec;
+  showAnswers: boolean;
 }) {
   return (
     <div className="hs-learn-page space-y-[1.8%]">
@@ -467,7 +477,8 @@ function LearnWorksheetPage({
         const strokes = strokeData.get(unit.character);
         const frames =
           strokesReady && strokes ? buildCumulativeStrokeFrames(strokes) : [];
-        const frameRows = chunk(frames, 8);
+        const frameRows = chunk(frames, layout.strokeFramesPerRow);
+        const strokeColumns = layout.strokeFramesPerRow + 1;
 
         return (
           <section
@@ -479,19 +490,26 @@ function LearnWorksheetPage({
               itemNumber={unit.entryNumber}
               english={unit.english}
               pinyin={unit.pinyin}
-              word={`${unit.word} · ${unit.character}`}
+              word={
+                showAnswers
+                  ? `${unit.word} · ${unit.character}`
+                  : ""
+              }
               showPinyin={settings.showPinyin}
               compact={false}
             />
 
-            {settings.showStrokeOrder ? (
+            {settings.showStrokeOrder && showAnswers ? (
               !strokesReady ? (
                 <div
-                  className="mb-[0.65%] grid grid-cols-9 gap-[0.55%]"
+                  className="mb-[0.65%] grid gap-[0.55%]"
+                  style={{
+                    gridTemplateColumns: `repeat(${strokeColumns}, minmax(0, 1fr))`,
+                  }}
                   data-stroke-loading="true"
                   aria-label={`Loading stroke order for ${unit.character}`}
                 >
-                  {Array.from({ length: 9 }, (_, cellIndex) => (
+                  {Array.from({ length: strokeColumns }, (_, cellIndex) => (
                     <GridCell
                       key={cellIndex}
                       grid={settings.grid}
@@ -506,7 +524,10 @@ function LearnWorksheetPage({
                   {frameRows.map((row, rowIndex) => (
                     <div
                       key={rowIndex}
-                      className="grid grid-cols-9 gap-[0.55%]"
+                      className="grid gap-[0.55%]"
+                      style={{
+                        gridTemplateColumns: `repeat(${strokeColumns}, minmax(0, 1fr))`,
+                      }}
                     >
                       <GridCell
                         grid={settings.grid}
@@ -514,14 +535,20 @@ function LearnWorksheetPage({
                       >
                         {rowIndex === 0 ? unit.character : ""}
                       </GridCell>
-                      {Array.from({ length: 8 }, (_, frameIndex) => {
+                      {Array.from(
+                        { length: layout.strokeFramesPerRow },
+                        (_, frameIndex) => {
                         const frame = row[frameIndex];
                         return frame ? (
                           <StrokeFrameCell
                             key={frameIndex}
                             frame={frame}
                             character={unit.character}
-                            strokeNumber={rowIndex * 8 + frameIndex + 1}
+                            strokeNumber={
+                              rowIndex * layout.strokeFramesPerRow +
+                              frameIndex +
+                              1
+                            }
                             transform={transform}
                             grid={settings.grid}
                           />
@@ -531,7 +558,8 @@ function LearnWorksheetPage({
                             grid={settings.grid}
                           />
                         );
-                      })}
+                        },
+                      )}
                     </div>
                   ))}
                 </div>
@@ -542,15 +570,18 @@ function LearnWorksheetPage({
               )
             ) : null}
 
-            <div className="grid grid-cols-9 gap-[0.55%]">
-              {buildLearnWritingCells(unit.character).map((cell, cellIndex) => (
+            <div
+              className="grid justify-center"
+              style={getPracticeGridStyle(layout)}
+            >
+              {buildPracticeCells(unit.character, layout).map((cell, cellIndex) => (
                 <GridCell
                   key={cellIndex}
                   grid={settings.grid}
                   traceLevel={cell.traceLevel}
                   className={cell.kind === "model" ? "font-bold" : undefined}
                 >
-                  {cell.value}
+                  {showAnswers ? cell.value : ""}
                 </GridCell>
               ))}
             </div>
@@ -604,13 +635,30 @@ function TestWorksheetPage({
   entries,
   settings,
   pageOffset,
+  layout,
+  compact,
 }: {
   entries: WorksheetEntry[];
   settings: WorksheetSettings;
   pageOffset: number;
+  layout: WorksheetLayoutSpec;
+  compact: boolean;
 }) {
+  const columns =
+    layout.profile === "brush" || layout.profile === "tablet" ? 1 : 2;
+  const rows = Math.max(
+    1,
+    Math.ceil(layout.testEntriesPerPage / columns),
+  );
+
   return (
-    <div className="hs-test-page grid grid-cols-2 grid-rows-5 grid-flow-col gap-x-[4%] gap-y-[2.2%]">
+    <div
+      className="hs-test-page grid grid-flow-col gap-x-[4%] gap-y-[2.2%]"
+      style={{
+        gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
+        gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
+      }}
+    >
       {entries.map((entry, index) => {
         const characters = getTestAnswerCharacters(entry);
         return (
@@ -641,7 +689,9 @@ function TestWorksheetPage({
                   <GridCell
                     key={characterIndex}
                     grid={settings.grid}
-                    className="max-w-[4.5rem]"
+                    style={{
+                      maxWidth: compact ? "2.25rem" : "4.5rem",
+                    }}
                   />
                 ),
               )}
@@ -653,27 +703,14 @@ function TestWorksheetPage({
   );
 }
 
-function buildLearnWritingCells(character: string): PracticeCell[] {
-  return Array.from({ length: 9 }, (_, index) => {
-    if (index === 0) {
-      return { kind: "model" as const, value: character };
-    }
-    if (index === 1) {
-      return {
-        kind: "trace" as const,
-        value: character,
-        traceLevel: "medium" as const,
-      };
-    }
-    if (index === 2) {
-      return {
-        kind: "trace" as const,
-        value: character,
-        traceLevel: "light" as const,
-      };
-    }
-    return { kind: "blank" as const, value: "" };
-  });
+function getPracticeGridStyle(layout: WorksheetLayoutSpec) {
+  const cellWidth = (layout.cellSize / layout.usableWidth) * 100;
+  const columnGap = (layout.cellGap / layout.usableWidth) * 100;
+
+  return {
+    gridTemplateColumns: `repeat(${layout.practiceColumns}, minmax(0, ${cellWidth}%))`,
+    columnGap: `${columnGap}%`,
+  };
 }
 
 function chunk<T>(values: T[], size: number): T[][] {

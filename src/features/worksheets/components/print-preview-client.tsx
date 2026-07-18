@@ -22,11 +22,13 @@ import {
 import type { PaperSize, PrintMargin } from "../types";
 import { downloadWorksheetPdf } from "../pdf";
 import { localize } from "../i18n";
+import { getWorksheetProfilePreset } from "../profiles";
+import { normalizeWorksheetSnapshot } from "../snapshot";
 import { WORKSHEET_STORAGE_KEY } from "./generator-client";
 import { WorksheetPaper } from "./worksheet-paper";
 
 const fallbackSnapshot: WorksheetSnapshot = {
-  version: 1,
+  version: 2,
   entries: cloneTemplateEntries("family").slice(0, 4),
   settings: {
     ...defaultWorksheetSettings,
@@ -55,20 +57,16 @@ export function PrintPreviewClient() {
     total: number;
   } | null>(null);
   const [pdfError, setPdfError] = useState("");
+  const profilePreset = getWorksheetProfilePreset(snapshot.settings.profile);
+  const isTablet = snapshot.settings.profile === "tablet";
 
   useEffect(() => {
     const saved = sessionStorage.getItem(WORKSHEET_STORAGE_KEY);
     if (!saved) return;
     try {
-      const parsed = JSON.parse(saved) as WorksheetSnapshot;
-      if (parsed.version === 1 && Array.isArray(parsed.entries)) {
-        const normalized = {
-          ...parsed,
-          settings: {
-            ...defaultWorksheetSettings,
-            ...parsed.settings,
-          },
-        };
+      const parsed = JSON.parse(saved) as unknown;
+      const normalized = normalizeWorksheetSnapshot(parsed);
+      if (normalized.entries.length > 0) {
         setSnapshot(normalized);
         setPaperSize(normalized.settings.paperSize);
         setPrintMargin(normalized.settings.printMargin);
@@ -83,7 +81,6 @@ export function PrintPreviewClient() {
     paperSize,
     printMargin,
     showStrokeOrder: showAnswers && snapshot.settings.showStrokeOrder,
-    mode: showAnswers ? snapshot.settings.mode : ("quiz" as const),
   };
   async function handlePdfDownload() {
     const pageElements = Array.from(
@@ -122,13 +119,22 @@ export function PrintPreviewClient() {
           <ToolbarSelect
             label={t("Paper size", "纸张尺寸")}
             value={paperSize}
-            options={[
-              ["a4", "A4"],
-              ["letter", t("US Letter", "美式信纸")],
-            ]}
+            options={profilePreset.pageFormats.map(
+              (paper) =>
+                [
+                  paper,
+                  paper === "tablet"
+                    ? "Digital · 3:4"
+                    : paper === "a4"
+                      ? "A4"
+                      : t("US Letter", "美式信纸"),
+                ] as [string, string],
+            )}
             onChange={(value) => setPaperSize(value as PaperSize)}
           />
-          <ToolbarChip label={t("Portrait", "纵向")} />
+          <ToolbarChip
+            label={isTablet ? "GoodNotes · 3:4" : t("Portrait", "纵向")}
+          />
           <ToolbarChip
             label={t(
               `${pageCount} ${pageCount === 1 ? "page" : "pages"}`,
@@ -156,9 +162,15 @@ export function PrintPreviewClient() {
           </div>
         </div>
         <div className="flex gap-2">
-          <button type="button" className="hs-secondary-button" onClick={() => window.print()}>
-            <Printer className="size-4" /> {t("Print", "打印")}
-          </button>
+          {!isTablet ? (
+            <button
+              type="button"
+              className="hs-secondary-button"
+              onClick={() => window.print()}
+            >
+              <Printer className="size-4" /> {t("Print", "打印")}
+            </button>
+          ) : null}
           <button
             type="button"
             className="hs-primary-button"
@@ -175,7 +187,9 @@ export function PrintPreviewClient() {
                   `Creating ${Math.max(1, pdfProgress.current)}/${Math.max(1, pdfProgress.total)}`,
                   `正在生成 ${Math.max(1, pdfProgress.current)}/${Math.max(1, pdfProgress.total)}`,
                 )
-              : t("Download PDF", "下载 PDF")}
+              : isTablet
+                ? t("Download for GoodNotes", "下载到 GoodNotes")
+                : t("Download PDF", "下载 PDF")}
           </button>
         </div>
       </header>
@@ -187,6 +201,7 @@ export function PrintPreviewClient() {
               key={pageIndex}
               label={t(`Page ${pageIndex + 1}`, `第 ${pageIndex + 1} 页`)}
               selected={pageIndex === 0}
+              tablet={isTablet}
             />
           ))}
         </aside>
@@ -196,7 +211,7 @@ export function PrintPreviewClient() {
             ref={printPagesRef}
             className="hs-print-pages mx-auto origin-top space-y-6 transition-transform"
             style={{
-              width: "min(100%, 794px)",
+              width: isTablet ? "min(100%, 768px)" : "min(100%, 794px)",
               transform: `scale(${zoom / 100})`,
               marginBottom: `${Math.max(0, zoom - 85) * 8}px`,
             }}
@@ -205,6 +220,7 @@ export function PrintPreviewClient() {
               entries={snapshot.entries}
               settings={printSettings}
               showBackground={backgroundGraphics}
+              showAnswers={showAnswers}
               onPageCountChange={setPageCount}
             />
           </div>
@@ -224,25 +240,32 @@ export function PrintPreviewClient() {
             checked={showAnswers}
             onChange={setShowAnswers}
           />
-          <label className="mt-6 block border-t border-[#ddd7cd] pt-5 text-sm font-semibold">
-            {t("Margins", "页边距")}
-            <select
-              value={printMargin}
-              onChange={(event) =>
-                setPrintMargin(event.target.value as PrintMargin)
-              }
-              className="mt-2 h-11 w-full rounded border border-[#d5cec1] bg-white px-3 font-normal"
-            >
-              <option value="normal">{t("Normal", "标准")}</option>
-              <option value="narrow">{t("Narrow", "窄边距")}</option>
-            </select>
-          </label>
+          {!isTablet ? (
+            <label className="mt-6 block border-t border-[#ddd7cd] pt-5 text-sm font-semibold">
+              {t("Margins", "页边距")}
+              <select
+                value={printMargin}
+                onChange={(event) =>
+                  setPrintMargin(event.target.value as PrintMargin)
+                }
+                className="mt-2 h-11 w-full rounded border border-[#d5cec1] bg-white px-3 font-normal"
+              >
+                <option value="normal">{t("Normal", "标准")}</option>
+                <option value="narrow">{t("Narrow", "窄边距")}</option>
+              </select>
+            </label>
+          ) : null}
           <div className="mt-8 flex gap-3 rounded border border-[#c9d2df] bg-[#f7fafc] p-4 text-sm leading-6 text-[#4d5e73]">
             <Info className="mt-0.5 size-5 shrink-0 text-[#24466e]" />
-            {t(
-              "Download PDF creates the file directly. Use Print when you need a physical printer or browser-specific copy controls.",
-              "下载 PDF 会直接生成文件；需要纸质打印或设置份数时，请使用打印按钮。",
-            )}
+            {isTablet
+              ? t(
+                  "The 3:4 PDF is ready to import into GoodNotes, Notability, or another annotation app.",
+                  "3:4 PDF 可直接导入 GoodNotes、Notability 或其他手写批注应用。",
+                )
+              : t(
+                  "Download PDF creates the file directly. Use Print when you need a physical printer or browser-specific copy controls.",
+                  "下载 PDF 会直接生成文件；需要纸质打印或设置份数时，请使用打印按钮。",
+                )}
           </div>
           {pdfError ? (
             <p
@@ -326,14 +349,18 @@ function PrintToggle({
 function Thumbnail({
   label,
   selected,
+  tablet,
 }: {
   label: string;
   selected?: boolean;
+  tablet?: boolean;
 }) {
   return (
     <div className="mb-7 text-center">
       <div
-        className={`mx-auto grid aspect-[210/297] w-28 place-items-center bg-white text-xs text-[#8a8f96] shadow-sm ${
+        className={`mx-auto grid w-28 place-items-center bg-white text-xs text-[#8a8f96] shadow-sm ${
+          tablet ? "aspect-[3/4]" : "aspect-[210/297]"
+        } ${
           selected ? "rounded border-2 border-[#c62d27]" : "border border-[#d8d8d4]"
         }`}
       >

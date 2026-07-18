@@ -6,7 +6,6 @@ import {
 } from "./profiles";
 import {
   defaultWorksheetSettings,
-  type GridDensity,
   type GridStyle,
   type PaperSize,
   type PrintMargin,
@@ -46,9 +45,8 @@ function normalizeEntries(value: unknown): WorksheetEntry[] {
 function legacyProfile(
   density: unknown,
 ): { profile: WorksheetProfile; cellSize: number } {
-  const normalized = density as GridDensity;
-  if (normalized === "compact") return { profile: "adult", cellSize: 16 };
-  if (normalized === "large") return { profile: "kids", cellSize: 24 };
+  if (density === "compact") return { profile: "adult", cellSize: 16 };
+  if (density === "large") return { profile: "kids", cellSize: 24 };
   return { profile: "kids", cellSize: 22 };
 }
 

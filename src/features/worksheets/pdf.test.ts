@@ -27,6 +27,11 @@ test("getPdfPageSize maps worksheet paper settings to PDF dimensions", () => {
     widthMm: 215.9,
     heightMm: 279.4,
   });
+  assert.deepEqual(getPdfPageSize("tablet"), {
+    format: [192, 256],
+    widthMm: 192,
+    heightMm: 256,
+  });
 });
 
 test("PDF capture geometry resets every worksheet page to its own origin", () => {

@@ -8,6 +8,7 @@ import {
   ArrowLeft,
   ArrowUp,
   Check,
+  Download,
   Eye,
   GripVertical,
   LoaderCircle,
@@ -18,15 +19,22 @@ import {
 } from "lucide-react";
 
 import { Link, useRouter } from "@/core/i18n/navigation";
+import { cn } from "@/lib/utils";
 
 import { createWorksheetEntryId } from "../ids";
 import { localize } from "../i18n";
 import {
+  getCompatiblePaperSize,
+  getWorksheetProfilePreset,
+  worksheetProfilePresets,
+} from "../profiles";
+import {
   defaultWorksheetSettings,
-  type GridDensity,
+  type PaperSize,
   type WorksheetEntry,
   type WorksheetDifficulty,
   type WorksheetMode,
+  type WorksheetProfile,
   type WorksheetSettings,
   type WorksheetSnapshot,
 } from "../types";
@@ -38,6 +46,7 @@ export const WORKSHEET_STORAGE_KEY = "hanzisheets:worksheet:v1";
 export function GeneratorClient({
   initialEntries,
   initialMode,
+  initialProfile = "kids",
   initialDifficulty = "beginner",
   autoEnrich = false,
   templateTitle,
@@ -45,6 +54,7 @@ export function GeneratorClient({
 }: {
   initialEntries: WorksheetEntry[];
   initialMode?: WorksheetMode;
+  initialProfile?: WorksheetProfile;
   initialDifficulty?: WorksheetDifficulty;
   autoEnrich?: boolean;
   templateTitle?: string;
@@ -54,9 +64,14 @@ export function GeneratorClient({
   const locale = useLocale();
   const t = (english: string, chinese: string) => localize(locale, english, chinese);
   const hasTemplate = Boolean(templateTitle && templateChineseTitle);
+  const initialProfilePreset = getWorksheetProfilePreset(initialProfile);
   const [entries, setEntries] = useState(initialEntries);
   const [settings, setSettings] = useState<WorksheetSettings>({
     ...defaultWorksheetSettings,
+    profile: initialProfile,
+    cellSize: initialProfilePreset.size.default,
+    grid: initialProfilePreset.defaultGrid,
+    paperSize: initialProfilePreset.pageFormats[0] ?? "a4",
     mode: initialMode ?? defaultWorksheetSettings.mode,
     difficulty: initialDifficulty,
     title: hasTemplate
@@ -163,7 +178,7 @@ export function GeneratorClient({
 
   function openPreview() {
     const snapshot: WorksheetSnapshot = {
-      version: 1,
+      version: 2,
       entries,
       settings,
     };
@@ -389,15 +404,24 @@ export function GeneratorClient({
                 {t("Live preview", "实时预览")}
               </span>
               <span className="text-xs text-[#657083]">
-                {settings.paperSize === "a4" ? "A4" : "US Letter"} · Portrait
+                {settings.paperSize === "tablet"
+                  ? "Digital 3:4"
+                  : settings.paperSize === "a4"
+                    ? "A4 · Portrait"
+                    : "US Letter · Portrait"}
               </span>
             </div>
             {entries.length > 0 ? (
-              <WorksheetPaper
-                entries={entries}
-                settings={settings}
-                compact
-              />
+              <div
+                key={settings.profile}
+                className="hs-profile-preview"
+              >
+                <WorksheetPaper
+                  entries={entries}
+                  settings={settings}
+                  compact
+                />
+              </div>
             ) : (
               <div className="grid aspect-[210/297] place-items-center bg-white text-center text-sm text-[#657083]">
                 {t("Add a vocabulary row to preview your worksheet.", "添加词汇后即可预览字帖。")}
@@ -423,7 +447,14 @@ export function GeneratorClient({
             onClick={openPreview}
             disabled={entries.length === 0}
           >
-            <Printer className="size-4" /> {t("Print / Save PDF", "下载 / 打印 PDF")}
+            {settings.profile === "tablet" ? (
+              <Download className="size-4" />
+            ) : (
+              <Printer className="size-4" />
+            )}
+            {settings.profile === "tablet"
+              ? t("Download for GoodNotes", "下载到 GoodNotes")
+              : t("Print / Save PDF", "下载 / 打印 PDF")}
           </button>
         </div>
       </div>
@@ -445,8 +476,49 @@ function SettingsPanel({
     setSettings((current) => ({ ...current, ...value }));
   }
 
+  function selectProfile(profile: WorksheetProfile) {
+    const preset = getWorksheetProfilePreset(profile);
+    setSettings((current) => ({
+      ...current,
+      profile,
+      cellSize: preset.size.default,
+      grid: preset.defaultGrid,
+      paperSize: getCompatiblePaperSize(profile, current.paperSize),
+    }));
+  }
+
+  const profilePreset = getWorksheetProfilePreset(settings.profile);
+
   return (
     <aside className="hs-card self-start p-4 xl:sticky xl:top-20">
+      <SettingSection title={t("Writing profile", "书写模板")}>
+        <div className="grid grid-cols-2 gap-2">
+          {Object.values(worksheetProfilePresets).map((preset) => (
+            <button
+              type="button"
+              key={preset.id}
+              aria-pressed={settings.profile === preset.id}
+              onClick={() => selectProfile(preset.id)}
+              className={cn(
+                "rounded border p-2.5 text-left transition",
+                settings.profile === preset.id
+                  ? "border-[#bd2923] bg-[#fff3ef] shadow-[inset_0_0_0_1px_#bd2923]"
+                  : "border-[#d5cdbf] bg-white hover:border-[#ad9f8b]",
+              )}
+            >
+              <strong className="block text-sm text-[#172942]">
+                {preset.label}
+              </strong>
+              <span className="mt-1 block text-[0.65rem] leading-4 text-[#657083]">
+                {preset.writingTool}
+              </span>
+            </button>
+          ))}
+        </div>
+        <p className="mt-2 text-[0.68rem] leading-4 text-[#657083]">
+          {profilePreset.description}
+        </p>
+      </SettingSection>
       <SettingSection title={t("Worksheet type", "练习类型")}>
         <Segmented
           value={settings.mode}
@@ -458,27 +530,35 @@ function SettingsPanel({
           onChange={(mode) => patch({ mode: mode as WorksheetMode })}
         />
       </SettingSection>
-      <SettingSection title={t("Grid density", "格子密度")}>
-        <Segmented
-          value={settings.gridDensity}
-          options={[
-            ["large", t("Large · 6", "大格 · 6列")],
-            ["standard", t("Standard · 8", "标准 · 8列")],
-            ["compact", t("Compact · 10", "紧凑 · 10列")],
-          ]}
-          disabled={settings.mode !== "write"}
-          onChange={(gridDensity) =>
-            patch({ gridDensity: gridDensity as GridDensity })
+      <SettingSection
+        title={t(
+          `Cell size · ${settings.cellSize}${profilePreset.size.unit}`,
+          `格子尺寸 · ${settings.cellSize}${profilePreset.size.unit}`,
+        )}
+      >
+        <input
+          type="range"
+          aria-label="Cell size"
+          min={profilePreset.size.min}
+          max={profilePreset.size.max}
+          step={profilePreset.size.step}
+          value={settings.cellSize}
+          onChange={(event) =>
+            patch({ cellSize: Number(event.target.value) })
           }
+          className="w-full accent-[#bd2923]"
         />
-        {settings.mode !== "write" ? (
-          <p className="mt-2 text-[0.68rem] leading-4 text-[#707987]">
-            {t(
-              "Learn uses 9 teaching columns; Test uses a fixed two-column layout.",
-              "新字精学固定9列，默写测试固定双栏。",
-            )}
-          </p>
-        ) : null}
+        <div className="mt-1 flex justify-between text-[0.65rem] text-[#657083]">
+          <span>
+            {profilePreset.size.min}
+            {profilePreset.size.unit}
+          </span>
+          <span>{profilePreset.writingTool}</span>
+          <span>
+            {profilePreset.size.max}
+            {profilePreset.size.unit}
+          </span>
+        </div>
       </SettingSection>
       <SettingSection title={t("Grid", "格子")}>
         <Segmented
@@ -517,12 +597,16 @@ function SettingsPanel({
       <SettingSection title={t("Paper", "纸张")}>
         <Segmented
           value={settings.paperSize}
-          options={[
-            ["a4", "A4"],
-            ["letter", "US Letter"],
-          ]}
+          options={profilePreset.pageFormats.map((paper) => [
+            paper,
+            paper === "tablet"
+              ? "Digital · 3:4"
+              : paper === "a4"
+                ? "A4"
+                : "US Letter",
+          ])}
           onChange={(paperSize) =>
-            patch({ paperSize: paperSize as "a4" | "letter" })
+            patch({ paperSize: paperSize as PaperSize })
           }
         />
       </SettingSection>

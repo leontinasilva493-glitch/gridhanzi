@@ -96,6 +96,13 @@ const PROFILE_VERTICAL_METRICS: Record<
   },
 };
 
+const PROFILE_MAX_PRACTICE_ROWS: Record<WorksheetProfile, number> = {
+  kids: 8,
+  adult: 10,
+  tablet: 5,
+  brush: 4,
+};
+
 export function resolveWorksheetLayout(
   settings: WorksheetSettings,
 ): WorksheetLayoutSpec {
@@ -134,7 +141,10 @@ export function resolveWorksheetLayout(
         (settings.cellSize + vertical.contextHeight + vertical.rowGap),
     ),
   );
-  const rowsPerPage = isTablet ? Math.min(5, calculatedRows) : calculatedRows;
+  const rowsPerPage = Math.min(
+    PROFILE_MAX_PRACTICE_ROWS[settings.profile],
+    calculatedRows,
+  );
 
   return {
     profile: settings.profile,

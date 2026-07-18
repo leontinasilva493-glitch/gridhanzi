@@ -26,9 +26,17 @@ export function buildWorksheetPdfFilename(title: string): string {
 }
 
 export function getPdfPageSize(paperSize: PaperSize) {
-  return paperSize === "letter"
-    ? { format: "letter" as const, widthMm: 215.9, heightMm: 279.4 }
-    : { format: "a4" as const, widthMm: 210, heightMm: 297 };
+  if (paperSize === "letter") {
+    return { format: "letter" as const, widthMm: 215.9, heightMm: 279.4 };
+  }
+  if (paperSize === "tablet") {
+    return {
+      format: [192, 256] as [number, number],
+      widthMm: 192,
+      heightMm: 256,
+    };
+  }
+  return { format: "a4" as const, widthMm: 210, heightMm: 297 };
 }
 
 export function getPdfCaptureGeometry({

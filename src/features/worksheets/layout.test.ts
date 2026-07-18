@@ -90,9 +90,9 @@ test("default profiles resolve to approved columns and page capacities", () => {
     })),
     [
       { practiceColumns: 8, rowsPerPage: 8 },
-      { practiceColumns: 12, rowsPerPage: 12 },
+      { practiceColumns: 12, rowsPerPage: 10 },
       { practiceColumns: 6, rowsPerPage: 5 },
-      { practiceColumns: 4, rowsPerPage: 5 },
+      { practiceColumns: 4, rowsPerPage: 4 },
     ],
   );
 });

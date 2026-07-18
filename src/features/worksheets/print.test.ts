@@ -4,7 +4,7 @@ import test from "node:test";
 import { getWorksheetPaperAttributes } from "./print";
 import { defaultWorksheetSettings } from "./types";
 
-test("getWorksheetPaperAttributes exposes selected paper, margin, and background", () => {
+test("getWorksheetPaperAttributes exposes selected paper, profile, size, margin, and background", () => {
   assert.deepEqual(
     getWorksheetPaperAttributes(
       {
@@ -18,7 +18,8 @@ test("getWorksheetPaperAttributes exposes selected paper, margin, and background
       "data-paper-size": "letter",
       "data-print-margin": "narrow",
       "data-background": "false",
+      "data-profile": "kids",
+      "data-cell-size": "22",
     },
   );
 });
-

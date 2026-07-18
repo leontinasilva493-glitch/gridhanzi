@@ -55,10 +55,10 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
               <Meta icon={FileText}>A4 & US Letter</Meta>
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link href={`/generator?template=${template.slug}`} className="hs-primary-button min-w-64">
+              <Link href={`/generator?template=${template.slug}&profile=${template.recommendedProfile}`} className="hs-primary-button min-w-64">
                 <FileText className="size-5" /> Use this template
               </Link>
-              <Link href={`/generator?template=${template.slug}`} className="hs-secondary-button min-w-56">
+              <Link href={`/generator?template=${template.slug}&profile=${template.recommendedProfile}`} className="hs-secondary-button min-w-56">
                 <Eye className="size-5" /> Preview worksheet
               </Link>
             </div>
@@ -68,6 +68,7 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
               entries={template.entries.slice(0, 4)}
               title={template.title}
               chineseTitle={template.chineseTitle}
+              profile={template.recommendedProfile}
             />
           </div>
         </section>
@@ -111,7 +112,7 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
               <li>✓ Pinyin and stroke order toggles</li>
               <li>✓ Direct PDF download or physical print</li>
             </ul>
-            <Link href={`/generator?template=${template.slug}`} className="hs-primary-button mt-6 w-full">
+            <Link href={`/generator?template=${template.slug}&profile=${template.recommendedProfile}`} className="hs-primary-button mt-6 w-full">
               Open in generator
             </Link>
             <p className="mt-2 text-center text-xs text-[#677286]">No sign-up required. Free to use.</p>

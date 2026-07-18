@@ -106,6 +106,7 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplate[] })
                     entries={template.entries.slice(0, 3)}
                     title={template.title}
                     chineseTitle={template.chineseTitle}
+                    profile={template.recommendedProfile}
                   />
                   <h3 className="hs-display mt-4 text-xl font-bold">{template.title}</h3>
                   <p className="mt-1 text-xs leading-5 text-[#647083]">

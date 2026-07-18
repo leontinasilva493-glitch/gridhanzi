@@ -7,6 +7,7 @@ import {
   getTemplateBySlug,
   parseVocabularyInput,
 } from "@/features/worksheets/engine";
+import { parseWorksheetProfile } from "@/features/worksheets/profiles";
 import type { WorksheetDifficulty } from "@/features/worksheets/types";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default async function GeneratorPage({
     words?: string;
     template?: string;
     mode?: "trace" | "write" | "quiz";
+    profile?: string;
     difficulty?: WorksheetDifficulty;
     auto?: string;
   }>;
@@ -45,6 +47,9 @@ export default async function GeneratorPage({
             : cloneTemplateEntries("family").slice(0, 4)
       }
       initialMode={params.mode}
+      initialProfile={parseWorksheetProfile(
+        params.profile ?? template?.recommendedProfile,
+      )}
       initialDifficulty={
         params.difficulty === "advanced" ? "advanced" : "beginner"
       }

@@ -191,6 +191,7 @@ const familyWords = curatedVocabularyRecords
 const baseWorksheetTemplates: WorksheetTemplate[] = [
   {
     slug: "family",
+    recommendedProfile: "kids",
     title: "Family",
     chineseTitle: "我的家人",
     description: "Essential family words for early bilingual learners.",
@@ -202,6 +203,7 @@ const baseWorksheetTemplates: WorksheetTemplate[] = [
   },
   {
     slug: "numbers",
+    recommendedProfile: "kids",
     title: "Numbers",
     chineseTitle: "数字",
     description: "Write and recognize Chinese numbers from one to ten.",
@@ -213,6 +215,7 @@ const baseWorksheetTemplates: WorksheetTemplate[] = [
   },
   {
     slug: "colors",
+    recommendedProfile: "kids",
     title: "Colors",
     chineseTitle: "颜色",
     description: "Common colors with tracing and writing practice.",
@@ -224,6 +227,7 @@ const baseWorksheetTemplates: WorksheetTemplate[] = [
   },
   {
     slug: "greetings",
+    recommendedProfile: "adult",
     title: "Greetings",
     chineseTitle: "问候语",
     description: "Useful greetings for the first weeks of class.",
@@ -235,6 +239,7 @@ const baseWorksheetTemplates: WorksheetTemplate[] = [
   },
   {
     slug: "days-months",
+    recommendedProfile: "kids",
     title: "Days & Months",
     chineseTitle: "星期与月份",
     description: "Calendar vocabulary for classroom routines.",
@@ -246,6 +251,7 @@ const baseWorksheetTemplates: WorksheetTemplate[] = [
   },
   {
     slug: "food-drinks",
+    recommendedProfile: "kids",
     title: "Food & Drinks",
     chineseTitle: "食物与饮品",
     description: "Everyday food words for home and classroom practice.",
@@ -257,6 +263,7 @@ const baseWorksheetTemplates: WorksheetTemplate[] = [
   },
   {
     slug: "animals-kids",
+    recommendedProfile: "kids",
     title: "Animals for Kids",
     chineseTitle: "动物",
     description: "Friendly animal vocabulary for younger children.",
@@ -268,6 +275,7 @@ const baseWorksheetTemplates: WorksheetTemplate[] = [
   },
   {
     slug: "hsk-1",
+    recommendedProfile: "adult",
     title: "HSK 1 Writing Practice",
     chineseTitle: "HSK 一级",
     description: "A starter set of high-frequency HSK vocabulary.",
@@ -296,6 +304,7 @@ type TemplateDraft = Omit<WorksheetTemplate, "entries" | "wordCount"> & {
 const additionalTemplateDrafts: TemplateDraft[] = [
   {
     slug: "school-classroom",
+    recommendedProfile: "kids",
     title: "School & Classroom",
     chineseTitle: "学校与教室",
     description: "Useful classroom words for instructions, objects, and daily lessons.",
@@ -306,6 +315,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   },
   {
     slug: "daily-routine",
+    recommendedProfile: "adult",
     title: "Daily Routine",
     chineseTitle: "日常生活",
     description: "Build a reusable worksheet around everyday actions and routines.",
@@ -316,6 +326,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   },
   {
     slug: "weather-seasons",
+    recommendedProfile: "kids",
     title: "Weather & Seasons",
     chineseTitle: "天气与季节",
     description: "Weather, temperature, and season vocabulary for classroom calendars.",
@@ -326,6 +337,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   },
   {
     slug: "body-health",
+    recommendedProfile: "adult",
     title: "Body & Health",
     chineseTitle: "身体与健康",
     description: "High-utility body and health words for home and beginner classes.",
@@ -336,6 +348,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   },
   {
     slug: "home-rooms",
+    recommendedProfile: "kids",
     title: "Home & Rooms",
     chineseTitle: "家与房间",
     description: "Name rooms, furniture, and familiar objects around the home.",
@@ -346,6 +359,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   },
   {
     slug: "transportation",
+    recommendedProfile: "adult",
     title: "Transportation",
     chineseTitle: "交通工具",
     description: "Practise common transport, stations, and movement words.",
@@ -356,6 +370,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   },
   {
     slug: "travel",
+    recommendedProfile: "adult",
     title: "Travel Chinese",
     chineseTitle: "旅行中文",
     description: "A practical travel set for tickets, hotels, directions, and arrival.",
@@ -366,6 +381,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   },
   {
     slug: "shopping",
+    recommendedProfile: "adult",
     title: "Shopping Chinese",
     chineseTitle: "购物中文",
     description: "Price, size, colour, and payment vocabulary for practical dialogues.",
@@ -376,6 +392,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   },
   {
     slug: "restaurant",
+    recommendedProfile: "adult",
     title: "Restaurant Chinese",
     chineseTitle: "餐厅中文",
     description: "Make ordering food and paying the bill easier to practise.",
@@ -386,6 +403,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   },
   {
     slug: "hobbies-sports",
+    recommendedProfile: "adult",
     title: "Hobbies & Sports",
     chineseTitle: "爱好与运动",
     description: "Talk about favourite activities, sports, music, and creative hobbies.",
@@ -396,6 +414,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   },
   {
     slug: "chinese-new-year",
+    recommendedProfile: "adult",
     title: "Chinese New Year",
     chineseTitle: "春节",
     description: "A seasonal worksheet for Spring Festival traditions and greetings.",
@@ -406,6 +425,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   },
   {
     slug: "jobs-work",
+    recommendedProfile: "adult",
     title: "Jobs & Work",
     chineseTitle: "工作与职业",
     description: "Common jobs and workplace vocabulary for older learners.",
