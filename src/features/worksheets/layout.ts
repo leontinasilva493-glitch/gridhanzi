@@ -1,11 +1,11 @@
+import { getWorksheetProfilePreset } from "./profiles";
 import type {
-  GridDensity,
   WorksheetEntry,
+  WorksheetProfile,
+  WorksheetSettings,
 } from "./types";
 
 const HAN_CHARACTER = /\p{Script=Han}/u;
-const TEST_ENTRIES_PER_PAGE = 10;
-const LEARN_PAGE_WEIGHT = 8;
 
 export interface CharacterPracticeUnit {
   id: string;
@@ -25,16 +25,137 @@ export interface PracticeCell {
   traceLevel?: "medium" | "light";
 }
 
-export interface DensityLayout {
-  columns: number;
+export interface WorksheetLayoutSpec {
+  profile: WorksheetProfile;
+  unit: "mm" | "px";
+  pageWidth: number;
+  pageHeight: number;
+  margin: number;
+  usableWidth: number;
+  contentHeight: number;
+  cellSize: number;
+  cellGap: number;
+  rowGap: number;
+  contextHeight: number;
+  practiceColumns: number;
   rowsPerPage: number;
+  testEntriesPerPage: number;
+  learnPageWeight: number;
+  strokeCellSize: number;
+  strokeFramesPerRow: number;
 }
 
-const DENSITY_LAYOUTS: Record<GridDensity, DensityLayout> = {
-  large: { columns: 6, rowsPerPage: 7 },
-  standard: { columns: 8, rowsPerPage: 8 },
-  compact: { columns: 10, rowsPerPage: 10 },
+const PAGE_METRICS = {
+  a4: { width: 210, height: 297, unit: "mm" as const },
+  letter: { width: 215.9, height: 279.4, unit: "mm" as const },
+  tablet: { width: 1024, height: 1365.333, unit: "px" as const },
 };
+
+const PROFILE_VERTICAL_METRICS: Record<
+  WorksheetProfile,
+  {
+    contextHeight: number;
+    rowGap: number;
+    headerHeight: number;
+    footerHeight: number;
+    strokeCellSize: number;
+    learnPageWeight: number;
+  }
+> = {
+  kids: {
+    contextHeight: 5,
+    rowGap: 3,
+    headerHeight: 26,
+    footerHeight: 8,
+    strokeCellSize: 14,
+    learnPageWeight: 8,
+  },
+  adult: {
+    contextHeight: 4,
+    rowGap: 2,
+    headerHeight: 26,
+    footerHeight: 8,
+    strokeCellSize: 10,
+    learnPageWeight: 12,
+  },
+  tablet: {
+    contextHeight: 32,
+    rowGap: 24,
+    headerHeight: 120,
+    footerHeight: 40,
+    strokeCellSize: 64,
+    learnPageWeight: 6,
+  },
+  brush: {
+    contextHeight: 5,
+    rowGap: 3,
+    headerHeight: 26,
+    footerHeight: 8,
+    strokeCellSize: 20,
+    learnPageWeight: 5,
+  },
+};
+
+export function resolveWorksheetLayout(
+  settings: WorksheetSettings,
+): WorksheetLayoutSpec {
+  const preset = getWorksheetProfilePreset(settings.profile);
+  const page = PAGE_METRICS[settings.paperSize];
+  const isTablet = settings.profile === "tablet";
+  const margin = isTablet
+    ? settings.printMargin === "narrow"
+      ? 28
+      : 40
+    : settings.printMargin === "narrow"
+      ? 7
+      : 11;
+  const cellGap = isTablet ? 8 : settings.profile === "brush" ? 2 : 1.2;
+  const usableWidth = page.width - margin * 2;
+  const minimumColumns =
+    preset.modelCells + preset.traceCells + preset.minimumBlankCells;
+  const calculatedColumns = Math.floor(
+    (usableWidth + cellGap) / (settings.cellSize + cellGap),
+  );
+  const practiceColumns =
+    preset.fixedColumns ??
+    (isTablet
+      ? 6
+      : Math.max(minimumColumns, calculatedColumns));
+  const vertical = PROFILE_VERTICAL_METRICS[settings.profile];
+  const contentHeight =
+    page.height -
+    margin * 2 -
+    vertical.headerHeight -
+    vertical.footerHeight;
+  const calculatedRows = Math.max(
+    1,
+    Math.floor(
+      contentHeight /
+        (settings.cellSize + vertical.contextHeight + vertical.rowGap),
+    ),
+  );
+  const rowsPerPage = isTablet ? Math.min(5, calculatedRows) : calculatedRows;
+
+  return {
+    profile: settings.profile,
+    unit: page.unit,
+    pageWidth: page.width,
+    pageHeight: page.height,
+    margin,
+    usableWidth,
+    contentHeight,
+    cellSize: settings.cellSize,
+    cellGap,
+    rowGap: vertical.rowGap,
+    contextHeight: vertical.contextHeight,
+    practiceColumns,
+    rowsPerPage,
+    testEntriesPerPage: preset.testEntriesPerPage,
+    learnPageWeight: vertical.learnPageWeight,
+    strokeCellSize: vertical.strokeCellSize,
+    strokeFramesPerRow: 8,
+  };
+}
 
 export function getHanziCharacters(value: string): string[] {
   return Array.from(value).filter((character) =>
@@ -59,31 +180,24 @@ export function splitEntryIntoCharacterUnits(
   }));
 }
 
-export function getDensityLayout(density: GridDensity): DensityLayout {
-  return DENSITY_LAYOUTS[density];
-}
-
 export function buildPracticeCells(
   character: string,
-  density: GridDensity,
+  layout: WorksheetLayoutSpec,
 ): PracticeCell[] {
-  const { columns } = getDensityLayout(density);
-  return Array.from({ length: columns }, (_, index) => {
-    if (index === 0) {
+  const preset = getWorksheetProfilePreset(layout.profile);
+  const teachingCells = preset.modelCells + preset.traceCells;
+
+  return Array.from({ length: layout.practiceColumns }, (_, index) => {
+    if (index < preset.modelCells) {
       return { kind: "model" as const, value: character };
     }
-    if (index === 1) {
+    if (index < teachingCells) {
+      const traceIndex = index - preset.modelCells;
       return {
         kind: "trace" as const,
         value: character,
-        traceLevel: "medium" as const,
-      };
-    }
-    if (index === 2) {
-      return {
-        kind: "trace" as const,
-        value: character,
-        traceLevel: "light" as const,
+        traceLevel:
+          traceIndex === 0 ? ("medium" as const) : ("light" as const),
       };
     }
     return { kind: "blank" as const, value: "" };
@@ -92,9 +206,9 @@ export function buildPracticeCells(
 
 export function paginatePracticeEntries(
   entries: WorksheetEntry[],
-  density: GridDensity,
+  layout: WorksheetLayoutSpec,
 ): CharacterPracticeUnit[][] {
-  const capacity = getDensityLayout(density).rowsPerPage;
+  const capacity = layout.rowsPerPage;
   const pages: CharacterPracticeUnit[][] = [];
   let currentPage: CharacterPracticeUnit[] = [];
 
@@ -138,14 +252,13 @@ export function paginatePracticeEntries(
 
 export function paginateTestEntries(
   entries: WorksheetEntry[],
+  layout: WorksheetLayoutSpec,
 ): WorksheetEntry[][] {
+  const capacity = layout.testEntriesPerPage;
   return Array.from(
-    { length: Math.ceil(entries.length / TEST_ENTRIES_PER_PAGE) },
+    { length: Math.ceil(entries.length / capacity) },
     (_, pageIndex) =>
-      entries.slice(
-        pageIndex * TEST_ENTRIES_PER_PAGE,
-        (pageIndex + 1) * TEST_ENTRIES_PER_PAGE,
-      ),
+      entries.slice(pageIndex * capacity, (pageIndex + 1) * capacity),
   );
 }
 
@@ -153,34 +266,53 @@ export function getTestAnswerCharacters(entry: WorksheetEntry): string[] {
   return getHanziCharacters(entry.hanzi);
 }
 
-export function getLearnStrokeRowCount(strokeCount: number): number {
+export function getLearnStrokeRowCount(
+  strokeCount: number,
+  framesPerRow = 8,
+): number {
   if (!Number.isFinite(strokeCount) || strokeCount <= 0) return 0;
-  return Math.ceil(strokeCount / 8);
+  return Math.ceil(strokeCount / framesPerRow);
 }
 
 function getLearnUnitWeight(
   unit: CharacterPracticeUnit,
   strokeCounts: ReadonlyMap<string, number>,
   showStrokeOrder: boolean,
+  framesPerRow: number,
 ): number {
   if (!showStrokeOrder) return 1;
-  return 1 + Math.max(1, getLearnStrokeRowCount(strokeCounts.get(unit.character) ?? 0));
+  return (
+    1 +
+    Math.max(
+      1,
+      getLearnStrokeRowCount(
+        strokeCounts.get(unit.character) ?? 0,
+        framesPerRow,
+      ),
+    )
+  );
 }
 
 export function paginateLearnUnits(
   units: CharacterPracticeUnit[],
   strokeCounts: ReadonlyMap<string, number>,
   showStrokeOrder: boolean,
+  layout: WorksheetLayoutSpec,
 ): CharacterPracticeUnit[][] {
   const pages: CharacterPracticeUnit[][] = [];
   let currentPage: CharacterPracticeUnit[] = [];
   let currentWeight = 0;
 
   for (const unit of units) {
-    const weight = getLearnUnitWeight(unit, strokeCounts, showStrokeOrder);
+    const weight = getLearnUnitWeight(
+      unit,
+      strokeCounts,
+      showStrokeOrder,
+      layout.strokeFramesPerRow,
+    );
     if (
       currentPage.length > 0 &&
-      currentWeight + weight > LEARN_PAGE_WEIGHT
+      currentWeight + weight > layout.learnPageWeight
     ) {
       pages.push(currentPage);
       currentPage = [];

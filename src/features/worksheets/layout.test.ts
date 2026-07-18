@@ -3,19 +3,25 @@ import test from "node:test";
 
 import {
   buildPracticeCells,
-  getDensityLayout,
   getLearnStrokeRowCount,
   getTestAnswerCharacters,
   paginateLearnUnits,
   paginatePracticeEntries,
   paginateTestEntries,
+  resolveWorksheetLayout,
   splitEntryIntoCharacterUnits,
 } from "./layout";
-import { defaultWorksheetSettings, type WorksheetEntry } from "./types";
+import {
+  defaultWorksheetSettings,
+  type WorksheetEntry,
+  type WorksheetProfile,
+  type WorksheetSettings,
+} from "./types";
 
-test("defaults to the standard Practice worksheet", () => {
+test("defaults to the Kids Practice worksheet", () => {
   assert.equal(defaultWorksheetSettings.mode, "write");
-  assert.equal(defaultWorksheetSettings.gridDensity, "standard");
+  assert.equal(defaultWorksheetSettings.profile, "kids");
+  assert.equal(defaultWorksheetSettings.cellSize, 22);
 });
 
 function entry(
@@ -29,6 +35,24 @@ function entry(
     pinyin: "pīnyīn",
     english,
     status: "complete",
+  };
+}
+
+function settings(
+  profile: WorksheetProfile,
+  overrides: Partial<WorksheetSettings> = {},
+): WorksheetSettings {
+  const defaults = {
+    kids: { cellSize: 22, paperSize: "a4" as const },
+    adult: { cellSize: 14, paperSize: "a4" as const },
+    tablet: { cellSize: 112, paperSize: "tablet" as const },
+    brush: { cellSize: 40, paperSize: "a4" as const },
+  }[profile];
+  return {
+    ...defaultWorksheetSettings,
+    profile,
+    ...defaults,
+    ...overrides,
   };
 }
 
@@ -53,23 +77,31 @@ test("ignores punctuation while preserving Han character order", () => {
   );
 });
 
-test("density presets expose the approved columns and page capacities", () => {
-  assert.deepEqual(getDensityLayout("large"), {
-    columns: 6,
-    rowsPerPage: 7,
-  });
-  assert.deepEqual(getDensityLayout("standard"), {
-    columns: 8,
-    rowsPerPage: 8,
-  });
-  assert.deepEqual(getDensityLayout("compact"), {
-    columns: 10,
-    rowsPerPage: 10,
-  });
+test("default profiles resolve to approved columns and page capacities", () => {
+  assert.deepEqual(
+    [
+      resolveWorksheetLayout(settings("kids")),
+      resolveWorksheetLayout(settings("adult")),
+      resolveWorksheetLayout(settings("tablet")),
+      resolveWorksheetLayout(settings("brush")),
+    ].map(({ practiceColumns, rowsPerPage }) => ({
+      practiceColumns,
+      rowsPerPage,
+    })),
+    [
+      { practiceColumns: 8, rowsPerPage: 8 },
+      { practiceColumns: 12, rowsPerPage: 12 },
+      { practiceColumns: 6, rowsPerPage: 5 },
+      { practiceColumns: 4, rowsPerPage: 5 },
+    ],
+  );
 });
 
-test("standard practice has one model, two trace, and five blank cells", () => {
-  const cells = buildPracticeCells("家", "standard");
+test("Kids practice has one model, two trace, and five blank cells", () => {
+  const cells = buildPracticeCells(
+    "家",
+    resolveWorksheetLayout(settings("kids")),
+  );
 
   assert.deepEqual(
     cells.map((cell) => cell.kind),
@@ -90,15 +122,33 @@ test("standard practice has one model, two trace, and five blank cells", () => {
   );
 });
 
-test("large and compact practice preserve three teaching cells", () => {
-  assert.equal(buildPracticeCells("学", "large").length, 6);
-  assert.equal(buildPracticeCells("学", "compact").length, 10);
-  assert.deepEqual(
-    buildPracticeCells("学", "compact")
-      .slice(0, 3)
-      .map((cell) => cell.kind),
-    ["model", "trace", "trace"],
+test("Adult, Tablet, and Brush preserve their teaching patterns", () => {
+  const adult = buildPracticeCells(
+    "学",
+    resolveWorksheetLayout(settings("adult")),
   );
+  const tablet = buildPracticeCells(
+    "学",
+    resolveWorksheetLayout(settings("tablet")),
+  );
+  const brush = buildPracticeCells(
+    "学",
+    resolveWorksheetLayout(settings("brush")),
+  );
+
+  assert.equal(adult.length, 12);
+  assert.equal(tablet.length, 6);
+  assert.equal(brush.length, 4);
+  assert.deepEqual(
+    adult.slice(0, 2).map((cell) => cell.kind),
+    ["model", "trace"],
+  );
+  assert.deepEqual(brush.map((cell) => cell.kind), [
+    "model",
+    "trace",
+    "blank",
+    "blank",
+  ]);
 });
 
 test("practice pagination keeps normal words together and preserves every character", () => {
@@ -109,7 +159,10 @@ test("practice pagination keeps normal words together and preserves every charac
     entry("姐姐", "sister"),
     entry("妹妹", "younger-sister"),
   ];
-  const pages = paginatePracticeEntries(entries, "standard");
+  const pages = paginatePracticeEntries(
+    entries,
+    resolveWorksheetLayout(settings("kids")),
+  );
 
   assert.deepEqual(pages.map((page) => page.length), [8, 2]);
   assert.deepEqual(
@@ -126,7 +179,7 @@ test("practice pagination keeps normal words together and preserves every charac
 test("practice pagination splits a word only when it exceeds a page", () => {
   const pages = paginatePracticeEntries(
     [entry("一二三四五六七八九十", "numbers")],
-    "standard",
+    resolveWorksheetLayout(settings("kids")),
   );
 
   assert.deepEqual(pages.map((page) => page.length), [8, 2]);
@@ -137,13 +190,23 @@ test("practice pagination splits a word only when it exceeds a page", () => {
   assert.equal(pages[1]?.[0]?.showContext, true);
 });
 
-test("test worksheets paginate ten vocabulary prompts per page", () => {
+test("test worksheets use profile-aware prompt capacities", () => {
   const entries = Array.from({ length: 21 }, (_, index) =>
     entry("家", `row-${index}`),
   );
 
   assert.deepEqual(
-    paginateTestEntries(entries).map((page) => page.length),
+    paginateTestEntries(
+      entries,
+      resolveWorksheetLayout(settings("kids")),
+    ).map((page) => page.length),
+    [8, 8, 5],
+  );
+  assert.deepEqual(
+    paginateTestEntries(
+      entries,
+      resolveWorksheetLayout(settings("adult")),
+    ).map((page) => page.length),
     [10, 10, 1],
   );
 });
@@ -167,7 +230,12 @@ test("learn pagination uses real stroke-row weight without losing units", () => 
     splitEntryIntoCharacterUnits(entry(hanzi, `simple-${index}`)),
   );
   const counts = new Map(units.map((unit) => [unit.character, 5]));
-  const pages = paginateLearnUnits(units, counts, true);
+  const pages = paginateLearnUnits(
+    units,
+    counts,
+    true,
+    resolveWorksheetLayout(settings("kids")),
+  );
 
   assert.deepEqual(pages.map((page) => page.length), [4, 1]);
   assert.deepEqual(
