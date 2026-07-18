@@ -1,0 +1,12 @@
+ignoredBuiltDependencies:
+  - core-js
+
+onlyBuiltDependencies:
+  - "@parcel/watcher"
+  - "@swc/core"
+  - esbuild
+  - msw
+  - sharp
+
+patchedDependencies:
+  vinext@0.0.51: patches/vinext@0.0.51.patch

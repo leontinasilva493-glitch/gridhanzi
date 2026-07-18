@@ -1,0 +1,42 @@
+{
+  "name": "hanzisheets",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vinext dev",
+    "test": "node --import tsx --test \"src/**/*.test.ts\"",
+    "build": "vinext build",
+    "start": "vinext start",
+    "deploy": "sh -c 'set -a && [ -f .env.production ] && . ./.env.production; set +a && exec npx vinext deploy'"
+  },
+  "dependencies": {
+    "clsx": "^2.1.0",
+    "hanzi-writer": "^3.7.3",
+    "html2canvas-pro": "2.2.4",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^0.511.0",
+    "next": "^16.0.7",
+    "next-intl": "^4.9.1",
+    "next-themes": "^0.4.6",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.37.3",
+    "@tailwindcss/postcss": "^4.1.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^6.0.2",
+    "@vitejs/plugin-rsc": "^0.5.26",
+    "react-server-dom-webpack": "^19.2.6",
+    "tailwindcss": "^4.1.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.0",
+    "vinext": "0.0.51",
+    "vite": "^8.0.14",
+    "wrangler": "^4.93.1"
+  },
+  "type": "module"
+}
