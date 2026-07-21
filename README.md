@@ -44,7 +44,18 @@ pnpm build
 
 ## Cloudflare deployment
 
-Copy `wrangler.example.jsonc` to `wrangler.jsonc`, choose a unique Worker name, set `NEXT_PUBLIC_APP_URL` for production, then run:
+The tracked `wrangler.jsonc` deploys the `gridhanzi` Worker and preserves the
+shared `WORKSHEET_RATE_LIMITER` binding. For Cloudflare Workers Builds, connect
+the GitHub repository with `/` as the root directory, leave the build command
+empty, and use this deploy command:
+
+```bash
+pnpm exec vinext deploy
+```
+
+The repository pins pnpm 10.28.0. If the Cloudflare build form requests a
+package-manager variable, set `PNPM_VERSION` to `10.28.0`. For a local deploy,
+set `NEXT_PUBLIC_APP_URL` for production and run:
 
 ```bash
 pnpm deploy

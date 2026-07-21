@@ -2,6 +2,7 @@
   "name": "gridhanzi",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@10.28.0",
   "scripts": {
     "dev": "vinext dev",
     "test": "node --import tsx --test \"src/**/*.test.ts\"",
