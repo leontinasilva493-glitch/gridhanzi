@@ -58,6 +58,21 @@ export function getPdfHeaderCropHeight(canvasHeight: number) {
   return Math.max(1, Math.round(canvasHeight * 0.115));
 }
 
+export function getPdfHeaderFont(sizePx: number): string {
+  return `500 ${Math.round(sizePx)}px Georgia, "LXGW WenKai GB Medium", "Noto Serif SC", serif`;
+}
+
+export async function loadPdfHeaderFont(
+  fonts: { load(font: string, text: string): Promise<unknown> },
+  title: string,
+): Promise<void> {
+  try {
+    await fonts.load('500 32px "LXGW WenKai GB Medium"', title);
+  } catch {
+    // Canvas will continue through the declared system-font fallbacks.
+  }
+}
+
 function createPdfCapturePage(page: HTMLElement) {
   const geometry = getPdfCaptureGeometry(page.getBoundingClientRect());
   const host = document.createElement("div");
@@ -116,7 +131,7 @@ function createPdfHeaderCanvas({
   context.fillStyle = "#17233a";
   context.textAlign = "center";
   context.textBaseline = "alphabetic";
-  context.font = `700 ${Math.round(width * 0.037)}px Georgia, "Noto Serif SC", serif`;
+  context.font = getPdfHeaderFont(width * 0.037);
   context.fillText(title, width / 2, height * 0.47);
 
   context.font = `500 ${Math.round(width * 0.014)}px Arial, sans-serif`;
@@ -136,8 +151,9 @@ function createPdfHeaderCanvas({
   return canvas;
 }
 
-async function waitForWorksheetAssets(pages: HTMLElement[]) {
+async function waitForWorksheetAssets(pages: HTMLElement[], title: string) {
   if (typeof document !== "undefined" && "fonts" in document) {
+    await loadPdfHeaderFont(document.fonts, title);
     await document.fonts.ready;
   }
 
@@ -162,7 +178,7 @@ export async function downloadWorksheetPdf({
     throw new Error("No worksheet pages are ready to export.");
   }
 
-  await waitForWorksheetAssets(pages);
+  await waitForWorksheetAssets(pages, title);
 
   const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
     import("html2canvas-pro"),

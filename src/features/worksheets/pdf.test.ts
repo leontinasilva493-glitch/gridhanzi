@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import * as pdfModule from "./pdf";
+
 import {
   buildWorksheetPdfFilename,
   getPdfCaptureGeometry,
@@ -45,4 +47,66 @@ test("PDF capture geometry resets every worksheet page to its own origin", () =>
 
 test("PDF header crop stays above the first worksheet row", () => {
   assert.equal(getPdfHeaderCropHeight(1263), 145);
+});
+
+test("PDF headers use the loaded Chinese web font with system fallbacks", () => {
+  const getPdfHeaderFont = (
+    pdfModule as unknown as Record<string, unknown>
+  ).getPdfHeaderFont;
+
+  assert.equal(typeof getPdfHeaderFont, "function");
+  assert.equal(
+    (getPdfHeaderFont as (sizePx: number) => string)(32),
+    '500 32px Georgia, "LXGW WenKai GB Medium", "Noto Serif SC", serif',
+  );
+});
+
+test("PDF export explicitly requests title glyphs before Canvas rendering", async () => {
+  const loadPdfHeaderFont = (
+    pdfModule as unknown as Record<string, unknown>
+  ).loadPdfHeaderFont;
+  const calls: Array<{ font: string; text: string }> = [];
+  type TestFontSet = {
+    load(font: string, text: string): Promise<unknown>;
+  };
+  const fonts: TestFontSet = {
+    async load(font: string, text: string) {
+      calls.push({ font, text });
+      return [];
+    },
+  };
+
+  assert.equal(typeof loadPdfHeaderFont, "function");
+  await (
+    loadPdfHeaderFont as (
+      fonts: TestFontSet,
+      title: string,
+    ) => Promise<void>
+  )(fonts, "家庭练习");
+  assert.deepEqual(calls, [
+    {
+      font: '500 32px "LXGW WenKai GB Medium"',
+      text: "家庭练习",
+    },
+  ]);
+});
+
+test("PDF export keeps system fallbacks when the web font cannot load", async () => {
+  const loadPdfHeaderFont = (
+    pdfModule as unknown as Record<string, unknown>
+  ).loadPdfHeaderFont as (
+    fonts: { load(font: string, text: string): Promise<unknown> },
+    title: string,
+  ) => Promise<void>;
+
+  await assert.doesNotReject(() =>
+    loadPdfHeaderFont(
+      {
+        async load() {
+          throw new Error("font CDN unavailable");
+        },
+      },
+      "家庭练习",
+    ),
+  );
 });

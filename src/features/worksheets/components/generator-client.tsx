@@ -41,7 +41,8 @@ import {
 import { PublicPageShell } from "./site-shell";
 import { WorksheetPaper } from "./worksheet-paper";
 
-export const WORKSHEET_STORAGE_KEY = "hanzisheets:worksheet:v1";
+export const WORKSHEET_STORAGE_KEY = "gridhanzi:worksheet:v1";
+export const LEGACY_WORKSHEET_STORAGE_KEY = "hanzisheets:worksheet:v1";
 
 export function GeneratorClient({
   initialEntries,
@@ -86,10 +87,10 @@ export function GeneratorClient({
   const [isEnriching, setIsEnriching] = useState(false);
   const [message, setMessage] = useState(
     autoEnrich
-      ? t("Preparing an AI-assisted worksheet…", "正在准备 AI 辅助字帖…")
+      ? t("Filling in Hanzi and Pinyin…", "正在补全汉字和拼音…")
       : hasTemplate
-        ? t(`${templateTitle} template loaded`, `已载入 ${templateTitle} 模板`)
-        : t("Curated fields loaded", "已载入精选词汇"),
+        ? t(`${templateTitle} words loaded`, `已载入 ${templateTitle} 词表`)
+        : t("Words loaded", "已载入词汇"),
   );
   const autoEnrichStarted = useRef(false);
 
@@ -131,7 +132,7 @@ export function GeneratorClient({
 
   async function enrichEntries() {
     setIsEnriching(true);
-    setMessage(t("Checking Hanzi, Pinyin, and meanings…", "正在检查汉字、拼音和释义…"));
+    setMessage(t("Filling in Hanzi and Pinyin…", "正在补全汉字和拼音…"));
     try {
       const values = entries.map((entry) => entry.hanzi || entry.english);
       const response = await fetch("/api/worksheet/enrich", {
@@ -146,7 +147,15 @@ export function GeneratorClient({
         error?: string;
       };
       if (!response.ok || !payload.entries) {
-        throw new Error(payload.error || "Could not enrich this list.");
+        throw new Error(
+          response.status === 429
+            ? t(
+                "Please wait a moment, then try again.",
+                "操作太快了，请稍后再试。",
+              )
+            : payload.error ||
+                t("Could not fill in this list.", "暂时无法补全这个词表。"),
+        );
       }
       setEntries((current) =>
         payload.entries!.map((entry, index) => ({
@@ -156,13 +165,21 @@ export function GeneratorClient({
       );
       setMessage(
         payload.source === "gemini"
-          ? t("AI fields completed — please review", "AI 已补全，请检查结果")
-          : payload.fallbackReason === "not_configured"
-            ? t("AI is not configured — curated matches were used and unknown rows remain editable", "未配置 AI：已使用本地词库，未识别内容仍可编辑")
-            : t("AI was unavailable — curated matches were used and unknown rows remain editable", "AI 暂时不可用：已使用本地词库，未识别内容仍可编辑"),
+          ? t(
+              "Words filled in. Check the results.",
+              "内容已补全，请检查结果。",
+            )
+          : t(
+              "We filled the words we know. Check any blank rows.",
+              "已补全可识别的词，请检查空白项。",
+            ),
       );
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : "Could not enrich this list.");
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : t("Could not fill in this list.", "暂时无法补全这个词表。"),
+      );
     } finally {
       setIsEnriching(false);
     }
@@ -217,7 +234,7 @@ export function GeneratorClient({
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="hs-display text-2xl font-bold">{t("Review your list", "检查词汇表")}</h2>
               <span className="flex items-center gap-1 text-sm font-medium text-[#237553]">
-                {t(`${completed} fields completed`, `已完成 ${completed} 条`)} <Check className="size-4" />
+                {t(`${completed} words ready`, `${completed} 个词已完成`)} <Check className="size-4" />
               </span>
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
@@ -369,15 +386,29 @@ export function GeneratorClient({
                       />
                     </MobileEditorField>
                   </div>
-                  <div className="mt-3 grid grid-cols-3 gap-2">
-                    <IconButton label="Move up" onClick={() => moveEntry(index, -1)} disabled={index === 0}>
+                  <p className="mt-3 text-xs font-semibold text-[#4f5d70]">
+                    {t("Reorder or remove", "调整顺序或删除")}
+                  </p>
+                  <div className="mt-2 grid grid-cols-3 gap-2">
+                    <IconButton
+                      label={t("Move up", "上移")}
+                      visibleLabel={t("Move up", "上移")}
+                      onClick={() => moveEntry(index, -1)}
+                      disabled={index === 0}
+                    >
                       <ArrowUp className="size-4" />
                     </IconButton>
-                    <IconButton label="Move down" onClick={() => moveEntry(index, 1)} disabled={index === entries.length - 1}>
+                    <IconButton
+                      label={t("Move down", "下移")}
+                      visibleLabel={t("Move down", "下移")}
+                      onClick={() => moveEntry(index, 1)}
+                      disabled={index === entries.length - 1}
+                    >
                       <ArrowDown className="size-4" />
                     </IconButton>
                     <IconButton
-                      label="Delete row"
+                      label={t("Delete", "删除")}
+                      visibleLabel={t("Delete", "删除")}
                       onClick={() => setEntries((current) => current.filter((item) => item.id !== entry.id))}
                     >
                       <Trash2 className="size-4" />
@@ -453,7 +484,7 @@ export function GeneratorClient({
               <Printer className="size-4" />
             )}
             {settings.profile === "tablet"
-              ? t("Download for GoodNotes", "下载到 GoodNotes")
+              ? t("Download 3:4 PDF", "下载 3:4 PDF")
               : t("Print / Save PDF", "下载 / 打印 PDF")}
           </button>
         </div>
@@ -764,11 +795,13 @@ function MobileEditorField({
 
 function IconButton({
   label,
+  visibleLabel,
   onClick,
   disabled,
   children,
 }: {
   label: string;
+  visibleLabel?: string;
   onClick: () => void;
   disabled?: boolean;
   children: React.ReactNode;
@@ -780,9 +813,13 @@ function IconButton({
       title={label}
       disabled={disabled}
       onClick={onClick}
-      className="grid min-h-11 min-w-11 place-items-center rounded border border-[#ded7ca] text-[#526074] hover:bg-[#f3eee4] disabled:opacity-25 md:min-h-8 md:min-w-8 md:border-0"
+      className={cn(
+        "inline-flex min-h-11 min-w-11 items-center justify-center gap-1.5 rounded border border-[#ded7ca] text-[#526074] hover:bg-[#f3eee4] disabled:opacity-25 md:min-h-8 md:min-w-8 md:border-0",
+        visibleLabel && "w-full px-2 text-xs font-semibold",
+      )}
     >
       {children}
+      {visibleLabel ? <span>{visibleLabel}</span> : null}
     </button>
   );
 }

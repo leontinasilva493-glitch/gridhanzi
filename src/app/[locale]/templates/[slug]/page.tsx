@@ -5,6 +5,7 @@ import { envConfigs } from "@/config";
 import { worksheetTemplates } from "@/features/worksheets/data";
 import { getTemplateBySlug } from "@/features/worksheets/engine";
 import { TemplateDetailPage } from "@/features/worksheets/components/template-detail-page";
+import { buildPageSeoMetadata } from "@/features/worksheets/seo";
 
 export const dynamicParams = false;
 
@@ -19,21 +20,25 @@ export async function generateMetadata({ params }: {
   const template = getTemplateBySlug(slug);
   if (!template) return {};
 
-  const localePrefix = locale === "en" ? "" : `/${locale}`;
-  const canonical = `${envConfigs.app_url}${localePrefix}/templates/${template.slug}`;
+  const pageSeo = buildPageSeoMetadata(
+    envConfigs.app_url,
+    `/templates/${template.slug}`,
+    locale,
+  );
   const title = `${template.title} Chinese Writing Worksheet`;
-  const description = `${template.description} Edit and download ${template.wordCount} Hanzi words with Pinyin, meanings, tracing, and real stroke order.`;
+  const description = `${template.description} Open the word list in the worksheet generator, edit it, and download a printable PDF.`;
 
   return {
+    ...pageSeo,
     title,
     description,
-    alternates: { canonical },
     openGraph: {
+      ...pageSeo.openGraph,
       title,
       description,
-      url: canonical,
       type: "article",
-      siteName: "HanziSheets 汉字字帖",
+      siteName: "GridHanzi",
+      images: ["/og-gridhanzi.png"],
     },
   };
 }

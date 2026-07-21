@@ -276,6 +276,16 @@ export function getTestAnswerCharacters(entry: WorksheetEntry): string[] {
   return getHanziCharacters(entry.hanzi);
 }
 
+export function formatTestPrompt(
+  english: string,
+  answerCharacters: readonly string[],
+): string {
+  const prompt = english.trim() || "Write the word";
+  return answerCharacters.length > 1
+    ? `${prompt} (${answerCharacters.length} characters)`
+    : prompt;
+}
+
 export function getLearnStrokeRowCount(
   strokeCount: number,
   framesPerRow = 8,

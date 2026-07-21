@@ -51,7 +51,7 @@ export interface WorksheetSnapshot {
 export const defaultWorksheetSettings: WorksheetSettings = {
   profile: "kids",
   cellSize: 22,
-  mode: "write",
+  mode: "trace",
   grid: "tian",
   showPinyin: true,
   showStrokeOrder: true,

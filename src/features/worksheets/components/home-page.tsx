@@ -6,6 +6,7 @@ import {
   ClipboardPaste,
   FileText,
   GraduationCap,
+  PencilLine,
   Printer,
   ShieldCheck,
   Sparkles,
@@ -31,11 +32,12 @@ export function HomePage() {
         <section className="hs-container grid items-start gap-8 pb-12 pt-10 lg:grid-cols-[1.02fr_0.9fr] lg:pt-12">
           <div>
             <h1 className="hs-display max-w-3xl text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.55rem]">
-              Turn any word list into a printable Chinese worksheet.
+              Chinese Character Practice Sheet Generator
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-8 text-[#435166]">
-              Paste English, Chinese, or both. We’ll add Hanzi, Pinyin,
-              meanings, and stroke-order practice.
+              Create printable Chinese writing worksheets from any English or
+              Chinese vocabulary list. Check the Hanzi and Pinyin, choose a
+              grid, then download a PDF.
             </p>
             <div className="mt-8">
               <HomeWorkbench />
@@ -60,26 +62,39 @@ export function HomePage() {
           </div>
         </section>
 
-        <section className="hs-container hs-card grid gap-4 px-5 py-5 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-center">
-          <Step icon={ClipboardPaste} number="1" title="Paste your list">
-            Add English, Chinese, or both.
-          </Step>
-          <ArrowRight className="hidden size-6 text-[#657083] md:block" />
-          <Step icon={CheckCircle2} number="2" title="Check bilingual fields">
-            Review Hanzi, Pinyin, and meanings.
-          </Step>
-          <ArrowRight className="hidden size-6 text-[#657083] md:block" />
-          <Step icon={Printer} number="3" title="Print practice sheets">
-            Classroom-ready pages in seconds.
-          </Step>
+        <section
+          aria-label="Choose how to start"
+          className="hs-container grid gap-3 md:grid-cols-3"
+        >
+          <TaskLink
+            href="/generator"
+            icon={ClipboardPaste}
+            title="Build from my word list"
+          >
+            Paste English or Chinese words and make a custom worksheet.
+          </TaskLink>
+          <TaskLink
+            href="/templates"
+            icon={BookOpen}
+            title="Start with a worksheet"
+          >
+            Pick an editable topic or HSK word list to get started faster.
+          </TaskLink>
+          <TaskLink
+            href="/stroke-order"
+            icon={PencilLine}
+            title="Check one character’s stroke order"
+          >
+            Look up the strokes before adding a character to your worksheet.
+          </TaskLink>
         </section>
 
         <section className="hs-container hs-content-visibility py-14">
           <div className="flex items-end justify-between gap-5">
             <div>
-              <p className="hs-kicker">Teacher-ready starting points</p>
+              <p className="hs-kicker">Editable word lists</p>
               <h2 className="hs-display mt-2 text-3xl font-bold">
-                Start with a template
+                Start with an editable word list
               </h2>
             </div>
             <Link
@@ -120,19 +135,19 @@ export function HomePage() {
           id="practice-types"
           className="hs-container hs-content-visibility pb-14"
         >
-          <p className="hs-kicker">One vocabulary list</p>
+          <p className="hs-kicker">One list, three uses</p>
           <h2 className="hs-display mt-2 text-3xl font-bold">
-            Three ways to practise
+            Learn, practise, or test
           </h2>
           <div className="mt-6 grid gap-5 lg:grid-cols-3">
             <PracticeCard title="Learn new characters" mode="trace">
-              Follow real stroke-order frames, trace twice, then write independently.
+              See the strokes in order, trace the character, then copy it.
             </PracticeCard>
             <PracticeCard title="Practice handwriting" mode="write">
-              Use one model, two trace cells, and five blank grids per character.
+              Start with a model and tracing cells, then use the blank grids.
             </PracticeCard>
             <PracticeCard title="Test recall" mode="quiz">
-              Read the Pinyin or meaning and write each character in its own grid.
+              Read the Pinyin or meaning, then write the word without a model.
             </PracticeCard>
           </div>
         </section>
@@ -142,67 +157,68 @@ export function HomePage() {
           className="hs-container hs-content-visibility grid gap-6 pb-14 lg:grid-cols-[1.1fr_0.9fr]"
         >
           <div className="hs-card p-7 sm:p-9">
-            <p className="hs-kicker">Built for repeated use</p>
+            <p className="hs-kicker">For regular lesson prep</p>
             <h2 className="hs-display mt-2 text-3xl font-bold">
-              Made for weekly lesson prep, not one-off demos.
+              Plan this week’s worksheet in a few minutes.
             </h2>
             <div className="mt-8 grid gap-6 sm:grid-cols-3">
               <WorkflowItem icon={ClipboardPaste} title="Paste this week’s words">
-                Add from a list or spreadsheet.
+                Copy them from your lesson plan or spreadsheet.
               </WorkflowItem>
               <WorkflowItem icon={CheckCircle2} title="Check bilingual fields">
-                Correct ambiguity before printing.
+                Fix the Hanzi, Pinyin, or meaning if needed.
               </WorkflowItem>
               <WorkflowItem icon={Printer} title="Print practice and quizzes">
-                Reuse the same list in three modes.
+                Use the same list for tracing and a later test.
               </WorkflowItem>
             </div>
           </div>
           <aside className="hs-card border-[#243e62] p-7 sm:p-9">
-            <div className="flex items-center justify-between">
-              <h2 className="hs-display text-2xl font-bold">Teacher Pro</h2>
-              <span className="rounded-full border border-[#d76560] px-3 py-1 text-xs font-bold text-[#b62822]">
-                Coming soon
-              </span>
-            </div>
+            <h2 className="hs-display text-2xl font-bold">
+              Use one list for lessons, practice, and review
+            </h2>
             <p className="mt-3 text-[#566276]">
-              We will only build the workflow features teachers actually ask
-              for.
+              Turn the same checked vocabulary into a guided lesson, a
+              handwriting page, or a short recall test.
             </p>
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
               {[
-                "CSV import",
-                "Worksheet packs",
-                "Saved vocabulary lists",
-                "School header & logo",
+                "Learn pages with stroke order",
+                "Tracing and blank writing grids",
+                "Tests without a model character",
+                "A4, US Letter, and tablet PDFs",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2 text-sm">
                   <Check className="size-4 text-[#25815d]" /> {item}
                 </li>
               ))}
             </ul>
-            <Link href="/generator" className="hs-primary-button mt-7">
-              Create a free worksheet
-            </Link>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link href="/for-teachers" className="hs-secondary-button">
+                See the teacher workflow
+              </Link>
+              <Link href="/generator" className="hs-primary-button">
+                Create a worksheet
+              </Link>
+            </div>
           </aside>
         </section>
 
         <section className="hs-container hs-card hs-content-visibility grid overflow-hidden lg:grid-cols-2">
           <div className="p-8 sm:p-10">
-            <p className="hs-kicker">Calm, useful home practice</p>
+            <p className="hs-kicker">Practice at home</p>
             <h2 className="hs-display mt-2 text-3xl font-bold">
-              Perfect for bilingual families
+              Use the same vocabulary for practice at home.
             </h2>
             <p className="mt-4 max-w-xl leading-7 text-[#566276]">
-              Support daily learning with printable pages that reinforce
-              classroom vocabulary without turning home practice into another
-              complicated app.
+              Print the words from class and let your child trace them before
+              writing them without a model. No extra app or account is needed.
             </p>
             <ul className="mt-5 space-y-3 text-sm">
               {[
-                "Build handwriting confidence",
-                "Reinforce classroom learning",
-                "Simple, print-and-go sheets",
+                "Review this week’s words",
+                "Trace before writing independently",
+                "Print another copy for later review",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2">
                   <Check className="size-4 text-[#25815d]" /> {item}
@@ -232,20 +248,20 @@ export function HomePage() {
           <div className="hs-card mt-6 divide-y divide-[#ded7ca]">
             {[
               [
-                "Do I need an account?",
-                "No. The MVP lets you create, edit, preview, and print without registration.",
+                "What can I make with this Chinese writing worksheet generator?",
+                "This Chinese worksheet generator turns any English or Chinese vocabulary list into editable practice pages with Hanzi, Pinyin, tracing cells, blank writing grids, and optional stroke-order guidance.",
               ],
               [
-                "How accurate are the Hanzi and Pinyin?",
-                "Known teaching vocabulary uses curated data. AI-filled rows are always editable before printing.",
+                "Is the printable Chinese worksheet generator free?",
+                "Yes. You can create, edit, preview, download, and print complete worksheets without creating an account.",
               ],
               [
-                "Can I edit the words after generation?",
-                "Yes. Hanzi, Pinyin, and English fields remain editable in the generator.",
+                "Does the Hanzi practice sheet generator include Pinyin and stroke order?",
+                "Yes. Common vocabulary can be filled with Hanzi, Pinyin, and English meanings. You can review every field and choose whether to show Pinyin and stroke-order guidance before downloading.",
               ],
               [
-                "What paper sizes are supported?",
-                "A4 and US Letter are available in the generator and print preview.",
+                "Which paper sizes and writing profiles are supported?",
+                "Choose A4 or US Letter for printing, or a 3:4 digital worksheet for tablet apps. Kids, Adult, Tablet, and Brush profiles adjust the grid size and layout for different writing tools.",
               ],
             ].map(([question, answer]) => (
               <details key={question} className="group px-5 py-4">
@@ -281,29 +297,35 @@ function TrustItem({
   );
 }
 
-function Step({
+function TaskLink({
+  href,
   icon: Icon,
-  number,
   title,
   children,
 }: {
+  href: string;
   icon: typeof ClipboardPaste;
-  number: string;
   title: string;
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex gap-4">
-      <span className="grid size-12 shrink-0 place-items-center rounded-full border border-[#bfd0c3] bg-[#f5f2e7] text-[#26694d]">
+    <Link
+      href={href}
+      className="group hs-card flex min-h-32 items-start gap-4 p-5 transition duration-200 hover:-translate-y-0.5 hover:border-[#c8322b] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c8322b] focus-visible:ring-offset-2"
+    >
+      <span className="grid size-11 shrink-0 place-items-center rounded-full border border-[#9fc5af] bg-[#f7fbf8] text-[#267254]">
         <Icon className="size-5" />
       </span>
-      <div>
-        <h2 className="hs-display text-lg font-bold">
-          {number}. {title}
-        </h2>
-        <p className="mt-1 text-sm text-[#657083]">{children}</p>
-      </div>
-    </div>
+      <span className="min-w-0 flex-1">
+        <span className="hs-display flex items-start justify-between gap-3 text-lg font-bold">
+          {title}
+          <ArrowRight className="mt-0.5 size-4 shrink-0 text-[#b62822] transition-transform group-hover:translate-x-1" />
+        </span>
+        <span className="mt-2 block text-sm leading-6 text-[#617084]">
+          {children}
+        </span>
+      </span>
+    </Link>
   );
 }
 

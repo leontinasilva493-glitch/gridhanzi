@@ -1,6 +1,6 @@
-# HanziSheets MVP
+# GridHanzi MVP
 
-HanziSheets turns English or Chinese vocabulary lists into editable, printable Chinese writing worksheets for teachers and parents.
+GridHanzi turns English or Chinese vocabulary lists into editable, printable Chinese writing worksheets for teachers and parents at [gridhanzi.org](https://gridhanzi.org).
 
 ## MVP scope
 

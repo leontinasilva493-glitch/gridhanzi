@@ -24,7 +24,10 @@ import { downloadWorksheetPdf } from "../pdf";
 import { localize } from "../i18n";
 import { getWorksheetProfilePreset } from "../profiles";
 import { normalizeWorksheetSnapshot } from "../snapshot";
-import { WORKSHEET_STORAGE_KEY } from "./generator-client";
+import {
+  LEGACY_WORKSHEET_STORAGE_KEY,
+  WORKSHEET_STORAGE_KEY,
+} from "./generator-client";
 import { WorksheetPaper } from "./worksheet-paper";
 
 const fallbackSnapshot: WorksheetSnapshot = {
@@ -61,18 +64,23 @@ export function PrintPreviewClient() {
   const isTablet = snapshot.settings.profile === "tablet";
 
   useEffect(() => {
-    const saved = sessionStorage.getItem(WORKSHEET_STORAGE_KEY);
+    const saved =
+      sessionStorage.getItem(WORKSHEET_STORAGE_KEY) ??
+      sessionStorage.getItem(LEGACY_WORKSHEET_STORAGE_KEY);
     if (!saved) return;
     try {
       const parsed = JSON.parse(saved) as unknown;
       const normalized = normalizeWorksheetSnapshot(parsed);
       if (normalized.entries.length > 0) {
+        sessionStorage.setItem(WORKSHEET_STORAGE_KEY, saved);
+        sessionStorage.removeItem(LEGACY_WORKSHEET_STORAGE_KEY);
         setSnapshot(normalized);
         setPaperSize(normalized.settings.paperSize);
         setPrintMargin(normalized.settings.printMargin);
       }
     } catch {
       sessionStorage.removeItem(WORKSHEET_STORAGE_KEY);
+      sessionStorage.removeItem(LEGACY_WORKSHEET_STORAGE_KEY);
     }
   }, []);
 
@@ -102,7 +110,7 @@ export function PrintPreviewClient() {
       setPdfError(
         error instanceof Error
           ? error.message
-          : "The PDF could not be created. Please use Print instead.",
+          : "The PDF could not be created. Try Print instead.",
       );
     } finally {
       setPdfProgress(null);
@@ -133,7 +141,7 @@ export function PrintPreviewClient() {
             onChange={(value) => setPaperSize(value as PaperSize)}
           />
           <ToolbarChip
-            label={isTablet ? "GoodNotes · 3:4" : t("Portrait", "纵向")}
+            label={isTablet ? t("Tablet PDF · 3:4", "平板 PDF · 3:4") : t("Portrait", "纵向")}
           />
           <ToolbarChip
             label={t(
@@ -188,13 +196,13 @@ export function PrintPreviewClient() {
                   `正在生成 ${Math.max(1, pdfProgress.current)}/${Math.max(1, pdfProgress.total)}`,
                 )
               : isTablet
-                ? t("Download for GoodNotes", "下载到 GoodNotes")
+                ? t("Download 3:4 PDF", "下载 3:4 PDF")
                 : t("Download PDF", "下载 PDF")}
           </button>
         </div>
       </header>
 
-      <div className="grid min-h-[calc(100vh-4rem)] md:grid-cols-[220px_minmax(0,1fr)_310px]">
+      <div className="hs-print-layout grid min-h-[calc(100vh-4rem)] md:grid-cols-[220px_minmax(0,1fr)_310px]">
         <aside className="hs-no-print hidden border-r border-[#d4d4d0] bg-[#f9f8f5] p-5 md:block">
           {Array.from({ length: pageCount }, (_, pageIndex) => (
             <Thumbnail
@@ -230,13 +238,13 @@ export function PrintPreviewClient() {
           <h1 className="hs-display text-2xl font-bold">{t("Print settings", "打印与下载设置")}</h1>
           <PrintToggle
             label={t("Background graphics", "背景图形")}
-            description={t("Print worksheet colors and layout elements.", "保留格线、描红颜色和版式元素。")}
+            description={t("Keep grid lines and tracing colour in the PDF.", "在 PDF 中保留格线和描红颜色。")}
             checked={backgroundGraphics}
             onChange={setBackgroundGraphics}
           />
           <PrintToggle
             label={t("Show answers", "显示答案")}
-            description={t("Include stroke order and model characters.", "包含笔顺和示范汉字。")}
+            description={t("Keep model characters and stroke-order diagrams.", "保留示范汉字和笔顺图。")}
             checked={showAnswers}
             onChange={setShowAnswers}
           />
@@ -259,12 +267,12 @@ export function PrintPreviewClient() {
             <Info className="mt-0.5 size-5 shrink-0 text-[#24466e]" />
             {isTablet
               ? t(
-                  "The 3:4 PDF is ready to import into GoodNotes, Notability, or another annotation app.",
-                  "3:4 PDF 可直接导入 GoodNotes、Notability 或其他手写批注应用。",
+                  "The 3:4 PDF fits GoodNotes and other handwriting apps.",
+                  "这份 3:4 PDF 可用于 GoodNotes 等手写应用。",
                 )
               : t(
-                  "Download PDF creates the file directly. Use Print when you need a physical printer or browser-specific copy controls.",
-                  "下载 PDF 会直接生成文件；需要纸质打印或设置份数时，请使用打印按钮。",
+                  "Download the PDF for a saved file. Use Print for printer and copy settings.",
+                  "需要保存文件时下载 PDF；需要选择打印机或份数时使用打印。",
                 )}
           </div>
           {pdfError ? (

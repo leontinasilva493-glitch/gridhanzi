@@ -4,16 +4,30 @@ import { envConfigs } from "@/config";
 import { buildPublicSitemapPaths, toAbsoluteUrl } from "@/features/worksheets/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return buildPublicSitemapPaths().map((pathname) => ({
-    url: toAbsoluteUrl(envConfigs.app_url, pathname),
-    changeFrequency: pathname.startsWith("/templates/") ? "monthly" : "weekly",
-    priority:
-      pathname === "/"
-        ? 1
-        : pathname === "/generator"
-          ? 0.95
-          : pathname === "/templates"
-            ? 0.9
-            : 0.75,
-  }));
+  const generatorLanguages = {
+    en: toAbsoluteUrl(envConfigs.app_url, "/generator"),
+    zh: toAbsoluteUrl(envConfigs.app_url, "/zh/generator"),
+    "x-default": toAbsoluteUrl(envConfigs.app_url, "/generator"),
+  };
+  const entries: MetadataRoute.Sitemap = buildPublicSitemapPaths().map(
+    (pathname) => {
+      const englishUrl = toAbsoluteUrl(envConfigs.app_url, pathname);
+
+      return {
+        url: englishUrl,
+        ...(pathname === "/generator"
+          ? { alternates: { languages: generatorLanguages } }
+          : {}),
+      };
+    },
+  );
+
+  entries.push({
+    url: generatorLanguages.zh,
+    alternates: {
+      languages: generatorLanguages,
+    },
+  });
+
+  return entries;
 }

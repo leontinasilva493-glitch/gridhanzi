@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 
 import {
   buildPracticeCells,
+  formatTestPrompt,
   getHanziCharacters,
   getTestAnswerCharacters,
   paginateLearnUnits,
@@ -32,6 +33,86 @@ type TransformData = {
 
 type StrokeDataMap = ReadonlyMap<string, string[] | null>;
 
+function GridGuide({ grid }: { grid: GridStyle }) {
+  return (
+    <svg
+      aria-hidden="true"
+      className="hs-grid-guide"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="none"
+      focusable="false"
+    >
+      <rect
+        className="hs-grid-outline"
+        x="1.5"
+        y="1.5"
+        width="97"
+        height="97"
+        vectorEffect="non-scaling-stroke"
+      />
+      <g className="hs-grid-guide-lines">
+        <line
+          x1="1.5"
+          y1="50"
+          x2="98.5"
+          y2="50"
+          vectorEffect="non-scaling-stroke"
+        />
+        <line
+          x1="50"
+          y1="1.5"
+          x2="50"
+          y2="98.5"
+          vectorEffect="non-scaling-stroke"
+        />
+        {grid === "mi" ? (
+          <>
+            <line
+              x1="1.5"
+              y1="1.5"
+              x2="98.5"
+              y2="98.5"
+              vectorEffect="non-scaling-stroke"
+            />
+            <line
+              x1="98.5"
+              y1="1.5"
+              x2="1.5"
+              y2="98.5"
+              vectorEffect="non-scaling-stroke"
+            />
+          </>
+        ) : null}
+      </g>
+    </svg>
+  );
+}
+
+function HanziGlyph({ children }: { children?: React.ReactNode }) {
+  if (children === null || children === undefined || children === "") {
+    return null;
+  }
+
+  return (
+    <svg
+      aria-hidden="true"
+      className="hs-grid-glyph"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="xMidYMid meet"
+      focusable="false"
+    >
+      <text
+        x="50"
+        y="50"
+        textAnchor="middle"
+        dominantBaseline="central"
+      >
+        {children}
+      </text>
+    </svg>
+  );
+}
+
 export function GridCell({
   children,
   grid,
@@ -47,16 +128,14 @@ export function GridCell({
 }) {
   return (
     <span
-      className={cn(
-        "hs-grid-cell text-[clamp(1.05rem,2.35vw,2rem)]",
-        className,
-      )}
+      className={cn("hs-grid-cell", className)}
       data-grid={grid}
       data-trace={Boolean(traceLevel)}
       data-trace-level={traceLevel}
       style={style}
     >
-      <span className="relative z-10">{children}</span>
+      <GridGuide grid={grid} />
+      <HanziGlyph>{children}</HanziGlyph>
     </span>
   );
 }
@@ -405,13 +484,6 @@ function PracticeWorksheetPage({
                 key={`${unit.id}-${cellIndex}`}
                 grid={settings.grid}
                 traceLevel={cell.traceLevel}
-                className={cn(
-                  cell.kind === "model" && "font-bold",
-                  layout.profile === "adult" &&
-                    "text-[clamp(0.78rem,1.75vw,1.35rem)]",
-                  layout.profile === "brush" &&
-                    "text-[clamp(1.4rem,3.8vw,3.1rem)]",
-                )}
               >
                 {showAnswers ? cell.value : ""}
               </GridCell>
@@ -449,7 +521,7 @@ function VocabularyContext({
         {itemNumber}. {english || "Review this word"}
       </strong>
       {showPinyin && pinyin ? <span>{pinyin}</span> : null}
-      <span className="ml-auto text-[#6b7480]">{word}</span>
+      <span className="hs-hanzi-context ml-auto text-[#6b7480]">{word}</span>
     </div>
   );
 }
@@ -529,10 +601,7 @@ function LearnWorksheetPage({
                         gridTemplateColumns: `repeat(${strokeColumns}, minmax(0, 1fr))`,
                       }}
                     >
-                      <GridCell
-                        grid={settings.grid}
-                        className="font-bold"
-                      >
+                      <GridCell grid={settings.grid}>
                         {rowIndex === 0 ? unit.character : ""}
                       </GridCell>
                       {Array.from(
@@ -579,7 +648,6 @@ function LearnWorksheetPage({
                   key={cellIndex}
                   grid={settings.grid}
                   traceLevel={cell.traceLevel}
-                  className={cell.kind === "model" ? "font-bold" : undefined}
                 >
                   {showAnswers ? cell.value : ""}
                 </GridCell>
@@ -607,6 +675,7 @@ function StrokeFrameCell({
 }) {
   return (
     <span className="hs-grid-cell relative aspect-square" data-grid={grid}>
+      <GridGuide grid={grid} />
       <span className="absolute left-[4%] top-[3%] z-20 text-[0.38rem] font-bold text-[#a42b26]">
         {strokeNumber}
       </span>
@@ -670,7 +739,7 @@ function TestWorksheetPage({
             <div className="flex items-baseline gap-2 text-[0.6rem]">
               <strong>{pageOffset + index + 1}.</strong>
               <span className="font-semibold">
-                {entry.english || "Write the word"}
+                {formatTestPrompt(entry.english, characters)}
               </span>
             </div>
             {settings.showPinyin && entry.pinyin ? (

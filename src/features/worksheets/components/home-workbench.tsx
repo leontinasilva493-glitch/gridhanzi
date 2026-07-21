@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { FileSpreadsheet, Sparkles, Users } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import { useLocale } from "next-intl";
 
 import { useRouter } from "@/core/i18n/navigation";
 import { MAX_VOCABULARY_CHARS } from "../engine";
+import { localize } from "../i18n";
 import type { WorksheetDifficulty } from "../types";
 
 const familyExample = ["family", "mother", "father", "younger sister"].join(
@@ -13,8 +15,11 @@ const familyExample = ["family", "mother", "father", "younger sister"].join(
 
 export function HomeWorkbench() {
   const router = useRouter();
+  const locale = useLocale();
+  const t = (english: string, chinese: string) =>
+    localize(locale, english, chinese);
   const [mode, setMode] = useState<"english" | "chinese" | "mixed">("english");
-  const [value, setValue] = useState(familyExample);
+  const [value, setValue] = useState("");
   const [difficulty, setDifficulty] =
     useState<WorksheetDifficulty>("beginner");
 
@@ -28,9 +33,11 @@ export function HomeWorkbench() {
   return (
     <div className="hs-card p-4 sm:p-5">
       <div className="flex items-center justify-between gap-4">
-        <h2 className="hs-display text-xl font-bold">1. Add your vocabulary</h2>
+        <h2 className="hs-display text-xl font-bold">
+          {t("1. Paste your word list", "1. 粘贴词汇表")}
+        </h2>
         <span className="hidden text-xs font-medium text-[#4b7b64] sm:inline">
-          Up to 40 rows
+          {t("Up to 40 rows", "最多 40 行")}
         </span>
       </div>
       <div className="mt-4 flex flex-wrap items-end justify-between gap-3 border-b border-[#ded7ca]">
@@ -48,15 +55,19 @@ export function HomeWorkbench() {
                   : "text-[#4d5a6d]"
               }`}
             >
-              {tab === "mixed" ? "Mixed list" : tab}
+              {tab === "mixed"
+                ? t("Mixed list", "混合词表")
+                : tab === "english"
+                  ? t("English", "英文")
+                  : t("Chinese", "中文")}
             </button>
           ))}
         </div>
         <div className="mb-2 flex rounded border border-[#d5cdbf] bg-white p-0.5">
           {(
             [
-              ["beginner", "Beginner (HSK 1-2)"],
-              ["advanced", "Advanced (Native)"],
+              ["beginner", t("Beginner (HSK 1-2)", "入门（HSK 1-2）")],
+              ["advanced", t("Advanced (Native)", "进阶（母语级）")],
             ] as const
           ).map(([option, label]) => (
             <button
@@ -76,7 +87,7 @@ export function HomeWorkbench() {
         </div>
       </div>
       <label className="sr-only" htmlFor="hero-vocabulary">
-        Vocabulary list
+        {t("Vocabulary list", "词汇表")}
       </label>
       <textarea
         id="hero-vocabulary"
@@ -96,37 +107,35 @@ export function HomeWorkbench() {
         }
       />
       <div className="mt-2 flex justify-between gap-4 text-xs text-[#657083]">
-        <p>One word or phrase per line · Press Ctrl/⌘ + Enter to build</p>
+        <p>
+          {t(
+            "One item per line; tab-separated spreadsheet rows also work. Press Ctrl/⌘ + Enter to continue.",
+            "每行一个词条；也支持粘贴以制表符分隔的表格内容。按 Ctrl/⌘ + Enter 继续。",
+          )}
+        </p>
         <span>{value.length}/{MAX_VOCABULARY_CHARS}</span>
       </div>
-      <div className="mt-4 grid gap-2 sm:grid-cols-[auto_auto_1fr]">
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+        {!value.trim() ? (
+          <button
+            type="button"
+            className="inline-flex min-h-11 items-center rounded px-1 text-sm font-semibold text-[#24466e] underline decoration-[#9eacbc] underline-offset-4 transition-colors hover:text-[#b62822] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#b62822]/20"
+            onClick={() => {
+              setMode("english");
+              setValue(familyExample);
+            }}
+          >
+            {t("Use a family example", "使用家庭词汇示例")}
+          </button>
+        ) : null}
         <button
           type="button"
-          className="hs-secondary-button text-sm"
-          onClick={() => {
-            setMode("english");
-            setValue(familyExample);
-          }}
-        >
-          <Users className="size-4" />
-          Try Family words
-        </button>
-        <button
-          type="button"
-          className="hs-secondary-button text-sm"
-          onClick={() => setValue((current) => current || familyExample)}
-        >
-          <FileSpreadsheet className="size-4" />
-          Paste from spreadsheet
-        </button>
-        <button
-          type="button"
-          className="hs-primary-button sm:justify-self-end"
+          className="hs-primary-button ml-auto"
           onClick={submit}
           disabled={!value.trim()}
         >
           <Sparkles className="size-4" />
-          Build my worksheet
+          {t("Build my worksheet", "生成我的字帖")}
         </button>
       </div>
     </div>

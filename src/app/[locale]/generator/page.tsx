@@ -9,12 +9,22 @@ import {
 } from "@/features/worksheets/engine";
 import { parseWorksheetProfile } from "@/features/worksheets/profiles";
 import type { WorksheetDifficulty } from "@/features/worksheets/types";
+import { envConfigs } from "@/config";
+import { buildPageSeoMetadata } from "@/features/worksheets/seo";
 
-export const metadata: Metadata = {
-  title: "Chinese Worksheet Generator",
-  description:
-    "Review bilingual vocabulary, choose tracing or writing grids, preview the result, and print a Chinese character practice sheet.",
-};
+export async function generateMetadata({ params }: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    title: "Chinese Worksheet Generator",
+    description:
+      "Review bilingual vocabulary, choose tracing or writing grids, preview the result, and print a Chinese character practice sheet.",
+    ...buildPageSeoMetadata(envConfigs.app_url, "/generator", locale, {
+      chineseIndexable: true,
+    }),
+  };
+}
 
 export default async function GeneratorPage({
   searchParams,

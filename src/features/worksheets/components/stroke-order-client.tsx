@@ -34,7 +34,7 @@ export function StrokeOrderClient() {
   const [loadError, setLoadError] = useState(false);
   const info = characterInfo[character] ?? {
     pinyin: "—",
-    meaning: "Add your own teaching note",
+    meaning: "Meaning not listed",
     strokes: 0,
   };
   const strokeLabels = Array.from(
@@ -156,7 +156,7 @@ export function StrokeOrderClient() {
                 <h2 className="text-2xl font-bold">{info.pinyin}</h2>
                 <p className="mt-2 text-[#566276]">{info.meaning}</p>
                 <p className="mt-3 font-semibold">
-                  {info.strokes || "Unknown"} strokes
+                  {info.strokes ? `${info.strokes} strokes` : "Stroke count not listed"}
                 </p>
               </div>
             </div>
@@ -178,8 +178,8 @@ export function StrokeOrderClient() {
           <div className="border-t border-[#ded7ca] pt-5 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
             <h3 className="font-semibold">Stroke sequence</h3>
             <p className="mt-2 text-xs leading-5 text-[#6b7584]">
-              Stroke names vary between teaching systems. Use the animation for
-              the exact direction and shape.
+              Stroke names differ between teaching systems. The animation shows
+              where each stroke starts and how it moves.
             </p>
             <ol className="mt-4 space-y-3 text-sm">
               {strokeLabels.map((stroke, index) => (
@@ -204,10 +204,10 @@ export function StrokeOrderClient() {
             How to write {character}
           </h2>
           <ul className="mt-4 space-y-2 text-sm leading-6 text-[#4e5d70]">
-            <li>• Watch the full animation before copying the character.</li>
-            <li>• Follow each stroke from its natural starting point.</li>
-            <li>• Keep the character balanced around the centre guide lines.</li>
-            <li>• Trace once, then write independently in blank grids.</li>
+            <li>• Watch the full animation once.</li>
+            <li>• Use Next stroke to check the direction and shape.</li>
+            <li>• Choose Practice to write the character on screen.</li>
+            <li>• Open the character in the worksheet generator when you are ready to print.</li>
           </ul>
         </article>
         <article className="hs-card grid items-center gap-5 p-6 sm:grid-cols-[1fr_190px]">
@@ -216,13 +216,13 @@ export function StrokeOrderClient() {
               Practise this character
             </h2>
             <p className="mt-2 text-sm leading-6 text-[#5d6a7d]">
-              Turn {character} into a printable tracing and writing worksheet.
+              Open a worksheet for {character} with tracing and blank writing grids.
             </p>
             <Link
               href={`/generator?words=${encodeURIComponent(character)}`}
               className="hs-primary-button mt-5"
             >
-              Create a practice sheet
+              Open worksheet
             </Link>
           </div>
           <StrokeSequence character={character} limit={1} />

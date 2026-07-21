@@ -38,15 +38,15 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
         <section className="mt-5 grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
             <span className="inline-flex rounded border border-[#c8322b] px-4 py-2 text-xs font-bold tracking-[0.1em] text-[#b62822]">
-              FREE EDITABLE TEMPLATE
+              Editable worksheet
             </span>
             <h1 className="hs-display mt-5 text-4xl font-bold leading-tight sm:text-5xl">
               {template.title} Chinese Writing Worksheet
             </h1>
             <p className="mt-3 font-serif text-2xl text-[#b62822]">{template.chineseTitle}</p>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-[#4f5d71]">
-              {template.description} Practise every word with Hanzi, Pinyin,
-              English meanings, real stroke order, tracing, and blank writing grids.
+              {template.description} Open the list in the generator to change
+              the words, grid, or paper size.
             </p>
             <div className="mt-6 flex flex-wrap gap-x-8 gap-y-3 text-sm font-semibold">
               <Meta icon={Users}>{template.age}</Meta>
@@ -73,11 +73,11 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
           </div>
         </section>
 
-        <section className="mt-8 grid gap-5 lg:grid-cols-[1.25fr_0.75fr]">
-          <div className="hs-card grid gap-8 p-5 sm:grid-cols-[1.1fr_0.9fr] sm:p-7">
-            <div>
+        <section className="mt-8 grid min-w-0 gap-5 lg:grid-cols-[1.25fr_0.75fr]">
+          <div className="hs-card grid min-w-0 gap-8 p-5 sm:grid-cols-[1.1fr_0.9fr] sm:p-7">
+            <div className="min-w-0">
               <h2 className="hs-display text-2xl font-bold">Words included</h2>
-              <div className="mt-4 overflow-x-auto rounded border border-[#ddd6ca]">
+              <div className="mt-4 max-w-full overflow-x-auto rounded border border-[#ddd6ca]">
                 <table className="w-full min-w-[480px] text-left text-sm">
                   <thead className="bg-[#faf6ee] text-xs text-[#536176]">
                     <tr><th className="px-3 py-2">#</th><th className="px-3 py-2">Hanzi</th><th className="px-3 py-2">Pinyin</th><th className="px-3 py-2">English</th></tr>
@@ -96,21 +96,21 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
               </div>
             </div>
             <div className="border-t border-[#ded7ca] pt-6 sm:border-l sm:border-t-0 sm:pl-7 sm:pt-0">
-              <h2 className="hs-display text-2xl font-bold">Learning outcomes</h2>
-              <Outcome title="Recognize & read" icon={BookOpen}>Connect simplified Hanzi with Pinyin and a concise English meaning.</Outcome>
-              <Outcome title="Write with confidence" icon={PencilLine}>Trace model characters, then write independently in Tian Zi Ge or Mi Zi Ge.</Outcome>
-              <Outcome title="Follow stroke order" icon={Check}>Use cumulative Hanzi Writer diagrams instead of decorative placeholders.</Outcome>
+              <h2 className="hs-display text-2xl font-bold">What students practise</h2>
+              <Outcome title="Read the words" icon={BookOpen}>Match each simplified character with its Pinyin and English meaning.</Outcome>
+              <Outcome title="Trace, then write" icon={PencilLine}>Copy the model character before writing it in a blank grid.</Outcome>
+              <Outcome title="See the stroke order" icon={Check}>Check each stroke in sequence before copying the whole character.</Outcome>
             </div>
           </div>
 
           <aside className="hs-card self-start p-6 lg:sticky lg:top-20">
-            <h2 className="hs-display text-2xl font-bold">Teacher-ready settings</h2>
+            <h2 className="hs-display text-2xl font-bold">Worksheet options</h2>
             <ul className="mt-5 space-y-3 text-sm leading-6 text-[#526176]">
-              <li>✓ Learn, Practice, and Test layouts</li>
-              <li>✓ Tian Zi Ge and Mi Zi Ge</li>
-              <li>✓ Beginner and advanced enrichment</li>
-              <li>✓ Pinyin and stroke order toggles</li>
-              <li>✓ Direct PDF download or physical print</li>
+              <li>✓ Learn, Practice, or Test pages</li>
+              <li>✓ Tian Zi Ge or Mi Zi Ge</li>
+              <li>✓ Beginner or advanced word completion</li>
+              <li>✓ Show or hide Pinyin and stroke order</li>
+              <li>✓ Download a PDF or print</li>
             </ul>
             <Link href={`/generator?template=${template.slug}&profile=${template.recommendedProfile}`} className="hs-primary-button mt-6 w-full">
               Open in generator
@@ -123,11 +123,10 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
           <article className="hs-card p-6">
             <h2 className="hs-display text-2xl font-bold">Teaching note</h2>
             <div className="mt-4 rounded border border-[#c9d6e5] bg-[#f8fbff] p-4">
-              <h3 className="font-bold">Three-pass practice</h3>
+              <h3 className="font-bold">Use the same list again</h3>
               <p className="mt-2 text-sm leading-6 text-[#58677a]">
-                Read the list aloud, trace each model once, then hide the answers
-                and use quiz mode for retrieval practice. Reprint the same list a
-                week later to check retention.
+                Start with the tracing page. Later, print the Test version and
+                ask students to write the same words without a model.
               </p>
             </div>
           </article>

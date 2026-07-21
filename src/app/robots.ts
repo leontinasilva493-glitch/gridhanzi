@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/worksheet/preview", "/zh/worksheet/preview"],
+      disallow: ["/api/"],
     },
     sitemap: toAbsoluteUrl(envConfigs.app_url, "/sitemap.xml"),
   };

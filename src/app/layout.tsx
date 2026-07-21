@@ -1,48 +1,49 @@
 import type { Metadata } from "next";
-import { Inter, Libre_Baskerville, Noto_Serif_SC } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@/components/analytics";
 import { envConfigs } from "@/config";
-import { locales } from "@/config/locale";
 import "./globals.css";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-const libreBaskerville = Libre_Baskerville({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-serif-display",
-});
-const notoSerifSC = Noto_Serif_SC({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-serif-sc",
-  preload: false,
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(envConfigs.app_url),
+  applicationName: "GridHanzi",
   title: {
-    default: "HanziSheets 汉字字帖 — Chinese Worksheet Generator",
-    template: "%s | HanziSheets",
+    default: "GridHanzi — Chinese Character Practice Sheet Generator",
+    template: "%s | GridHanzi",
   },
   description:
-    "Create bilingual Chinese writing worksheets with Hanzi, Pinyin, English meanings, stroke order, tracing, and printable grids.",
-  alternates: { canonical: "/" },
+    "Make printable Chinese writing worksheets from your own word list, with editable Hanzi, Pinyin, tracing, and writing grids.",
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/gridhanzi-icon-128.png", type: "image/png", sizes: "128x128" },
+      { url: "/gridhanzi-icon-256.png", type: "image/png", sizes: "256x256" },
+    ],
+    apple: [
+      { url: "/gridhanzi-icon-256.png", type: "image/png", sizes: "256x256" },
+    ],
+    shortcut: "/favicon.ico",
+  },
+  appleWebApp: {
+    capable: true,
+    title: "GridHanzi",
+    statusBarStyle: "default",
+  },
   openGraph: {
-    title: "HanziSheets 汉字字帖 — Chinese Worksheet Generator",
-    description: "Create printable bilingual Chinese worksheets with real stroke order and direct PDF download.",
+    title: "GridHanzi — Chinese Character Practice Sheet Generator",
+    description: "Paste a word list, check the Hanzi and Pinyin, and download a printable Chinese worksheet.",
     url: "/",
-    siteName: "HanziSheets 汉字字帖",
+    siteName: "GridHanzi",
     type: "website",
-    images: [{ url: "/og-hanzisheets.png", width: 1200, height: 630, alt: "HanziSheets printable Chinese worksheet generator" }],
+    images: [{ url: "/og-gridhanzi.png", width: 1200, height: 630, alt: "GridHanzi Chinese character practice sheet generator" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "HanziSheets 汉字字帖",
-    description: "Printable Chinese practice sheets with Hanzi, Pinyin, tracing, and real stroke order.",
-    images: ["/og-hanzisheets.png"],
+    title: "GridHanzi — Chinese Worksheet Generator",
+    description: "Make a Chinese practice sheet from your own words, then edit and download it.",
+    images: ["/og-gridhanzi.png"],
   },
 };
 
@@ -52,23 +53,10 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   const locale = await getLocale();
-  const appUrl = envConfigs.app_url || '';
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <head>
-        {locales.map((loc) => (
-          <link
-            key={loc}
-            rel="alternate"
-            hrefLang={loc}
-            href={`${appUrl}${loc === 'en' ? '' : `/${loc}`}`}
-          />
-        ))}
-      </head>
-      <body
-        className={`${inter.variable} ${libreBaskerville.variable} ${notoSerifSC.variable} font-sans antialiased`}
-      >
+      <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

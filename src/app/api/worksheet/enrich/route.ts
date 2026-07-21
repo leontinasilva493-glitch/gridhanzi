@@ -8,10 +8,24 @@ import {
 } from "@/features/worksheets/ai";
 import { enrichVocabularyLocally } from "@/features/worksheets/engine";
 import type { WorksheetDifficulty } from "@/features/worksheets/types";
-import { enforceMinIntervalRateLimit } from "@/lib/rate-limit";
+import {
+  enforceMinIntervalRateLimit,
+  type RateLimitBinding,
+} from "@/lib/rate-limit";
 
 const GEMINI_MODEL =
   process.env.GEMINI_MODEL?.trim() || "gemini-3.1-flash-lite";
+
+async function getWorksheetRateLimitBinding(): Promise<
+  RateLimitBinding | undefined
+> {
+  try {
+    const { env } = await import("cloudflare:workers");
+    return env.WORKSHEET_RATE_LIMITER;
+  } catch {
+    return undefined;
+  }
+}
 
 async function enrichWithGemini(
   values: string[],
@@ -44,12 +58,6 @@ async function enrichWithGemini(
 }
 
 export async function POST(request: NextRequest) {
-  const limited = enforceMinIntervalRateLimit(request, {
-    intervalMs: Number(process.env.WORKSHEET_MIN_INTERVAL_MS || 2_000),
-    keyPrefix: "worksheet-enrich",
-  });
-  if (limited) return limited;
-
   let body: unknown;
 
   try {
@@ -80,6 +88,14 @@ export async function POST(request: NextRequest) {
       fallbackReason: "not_configured",
     });
   }
+
+  const limited = await enforceMinIntervalRateLimit(request, {
+    intervalMs: Number(process.env.WORKSHEET_MIN_INTERVAL_MS || 2_000),
+    keyPrefix: "worksheet-enrich",
+    binding: await getWorksheetRateLimitBinding(),
+    retryAfterSeconds: 60,
+  });
+  if (limited) return limited;
 
   try {
     const aiEntries = await enrichWithGemini(values, difficulty, apiKey);

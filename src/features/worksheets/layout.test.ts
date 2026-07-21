@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import * as layoutModule from "./layout";
+
 import {
   buildPracticeCells,
   getLearnStrokeRowCount,
@@ -18,8 +20,8 @@ import {
   type WorksheetSettings,
 } from "./types";
 
-test("defaults to the Kids Practice worksheet", () => {
-  assert.equal(defaultWorksheetSettings.mode, "write");
+test("defaults to the Kids Learn worksheet", () => {
+  assert.equal(defaultWorksheetSettings.mode, "trace");
   assert.equal(defaultWorksheetSettings.profile, "kids");
   assert.equal(defaultWorksheetSettings.cellSize, 22);
 });
@@ -214,6 +216,24 @@ test("test worksheets use profile-aware prompt capacities", () => {
 test("test prompts allocate one writing cell per Han character", () => {
   assert.deepEqual(getTestAnswerCharacters(entry("图书馆")), ["图", "书", "馆"]);
   assert.deepEqual(getTestAnswerCharacters(entry("你，好！")), ["你", "好"]);
+});
+
+test("test prompts label multi-character answer lengths", () => {
+  const formatTestPrompt = (
+    layoutModule as unknown as Record<string, unknown>
+  ).formatTestPrompt;
+
+  assert.equal(typeof formatTestPrompt, "function");
+  const format = formatTestPrompt as (
+    english: string,
+    answerCharacters: readonly string[],
+  ) => string;
+  assert.equal(format("home", ["家"]), "home");
+  assert.equal(format("eat meals", ["吃", "饭"]), "eat meals (2 characters)");
+  assert.equal(
+    format("", getTestAnswerCharacters(entry("你，好！"))),
+    "Write the word (2 characters)",
+  );
 });
 
 test("learn stroke rows preserve frames beyond eight and sixteen strokes", () => {

@@ -56,8 +56,8 @@
   },
   {
     "hanzi": "白",
-    "pinyin": "Bái",
-    "english": "surname Bai"
+    "pinyin": "bái",
+    "english": "white"
   },
   {
     "hanzi": "白色",
@@ -71,13 +71,13 @@
   },
   {
     "hanzi": "百",
-    "pinyin": "Bǎi",
-    "english": "surname Bai"
+    "pinyin": "bǎi",
+    "english": "hundred"
   },
   {
     "hanzi": "班",
-    "pinyin": "Bān",
-    "english": "surname Ban"
+    "pinyin": "bān",
+    "english": "class; team"
   },
   {
     "hanzi": "班长",
@@ -122,7 +122,7 @@
   {
     "hanzi": "帮",
     "pinyin": "bāng",
-    "english": "old variant of 帮"
+    "english": "to help; to assist"
   },
   {
     "hanzi": "帮忙",
@@ -136,8 +136,8 @@
   },
   {
     "hanzi": "包",
-    "pinyin": "Bāo",
-    "english": "surname Bao"
+    "pinyin": "bāo",
+    "english": "bag; to wrap; to include"
   },
   {
     "hanzi": "包子",
@@ -192,7 +192,7 @@
   {
     "hanzi": "背",
     "pinyin": "bēi",
-    "english": "variant of 背"
+    "english": "to carry on the back"
   },
   {
     "hanzi": "本",
@@ -206,8 +206,8 @@
   },
   {
     "hanzi": "比",
-    "pinyin": "Bǐ",
-    "english": "Belgium"
+    "pinyin": "bǐ",
+    "english": "to compare; than"
   },
   {
     "hanzi": "比如",
@@ -262,7 +262,7 @@
   {
     "hanzi": "遍",
     "pinyin": "biàn",
-    "english": "variant of 遍"
+    "english": "everywhere; one time"
   },
   {
     "hanzi": "表",
@@ -271,8 +271,8 @@
   },
   {
     "hanzi": "别",
-    "pinyin": "Bié",
-    "english": "surname Bie"
+    "pinyin": "bié",
+    "english": "do not; other"
   },
   {
     "hanzi": "别的",
@@ -386,8 +386,8 @@
   },
   {
     "hanzi": "不一会儿",
-    "pinyin": "bù yīhuǐr5",
-    "english": "Take a short while"
+    "pinyin": "bù yíhuìr",
+    "english": "in a little while"
   },
   {
     "hanzi": "不用",
@@ -427,7 +427,7 @@
   {
     "hanzi": "草",
     "pinyin": "cǎo",
-    "english": "variant of 草"
+    "english": "grass"
   },
   {
     "hanzi": "草地",
@@ -441,8 +441,8 @@
   },
   {
     "hanzi": "查",
-    "pinyin": "Zhā",
-    "english": "surname Zha"
+    "pinyin": "chá",
+    "english": "to check; to investigate"
   },
   {
     "hanzi": "茶",
@@ -461,8 +461,8 @@
   },
   {
     "hanzi": "常",
-    "pinyin": "Cháng",
-    "english": "surname Chang"
+    "pinyin": "cháng",
+    "english": "often; usual"
   },
   {
     "hanzi": "常常",
@@ -506,8 +506,8 @@
   },
   {
     "hanzi": "车",
-    "pinyin": "Chē",
-    "english": "surname Che"
+    "pinyin": "chē",
+    "english": "vehicle; car"
   },
   {
     "hanzi": "车辆",
@@ -536,8 +536,8 @@
   },
   {
     "hanzi": "成",
-    "pinyin": "Chéng",
-    "english": "surname Cheng"
+    "pinyin": "chéng",
+    "english": "to become; to accomplish"
   },
   {
     "hanzi": "成绩",
@@ -627,7 +627,7 @@
   {
     "hanzi": "船",
     "pinyin": "chuán",
-    "english": "variant of 船"
+    "english": "boat; ship"
   },
   {
     "hanzi": "床",
@@ -652,7 +652,7 @@
   {
     "hanzi": "词",
     "pinyin": "cí",
-    "english": "old variant of 词"
+    "english": "word; term"
   },
   {
     "hanzi": "词典",
@@ -672,7 +672,7 @@
   {
     "hanzi": "从",
     "pinyin": "cóng",
-    "english": "variant of 从"
+    "english": "from; to follow"
   },
   {
     "hanzi": "从小",
@@ -681,8 +681,8 @@
   },
   {
     "hanzi": "错",
-    "pinyin": "Cuò",
-    "english": "surname Cuo"
+    "pinyin": "cuò",
+    "english": "wrong; mistake"
   },
   {
     "hanzi": "答应",
@@ -691,8 +691,8 @@
   },
   {
     "hanzi": "打",
-    "pinyin": "dá",
-    "english": "dozen (loanword)"
+    "pinyin": "dǎ",
+    "english": "to hit; to play; to make"
   },
   {
     "hanzi": "打车",
@@ -766,8 +766,8 @@
   },
   {
     "hanzi": "大门",
-    "pinyin": "Dà mén",
-    "english": "the Doors, US rock band"
+    "pinyin": "dà mén",
+    "english": "gate; main entrance"
   },
   {
     "hanzi": "大人",
@@ -786,8 +786,8 @@
   },
   {
     "hanzi": "大学",
-    "pinyin": "Dà xué",
-    "english": "the Great Learning, one of the Four Books 四书 in Confucianism"
+    "pinyin": "dà xué",
+    "english": "university; college"
   },
   {
     "hanzi": "大学生",
@@ -831,8 +831,8 @@
   },
   {
     "hanzi": "蛋",
-    "pinyin": "Dàn",
-    "english": "variant of 蜑"
+    "pinyin": "dàn",
+    "english": "egg"
   },
   {
     "hanzi": "当",
@@ -1041,8 +1041,8 @@
   },
   {
     "hanzi": "东",
-    "pinyin": "Dōng",
-    "english": "surname Dong"
+    "pinyin": "dōng",
+    "english": "east"
   },
   {
     "hanzi": "东北",
@@ -1056,8 +1056,8 @@
   },
   {
     "hanzi": "东方",
-    "pinyin": "Dōng fāng",
-    "english": "the East"
+    "pinyin": "dōng fāng",
+    "english": "east; eastern"
   },
   {
     "hanzi": "东南",
@@ -1106,13 +1106,13 @@
   },
   {
     "hanzi": "都",
-    "pinyin": "Dū",
-    "english": "surname Du"
+    "pinyin": "dōu",
+    "english": "all; both"
   },
   {
     "hanzi": "读",
-    "pinyin": "dòu",
-    "english": "comma"
+    "pinyin": "dú",
+    "english": "to read"
   },
   {
     "hanzi": "读书",
@@ -1141,8 +1141,8 @@
   },
   {
     "hanzi": "段",
-    "pinyin": "Duàn",
-    "english": "surname Duan"
+    "pinyin": "duàn",
+    "english": "section; paragraph"
   },
   {
     "hanzi": "队",
@@ -1356,8 +1356,8 @@
   },
   {
     "hanzi": "封",
-    "pinyin": "Fēng",
-    "english": "surname Feng"
+    "pinyin": "fēng",
+    "english": "to seal; classifier for letters"
   },
   {
     "hanzi": "服务",
@@ -1406,8 +1406,8 @@
   },
   {
     "hanzi": "干",
-    "pinyin": "gān",
-    "english": "old variant of 干"
+    "pinyin": "gàn",
+    "english": "to do; to work"
   },
   {
     "hanzi": "干杯",
@@ -1416,8 +1416,8 @@
   },
   {
     "hanzi": "干活儿",
-    "pinyin": "gàn huó r",
-    "english": "erhua variant of 干活"
+    "pinyin": "gàn huór",
+    "english": "to work"
   },
   {
     "hanzi": "干净",
@@ -1446,8 +1446,8 @@
   },
   {
     "hanzi": "高",
-    "pinyin": "Gāo",
-    "english": "surname Gao"
+    "pinyin": "gāo",
+    "english": "high; tall"
   },
   {
     "hanzi": "高级",
@@ -1586,8 +1586,8 @@
   },
   {
     "hanzi": "关",
-    "pinyin": "Guān",
-    "english": "surname Guan"
+    "pinyin": "guān",
+    "english": "to close; concern"
   },
   {
     "hanzi": "关机",
@@ -1626,8 +1626,8 @@
   },
   {
     "hanzi": "国",
-    "pinyin": "Guó",
-    "english": "surname Guo"
+    "pinyin": "guó",
+    "english": "country"
   },
   {
     "hanzi": "国际",
@@ -1646,8 +1646,8 @@
   },
   {
     "hanzi": "过",
-    "pinyin": "Guō",
-    "english": "surname Guo"
+    "pinyin": "guò",
+    "english": "to pass; to cross"
   },
   {
     "hanzi": "过来",
@@ -1666,8 +1666,8 @@
   },
   {
     "hanzi": "还",
-    "pinyin": "Huán",
-    "english": "surname Huan"
+    "pinyin": "hái",
+    "english": "still; also"
   },
   {
     "hanzi": "还是",
@@ -1686,8 +1686,8 @@
   },
   {
     "hanzi": "海",
-    "pinyin": "Hǎi",
-    "english": "surname Hai"
+    "pinyin": "hǎi",
+    "english": "sea"
   },
   {
     "hanzi": "海边",
@@ -1756,8 +1756,8 @@
   },
   {
     "hanzi": "好玩儿",
-    "pinyin": "hǎo wán r",
-    "english": "erhua variant of 好玩"
+    "pinyin": "hǎo wánr",
+    "english": "fun; interesting"
   },
   {
     "hanzi": "好像",
@@ -1782,7 +1782,7 @@
   {
     "hanzi": "和",
     "pinyin": "hé",
-    "english": "old variant of 和"
+    "english": "and; with"
   },
   {
     "hanzi": "河",
@@ -1791,8 +1791,8 @@
   },
   {
     "hanzi": "黑",
-    "pinyin": "Hēi",
-    "english": "abbr. for Heilongjiang province 黑龙江"
+    "pinyin": "hēi",
+    "english": "black"
   },
   {
     "hanzi": "黑板",
@@ -1811,8 +1811,8 @@
   },
   {
     "hanzi": "红",
-    "pinyin": "Hóng",
-    "english": "surname Hong"
+    "pinyin": "hóng",
+    "english": "red"
   },
   {
     "hanzi": "红色",
@@ -1821,8 +1821,8 @@
   },
   {
     "hanzi": "后",
-    "pinyin": "Hòu",
-    "english": "surname Hou"
+    "pinyin": "hòu",
+    "english": "after; behind"
   },
   {
     "hanzi": "后边",
@@ -1856,8 +1856,8 @@
   },
   {
     "hanzi": "花",
-    "pinyin": "Huā",
-    "english": "surname Hua"
+    "pinyin": "huā",
+    "english": "flower; to spend"
   },
   {
     "hanzi": "花园",
@@ -1867,7 +1867,7 @@
   {
     "hanzi": "画",
     "pinyin": "huà",
-    "english": "to draw; to paint"
+    "english": "to draw; picture"
   },
   {
     "hanzi": "画儿",
@@ -1911,8 +1911,8 @@
   },
   {
     "hanzi": "黄",
-    "pinyin": "Huáng",
-    "english": "surname Huang or Hwang"
+    "pinyin": "huáng",
+    "english": "yellow"
   },
   {
     "hanzi": "黄色",
@@ -2046,8 +2046,8 @@
   },
   {
     "hanzi": "加",
-    "pinyin": "Jiā",
-    "english": "Canada (abbr. for 大)"
+    "pinyin": "jiā",
+    "english": "to add"
   },
   {
     "hanzi": "加油",
@@ -2081,8 +2081,8 @@
   },
   {
     "hanzi": "假",
-    "pinyin": "gēi",
-    "english": "used in 掰"
+    "pinyin": "jiǎ",
+    "english": "false; fake"
   },
   {
     "hanzi": "假期",
@@ -2111,8 +2111,8 @@
   },
   {
     "hanzi": "见过",
-    "pinyin": "jiànguò",
-    "english": "seen"
+    "pinyin": "jiàn guò",
+    "english": "to have seen"
   },
   {
     "hanzi": "见面",
@@ -2161,8 +2161,8 @@
   },
   {
     "hanzi": "角",
-    "pinyin": "Jué",
-    "english": "surname Jue"
+    "pinyin": "jiǎo",
+    "english": "corner; angle"
   },
   {
     "hanzi": "角度",
@@ -2191,8 +2191,8 @@
   },
   {
     "hanzi": "教",
-    "pinyin": "Jiào",
-    "english": "surname Jiao"
+    "pinyin": "jiāo",
+    "english": "to teach"
   },
   {
     "hanzi": "教师",
@@ -2382,7 +2382,7 @@
   {
     "hanzi": "举",
     "pinyin": "jǔ",
-    "english": "variant of 举"
+    "english": "to lift; to raise"
   },
   {
     "hanzi": "举手",
@@ -2396,8 +2396,8 @@
   },
   {
     "hanzi": "句",
-    "pinyin": "gōu",
-    "english": "variant of 勾"
+    "pinyin": "jù",
+    "english": "sentence; phrase"
   },
   {
     "hanzi": "句子",
@@ -2541,8 +2541,8 @@
   },
   {
     "hanzi": "克",
-    "pinyin": "Kè",
-    "english": "abbr. for 克罗地亚, Croatia"
+    "pinyin": "kè",
+    "english": "gram; to overcome"
   },
   {
     "hanzi": "刻",
@@ -2606,8 +2606,8 @@
   },
   {
     "hanzi": "快点儿",
-    "pinyin": "kuài diǎn r",
-    "english": "erhua variant of 快点"
+    "pinyin": "kuài diǎnr",
+    "english": "hurry up"
   },
   {
     "hanzi": "快乐",
@@ -2646,8 +2646,8 @@
   },
   {
     "hanzi": "蓝",
-    "pinyin": "Lán",
-    "english": "surname Lan"
+    "pinyin": "lán",
+    "english": "blue"
   },
   {
     "hanzi": "蓝色",
@@ -2701,8 +2701,8 @@
   },
   {
     "hanzi": "冷",
-    "pinyin": "Lěng",
-    "english": "surname Leng"
+    "pinyin": "lěng",
+    "english": "cold"
   },
   {
     "hanzi": "离",
@@ -2722,7 +2722,7 @@
   {
     "hanzi": "里",
     "pinyin": "lǐ",
-    "english": "variant of 里"
+    "english": "inside; within"
   },
   {
     "hanzi": "里边",
@@ -2766,8 +2766,8 @@
   },
   {
     "hanzi": "凉",
-    "pinyin": "Liáng",
-    "english": "the five Liang of the Sixteen Kingdoms, namely: Former Liang 前凉 (314-376), Later Liang 后凉 (386-403), Northern Liang 北凉 (398-439), Southern Liang 南凉 (397-414), Western Liang 西凉 (400-421)"
+    "pinyin": "liáng",
+    "english": "cool"
   },
   {
     "hanzi": "凉快",
@@ -2817,7 +2817,7 @@
   {
     "hanzi": "留",
     "pinyin": "liú",
-    "english": "old variant of 留"
+    "english": "to stay; to leave behind"
   },
   {
     "hanzi": "留下",
@@ -2836,8 +2836,8 @@
   },
   {
     "hanzi": "楼",
-    "pinyin": "Lóu",
-    "english": "surname Lou"
+    "pinyin": "lóu",
+    "english": "building; floor"
   },
   {
     "hanzi": "楼上",
@@ -2851,8 +2851,8 @@
   },
   {
     "hanzi": "路",
-    "pinyin": "Lù",
-    "english": "surname Lu"
+    "pinyin": "lù",
+    "english": "road; route"
   },
   {
     "hanzi": "路边",
@@ -2931,8 +2931,8 @@
   },
   {
     "hanzi": "满",
-    "pinyin": "Mǎn",
-    "english": "Manchu ethnic group"
+    "pinyin": "mǎn",
+    "english": "full; satisfied"
   },
   {
     "hanzi": "满意",
@@ -2956,8 +2956,8 @@
   },
   {
     "hanzi": "毛",
-    "pinyin": "Máo",
-    "english": "surname Mao"
+    "pinyin": "máo",
+    "english": "hair; fur"
   },
   {
     "hanzi": "没",
@@ -2996,8 +2996,8 @@
   },
   {
     "hanzi": "门",
-    "pinyin": "Mén",
-    "english": "surname Men"
+    "pinyin": "mén",
+    "english": "door; gate"
   },
   {
     "hanzi": "门口",
@@ -3016,8 +3016,8 @@
   },
   {
     "hanzi": "米",
-    "pinyin": "Mǐ",
-    "english": "surname Mi"
+    "pinyin": "mǐ",
+    "english": "rice; meter"
   },
   {
     "hanzi": "米饭",
@@ -3041,8 +3041,8 @@
   },
   {
     "hanzi": "面条儿",
-    "pinyin": "miàn tiáo r",
-    "english": "erhua variant of 面条"
+    "pinyin": "miàn tiáor",
+    "english": "noodles"
   },
   {
     "hanzi": "名",
@@ -3092,7 +3092,7 @@
   {
     "hanzi": "拿",
     "pinyin": "ná",
-    "english": "old variant of 拿"
+    "english": "to hold; to take"
   },
   {
     "hanzi": "拿出",
@@ -3126,8 +3126,8 @@
   },
   {
     "hanzi": "那",
-    "pinyin": "Nā",
-    "english": "surname Na"
+    "pinyin": "nà",
+    "english": "that; then"
   },
   {
     "hanzi": "那边",
@@ -3191,8 +3191,8 @@
   },
   {
     "hanzi": "男孩儿",
-    "pinyin": "nán hái r",
-    "english": "erhua variant of 男孩"
+    "pinyin": "nán háir",
+    "english": "boy"
   },
   {
     "hanzi": "男朋友",
@@ -3211,8 +3211,8 @@
   },
   {
     "hanzi": "南",
-    "pinyin": "Nán",
-    "english": "surname Nan"
+    "pinyin": "nán",
+    "english": "south"
   },
   {
     "hanzi": "南边",
@@ -3261,8 +3261,8 @@
   },
   {
     "hanzi": "能",
-    "pinyin": "Néng",
-    "english": "surname Neng"
+    "pinyin": "néng",
+    "english": "can; to be able to"
   },
   {
     "hanzi": "能够",
@@ -3281,8 +3281,8 @@
   },
   {
     "hanzi": "年",
-    "pinyin": "Nián",
-    "english": "surname Nian"
+    "pinyin": "nián",
+    "english": "year"
   },
   {
     "hanzi": "年级",
@@ -3296,8 +3296,8 @@
   },
   {
     "hanzi": "鸟",
-    "pinyin": "diǎo",
-    "english": "variant of 屌"
+    "pinyin": "niǎo",
+    "english": "bird"
   },
   {
     "hanzi": "您",
@@ -3331,8 +3331,8 @@
   },
   {
     "hanzi": "女孩儿",
-    "pinyin": "nǚ hái r",
-    "english": "erhua variant of 女孩"
+    "pinyin": "nǚ háir",
+    "english": "girl"
   },
   {
     "hanzi": "女朋友",
@@ -3361,8 +3361,8 @@
   },
   {
     "hanzi": "怕",
-    "pinyin": "Pà",
-    "english": "surname Pa"
+    "pinyin": "pà",
+    "english": "to fear; to be afraid"
   },
   {
     "hanzi": "排",
@@ -3397,7 +3397,7 @@
   {
     "hanzi": "碰",
     "pinyin": "pèng",
-    "english": "variant of 碰"
+    "english": "to touch; to bump into"
   },
   {
     "hanzi": "碰到",
@@ -3431,8 +3431,8 @@
   },
   {
     "hanzi": "平",
-    "pinyin": "Píng",
-    "english": "surname Ping"
+    "pinyin": "píng",
+    "english": "flat; peaceful"
   },
   {
     "hanzi": "平安",
@@ -3566,8 +3566,8 @@
   },
   {
     "hanzi": "钱",
-    "pinyin": "Qián",
-    "english": "surname Qian"
+    "pinyin": "qián",
+    "english": "money"
   },
   {
     "hanzi": "钱包",
@@ -3577,7 +3577,7 @@
   {
     "hanzi": "墙",
     "pinyin": "qiáng",
-    "english": "variant of 墙, wall"
+    "english": "wall"
   },
   {
     "hanzi": "青年",
@@ -3696,8 +3696,8 @@
   },
   {
     "hanzi": "全",
-    "pinyin": "Quán",
-    "english": "surname Quan"
+    "pinyin": "quán",
+    "english": "all; whole"
   },
   {
     "hanzi": "全部",
@@ -3786,8 +3786,8 @@
   },
   {
     "hanzi": "日",
-    "pinyin": "Rì",
-    "english": "abbr. for 本, Japan"
+    "pinyin": "rì",
+    "english": "day; sun"
   },
   {
     "hanzi": "日报",
@@ -3821,13 +3821,13 @@
   },
   {
     "hanzi": "三",
-    "pinyin": "Sān",
-    "english": "surname San"
+    "pinyin": "sān",
+    "english": "three"
   },
   {
     "hanzi": "山",
-    "pinyin": "Shān",
-    "english": "surname Shan"
+    "pinyin": "shān",
+    "english": "mountain"
   },
   {
     "hanzi": "商场",
@@ -4101,8 +4101,8 @@
   },
   {
     "hanzi": "书",
-    "pinyin": "Shū",
-    "english": "abbr. for 书经"
+    "pinyin": "shū",
+    "english": "book"
   },
   {
     "hanzi": "书包",
@@ -4146,8 +4146,8 @@
   },
   {
     "hanzi": "水",
-    "pinyin": "Shuǐ",
-    "english": "surname Shui"
+    "pinyin": "shuǐ",
+    "english": "water"
   },
   {
     "hanzi": "水果",
@@ -4237,7 +4237,7 @@
   {
     "hanzi": "岁",
     "pinyin": "suì",
-    "english": "variant of 岁, year"
+    "english": "years old; year"
   },
   {
     "hanzi": "所以",
@@ -4346,8 +4346,8 @@
   },
   {
     "hanzi": "题",
-    "pinyin": "Tí",
-    "english": "surname Ti"
+    "pinyin": "tí",
+    "english": "question; topic"
   },
   {
     "hanzi": "体育",
@@ -4597,7 +4597,7 @@
   {
     "hanzi": "碗",
     "pinyin": "wǎn",
-    "english": "variant of 碗"
+    "english": "bowl"
   },
   {
     "hanzi": "万",
@@ -4676,8 +4676,8 @@
   },
   {
     "hanzi": "闻",
-    "pinyin": "Wén",
-    "english": "surname Wen"
+    "pinyin": "wén",
+    "english": "to hear; to smell"
   },
   {
     "hanzi": "问",
@@ -4756,8 +4756,8 @@
   },
   {
     "hanzi": "西",
-    "pinyin": "Xī",
-    "english": "the West"
+    "pinyin": "xī",
+    "english": "west"
   },
   {
     "hanzi": "西北",
@@ -4776,8 +4776,8 @@
   },
   {
     "hanzi": "西方",
-    "pinyin": "Xī fāng",
-    "english": "the West"
+    "pinyin": "xī fāng",
+    "english": "west; western world"
   },
   {
     "hanzi": "西南",
@@ -4901,8 +4901,8 @@
   },
   {
     "hanzi": "向",
-    "pinyin": "Xiàng",
-    "english": "surname Xiang"
+    "pinyin": "xiàng",
+    "english": "toward; to face"
   },
   {
     "hanzi": "像",
@@ -4916,8 +4916,8 @@
   },
   {
     "hanzi": "小孩儿",
-    "pinyin": "xiǎo hái r",
-    "english": "erhua variant of 小孩"
+    "pinyin": "xiǎo háir",
+    "english": "child"
   },
   {
     "hanzi": "小姐",
@@ -4982,7 +4982,7 @@
   {
     "hanzi": "笑",
     "pinyin": "xiào",
-    "english": "old variant of 笑"
+    "english": "to laugh; to smile"
   },
   {
     "hanzi": "笑话",
@@ -4991,8 +4991,8 @@
   },
   {
     "hanzi": "笑话儿",
-    "pinyin": "xiàohuar5",
-    "english": "Joke"
+    "pinyin": "xiào huàr",
+    "english": "joke"
   },
   {
     "hanzi": "鞋",
@@ -5026,8 +5026,8 @@
   },
   {
     "hanzi": "新",
-    "pinyin": "Xīn",
-    "english": "abbr. for Xinjiang 疆 or Singapore 坡"
+    "pinyin": "xīn",
+    "english": "new"
   },
   {
     "hanzi": "新年",
@@ -5112,7 +5112,7 @@
   {
     "hanzi": "姓名",
     "pinyin": "xìng míng",
-    "english": "surname and given name"
+    "english": "full name"
   },
   {
     "hanzi": "休假",
@@ -5166,8 +5166,8 @@
   },
   {
     "hanzi": "雪",
-    "pinyin": "Xuě",
-    "english": "surname Xue"
+    "pinyin": "xuě",
+    "english": "snow"
   },
   {
     "hanzi": "颜色",
@@ -5211,8 +5211,8 @@
   },
   {
     "hanzi": "药水",
-    "pinyin": "Yào shuǐ",
-    "english": "Yaksu in North Korea, near the border with Liaoning and Jiling province"
+    "pinyin": "yào shuǐ",
+    "english": "liquid medicine"
   },
   {
     "hanzi": "要",
@@ -5226,8 +5226,8 @@
   },
   {
     "hanzi": "也",
-    "pinyin": "Yě",
-    "english": "surname Ye"
+    "pinyin": "yě",
+    "english": "also; too"
   },
   {
     "hanzi": "也许",
@@ -5242,7 +5242,7 @@
   {
     "hanzi": "夜",
     "pinyin": "yè",
-    "english": "variant of 夜"
+    "english": "night"
   },
   {
     "hanzi": "夜里",
@@ -5286,8 +5286,8 @@
   },
   {
     "hanzi": "一点儿",
-    "pinyin": "yī diǎn r",
-    "english": "erhua variant of 一点"
+    "pinyin": "yī diǎnr",
+    "english": "a little; a bit"
   },
   {
     "hanzi": "一定",
@@ -5306,8 +5306,8 @@
   },
   {
     "hanzi": "一块儿",
-    "pinyin": "yī kuài r",
-    "english": "erhua variant of 一块"
+    "pinyin": "yī kuàir",
+    "english": "together; one piece"
   },
   {
     "hanzi": "一路平安",
@@ -5331,8 +5331,8 @@
   },
   {
     "hanzi": "一下儿",
-    "pinyin": "yī xià r",
-    "english": "erhua variant of 一下"
+    "pinyin": "yī xiàr",
+    "english": "briefly; once"
   },
   {
     "hanzi": "一些",
@@ -5426,8 +5426,8 @@
   },
   {
     "hanzi": "阴",
-    "pinyin": "Yīn",
-    "english": "surname Yin"
+    "pinyin": "yīn",
+    "english": "cloudy; shade"
   },
   {
     "hanzi": "阴天",
@@ -5521,8 +5521,8 @@
   },
   {
     "hanzi": "有空儿",
-    "pinyin": "yǒukòngr5",
-    "english": "available"
+    "pinyin": "yǒu kòngr",
+    "english": "to have free time"
   },
   {
     "hanzi": "有名",
@@ -5586,13 +5586,13 @@
   },
   {
     "hanzi": "友好",
-    "pinyin": "Yǒu hǎo",
-    "english": "Youhao district of Yichun city 市, Heilongjiang"
+    "pinyin": "yǒu hǎo",
+    "english": "friendly"
   },
   {
     "hanzi": "鱼",
-    "pinyin": "Yú",
-    "english": "surname Yu"
+    "pinyin": "yú",
+    "english": "fish"
   },
   {
     "hanzi": "雨",
@@ -5606,8 +5606,8 @@
   },
   {
     "hanzi": "元",
-    "pinyin": "Yuán",
-    "english": "surname Yuan"
+    "pinyin": "yuán",
+    "english": "yuan; unit"
   },
   {
     "hanzi": "原来",
@@ -5661,8 +5661,8 @@
   },
   {
     "hanzi": "越",
-    "pinyin": "Yuè",
-    "english": "generic word for peoples or states of south China or south Asia at different historical periods"
+    "pinyin": "yuè",
+    "english": "to exceed; more"
   },
   {
     "hanzi": "越来越",
@@ -5702,7 +5702,7 @@
   {
     "hanzi": "咱",
     "pinyin": "zán",
-    "english": "variant of 咱"
+    "english": "we; I or me"
   },
   {
     "hanzi": "咱们",
@@ -5767,7 +5767,7 @@
   {
     "hanzi": "占",
     "pinyin": "zhàn",
-    "english": "variant of 占"
+    "english": "to occupy; to account for"
   },
   {
     "hanzi": "站",
@@ -5837,7 +5837,7 @@
   {
     "hanzi": "这里",
     "pinyin": "zhè lǐ",
-    "english": "variant of 这里"
+    "english": "here"
   },
   {
     "hanzi": "这么",
@@ -5947,12 +5947,12 @@
   {
     "hanzi": "纸",
     "pinyin": "zhǐ",
-    "english": "variant of 纸"
+    "english": "paper"
   },
   {
     "hanzi": "中",
-    "pinyin": "Zhōng",
-    "english": "China"
+    "pinyin": "zhōng",
+    "english": "middle; center"
   },
   {
     "hanzi": "中餐",
@@ -6046,8 +6046,8 @@
   },
   {
     "hanzi": "周",
-    "pinyin": "Zhōu",
-    "english": "surname Zhou"
+    "pinyin": "zhōu",
+    "english": "week"
   },
   {
     "hanzi": "周末",
@@ -6166,8 +6166,8 @@
   },
   {
     "hanzi": "组",
-    "pinyin": "Zǔ",
-    "english": "surname Zu"
+    "pinyin": "zǔ",
+    "english": "group"
   },
   {
     "hanzi": "组成",
@@ -6187,7 +6187,7 @@
   {
     "hanzi": "最",
     "pinyin": "zuì",
-    "english": "variant of 最"
+    "english": "most; the most"
   },
   {
     "hanzi": "最好",
@@ -6211,8 +6211,8 @@
   },
   {
     "hanzi": "左",
-    "pinyin": "Zuǒ",
-    "english": "surname Zuo"
+    "pinyin": "zuǒ",
+    "english": "left"
   },
   {
     "hanzi": "左边",
@@ -6241,8 +6241,8 @@
   },
   {
     "hanzi": "坐",
-    "pinyin": "Zuò",
-    "english": "surname Zuo"
+    "pinyin": "zuò",
+    "english": "to sit"
   },
   {
     "hanzi": "坐下",

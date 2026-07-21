@@ -2,12 +2,20 @@ import type { Metadata } from "next";
 
 import { StrokeOrderClient } from "@/features/worksheets/components/stroke-order-client";
 import { PublicPageShell } from "@/features/worksheets/components/site-shell";
+import { envConfigs } from "@/config";
+import { buildPageSeoMetadata } from "@/features/worksheets/seo";
 
-export const metadata: Metadata = {
-  title: "Chinese Stroke Order",
-  description:
-    "Watch Chinese character stroke-order animations, inspect every stroke, practise writing, and add the character to a printable worksheet.",
-};
+export async function generateMetadata({ params }: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    title: "Chinese Stroke Order",
+    description:
+      "Enter a Chinese character to see its stroke order, play one stroke at a time, practise on screen, or add it to a worksheet.",
+    ...buildPageSeoMetadata(envConfigs.app_url, "/stroke-order", locale),
+  };
+}
 
 export default function StrokeOrderPage() {
   return (
@@ -19,8 +27,8 @@ export default function StrokeOrderPage() {
             Chinese Stroke Order
           </h1>
           <p className="mt-2 text-[#566276]">
-            Watch each stroke, practise it, or add the character to a printable
-            worksheet.
+            Enter a character to watch the strokes, practise on screen, or add
+            it to a worksheet.
           </p>
         </header>
         <StrokeOrderClient />
@@ -28,4 +36,3 @@ export default function StrokeOrderPage() {
     </PublicPageShell>
   );
 }
-

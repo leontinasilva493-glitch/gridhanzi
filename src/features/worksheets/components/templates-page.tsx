@@ -45,8 +45,7 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplate[] })
             Printable Chinese Writing Worksheets
           </h1>
           <p className="mt-3 max-w-3xl text-lg text-[#566276]">
-            Choose from {templates.length} teacher-ready vocabulary
-            sets, then edit every word and worksheet setting.
+            Choose an editable word list, then change the words, grid, and paper size.
           </p>
         </header>
 
@@ -125,8 +124,8 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplate[] })
             </div>
           ) : (
             <div className="hs-card mt-4 p-10 text-center">
-              <h3 className="hs-display text-xl font-bold">No templates match yet</h3>
-              <p className="mt-2 text-sm text-[#617084]">Try a broader search or reset the filters.</p>
+              <h3 className="hs-display text-xl font-bold">No templates found</h3>
+              <p className="mt-2 text-sm text-[#617084]">Try another word or clear the filters.</p>
               <button
                 type="button"
                 className="hs-secondary-button mt-4"
@@ -144,16 +143,16 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplate[] })
         </section>
 
         <section className="hs-card mt-8 p-5 sm:p-7">
-          <h2 className="hs-display text-2xl font-bold">Choose by learning goal</h2>
+          <h2 className="hs-display text-2xl font-bold">Choose a worksheet</h2>
           <div className="mt-5 grid gap-4 lg:grid-cols-3">
             <GoalCard icon={BookOpen} title="Build vocabulary">
-              Teach useful themed word lists learners can read, trace, and remember.
+              Pick a topic and review the words before students start writing.
             </GoalCard>
             <GoalCard icon={PencilLine} title="Practise handwriting">
-              Reinforce real stroke order and balanced character shapes.
+              Trace a model character, then write it again in blank grids.
             </GoalCard>
             <GoalCard icon={FileCheck2} title="Prepare for HSK">
-              Use level-aligned vocabulary and printable writing practice.
+              Filter by HSK level and print the words your learner is studying.
             </GoalCard>
           </div>
         </section>
@@ -205,7 +204,7 @@ function GoalCard({ icon: Icon, title, children }: {
         <h3 className="hs-display text-lg font-bold">{title}</h3>
         <p className="mt-1 text-sm leading-6 text-[#5f6c7f]">{children}</p>
         <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#b62822]">
-          Explore templates <ArrowRight className="size-4" />
+          Use the filters above <ArrowRight className="size-4" />
         </span>
       </div>
     </article>
