@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { worksheetTemplates } from "./data";
+import { strokeOrderCharacters } from "./stroke-order-characters";
 
 export function buildPublicSitemapPaths(): string[] {
   return [
@@ -8,6 +9,9 @@ export function buildPublicSitemapPaths(): string[] {
     "/generator",
     "/templates",
     "/stroke-order",
+    ...strokeOrderCharacters.map(
+      (entry) => `/stroke-order/${entry.character}`,
+    ),
     "/for-teachers",
     ...worksheetTemplates.map((template) => `/templates/${template.slug}`),
   ];

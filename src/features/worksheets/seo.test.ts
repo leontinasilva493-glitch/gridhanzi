@@ -200,3 +200,30 @@ test("route metadata owns canonicals instead of inheriting the homepage URL", as
     assert.match(source, /buildPageSeoMetadata/, route);
   }
 });
+
+test("curated Hanzi pages have static routes and unique sitemap entries", async () => {
+  const characterPaths = buildPublicSitemapPaths().filter((pathname) =>
+    pathname.startsWith("/stroke-order/"),
+  );
+  assert.deepEqual(characterPaths, [
+    "/stroke-order/爱",
+    "/stroke-order/年",
+    "/stroke-order/佛",
+  ]);
+
+  const routeSource = await readFile(
+    path.join(
+      projectRoot,
+      "src/app/[locale]/stroke-order/[character]/page.tsx",
+    ),
+    "utf8",
+  ).catch(() => "");
+
+  assert.match(routeSource, /dynamicParams = false/);
+  assert.match(routeSource, /generateStaticParams/);
+  assert.match(routeSource, /generateMetadata/);
+  assert.match(routeSource, /getStrokeOrderCharacter/);
+  assert.match(routeSource, /notFound\(\)/);
+  assert.match(routeSource, /buildPageSeoMetadata/);
+  assert.match(routeSource, /StrokeOrderCharacterPage/);
+});
