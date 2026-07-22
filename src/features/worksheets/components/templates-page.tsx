@@ -6,13 +6,13 @@ import { ArrowRight, BookOpen, FileCheck2, PencilLine, Search } from "lucide-rea
 import { Link } from "@/core/i18n/navigation";
 
 import { filterWorksheetTemplates } from "../templates";
-import type { WorksheetTemplate } from "../types";
+import type { WorksheetTemplate, WorksheetTemplateSummary } from "../types";
 import { PublicPageShell } from "./site-shell";
-import { WorksheetMiniature } from "./worksheet-miniature";
+import { WorksheetCardPreview } from "./worksheet-card-preview";
 
 type CategoryFilter = WorksheetTemplate["category"] | "all";
 
-export function TemplatesPage({ templates }: { templates: WorksheetTemplate[] }) {
+export function TemplatesPage({ templates }: { templates: WorksheetTemplateSummary[] }) {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<CategoryFilter>("all");
   const [level, setLevel] = useState("all");
@@ -101,11 +101,10 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplate[] })
             <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {filtered.map((template) => (
                 <article key={template.slug} className="hs-card overflow-hidden p-3">
-                  <WorksheetMiniature
-                    entries={template.entries.slice(0, 3)}
+                  <WorksheetCardPreview
+                    entries={template.previewEntries}
                     title={template.title}
                     chineseTitle={template.chineseTitle}
-                    profile={template.recommendedProfile}
                   />
                   <h3 className="hs-display mt-4 text-xl font-bold">{template.title}</h3>
                   <p className="mt-1 text-xs leading-5 text-[#647083]">

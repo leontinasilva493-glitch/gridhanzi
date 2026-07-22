@@ -7,6 +7,13 @@ type VocabularyRecord = {
   english: string;
 };
 
+type TemplateGuidance = Pick<
+  WorksheetTemplate,
+  "learningGoal" | "teachingTip" | "practiceActivity"
+>;
+
+type WorksheetTemplateSeed = Omit<WorksheetTemplate, keyof TemplateGuidance>;
+
 const curatedVocabularyRecords: VocabularyRecord[] = [
   { hanzi: "家庭", pinyin: "jiātíng", english: "family" },
   { hanzi: "妈妈", pinyin: "māma", english: "mother" },
@@ -188,7 +195,7 @@ const familyWords = curatedVocabularyRecords
   .slice(0, 24)
   .map((item) => item.hanzi);
 
-const baseWorksheetTemplates: WorksheetTemplate[] = [
+const baseWorksheetTemplates: WorksheetTemplateSeed[] = [
   {
     slug: "family",
     recommendedProfile: "kids",
@@ -297,7 +304,7 @@ const expandedTemplateWords: Record<string, string[]> = {
   "hsk-1": ["我", "你", "他", "她", "是", "有", "在", "好", "不", "人", "老师", "学生", "学校", "中国", "中文", "学习", "写", "读", "说", "听"],
 };
 
-type TemplateDraft = Omit<WorksheetTemplate, "entries" | "wordCount"> & {
+type TemplateDraft = Omit<WorksheetTemplateSeed, "entries" | "wordCount"> & {
   words: string[];
 };
 
@@ -436,20 +443,144 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   },
 ];
 
+const templateGuidance: Record<string, TemplateGuidance> = {
+  family: {
+    learningGoal: "Learners recognise and write common family titles, then connect each Hanzi word with the person it describes in everyday introductions.",
+    teachingTip: "Group the words by immediate and extended family before writing. This gives younger learners a simple meaning pattern instead of one long list to memorise.",
+    practiceActivity: "Ask learners to draw a small family tree, label each person with one word from the sheet, and finish by introducing two relatives aloud.",
+  },
+  numbers: {
+    learningGoal: "Learners write the core Chinese number characters accurately and use them as building blocks for larger numbers, dates, ages, and classroom counting.",
+    teachingTip: "Practise zero to ten first, then combine familiar characters into new numbers. Say each number aloud before tracing so sound, meaning, and form stay connected.",
+    practiceActivity: "Call out five numbers in a mixed order for students to write, then let them create a date, age, or price using the same characters.",
+  },
+  colors: {
+    learningGoal: "Learners identify and write common Chinese colour words, including the shorter forms used when colours describe familiar classroom and household objects.",
+    teachingTip: "Pair every colour with a real object or coloured card. Contrast two colours at a time so learners attach each written form to a visible meaning.",
+    practiceActivity: "Students choose five objects nearby, write the matching colour beside each object name, and read the completed colour phrases to a partner.",
+  },
+  greetings: {
+    learningGoal: "Learners write and distinguish greetings, thanks, apologies, and polite expressions they can reuse when meeting, helping, or leaving another speaker.",
+    teachingTip: "Teach the phrases in short conversational pairs rather than isolation. Learners remember the writing more easily when each expression has a clear response.",
+    practiceActivity: "Put learners in pairs to choose a greeting, a polite question, and a closing phrase, then copy and perform their three-line exchange.",
+  },
+  "days-months": {
+    learningGoal: "Learners write weekday, month, and relative-time words and use them to recognise how Chinese dates and simple calendar statements are assembled.",
+    teachingTip: "Keep a calendar visible while students write. Point out repeated components such as 星期 and 月 so the longer words feel like predictable combinations.",
+    practiceActivity: "Students write today, tomorrow, and one planned date, then swap papers and read their partner's three calendar expressions aloud.",
+  },
+  "food-drinks": {
+    learningGoal: "Learners recognise and write everyday foods, drinks, fruit, and meal words that support simple choices, preferences, and classroom menu conversations.",
+    teachingTip: "Sort the vocabulary into food, drink, and meal groups before tracing. Invite learners to mark familiar items so the first practice round starts with meaning they know.",
+    practiceActivity: "Learners design a three-item meal, copy the selected food and drink words, and use the finished list to tell a partner what they would choose.",
+  },
+  "animals-kids": {
+    learningGoal: "Younger learners recognise and write familiar pet, farm, bird, and zoo animal words while connecting each written form to a concrete creature.",
+    teachingTip: "Use animal pictures or sounds before showing the Hanzi. Let learners predict the animal, then trace its word while repeating the pronunciation slowly.",
+    practiceActivity: "Students sort six animals into home, farm, or zoo groups, write one word in each group, and explain which animal they like best.",
+  },
+  "hsk-1": {
+    learningGoal: "Beginning HSK learners build accurate recall of high-frequency pronouns, verbs, people, places, and classroom words required for basic reading and writing.",
+    teachingTip: "Divide the list into small semantic sets and review one set at a time. Alternate tracing with no-model recall so recognition develops into independent writing.",
+    practiceActivity: "Choose ten words for a timed review: trace each once, hide the model, write it again from Pinyin or English, and circle items needing another round.",
+  },
+  "school-classroom": {
+    learningGoal: "Learners write the people, objects, instructions, and tasks they encounter in school, making classroom Chinese easier to recognise and use.",
+    teachingTip: "Point to real classroom objects and actions while introducing their words. Physical context prevents similar-looking new characters from becoming an abstract list.",
+    practiceActivity: "Students label five classroom objects, copy two instruction words, and use the completed sheet for a short classroom scavenger hunt.",
+  },
+  "daily-routine": {
+    learningGoal: "Learners write common actions from waking to bedtime and organise them into a meaningful sequence for describing an ordinary day.",
+    teachingTip: "Arrange the words chronologically before handwriting practice. Ask learners to compare the list with their own routine and replace unfamiliar activities when useful.",
+    practiceActivity: "Students select six routine words, number them in personal order, write each one, and use the sequence to describe their day to a partner.",
+  },
+  "weather-seasons": {
+    learningGoal: "Learners recognise and write weather conditions, temperature descriptions, and season names used in forecasts and everyday observations.",
+    teachingTip: "Begin with the day's real weather and current season. Contrast hot with cold and rain with snow before adding less immediate forecast vocabulary.",
+    practiceActivity: "Students create a three-day mini forecast by choosing weather and temperature words, writing them beside each day, and presenting the forecast aloud.",
+  },
+  "body-health": {
+    learningGoal: "Learners write key body parts, health states, and care words needed to describe simple symptoms and understand basic help-seeking language.",
+    teachingTip: "Separate body-part words from symptoms and places of care. Use neutral examples and allow learners to skip personal health details while practising the language.",
+    practiceActivity: "Students match four body words with simple health statements, copy the key vocabulary, and role-play asking where something hurts.",
+  },
+  "home-rooms": {
+    learningGoal: "Learners recognise and write rooms, furniture, appliances, and household objects used when describing where things are at home.",
+    teachingTip: "Organise the list room by room and begin with the learner's own home. Spatial grouping makes the vocabulary easier to retrieve than alphabetical order.",
+    practiceActivity: "Students sketch one room, label at least five objects with words from the sheet, and describe where two items are located.",
+  },
+  transportation: {
+    learningGoal: "Learners write common vehicles, stations, travel actions, and route words used to discuss how someone leaves, travels, and arrives.",
+    teachingTip: "Group vehicles separately from places and actions, then recombine them in short travel chains. Compare similar transport words only after each is familiar.",
+    practiceActivity: "Students plan a simple journey with one vehicle, one station, and two action words, then copy and explain the route in sequence.",
+  },
+  travel: {
+    learningGoal: "Learners write practical words for documents, tickets, hotels, luggage, directions, departure, and arrival during an everyday trip.",
+    teachingTip: "Teach the vocabulary through a journey timeline from preparation to arrival. Let learners mark the words they would need at each travel stage.",
+    practiceActivity: "Students pack a fictional trip by selecting eight words, writing them as a checklist, and using three of them in a short travel request.",
+  },
+  shopping: {
+    learningGoal: "Learners write words for shops, prices, sizes, colours, clothing, and payment so they can follow a simple buying conversation.",
+    teachingTip: "Use price tags and two contrasting items to practise choice language. Review number and colour characters before introducing the full shopping set.",
+    practiceActivity: "Students create two product cards with item, colour, size, and price words, then exchange cards and practise asking which item a partner wants.",
+  },
+  restaurant: {
+    learningGoal: "Learners write menu, tableware, ordering, food, drink, and payment words that appear during a basic restaurant visit.",
+    teachingTip: "Arrange the words in service order: arrival, menu, order, meal, and bill. Rehearse only a few items at each stage before combining them.",
+    practiceActivity: "Students make a small menu with one drink and three foods, write a sample order, and role-play requesting the bill after the meal.",
+  },
+  "hobbies-sports": {
+    learningGoal: "Learners write activity words for sport, music, film, reading, art, dance, and photography when discussing personal interests.",
+    teachingTip: "Ask learners to sort activities into like, dislike, and want-to-try groups. Personal choices create a stronger reason to remember each written word.",
+    practiceActivity: "Students choose three hobbies they enjoy and one they want to try, write the four words, and compare their choices with a partner.",
+  },
+  "chinese-new-year": {
+    learningGoal: "Learners write Chinese New Year greetings, foods, family gathering words, decorations, and festival activities in their cultural context.",
+    teachingTip: "Introduce the vocabulary with photos or personal stories and distinguish greetings from objects and activities. Explain regional variation where it affects meaning.",
+    practiceActivity: "Students design a small New Year card using one greeting and three festival words, then explain the meaning of each selected item.",
+  },
+  "jobs-work": {
+    learningGoal: "Learners write common occupations, workplaces, colleagues, and role words used to ask about or describe what someone does.",
+    teachingTip: "Group occupations by workplace or service instead of memorising a flat list. Point out when one person word can appear in several professional contexts.",
+    practiceActivity: "Students select four occupations, match each with a workplace or task, write the pairs, and use one pair to describe a fictional person.",
+  },
+};
+
+function addTemplateGuidance(
+  template: WorksheetTemplateSeed,
+): WorksheetTemplate {
+  const guidance = templateGuidance[template.slug];
+  if (!guidance) {
+    throw new Error(`Missing template guidance for ${template.slug}`);
+  }
+  return { ...template, ...guidance };
+}
+
 function buildTemplate(draft: TemplateDraft): WorksheetTemplate {
   const { words, ...metadata } = draft;
   const entries = entriesFor(words);
-  return { ...metadata, entries, wordCount: entries.length };
+  return addTemplateGuidance({
+    ...metadata,
+    entries,
+    wordCount: entries.length,
+  });
 }
 
 export const worksheetTemplates: WorksheetTemplate[] = [
   ...baseWorksheetTemplates.map((template) => {
     const words = expandedTemplateWords[template.slug];
     if (!words) {
-      return { ...template, wordCount: template.entries.length };
+      return addTemplateGuidance({
+        ...template,
+        wordCount: template.entries.length,
+      });
     }
     const entries = entriesFor(words);
-    return { ...template, entries, wordCount: entries.length };
+    return addTemplateGuidance({
+      ...template,
+      entries,
+      wordCount: entries.length,
+    });
   }),
   ...additionalTemplateDrafts.map(buildTemplate),
 ];

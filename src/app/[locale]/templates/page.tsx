@@ -4,6 +4,7 @@ import { TemplatesPage } from "@/features/worksheets/components/templates-page";
 import { worksheetTemplates } from "@/features/worksheets/data";
 import { envConfigs } from "@/config";
 import { buildPageSeoMetadata } from "@/features/worksheets/seo";
+import { toWorksheetTemplateSummary } from "@/features/worksheets/templates";
 
 export async function generateMetadata({ params }: {
   params: Promise<{ locale: string }>;
@@ -18,5 +19,9 @@ export async function generateMetadata({ params }: {
 }
 
 export default function Page() {
-  return <TemplatesPage templates={worksheetTemplates} />;
+  return (
+    <TemplatesPage
+      templates={worksheetTemplates.map(toWorksheetTemplateSummary)}
+    />
+  );
 }

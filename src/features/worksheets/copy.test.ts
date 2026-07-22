@@ -20,11 +20,11 @@ test("homepage distributes worksheet search terms across useful copy", async () 
   );
   assert.match(
     homeSource,
-    /Create printable Chinese writing worksheets from any English or\s*Chinese vocabulary list\. Check the Hanzi and Pinyin, choose a\s*grid, then download a PDF\./,
+    /Create free, printable Chinese character practice sheets from your\s*own English or Chinese word list\. Edit the Hanzi and Pinyin, choose\s*tracing or writing grids, then download a PDF—no sign-up required\./,
   );
   assert.match(
     homePageSource,
-    /Create printable Chinese writing worksheets from any English or Chinese vocabulary list\. Add Pinyin, tracing, and writing grids, then download a free PDF\./,
+    /Create free, printable worksheets with this Chinese character practice sheet generator\. Add editable Hanzi, Pinyin, tracing and writing grids, then download a PDF\./,
   );
   assert.match(
     homeSource,
@@ -49,8 +49,9 @@ test("homepage distributes worksheet search terms across useful copy", async () 
   assert.match(homeSource, /Build from my word list/);
   assert.match(homeSource, /Start with a worksheet/);
   assert.match(homeSource, /Check one character’s stroke order/);
-  assert.match(homeSource, /Start with an editable word list/);
-  assert.match(homeSource, /Use the same vocabulary for practice at home\./);
+  assert.match(homeSource, /Start with a Chinese worksheet template/);
+  assert.match(homeSource, /Choose a Chinese character practice mode/);
+  assert.match(homeSource, /Print Chinese character practice sheets for home/);
   assert.doesNotMatch(
     `${homeSource}\n${shellSource}`,
     /teacher-ready|classroom-ready|Perfect for bilingual families|\bMVP\b|Made to\s+edit/i,
@@ -86,10 +87,22 @@ test("generator and print messages describe user results instead of implementati
 });
 
 test("template pages use concrete teaching copy and distinct descriptions", async () => {
-  const [templatesSource, detailSource, metadataSource] = await Promise.all([
+  const [
+    templatesSource,
+    detailSource,
+    metadataSource,
+    previewSource,
+    homeSource,
+    templatesRouteSource,
+  ] = await Promise.all([
     projectFile("src/features/worksheets/components/templates-page.tsx"),
     projectFile("src/features/worksheets/components/template-detail-page.tsx"),
     projectFile("src/app/[locale]/templates/[slug]/page.tsx"),
+    projectFile("src/features/worksheets/components/worksheet-card-preview.tsx").catch(
+      () => "",
+    ),
+    projectFile("src/features/worksheets/components/home-page.tsx"),
+    projectFile("src/app/[locale]/templates/page.tsx"),
   ]);
 
   assert.match(
@@ -98,6 +111,11 @@ test("template pages use concrete teaching copy and distinct descriptions", asyn
   );
   assert.match(detailSource, /Editable worksheet/);
   assert.match(detailSource, /What students practise/);
+  assert.match(detailSource, /template\.learningGoal/);
+  assert.match(detailSource, /template\.teachingTip/);
+  assert.match(detailSource, /template\.practiceActivity/);
+  assert.match(detailSource, /"@type": "BreadcrumbList"/);
+  assert.match(detailSource, /"@type": "ListItem"/);
   assert.match(detailSource, /Trace, then write/);
   assert.match(detailSource, /See the stroke order/);
   assert.doesNotMatch(
@@ -105,6 +123,13 @@ test("template pages use concrete teaching copy and distinct descriptions", asyn
     /FREE EDITABLE TEMPLATE|Teacher-ready settings|instead of decorative placeholders|Write with confidence/,
   );
   assert.doesNotMatch(metadataSource, /Edit and download .* real stroke order/);
+  assert.match(previewSource, /WorksheetCardPreview/);
+  assert.doesNotMatch(previewSource, /WorksheetPaper|WorksheetMiniature|<svg/);
+  assert.match(templatesSource, /WorksheetCardPreview/);
+  assert.doesNotMatch(templatesSource, /WorksheetMiniature/);
+  assert.match(homeSource, /worksheetTemplates\.slice\(0, 8\)/);
+  assert.match(homeSource, /href=\{`\/templates\/\$\{template\.slug\}`\}/);
+  assert.match(templatesRouteSource, /toWorksheetTemplateSummary/);
 
   const descriptions = worksheetTemplates.map((template) =>
     template.description.trim(),

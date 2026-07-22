@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { worksheetTemplates } from "./data";
-import { filterWorksheetTemplates } from "./templates";
+import * as templateTools from "./templates";
+
+const { filterWorksheetTemplates } = templateTools;
 
 test("the curated library contains 20 complete classroom-ready templates", () => {
   assert.ok(worksheetTemplates.length >= 20);
@@ -21,6 +23,27 @@ test("the curated library contains 20 complete classroom-ready templates", () =>
     assert.ok(
       ["kids", "adult"].includes(template.recommendedProfile),
       `${template.slug} needs a recommended writing profile`,
+    );
+    for (const field of ["learningGoal", "teachingTip", "practiceActivity"] as const) {
+      const value = (template as unknown as Record<string, unknown>)[field];
+      assert.equal(typeof value, "string", `${template.slug} needs ${field}`);
+      assert.ok(
+        typeof value === "string" && value.length >= 70,
+        `${template.slug} needs specific ${field} copy`,
+      );
+    }
+  }
+
+  for (const field of ["learningGoal", "teachingTip", "practiceActivity"] as const) {
+    assert.equal(
+      new Set(
+        worksheetTemplates.map(
+          (template) =>
+            (template as unknown as Record<string, unknown>)[field],
+        ),
+      ).size,
+      worksheetTemplates.length,
+      `${field} must be unique per template`,
     );
   }
 
@@ -57,5 +80,38 @@ test("filterWorksheetTemplates returns all templates for empty filters", () => {
       age: "all",
     }).length,
     worksheetTemplates.length,
+  );
+});
+
+test("template summaries keep search data without sending full worksheets to listing clients", () => {
+  const template = worksheetTemplates[0];
+  assert.ok(template);
+  const toWorksheetTemplateSummary = (
+    templateTools as typeof templateTools & {
+      toWorksheetTemplateSummary?: (value: typeof template) => {
+        slug: string;
+        previewEntries: typeof template.entries;
+        searchTerms: string;
+      };
+    }
+  ).toWorksheetTemplateSummary;
+
+  assert.equal(typeof toWorksheetTemplateSummary, "function");
+  if (!toWorksheetTemplateSummary) return;
+
+  const summary = toWorksheetTemplateSummary(template);
+
+  assert.equal("entries" in summary, false);
+  assert.ok(summary.previewEntries.length > 0);
+  assert.ok(summary.previewEntries.length <= 3);
+  assert.match(summary.searchTerms, /family/i);
+  assert.deepEqual(
+    filterWorksheetTemplates([summary], {
+      query: "mother",
+      category: "all",
+      level: "all",
+      age: "all",
+    }).map((item) => item.slug),
+    ["family"],
   );
 });

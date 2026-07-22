@@ -84,7 +84,17 @@ test("page metadata self-canonicalizes indexable pages and noindexes untranslate
       ) => {
         alternates?: { canonical?: string; languages?: Record<string, string> };
         robots?: { index?: boolean; follow?: boolean };
-        openGraph?: { url?: string };
+        openGraph?: {
+          url?: string;
+          siteName?: string;
+          type?: string;
+          images?: Array<{
+            url?: string;
+            width?: number;
+            height?: number;
+            alt?: string;
+          }>;
+        };
       };
     }
   ).buildPageSeoMetadata;
@@ -96,7 +106,19 @@ test("page metadata self-canonicalizes indexable pages and noindexes untranslate
     "https://gridhanzi.org/",
     "/templates",
     "en",
-  );
+  ) as ReturnType<typeof buildPageSeoMetadata> & {
+    openGraph?: {
+      url?: string;
+      siteName?: string;
+      type?: string;
+      images?: Array<{
+        url?: string;
+        width?: number;
+        height?: number;
+        alt?: string;
+      }>;
+    };
+  };
   assert.equal(
     englishTemplates.alternates?.canonical,
     "https://gridhanzi.org/templates",
@@ -107,6 +129,16 @@ test("page metadata self-canonicalizes indexable pages and noindexes untranslate
     englishTemplates.openGraph?.url,
     "https://gridhanzi.org/templates",
   );
+  assert.equal(englishTemplates.openGraph?.siteName, "GridHanzi");
+  assert.equal(englishTemplates.openGraph?.type, "website");
+  assert.deepEqual(englishTemplates.openGraph?.images, [
+    {
+      url: "https://gridhanzi.org/og-gridhanzi.png",
+      width: 1200,
+      height: 630,
+      alt: "GridHanzi Chinese character practice sheet generator",
+    },
+  ]);
 
   const chineseTemplates = buildPageSeoMetadata(
     "https://gridhanzi.org",
@@ -117,7 +149,7 @@ test("page metadata self-canonicalizes indexable pages and noindexes untranslate
     chineseTemplates.alternates?.canonical,
     "https://gridhanzi.org/zh/templates",
   );
-  assert.deepEqual(chineseTemplates.robots, { index: false, follow: false });
+  assert.deepEqual(chineseTemplates.robots, { index: false, follow: true });
 
   const chineseGenerator = buildPageSeoMetadata(
     "https://gridhanzi.org",

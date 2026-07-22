@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: {
   return {
     title: "Chinese Character Practice Sheet Generator",
     description:
-      "Create printable Chinese writing worksheets from any English or Chinese vocabulary list. Add Pinyin, tracing, and writing grids, then download a free PDF.",
+      "Create free, printable worksheets with this Chinese character practice sheet generator. Add editable Hanzi, Pinyin, tracing and writing grids, then download a PDF.",
     ...buildPageSeoMetadata(envConfigs.app_url, "/", locale),
   };
 }

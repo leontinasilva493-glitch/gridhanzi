@@ -10,6 +10,8 @@ import { StructuredData } from "./structured-data";
 import { WorksheetMiniature } from "./worksheet-miniature";
 
 export function TemplateDetailPage({ template }: { template: WorksheetTemplate }) {
+  const siteUrl = envConfigs.app_url.replace(/\/$/, "");
+  const canonicalUrl = `${siteUrl}/templates/${template.slug}`;
   const related = worksheetTemplates
     .filter((candidate) => candidate.slug !== template.slug)
     .sort((left, right) => Number(right.category === template.category) - Number(left.category === template.category))
@@ -18,23 +20,53 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
   return (
     <PublicPageShell active="templates">
       <StructuredData
-        data={{
-          "@context": "https://schema.org",
-          "@type": "LearningResource",
-          name: `${template.title} Chinese Writing Worksheet`,
-          description: template.description,
-          url: `${envConfigs.app_url.replace(/\/$/, "")}/templates/${template.slug}`,
-          learningResourceType: "Worksheet",
-          educationalLevel: template.level,
-          audience: { "@type": "EducationalAudience", educationalRole: "student" },
-          isAccessibleForFree: true,
-          inLanguage: ["en", "zh-Hans"],
-        }}
+        data={[
+          {
+            "@context": "https://schema.org",
+            "@type": "LearningResource",
+            name: `${template.title} Chinese Writing Worksheet`,
+            description: template.description,
+            url: canonicalUrl,
+            learningResourceType: "Worksheet",
+            educationalLevel: template.level,
+            audience: { "@type": "EducationalAudience", educationalRole: "student" },
+            isAccessibleForFree: true,
+            inLanguage: ["en", "zh-Hans"],
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: `${siteUrl}/`,
+              },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Worksheet Templates",
+                item: `${siteUrl}/templates`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: `${template.title} Chinese Writing Worksheet`,
+                item: canonicalUrl,
+              },
+            ],
+          },
+        ]}
       />
       <main className="hs-container pt-5">
-        <div className="text-sm text-[#617084]">
-          Templates &nbsp;/&nbsp; {template.category === "hsk" ? "HSK" : "Topics"} &nbsp;/&nbsp; {template.title}
-        </div>
+        <nav aria-label="Breadcrumb" className="text-sm text-[#617084]">
+          <Link href="/" className="hover:text-[#b62822]">Home</Link>
+          &nbsp;/&nbsp;
+          <Link href="/templates" className="hover:text-[#b62822]">Templates</Link>
+          &nbsp;/&nbsp;
+          <span aria-current="page">{template.title}</span>
+        </nav>
         <section className="mt-5 grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
             <span className="inline-flex rounded border border-[#c8322b] px-4 py-2 text-xs font-bold tracking-[0.1em] text-[#b62822]">
@@ -97,6 +129,9 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
             </div>
             <div className="border-t border-[#ded7ca] pt-6 sm:border-l sm:border-t-0 sm:pl-7 sm:pt-0">
               <h2 className="hs-display text-2xl font-bold">What students practise</h2>
+              <p className="mt-3 text-sm leading-6 text-[#58677a]">
+                {template.learningGoal}
+              </p>
               <Outcome title="Read the words" icon={BookOpen}>Match each simplified character with its Pinyin and English meaning.</Outcome>
               <Outcome title="Trace, then write" icon={PencilLine}>Copy the model character before writing it in a blank grid.</Outcome>
               <Outcome title="See the stroke order" icon={Check}>Check each stroke in sequence before copying the whole character.</Outcome>
@@ -119,17 +154,28 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
           </aside>
         </section>
 
-        <section className="mt-5 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
+        <section className="mt-5 grid gap-5 lg:grid-cols-2">
           <article className="hs-card p-6">
             <h2 className="hs-display text-2xl font-bold">Teaching note</h2>
             <div className="mt-4 rounded border border-[#c9d6e5] bg-[#f8fbff] p-4">
-              <h3 className="font-bold">Use the same list again</h3>
+              <h3 className="font-bold">Teach this word set in context</h3>
               <p className="mt-2 text-sm leading-6 text-[#58677a]">
-                Start with the tracing page. Later, print the Test version and
-                ask students to write the same words without a model.
+                {template.teachingTip}
               </p>
             </div>
           </article>
+          <article className="hs-card p-6">
+            <h2 className="hs-display text-2xl font-bold">Practice activity</h2>
+            <div className="mt-4 rounded border border-[#d9cfb9] bg-[#fffaf0] p-4">
+              <h3 className="font-bold">Use the words after writing</h3>
+              <p className="mt-2 text-sm leading-6 text-[#58677a]">
+                {template.practiceActivity}
+              </p>
+            </div>
+          </article>
+        </section>
+
+        <section className="mt-5">
           <article className="hs-card p-6">
             <h2 className="hs-display text-2xl font-bold">Related templates</h2>
             <div className="mt-4 grid gap-3 sm:grid-cols-3">

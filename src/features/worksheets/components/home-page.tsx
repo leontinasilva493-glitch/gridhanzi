@@ -18,7 +18,7 @@ import { worksheetTemplates } from "../data";
 import { defaultWorksheetSettings } from "../types";
 import { HomeWorkbench } from "./home-workbench";
 import { PublicPageShell } from "./site-shell";
-import { WorksheetMiniature } from "./worksheet-miniature";
+import { WorksheetCardPreview } from "./worksheet-card-preview";
 import { WorksheetPaper } from "./worksheet-paper";
 
 const family = worksheetTemplates[0];
@@ -35,9 +35,9 @@ export function HomePage() {
               Chinese Character Practice Sheet Generator
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-8 text-[#435166]">
-              Create printable Chinese writing worksheets from any English or
-              Chinese vocabulary list. Check the Hanzi and Pinyin, choose a
-              grid, then download a PDF.
+              Create free, printable Chinese character practice sheets from your
+              own English or Chinese word list. Edit the Hanzi and Pinyin, choose
+              tracing or writing grids, then download a PDF—no sign-up required.
             </p>
             <div className="mt-8">
               <HomeWorkbench />
@@ -94,7 +94,7 @@ export function HomePage() {
             <div>
               <p className="hs-kicker">Editable word lists</p>
               <h2 className="hs-display mt-2 text-3xl font-bold">
-                Start with an editable word list
+                Start with a Chinese worksheet template
               </h2>
             </div>
             <Link
@@ -105,14 +105,12 @@ export function HomePage() {
             </Link>
           </div>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {worksheetTemplates.map((template) => (
+            {worksheetTemplates.slice(0, 8).map((template) => (
               <article key={template.slug} className="hs-card overflow-hidden p-3">
-                <WorksheetMiniature
+                <WorksheetCardPreview
                   entries={template.entries.slice(0, 3)}
                   title={template.title}
                   chineseTitle={template.chineseTitle}
-                  profile={template.recommendedProfile}
-                  className="shadow-sm"
                 />
                 <h3 className="hs-display mt-4 text-lg font-bold">
                   {template.title}
@@ -121,10 +119,10 @@ export function HomePage() {
                   {template.age} · {template.wordCount} words
                 </p>
                 <Link
-                  href={`/generator?template=${template.slug}&profile=${template.recommendedProfile}`}
+                  href={`/templates/${template.slug}`}
                   className="hs-secondary-button mt-3 w-full text-sm"
                 >
-                  Use template
+                  View {template.title} worksheet
                 </Link>
               </article>
             ))}
@@ -137,7 +135,7 @@ export function HomePage() {
         >
           <p className="hs-kicker">One list, three uses</p>
           <h2 className="hs-display mt-2 text-3xl font-bold">
-            Learn, practise, or test
+            Choose a Chinese character practice mode
           </h2>
           <div className="mt-6 grid gap-5 lg:grid-cols-3">
             <PracticeCard title="Learn new characters" mode="trace">
@@ -159,7 +157,7 @@ export function HomePage() {
           <div className="hs-card p-7 sm:p-9">
             <p className="hs-kicker">For regular lesson prep</p>
             <h2 className="hs-display mt-2 text-3xl font-bold">
-              Plan this week’s worksheet in a few minutes.
+              Create Chinese writing worksheets for class
             </h2>
             <div className="mt-8 grid gap-6 sm:grid-cols-3">
               <WorkflowItem icon={ClipboardPaste} title="Paste this week’s words">
@@ -208,7 +206,7 @@ export function HomePage() {
           <div className="p-8 sm:p-10">
             <p className="hs-kicker">Practice at home</p>
             <h2 className="hs-display mt-2 text-3xl font-bold">
-              Use the same vocabulary for practice at home.
+              Print Chinese character practice sheets for home
             </h2>
             <p className="mt-4 max-w-xl leading-7 text-[#566276]">
               Print the words from class and let your child trace them before
@@ -228,7 +226,7 @@ export function HomePage() {
           </div>
           <div className="grid min-h-72 place-items-center bg-[#efe4d2] p-8">
             <div className="w-72 rotate-[-5deg]">
-              <WorksheetMiniature
+              <WorksheetCardPreview
                 entries={family.entries.slice(0, 3)}
                 title="Home Practice"
                 chineseTitle="家庭练习"
@@ -340,16 +338,7 @@ function PracticeCard({
 }) {
   return (
     <article className="hs-card grid gap-5 p-5 sm:grid-cols-[0.9fr_1fr] lg:grid-cols-1">
-      <WorksheetPaper
-        compact
-        entries={family.entries.slice(0, 2)}
-        settings={{
-          ...defaultWorksheetSettings,
-          mode,
-          title,
-          showStrokeOrder: mode !== "quiz",
-        }}
-      />
+      <PracticeModePreview mode={mode} />
       <div>
         <h3 className="hs-display text-xl font-bold text-[#b62822]">{title}</h3>
         <p className="mt-2 text-sm leading-6 text-[#58667a]">{children}</p>
@@ -361,6 +350,41 @@ function PracticeCard({
         </Link>
       </div>
     </article>
+  );
+}
+
+function PracticeModePreview({ mode }: { mode: "trace" | "write" | "quiz" }) {
+  return (
+    <div
+      className="rounded border border-[#d8d0c3] bg-[#fffdf8] p-3"
+      aria-label={`${mode} worksheet mode preview`}
+    >
+      <div className="mb-3 flex items-center justify-between text-xs font-semibold text-[#607086]">
+        <span>{mode === "quiz" ? "Recall" : mode === "trace" ? "Trace" : "Write"}</span>
+        <span>田字格</span>
+      </div>
+      <div className="space-y-3">
+        {family.entries.slice(0, 2).map((entry) => (
+          <div key={entry.id} className="grid grid-cols-[minmax(0,1fr)_repeat(3,2.5rem)] items-center gap-2">
+            <span className="truncate text-xs text-[#566276]">
+              {mode === "quiz" ? entry.english : entry.pinyin}
+            </span>
+            {[0, 1, 2].map((cell) => (
+              <span
+                key={cell}
+                className="grid aspect-square place-items-center border border-[#c9bca8] bg-white font-serif text-xl"
+              >
+                {mode === "quiz"
+                  ? ""
+                  : cell === 0 || (mode === "trace" && cell === 1)
+                    ? entry.hanzi.slice(0, 1)
+                    : ""}
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 

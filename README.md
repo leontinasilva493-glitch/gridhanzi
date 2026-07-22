@@ -42,6 +42,10 @@ pnpm exec tsc --noEmit
 pnpm build
 ```
 
+Public indexing rules, route keyword ownership, metadata requirements,
+performance budgets, and the post-deploy Search Console checklist are
+documented in [`docs/SEO.md`](docs/SEO.md).
+
 ## Cloudflare deployment
 
 The tracked `wrangler.jsonc` deploys the `gridhanzi` Worker and preserves the

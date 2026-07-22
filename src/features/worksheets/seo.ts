@@ -50,8 +50,20 @@ export function buildPageSeoMetadata(
         : {}),
     },
     ...(locale === "zh" && !chineseIndexable
-      ? { robots: { index: false, follow: false } }
+      ? { robots: { index: false, follow: true } }
       : {}),
-    openGraph: { url: canonical },
+    openGraph: {
+      url: canonical,
+      siteName: "GridHanzi",
+      type: "website",
+      images: [
+        {
+          url: toAbsoluteUrl(baseUrl, "/og-gridhanzi.png"),
+          width: 1200,
+          height: 630,
+          alt: "GridHanzi Chinese character practice sheet generator",
+        },
+      ],
+    },
   };
 }

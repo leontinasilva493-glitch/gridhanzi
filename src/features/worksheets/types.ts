@@ -35,11 +35,27 @@ export interface WorksheetTemplate {
   title: string;
   chineseTitle: string;
   description: string;
+  learningGoal: string;
+  teachingTip: string;
+  practiceActivity: string;
   age: string;
   level: string;
   wordCount: number;
   category: "kids" | "topics" | "hsk";
   entries: WorksheetEntry[];
+}
+
+export interface WorksheetTemplateSummary {
+  slug: string;
+  title: string;
+  chineseTitle: string;
+  description: string;
+  age: string;
+  level: string;
+  wordCount: number;
+  category: WorksheetTemplate["category"];
+  previewEntries: WorksheetEntry[];
+  searchTerms: string;
 }
 
 export interface WorksheetSnapshot {
