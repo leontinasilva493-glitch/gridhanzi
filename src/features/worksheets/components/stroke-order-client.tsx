@@ -12,6 +12,7 @@ import {
 import type HanziWriterType from "hanzi-writer";
 
 import { Link } from "@/core/i18n/navigation";
+import type { StrokeOrderCharacter } from "../stroke-order-characters";
 
 import { StrokeSequence } from "./stroke-sequence";
 
@@ -25,18 +26,33 @@ const characterInfo: Record<
   好: { pinyin: "hǎo", meaning: "good · well", strokes: 6 },
 };
 
-export function StrokeOrderClient() {
+type StrokeOrderClientProps = {
+  initialCharacter?: string;
+  initialInfo?: Pick<StrokeOrderCharacter, "pinyin" | "meaning" | "strokes">;
+  showSearch?: boolean;
+  showGuidance?: boolean;
+};
+
+export function StrokeOrderClient({
+  initialCharacter = "永",
+  initialInfo,
+  showSearch = true,
+  showGuidance = true,
+}: StrokeOrderClientProps = {}) {
   const targetRef = useRef<HTMLDivElement>(null);
   const writerRef = useRef<HanziWriterType | null>(null);
-  const [input, setInput] = useState("永");
-  const [character, setCharacter] = useState("永");
+  const [input, setInput] = useState(initialCharacter);
+  const [character, setCharacter] = useState(initialCharacter);
   const [strokeIndex, setStrokeIndex] = useState(0);
   const [loadError, setLoadError] = useState(false);
-  const info = characterInfo[character] ?? {
-    pinyin: "—",
-    meaning: "Meaning not listed",
-    strokes: 0,
-  };
+  const info =
+    character === initialCharacter && initialInfo
+      ? initialInfo
+      : (characterInfo[character] ?? {
+          pinyin: "—",
+          meaning: "Meaning not listed",
+          strokes: 0,
+        });
   const strokeLabels = Array.from(
     { length: info.strokes || 6 },
     (_, index) => `Stroke ${index + 1}`,
@@ -82,24 +98,26 @@ export function StrokeOrderClient() {
 
   return (
     <>
-      <div className="mx-auto mt-5 flex max-w-2xl gap-2">
-        <label className="relative flex-1">
-          <span className="sr-only">Chinese character</span>
-          <Search className="absolute left-3 top-1/2 size-5 -translate-y-1/2 text-[#6b7584]" />
-          <input
-            value={input}
-            maxLength={2}
-            onChange={(event) => setInput(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key === "Enter") searchCharacter();
-            }}
-            className="h-12 w-full rounded border border-[#d6cfc2] bg-white pl-11 pr-4 font-serif text-xl outline-none focus:border-[#315ed4] focus:ring-4 focus:ring-blue-100"
-          />
-        </label>
-        <button type="button" className="hs-primary-button" onClick={searchCharacter}>
-          Show stroke order
-        </button>
-      </div>
+      {showSearch ? (
+        <div className="mx-auto mt-5 flex max-w-2xl gap-2">
+          <label className="relative flex-1">
+            <span className="sr-only">Chinese character</span>
+            <Search className="absolute left-3 top-1/2 size-5 -translate-y-1/2 text-[#6b7584]" />
+            <input
+              value={input}
+              maxLength={2}
+              onChange={(event) => setInput(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") searchCharacter();
+              }}
+              className="h-12 w-full rounded border border-[#d6cfc2] bg-white pl-11 pr-4 font-serif text-xl outline-none focus:border-[#315ed4] focus:ring-4 focus:ring-blue-100"
+            />
+          </label>
+          <button type="button" className="hs-primary-button" onClick={searchCharacter}>
+            Show stroke order
+          </button>
+        </div>
+      ) : null}
 
       <section className="mt-7 grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
         <div className="hs-card p-4">
@@ -198,36 +216,38 @@ export function StrokeOrderClient() {
         <StrokeSequence character={character} limit={info.strokes || 6} className="mt-4" />
       </section>
 
-      <section className="mt-4 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
-        <article className="hs-card p-6">
-          <h2 className="hs-display text-2xl font-bold">
-            How to write {character}
-          </h2>
-          <ul className="mt-4 space-y-2 text-sm leading-6 text-[#4e5d70]">
-            <li>• Watch the full animation once.</li>
-            <li>• Use Next stroke to check the direction and shape.</li>
-            <li>• Choose Practice to write the character on screen.</li>
-            <li>• Open the character in the worksheet generator when you are ready to print.</li>
-          </ul>
-        </article>
-        <article className="hs-card grid items-center gap-5 p-6 sm:grid-cols-[1fr_190px]">
-          <div>
+      {showGuidance ? (
+        <section className="mt-4 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+          <article className="hs-card p-6">
             <h2 className="hs-display text-2xl font-bold">
-              Practise this character
+              How to write {character}
             </h2>
-            <p className="mt-2 text-sm leading-6 text-[#5d6a7d]">
-              Open a worksheet for {character} with tracing and blank writing grids.
-            </p>
-            <Link
-              href={`/generator?words=${encodeURIComponent(character)}`}
-              className="hs-primary-button mt-5"
-            >
-              Open worksheet
-            </Link>
-          </div>
-          <StrokeSequence character={character} limit={1} />
-        </article>
-      </section>
+            <ul className="mt-4 space-y-2 text-sm leading-6 text-[#4e5d70]">
+              <li>• Watch the full animation once.</li>
+              <li>• Use Next stroke to check the direction and shape.</li>
+              <li>• Choose Practice to write the character on screen.</li>
+              <li>• Open the character in the worksheet generator when you are ready to print.</li>
+            </ul>
+          </article>
+          <article className="hs-card grid items-center gap-5 p-6 sm:grid-cols-[1fr_190px]">
+            <div>
+              <h2 className="hs-display text-2xl font-bold">
+                Practise this character
+              </h2>
+              <p className="mt-2 text-sm leading-6 text-[#5d6a7d]">
+                Open a worksheet for {character} with tracing and blank writing grids.
+              </p>
+              <Link
+                href={`/generator?words=${encodeURIComponent(character)}`}
+                className="hs-primary-button mt-5"
+              >
+                Open worksheet
+              </Link>
+            </div>
+            <StrokeSequence character={character} limit={1} />
+          </article>
+        </section>
+      ) : null}
     </>
   );
 }

@@ -162,3 +162,31 @@ test("template detail vocabulary card can shrink on mobile", async () => {
     /className="min-w-0"[\s\S]*?className="mt-4 max-w-full overflow-x-auto/,
   );
 });
+
+test("curated stroke-order pages combine practice with useful character content", async () => {
+  const [clientSource, pageSource] = await Promise.all([
+    projectFile("src/features/worksheets/components/stroke-order-client.tsx"),
+    projectFile(
+      "src/features/worksheets/components/stroke-order-character-page.tsx",
+    ).catch(() => ""),
+  ]);
+
+  assert.match(clientSource, /initialCharacter/);
+  assert.match(clientSource, /showSearch/);
+  assert.match(clientSource, /showGuidance/);
+  assert.match(clientSource, /<StrokeSequence character=\{character\}/);
+
+  assert.match(pageSource, /StrokeOrderCharacterPage/);
+  assert.match(pageSource, /StructuredData/);
+  assert.match(pageSource, /"@type": "LearningResource"/);
+  assert.match(pageSource, /"@type": "BreadcrumbList"/);
+  assert.match(pageSource, /<StrokeOrderClient/);
+  assert.match(pageSource, /showSearch=\{false\}/);
+  assert.match(pageSource, /showGuidance=\{false\}/);
+  assert.match(pageSource, /entry\.hsk\.map/);
+  assert.match(pageSource, /entry\.examples\.map/);
+  assert.match(pageSource, /entry\.writingTip/);
+  assert.match(pageSource, /strokeOrderCharacters\.filter/);
+  assert.match(pageSource, /\/generator\?words=/);
+  assert.match(pageSource, /Add .* to a worksheet/);
+});
