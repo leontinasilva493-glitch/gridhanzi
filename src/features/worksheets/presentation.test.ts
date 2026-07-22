@@ -164,11 +164,12 @@ test("template detail vocabulary card can shrink on mobile", async () => {
 });
 
 test("curated stroke-order pages combine practice with useful character content", async () => {
-  const [clientSource, pageSource] = await Promise.all([
+  const [clientSource, pageSource, hubSource] = await Promise.all([
     projectFile("src/features/worksheets/components/stroke-order-client.tsx"),
     projectFile(
       "src/features/worksheets/components/stroke-order-character-page.tsx",
     ).catch(() => ""),
+    projectFile("src/app/[locale]/stroke-order/page.tsx"),
   ]);
 
   assert.match(clientSource, /initialCharacter/);
@@ -189,4 +190,9 @@ test("curated stroke-order pages combine practice with useful character content"
   assert.match(pageSource, /strokeOrderCharacters\.filter/);
   assert.match(pageSource, /\/generator\?words=/);
   assert.match(pageSource, /Add .* to a worksheet/);
+  assert.doesNotMatch(pageSource, /bg-white px-6 text-\[#172b49\]/);
+
+  assert.match(hubSource, /strokeOrderCharacters\.map/);
+  assert.match(hubSource, /Popular character guides/);
+  assert.match(hubSource, /href=\{`\/stroke-order\/\$\{entry\.character\}`\}/);
 });

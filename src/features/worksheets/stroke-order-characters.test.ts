@@ -40,6 +40,13 @@ test("character lookup exposes only curated indexable entries", () => {
   assert.equal(getStrokeOrderCharacter("永"), undefined);
 });
 
+test("character lookup accepts URL-encoded route parameters", () => {
+  assert.equal(getStrokeOrderCharacter("%E7%88%B1")?.character, "爱");
+  assert.equal(getStrokeOrderCharacter("%E5%B9%B4")?.character, "年");
+  assert.equal(getStrokeOrderCharacter("%E4%BD%9B")?.character, "佛");
+  assert.equal(getStrokeOrderCharacter("%not-valid"), undefined);
+});
+
 test("佛 explains its alternate reading in 仿佛", () => {
   const entry = getStrokeOrderCharacter("佛");
 

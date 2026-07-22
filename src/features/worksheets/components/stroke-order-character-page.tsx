@@ -206,7 +206,7 @@ export function StrokeOrderCharacterPage({
               then choose a grid, cell size, and practice mode.
             </p>
           </div>
-          <Link href={worksheetHref} className="hs-primary-button min-h-12 bg-white px-6 text-[#172b49] hover:bg-[#fff7ec]">
+          <Link href={worksheetHref} className="hs-primary-button min-h-12 px-6">
             <FilePlus2 className="size-5" /> Add {entry.character} to a worksheet
           </Link>
         </section>

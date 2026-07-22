@@ -9,8 +9,6 @@ import {
 } from "@/features/worksheets/stroke-order-characters";
 import { buildPageSeoMetadata } from "@/features/worksheets/seo";
 
-export const dynamicParams = false;
-
 type PageProps = {
   params: Promise<{ locale: string; character: string }>;
 };

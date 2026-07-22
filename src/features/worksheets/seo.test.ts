@@ -219,7 +219,6 @@ test("curated Hanzi pages have static routes and unique sitemap entries", async 
     "utf8",
   ).catch(() => "");
 
-  assert.match(routeSource, /dynamicParams = false/);
   assert.match(routeSource, /generateStaticParams/);
   assert.match(routeSource, /generateMetadata/);
   assert.match(routeSource, /getStrokeOrderCharacter/);

@@ -117,12 +117,16 @@ export const strokeOrderCharacters: StrokeOrderCharacter[] = [
   },
 ];
 
-const strokeOrderCharacterByHanzi = new Map(
+const strokeOrderCharacterByHanzi = new Map<string, StrokeOrderCharacter>(
   strokeOrderCharacters.map((entry) => [entry.character, entry]),
 );
 
 export function getStrokeOrderCharacter(
   character: string,
 ): StrokeOrderCharacter | undefined {
-  return strokeOrderCharacterByHanzi.get(character);
+  try {
+    return strokeOrderCharacterByHanzi.get(decodeURIComponent(character));
+  } catch {
+    return undefined;
+  }
 }
