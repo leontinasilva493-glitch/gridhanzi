@@ -8,21 +8,16 @@ export default function manifest(): MetadataRoute.Manifest {
       "Create printable Chinese character practice sheets with Hanzi, Pinyin, tracing, and writing grids.",
     start_url: "/",
     display: "standalone",
-    background_color: "#FFF9F0",
-    theme_color: "#19324A",
+    background_color: "#FFFFFF",
+    theme_color: "#A80017",
     icons: [
       {
-        src: "/gridhanzi-icon-128.png",
-        sizes: "128x128",
+        src: "/android-chrome-192x192.png",
+        sizes: "192x192",
         type: "image/png",
       },
       {
-        src: "/gridhanzi-icon-256.png",
-        sizes: "256x256",
-        type: "image/png",
-      },
-      {
-        src: "/gridhanzi-icon-512.png",
+        src: "/android-chrome-512x512.png",
         sizes: "512x512",
         type: "image/png",
         purpose: "any",

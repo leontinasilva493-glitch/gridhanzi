@@ -18,11 +18,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/gridhanzi-icon-128.png", type: "image/png", sizes: "128x128" },
-      { url: "/gridhanzi-icon-256.png", type: "image/png", sizes: "256x256" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
     ],
     apple: [
-      { url: "/gridhanzi-icon-256.png", type: "image/png", sizes: "256x256" },
+      { url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" },
     ],
     shortcut: "/favicon.ico",
   },

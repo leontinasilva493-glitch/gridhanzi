@@ -18,23 +18,15 @@ export function HanziSiteHeader({ active }: { active?: string }) {
       <div className="hs-container flex h-16 items-center justify-between gap-5">
         <Link
           href="/"
-          className="flex shrink-0 items-center gap-1"
+          className="flex shrink-0 items-center"
           aria-label="GridHanzi home"
         >
           <img
-            src="/gridhanzi-icon-128.png"
-            alt=""
-            aria-hidden="true"
-            width="128"
-            height="128"
-            className="size-9 shrink-0 rounded-[9px] sm:size-10"
-          />
-          <img
-            src="/gridhanzi-wordmark.webp"
+            src="/gridhanzi-horizontal.webp"
             alt="GridHanzi"
-            width="1516"
-            height="358"
-            className="h-7 w-auto sm:h-8"
+            width="1030"
+            height="300"
+            className="h-10 w-auto sm:h-11"
           />
         </Link>
 
