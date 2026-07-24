@@ -460,6 +460,8 @@ export function GeneratorClient({
             )}
           </aside>
         </div>
+
+        <GeneratorSupportSections />
       </main>
 
       <div className="hs-no-print fixed inset-x-0 bottom-0 z-40 border-t border-[#d8d0c2] bg-[#fffdf9]/96 backdrop-blur">
@@ -490,6 +492,155 @@ export function GeneratorClient({
         </div>
       </div>
     </PublicPageShell>
+  );
+}
+
+function GeneratorSupportSections() {
+  return (
+    <div className="mt-12 grid gap-10 pb-6">
+      <section aria-labelledby="generator-steps-title">
+        <p className="hs-kicker">Worksheet workflow</p>
+        <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2
+              id="generator-steps-title"
+              className="hs-display text-3xl font-bold"
+            >
+              How the Chinese worksheet generator works
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]">
+              Start with English or Chinese vocabulary, review the generated
+              Hanzi and Pinyin, then print the same list as a lesson page,
+              handwriting practice sheet, or short recall test.
+            </p>
+          </div>
+          <Link href="/templates" className="hs-secondary-button text-sm">
+            Browse editable templates
+          </Link>
+        </div>
+        <div className="mt-5 grid gap-4 md:grid-cols-3">
+          <SupportCard title="Paste a word list">
+            Add English, Chinese, or mixed vocabulary. The editor keeps every
+            row editable before you print.
+          </SupportCard>
+          <SupportCard title="Choose writing settings">
+            Set the grid, cell size, Pinyin, stroke-order guidance, paper size,
+            and practice mode for the worksheet.
+          </SupportCard>
+          <SupportCard title="Preview and print">
+            Check the live preview, open the full print page, then save a PDF or
+            send the worksheet to a printer.
+          </SupportCard>
+        </div>
+      </section>
+
+      <section aria-labelledby="generator-settings-title">
+        <p className="hs-kicker">Printable worksheet controls</p>
+        <h2
+          id="generator-settings-title"
+          className="hs-display mt-2 text-3xl font-bold"
+        >
+          Worksheet settings teachers and parents expect
+        </h2>
+        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            "Tian Zi Ge and Mi Zi Ge writing grids",
+            "Tracing, handwriting practice, and recall test modes",
+            "Optional Pinyin and stroke-order guidance",
+            "A4, US Letter, and tablet PDF formats",
+          ].map((item) => (
+            <div
+              key={item}
+              className="flex min-h-24 items-start gap-3 rounded border border-[#ded7ca] bg-[#fffefa] p-4"
+            >
+              <Check className="mt-0.5 size-4 shrink-0 text-[#25815d]" />
+              <p className="text-sm leading-6 text-[#4f5d70]">{item}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section aria-labelledby="generator-examples-title">
+        <p className="hs-kicker">Example worksheets</p>
+        <h2
+          id="generator-examples-title"
+          className="hs-display mt-2 text-3xl font-bold"
+        >
+          Examples you can generate and edit
+        </h2>
+        <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {[
+            ["Family practice sheet", "/generator?template=family"],
+            ["Numbers writing worksheet", "/generator?template=numbers"],
+            ["Colors practice sheet", "/generator?template=colors"],
+            ["HSK 1 writing practice", "/generator?template=hsk-1"],
+          ].map(([label, href]) => (
+            <Link
+              key={href}
+              href={href}
+              className="group flex min-h-24 items-center justify-between gap-4 rounded border border-[#ded7ca] bg-white p-4 font-semibold text-[#172942] transition hover:border-[#b62822]"
+            >
+              <span>{label}</span>
+              <Sparkles className="size-4 shrink-0 text-[#b62822] transition group-hover:scale-110" />
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section
+        id="generator-faq"
+        aria-labelledby="generator-faq-title"
+        className="pb-8"
+      >
+        <p className="hs-kicker">Generator FAQ</p>
+        <h2
+          id="generator-faq-title"
+          className="hs-display mt-2 text-3xl font-bold"
+        >
+          Chinese worksheet generator questions
+        </h2>
+        <div className="mt-5 divide-y divide-[#ded7ca] rounded border border-[#ded7ca] bg-white">
+          {[
+            [
+              "What does the Chinese worksheet generator create?",
+              "It creates editable Chinese writing worksheets with Hanzi, Pinyin, English meanings, tracing grids, blank writing cells, optional stroke-order guidance, and PDF output.",
+            ],
+            [
+              "Can I paste English words into the worksheet generator?",
+              "Yes. Paste English or Chinese vocabulary, review the filled Hanzi and Pinyin, edit every row, and print the final worksheet.",
+            ],
+            [
+              "Does the worksheet generator include stroke order?",
+              "Yes. You can show stroke-order guidance on worksheet rows and use the stroke-order tool to check a character before printing.",
+            ],
+          ].map(([question, answer]) => (
+            <details key={question} className="group px-5 py-4">
+              <summary className="cursor-pointer list-none font-semibold text-[#172942]">
+                {question}
+              </summary>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]">
+                {answer}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function SupportCard({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <article className="rounded border border-[#ded7ca] bg-white p-5">
+      <h3 className="hs-display text-lg font-bold text-[#172942]">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-[#5b687a]">{children}</p>
+    </article>
   );
 }
 

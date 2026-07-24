@@ -90,6 +90,44 @@ export function HomePage() {
         </section>
 
         <section className="hs-container hs-content-visibility py-14">
+          <p className="hs-kicker">Practice sheet workflow</p>
+          <div className="mt-2 flex flex-wrap items-end justify-between gap-5">
+            <div>
+              <h2 className="hs-display text-3xl font-bold">
+                Make a Chinese character practice sheet in 3 steps
+              </h2>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]">
+                GridHanzi keeps the worksheet useful first: paste vocabulary,
+                review the Chinese writing fields, then print a practice sheet
+                with grids, Pinyin, and optional stroke-order guidance.
+              </p>
+            </div>
+            <Link href="/generator" className="hs-primary-button text-sm">
+              Create a practice sheet
+            </Link>
+          </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <ProcessItem icon={ClipboardPaste} title="Paste words">
+              Start with English, Chinese, or a mixed classroom word list.
+            </ProcessItem>
+            <ProcessItem icon={CheckCircle2} title="Check Hanzi and Pinyin">
+              Edit every row before it becomes a printable worksheet.
+            </ProcessItem>
+            <ProcessItem icon={Printer} title="Print the PDF">
+              Choose tracing grids, blank writing cells, paper size, and PDF
+              output.
+            </ProcessItem>
+          </div>
+          <p className="mt-5 text-sm leading-6 text-[#5b687a]">
+            Need a faster start? Browse{" "}
+            <Link href="/templates" className="font-semibold text-[#b62822]">
+              Chinese character practice sheet templates
+            </Link>{" "}
+            and open any topic in the worksheet generator.
+          </p>
+        </section>
+
+        <section className="hs-container hs-content-visibility py-14">
           <div className="flex items-end justify-between gap-5">
             <div>
               <p className="hs-kicker">Editable word lists</p>
@@ -292,6 +330,26 @@ function TrustItem({
       </span>
       {label}
     </div>
+  );
+}
+
+function ProcessItem({
+  icon: Icon,
+  title,
+  children,
+}: {
+  icon: typeof ClipboardPaste;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <article className="rounded border border-[#ded7ca] bg-white p-5">
+      <span className="grid size-12 place-items-center rounded-full bg-[#f3eee3] text-[#315f47]">
+        <Icon className="size-5" />
+      </span>
+      <h3 className="hs-display mt-4 text-lg font-bold">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-[#5b687a]">{children}</p>
+    </article>
   );
 }
 

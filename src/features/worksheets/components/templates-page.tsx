@@ -49,6 +49,35 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
           </p>
         </header>
 
+        <section
+          className="mt-6 grid gap-5 rounded border border-[#ded7ca] bg-[#fffefa] p-5 sm:p-7 lg:grid-cols-[minmax(0,1fr)_auto]"
+          aria-labelledby="practice-sheet-templates-title"
+        >
+          <div>
+            <p className="hs-kicker">Editable practice sheets</p>
+            <h2
+              id="practice-sheet-templates-title"
+              className="hs-display mt-2 text-3xl font-bold"
+            >
+              Chinese Character Practice Sheet Templates
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]">
+              Start from printable Chinese writing practice sheets for family,
+              numbers, colors, HSK, school, travel, and everyday topics. Each
+              template opens as an editable word list, so you can change the
+              Hanzi, Pinyin, grid, paper size, and PDF layout before printing.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-start gap-3 lg:justify-end">
+            <Link href="/generator" className="hs-primary-button text-sm">
+              Make a custom worksheet
+            </Link>
+            <Link href="/for-teachers" className="hs-secondary-button text-sm">
+              Teacher workflow
+            </Link>
+          </div>
+        </section>
+
         <section className="hs-card mt-6 p-4 sm:p-5" aria-label="Template filters">
           <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto_auto]">
             <label className="relative min-w-0">
@@ -106,17 +135,30 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
                     title={template.title}
                     chineseTitle={template.chineseTitle}
                   />
-                  <h3 className="hs-display mt-4 text-xl font-bold">{template.title}</h3>
+                  <h3 className="hs-display mt-4 text-xl font-bold">
+                    <Link
+                      href={`/templates/${template.slug}`}
+                      className="hover:text-[#b62822]"
+                    >
+                      {template.title}
+                    </Link>
+                  </h3>
                   <p className="mt-1 text-xs leading-5 text-[#647083]">
                     {template.chineseTitle} · {template.age}
                     <br />
                     {template.level} · {template.wordCount} words
                   </p>
                   <Link
-                    href={`/templates/${template.slug}`}
-                    className="hs-secondary-button mt-3 w-full text-sm"
+                    href={`/generator?template=${template.slug}`}
+                    className="hs-primary-button mt-3 w-full text-sm"
                   >
-                    View template
+                    Edit this practice sheet
+                  </Link>
+                  <Link
+                    href={`/templates/${template.slug}`}
+                    className="mt-2 inline-flex w-full items-center justify-center gap-1 text-sm font-semibold text-[#24466e] hover:text-[#b62822]"
+                  >
+                    Worksheet details <ArrowRight className="size-4" />
                   </Link>
                 </article>
               ))}
