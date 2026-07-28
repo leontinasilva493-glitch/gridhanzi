@@ -123,7 +123,7 @@ test("web app manifest and environment templates publish gridhanzi.org", async (
   assert.match(productionEnv, /NEXT_PUBLIC_APP_URL=https:\/\/gridhanzi\.org/);
   assert.match(productionEnv, /NEXT_PUBLIC_APP_LOGO=\/gridhanzi-icon-512\.png/);
   assert.match(packageSource, /"name": "gridhanzi"/);
-  assert.match(readme, /^# GridHanzi MVP/m);
+  assert.match(readme, /^# GridHanzi$/m);
   assert.match(wranglerExample, /"name": "gridhanzi"/);
 });
 

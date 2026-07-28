@@ -6,8 +6,8 @@ import * as templateTools from "./templates";
 
 const { filterWorksheetTemplates } = templateTools;
 
-test("the curated library contains 20 complete classroom-ready templates", () => {
-  assert.ok(worksheetTemplates.length >= 20);
+test("the curated library contains complete classroom-ready templates", () => {
+  assert.ok(worksheetTemplates.length >= 27);
   assert.equal(
     new Set(worksheetTemplates.map((template) => template.slug)).size,
     worksheetTemplates.length,
@@ -56,6 +56,28 @@ test("the curated library contains 20 complete classroom-ready templates", () =>
     worksheetTemplates.find((template) => template.slug === "hsk-1")
       ?.recommendedProfile,
     "adult",
+  );
+  assert.deepEqual(
+    [
+      "hsk-2",
+      "hsk-3",
+      "basic-strokes",
+      "radicals",
+      "pinyin-practice",
+      "stroke-order-practice",
+      "classical-poem-copying",
+    ].filter((slug) =>
+      worksheetTemplates.some((template) => template.slug === slug),
+    ),
+    [
+      "hsk-2",
+      "hsk-3",
+      "basic-strokes",
+      "radicals",
+      "pinyin-practice",
+      "stroke-order-practice",
+      "classical-poem-copying",
+    ],
   );
 });
 

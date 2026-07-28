@@ -16,6 +16,7 @@ test("buildPublicSitemapPaths includes every differentiated template page", () =
 
   assert.ok(paths.includes("/"));
   assert.ok(paths.includes("/generator"));
+  assert.ok(paths.includes("/english-to-chinese-writing-practice"));
   assert.ok(paths.includes("/templates"));
   assert.ok(paths.includes("/stroke-order"));
   assert.ok(paths.includes("/for-teachers"));
@@ -190,6 +191,7 @@ test("route metadata owns canonicals instead of inheriting the homepage URL", as
   const routes = [
     "src/app/[locale]/page.tsx",
     "src/app/[locale]/generator/page.tsx",
+    "src/app/[locale]/english-to-chinese-writing-practice/page.tsx",
     "src/app/[locale]/templates/page.tsx",
     "src/app/[locale]/templates/[slug]/page.tsx",
     "src/app/[locale]/stroke-order/page.tsx",

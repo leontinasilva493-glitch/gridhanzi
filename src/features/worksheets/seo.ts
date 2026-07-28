@@ -7,6 +7,7 @@ export function buildPublicSitemapPaths(): string[] {
   return [
     "/",
     "/generator",
+    "/english-to-chinese-writing-practice",
     "/templates",
     "/stroke-order",
     ...strokeOrderCharacters.map(
