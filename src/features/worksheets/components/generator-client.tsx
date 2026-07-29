@@ -50,6 +50,9 @@ export function GeneratorClient({
   initialProfile = "kids",
   initialDifficulty = "beginner",
   autoEnrich = false,
+  pageTitle,
+  pageDescription,
+  breadcrumbLabel,
   templateTitle,
   templateChineseTitle,
 }: {
@@ -58,6 +61,9 @@ export function GeneratorClient({
   initialProfile?: WorksheetProfile;
   initialDifficulty?: WorksheetDifficulty;
   autoEnrich?: boolean;
+  pageTitle?: string;
+  pageDescription?: string;
+  breadcrumbLabel?: string;
   templateTitle?: string;
   templateChineseTitle?: string;
 }) {
@@ -211,13 +217,15 @@ export function GeneratorClient({
             {t("Home", "首页")}
           </Link>
           <span>/</span>
-          <span>{t("Generator", "字帖生成器")}</span>
+          <span>{breadcrumbLabel ?? t("Generator", "字帖生成器")}</span>
         </div>
         <h1 className="hs-display mt-4 text-4xl font-bold sm:text-5xl">
-          {t("Chinese Worksheet Generator", "中文汉字字帖生成器")}
+          {pageTitle ??
+            t("Chinese Worksheet Generator", "中文汉字字帖生成器")}
         </h1>
         <p className="mt-2 text-[#566276]">
-          {t("Review your vocabulary, choose a practice style, and print.", "检查词汇，选择练习方式，然后下载或打印。")}
+          {pageDescription ??
+            t("Review your vocabulary, choose a practice style, and print.", "检查词汇，选择练习方式，然后下载或打印。")}
         </p>
         <div className="mt-6 flex max-w-3xl items-center gap-3 text-sm">
           <StepBadge complete label={t("Add words", "添加词汇")} number="1" />

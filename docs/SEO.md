@@ -13,6 +13,7 @@ other.
 | --- | --- |
 | `/` | Chinese Character Practice Sheet Generator |
 | `/generator` | Chinese Worksheet Generator |
+| `/english-to-chinese-writing-practice` | English to Chinese Writing Practice |
 | `/templates` | Printable Chinese Writing Worksheets |
 | `/templates/[slug]` | `[Topic] Chinese Writing Worksheet` |
 | `/stroke-order` | Chinese Stroke Order |
@@ -30,6 +31,8 @@ Index pages only when they contain differentiated public value.
 
 - The English homepage, generator, template library, stroke-order tool, and
   teacher page.
+- `/english-to-chinese-writing-practice`, because it is a differentiated
+  editable worksheet workflow for English-input vocabulary searches.
 - Every curated template detail page with its own vocabulary, metadata,
   learning goal, teaching tip, and practice activity.
 - `/zh/generator`, because it has a Chinese interface and an English alternate.
@@ -140,7 +143,8 @@ pnpm build
 After deployment, check:
 
 1. `/`, `/generator`, `/templates`, one template detail page,
-   `/stroke-order`, `/for-teachers`, and `/zh/generator` return 200.
+   `/english-to-chinese-writing-practice`, `/stroke-order`, `/for-teachers`,
+   and `/zh/generator` return 200.
 2. Each page has the intended Title, H1, canonical, robots directive, and
    `og:image`.
 3. `/sitemap.xml` includes only the approved URLs.
@@ -159,6 +163,7 @@ by a source-code deployment alone.
 4. Use **URL Inspection** for these initial URLs:
    - `https://gridhanzi.org/`
    - `https://gridhanzi.org/generator`
+   - `https://gridhanzi.org/english-to-chinese-writing-practice`
    - `https://gridhanzi.org/templates`
    - `https://gridhanzi.org/templates/family`
    - `https://gridhanzi.org/templates/hsk-1`

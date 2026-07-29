@@ -154,12 +154,71 @@ const templateVocabularyRecords: VocabularyRecord[] = [
   { hanzi: "职业", pinyin: "zhíyè", english: "occupation" },
 ];
 
+const p0TemplateVocabularyRecords: VocabularyRecord[] = [
+  { hanzi: "\u6a2a", pinyin: "heng", english: "horizontal stroke" },
+  { hanzi: "\u7ad6", pinyin: "shu", english: "vertical stroke" },
+  { hanzi: "\u6487", pinyin: "pie", english: "left-falling stroke" },
+  { hanzi: "\u637a", pinyin: "na", english: "right-falling stroke" },
+  { hanzi: "\u70b9", pinyin: "dian", english: "dot stroke" },
+  { hanzi: "\u63d0", pinyin: "ti", english: "rising stroke" },
+  { hanzi: "\u6298", pinyin: "zhe", english: "turning stroke" },
+  { hanzi: "\u94a9", pinyin: "gou", english: "hook stroke" },
+  { hanzi: "\u5f2f", pinyin: "wan", english: "curved stroke" },
+  { hanzi: "\u659c\u94a9", pinyin: "xie gou", english: "slanting hook" },
+  { hanzi: "\u7ad6\u94a9", pinyin: "shu gou", english: "vertical hook" },
+  { hanzi: "\u6a2a\u6298", pinyin: "heng zhe", english: "horizontal turn" },
+  { hanzi: "\u6a2a\u6487", pinyin: "heng pie", english: "horizontal left-falling stroke" },
+  { hanzi: "\u70b9\u63d0", pinyin: "dian ti", english: "dot and rising stroke" },
+  { hanzi: "\u7ad6\u5f2f\u94a9", pinyin: "shu wan gou", english: "vertical bend hook" },
+  { hanzi: "\u5367\u94a9", pinyin: "wo gou", english: "lying hook" },
+  { hanzi: "\u4ebb", pinyin: "ren", english: "person radical" },
+  { hanzi: "\u6c35", pinyin: "shui", english: "water radical" },
+  { hanzi: "\u624c", pinyin: "shou", english: "hand radical" },
+  { hanzi: "\u8279", pinyin: "cao", english: "grass radical" },
+  { hanzi: "\u5fc4", pinyin: "xin", english: "heart radical" },
+  { hanzi: "\u8ba0", pinyin: "yan", english: "speech radical" },
+  { hanzi: "\u5b80", pinyin: "mian", english: "roof radical" },
+  { hanzi: "\u8fb6", pinyin: "chuo", english: "walk radical" },
+  { hanzi: "\u9485", pinyin: "jin", english: "metal radical" },
+  { hanzi: "\u7e9f", pinyin: "si", english: "silk radical" },
+  { hanzi: "\u9963", pinyin: "shi", english: "food radical" },
+  { hanzi: "\u72ad", pinyin: "quan", english: "dog radical" },
+  { hanzi: "\u7592", pinyin: "bing", english: "sickness radical" },
+  { hanzi: "\u8864", pinyin: "yi", english: "clothing radical" },
+  { hanzi: "\u793b", pinyin: "shi", english: "spirit radical" },
+  { hanzi: "\u961d", pinyin: "fu", english: "mound radical" },
+  { hanzi: "\u6535", pinyin: "pu", english: "tap radical" },
+  { hanzi: "\u5202", pinyin: "dao", english: "knife radical" },
+  { hanzi: "\u51ab", pinyin: "bing", english: "ice radical" },
+  { hanzi: "\u56d7", pinyin: "wei", english: "enclosure radical" },
+  { hanzi: "\u6728", pinyin: "mu", english: "wood" },
+  { hanzi: "\u706b", pinyin: "huo", english: "fire" },
+  { hanzi: "\u7530", pinyin: "tian", english: "field" },
+  { hanzi: "\u6625\u7720\u4e0d\u89c9\u6653", pinyin: "chun mian bu jue xiao", english: "spring sleep, unaware of dawn" },
+  { hanzi: "\u5904\u5904\u95fb\u557c\u9e1f", pinyin: "chu chu wen ti niao", english: "birdsong is heard everywhere" },
+  { hanzi: "\u591c\u6765\u98ce\u96e8\u58f0", pinyin: "ye lai feng yu sheng", english: "wind and rain sounded at night" },
+  { hanzi: "\u82b1\u843d\u77e5\u591a\u5c11", pinyin: "hua luo zhi duo shao", english: "who knows how many flowers fell" },
+  { hanzi: "\u5e8a\u524d\u660e\u6708\u5149", pinyin: "chuang qian ming yue guang", english: "bright moonlight before the bed" },
+  { hanzi: "\u7591\u662f\u5730\u4e0a\u971c", pinyin: "yi shi di shang shuang", english: "it seems like frost on the ground" },
+  { hanzi: "\u4e3e\u5934\u671b\u660e\u6708", pinyin: "ju tou wang ming yue", english: "raise the head and gaze at the moon" },
+  { hanzi: "\u4f4e\u5934\u601d\u6545\u4e61", pinyin: "di tou si gu xiang", english: "lower the head and think of home" },
+  { hanzi: "\u767d\u65e5\u4f9d\u5c71\u5c3d", pinyin: "bai ri yi shan jin", english: "the white sun sets beyond the hills" },
+  { hanzi: "\u9ec4\u6cb3\u5165\u6d77\u6d41", pinyin: "huang he ru hai liu", english: "the Yellow River flows into the sea" },
+  { hanzi: "\u6b32\u7a77\u5343\u91cc\u76ee", pinyin: "yu qiong qian li mu", english: "to see a thousand li farther" },
+  { hanzi: "\u66f4\u4e0a\u4e00\u5c42\u697c", pinyin: "geng shang yi ceng lou", english: "climb one more storey" },
+  { hanzi: "\u9504\u79be\u65e5\u5f53\u5348", pinyin: "chu he ri dang wu", english: "hoe grain under the noon sun" },
+  { hanzi: "\u6c57\u6ef4\u79be\u4e0b\u571f", pinyin: "han di he xia tu", english: "sweat drops into the soil" },
+  { hanzi: "\u8c01\u77e5\u76d8\u4e2d\u9910", pinyin: "shui zhi pan zhong can", english: "who knows the food in the bowl" },
+  { hanzi: "\u7c92\u7c92\u7686\u8f9b\u82e6", pinyin: "li li jie xin ku", english: "every grain comes from hard work" },
+];
+
 const vocabularyRecords: VocabularyRecord[] = Array.from(
   new Map(
     [
       ...(hskVocabulary as VocabularyRecord[]),
       ...curatedVocabularyRecords,
       ...templateVocabularyRecords,
+      ...p0TemplateVocabularyRecords,
     ].map(
       (record) => [record.hanzi, record],
     ),
@@ -443,6 +502,86 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   },
 ];
 
+const p0TemplateDrafts: TemplateDraft[] = [
+  {
+    slug: "hsk-2",
+    recommendedProfile: "adult",
+    title: "HSK 2 Writing Practice",
+    chineseTitle: "HSK \u4e8c\u7ea7",
+    description: "Practise HSK 2 connectors, classroom actions, time words, and short sentence-building vocabulary.",
+    age: "Teens & Adults",
+    level: "HSK 2",
+    category: "hsk",
+    words: ["\u65f6\u95f4", "\u95ee\u9898", "\u56e0\u4e3a", "\u6240\u4ee5", "\u4f46\u662f", "\u89c9\u5f97", "\u77e5\u9053", "\u5e2e\u52a9", "\u51c6\u5907", "\u53ef\u80fd", "\u5e94\u8be5", "\u5982\u679c", "\u5df2\u7ecf", "\u4e00\u8d77", "\u516c\u53f8", "\u53bb\u5e74", "\u9ad8\u5174", "\u8fd0\u52a8"],
+  },
+  {
+    slug: "hsk-3",
+    recommendedProfile: "adult",
+    title: "HSK 3 Writing Practice",
+    chineseTitle: "HSK \u4e09\u7ea7",
+    description: "Practise HSK 3 transition words, opinions, study terms, and everyday phrases for longer answers.",
+    age: "Teens & Adults",
+    level: "HSK 3",
+    category: "hsk",
+    words: ["\u867d\u7136", "\u800c\u4e14", "\u53c2\u52a0", "\u5dee\u4e0d\u591a", "\u6210\u7ee9", "\u51fa\u73b0", "\u6253\u7b97", "\u5730\u65b9", "\u53d1\u73b0", "\u653e\u5fc3", "\u6545\u4e8b", "\u8fc7\u53bb", "\u4e00\u5b9a", "\u6700\u8fd1", "\u7ecf\u5e38", "\u660e\u767d", "\u52aa\u529b", "\u76f8\u4fe1"],
+  },
+  {
+    slug: "basic-strokes",
+    recommendedProfile: "kids",
+    title: "Basic Chinese Strokes",
+    chineseTitle: "\u57fa\u672c\u7b14\u753b",
+    description: "Practise the core Chinese writing strokes before learners copy full characters in a grid.",
+    age: "Ages 4+",
+    level: "Beginner",
+    category: "kids",
+    words: ["\u6a2a", "\u7ad6", "\u6487", "\u637a", "\u70b9", "\u63d0", "\u6298", "\u94a9", "\u5f2f", "\u659c\u94a9", "\u7ad6\u94a9", "\u6a2a\u6298", "\u6a2a\u6487", "\u70b9\u63d0", "\u7ad6\u5f2f\u94a9", "\u5367\u94a9"],
+  },
+  {
+    slug: "radicals",
+    recommendedProfile: "adult",
+    title: "Chinese Radicals",
+    chineseTitle: "\u6c49\u5b57\u90e8\u9996",
+    description: "Practise common radical forms that help learners recognise meaning groups inside Chinese characters.",
+    age: "Ages 8+",
+    level: "Beginner",
+    category: "topics",
+    words: ["\u4ebb", "\u6c35", "\u624c", "\u8279", "\u5fc4", "\u8ba0", "\u5b80", "\u8fb6", "\u9485", "\u7e9f", "\u9963", "\u72ad", "\u7592", "\u8864", "\u793b", "\u961d", "\u6535", "\u5202", "\u51ab", "\u56d7"],
+  },
+  {
+    slug: "pinyin-practice",
+    recommendedProfile: "kids",
+    title: "Pinyin and Hanzi Practice",
+    chineseTitle: "\u62fc\u97f3\u4e0e\u6c49\u5b57",
+    description: "Practise familiar Hanzi with Pinyin shown above each writing row for sound-form review.",
+    age: "Ages 6+",
+    level: "Beginner",
+    category: "topics",
+    words: ["\u7231", "\u7238\u7238", "\u676f\u5b50", "\u5317\u4eac", "\u5403", "\u5927", "\u7535\u8111", "\u7535\u89c6", "\u8bfb", "\u5de5\u4f5c", "\u6c49\u8bed", "\u4eca\u5929", "\u8001\u5e08", "\u660e\u5929", "\u670b\u53cb", "\u8bf7", "\u8ba4\u8bc6", "\u5b66\u751f"],
+  },
+  {
+    slug: "stroke-order-practice",
+    recommendedProfile: "kids",
+    title: "Stroke Order Practice",
+    chineseTitle: "\u7b14\u987a\u7ec3\u4e60",
+    description: "Practise simple high-frequency characters with stroke-order guidance turned on by default in the worksheet generator.",
+    age: "Ages 6+",
+    level: "Beginner",
+    category: "topics",
+    words: ["\u4e00", "\u4e8c", "\u4e09", "\u5341", "\u4eba", "\u53e3", "\u65e5", "\u6708", "\u6728", "\u6c34", "\u706b", "\u5c71", "\u7530", "\u4e2d", "\u5927"],
+  },
+  {
+    slug: "classical-poem-copying",
+    recommendedProfile: "adult",
+    title: "Classical Poem Copying",
+    chineseTitle: "\u53e4\u8bd7\u6284\u5199",
+    description: "Copy short classical Chinese poem lines in writing grids for handwriting rhythm and cultural reading practice.",
+    age: "Ages 8+",
+    level: "Elementary",
+    category: "topics",
+    words: ["\u6625\u7720\u4e0d\u89c9\u6653", "\u5904\u5904\u95fb\u557c\u9e1f", "\u591c\u6765\u98ce\u96e8\u58f0", "\u82b1\u843d\u77e5\u591a\u5c11", "\u5e8a\u524d\u660e\u6708\u5149", "\u7591\u662f\u5730\u4e0a\u971c", "\u4e3e\u5934\u671b\u660e\u6708", "\u4f4e\u5934\u601d\u6545\u4e61", "\u767d\u65e5\u4f9d\u5c71\u5c3d", "\u9ec4\u6cb3\u5165\u6d77\u6d41", "\u6b32\u7a77\u5343\u91cc\u76ee", "\u66f4\u4e0a\u4e00\u5c42\u697c", "\u9504\u79be\u65e5\u5f53\u5348", "\u6c57\u6ef4\u79be\u4e0b\u571f", "\u8c01\u77e5\u76d8\u4e2d\u9910", "\u7c92\u7c92\u7686\u8f9b\u82e6"],
+  },
+];
+
 const templateGuidance: Record<string, TemplateGuidance> = {
   family: {
     learningGoal: "Learners recognise and write common family titles, then connect each Hanzi word with the person it describes in everyday introductions.",
@@ -546,10 +685,48 @@ const templateGuidance: Record<string, TemplateGuidance> = {
   },
 };
 
+const p0TemplateGuidance: Record<string, TemplateGuidance> = {
+  "hsk-2": {
+    learningGoal: "Learners write common HSK 2 words accurately and use connectors such as because, therefore, but, and if to prepare for short sentence practice.",
+    teachingTip: "Split the words into function words, study words, and daily-life words before writing. Learners should say one example sentence aloud before copying each connector.",
+    practiceActivity: "Students choose six words, write each one twice, then combine at least two connectors into a short written answer about school, work, or last year.",
+  },
+  "hsk-3": {
+    learningGoal: "Learners practise HSK 3 words that support opinions, transitions, plans, and study reflection so handwriting review also strengthens longer written responses.",
+    teachingTip: "Pair similar functions together, such as although and also or plan and discover. Short comparison groups help learners remember usage while they trace the forms.",
+    practiceActivity: "Ask learners to copy eight words, mark the ones they can use in a full sentence, and write two original HSK-style sentences after the tracing rows.",
+  },
+  "basic-strokes": {
+    learningGoal: "Learners build control of the core Chinese stroke shapes before moving into complete Hanzi, improving direction, proportion, and grid placement.",
+    teachingTip: "Demonstrate one stroke direction at a time and keep the first round slow. Stroke names are less important than starting point, ending point, and pressure rhythm.",
+    practiceActivity: "Students trace each stroke, circle the one that feels hardest, and use three selected strokes to build a simple character such as one, ten, or big.",
+  },
+  radicals: {
+    learningGoal: "Learners recognise common radical forms and practise writing them as reusable building blocks that appear inside many Chinese characters.",
+    teachingTip: "Teach radicals as shape clues, not full definitions. Show one or two example characters beside each radical only after learners have copied the radical form.",
+    practiceActivity: "Students sort radicals into meaning groups, write five selected radicals again, and then find one character on the worksheet or in class that uses each form.",
+  },
+  "pinyin-practice": {
+    learningGoal: "Learners connect familiar Hanzi forms with Pinyin readings while handwriting, strengthening sound-form recall before they practise without Pinyin support.",
+    teachingTip: "Read each row aloud before tracing. Keep Pinyin visible for the first pass, then open the generator and switch to a test-style page for recall practice.",
+    practiceActivity: "Students cover the Hanzi column, read the Pinyin, write the character from memory, and compare their result with the model row after each attempt.",
+  },
+  "stroke-order-practice": {
+    learningGoal: "Learners practise high-frequency simple characters with stroke-order support, building habits they can transfer to larger compound words and templates.",
+    teachingTip: "Keep stroke order visible at first and ask learners to air-write the sequence before using the pencil. Remove the guide only after the sequence feels stable.",
+    practiceActivity: "Students trace the model once, write the character twice with stroke order visible, then hide the guide and try one final blank-grid copy.",
+  },
+  "classical-poem-copying": {
+    learningGoal: "Learners copy short classical poem lines in balanced writing grids, practising rhythm, spacing, and familiar cultural texts without needing a full poem lesson.",
+    teachingTip: "Read one couplet aloud before handwriting and explain only the gist. The goal is controlled copying and line rhythm, not a detailed literary analysis.",
+    practiceActivity: "Students choose one four-line poem section, copy each line slowly, then read the copied lines aloud and mark the character that needs the most review.",
+  },
+};
+
 function addTemplateGuidance(
   template: WorksheetTemplateSeed,
 ): WorksheetTemplate {
-  const guidance = templateGuidance[template.slug];
+  const guidance = templateGuidance[template.slug] ?? p0TemplateGuidance[template.slug];
   if (!guidance) {
     throw new Error(`Missing template guidance for ${template.slug}`);
   }
@@ -583,4 +760,5 @@ export const worksheetTemplates: WorksheetTemplate[] = [
     });
   }),
   ...additionalTemplateDrafts.map(buildTemplate),
+  ...p0TemplateDrafts.map(buildTemplate),
 ];
