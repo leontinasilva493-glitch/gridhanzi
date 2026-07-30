@@ -212,6 +212,44 @@ const p0TemplateVocabularyRecords: VocabularyRecord[] = [
   { hanzi: "\u7c92\u7c92\u7686\u8f9b\u82e6", pinyin: "li li jie xin ku", english: "every grain comes from hard work" },
 ];
 
+const mvpTemplateVocabularyRecords: VocabularyRecord[] = [
+  { hanzi: "\u65f6", pinyin: "shi", english: "time" },
+  { hanzi: "\u4ee5", pinyin: "yi", english: "with; by" },
+  { hanzi: "\u81ea", pinyin: "zi", english: "self" },
+  { hanzi: "\u4e4b", pinyin: "zhi", english: "of" },
+  { hanzi: "\u53ef", pinyin: "ke", english: "can; may" },
+  { hanzi: "\u4e48", pinyin: "me", english: "question suffix" },
+  { hanzi: "\u5fc3", pinyin: "xin", english: "heart" },
+  { hanzi: "\u800c", pinyin: "er", english: "and; but" },
+  { hanzi: "\u7136", pinyin: "ran", english: "so; thus" },
+  { hanzi: "\u4e8e", pinyin: "yu", english: "at; in" },
+  { hanzi: "\u4f5c", pinyin: "zuo", english: "to do" },
+  { hanzi: "\u6587", pinyin: "wen", english: "language; writing" },
+  { hanzi: "\u65e0", pinyin: "wu", english: "without" },
+  { hanzi: "\u4e3b", pinyin: "zhu", english: "main" },
+  { hanzi: "\u65b9", pinyin: "fang", english: "direction" },
+  { hanzi: "\u5982", pinyin: "ru", english: "as; like" },
+  { hanzi: "\u6240", pinyin: "suo", english: "place; that which" },
+  { hanzi: "\u7ecf", pinyin: "jing", english: "classic; pass through" },
+  { hanzi: "\u516c", pinyin: "gong", english: "public" },
+  { hanzi: "\u540c", pinyin: "tong", english: "same" },
+  { hanzi: "\u5df2", pinyin: "yi", english: "already" },
+  { hanzi: "\u77e5", pinyin: "zhi", english: "to know" },
+];
+
+const top100ChineseCharacterWords = [
+  "\u7684", "\u4e00", "\u662f", "\u4e0d", "\u4e86", "\u5728", "\u4eba", "\u6709", "\u6211", "\u4ed6",
+  "\u8fd9", "\u4e2d", "\u5927", "\u6765", "\u4e0a", "\u56fd", "\u4e2a", "\u5230", "\u8bf4", "\u4eec",
+  "\u4e3a", "\u5b50", "\u548c", "\u4f60", "\u5730", "\u51fa", "\u9053", "\u4e5f", "\u65f6", "\u5e74",
+  "\u5f97", "\u5c31", "\u90a3", "\u8981", "\u4e0b", "\u4ee5", "\u751f", "\u4f1a", "\u81ea", "\u7740",
+  "\u53bb", "\u4e4b", "\u8fc7", "\u5bb6", "\u5b66", "\u5bf9", "\u53ef", "\u5979", "\u91cc", "\u540e",
+  "\u5c0f", "\u4e48", "\u5fc3", "\u591a", "\u5929", "\u800c", "\u80fd", "\u597d", "\u90fd", "\u7136",
+  "\u6ca1", "\u65e5", "\u4e8e", "\u8d77", "\u8fd8", "\u53d1", "\u6210", "\u4e8b", "\u53ea", "\u4f5c",
+  "\u5f53", "\u60f3", "\u770b", "\u6587", "\u65e0", "\u5f00", "\u624b", "\u5341", "\u7528", "\u4e3b",
+  "\u884c", "\u65b9", "\u53c8", "\u5982", "\u524d", "\u6240", "\u672c", "\u89c1", "\u7ecf", "\u5934",
+  "\u9762", "\u516c", "\u540c", "\u4e09", "\u5df2", "\u8001", "\u4ece", "\u52a8", "\u4e24", "\u957f",
+];
+
 const vocabularyRecords: VocabularyRecord[] = Array.from(
   new Map(
     [
@@ -219,6 +257,7 @@ const vocabularyRecords: VocabularyRecord[] = Array.from(
       ...curatedVocabularyRecords,
       ...templateVocabularyRecords,
       ...p0TemplateVocabularyRecords,
+      ...mvpTemplateVocabularyRecords,
     ].map(
       (record) => [record.hanzi, record],
     ),
@@ -582,6 +621,119 @@ const p0TemplateDrafts: TemplateDraft[] = [
   },
 ];
 
+const mvpTemplateDrafts: TemplateDraft[] = [
+  {
+    slug: "hsk-3-campus-life",
+    recommendedProfile: "adult",
+    title: "HSK 3 Campus Life",
+    chineseTitle: "HSK 3 \u6821\u56ed\u751f\u6d3b",
+    description: "Practise HSK 3 school, classroom, exam, and study words for campus-life writing tasks.",
+    age: "Teens & Adults",
+    level: "HSK 3",
+    category: "hsk",
+    words: ["\u5927\u5b66\u751f", "\u6559\u5e08", "\u653e\u5b66", "\u6559\u5ba4", "\u4e0a\u8bfe", "\u4e0b\u8bfe", "\u73ed", "\u8003\u8bd5", "\u5206\u6570", "\u7ec3", "\u590d\u4e60", "\u53c2\u52a0", "\u8bf7", "\u6c49\u8bed", "\u666e\u901a\u8bdd", "\u672c\u5b50", "\u7b54\u5e94", "\u95ee\u9898"],
+  },
+  {
+    slug: "hsk-3-health",
+    recommendedProfile: "adult",
+    title: "HSK 3 Health",
+    chineseTitle: "HSK 3 \u5065\u5eb7",
+    description: "Practise health, body, hospital, and care words for HSK 3 handwriting review.",
+    age: "Teens & Adults",
+    level: "HSK 3",
+    category: "hsk",
+    words: ["\u5065\u5eb7", "\u770b\u75c5", "\u51fa\u9662", "\u751f\u75c5", "\u533b\u751f", "\u533b\u9662", "\u773c", "\u624b", "\u811a", "\u5934", "\u53e3", "\u6d17", "\u6c34", "\u8dd1\u6b65", "\u8fd0\u52a8", "\u4f11\u606f", "\u5fc3", "\u8eab\u4f53"],
+  },
+  {
+    slug: "hsk-3-shopping-money",
+    recommendedProfile: "adult",
+    title: "HSK 3 Shopping & Money",
+    chineseTitle: "HSK 3 \u8d2d\u7269\u4e0e\u94b1",
+    description: "Practise shopping, money, size, colour, and payment words for everyday HSK 3 errands.",
+    age: "Teens & Adults",
+    level: "HSK 3",
+    category: "hsk",
+    words: ["\u5546\u5e97", "\u4e70", "\u5356", "\u94b1", "\u8d35", "\u5546\u573a", "\u8863\u670d", "\u7ea2\u8272", "\u9009", "\u7a7f", "\u4fe1\u7528\u5361", "\u4ea4\u7ed9", "\u5927", "\u5c0f", "\u7528", "\u8981", "\u7ed9", "\u989c\u8272"],
+  },
+  {
+    slug: "hsk-3-technology",
+    recommendedProfile: "adult",
+    title: "HSK 3 Technology",
+    chineseTitle: "HSK 3 \u79d1\u6280\u751f\u6d3b",
+    description: "Practise phone, computer, website, message, and media words for digital-life handwriting.",
+    age: "Teens & Adults",
+    level: "HSK 3",
+    category: "hsk",
+    words: ["\u624b\u673a", "\u7535\u8111", "\u7f51\u7ad9", "\u4fe1\u606f", "\u6253\u7535\u8bdd", "\u62a5\u7eb8", "\u7167\u76f8", "\u76f8\u673a", "\u6253\u5f00", "\u5173", "\u4f7f\u7528", "\u5b66", "\u6253\u5de5", "\u7535\u89c6", "\u7535\u5f71", "\u4e0a\u7f51", "\u753b", "\u65b0\u95fb"],
+  },
+  {
+    slug: "hsk-3-exams-grades",
+    recommendedProfile: "adult",
+    title: "HSK 3 Exams & Grades",
+    chineseTitle: "HSK 3 \u8003\u8bd5\u4e0e\u6210\u7ee9",
+    description: "Practise exam, score, review, listening, reading, and correction words for HSK 3 study sheets.",
+    age: "Teens & Adults",
+    level: "HSK 3",
+    category: "hsk",
+    words: ["\u8003\u8bd5", "\u5206\u6570", "\u73ed", "\u590d\u4e60", "\u7ec3", "\u53c2\u52a0", "\u5ea6", "\u8bb0\u5f97", "\u5fd8", "\u660e\u767d", "\u8bf7", "\u4e0d\u9519", "\u9519", "\u542c\u5199", "\u8bfb", "\u7b54\u5e94", "\u95ee\u9898", "\u6210\u7ee9"],
+  },
+  {
+    slug: "hsk-3-apartment-home",
+    recommendedProfile: "adult",
+    title: "HSK 3 Apartment & Home",
+    chineseTitle: "HSK 3 \u5bb6\u4e0e\u623f\u95f4",
+    description: "Practise room, furniture, floor, inside, outside, and home-life words for HSK 3 writing.",
+    age: "Teens & Adults",
+    level: "HSK 3",
+    category: "hsk",
+    words: ["\u623f\u95f4", "\u6905\u5b50", "\u5e8a", "\u751f\u6d3b", "\u5b89\u9759", "\u56de\u56fd", "\u623f\u5b50", "\u5173\u4e0a", "\u91cc", "\u5916", "\u697c\u4e0a", "\u697c\u4e0b", "\u697c", "\u5bb6", "\u95e8", "\u684c\u5b50", "\u4f4f", "\u9762"],
+  },
+  {
+    slug: "hsk-3-office-teamwork",
+    recommendedProfile: "adult",
+    title: "HSK 3 Office Teamwork",
+    chineseTitle: "HSK 3 \u529e\u516c\u4e0e\u5408\u4f5c",
+    description: "Practise office, company, plan, manager, colleague, and discussion words for workplace Chinese.",
+    age: "Teens & Adults",
+    level: "HSK 3",
+    category: "hsk",
+    words: ["\u7ecf\u7406", "\u529e\u516c\u5ba4", "\u6253\u7b97", "\u5e2e", "\u516c\u53f8", "\u6253\u5de5", "\u4e3e\u884c", "\u505a\u996d", "\u96be\u9898", "\u61c2\u5f97", "\u5b8c", "\u6253\u7535\u8bdd", "\u4e00\u5171", "\u540c\u4e8b", "\u8ba8\u8bba", "\u8ba1\u5212", "\u95ee\u9898", "\u4e00\u8d77"],
+  },
+  {
+    slug: "top-100-chinese-characters",
+    recommendedProfile: "adult",
+    title: "Top 100 Chinese Characters",
+    chineseTitle: "\u5e38\u7528\u6c49\u5b57 100",
+    description: "Practise a compact set of high-frequency Chinese characters for recognition, tracing, and recall.",
+    age: "Teens & Adults",
+    level: "Beginner",
+    category: "topics",
+    words: top100ChineseCharacterWords,
+  },
+  {
+    slug: "blank-tianzige-grid",
+    recommendedProfile: "kids",
+    title: "Blank Tian Zi Ge Grid",
+    chineseTitle: "\u7530\u5b57\u683c\u7ec3\u4e60\u7eb8",
+    description: "Start from a simple Tian Zi Ge handwriting grid and edit the words before printing.",
+    age: "Ages 4+",
+    level: "Beginner",
+    category: "kids",
+    words: ["\u4e00", "\u4e8c", "\u4e09", "\u5341", "\u4eba", "\u53e3", "\u65e5", "\u6708", "\u6728", "\u6c34", "\u706b", "\u5c71", "\u7530", "\u4e2d", "\u5927", "\u5c0f", "\u4e0a", "\u4e0b"],
+  },
+  {
+    slug: "chinese-first-characters",
+    recommendedProfile: "kids",
+    title: "Chinese First Characters",
+    chineseTitle: "\u5165\u95e8\u6c49\u5b57",
+    description: "Practise the first simple Chinese characters most beginners meet before longer vocabulary lists.",
+    age: "Ages 4+",
+    level: "Beginner",
+    category: "kids",
+    words: top100ChineseCharacterWords.slice(0, 24),
+  },
+];
+
 const templateGuidance: Record<string, TemplateGuidance> = {
   family: {
     learningGoal: "Learners recognise and write common family titles, then connect each Hanzi word with the person it describes in everyday introductions.",
@@ -723,10 +875,66 @@ const p0TemplateGuidance: Record<string, TemplateGuidance> = {
   },
 };
 
+const mvpTemplateGuidance: Record<string, TemplateGuidance> = {
+  "hsk-3-campus-life": {
+    learningGoal: "Learners practise school, classroom, and exam words that help them write short HSK 3 sentences about daily study routines and campus activities.",
+    teachingTip: "Group the words into people, places, actions, and exam results before handwriting. The meaning groups make the campus scene easier to remember than a flat list.",
+    practiceActivity: "Students choose six words to describe one school day, copy each word twice, and then write a two-sentence campus-life summary with at least three selected words.",
+  },
+  "hsk-3-health": {
+    learningGoal: "Learners write common health, body, doctor, hospital, and exercise words so they can recognise and copy simple health-related HSK 3 prompts.",
+    teachingTip: "Keep the examples neutral and practical. Start with body and care words before asking learners to copy words about illness, hospital visits, or recovery.",
+    practiceActivity: "Students mark five health words they could use in a clinic conversation, copy those words again, and write one short request for help or rest.",
+  },
+  "hsk-3-shopping-money": {
+    learningGoal: "Learners practise shopping and money words for prices, choices, colours, payment, and common buying actions used in everyday HSK 3 errands.",
+    teachingTip: "Use a simple product card or price tag while learners write. Pair money words with clothing or colour words so the list feels like a real shopping task.",
+    practiceActivity: "Students create two small shopping cards, copy the item, colour, and payment words, and then choose which card is cheaper or more useful.",
+  },
+  "hsk-3-technology": {
+    learningGoal: "Learners write technology and media words for phones, computers, websites, photos, calls, and online study so digital-life vocabulary becomes easier to recall.",
+    teachingTip: "Connect each word to one visible action such as opening a phone, taking a photo, reading news, or using a website before the tracing round begins.",
+    practiceActivity: "Students select four technology words they used today, copy each word twice, and write a short note about how they studied or communicated online.",
+  },
+  "hsk-3-exams-grades": {
+    learningGoal: "Learners practise exam, score, review, correction, reading, and dictation words that support HSK 3 study reflection and test-preparation writing.",
+    teachingTip: "Separate preparation words from result words. This lets learners practise a before-and-after exam story rather than memorising isolated school terms.",
+    practiceActivity: "Students copy the review and result words, circle three words that describe their last test, and write one sentence about what improved or needs review.",
+  },
+  "hsk-3-apartment-home": {
+    learningGoal: "Learners write home, room, furniture, floor, inside, and outside words for describing where people live and where objects are placed.",
+    teachingTip: "Ask learners to picture one apartment or classroom corner while writing. Spatial vocabulary becomes easier when every word has a visible location.",
+    practiceActivity: "Students sketch a small room, label five places or objects with copied words, and then describe one item as upstairs, downstairs, inside, or outside.",
+  },
+  "hsk-3-office-teamwork": {
+    learningGoal: "Learners practise workplace words for office, company, manager, colleague, planning, phone calls, and discussion before writing short teamwork statements.",
+    teachingTip: "Treat the list as a workday sequence: plan, discuss, call, help, finish. Sequencing gives adult learners a practical reason to remember each written form.",
+    practiceActivity: "Students choose one project situation, copy eight workplace words, and use three of them to write a short note about finishing work together.",
+  },
+  "top-100-chinese-characters": {
+    learningGoal: "Learners review high-frequency standalone Chinese characters and strengthen recall before moving into longer HSK words, phrases, and sentence copying.",
+    teachingTip: "Do not rush the full set in one sitting. Split the sheet into smaller rounds and ask learners to mark characters they recognise before tracing.",
+    practiceActivity: "Students copy twenty characters from one section, hide the model row, rewrite ten from memory, and keep a short review list for the next practice sheet.",
+  },
+  "blank-tianzige-grid": {
+    learningGoal: "Learners begin with a simple Tian Zi Ge grid and a small starter set of easy characters, then edit the list into a blank or custom handwriting sheet.",
+    teachingTip: "Use this page when the main goal is grid control. Open the generator, delete rows if a blank grid is needed, or replace the starter characters with class words.",
+    practiceActivity: "Students trace the starter characters once, then open the generator to replace three rows with current lesson words and print the customised grid.",
+  },
+  "chinese-first-characters": {
+    learningGoal: "Young beginners practise a small first-character set with simple shapes and high reuse value before they copy longer words or themed vocabulary.",
+    teachingTip: "Introduce only a few characters at a time and connect each one to a gesture, number, person, or classroom object before handwriting starts.",
+    practiceActivity: "Students choose six familiar characters, copy each one slowly, and point to one real object or idea that matches each selected character.",
+  },
+};
+
 function addTemplateGuidance(
   template: WorksheetTemplateSeed,
 ): WorksheetTemplate {
-  const guidance = templateGuidance[template.slug] ?? p0TemplateGuidance[template.slug];
+  const guidance =
+    templateGuidance[template.slug] ??
+    p0TemplateGuidance[template.slug] ??
+    mvpTemplateGuidance[template.slug];
   if (!guidance) {
     throw new Error(`Missing template guidance for ${template.slug}`);
   }
@@ -761,4 +969,5 @@ export const worksheetTemplates: WorksheetTemplate[] = [
   }),
   ...additionalTemplateDrafts.map(buildTemplate),
   ...p0TemplateDrafts.map(buildTemplate),
+  ...mvpTemplateDrafts.map(buildTemplate),
 ];

@@ -23,6 +23,34 @@ other.
 Keep the homepage canonical at `/`. Do not create a duplicate keyword path
 such as `/chinese-character-practice-sheet-generator`.
 
+## 2026-07-30 MVP template validation set
+
+Competitor sitemap checks showed active expansion around HSK scenario
+worksheets, printable grid sheets, and high-frequency character practice. The
+first GridHanzi validation batch stays inside the existing
+`/templates/[slug]` system so every page remains an editable worksheet rather
+than a thin article page.
+
+Track these pages in Google Search Console for 2-4 weeks by page and query:
+
+| Route | Validation intent |
+| --- | --- |
+| `/templates/hsk-3-campus-life` | HSK 3 campus life Chinese worksheet |
+| `/templates/hsk-3-health` | HSK 3 health Chinese worksheet |
+| `/templates/hsk-3-shopping-money` | HSK 3 shopping and money worksheet |
+| `/templates/hsk-3-technology` | HSK 3 technology Chinese worksheet |
+| `/templates/hsk-3-exams-grades` | HSK 3 exam and grade writing worksheet |
+| `/templates/hsk-3-apartment-home` | HSK 3 home and apartment worksheet |
+| `/templates/hsk-3-office-teamwork` | HSK 3 workplace Chinese worksheet |
+| `/templates/top-100-chinese-characters` | Top 100 Chinese characters writing practice |
+| `/templates/blank-tianzige-grid` | Printable Tian Zi Ge practice paper |
+| `/templates/chinese-first-characters` | First Chinese characters worksheet |
+
+Expand only after impressions appear. If HSK 3 scenario pages receive
+impressions, split the same structure into HSK 4 and HSK 5 scenarios. If the
+Top 100 page receives impressions, test Top 200/300 or a small single-character
+worksheet cluster instead of launching thousands of dictionary-style pages.
+
 ## Indexing policy
 
 Index pages only when they contain differentiated public value.

@@ -7,7 +7,7 @@ import * as templateTools from "./templates";
 const { filterWorksheetTemplates } = templateTools;
 
 test("the curated library contains complete classroom-ready templates", () => {
-  assert.ok(worksheetTemplates.length >= 27);
+  assert.ok(worksheetTemplates.length >= 37);
   assert.equal(
     new Set(worksheetTemplates.map((template) => template.slug)).size,
     worksheetTemplates.length,
@@ -66,6 +66,16 @@ test("the curated library contains complete classroom-ready templates", () => {
       "pinyin-practice",
       "stroke-order-practice",
       "classical-poem-copying",
+      "hsk-3-campus-life",
+      "hsk-3-health",
+      "hsk-3-shopping-money",
+      "hsk-3-technology",
+      "hsk-3-exams-grades",
+      "hsk-3-apartment-home",
+      "hsk-3-office-teamwork",
+      "top-100-chinese-characters",
+      "blank-tianzige-grid",
+      "chinese-first-characters",
     ].filter((slug) =>
       worksheetTemplates.some((template) => template.slug === slug),
     ),
@@ -77,6 +87,16 @@ test("the curated library contains complete classroom-ready templates", () => {
       "pinyin-practice",
       "stroke-order-practice",
       "classical-poem-copying",
+      "hsk-3-campus-life",
+      "hsk-3-health",
+      "hsk-3-shopping-money",
+      "hsk-3-technology",
+      "hsk-3-exams-grades",
+      "hsk-3-apartment-home",
+      "hsk-3-office-teamwork",
+      "top-100-chinese-characters",
+      "blank-tianzige-grid",
+      "chinese-first-characters",
     ],
   );
 });
