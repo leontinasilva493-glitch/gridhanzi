@@ -33,6 +33,9 @@ export interface WorksheetTemplate {
   slug: string;
   recommendedProfile: Extract<WorksheetProfile, "kids" | "adult">;
   title: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  h1?: string;
   chineseTitle: string;
   description: string;
   learningGoal: string;

@@ -6,6 +6,49 @@ import * as templateTools from "./templates";
 
 const { filterWorksheetTemplates } = templateTools;
 
+const mvpTemplateSeoExpectations = {
+  "hsk-3-campus-life": {
+    seoTitle: "HSK 3 Campus Life Chinese Worksheet",
+    h1: "HSK 3 Campus Life Chinese Worksheet",
+  },
+  "hsk-3-health": {
+    seoTitle: "HSK 3 Health Chinese Writing Practice",
+    h1: "HSK 3 Health Chinese Writing Practice",
+  },
+  "hsk-3-shopping-money": {
+    seoTitle: "HSK 3 Shopping and Money Worksheet",
+    h1: "HSK 3 Shopping and Money Worksheet",
+  },
+  "hsk-3-technology": {
+    seoTitle: "HSK 3 Technology Chinese Worksheet",
+    h1: "HSK 3 Technology Chinese Worksheet",
+  },
+  "hsk-3-exams-grades": {
+    seoTitle: "HSK 3 Exam and Grade Writing Worksheet",
+    h1: "HSK 3 Exam and Grade Writing Worksheet",
+  },
+  "hsk-3-apartment-home": {
+    seoTitle: "HSK 3 Home and Apartment Worksheet",
+    h1: "HSK 3 Home and Apartment Worksheet",
+  },
+  "hsk-3-office-teamwork": {
+    seoTitle: "HSK 3 Workplace Chinese Worksheet",
+    h1: "HSK 3 Workplace Chinese Worksheet",
+  },
+  "top-100-chinese-characters": {
+    seoTitle: "Top 100 Chinese Characters Writing Practice",
+    h1: "Top 100 Chinese Characters Writing Practice",
+  },
+  "blank-tianzige-grid": {
+    seoTitle: "Printable Tian Zi Ge Paper Generator",
+    h1: "Printable Tian Zi Ge Practice Paper",
+  },
+  "chinese-first-characters": {
+    seoTitle: "First Chinese Characters Worksheet",
+    h1: "First Chinese Characters Worksheet",
+  },
+} as const;
+
 test("the curated library contains complete classroom-ready templates", () => {
   assert.ok(worksheetTemplates.length >= 37);
   assert.equal(
@@ -99,6 +142,37 @@ test("the curated library contains complete classroom-ready templates", () => {
       "chinese-first-characters",
     ],
   );
+});
+
+test("MVP validation templates have vertical keyword TDH overrides", () => {
+  const seoTitles = new Set<string>();
+  const headings = new Set<string>();
+
+  for (const [slug, expected] of Object.entries(mvpTemplateSeoExpectations)) {
+    const template = worksheetTemplates.find((item) => item.slug === slug);
+    assert.ok(template, slug);
+    assert.equal(template.seoTitle, expected.seoTitle, slug);
+    assert.equal(template.h1, expected.h1, slug);
+    assert.notEqual(
+      template.seoTitle,
+      `${template.title} Chinese Writing Worksheet`,
+      `${slug} should not use the fallback SEO title`,
+    );
+    assert.notEqual(
+      template.h1,
+      `${template.title} Chinese Writing Worksheet`,
+      `${slug} should not use the fallback H1`,
+    );
+    assert.ok(
+      template.seoDescription && template.seoDescription.length >= 90,
+      `${slug} needs a specific SEO description`,
+    );
+    seoTitles.add(template.seoTitle);
+    headings.add(template.h1);
+  }
+
+  assert.equal(seoTitles.size, Object.keys(mvpTemplateSeoExpectations).length);
+  assert.equal(headings.size, Object.keys(mvpTemplateSeoExpectations).length);
 });
 
 test("filterWorksheetTemplates filters by search, category, level, and age", () => {

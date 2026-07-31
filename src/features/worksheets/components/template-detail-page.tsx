@@ -12,6 +12,7 @@ import { WorksheetMiniature } from "./worksheet-miniature";
 export function TemplateDetailPage({ template }: { template: WorksheetTemplate }) {
   const siteUrl = envConfigs.app_url.replace(/\/$/, "");
   const canonicalUrl = `${siteUrl}/templates/${template.slug}`;
+  const pageHeading = template.h1 ?? `${template.title} Chinese Writing Worksheet`;
   const related = worksheetTemplates
     .filter((candidate) => candidate.slug !== template.slug)
     .sort((left, right) => Number(right.category === template.category) - Number(left.category === template.category))
@@ -24,7 +25,7 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
           {
             "@context": "https://schema.org",
             "@type": "LearningResource",
-            name: `${template.title} Chinese Writing Worksheet`,
+            name: pageHeading,
             description: template.description,
             url: canonicalUrl,
             learningResourceType: "Worksheet",
@@ -52,7 +53,7 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
               {
                 "@type": "ListItem",
                 position: 3,
-                name: `${template.title} Chinese Writing Worksheet`,
+                name: pageHeading,
                 item: canonicalUrl,
               },
             ],
@@ -73,7 +74,7 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
               Editable worksheet
             </span>
             <h1 className="hs-display mt-5 text-4xl font-bold leading-tight sm:text-5xl">
-              {template.title} Chinese Writing Worksheet
+              {pageHeading}
             </h1>
             <p className="mt-3 font-serif text-2xl text-[#b62822]">{template.chineseTitle}</p>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-[#4f5d71]">

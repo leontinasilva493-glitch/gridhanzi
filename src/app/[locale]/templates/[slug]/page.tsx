@@ -25,8 +25,10 @@ export async function generateMetadata({ params }: {
     `/templates/${template.slug}`,
     locale,
   );
-  const title = `${template.title} Chinese Writing Worksheet`;
-  const description = `${template.description} Open the word list in the worksheet generator, edit it, and download a printable PDF.`;
+  const title = template.seoTitle ?? `${template.title} Chinese Writing Worksheet`;
+  const description =
+    template.seoDescription ??
+    `${template.description} Open the word list in the worksheet generator, edit it, and download a printable PDF.`;
 
   return {
     ...pageSeo,
