@@ -21,14 +21,94 @@ test("primary navigation stays task-based and keeps a responsive worksheet CTA",
   const headerSource = shellSource.slice(0, shellSource.indexOf("export function HanziSiteFooter"));
 
   assert.match(navSource, /label: "Worksheet Maker"/);
-  assert.match(navSource, /label: "Templates"/);
-  assert.match(navSource, /label: "Stroke Order"/);
+  assert.match(headerSource, /label: "Templates"/);
+  assert.match(headerSource, /label: "Stroke Order"/);
   assert.doesNotMatch(navSource, /For Teachers/);
   assert.doesNotMatch(headerSource, /No sign-up required/);
   assert.ok(
     (headerSource.match(/Create Worksheet/g) ?? []).length >= 2,
     "desktop and mobile navigation should both expose the primary action",
   );
+});
+
+test("template navigation stays second-level and points to the category page anchors", async () => {
+  const shellSource = await projectFile(
+    "src/features/worksheets/components/site-shell.tsx",
+  );
+  const templateStart = shellSource.indexOf("const templateMenuLinks");
+  const templateEnd = shellSource.indexOf("] as const;", templateStart);
+  const templateSource = shellSource.slice(templateStart, templateEnd);
+
+  for (const [label, href] of [
+    ["All Templates", "/templates"],
+    ["Quick Start", "/templates#quick-start"],
+    ["HSK Worksheets", "/templates#hsk-worksheets"],
+    ["Writing Basics", "/templates#writing-basics"],
+    ["Everyday Words", "/templates#everyday-words"],
+  ]) {
+    assert.match(templateSource, new RegExp(`\\["${label}", "${href}"\\]`));
+  }
+
+  assert.doesNotMatch(templateSource, /First Characters/);
+  assert.doesNotMatch(templateSource, /Top 100 Characters/);
+  assert.doesNotMatch(templateSource, /HSK 3 Daily Life/);
+  assert.doesNotMatch(templateSource, /Basic Strokes/);
+});
+
+test("stroke order navigation stays compact and links to the tool plus basics", async () => {
+  const shellSource = await projectFile(
+    "src/features/worksheets/components/site-shell.tsx",
+  );
+  const strokeStart = shellSource.indexOf("const strokeOrderMenuLinks");
+  const strokeEnd = shellSource.indexOf("] as const;", strokeStart);
+  const strokeSource = shellSource.slice(strokeStart, strokeEnd);
+
+  assert.match(strokeSource, /\["Stroke Order Tool", "\/stroke-order"\]/);
+  assert.match(
+    strokeSource,
+    /\["Practice Sheets", "\/templates\/stroke-order-practice"\]/,
+  );
+  assert.match(strokeSource, /\["Basic Strokes", "\/templates\/basic-strokes"\]/);
+  assert.match(strokeSource, /\["Radicals", "\/templates\/radicals"\]/);
+});
+
+test("template category page carries the detailed third-level worksheet links", async () => {
+  const templatesPageSource = await projectFile(
+    "src/features/worksheets/components/templates-page.tsx",
+  );
+
+  for (const [title, id] of [
+    ["Quick Start", "quick-start"],
+    ["HSK Worksheets", "hsk-worksheets"],
+    ["Writing Basics", "writing-basics"],
+    ["Everyday Words", "everyday-words"],
+  ]) {
+    assert.match(templatesPageSource, new RegExp(`title: "${title}"`));
+    assert.match(templatesPageSource, new RegExp(`id: "${id}"`));
+  }
+
+  for (const slug of [
+    "chinese-first-characters",
+    "top-100-chinese-characters",
+    "top-200-chinese-characters",
+    "blank-tianzige-grid",
+    "blank-mi-zi-ge-grid",
+    "hsk-3-campus-life",
+    "hsk-3-exams-grades",
+    "hsk-4",
+    "hsk-5",
+    "basic-strokes",
+    "pinyin-practice",
+    "stroke-order-practice",
+    "family",
+    "chinese-numbers-1-100",
+    "chinese-measure-words",
+    "common-chinese-verbs",
+    "food-drinks",
+    "travel",
+  ]) {
+    assert.match(templatesPageSource, new RegExp(`"${slug}"`));
+  }
 });
 
 test("footer topic links open the matching template detail pages", async () => {

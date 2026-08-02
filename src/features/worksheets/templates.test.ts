@@ -47,10 +47,38 @@ const mvpTemplateSeoExpectations = {
     seoTitle: "First Chinese Characters Worksheet",
     h1: "First Chinese Characters Worksheet",
   },
+  "hsk-4": {
+    seoTitle: "HSK 4 Chinese Writing Worksheet",
+    h1: "HSK 4 Chinese Writing Worksheet",
+  },
+  "hsk-5": {
+    seoTitle: "HSK 5 Chinese Writing Worksheet",
+    h1: "HSK 5 Chinese Writing Worksheet",
+  },
+  "top-200-chinese-characters": {
+    seoTitle: "Top 200 Chinese Characters Writing Practice",
+    h1: "Top 200 Chinese Characters Writing Practice",
+  },
+  "blank-mi-zi-ge-grid": {
+    seoTitle: "Printable Mi Zi Ge Paper Generator",
+    h1: "Printable Mi Zi Ge Practice Paper",
+  },
+  "chinese-numbers-1-100": {
+    seoTitle: "Chinese Numbers 1-100 Writing Practice",
+    h1: "Chinese Numbers 1-100 Writing Practice",
+  },
+  "chinese-measure-words": {
+    seoTitle: "Chinese Measure Words Worksheet",
+    h1: "Chinese Measure Words Worksheet",
+  },
+  "common-chinese-verbs": {
+    seoTitle: "Common Chinese Verbs Worksheet",
+    h1: "Common Chinese Verbs Worksheet",
+  },
 } as const;
 
 test("the curated library contains complete classroom-ready templates", () => {
-  assert.ok(worksheetTemplates.length >= 37);
+  assert.ok(worksheetTemplates.length >= 44);
   assert.equal(
     new Set(worksheetTemplates.map((template) => template.slug)).size,
     worksheetTemplates.length,
@@ -119,6 +147,13 @@ test("the curated library contains complete classroom-ready templates", () => {
       "top-100-chinese-characters",
       "blank-tianzige-grid",
       "chinese-first-characters",
+      "hsk-4",
+      "hsk-5",
+      "top-200-chinese-characters",
+      "blank-mi-zi-ge-grid",
+      "chinese-numbers-1-100",
+      "chinese-measure-words",
+      "common-chinese-verbs",
     ].filter((slug) =>
       worksheetTemplates.some((template) => template.slug === slug),
     ),
@@ -140,6 +175,13 @@ test("the curated library contains complete classroom-ready templates", () => {
       "top-100-chinese-characters",
       "blank-tianzige-grid",
       "chinese-first-characters",
+      "hsk-4",
+      "hsk-5",
+      "top-200-chinese-characters",
+      "blank-mi-zi-ge-grid",
+      "chinese-numbers-1-100",
+      "chinese-measure-words",
+      "common-chinese-verbs",
     ],
   );
 });

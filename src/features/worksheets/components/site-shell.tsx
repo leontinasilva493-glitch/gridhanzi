@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Menu } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 
 import { Link } from "@/core/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -8,8 +8,34 @@ import { LocaleSwitch } from "./locale-switch";
 
 const navItems = [
   { href: "/generator", label: "Worksheet Maker", key: "generator" },
-  { href: "/templates", label: "Templates", key: "templates" },
-  { href: "/stroke-order", label: "Stroke Order", key: "stroke-order" },
+] as const;
+
+const templateMenuLinks = [
+  ["All Templates", "/templates"],
+  ["Quick Start", "/templates#quick-start"],
+  ["HSK Worksheets", "/templates#hsk-worksheets"],
+  ["Writing Basics", "/templates#writing-basics"],
+  ["Everyday Words", "/templates#everyday-words"],
+] as const;
+
+const strokeOrderMenuLinks = [
+  ["Stroke Order Tool", "/stroke-order"],
+  ["Practice Sheets", "/templates/stroke-order-practice"],
+  ["Basic Strokes", "/templates/basic-strokes"],
+  ["Radicals", "/templates/radicals"],
+] as const;
+
+const navMenus = [
+  {
+    label: "Templates",
+    key: "templates",
+    links: templateMenuLinks,
+  },
+  {
+    label: "Stroke Order",
+    key: "stroke-order",
+    links: strokeOrderMenuLinks,
+  },
 ] as const;
 
 export function HanziSiteHeader({ active }: { active?: string }) {
@@ -44,6 +70,9 @@ export function HanziSiteHeader({ active }: { active?: string }) {
               {item.label}
             </Link>
           ))}
+          {navMenus.map((menu) => (
+            <DesktopNavMenu key={menu.key} menu={menu} active={active} />
+          ))}
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
@@ -76,6 +105,9 @@ export function HanziSiteHeader({ active }: { active?: string }) {
                   {item.label}
                 </Link>
               ))}
+              {navMenus.map((menu) => (
+                <MobileNavMenu key={menu.key} menu={menu} />
+              ))}
               {active !== "generator" ? (
                 <div className="border-t border-[#ded7ca] p-2">
                   <Link href="/generator" className="hs-primary-button w-full text-sm">
@@ -91,6 +123,66 @@ export function HanziSiteHeader({ active }: { active?: string }) {
         </div>
       </div>
     </header>
+  );
+}
+
+function DesktopNavMenu({
+  menu,
+  active,
+}: {
+  menu: (typeof navMenus)[number];
+  active?: string;
+}) {
+  return (
+    <details className="group relative flex">
+      <summary
+        className={cn(
+          "relative flex cursor-pointer list-none items-center gap-1 px-5 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822] [&::-webkit-details-marker]:hidden",
+          active === menu.key &&
+            "text-[#b62822] after:absolute after:inset-x-5 after:bottom-0 after:h-0.5 after:bg-[#b62822]",
+        )}
+      >
+        {menu.label}
+        <ChevronDown className="size-4" aria-hidden="true" />
+      </summary>
+      <div
+        className={cn(
+          "hs-card absolute left-0 top-full z-50 w-64 overflow-hidden p-2 shadow-xl",
+        )}
+      >
+        {menu.links.map(([label, href]) => (
+          <Link
+            key={href}
+            href={href}
+            className="block rounded px-3 py-2.5 text-sm font-medium text-[#17253c] hover:bg-[#f7f1e7] hover:text-[#b62822]"
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
+    </details>
+  );
+}
+
+function MobileNavMenu({ menu }: { menu: (typeof navMenus)[number] }) {
+  return (
+    <details className="border-t border-[#ded7ca] first:border-t-0">
+      <summary className="flex cursor-pointer list-none items-center justify-between rounded px-3 py-2.5 text-sm font-medium text-[#17253c] hover:bg-[#f7f1e7] [&::-webkit-details-marker]:hidden">
+        {menu.label}
+        <ChevronDown className="size-4" aria-hidden="true" />
+      </summary>
+      <div className="grid gap-0.5 px-3 pb-3">
+        {menu.links.map(([label, href]) => (
+          <Link
+            key={href}
+            href={href}
+            className="block rounded py-1.5 pl-2 text-sm text-[#17253c] hover:bg-[#f7f1e7]"
+          >
+            {label}
+          </Link>
+        ))}
+      </div>
+    </details>
   );
 }
 
