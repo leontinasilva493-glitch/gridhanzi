@@ -81,6 +81,15 @@ test("the curated library contains complete classroom-ready templates", () => {
   );
 });
 
+test("template names do not repeat Chinese in generated worksheet titles", () => {
+  assert.deepEqual(
+    ["travel", "shopping", "restaurant"].map(
+      (slug) => worksheetTemplates.find((template) => template.slug === slug)?.title,
+    ),
+    ["Travel", "Shopping", "Restaurant"],
+  );
+});
+
 test("filterWorksheetTemplates filters by search, category, level, and age", () => {
   assert.deepEqual(
     filterWorksheetTemplates(worksheetTemplates, {

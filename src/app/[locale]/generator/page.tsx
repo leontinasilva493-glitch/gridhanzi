@@ -10,26 +10,81 @@ import {
 } from "@/features/worksheets/engine";
 import { parseWorksheetProfile } from "@/features/worksheets/profiles";
 import type { WorksheetDifficulty } from "@/features/worksheets/types";
+import { isChineseLocale } from "@/features/worksheets/i18n";
 import { envConfigs } from "@/config";
 import { buildPageSeoMetadata, toAbsoluteUrl } from "@/features/worksheets/seo";
+
+const englishGeneratorCopy = {
+  title: "Chinese Worksheet Generator",
+  description:
+    "Review bilingual vocabulary, choose tracing or writing grids, preview the result, and print a Chinese character practice sheet.",
+  applicationName: "GridHanzi Chinese Worksheet Generator",
+  applicationDescription:
+    "Create printable Chinese worksheets from English or Chinese vocabulary with editable Hanzi, Pinyin, writing grids, stroke-order guidance, and PDF output.",
+  featureList: [
+    "Editable Hanzi, Pinyin, and English vocabulary rows",
+    "Tracing, handwriting practice, and recall test worksheet modes",
+    "Tian Zi Ge and Mi Zi Ge writing grids",
+    "Optional Pinyin and stroke-order guidance",
+    "A4, US Letter, and tablet PDF formats",
+  ],
+} as const;
+
+const chineseGeneratorCopy = {
+  title: "在线汉字字帖生成器",
+  description:
+    "输入中文或英文词汇，生成带汉字、拼音、描红格和空白练习格的可打印中文练习纸。",
+  applicationName: "GridHanzi 在线汉字字帖生成器",
+  applicationDescription:
+    "输入中文或英文词汇，生成可编辑的汉字、拼音、描红格、书写格、笔顺提示和 PDF 字帖。",
+  featureList: [
+    "编辑汉字、拼音和英文释义",
+    "描红、书写练习和默写测试模式",
+    "田字格和米字格",
+    "可选拼音和笔顺提示",
+    "A4、US Letter 和平板 PDF 格式",
+  ],
+} as const;
+
+function getGeneratorCopy(locale: string) {
+  return isChineseLocale(locale) ? chineseGeneratorCopy : englishGeneratorCopy;
+}
 
 export async function generateMetadata({ params }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const copy = getGeneratorCopy(locale);
+  const pageSeo = buildPageSeoMetadata(
+    envConfigs.app_url,
+    "/generator",
+    locale,
+    { chineseIndexable: true },
+  );
+
   return {
-    title: "Chinese Worksheet Generator",
-    description:
-      "Review bilingual vocabulary, choose tracing or writing grids, preview the result, and print a Chinese character practice sheet.",
-    ...buildPageSeoMetadata(envConfigs.app_url, "/generator", locale, {
-      chineseIndexable: true,
-    }),
+    ...pageSeo,
+    title: copy.title,
+    description: copy.description,
+    openGraph: {
+      ...pageSeo.openGraph,
+      title: copy.title,
+      description: copy.description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: copy.title,
+      description: copy.description,
+      images: [toAbsoluteUrl(envConfigs.app_url, "/og-gridhanzi.png")],
+    },
   };
 }
 
 export default async function GeneratorPage({
+  params,
   searchParams,
 }: {
+  params: Promise<{ locale: string }>;
   searchParams: Promise<{
     words?: string;
     template?: string;
@@ -39,13 +94,15 @@ export default async function GeneratorPage({
     auto?: string;
   }>;
 }) {
-  const params = await searchParams;
-  const template = getTemplateBySlug(params.template);
-  const templateEntries = params.template
-    ? cloneTemplateEntries(params.template)
+  const [{ locale }, query] = await Promise.all([params, searchParams]);
+  const copy = getGeneratorCopy(locale);
+  const chinese = isChineseLocale(locale);
+  const template = getTemplateBySlug(query.template);
+  const templateEntries = query.template
+    ? cloneTemplateEntries(query.template)
     : [];
-  const wordEntries = params.words
-    ? enrichVocabularyLocally(parseVocabularyInput(params.words))
+  const wordEntries = query.words
+    ? enrichVocabularyLocally(parseVocabularyInput(query.words))
     : [];
 
   return (
@@ -55,20 +112,17 @@ export default async function GeneratorPage({
           {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            name: "GridHanzi Chinese Worksheet Generator",
+            name: copy.applicationName,
             applicationCategory: "EducationalApplication",
             operatingSystem: "Any",
             isAccessibleForFree: true,
-            url: toAbsoluteUrl(envConfigs.app_url, "/generator"),
-            description:
-              "Create printable Chinese worksheets from English or Chinese vocabulary with editable Hanzi, Pinyin, writing grids, stroke-order guidance, and PDF output.",
-            featureList: [
-              "Editable Hanzi, Pinyin, and English vocabulary rows",
-              "Tracing, handwriting practice, and recall test worksheet modes",
-              "Tian Zi Ge and Mi Zi Ge writing grids",
-              "Optional Pinyin and stroke-order guidance",
-              "A4, US Letter, and tablet PDF formats",
-            ],
+            url: toAbsoluteUrl(
+              envConfigs.app_url,
+              chinese ? "/zh/generator" : "/generator",
+            ),
+            description: copy.applicationDescription,
+            featureList: [...copy.featureList],
+            inLanguage: chinese ? "zh-Hans" : "en",
           },
           {
             "@context": "https://schema.org",
@@ -110,14 +164,14 @@ export default async function GeneratorPage({
               ? wordEntries
               : cloneTemplateEntries("family").slice(0, 4)
         }
-        initialMode={params.mode}
+        initialMode={query.mode}
         initialProfile={parseWorksheetProfile(
-          params.profile ?? template?.recommendedProfile,
+          query.profile ?? template?.recommendedProfile,
         )}
         initialDifficulty={
-          params.difficulty === "advanced" ? "advanced" : "beginner"
+          query.difficulty === "advanced" ? "advanced" : "beginner"
         }
-        autoEnrich={params.auto === "1" && wordEntries.length > 0}
+        autoEnrich={query.auto === "1" && wordEntries.length > 0}
         templateTitle={template?.title}
         templateChineseTitle={template?.chineseTitle}
       />

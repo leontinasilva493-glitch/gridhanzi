@@ -64,7 +64,7 @@ export function ForTeachersPage() {
             <div>
               <p className="hs-kicker">Chinese worksheets for teachers</p>
               <h1 className="hs-display mt-3 max-w-3xl text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.4rem]">
-                Make this week’s Chinese worksheet from your own word list.
+                Create Chinese worksheets for your class.
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-[#4f5d71]">
                 Paste vocabulary from a lesson plan or spreadsheet, check the

@@ -105,7 +105,7 @@ test("teacher landing page is public, specific, and limited to current features"
   ]);
 
   assert.match(routeSource, /Chinese Worksheets for Teachers/);
-  assert.match(componentSource, /Make this week.?s Chinese worksheet/);
+  assert.match(componentSource, /Create Chinese worksheets for your class/);
   assert.match(componentSource, /Learn, practise, and test/);
   assert.match(componentSource, /Classroom word lists/);
   assert.match(componentSource, /href="\/generator"/);
