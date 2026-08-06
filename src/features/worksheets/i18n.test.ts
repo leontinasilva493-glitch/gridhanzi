@@ -15,3 +15,10 @@ test("switchLocalePath adds and removes the optional Chinese prefix", () => {
   assert.equal(switchLocalePath("/zh", "en"), "/");
   assert.equal(switchLocalePath("/", "zh"), "/zh");
 });
+
+test("switchLocalePath removes internal default-locale prefixes", () => {
+  assert.equal(switchLocalePath("/en", "en"), "/");
+  assert.equal(switchLocalePath("/en", "zh"), "/zh");
+  assert.equal(switchLocalePath("/en/generator", "en"), "/generator");
+  assert.equal(switchLocalePath("/en/generator", "zh"), "/zh/generator");
+});

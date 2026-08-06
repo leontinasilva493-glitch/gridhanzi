@@ -676,7 +676,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   {
     slug: "travel",
     recommendedProfile: "adult",
-    title: "Travel Chinese",
+    title: "Travel",
     chineseTitle: "旅行中文",
     description: "Practise the words needed for passports, tickets, hotels, luggage, directions, and arrival.",
     age: "Teens & Adults",
@@ -687,7 +687,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   {
     slug: "shopping",
     recommendedProfile: "adult",
-    title: "Shopping Chinese",
+    title: "Shopping",
     chineseTitle: "购物中文",
     description: "Practise prices, sizes, colours, clothes, and common words for paying in a shop.",
     age: "Teens & Adults",
@@ -698,7 +698,7 @@ const additionalTemplateDrafts: TemplateDraft[] = [
   {
     slug: "restaurant",
     recommendedProfile: "adult",
-    title: "Restaurant Chinese",
+    title: "Restaurant",
     chineseTitle: "餐厅中文",
     description: "Practise menu words, tableware, ordering food, and paying the bill in a restaurant.",
     age: "Teens & Adults",

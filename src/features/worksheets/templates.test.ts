@@ -217,6 +217,15 @@ test("MVP validation templates have vertical keyword TDH overrides", () => {
   assert.equal(headings.size, Object.keys(mvpTemplateSeoExpectations).length);
 });
 
+test("template names do not repeat Chinese in generated worksheet titles", () => {
+  assert.deepEqual(
+    ["travel", "shopping", "restaurant"].map(
+      (slug) => worksheetTemplates.find((template) => template.slug === slug)?.title,
+    ),
+    ["Travel", "Shopping", "Restaurant"],
+  );
+});
+
 test("filterWorksheetTemplates filters by search, category, level, and age", () => {
   assert.deepEqual(
     filterWorksheetTemplates(worksheetTemplates, {

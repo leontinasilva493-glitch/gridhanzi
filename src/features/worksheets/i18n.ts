@@ -8,8 +8,8 @@ export function localize(locale: string, english: string, chinese: string): stri
 
 export function switchLocalePath(pathname: string, target: "en" | "zh"): string {
   const normalized = pathname.startsWith("/") ? pathname : `/${pathname}`;
-  const withoutChinese = normalized.replace(/^\/zh(?=\/|$)/, "") || "/";
+  const withoutLocale = normalized.replace(/^\/(?:en|zh)(?=\/|$)/, "") || "/";
 
-  if (target === "en") return withoutChinese;
-  return withoutChinese === "/" ? "/zh" : `/zh${withoutChinese}`;
+  if (target === "en") return withoutLocale;
+  return withoutLocale === "/" ? "/zh" : `/zh${withoutLocale}`;
 }
