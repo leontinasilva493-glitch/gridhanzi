@@ -32,12 +32,13 @@ export function HomePage() {
         <section className="hs-container grid items-start gap-8 pb-12 pt-10 lg:grid-cols-[1.02fr_0.9fr] lg:pt-12">
           <div>
             <h1 className="hs-display max-w-3xl text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.55rem]">
-              Chinese Character Practice Sheet Generator
+              Free Chinese Character Worksheet Generator
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-8 text-[#435166]">
-              Create free, printable Chinese character practice sheets from your
-              own English or Chinese word list. Edit the Hanzi and Pinyin, choose
-              tracing or writing grids, then download a PDF—no sign-up required.
+              Create free, printable Chinese character worksheets from your own
+              English or Chinese word list. Edit the Hanzi and Pinyin, choose
+              Hanzi grid paper, tracing grids, or writing grids, then download
+              a PDF—no sign-up required.
             </p>
             <div className="mt-8">
               <HomeWorkbench />
@@ -284,8 +285,8 @@ export function HomePage() {
           <div className="hs-card mt-6 divide-y divide-[#ded7ca]">
             {[
               [
-                "What can I make with this Chinese writing worksheet generator?",
-                "This Chinese worksheet generator turns any English or Chinese vocabulary list into editable practice pages with Hanzi, Pinyin, tracing cells, blank writing grids, and optional stroke-order guidance.",
+                "What can I make with this Chinese character worksheet generator?",
+                "This Chinese worksheet generator turns any English or Chinese vocabulary list into editable practice pages with Hanzi, Pinyin, tracing cells, blank writing grids, Hanzi grid paper, and optional stroke-order guidance.",
               ],
               [
                 "Is the printable Chinese worksheet generator free?",
@@ -298,6 +299,10 @@ export function HomePage() {
               [
                 "Which paper sizes and writing profiles are supported?",
                 "Choose A4 or US Letter for printing, or a 3:4 digital worksheet for tablet apps. Kids, Adult, Tablet, and Brush profiles adjust the grid size and layout for different writing tools.",
+              ],
+              [
+                "Can I print Hanzi grid paper or Chinese character grids?",
+                "Yes. Use Tian Zi Ge or Mi Zi Ge settings to make printable Hanzi grid paper, then preview and save the Chinese character grid as a PDF.",
               ],
             ].map(([question, answer]) => (
               <details key={question} className="group px-5 py-4">

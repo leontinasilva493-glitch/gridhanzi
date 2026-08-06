@@ -15,16 +15,17 @@ import { envConfigs } from "@/config";
 import { buildPageSeoMetadata, toAbsoluteUrl } from "@/features/worksheets/seo";
 
 const englishGeneratorCopy = {
-  title: "Chinese Worksheet Generator",
+  title: "Chinese Worksheet Generator: Free Mandarin Practice Sheets",
   description:
-    "Review bilingual vocabulary, choose tracing or writing grids, preview the result, and print a Chinese character practice sheet.",
+    "Make free Mandarin practice sheets with editable Hanzi, Pinyin, tracing, Chinese writing grids, Hanzi grid paper, and printable PDF output.",
   applicationName: "GridHanzi Chinese Worksheet Generator",
   applicationDescription:
-    "Create printable Chinese worksheets from English or Chinese vocabulary with editable Hanzi, Pinyin, writing grids, stroke-order guidance, and PDF output.",
+    "Create printable Mandarin and Chinese worksheets from English or Chinese vocabulary with editable Hanzi, Pinyin, writing grids, Hanzi grid paper, stroke-order guidance, and PDF output.",
   featureList: [
     "Editable Hanzi, Pinyin, and English vocabulary rows",
     "Tracing, handwriting practice, and recall test worksheet modes",
     "Tian Zi Ge and Mi Zi Ge writing grids",
+    "Printable Hanzi grid paper and Chinese character grids",
     "Optional Pinyin and stroke-order guidance",
     "A4, US Letter, and tablet PDF formats",
   ],
@@ -133,7 +134,7 @@ export default async function GeneratorPage({
                 name: "What does the Chinese worksheet generator create?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "It creates editable Chinese writing worksheets with Hanzi, Pinyin, English meanings, tracing grids, blank writing cells, optional stroke-order guidance, and PDF output.",
+                  text: "It creates editable Mandarin and Chinese writing worksheets with Hanzi, Pinyin, English meanings, tracing grids, blank writing cells, Hanzi grid paper, optional stroke-order guidance, and PDF output.",
                 },
               },
               {
@@ -150,6 +151,14 @@ export default async function GeneratorPage({
                 acceptedAnswer: {
                   "@type": "Answer",
                   text: "Yes. You can show stroke-order guidance on worksheet rows and use the separate stroke-order tool to check a character before printing.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can I make Mandarin practice sheets and Hanzi grid paper?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. The generator works as a Mandarin worksheet generator and lets you print Tian Zi Ge or Mi Zi Ge Hanzi grid paper for Chinese character practice.",
                 },
               },
             ],

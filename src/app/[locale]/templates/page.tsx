@@ -11,9 +11,9 @@ export async function generateMetadata({ params }: {
 }): Promise<Metadata> {
   const { locale } = await params;
   return {
-    title: "Printable Chinese Writing Worksheets",
+    title: "Printable Chinese Writing Worksheets & Hanzi Grid Paper",
     description:
-      "Browse printable Chinese writing worksheets by topic, age, or HSK level, then edit the word list and grid.",
+      "Browse printable Chinese writing worksheets, Hanzi grid paper, Tian Zi Ge, Mi Zi Ge, topic word lists, and HSK practice sheets, then edit and print.",
     ...buildPageSeoMetadata(envConfigs.app_url, "/templates", locale),
   };
 }
