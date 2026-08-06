@@ -16,21 +16,21 @@ test("homepage distributes worksheet search terms across useful copy", async () 
 
   assert.match(
     homeSource,
-    /Chinese Character Practice Sheet Generator/,
+    /Free Chinese Character Worksheet Generator/,
   );
   assert.match(
     homeSource,
-    /Create free, printable Chinese character practice sheets from your\s*own English or Chinese word list\. Edit the Hanzi and Pinyin, choose\s*tracing or writing grids, then download a PDF—no sign-up required\./,
+    /Create free, printable Chinese character worksheets from your own\s*English or Chinese word list\. Edit the Hanzi and Pinyin, choose\s*Hanzi grid paper, tracing grids, or writing grids/,
   );
   assert.match(
     homePageSource,
-    /Create free, printable worksheets with this Chinese character practice sheet generator\. Add editable Hanzi, Pinyin, tracing and writing grids, then download a PDF\./,
+    /Create free, printable Chinese character worksheets\. Add editable Hanzi, Pinyin, tracing, writing grids, and Hanzi grid paper, then download a PDF\./,
   );
   assert.match(
     homeSource,
-    /What can I make with this Chinese writing worksheet generator\?/,
+    /What can I make with this Chinese character worksheet generator\?/,
   );
-  assert.match(homeSource, /This Chinese worksheet generator turns any English or Chinese vocabulary list/);
+  assert.match(homeSource, /Hanzi grid paper/);
   assert.match(homeSource, /Is the printable Chinese worksheet generator free\?/);
   assert.match(
     homeSource,
@@ -39,7 +39,7 @@ test("homepage distributes worksheet search terms across useful copy", async () 
   assert.match(homePageSource, /"@type": "FAQPage"/);
   assert.match(
     homePageSource,
-    /What can I make with this Chinese writing worksheet generator\?/,
+    /What can I make with this Chinese character worksheet generator\?/,
   );
   assert.match(homePageSource, /Is the printable Chinese worksheet generator free\?/);
   assert.match(
@@ -56,7 +56,7 @@ test("homepage distributes worksheet search terms across useful copy", async () 
     `${homeSource}\n${shellSource}`,
     /teacher-ready|classroom-ready|Perfect for bilingual families|\bMVP\b|Made to\s+edit/i,
   );
-  assert.match(homePageSource, /Chinese Character Practice Sheet Generator/);
+  assert.match(homePageSource, /Chinese Character Worksheet Generator - Free Practice Sheets/);
 });
 
 test("generator and print messages describe user results instead of implementation", async () => {
@@ -107,7 +107,7 @@ test("template pages use concrete teaching copy and distinct descriptions", asyn
 
   assert.match(
     templatesSource,
-    /Choose an editable word list, then change the words, grid, and paper size\./,
+    /Choose an editable word list, Tian Zi Ge paper, Mi Zi Ge paper, or\s*printable Hanzi grid template/,
   );
   assert.match(detailSource, /Editable worksheet/);
   assert.match(detailSource, /What students practise/);
@@ -155,9 +155,9 @@ test("SEO anchors remain while stroke-order guidance stays direct", async () => 
     projectFile("src/features/worksheets/components/stroke-order-client.tsx"),
   ]);
 
-  assert.match(homePageSource, /Chinese Character Practice Sheet Generator/);
-  assert.match(generatorPageSource, /Chinese Worksheet Generator/);
-  assert.match(templatesPageSource, /Printable Chinese Writing Worksheets/);
+  assert.match(homePageSource, /Chinese Character Worksheet Generator - Free Practice Sheets/);
+  assert.match(generatorPageSource, /Chinese Worksheet Generator: Free Mandarin Practice Sheets/);
+  assert.match(templatesPageSource, /Printable Chinese Writing Worksheets & Hanzi Grid Paper/);
   assert.match(strokePageSource, /Chinese Stroke Order/);
   assert.doesNotMatch(`${layoutSource}\n${homePageSource}`, /real stroke order/i);
   assert.match(strokeClientSource, /Watch the full animation once\./);

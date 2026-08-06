@@ -24,7 +24,7 @@ const templateDirectoryGroups: TemplateDirectoryGroup[] = [
   {
     id: "quick-start",
     title: "Quick Start",
-    description: "Simple printable sheets for a first lesson or a fast worksheet.",
+    description: "Simple printable worksheets, Hanzi grid paper, and blank Chinese character grids.",
     slugs: [
       "chinese-first-characters",
       "top-100-chinese-characters",
@@ -138,7 +138,9 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
             Printable Chinese Writing Worksheets
           </h1>
           <p className="mt-3 max-w-3xl text-lg text-[#566276]">
-            Choose an editable word list, then change the words, grid, and paper size.
+            Choose an editable word list, Tian Zi Ge paper, Mi Zi Ge paper, or
+            printable Hanzi grid template, then change the words, grid, and
+            paper size.
           </p>
         </header>
 
@@ -156,9 +158,10 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
             </h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]">
               Start from printable Chinese writing practice sheets for family,
-              numbers, colors, HSK, school, travel, and everyday topics. Each
-              template opens as an editable word list, so you can change the
-              Hanzi, Pinyin, grid, paper size, and PDF layout before printing.
+              numbers, colors, HSK, school, travel, everyday topics, Tian Zi Ge
+              paper, and Mi Zi Ge Hanzi grid paper. Each template opens as an
+              editable word list, so you can change the Hanzi, Pinyin, grid,
+              paper size, and PDF layout before printing.
             </p>
           </div>
           <div className="flex flex-wrap items-start gap-3 lg:justify-end">

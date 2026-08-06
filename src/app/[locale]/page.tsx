@@ -13,9 +13,9 @@ export async function generateMetadata({ params }: {
 }): Promise<Metadata> {
   const { locale } = await params;
   return {
-    title: "Chinese Character Practice Sheet Generator",
+    title: "Chinese Character Worksheet Generator - Free Practice Sheets",
     description:
-      "Create free, printable worksheets with this Chinese character practice sheet generator. Add editable Hanzi, Pinyin, tracing and writing grids, then download a PDF.",
+      "Create free, printable Chinese character worksheets. Add editable Hanzi, Pinyin, tracing, writing grids, and Hanzi grid paper, then download a PDF.",
     ...buildPageSeoMetadata(envConfigs.app_url, "/", locale),
   };
 }
@@ -48,7 +48,7 @@ export default function Page() {
             isAccessibleForFree: true,
             url: envConfigs.app_url,
             description:
-              "Create printable Chinese writing worksheets from any English or Chinese vocabulary list with editable Hanzi, Pinyin, tracing, and writing grids.",
+              "Create printable Chinese character worksheets from any English or Chinese vocabulary list with editable Hanzi, Pinyin, tracing, writing grids, and Hanzi grid paper.",
           },
           {
             "@context": "https://schema.org",
@@ -56,10 +56,10 @@ export default function Page() {
             mainEntity: [
               {
                 "@type": "Question",
-                name: "What can I make with this Chinese writing worksheet generator?",
+                name: "What can I make with this Chinese character worksheet generator?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "This Chinese worksheet generator turns any English or Chinese vocabulary list into editable practice pages with Hanzi, Pinyin, tracing cells, blank writing grids, and optional stroke-order guidance.",
+                  text: "This Chinese worksheet generator turns any English or Chinese vocabulary list into editable practice pages with Hanzi, Pinyin, tracing cells, blank writing grids, Hanzi grid paper, and optional stroke-order guidance.",
                 },
               },
               {
@@ -84,6 +84,14 @@ export default function Page() {
                 acceptedAnswer: {
                   "@type": "Answer",
                   text: "Choose A4 or US Letter for printing, or a 3:4 digital worksheet for tablet apps. Kids, Adult, Tablet, and Brush profiles adjust the grid size and layout for different writing tools.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Can I print Hanzi grid paper or Chinese character grids?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Yes. Use Tian Zi Ge or Mi Zi Ge settings to make printable Hanzi grid paper, then preview and save the Chinese character grid as a PDF.",
                 },
               },
             ],

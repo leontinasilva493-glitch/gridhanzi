@@ -533,7 +533,7 @@ function GeneratorSupportSections() {
           </SupportCard>
           <SupportCard title="Choose writing settings">
             Set the grid, cell size, Pinyin, stroke-order guidance, paper size,
-            and practice mode for the worksheet.
+            and practice mode for a Mandarin worksheet or Hanzi grid paper.
           </SupportCard>
           <SupportCard title="Preview and print">
             Check the live preview, open the full print page, then save a PDF or
@@ -552,7 +552,7 @@ function GeneratorSupportSections() {
         </h2>
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            "Tian Zi Ge and Mi Zi Ge writing grids",
+            "Tian Zi Ge and Mi Zi Ge Hanzi grid paper",
             "Tracing, handwriting practice, and recall test modes",
             "Optional Pinyin and stroke-order guidance",
             "A4, US Letter, and tablet PDF formats",
@@ -611,7 +611,7 @@ function GeneratorSupportSections() {
           {[
             [
               "What does the Chinese worksheet generator create?",
-              "It creates editable Chinese writing worksheets with Hanzi, Pinyin, English meanings, tracing grids, blank writing cells, optional stroke-order guidance, and PDF output.",
+              "It creates editable Mandarin and Chinese writing worksheets with Hanzi, Pinyin, English meanings, tracing grids, blank writing cells, Hanzi grid paper, optional stroke-order guidance, and PDF output.",
             ],
             [
               "Can I paste English words into the worksheet generator?",
@@ -620,6 +620,10 @@ function GeneratorSupportSections() {
             [
               "Does the worksheet generator include stroke order?",
               "Yes. You can show stroke-order guidance on worksheet rows and use the stroke-order tool to check a character before printing.",
+            ],
+            [
+              "Can I make Mandarin practice sheets and Hanzi grid paper?",
+              "Yes. The generator works as a Mandarin worksheet generator and lets you print Tian Zi Ge or Mi Zi Ge Hanzi grid paper for Chinese character practice.",
             ],
           ].map(([question, answer]) => (
             <details key={question} className="group px-5 py-4">

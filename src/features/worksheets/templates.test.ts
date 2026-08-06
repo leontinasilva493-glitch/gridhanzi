@@ -40,8 +40,8 @@ const mvpTemplateSeoExpectations = {
     h1: "Top 100 Chinese Characters Writing Practice",
   },
   "blank-tianzige-grid": {
-    seoTitle: "Printable Tian Zi Ge Paper Generator",
-    h1: "Printable Tian Zi Ge Practice Paper",
+    seoTitle: "Printable Chinese Character Grid - Tian Zi Ge",
+    h1: "Printable Chinese Character Grid - Tian Zi Ge",
   },
   "chinese-first-characters": {
     seoTitle: "First Chinese Characters Worksheet",
@@ -60,8 +60,8 @@ const mvpTemplateSeoExpectations = {
     h1: "Top 200 Chinese Characters Writing Practice",
   },
   "blank-mi-zi-ge-grid": {
-    seoTitle: "Printable Mi Zi Ge Paper Generator",
-    h1: "Printable Mi Zi Ge Practice Paper",
+    seoTitle: "Printable Hanzi Grid Paper - Mi Zi Ge",
+    h1: "Printable Hanzi Grid Paper - Mi Zi Ge",
   },
   "chinese-numbers-1-100": {
     seoTitle: "Chinese Numbers 1-100 Writing Practice",
