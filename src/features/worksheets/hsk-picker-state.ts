@@ -33,6 +33,13 @@ type ParseHskPickerStateOptions = {
   fallbackState?: Partial<HskPickerState>;
 };
 
+type ResolveInitialHskPickerStateOptions = ParseHskPickerStateOptions & {
+  persistedRaw: string | null;
+  hasExplicitSelection: boolean;
+  initialSystem?: HskSystem;
+  initialLevel?: HskLevel;
+};
+
 function isRecord(value: unknown): value is UnknownRecord {
   return typeof value === "object" && value !== null;
 }
@@ -116,4 +123,21 @@ export function parseHskPickerState(
   } catch {
     return fallback;
   }
+}
+
+export function resolveInitialHskPickerState(
+  options: ResolveInitialHskPickerStateOptions,
+): HskPickerState {
+  if (options.hasExplicitSelection) {
+    return createHskPickerState({
+      system: options.initialSystem,
+      level: options.initialLevel,
+    });
+  }
+
+  return parseHskPickerState(options.persistedRaw, {
+    validIds: options.validIds,
+    validThemes: options.validThemes,
+    fallbackState: options.fallbackState,
+  });
 }

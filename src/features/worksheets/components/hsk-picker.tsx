@@ -19,6 +19,7 @@ import {
   createHskPickerState,
   getHskLevels,
   parseHskPickerState,
+  resolveInitialHskPickerState,
   type HskPickerState,
 } from "../hsk-picker-state";
 import { localize } from "../i18n";
@@ -53,18 +54,20 @@ export function HskPicker({
   settings,
   initialSystem,
   initialLevel,
+  openOnMount = false,
   onAddEntries,
 }: {
   currentEntries: WorksheetEntry[];
   settings: WorksheetSettings;
   initialSystem?: HskSystem;
   initialLevel?: HskLevel;
+  openOnMount?: boolean;
   onAddEntries: (entries: WorksheetEntry[]) => void;
 }) {
   const locale = useLocale();
   const t = (english: string, chinese: string) => localize(locale, english, chinese);
   const fallbackState = buildInitialState(initialSystem, initialLevel);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(openOnMount);
   const [loadState, setLoadState] = useState<"idle" | "loading" | "ready" | "error">(
     "idle",
   );
@@ -72,10 +75,13 @@ export function HskPicker({
   const [catalogRuntime, setCatalogRuntime] = useState<HskRuntime | null>(null);
   const [state, setState] = useState<HskPickerState>(() => {
     if (typeof window === "undefined") return fallbackState;
-    return parseHskPickerState(
-      window.localStorage.getItem(HSK_PICKER_STORAGE_KEY),
-      { fallbackState },
-    );
+    return resolveInitialHskPickerState({
+      persistedRaw: window.localStorage.getItem(HSK_PICKER_STORAGE_KEY),
+      hasExplicitSelection: openOnMount,
+      initialSystem,
+      initialLevel,
+      fallbackState,
+    });
   });
 
   useEffect(() => {
@@ -115,6 +121,13 @@ export function HskPicker({
       );
     }
   }
+
+  useEffect(() => {
+    if (openOnMount) {
+      setIsOpen(true);
+      void ensureCatalogLoaded();
+    }
+  }, [openOnMount]);
 
   const catalogEntriesById = useMemo(() => {
     if (!catalogRuntime) return new Map<string, HskCatalogEntry>();

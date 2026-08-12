@@ -69,6 +69,7 @@ export function GeneratorClient({
   templateChineseTitle,
   initialHskSystem,
   initialHskLevel,
+  hasInitialHskSelection = false,
 }: {
   initialEntries: WorksheetEntry[];
   initialMode?: WorksheetMode;
@@ -82,6 +83,7 @@ export function GeneratorClient({
   templateChineseTitle?: string;
   initialHskSystem?: HskSystem;
   initialHskLevel?: HskLevel;
+  hasInitialHskSelection?: boolean;
 }) {
   const router = useRouter();
   const locale = useLocale();
@@ -438,6 +440,7 @@ export function GeneratorClient({
                 settings={settings}
                 initialSystem={initialHskSystem}
                 initialLevel={initialHskLevel}
+                openOnMount={hasInitialHskSelection}
                 onAddEntries={addHskEntries}
               />
             </div>

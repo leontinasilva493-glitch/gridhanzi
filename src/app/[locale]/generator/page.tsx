@@ -75,6 +75,24 @@ export function parseGeneratorHskSelection(query: {
   return DEFAULT_HSK_SELECTION;
 }
 
+export function parseGeneratorHskQuery(query: {
+  hskSystem?: string;
+  hskLevel?: string;
+}):
+  | { hasExplicitSelection: false }
+  | { hasExplicitSelection: true; system: HskSystem; level: HskLevel } {
+  if (!query.hskSystem && !query.hskLevel) {
+    return { hasExplicitSelection: false };
+  }
+
+  const selection = parseGeneratorHskSelection(query);
+  return {
+    hasExplicitSelection: true,
+    system: selection.system,
+    level: selection.level,
+  };
+}
+
 export async function generateMetadata({ params }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
@@ -124,7 +142,7 @@ export default async function GeneratorPage({
   const [{ locale }, query] = await Promise.all([params, searchParams]);
   const copy = getGeneratorCopy(locale);
   const chinese = isChineseLocale(locale);
-  const initialHskSelection = parseGeneratorHskSelection(query);
+  const initialHskQuery = parseGeneratorHskQuery(query);
   const template = getTemplateBySlug(query.template);
   const templateEntries = query.template
     ? cloneTemplateEntries(query.template)
@@ -210,8 +228,13 @@ export default async function GeneratorPage({
         autoEnrich={query.auto === "1" && wordEntries.length > 0}
         templateTitle={template?.title}
         templateChineseTitle={template?.chineseTitle}
-        initialHskSystem={initialHskSelection.system}
-        initialHskLevel={initialHskSelection.level}
+        initialHskSystem={
+          initialHskQuery.hasExplicitSelection ? initialHskQuery.system : undefined
+        }
+        initialHskLevel={
+          initialHskQuery.hasExplicitSelection ? initialHskQuery.level : undefined
+        }
+        hasInitialHskSelection={initialHskQuery.hasExplicitSelection}
       />
     </>
   );

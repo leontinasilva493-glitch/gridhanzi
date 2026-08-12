@@ -201,36 +201,45 @@ test("teacher landing page is public, specific, and limited to current features"
   assert.ok(buildPublicSitemapPaths().includes("/for-teachers"));
 });
 
-test("generator HSK query parser keeps valid values and falls back safely", async () => {
+test("generator HSK query parser keeps valid values, falls back safely, and only marks explicit URLs", async () => {
   const moduleUrl = pathToFileURL(
     projectPath("src/app/[locale]/generator/page.tsx"),
   ).href;
-  const { parseGeneratorHskSelection } = (await import(moduleUrl)) as {
-    parseGeneratorHskSelection: (query: {
+  const { parseGeneratorHskQuery } = (await import(moduleUrl)) as {
+    parseGeneratorHskQuery: (query: {
       hskSystem?: string;
       hskLevel?: string;
-    }) => { system: "2.0" | "3.0"; level: "1" | "2" | "3" | "4" | "5" | "6" | "7-9" };
+    }) => {
+      hasExplicitSelection: boolean;
+      system?: "2.0" | "3.0";
+      level?: "1" | "2" | "3" | "4" | "5" | "6" | "7-9";
+    };
   };
 
   assert.deepEqual(
-    parseGeneratorHskSelection({ hskSystem: "2.0", hskLevel: "6" }),
-    { system: "2.0", level: "6" },
+    parseGeneratorHskQuery({ hskSystem: "2.0", hskLevel: "6" }),
+    { hasExplicitSelection: true, system: "2.0", level: "6" },
   );
   assert.deepEqual(
-    parseGeneratorHskSelection({ hskSystem: "3.0", hskLevel: "7-9" }),
-    { system: "3.0", level: "7-9" },
+    parseGeneratorHskQuery({ hskSystem: "3.0", hskLevel: "7-9" }),
+    { hasExplicitSelection: true, system: "3.0", level: "7-9" },
   );
   assert.deepEqual(
-    parseGeneratorHskSelection({ hskSystem: "3.0", hskLevel: "9" }),
-    { system: "2.0", level: "1" },
+    parseGeneratorHskQuery({ hskSystem: "3.0", hskLevel: "9" }),
+    { hasExplicitSelection: true, system: "2.0", level: "1" },
   );
   assert.deepEqual(
-    parseGeneratorHskSelection({ hskSystem: "2.0", hskLevel: "7-9" }),
-    { system: "2.0", level: "1" },
+    parseGeneratorHskQuery({ hskSystem: "2.0", hskLevel: "7-9" }),
+    { hasExplicitSelection: true, system: "2.0", level: "1" },
   );
   assert.deepEqual(
-    parseGeneratorHskSelection({ hskSystem: "4.0", hskLevel: "2" }),
-    { system: "2.0", level: "1" },
+    parseGeneratorHskQuery({ hskSystem: "4.0", hskLevel: "2" }),
+    { hasExplicitSelection: true, system: "2.0", level: "1" },
   );
-  assert.deepEqual(parseGeneratorHskSelection({}), { system: "2.0", level: "1" });
+  assert.deepEqual(parseGeneratorHskQuery({ hskLevel: "5" }), {
+    hasExplicitSelection: true,
+    system: "2.0",
+    level: "1",
+  });
+  assert.deepEqual(parseGeneratorHskQuery({}), { hasExplicitSelection: false });
 });

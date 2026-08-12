@@ -4,6 +4,7 @@ import test from "node:test";
 import {
   createHskPickerState,
   parseHskPickerState,
+  resolveInitialHskPickerState,
 } from "./hsk-picker-state";
 
 test("round-trips a persisted HSK picker selection", () => {
@@ -59,4 +60,62 @@ test("switches invalid levels back to the first valid band for a system", () => 
   assert.equal(parsed.system, "2.0");
   assert.equal(parsed.level, "1");
   assert.equal(parsed.query, "family");
+});
+
+test("explicit HSK query state overrides persisted filters and selection", () => {
+  const persisted = JSON.stringify(
+    createHskPickerState({
+      system: "3.0",
+      level: "7-9",
+      query: "campus",
+      theme: "hsk-3-campus-life",
+      selectedIds: ["3.0:7-9:学习"],
+    }),
+  );
+
+  const resolved = resolveInitialHskPickerState({
+    persistedRaw: persisted,
+    hasExplicitSelection: true,
+    initialSystem: "2.0",
+    initialLevel: "4",
+  });
+
+  assert.deepEqual(
+    resolved,
+    createHskPickerState({
+      system: "2.0",
+      level: "4",
+      query: "",
+      theme: "",
+      selectedIds: [],
+    }),
+  );
+});
+
+test("persisted HSK state still loads when the generator URL has no explicit HSK query", () => {
+  const persisted = JSON.stringify(
+    createHskPickerState({
+      system: "3.0",
+      level: "6",
+      query: "health",
+      theme: "hsk-3-health",
+      selectedIds: ["3.0:6:健康"],
+    }),
+  );
+
+  const resolved = resolveInitialHskPickerState({
+    persistedRaw: persisted,
+    hasExplicitSelection: false,
+  });
+
+  assert.deepEqual(
+    resolved,
+    createHskPickerState({
+      system: "3.0",
+      level: "6",
+      query: "health",
+      theme: "hsk-3-health",
+      selectedIds: ["3.0:6:健康"],
+    }),
+  );
 });

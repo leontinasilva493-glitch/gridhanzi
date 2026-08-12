@@ -59,6 +59,9 @@ test("generator exposes a lazy-loaded HSK picker with version-aware copy", async
   assert.match(pickerSource, /Select filtered/);
   assert.match(pickerSource, /Add selected to worksheet/);
   assert.match(pickerStateSource, /gridhanzi:hsk-picker:v1/);
+  assert.match(generatorSource, /openOnMount=\{hasInitialHskSelection\}/);
+  assert.match(pickerSource, /resolveInitialHskPickerState/);
+  assert.match(pickerSource, /if \(openOnMount\) \{\s*setIsOpen\(true\);[\s\S]*void ensureCatalogLoaded\(\);/);
 });
 
 test("generator and preview expose flashcard output controls through a shared renderer", async () => {
