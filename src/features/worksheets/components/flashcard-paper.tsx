@@ -34,6 +34,7 @@ export function FlashcardPaper({
   const renderedPages =
     pages.length > 0 ? pages : [[] as WorksheetEntry[]];
   const columns = settings.flashcardsPerPage === 9 ? 3 : 2;
+  const rows = settings.flashcardsPerPage / columns;
 
   useEffect(() => {
     onPageCountChange?.(renderedPages.length);
@@ -77,37 +78,58 @@ export function FlashcardPaper({
               gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
             }}
           >
-            {pageEntries.map((entry, index) => (
-              <section
-                key={entry.id}
-                className="hs-flashcard-cut-line hs-flashcard-card"
-                aria-label={`Flashcard ${pageIndex * settings.flashcardsPerPage + index + 1} for ${entry.hanzi}`}
-              >
-                <div className="flex items-center justify-between gap-3 text-[0.66rem] font-semibold uppercase tracking-[0.12em] text-[#6e7684]">
-                  <span>Card</span>
-                  <span>
-                    #{pageIndex * settings.flashcardsPerPage + index + 1}
-                  </span>
-                </div>
-                <div className="mt-5 flex flex-1 items-center justify-center rounded border border-[#e4ded3] bg-[#fffdfa] px-4 py-4 text-center">
-                  <span className="hs-hanzi-context text-[3.2rem] leading-none text-[#15233a] sm:text-[3.8rem]">
-                    {entry.hanzi}
-                  </span>
-                </div>
-                <div className="mt-4 space-y-2 text-center">
-                  {settings.flashcardShowPinyin && entry.pinyin ? (
-                    <p className="text-[0.88rem] font-medium text-[#445469]">
-                      {entry.pinyin}
-                    </p>
+            {Array.from({ length: settings.flashcardsPerPage }, (_, slotIndex) => {
+              const slotEntry = pageEntries[slotIndex] ?? null;
+              const row = Math.floor(slotIndex / columns);
+              const column = slotIndex % columns;
+
+              return (
+                <section
+                  key={slotEntry?.id ?? `flashcards-${pageIndex}-empty-${slotIndex}`}
+                  className={cn(
+                    "hs-flashcard-cut-line hs-flashcard-card",
+                    slotEntry === null && "hs-flashcard-card-empty",
+                  )}
+                  aria-hidden={slotEntry === null}
+                  aria-label={
+                    slotEntry
+                      ? `Flashcard ${pageIndex * settings.flashcardsPerPage + slotIndex + 1} for ${slotEntry.hanzi}`
+                      : undefined
+                  }
+                  data-empty={String(slotEntry === null)}
+                  data-last-row={String(row === rows - 1)}
+                  data-last-col={String(column === columns - 1)}
+                >
+                  {slotEntry ? (
+                    <>
+                      <div className="flex items-center justify-between gap-3 text-[0.66rem] font-semibold uppercase tracking-[0.12em] text-[#6e7684]">
+                        <span>Card</span>
+                        <span>
+                          #{pageIndex * settings.flashcardsPerPage + slotIndex + 1}
+                        </span>
+                      </div>
+                      <div className="mt-5 flex flex-1 items-center justify-center rounded border border-[#e4ded3] bg-[#fffdfa] px-4 py-4 text-center">
+                        <span className="hs-hanzi-context text-[3.2rem] leading-none text-[#15233a] sm:text-[3.8rem]">
+                          {slotEntry.hanzi}
+                        </span>
+                      </div>
+                      <div className="mt-4 space-y-2 text-center">
+                        {settings.flashcardShowPinyin && slotEntry.pinyin ? (
+                          <p className="text-[0.88rem] font-medium text-[#445469]">
+                            {slotEntry.pinyin}
+                          </p>
+                        ) : null}
+                        {settings.flashcardShowEnglish && slotEntry.english ? (
+                          <p className="text-[0.82rem] leading-5 text-[#627084]">
+                            {slotEntry.english}
+                          </p>
+                        ) : null}
+                      </div>
+                    </>
                   ) : null}
-                  {settings.flashcardShowEnglish && entry.english ? (
-                    <p className="text-[0.82rem] leading-5 text-[#627084]">
-                      {entry.english}
-                    </p>
-                  ) : null}
-                </div>
-              </section>
-            ))}
+                </section>
+              );
+            })}
           </div>
 
           <footer className="border-t border-[#d8d2c7] px-[5.4%] py-[2.8%] text-center text-[0.58rem] text-[#5b6573]">

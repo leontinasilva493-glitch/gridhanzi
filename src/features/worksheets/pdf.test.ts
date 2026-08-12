@@ -24,6 +24,10 @@ test("buildWorksheetPdfFilename creates a safe useful filename", () => {
     buildWorksheetPdfFilename("  ", "worksheet"),
     "chinese-worksheet.pdf",
   );
+  assert.equal(
+    buildWorksheetPdfFilename("  ", "flashcards"),
+    "chinese-flashcards.pdf",
+  );
 });
 
 test("getPdfPageSize maps worksheet paper settings to PDF dimensions", () => {

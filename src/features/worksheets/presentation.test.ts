@@ -80,6 +80,10 @@ test("generator and preview expose flashcard output controls through a shared re
   assert.match(previewSource, /snapshot\.settings\.output === "worksheet"/);
   assert.match(flashcardSource, /hs-flashcard-grid/);
   assert.match(flashcardSource, /hs-flashcard-cut-line/);
+  assert.match(flashcardSource, /Array\.from\(\{ length: settings\.flashcardsPerPage \}/);
+  assert.match(flashcardSource, /aria-hidden=\{slotEntry === null\}/);
+  assert.match(flashcardSource, /data-last-row=\{String\(row === rows - 1\)\}/);
+  assert.match(flashcardSource, /data-last-col=\{String\(column === columns - 1\)\}/);
 });
 
 test("template directory leads with real printable outcomes", async () => {

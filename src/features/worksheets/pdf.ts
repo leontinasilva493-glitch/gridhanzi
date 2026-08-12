@@ -27,7 +27,7 @@ export function buildWorksheetPdfFilename(
     .slice(0, 80);
   const suffix = output === "flashcards" ? "flashcards" : "worksheet";
 
-  return slug ? `${slug}-${suffix}.pdf` : "chinese-worksheet.pdf";
+  return slug ? `${slug}-${suffix}.pdf` : `chinese-${suffix}.pdf`;
 }
 
 export function getPdfPageSize(paperSize: PaperSize) {
