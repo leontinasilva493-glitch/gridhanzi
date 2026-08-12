@@ -3,10 +3,23 @@ import test from "node:test";
 
 import {
   filterHskCatalog,
+  type HskCatalogEntry,
   summarizeHskSelection,
   toWorksheetEntries,
 } from "./hsk";
 import { defaultWorksheetSettings } from "./types";
+
+function fixture(hanzi: string, index: number): HskCatalogEntry {
+  return {
+    id: `2.0:1:${hanzi}`,
+    hanzi,
+    pinyin: `fixture-${index}`,
+    english: `fixture ${index}`,
+    system: "2.0",
+    level: "1",
+    themes: [],
+  };
+}
 
 test("filterHskCatalog restricts results to one HSK system", () => {
   const results = filterHskCatalog({ system: "2.0" });
@@ -86,7 +99,42 @@ test("toWorksheetEntries creates complete worksheet rows", () => {
   ]);
 });
 
-test("summarizeHskSelection counts words, unique Hanzi, and estimated pages", () => {
+test("catalogue chooses modern teaching senses for common beginner words", () => {
+  const expected = [
+    ["三", "sān", "three"],
+    ["上", "shàng", "(bound form) up; upper; above; previous"],
+    ["个", "gè", "(classifier used before a noun that has no specific classifier)"],
+    ["书", "shū", "book"],
+    ["年", "nián", "year"],
+    ["那", "nà", "that; then"],
+    ["钱", "qián", "money"],
+  ] as const;
+
+  for (const [hanzi, pinyin, english] of expected) {
+    const entry = filterHskCatalog({
+      system: "2.0",
+      level: "1",
+      query: hanzi,
+    }).find((candidate) => candidate.hanzi === hanzi);
+
+    assert.equal(entry?.pinyin, pinyin, hanzi);
+    assert.equal(entry?.english, english, hanzi);
+  }
+});
+
+test("catalogue retains a classified word when upstream has only a variant sense", () => {
+  const entry = filterHskCatalog({
+    system: "3.0",
+    level: "5",
+    query: "辞典",
+  }).find((candidate) => candidate.hanzi === "辞典");
+
+  assert.equal(entry?.id, "3.0:5:辞典");
+  assert.equal(entry?.pinyin, "cí diǎn");
+  assert.equal(entry?.english, "dictionary (variant of 词典)");
+});
+
+test("summarizeHskSelection counts words and unique Hanzi", () => {
   const entries = [
     ...filterHskCatalog({ system: "2.0", level: "1", query: "爱" })
       .filter((entry) => entry.hanzi === "爱"),
@@ -98,5 +146,27 @@ test("summarizeHskSelection counts words, unique Hanzi, and estimated pages", ()
 
   assert.equal(summary.wordCount, 2);
   assert.equal(summary.uniqueHanziCount, 2);
-  assert.ok(summary.estimatedPageCount > 0);
+});
+
+test("summarizeHskSelection uses practice pagination for write page counts", () => {
+  const entries = ["一二三四五", "六七八九十", "天地人中国"].map(fixture);
+
+  const summary = summarizeHskSelection(entries, {
+    ...defaultWorksheetSettings,
+    mode: "write",
+  });
+
+  assert.equal(summary.estimatedPageCount, 3);
+});
+
+test("summarizeHskSelection gives an exact conservative learn page estimate", () => {
+  const entries = ["一", "二", "三", "四", "五"].map(fixture);
+
+  const summary = summarizeHskSelection(entries, {
+    ...defaultWorksheetSettings,
+    mode: "trace",
+    strokeOrderMode: "detailed",
+  });
+
+  assert.equal(summary.estimatedPageCount, 3);
 });

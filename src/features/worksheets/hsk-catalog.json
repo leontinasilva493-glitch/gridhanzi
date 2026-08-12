@@ -20,8 +20,8 @@
   {
     "id": "2.0:1:三",
     "hanzi": "三",
-    "pinyin": "Sān",
-    "english": "surname San",
+    "pinyin": "sān",
+    "english": "three",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -29,8 +29,8 @@
   {
     "id": "2.0:1:上",
     "hanzi": "上",
-    "pinyin": "shǎng",
-    "english": "used in 上声",
+    "pinyin": "shàng",
+    "english": "(bound form) up; upper; above; previous",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -101,8 +101,8 @@
   {
     "id": "2.0:1:个",
     "hanzi": "个",
-    "pinyin": "gě",
-    "english": "used in 自个儿",
+    "pinyin": "gè",
+    "english": "(classifier used before a noun that has no specific classifier)",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -137,8 +137,8 @@
   {
     "id": "2.0:1:书",
     "hanzi": "书",
-    "pinyin": "Shū",
-    "english": "abbr. for 书经",
+    "pinyin": "shū",
+    "english": "book",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -221,7 +221,7 @@
     "id": "2.0:1:他",
     "hanzi": "他",
     "pinyin": "tā",
-    "english": "he; him (used for either sex when the sex is unknown or unimportant)",
+    "english": "he; him",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -250,7 +250,7 @@
     "id": "2.0:1:你",
     "hanzi": "你",
     "pinyin": "nǐ",
-    "english": "you (informal, as opposed to courteous 您)",
+    "english": "you",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -286,7 +286,7 @@
     "id": "2.0:1:八",
     "hanzi": "八",
     "pinyin": "bā",
-    "english": "eight; 8",
+    "english": "eight",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -321,8 +321,8 @@
   {
     "id": "2.0:1:冷",
     "hanzi": "冷",
-    "pinyin": "Lěng",
-    "english": "surname Leng",
+    "pinyin": "lěng",
+    "english": "cold",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -469,8 +469,8 @@
   {
     "id": "2.0:1:听",
     "hanzi": "听",
-    "pinyin": "yǐn",
-    "english": "smile (archaic)",
+    "pinyin": "tīng",
+    "english": "to listen to; to hear",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -488,7 +488,7 @@
     "id": "2.0:1:和",
     "hanzi": "和",
     "pinyin": "hé",
-    "english": "old variant of 和",
+    "english": "and; with",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -570,8 +570,8 @@
   {
     "id": "2.0:1:坐",
     "hanzi": "坐",
-    "pinyin": "Zuò",
-    "english": "surname Zuo",
+    "pinyin": "zuò",
+    "english": "to sit",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -645,7 +645,7 @@
     "id": "2.0:1:她",
     "hanzi": "她",
     "pinyin": "tā",
-    "english": "she",
+    "english": "she; her",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -708,7 +708,7 @@
     "id": "2.0:1:家",
     "hanzi": "家",
     "pinyin": "jiā",
-    "english": "used in 家伙 and 家俱",
+    "english": "home",
     "system": "2.0",
     "level": "1",
     "themes": [
@@ -757,7 +757,7 @@
     "id": "2.0:1:岁",
     "hanzi": "岁",
     "pinyin": "suì",
-    "english": "variant of 岁, year",
+    "english": "years old; year",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -774,8 +774,8 @@
   {
     "id": "2.0:1:年",
     "hanzi": "年",
-    "pinyin": "Nián",
-    "english": "surname Nian",
+    "pinyin": "nián",
+    "english": "year",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -829,7 +829,7 @@
     "id": "2.0:1:我",
     "hanzi": "我",
     "pinyin": "wǒ",
-    "english": "I; me; my",
+    "english": "I; me",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -858,8 +858,8 @@
   {
     "id": "2.0:1:日",
     "hanzi": "日",
-    "pinyin": "Rì",
-    "english": "abbr. for 本, Japan",
+    "pinyin": "rì",
+    "english": "day; sun",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -904,7 +904,7 @@
     "id": "2.0:1:是",
     "hanzi": "是",
     "pinyin": "shì",
-    "english": "to be (followed by substantives only)",
+    "english": "to be",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -988,8 +988,8 @@
   {
     "id": "2.0:1:水",
     "hanzi": "水",
-    "pinyin": "Shuǐ",
-    "english": "surname Shui",
+    "pinyin": "shuǐ",
+    "english": "water",
     "system": "2.0",
     "level": "1",
     "themes": [
@@ -1205,8 +1205,8 @@
   {
     "id": "2.0:1:能",
     "hanzi": "能",
-    "pinyin": "Néng",
-    "english": "surname Neng",
+    "pinyin": "néng",
+    "english": "can; to be able to",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -1271,7 +1271,7 @@
     "id": "2.0:1:请",
     "hanzi": "请",
     "pinyin": "qǐng",
-    "english": "to ask",
+    "english": "please",
     "system": "2.0",
     "level": "1",
     "themes": [
@@ -1320,8 +1320,8 @@
   {
     "id": "2.0:1:那",
     "hanzi": "那",
-    "pinyin": "Nā",
-    "english": "surname Na",
+    "pinyin": "nà",
+    "english": "that; then",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -1329,8 +1329,8 @@
   {
     "id": "2.0:1:都",
     "hanzi": "都",
-    "pinyin": "Dū",
-    "english": "surname Du",
+    "pinyin": "dōu",
+    "english": "all; both",
     "system": "2.0",
     "level": "1",
     "themes": []
@@ -1339,7 +1339,7 @@
     "id": "2.0:1:里",
     "hanzi": "里",
     "pinyin": "lǐ",
-    "english": "variant of 里",
+    "english": "inside; within",
     "system": "2.0",
     "level": "1",
     "themes": [
@@ -1349,8 +1349,8 @@
   {
     "id": "2.0:1:钱",
     "hanzi": "钱",
-    "pinyin": "Qián",
-    "english": "surname Qian",
+    "pinyin": "qián",
+    "english": "money",
     "system": "2.0",
     "level": "1",
     "themes": [
@@ -1443,8 +1443,8 @@
   {
     "id": "2.0:2:也",
     "hanzi": "也",
-    "pinyin": "Yě",
-    "english": "surname Ye",
+    "pinyin": "yě",
+    "english": "also; too",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -1471,7 +1471,7 @@
     "id": "2.0:2:从",
     "hanzi": "从",
     "pinyin": "cóng",
-    "english": "variant of 从",
+    "english": "from; to follow",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -1517,8 +1517,8 @@
   {
     "id": "2.0:2:元",
     "hanzi": "元",
-    "pinyin": "Yuán",
-    "english": "surname Yuan",
+    "pinyin": "yuán",
+    "english": "yuan; unit",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -1582,8 +1582,8 @@
   {
     "id": "2.0:2:别",
     "hanzi": "别",
-    "pinyin": "Bié",
-    "english": "surname Bie",
+    "pinyin": "bié",
+    "english": "do not; other",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -1665,8 +1665,8 @@
   {
     "id": "2.0:2:向",
     "hanzi": "向",
-    "pinyin": "Xiàng",
-    "english": "surname Xiang",
+    "pinyin": "xiàng",
+    "english": "toward; to face",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -1912,8 +1912,8 @@
   {
     "id": "2.0:2:张",
     "hanzi": "张",
-    "pinyin": "Zhāng",
-    "english": "surname Zhang",
+    "pinyin": "zhāng",
+    "english": "to open up",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2073,8 +2073,8 @@
   {
     "id": "2.0:2:新",
     "hanzi": "新",
-    "pinyin": "Xīn",
-    "english": "abbr. for Xinjiang 疆 or Singapore 坡",
+    "pinyin": "xīn",
+    "english": "new",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2137,7 +2137,7 @@
     "id": "2.0:2:最",
     "hanzi": "最",
     "pinyin": "zuì",
-    "english": "variant of 最",
+    "english": "most; the most",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2199,8 +2199,8 @@
   {
     "id": "2.0:2:比",
     "hanzi": "比",
-    "pinyin": "Bǐ",
-    "english": "Belgium",
+    "pinyin": "bǐ",
+    "english": "to compare; than",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2275,8 +2275,8 @@
   {
     "id": "2.0:2:白",
     "hanzi": "白",
-    "pinyin": "Bái",
-    "english": "surname Bai",
+    "pinyin": "bái",
+    "english": "white",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2284,8 +2284,8 @@
   {
     "id": "2.0:2:百",
     "hanzi": "百",
-    "pinyin": "Bǎi",
-    "english": "surname Bai",
+    "pinyin": "bǎi",
+    "english": "hundred",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2338,8 +2338,8 @@
   {
     "id": "2.0:2:离",
     "hanzi": "离",
-    "pinyin": "chī",
-    "english": "mythical beast (archaic)",
+    "pinyin": "lí",
+    "english": "to leave",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2359,7 +2359,7 @@
     "id": "2.0:2:笑",
     "hanzi": "笑",
     "pinyin": "xiào",
-    "english": "old variant of 笑",
+    "english": "to laugh; to smile",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2385,8 +2385,8 @@
   {
     "id": "2.0:2:红",
     "hanzi": "红",
-    "pinyin": "Hóng",
-    "english": "surname Hong",
+    "pinyin": "hóng",
+    "english": "red",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2436,7 +2436,7 @@
     "id": "2.0:2:船",
     "hanzi": "船",
     "pinyin": "chuán",
-    "english": "variant of 船",
+    "english": "boat; ship",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2540,8 +2540,8 @@
   {
     "id": "2.0:2:路",
     "hanzi": "路",
-    "pinyin": "Lù",
-    "english": "surname Lu",
+    "pinyin": "lù",
+    "english": "road; route",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2598,8 +2598,8 @@
   {
     "id": "2.0:2:还",
     "hanzi": "还",
-    "pinyin": "Huán",
-    "english": "surname Huan",
+    "pinyin": "hái",
+    "english": "still; also",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2634,8 +2634,8 @@
   {
     "id": "2.0:2:错",
     "hanzi": "错",
-    "pinyin": "Cuò",
-    "english": "surname Cuo",
+    "pinyin": "cuò",
+    "english": "wrong; mistake",
     "system": "2.0",
     "level": "2",
     "themes": [
@@ -2654,8 +2654,8 @@
   {
     "id": "2.0:2:门",
     "hanzi": "门",
-    "pinyin": "Mén",
-    "english": "surname Men",
+    "pinyin": "mén",
+    "english": "door; gate",
     "system": "2.0",
     "level": "2",
     "themes": [
@@ -2687,8 +2687,8 @@
   {
     "id": "2.0:2:阴",
     "hanzi": "阴",
-    "pinyin": "Yīn",
-    "english": "surname Yin",
+    "pinyin": "yīn",
+    "english": "cloudy; shade",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2696,8 +2696,8 @@
   {
     "id": "2.0:2:雪",
     "hanzi": "雪",
-    "pinyin": "Xuě",
-    "english": "surname Xue",
+    "pinyin": "xuě",
+    "english": "snow",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2714,8 +2714,8 @@
   {
     "id": "2.0:2:题",
     "hanzi": "题",
-    "pinyin": "Tí",
-    "english": "surname Ti",
+    "pinyin": "tí",
+    "english": "question; topic",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2734,8 +2734,8 @@
   {
     "id": "2.0:2:高",
     "hanzi": "高",
-    "pinyin": "Gāo",
-    "english": "surname Gao",
+    "pinyin": "gāo",
+    "english": "high; tall",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2743,8 +2743,8 @@
   {
     "id": "2.0:2:鱼",
     "hanzi": "鱼",
-    "pinyin": "Yú",
-    "english": "surname Yu",
+    "pinyin": "yú",
+    "english": "fish",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2761,8 +2761,8 @@
   {
     "id": "2.0:2:黑",
     "hanzi": "黑",
-    "pinyin": "Hēi",
-    "english": "abbr. for Heilongjiang province 黑龙江",
+    "pinyin": "hēi",
+    "english": "black",
     "system": "2.0",
     "level": "2",
     "themes": []
@@ -2835,8 +2835,8 @@
   {
     "id": "2.0:3:万",
     "hanzi": "万",
-    "pinyin": "mò",
-    "english": "used in 俟",
+    "pinyin": "wàn",
+    "english": "ten thousand",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -2864,8 +2864,8 @@
   {
     "id": "2.0:3:东",
     "hanzi": "东",
-    "pinyin": "Dōng",
-    "english": "surname Dong",
+    "pinyin": "dōng",
+    "english": "east",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -3111,8 +3111,8 @@
   {
     "id": "2.0:3:关",
     "hanzi": "关",
-    "pinyin": "Guān",
-    "english": "surname Guan",
+    "pinyin": "guān",
+    "english": "mountain pass",
     "system": "2.0",
     "level": "3",
     "themes": [
@@ -3313,8 +3313,8 @@
   {
     "id": "2.0:3:包",
     "hanzi": "包",
-    "pinyin": "Bāo",
-    "english": "surname Bao",
+    "pinyin": "bāo",
+    "english": "bag; to wrap; to include",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -3340,8 +3340,8 @@
   {
     "id": "2.0:3:南",
     "hanzi": "南",
-    "pinyin": "Nán",
-    "english": "surname Nan",
+    "pinyin": "nán",
+    "english": "south",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -3388,8 +3388,8 @@
   {
     "id": "2.0:3:双",
     "hanzi": "双",
-    "pinyin": "Shuāng",
-    "english": "surname Shuang",
+    "pinyin": "shuāng",
+    "english": "two",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -3629,8 +3629,8 @@
   {
     "id": "2.0:3:夏",
     "hanzi": "夏",
-    "pinyin": "Xià",
-    "english": "the Xia or Hsia dynasty c. 2000 BC",
+    "pinyin": "xià",
+    "english": "summer",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -3996,7 +3996,7 @@
     "id": "2.0:3:拿",
     "hanzi": "拿",
     "pinyin": "ná",
-    "english": "old variant of 拿",
+    "english": "to hold; to take",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -4067,8 +4067,8 @@
   {
     "id": "2.0:3:教",
     "hanzi": "教",
-    "pinyin": "Jiào",
-    "english": "surname Jiao",
+    "pinyin": "jiāo",
+    "english": "to teach",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -4153,7 +4153,7 @@
     "id": "2.0:3:春",
     "hanzi": "春",
     "pinyin": "chūn",
-    "english": "old variant of 春",
+    "english": "spring (season)",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -4280,8 +4280,8 @@
   {
     "id": "2.0:3:楼",
     "hanzi": "楼",
-    "pinyin": "Lóu",
-    "english": "surname Lou",
+    "pinyin": "lóu",
+    "english": "building; floor",
     "system": "2.0",
     "level": "3",
     "themes": [
@@ -4291,8 +4291,8 @@
   {
     "id": "2.0:3:段",
     "hanzi": "段",
-    "pinyin": "Duàn",
-    "english": "surname Duan",
+    "pinyin": "duàn",
+    "english": "section; paragraph",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -4507,8 +4507,8 @@
   {
     "id": "2.0:3:班",
     "hanzi": "班",
-    "pinyin": "Bān",
-    "english": "surname Ban",
+    "pinyin": "bān",
+    "english": "class; team",
     "system": "2.0",
     "level": "3",
     "themes": [
@@ -4567,7 +4567,7 @@
     "id": "2.0:3:画",
     "hanzi": "画",
     "pinyin": "huà",
-    "english": "to draw; to paint",
+    "english": "to draw; picture",
     "system": "2.0",
     "level": "3",
     "themes": [
@@ -4659,7 +4659,7 @@
     "id": "2.0:3:碗",
     "hanzi": "碗",
     "pinyin": "wǎn",
-    "english": "variant of 碗",
+    "english": "bowl",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -4676,8 +4676,8 @@
   {
     "id": "2.0:3:祝",
     "hanzi": "祝",
-    "pinyin": "Zhù",
-    "english": "surname Zhu",
+    "pinyin": "zhù",
+    "english": "to pray for",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -4694,8 +4694,8 @@
   {
     "id": "2.0:3:秋",
     "hanzi": "秋",
-    "pinyin": "Qiū",
-    "english": "surname Qiu",
+    "pinyin": "qiū",
+    "english": "autumn",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -4757,8 +4757,8 @@
   {
     "id": "2.0:3:米",
     "hanzi": "米",
-    "pinyin": "Mǐ",
-    "english": "surname Mi",
+    "pinyin": "mǐ",
+    "english": "rice; meter",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -4959,8 +4959,8 @@
   {
     "id": "2.0:3:花",
     "hanzi": "花",
-    "pinyin": "Huā",
-    "english": "surname Hua",
+    "pinyin": "huā",
+    "english": "flower; to spend",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -4978,7 +4978,7 @@
     "id": "2.0:3:草",
     "hanzi": "草",
     "pinyin": "cǎo",
-    "english": "variant of 草",
+    "english": "grass",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -5004,8 +5004,8 @@
   {
     "id": "2.0:3:蓝",
     "hanzi": "蓝",
-    "pinyin": "Lán",
-    "english": "surname Lan",
+    "pinyin": "lán",
+    "english": "blue",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -5095,7 +5095,7 @@
     "id": "2.0:3:裤子",
     "hanzi": "裤子",
     "pinyin": "kù zi",
-    "english": "variant of 裤子, trousers",
+    "english": "pants",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -5103,8 +5103,8 @@
   {
     "id": "2.0:3:西",
     "hanzi": "西",
-    "pinyin": "Xī",
-    "english": "the West",
+    "pinyin": "xī",
+    "english": "west",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -5130,8 +5130,8 @@
   {
     "id": "2.0:3:角",
     "hanzi": "角",
-    "pinyin": "Jué",
-    "english": "surname Jue",
+    "pinyin": "jiǎo",
+    "english": "corner; angle",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -5204,8 +5204,8 @@
   {
     "id": "2.0:3:越",
     "hanzi": "越",
-    "pinyin": "Yuè",
-    "english": "generic word for peoples or states of south China or south Asia at different historical periods",
+    "pinyin": "yuè",
+    "english": "to exceed; more",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -5438,8 +5438,8 @@
   {
     "id": "2.0:3:马",
     "hanzi": "马",
-    "pinyin": "Mǎ",
-    "english": "surname Ma",
+    "pinyin": "mǎ",
+    "english": "horse",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -5465,8 +5465,8 @@
   {
     "id": "2.0:3:鸟",
     "hanzi": "鸟",
-    "pinyin": "diǎo",
-    "english": "variant of 屌",
+    "pinyin": "niǎo",
+    "english": "bird",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -5474,8 +5474,8 @@
   {
     "id": "2.0:3:黄",
     "hanzi": "黄",
-    "pinyin": "Huáng",
-    "english": "surname Huang or Hwang",
+    "pinyin": "huáng",
+    "english": "yellow",
     "system": "2.0",
     "level": "3",
     "themes": []
@@ -5555,8 +5555,8 @@
   {
     "id": "2.0:4:与",
     "hanzi": "与",
-    "pinyin": "yú",
-    "english": "variant of 欤",
+    "pinyin": "yǔ",
+    "english": "and",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -5862,7 +5862,7 @@
     "id": "2.0:4:以",
     "hanzi": "以",
     "pinyin": "yǐ",
-    "english": "old variant of 以",
+    "english": "to use",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -6036,8 +6036,8 @@
   {
     "id": "2.0:4:修",
     "hanzi": "修",
-    "pinyin": "Xiū",
-    "english": "surname Xiu",
+    "pinyin": "xiū",
+    "english": "to decorate",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -6063,8 +6063,8 @@
   {
     "id": "2.0:4:假",
     "hanzi": "假",
-    "pinyin": "gēi",
-    "english": "used in 掰",
+    "pinyin": "jiǎ",
+    "english": "false; fake",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -6324,8 +6324,8 @@
   {
     "id": "2.0:4:刀",
     "hanzi": "刀",
-    "pinyin": "Dāo",
-    "english": "surname Dao",
+    "pinyin": "dāo",
+    "english": "knife",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -6514,7 +6514,7 @@
     "id": "2.0:4:却",
     "hanzi": "却",
     "pinyin": "què",
-    "english": "old variant of 却",
+    "english": "but",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -6594,8 +6594,8 @@
   {
     "id": "2.0:4:友好",
     "hanzi": "友好",
-    "pinyin": "Yǒu hǎo",
-    "english": "Youhao district of Yichun city 市, Heilongjiang",
+    "pinyin": "yǒu hǎo",
+    "english": "friendly",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -6738,8 +6738,8 @@
   {
     "id": "2.0:4:台",
     "hanzi": "台",
-    "pinyin": "Tái",
-    "english": "Taiwan (abbr.)",
+    "pinyin": "tái",
+    "english": "(classical) you (in letters)",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -6900,8 +6900,8 @@
   {
     "id": "2.0:4:咸",
     "hanzi": "咸",
-    "pinyin": "Xián",
-    "english": "surname Xian",
+    "pinyin": "xián",
+    "english": "all",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -7081,7 +7081,7 @@
     "id": "2.0:4:墙",
     "hanzi": "墙",
     "pinyin": "qiáng",
-    "english": "variant of 墙, wall",
+    "english": "wall",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -7215,8 +7215,8 @@
   {
     "id": "2.0:4:孙子",
     "hanzi": "孙子",
-    "pinyin": "Sūn zǐ",
-    "english": "Sun Tzu, also known as Sun Wu 孙武 (c. 500 BC, dates of birth and death uncertain), general, strategist and philosopher of the Spring and Autumn Period (700-475 BC), believed to be the author of the “Art of War” 孙子兵法, one of the Seven Military Classics of ancient China 武经七书",
+    "pinyin": "sūn zi",
+    "english": "grandson",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -7296,8 +7296,8 @@
   {
     "id": "2.0:4:宽",
     "hanzi": "宽",
-    "pinyin": "Kuān",
-    "english": "surname Kuan",
+    "pinyin": "kuān",
+    "english": "wide",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -7323,8 +7323,8 @@
   {
     "id": "2.0:4:富",
     "hanzi": "富",
-    "pinyin": "Fù",
-    "english": "surname Fu",
+    "pinyin": "fù",
+    "english": "rich",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -7476,8 +7476,8 @@
   {
     "id": "2.0:4:帅",
     "hanzi": "帅",
-    "pinyin": "Shuài",
-    "english": "surname Shuai",
+    "pinyin": "shuài",
+    "english": "(bound form) commander-in-chief",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -7494,8 +7494,8 @@
   {
     "id": "2.0:4:干",
     "hanzi": "干",
-    "pinyin": "gān",
-    "english": "old variant of 干",
+    "pinyin": "gàn",
+    "english": "to do; to work",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -7846,7 +7846,7 @@
     "id": "2.0:4:懒",
     "hanzi": "懒",
     "pinyin": "lǎn",
-    "english": "variant of 懒",
+    "english": "lazy",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -7863,8 +7863,8 @@
   {
     "id": "2.0:4:成功",
     "hanzi": "成功",
-    "pinyin": "Chéng gōng",
-    "english": "Chenggong or Chengkung town in Taitung County 台东县, southeast Taiwan",
+    "pinyin": "chéng gōng",
+    "english": "success",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -7881,8 +7881,8 @@
   {
     "id": "2.0:4:戴",
     "hanzi": "戴",
-    "pinyin": "Dài",
-    "english": "surname Dai",
+    "pinyin": "dài",
+    "english": "to put on or wear (glasses, hat, gloves etc)",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -8485,7 +8485,7 @@
     "id": "2.0:4:暗",
     "hanzi": "暗",
     "pinyin": "àn",
-    "english": "variant of 暗",
+    "english": "dark",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -8781,8 +8781,8 @@
   {
     "id": "2.0:4:汤",
     "hanzi": "汤",
-    "pinyin": "Tāng",
-    "english": "surname Tang",
+    "pinyin": "tāng",
+    "english": "soup",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -8899,7 +8899,7 @@
     "id": "2.0:4:深",
     "hanzi": "深",
     "pinyin": "shēn",
-    "english": "old variant of 深",
+    "english": "deep; dark",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -8925,8 +8925,8 @@
   {
     "id": "2.0:4:满",
     "hanzi": "满",
-    "pinyin": "Mǎn",
-    "english": "Manchu ethnic group",
+    "pinyin": "mǎn",
+    "english": "full; satisfied",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -8961,8 +8961,8 @@
   {
     "id": "2.0:4:火",
     "hanzi": "火",
-    "pinyin": "Huǒ",
-    "english": "surname Huo",
+    "pinyin": "huǒ",
+    "english": "fire",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -9042,8 +9042,8 @@
   {
     "id": "2.0:4:狮子",
     "hanzi": "狮子",
-    "pinyin": "Shī zǐ",
-    "english": "Leo (star sign)",
+    "pinyin": "shī zi",
+    "english": "lion",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -9078,8 +9078,8 @@
   {
     "id": "2.0:4:现代",
     "hanzi": "现代",
-    "pinyin": "Xiàn dài",
-    "english": "Hyundai, South Korean company",
+    "pinyin": "xiàn dài",
+    "english": "modern times",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -9180,7 +9180,7 @@
     "id": "2.0:4:留",
     "hanzi": "留",
     "pinyin": "liú",
-    "english": "old variant of 留",
+    "english": "to stay; to leave behind",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -9731,7 +9731,7 @@
     "id": "2.0:4:群",
     "hanzi": "群",
     "pinyin": "qún",
-    "english": "variant of 群",
+    "english": "group",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -9812,7 +9812,7 @@
     "id": "2.0:4:联系",
     "hanzi": "联系",
     "pinyin": "lián xì",
-    "english": "variant of 联系",
+    "english": "connection",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -10220,8 +10220,8 @@
   {
     "id": "2.0:4:谈",
     "hanzi": "谈",
-    "pinyin": "Tán",
-    "english": "surname Tan",
+    "pinyin": "tán",
+    "english": "to speak",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -10311,7 +10311,7 @@
     "id": "2.0:4:趟",
     "hanzi": "趟",
     "pinyin": "tāng",
-    "english": "old variant of 趟",
+    "english": "to wade",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -10383,7 +10383,7 @@
     "id": "2.0:4:辣",
     "hanzi": "辣",
     "pinyin": "là",
-    "english": "old variant of 辣",
+    "english": "hot (spicy)",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -10391,8 +10391,8 @@
   {
     "id": "2.0:4:过",
     "hanzi": "过",
-    "pinyin": "Guō",
-    "english": "surname Guo",
+    "pinyin": "guò",
+    "english": "to pass; to cross",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -10418,8 +10418,8 @@
   {
     "id": "2.0:4:连",
     "hanzi": "连",
-    "pinyin": "Lián",
-    "english": "surname Lian",
+    "pinyin": "lián",
+    "english": "to link",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -10491,7 +10491,7 @@
     "id": "2.0:4:遍",
     "hanzi": "遍",
     "pinyin": "biàn",
-    "english": "variant of 遍",
+    "english": "everywhere; one time",
     "system": "2.0",
     "level": "4",
     "themes": []
@@ -10931,8 +10931,8 @@
   {
     "id": "2.0:5:丁",
     "hanzi": "丁",
-    "pinyin": "Dīng",
-    "english": "surname Ding",
+    "pinyin": "dīng",
+    "english": "male adult",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -11084,8 +11084,8 @@
   {
     "id": "2.0:5:丑",
     "hanzi": "丑",
-    "pinyin": "Chǒu",
-    "english": "surname Chou",
+    "pinyin": "chǒu",
+    "english": "clown",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -11274,7 +11274,7 @@
     "id": "2.0:5:举",
     "hanzi": "举",
     "pinyin": "jǔ",
-    "english": "variant of 举",
+    "english": "to lift; to raise",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -11309,8 +11309,8 @@
   {
     "id": "2.0:5:乘",
     "hanzi": "乘",
-    "pinyin": "Chéng",
-    "english": "surname Cheng",
+    "pinyin": "chéng",
+    "english": "to ride",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -11598,7 +11598,7 @@
     "id": "2.0:5:仿佛",
     "hanzi": "仿佛",
     "pinyin": "fǎng fú",
-    "english": "variant of 仿佛",
+    "english": "to seem",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -11868,7 +11868,7 @@
     "id": "2.0:5:使劲儿",
     "hanzi": "使劲儿",
     "pinyin": "shǐ jìn r",
-    "english": "erhua variant of 使劲",
+    "english": "to exert all one's strength",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -12184,8 +12184,8 @@
   {
     "id": "2.0:5:克",
     "hanzi": "克",
-    "pinyin": "Kè",
-    "english": "abbr. for 克罗地亚, Croatia",
+    "pinyin": "kè",
+    "english": "gram; to overcome",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -12437,7 +12437,7 @@
     "id": "2.0:5:凭",
     "hanzi": "凭",
     "pinyin": "píng",
-    "english": "variant of 凭",
+    "english": "to lean against",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -13076,7 +13076,7 @@
     "id": "2.0:5:反复",
     "hanzi": "反复",
     "pinyin": "fǎn fù",
-    "english": "variant of 反复",
+    "english": "repeatedly",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -13543,8 +13543,8 @@
   {
     "id": "2.0:5:和平",
     "hanzi": "和平",
-    "pinyin": "Hé píng",
-    "english": "Heping District of Shenyang city 沈阳市, Liaoning",
+    "pinyin": "hé píng",
+    "english": "peace",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -13579,8 +13579,8 @@
   {
     "id": "2.0:5:哈",
     "hanzi": "哈",
-    "pinyin": "Hā",
-    "english": "abbr. for 哈萨克斯坦, Kazakhstan",
+    "pinyin": "hā",
+    "english": "(interj.) ha!",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -14012,7 +14012,7 @@
     "id": "2.0:5:夜",
     "hanzi": "夜",
     "pinyin": "yè",
-    "english": "variant of 夜",
+    "english": "night",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -14111,7 +14111,7 @@
     "id": "2.0:5:夸",
     "hanzi": "夸",
     "pinyin": "kuā",
-    "english": "used in 克",
+    "english": "to boast; to exaggerate",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -14470,8 +14470,8 @@
   {
     "id": "2.0:5:官",
     "hanzi": "官",
-    "pinyin": "Guān",
-    "english": "surname Guan",
+    "pinyin": "guān",
+    "english": "government official",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -14930,7 +14930,7 @@
     "id": "2.0:5:岛",
     "hanzi": "岛",
     "pinyin": "dǎo",
-    "english": "variant of 岛",
+    "english": "island",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -14939,7 +14939,7 @@
     "id": "2.0:5:岸",
     "hanzi": "岸",
     "pinyin": "àn",
-    "english": "variant of 岸",
+    "english": "bank; shore; beach; coast",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -15011,7 +15011,7 @@
     "id": "2.0:5:布",
     "hanzi": "布",
     "pinyin": "bù",
-    "english": "variant of 布",
+    "english": "to announce",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -15038,7 +15038,7 @@
     "id": "2.0:5:干活儿",
     "hanzi": "干活儿",
     "pinyin": "gàn huó r",
-    "english": "erhua variant of 干活",
+    "english": "(coll.) to work",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -15055,8 +15055,8 @@
   {
     "id": "2.0:5:平",
     "hanzi": "平",
-    "pinyin": "Píng",
-    "english": "surname Ping",
+    "pinyin": "píng",
+    "english": "flat; peaceful",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -15253,8 +15253,8 @@
   {
     "id": "2.0:5:延长",
     "hanzi": "延长",
-    "pinyin": "Yán cháng",
-    "english": "Yanchang county in Yan'an 安, Shaanxi",
+    "pinyin": "yán cháng",
+    "english": "to prolong",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -15578,7 +15578,7 @@
     "id": "2.0:5:念",
     "hanzi": "念",
     "pinyin": "niàn",
-    "english": "variant of 念, to read aloud",
+    "english": "to read",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -16579,8 +16579,8 @@
   {
     "id": "2.0:5:提",
     "hanzi": "提",
-    "pinyin": "dī",
-    "english": "used in 防 and 溜",
+    "pinyin": "tí",
+    "english": "to carry (hanging down from the hand)",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -16651,8 +16651,8 @@
   {
     "id": "2.0:5:摇",
     "hanzi": "摇",
-    "pinyin": "Yáo",
-    "english": "surname Yao",
+    "pinyin": "yáo",
+    "english": "to shake",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -16723,8 +16723,8 @@
   {
     "id": "2.0:5:支",
     "hanzi": "支",
-    "pinyin": "Zhī",
-    "english": "surname Zhi",
+    "pinyin": "zhī",
+    "english": "to support",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -16751,7 +16751,7 @@
     "id": "2.0:5:收获",
     "hanzi": "收获",
     "pinyin": "shōu huò",
-    "english": "variant of 收获",
+    "english": "to harvest",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -16850,7 +16850,7 @@
     "id": "2.0:5:救",
     "hanzi": "救",
     "pinyin": "jiù",
-    "english": "variant of 救",
+    "english": "to save",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -16984,8 +16984,8 @@
   {
     "id": "2.0:5:方",
     "hanzi": "方",
-    "pinyin": "Fāng",
-    "english": "surname Fang",
+    "pinyin": "fāng",
+    "english": "square",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -17074,8 +17074,8 @@
   {
     "id": "2.0:5:时代",
     "hanzi": "时代",
-    "pinyin": "Shí dài",
-    "english": "Time, US weekly news magazine",
+    "pinyin": "shí dài",
+    "english": "age",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -17192,7 +17192,7 @@
     "id": "2.0:5:晒",
     "hanzi": "晒",
     "pinyin": "shài",
-    "english": "variant of 晒",
+    "english": "(of the sun) to shine on",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -17281,8 +17281,8 @@
   {
     "id": "2.0:5:朝",
     "hanzi": "朝",
-    "pinyin": "Cháo",
-    "english": "abbr. for 朝鲜 Korea",
+    "pinyin": "cháo",
+    "english": "imperial or royal court",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -17452,8 +17452,8 @@
   {
     "id": "2.0:5:枪",
     "hanzi": "枪",
-    "pinyin": "Qiāng",
-    "english": "surname Qiang",
+    "pinyin": "qiāng",
+    "english": "gun",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -17471,7 +17471,7 @@
     "id": "2.0:5:柜台",
     "hanzi": "柜台",
     "pinyin": "guì tái",
-    "english": "variant of 柜台",
+    "english": "sales counter",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -17776,8 +17776,8 @@
   {
     "id": "2.0:5:毛",
     "hanzi": "毛",
-    "pinyin": "Máo",
-    "english": "surname Mao",
+    "pinyin": "máo",
+    "english": "hair; fur",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -17956,8 +17956,8 @@
   {
     "id": "2.0:5:浅",
     "hanzi": "浅",
-    "pinyin": "jiān",
-    "english": "sound of moving water",
+    "pinyin": "qiǎn",
+    "english": "shallow; light",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -18344,7 +18344,7 @@
     "id": "2.0:5:煮",
     "hanzi": "煮",
     "pinyin": "zhǔ",
-    "english": "variant of 煮",
+    "english": "to cook",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -18767,7 +18767,7 @@
     "id": "2.0:5:痒",
     "hanzi": "痒",
     "pinyin": "yǎng",
-    "english": "variant of 痒",
+    "english": "to itch",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -18856,8 +18856,8 @@
   {
     "id": "2.0:5:盖",
     "hanzi": "盖",
-    "pinyin": "Gě",
-    "english": "surname Ge",
+    "pinyin": "gài",
+    "english": "lid",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -18892,8 +18892,8 @@
   {
     "id": "2.0:5:直",
     "hanzi": "直",
-    "pinyin": "Zhí",
-    "english": "surname Zhi",
+    "pinyin": "zhí",
+    "english": "straight",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -19498,8 +19498,8 @@
   {
     "id": "2.0:5:管子",
     "hanzi": "管子",
-    "pinyin": "Guǎn zǐ",
-    "english": "Guanzi or Guan Zhong 管仲 (-645 BC), famous politician of Qi 齐国 of Spring and Autumn period",
+    "pinyin": "guǎn zi",
+    "english": "tube",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -19931,7 +19931,7 @@
     "id": "2.0:5:老板",
     "hanzi": "老板",
     "pinyin": "lǎo bǎn",
-    "english": "variant of 老板",
+    "english": "boss",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -20048,7 +20048,7 @@
     "id": "2.0:5:背",
     "hanzi": "背",
     "pinyin": "bēi",
-    "english": "variant of 背",
+    "english": "to carry on the back",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -20120,7 +20120,7 @@
     "id": "2.0:5:胸",
     "hanzi": "胸",
     "pinyin": "xiōng",
-    "english": "variant of 胸",
+    "english": "chest",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -20443,8 +20443,8 @@
   {
     "id": "2.0:5:薄",
     "hanzi": "薄",
-    "pinyin": "Bó",
-    "english": "surname Bo",
+    "pinyin": "báo",
+    "english": "thin",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -20462,7 +20462,7 @@
     "id": "2.0:5:蛇",
     "hanzi": "蛇",
     "pinyin": "shé",
-    "english": "variant of 蛇",
+    "english": "snake",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -20884,8 +20884,8 @@
   {
     "id": "2.0:5:诗",
     "hanzi": "诗",
-    "pinyin": "Shī",
-    "english": "abbr. for Shijing 诗经, the Book of Songs",
+    "pinyin": "shī",
+    "english": "poem",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -21136,8 +21136,8 @@
   {
     "id": "2.0:5:资源",
     "hanzi": "资源",
-    "pinyin": "Zī yuán",
-    "english": "Ziyuan county in Guilin 林, Guangxi",
+    "pinyin": "zī yuán",
+    "english": "natural resource (such as water or minerals)",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -21218,7 +21218,7 @@
     "id": "2.0:5:踩",
     "hanzi": "踩",
     "pinyin": "cǎi",
-    "english": "variant of 踩",
+    "english": "to step on",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -21847,8 +21847,8 @@
   {
     "id": "2.0:5:钟",
     "hanzi": "钟",
-    "pinyin": "Zhōng",
-    "english": "surname Zhong",
+    "pinyin": "zhōng",
+    "english": "handleless cup",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -21973,8 +21973,8 @@
   {
     "id": "2.0:5:闻",
     "hanzi": "闻",
-    "pinyin": "Wén",
-    "english": "surname Wen",
+    "pinyin": "wén",
+    "english": "to hear; to smell",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -21983,7 +21983,7 @@
     "id": "2.0:5:阳台",
     "hanzi": "阳台",
     "pinyin": "yáng tái",
-    "english": "variant of 阳台",
+    "english": "balcony",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -22180,8 +22180,8 @@
   {
     "id": "2.0:5:雷",
     "hanzi": "雷",
-    "pinyin": "Léi",
-    "english": "surname Lei",
+    "pinyin": "léi",
+    "english": "thunder",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -22198,8 +22198,8 @@
   {
     "id": "2.0:5:露",
     "hanzi": "露",
-    "pinyin": "Lù",
-    "english": "surname Lu",
+    "pinyin": "lòu",
+    "english": "to show",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -22207,8 +22207,8 @@
   {
     "id": "2.0:5:青",
     "hanzi": "青",
-    "pinyin": "Qīng",
-    "english": "abbr. for 海, Qinghai Province",
+    "pinyin": "qīng",
+    "english": "green",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -22234,8 +22234,8 @@
   {
     "id": "2.0:5:非",
     "hanzi": "非",
-    "pinyin": "Fēi",
-    "english": "abbr. for 洲, Africa",
+    "pinyin": "fēi",
+    "english": "to not be; not",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -22297,8 +22297,8 @@
   {
     "id": "2.0:5:项",
     "hanzi": "项",
-    "pinyin": "Xiàng",
-    "english": "surname Xiang",
+    "pinyin": "xiàng",
+    "english": "back of neck",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -22424,7 +22424,7 @@
     "id": "2.0:5:飘",
     "hanzi": "飘",
     "pinyin": "piāo",
-    "english": "variant of 飘",
+    "english": "to float",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -22576,8 +22576,8 @@
   {
     "id": "2.0:5:龙",
     "hanzi": "龙",
-    "pinyin": "Lóng",
-    "english": "surname Long",
+    "pinyin": "lóng",
+    "english": "dragon",
     "system": "2.0",
     "level": "5",
     "themes": []
@@ -23152,8 +23152,8 @@
   {
     "id": "2.0:6:丰满",
     "hanzi": "丰满",
-    "pinyin": "Fēng mǎn",
-    "english": "Fengman district of Jilin city 吉林市, Jilin province",
+    "pinyin": "fēng mǎn",
+    "english": "ample",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -23575,8 +23575,8 @@
   {
     "id": "2.0:6:井",
     "hanzi": "井",
-    "pinyin": "Jǐng",
-    "english": "Jing, one of the 28 constellations of Chinese astronomy",
+    "pinyin": "jǐng",
+    "english": "a well",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -24898,8 +24898,8 @@
   {
     "id": "2.0:6:党",
     "hanzi": "党",
-    "pinyin": "Dǎng",
-    "english": "surname Dang",
+    "pinyin": "dǎng",
+    "english": "party",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -25105,8 +25105,8 @@
   {
     "id": "2.0:6:兴隆",
     "hanzi": "兴隆",
-    "pinyin": "Xīng lóng",
-    "english": "Xinglong county in Chengde 德, Hebei",
+    "pinyin": "xīng lóng",
+    "english": "prosperous",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -25241,7 +25241,7 @@
     "id": "2.0:6:冲击",
     "hanzi": "冲击",
     "pinyin": "chōng jī",
-    "english": "variant of 冲击",
+    "english": "to attack",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -26042,7 +26042,7 @@
     "id": "2.0:6:动荡",
     "hanzi": "动荡",
     "pinyin": "dòng dàng",
-    "english": "variant of 动荡",
+    "english": "unrest (social or political)",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -27113,7 +27113,7 @@
     "id": "2.0:6:合并",
     "hanzi": "合并",
     "pinyin": "hé bìng",
-    "english": "variant of 合并",
+    "english": "to merge",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -27481,8 +27481,8 @@
   {
     "id": "2.0:6:呵",
     "hanzi": "呵",
-    "pinyin": "ā",
-    "english": "variant of 啊",
+    "pinyin": "hē",
+    "english": "expel breath",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -27878,7 +27878,7 @@
     "id": "2.0:6:嘛",
     "hanzi": "嘛",
     "pinyin": "má",
-    "english": "used in 吽",
+    "english": "(Tw) (coll.) what?",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -27968,7 +27968,7 @@
     "id": "2.0:6:回避",
     "hanzi": "回避",
     "pinyin": "huí bì",
-    "english": "variant of 回避",
+    "english": "to shun",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -28445,7 +28445,7 @@
     "id": "2.0:6:墨水儿",
     "hanzi": "墨水儿",
     "pinyin": "mò shuǐ r",
-    "english": "erhua variant of 墨水",
+    "english": "ink",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -28552,8 +28552,8 @@
   {
     "id": "2.0:6:复兴",
     "hanzi": "复兴",
-    "pinyin": "Fù xīng",
-    "english": "Fuxing district of Handan city 邯郸市, Hebei",
+    "pinyin": "fù xīng",
+    "english": "to revive",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -28643,7 +28643,7 @@
     "id": "2.0:6:大伙儿",
     "hanzi": "大伙儿",
     "pinyin": "dà huǒ r",
-    "english": "erhua variant of 大伙",
+    "english": "everybody",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -28840,8 +28840,8 @@
   {
     "id": "2.0:6:奔驰",
     "hanzi": "奔驰",
-    "pinyin": "Bēn chí",
-    "english": "Benz (name)",
+    "pinyin": "bēn chí",
+    "english": "to run quickly",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -28975,8 +28975,8 @@
   {
     "id": "2.0:6:威信",
     "hanzi": "威信",
-    "pinyin": "Wēi xìn",
-    "english": "Weixin county in Zhaotong 通, Yunnan",
+    "pinyin": "wēi xìn",
+    "english": "prestige",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -29110,8 +29110,8 @@
   {
     "id": "2.0:6:孔",
     "hanzi": "孔",
-    "pinyin": "Kǒng",
-    "english": "surname Kong",
+    "pinyin": "kǒng",
+    "english": "hole",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -29227,8 +29227,8 @@
   {
     "id": "2.0:6:安宁",
     "hanzi": "安宁",
-    "pinyin": "Ān níng",
-    "english": "Anning District of Lanzhou City 兰州市, Gansu",
+    "pinyin": "ān níng",
+    "english": "peaceful",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -29471,7 +29471,7 @@
     "id": "2.0:6:家伙",
     "hanzi": "家伙",
     "pinyin": "jiā huo",
-    "english": "variant of 伙",
+    "english": "household dish, implement or furniture",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -29587,8 +29587,8 @@
   {
     "id": "2.0:6:富裕",
     "hanzi": "富裕",
-    "pinyin": "Fù yù",
-    "english": "Fuyu county in Qiqihar 齐齐哈尔, Heilongjiang",
+    "pinyin": "fù yù",
+    "english": "prosperous",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -29749,8 +29749,8 @@
   {
     "id": "2.0:6:将军",
     "hanzi": "将军",
-    "pinyin": "Jiāng jūn",
-    "english": "(common place name)",
+    "pinyin": "jiāng jūn",
+    "english": "general",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -29876,7 +29876,7 @@
     "id": "2.0:6:局限",
     "hanzi": "局限",
     "pinyin": "jú xiàn",
-    "english": "variant of 限",
+    "english": "to limit",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -31460,7 +31460,7 @@
     "id": "2.0:6:恶心",
     "hanzi": "恶心",
     "pinyin": "ě xīn",
-    "english": "variant of 恶心",
+    "english": "nausea",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -31954,8 +31954,8 @@
   {
     "id": "2.0:6:扁",
     "hanzi": "扁",
-    "pinyin": "Piān",
-    "english": "surname Pian",
+    "pinyin": "biǎn",
+    "english": "flat",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -32899,8 +32899,8 @@
   {
     "id": "2.0:6:振兴",
     "hanzi": "振兴",
-    "pinyin": "Zhèn xīng",
-    "english": "Zhengxing district of Dandong city 丹东市, Liaoning",
+    "pinyin": "zhèn xīng",
+    "english": "to revive; to revitalize; to invigorate; to re-energize",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -33467,7 +33467,7 @@
     "id": "2.0:6:摊儿",
     "hanzi": "摊儿",
     "pinyin": "tān r",
-    "english": "erhua variant of 摊",
+    "english": "vendor's stand",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -34114,8 +34114,8 @@
   {
     "id": "2.0:6:方言",
     "hanzi": "方言",
-    "pinyin": "Fāng yán",
-    "english": "the first Chinese dialect dictionary, edited by Yang Xiong 扬雄 in 1st century, containing over 9000 characters",
+    "pinyin": "fāng yán",
+    "english": "topolect",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -34906,8 +34906,8 @@
   {
     "id": "2.0:6:束",
     "hanzi": "束",
-    "pinyin": "Shù",
-    "english": "surname Shu",
+    "pinyin": "shù",
+    "english": "to bind",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -35014,8 +35014,8 @@
   {
     "id": "2.0:6:枚",
     "hanzi": "枚",
-    "pinyin": "Méi",
-    "english": "surname Mei",
+    "pinyin": "méi",
+    "english": "classifier for coins, rings, badges, pearls, sporting medals, rockets, satellites etc",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -35924,7 +35924,7 @@
     "id": "2.0:6:污蔑",
     "hanzi": "污蔑",
     "pinyin": "wū miè",
-    "english": "variant of 污蔑",
+    "english": "to slander",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -36472,8 +36472,8 @@
   {
     "id": "2.0:6:淡水",
     "hanzi": "淡水",
-    "pinyin": "Dàn shuǐ",
-    "english": "Tamsui or Danshui, district of New Taipei City 市, Taiwan",
+    "pinyin": "dàn shuǐ",
+    "english": "potable water (water with low salt content)",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -37508,7 +37508,7 @@
     "id": "2.0:6:玩意儿",
     "hanzi": "玩意儿",
     "pinyin": "wán yì r",
-    "english": "erhua variant of 玩意",
+    "english": "toy",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -37876,8 +37876,8 @@
   {
     "id": "2.0:6:番",
     "hanzi": "番",
-    "pinyin": "Pān",
-    "english": "surname Pan",
+    "pinyin": "fān",
+    "english": "foreign (non-Chinese)",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -38119,8 +38119,8 @@
   {
     "id": "2.0:6:盛",
     "hanzi": "盛",
-    "pinyin": "Shèng",
-    "english": "surname Sheng",
+    "pinyin": "chéng",
+    "english": "to hold",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -38749,8 +38749,8 @@
   {
     "id": "2.0:6:秤",
     "hanzi": "秤",
-    "pinyin": "chēng",
-    "english": "variant of 称, to weigh",
+    "pinyin": "chèng",
+    "english": "steelyard",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -38930,7 +38930,7 @@
     "id": "2.0:6:竖",
     "hanzi": "竖",
     "pinyin": "shù",
-    "english": "variant of 竖",
+    "english": "to erect",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -39056,7 +39056,7 @@
     "id": "2.0:6:答复",
     "hanzi": "答复",
     "pinyin": "dá fù",
-    "english": "variant of 答复",
+    "english": "to answer",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -39244,8 +39244,8 @@
   {
     "id": "2.0:6:粥",
     "hanzi": "粥",
-    "pinyin": "yù",
-    "english": "used in 荤粥",
+    "pinyin": "zhōu",
+    "english": "congee",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -39542,7 +39542,7 @@
     "id": "2.0:6:纳闷儿",
     "hanzi": "纳闷儿",
     "pinyin": "nà mèn r",
-    "english": "erhua variant of 纳闷",
+    "english": "puzzled",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -39586,8 +39586,8 @@
   {
     "id": "2.0:6:组",
     "hanzi": "组",
-    "pinyin": "Zǔ",
-    "english": "surname Zu",
+    "pinyin": "zǔ",
+    "english": "group",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -39794,7 +39794,7 @@
     "id": "2.0:6:绣",
     "hanzi": "绣",
     "pinyin": "xiù",
-    "english": "variant of 绣",
+    "english": "to embroider; embroidery",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -39919,8 +39919,8 @@
   {
     "id": "2.0:6:网络",
     "hanzi": "网络",
-    "pinyin": "Wǎng luò",
-    "english": "Internet",
+    "pinyin": "wǎng luò",
+    "english": "network (computing, telecommunications, transport etc)",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -40009,8 +40009,8 @@
   {
     "id": "2.0:6:翼",
     "hanzi": "翼",
-    "pinyin": "Yì",
-    "english": "surname Yi",
+    "pinyin": "yì",
+    "english": "wing",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -40072,8 +40072,8 @@
   {
     "id": "2.0:6:耍",
     "hanzi": "耍",
-    "pinyin": "Shuǎ",
-    "english": "surname Shua",
+    "pinyin": "shuǎ",
+    "english": "to play with",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -40162,8 +40162,8 @@
   {
     "id": "2.0:6:联想",
     "hanzi": "联想",
-    "pinyin": "Lián xiǎng",
-    "english": "Lenovo",
+    "pinyin": "lián xiǎng",
+    "english": "to associate (cognitively)",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -41684,7 +41684,7 @@
     "id": "2.0:6:词汇",
     "hanzi": "词汇",
     "pinyin": "cí huì",
-    "english": "variant of 词汇",
+    "english": "vocabulary",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -43646,7 +43646,7 @@
     "id": "2.0:6:铺",
     "hanzi": "铺",
     "pinyin": "pù",
-    "english": "variant of 铺",
+    "english": "store",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -44572,8 +44572,8 @@
   {
     "id": "2.0:6:颇",
     "hanzi": "颇",
-    "pinyin": "Pō",
-    "english": "surname Po",
+    "pinyin": "pō",
+    "english": "rather",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -44825,7 +44825,7 @@
     "id": "2.0:6:馅儿",
     "hanzi": "馅儿",
     "pinyin": "xiàn r",
-    "english": "erhua variant of 馅",
+    "english": "(of food) filling; stuffing",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -44914,8 +44914,8 @@
   {
     "id": "2.0:6:高明",
     "hanzi": "高明",
-    "pinyin": "Gāo míng",
-    "english": "Gaoming District of Foshan City 市, Guangdong",
+    "pinyin": "gāo míng",
+    "english": "brilliant; superior; wise",
     "system": "2.0",
     "level": "6",
     "themes": []
@@ -45095,7 +45095,7 @@
     "id": "3.0:1:一下儿",
     "hanzi": "一下儿",
     "pinyin": "yī xià r",
-    "english": "erhua variant of 一下",
+    "english": "one time; once",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45131,7 +45131,7 @@
     "id": "3.0:1:一块儿",
     "hanzi": "一块儿",
     "pinyin": "yī kuài r",
-    "english": "erhua variant of 一块",
+    "english": "a piece; a chunk",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45149,7 +45149,7 @@
     "id": "3.0:1:一点儿",
     "hanzi": "一点儿",
     "pinyin": "yī diǎn r",
-    "english": "erhua variant of 一点",
+    "english": "a bit; a little bit",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45186,8 +45186,8 @@
   {
     "id": "3.0:1:三",
     "hanzi": "三",
-    "pinyin": "Sān",
-    "english": "surname San",
+    "pinyin": "sān",
+    "english": "three",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45195,8 +45195,8 @@
   {
     "id": "3.0:1:上",
     "hanzi": "上",
-    "pinyin": "shǎng",
-    "english": "used in 上声",
+    "pinyin": "shàng",
+    "english": "(bound form) up; upper; above; previous",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45399,8 +45399,8 @@
   {
     "id": "3.0:1:东",
     "hanzi": "东",
-    "pinyin": "Dōng",
-    "english": "surname Dong",
+    "pinyin": "dōng",
+    "english": "east",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45435,8 +45435,8 @@
   {
     "id": "3.0:1:个",
     "hanzi": "个",
-    "pinyin": "gě",
-    "english": "used in 自个儿",
+    "pinyin": "gè",
+    "english": "(classifier used before a noun that has no specific classifier)",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45444,8 +45444,8 @@
   {
     "id": "3.0:1:中",
     "hanzi": "中",
-    "pinyin": "Zhōng",
-    "english": "China",
+    "pinyin": "zhōng",
+    "english": "middle; center",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45516,8 +45516,8 @@
   {
     "id": "3.0:1:也",
     "hanzi": "也",
-    "pinyin": "Yě",
-    "english": "surname Ye",
+    "pinyin": "yě",
+    "english": "also; too",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45525,8 +45525,8 @@
   {
     "id": "3.0:1:书",
     "hanzi": "书",
-    "pinyin": "Shū",
-    "english": "abbr. for 书经",
+    "pinyin": "shū",
+    "english": "book",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45645,7 +45645,7 @@
     "id": "3.0:1:从",
     "hanzi": "从",
     "pinyin": "cóng",
-    "english": "variant of 从",
+    "english": "from; to follow",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45654,7 +45654,7 @@
     "id": "3.0:1:他",
     "hanzi": "他",
     "pinyin": "tā",
-    "english": "he; him (used for either sex when the sex is unknown or unimportant)",
+    "english": "he; him",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45712,7 +45712,7 @@
     "id": "3.0:1:你",
     "hanzi": "你",
     "pinyin": "nǐ",
-    "english": "you (informal, as opposed to courteous 您)",
+    "english": "you",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45747,8 +45747,8 @@
   {
     "id": "3.0:1:元",
     "hanzi": "元",
-    "pinyin": "Yuán",
-    "english": "surname Yuan",
+    "pinyin": "yuán",
+    "english": "yuan; unit",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45775,7 +45775,7 @@
     "id": "3.0:1:八",
     "hanzi": "八",
     "pinyin": "bā",
-    "english": "eight; 8",
+    "english": "eight",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45792,8 +45792,8 @@
   {
     "id": "3.0:1:关",
     "hanzi": "关",
-    "pinyin": "Guān",
-    "english": "surname Guan",
+    "pinyin": "guān",
+    "english": "mountain pass",
     "system": "3.0",
     "level": "1",
     "themes": [
@@ -45841,8 +45841,8 @@
   {
     "id": "3.0:1:冷",
     "hanzi": "冷",
-    "pinyin": "Lěng",
-    "english": "surname Leng",
+    "pinyin": "lěng",
+    "english": "cold",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45904,8 +45904,8 @@
   {
     "id": "3.0:1:别",
     "hanzi": "别",
-    "pinyin": "Bié",
-    "english": "surname Bie",
+    "pinyin": "bié",
+    "english": "do not; other",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -45985,8 +45985,8 @@
   {
     "id": "3.0:1:包",
     "hanzi": "包",
-    "pinyin": "Bāo",
-    "english": "surname Bao",
+    "pinyin": "bāo",
+    "english": "bag; to wrap; to include",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -46097,8 +46097,8 @@
   {
     "id": "3.0:1:南",
     "hanzi": "南",
-    "pinyin": "Nán",
-    "english": "surname Nan",
+    "pinyin": "nán",
+    "english": "south",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -46216,8 +46216,8 @@
   {
     "id": "3.0:1:后",
     "hanzi": "后",
-    "pinyin": "Hòu",
-    "english": "surname Hou",
+    "pinyin": "hòu",
+    "english": "after; behind",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -46261,8 +46261,8 @@
   {
     "id": "3.0:1:听",
     "hanzi": "听",
-    "pinyin": "yǐn",
-    "english": "smile (archaic)",
+    "pinyin": "tīng",
+    "english": "to listen to; to hear",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -46318,7 +46318,7 @@
     "id": "3.0:1:和",
     "hanzi": "和",
     "pinyin": "hé",
-    "english": "old variant of 和",
+    "english": "and; with",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -46501,8 +46501,8 @@
   {
     "id": "3.0:1:国",
     "hanzi": "国",
-    "pinyin": "Guó",
-    "english": "surname Guo",
+    "pinyin": "guó",
+    "english": "country",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -46609,8 +46609,8 @@
   {
     "id": "3.0:1:坐",
     "hanzi": "坐",
-    "pinyin": "Zuò",
-    "english": "surname Zuo",
+    "pinyin": "zuò",
+    "english": "to sit",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -46703,8 +46703,8 @@
   {
     "id": "3.0:1:大学",
     "hanzi": "大学",
-    "pinyin": "Dà xué",
-    "english": "the Great Learning, one of the Four Books 四书 in Confucianism",
+    "pinyin": "dà xué",
+    "english": "university; college",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -46778,7 +46778,7 @@
     "id": "3.0:1:女孩儿",
     "hanzi": "女孩儿",
     "pinyin": "nǚ hái r",
-    "english": "erhua variant of 女孩",
+    "english": "girl",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -46823,7 +46823,7 @@
     "id": "3.0:1:她",
     "hanzi": "她",
     "pinyin": "tā",
-    "english": "she",
+    "english": "she; her",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -46868,7 +46868,7 @@
     "id": "3.0:1:好玩儿",
     "hanzi": "好玩儿",
     "pinyin": "hǎo wán r",
-    "english": "erhua variant of 好玩",
+    "english": "amusing",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47014,7 +47014,7 @@
     "id": "3.0:1:家",
     "hanzi": "家",
     "pinyin": "jiā",
-    "english": "used in 家伙 and 家俱",
+    "english": "home",
     "system": "3.0",
     "level": "1",
     "themes": [
@@ -47099,7 +47099,7 @@
     "id": "3.0:1:小孩儿",
     "hanzi": "小孩儿",
     "pinyin": "xiǎo hái r",
-    "english": "erhua variant of 小孩",
+    "english": "child",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47143,8 +47143,8 @@
   {
     "id": "3.0:1:山",
     "hanzi": "山",
-    "pinyin": "Shān",
-    "english": "surname Shan",
+    "pinyin": "shān",
+    "english": "mountain",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47153,7 +47153,7 @@
     "id": "3.0:1:岁",
     "hanzi": "岁",
     "pinyin": "suì",
-    "english": "variant of 岁, year",
+    "english": "years old; year",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47179,8 +47179,8 @@
   {
     "id": "3.0:1:左",
     "hanzi": "左",
-    "pinyin": "Zuǒ",
-    "english": "surname Zuo",
+    "pinyin": "zuǒ",
+    "english": "left",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47207,7 +47207,7 @@
     "id": "3.0:1:帮",
     "hanzi": "帮",
     "pinyin": "bāng",
-    "english": "old variant of 帮",
+    "english": "to help",
     "system": "3.0",
     "level": "1",
     "themes": [
@@ -47226,8 +47226,8 @@
   {
     "id": "3.0:1:常",
     "hanzi": "常",
-    "pinyin": "Cháng",
-    "english": "surname Chang",
+    "pinyin": "cháng",
+    "english": "often; usual",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47244,8 +47244,8 @@
   {
     "id": "3.0:1:干",
     "hanzi": "干",
-    "pinyin": "gān",
-    "english": "old variant of 干",
+    "pinyin": "gàn",
+    "english": "to do; to work",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47271,8 +47271,8 @@
   {
     "id": "3.0:1:年",
     "hanzi": "年",
-    "pinyin": "Nián",
-    "english": "surname Nian",
+    "pinyin": "nián",
+    "english": "year",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47438,7 +47438,7 @@
     "id": "3.0:1:我",
     "hanzi": "我",
     "pinyin": "wǒ",
-    "english": "I; me; my",
+    "english": "I; me",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47499,8 +47499,8 @@
   {
     "id": "3.0:1:打",
     "hanzi": "打",
-    "pinyin": "dá",
-    "english": "dozen (loanword)",
+    "pinyin": "dǎ",
+    "english": "to hit; to play; to make",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47568,7 +47568,7 @@
     "id": "3.0:1:拿",
     "hanzi": "拿",
     "pinyin": "ná",
-    "english": "old variant of 拿",
+    "english": "to hold; to take",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47605,8 +47605,8 @@
   {
     "id": "3.0:1:教",
     "hanzi": "教",
-    "pinyin": "Jiào",
-    "english": "surname Jiao",
+    "pinyin": "jiāo",
+    "english": "to teach",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47623,8 +47623,8 @@
   {
     "id": "3.0:1:新",
     "hanzi": "新",
-    "pinyin": "Xīn",
-    "english": "abbr. for Xinjiang 疆 or Singapore 坡",
+    "pinyin": "xīn",
+    "english": "new",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47650,8 +47650,8 @@
   {
     "id": "3.0:1:日",
     "hanzi": "日",
-    "pinyin": "Rì",
-    "english": "abbr. for 本, Japan",
+    "pinyin": "rì",
+    "english": "day; sun",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47779,7 +47779,7 @@
     "id": "3.0:1:是",
     "hanzi": "是",
     "pinyin": "shì",
-    "english": "to be (followed by substantives only)",
+    "english": "to be",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -47824,7 +47824,7 @@
     "id": "3.0:1:最",
     "hanzi": "最",
     "pinyin": "zuì",
-    "english": "variant of 最",
+    "english": "most; the most",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -48034,8 +48034,8 @@
   {
     "id": "3.0:1:楼",
     "hanzi": "楼",
-    "pinyin": "Lóu",
-    "english": "surname Lou",
+    "pinyin": "lóu",
+    "english": "building; floor",
     "system": "3.0",
     "level": "1",
     "themes": [
@@ -48103,8 +48103,8 @@
   {
     "id": "3.0:1:比",
     "hanzi": "比",
-    "pinyin": "Bǐ",
-    "english": "Belgium",
+    "pinyin": "bǐ",
+    "english": "to compare; than",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -48112,8 +48112,8 @@
   {
     "id": "3.0:1:毛",
     "hanzi": "毛",
-    "pinyin": "Máo",
-    "english": "surname Mao",
+    "pinyin": "máo",
+    "english": "hair; fur",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -48121,8 +48121,8 @@
   {
     "id": "3.0:1:水",
     "hanzi": "水",
-    "pinyin": "Shuǐ",
-    "english": "surname Shui",
+    "pinyin": "shuǐ",
+    "english": "water",
     "system": "3.0",
     "level": "1",
     "themes": [
@@ -48343,8 +48343,8 @@
   {
     "id": "3.0:1:班",
     "hanzi": "班",
-    "pinyin": "Bān",
-    "english": "surname Ban",
+    "pinyin": "bān",
+    "english": "class; team",
     "system": "3.0",
     "level": "1",
     "themes": [
@@ -48492,7 +48492,7 @@
     "id": "3.0:1:男孩儿",
     "hanzi": "男孩儿",
     "pinyin": "nán hái r",
-    "english": "erhua variant of 男孩",
+    "english": "boy",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -48536,8 +48536,8 @@
   {
     "id": "3.0:1:白",
     "hanzi": "白",
-    "pinyin": "Bái",
-    "english": "surname Bai",
+    "pinyin": "bái",
+    "english": "white",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -48554,8 +48554,8 @@
   {
     "id": "3.0:1:百",
     "hanzi": "百",
-    "pinyin": "Bǎi",
-    "english": "surname Bai",
+    "pinyin": "bǎi",
+    "english": "hundred",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -48703,7 +48703,7 @@
     "id": "3.0:1:笑",
     "hanzi": "笑",
     "pinyin": "xiào",
-    "english": "old variant of 笑",
+    "english": "to laugh; to smile",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -48842,8 +48842,8 @@
   {
     "id": "3.0:1:能",
     "hanzi": "能",
-    "pinyin": "Néng",
-    "english": "surname Neng",
+    "pinyin": "néng",
+    "english": "can; to be able to",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -48851,8 +48851,8 @@
   {
     "id": "3.0:1:花",
     "hanzi": "花",
-    "pinyin": "Huā",
-    "english": "surname Hua",
+    "pinyin": "huā",
+    "english": "flower; to spend",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -48898,8 +48898,8 @@
   {
     "id": "3.0:1:西",
     "hanzi": "西",
-    "pinyin": "Xī",
-    "english": "the West",
+    "pinyin": "xī",
+    "english": "west",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -49038,7 +49038,7 @@
     "id": "3.0:1:请",
     "hanzi": "请",
     "pinyin": "qǐng",
-    "english": "to ask",
+    "english": "please",
     "system": "3.0",
     "level": "1",
     "themes": [
@@ -49224,8 +49224,8 @@
   {
     "id": "3.0:1:路",
     "hanzi": "路",
-    "pinyin": "Lù",
-    "english": "surname Lu",
+    "pinyin": "lù",
+    "english": "road; route",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -49271,8 +49271,8 @@
   {
     "id": "3.0:1:车",
     "hanzi": "车",
-    "pinyin": "Chē",
-    "english": "surname Che",
+    "pinyin": "chē",
+    "english": "vehicle; car",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -49307,8 +49307,8 @@
   {
     "id": "3.0:1:过",
     "hanzi": "过",
-    "pinyin": "Guō",
-    "english": "surname Guo",
+    "pinyin": "guò",
+    "english": "to pass; to cross",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -49316,8 +49316,8 @@
   {
     "id": "3.0:1:还",
     "hanzi": "还",
-    "pinyin": "Huán",
-    "english": "surname Huan",
+    "pinyin": "hái",
+    "english": "still; also",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -49380,7 +49380,7 @@
     "id": "3.0:1:这里",
     "hanzi": "这里",
     "pinyin": "zhè lǐ",
-    "english": "variant of 这里",
+    "english": "here",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -49433,8 +49433,8 @@
   {
     "id": "3.0:1:那",
     "hanzi": "那",
-    "pinyin": "Nā",
-    "english": "surname Na",
+    "pinyin": "nà",
+    "english": "that; then",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -49478,8 +49478,8 @@
   {
     "id": "3.0:1:都",
     "hanzi": "都",
-    "pinyin": "Dū",
-    "english": "surname Du",
+    "pinyin": "dōu",
+    "english": "all; both",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -49488,7 +49488,7 @@
     "id": "3.0:1:里",
     "hanzi": "里",
     "pinyin": "lǐ",
-    "english": "variant of 里",
+    "english": "inside; within",
     "system": "3.0",
     "level": "1",
     "themes": [
@@ -49525,8 +49525,8 @@
   {
     "id": "3.0:1:钱",
     "hanzi": "钱",
-    "pinyin": "Qián",
-    "english": "surname Qian",
+    "pinyin": "qián",
+    "english": "money",
     "system": "3.0",
     "level": "1",
     "themes": [
@@ -49545,8 +49545,8 @@
   {
     "id": "3.0:1:错",
     "hanzi": "错",
-    "pinyin": "Cuò",
-    "english": "surname Cuo",
+    "pinyin": "cuò",
+    "english": "wrong; mistake",
     "system": "3.0",
     "level": "1",
     "themes": [
@@ -49556,8 +49556,8 @@
   {
     "id": "3.0:1:门",
     "hanzi": "门",
-    "pinyin": "Mén",
-    "english": "surname Men",
+    "pinyin": "mén",
+    "english": "door; gate",
     "system": "3.0",
     "level": "1",
     "themes": [
@@ -49649,7 +49649,7 @@
     "id": "3.0:1:面条儿",
     "hanzi": "面条儿",
     "pinyin": "miàn tiáo r",
-    "english": "erhua variant of 面条",
+    "english": "noodles",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -49738,8 +49738,8 @@
   {
     "id": "3.0:1:高",
     "hanzi": "高",
-    "pinyin": "Gāo",
-    "english": "surname Gao",
+    "pinyin": "gāo",
+    "english": "high; tall",
     "system": "3.0",
     "level": "1",
     "themes": []
@@ -49848,8 +49848,8 @@
   {
     "id": "3.0:2:万",
     "hanzi": "万",
-    "pinyin": "mò",
-    "english": "used in 俟",
+    "pinyin": "wàn",
+    "english": "ten thousand",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -50021,7 +50021,7 @@
   {
     "id": "3.0:2:东北",
     "hanzi": "东北",
-    "pinyin": "Dōng běi",
+    "pinyin": "dōng běi",
     "english": "Northeast China",
     "system": "3.0",
     "level": "2",
@@ -50039,8 +50039,8 @@
   {
     "id": "3.0:2:东方",
     "hanzi": "东方",
-    "pinyin": "Dōng fāng",
-    "english": "the East",
+    "pinyin": "dōng fāng",
+    "english": "east; eastern",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -50148,7 +50148,7 @@
     "id": "3.0:2:举",
     "hanzi": "举",
     "pinyin": "jǔ",
-    "english": "variant of 举",
+    "english": "to lift; to raise",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -50625,8 +50625,8 @@
   {
     "id": "3.0:2:假",
     "hanzi": "假",
-    "pinyin": "gēi",
-    "english": "used in 掰",
+    "pinyin": "jiǎ",
+    "english": "false; fake",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -50719,8 +50719,8 @@
   {
     "id": "3.0:2:克",
     "hanzi": "克",
-    "pinyin": "Kè",
-    "english": "abbr. for 克罗地亚, Croatia",
+    "pinyin": "kè",
+    "english": "gram; to overcome",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -50737,8 +50737,8 @@
   {
     "id": "3.0:2:全",
     "hanzi": "全",
-    "pinyin": "Quán",
-    "english": "surname Quan",
+    "pinyin": "quán",
+    "english": "all; whole",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -50937,8 +50937,8 @@
   {
     "id": "3.0:2:凉",
     "hanzi": "凉",
-    "pinyin": "Liáng",
-    "english": "the five Liang of the Sixteen Kingdoms, namely: Former Liang 前凉 (314-376), Later Liang 后凉 (386-403), Northern Liang 北凉 (398-439), Southern Liang 南凉 (397-414), Western Liang 西凉 (400-421)",
+    "pinyin": "liáng",
+    "english": "cool",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -51151,8 +51151,8 @@
   {
     "id": "3.0:2:加",
     "hanzi": "加",
-    "pinyin": "Jiā",
-    "english": "Canada (abbr. for 大)",
+    "pinyin": "jiā",
+    "english": "to add",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -51289,7 +51289,7 @@
     "id": "3.0:2:占",
     "hanzi": "占",
     "pinyin": "zhàn",
-    "english": "variant of 占",
+    "english": "to occupy; to account for",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -51354,8 +51354,8 @@
   {
     "id": "3.0:2:友好",
     "hanzi": "友好",
-    "pinyin": "Yǒu hǎo",
-    "english": "Youhao district of Yichun city 市, Heilongjiang",
+    "pinyin": "yǒu hǎo",
+    "english": "friendly",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -51426,8 +51426,8 @@
   {
     "id": "3.0:2:句",
     "hanzi": "句",
-    "pinyin": "gōu",
-    "english": "variant of 勾",
+    "pinyin": "jù",
+    "english": "sentence; phrase",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -51608,8 +51608,8 @@
   {
     "id": "3.0:2:向",
     "hanzi": "向",
-    "pinyin": "Xiàng",
-    "english": "surname Xiang",
+    "pinyin": "xiàng",
+    "english": "toward; to face",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -51644,8 +51644,8 @@
   {
     "id": "3.0:2:周",
     "hanzi": "周",
-    "pinyin": "Zhōu",
-    "english": "surname Zhou",
+    "pinyin": "zhōu",
+    "english": "week",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -51681,7 +51681,7 @@
     "id": "3.0:2:咱",
     "hanzi": "咱",
     "pinyin": "zán",
-    "english": "variant of 咱",
+    "english": "we; I or me",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -51863,7 +51863,7 @@
     "id": "3.0:2:墙",
     "hanzi": "墙",
     "pinyin": "qiáng",
-    "english": "variant of 墙, wall",
+    "english": "wall",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -51956,7 +51956,7 @@
     "id": "3.0:2:夜",
     "hanzi": "夜",
     "pinyin": "yè",
-    "english": "variant of 夜",
+    "english": "night",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -52081,8 +52081,8 @@
   {
     "id": "3.0:2:大门",
     "hanzi": "大门",
-    "pinyin": "Dà mén",
-    "english": "the Doors, US rock band",
+    "pinyin": "dà mén",
+    "english": "gate; main entrance",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -52219,7 +52219,7 @@
     "id": "3.0:2:姓名",
     "hanzi": "姓名",
     "pinyin": "xìng míng",
-    "english": "surname and given name",
+    "english": "full name",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -52393,8 +52393,8 @@
   {
     "id": "3.0:2:封",
     "hanzi": "封",
-    "pinyin": "Fēng",
-    "english": "surname Feng",
+    "pinyin": "fēng",
+    "english": "to seal; classifier for letters",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -52574,7 +52574,7 @@
     "id": "3.0:2:干活儿",
     "hanzi": "干活儿",
     "pinyin": "gàn huó r",
-    "english": "erhua variant of 干活",
+    "english": "(coll.) to work",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -52582,8 +52582,8 @@
   {
     "id": "3.0:2:平",
     "hanzi": "平",
-    "pinyin": "Píng",
-    "english": "surname Ping",
+    "pinyin": "píng",
+    "english": "flat; peaceful",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -52855,7 +52855,7 @@
     "id": "3.0:2:快点儿",
     "hanzi": "快点儿",
     "pinyin": "kuài diǎn r",
-    "english": "erhua variant of 快点",
+    "english": "to do smh more quickly",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -52926,8 +52926,8 @@
   {
     "id": "3.0:2:怕",
     "hanzi": "怕",
-    "pinyin": "Pà",
-    "english": "surname Pa",
+    "pinyin": "pà",
+    "english": "to fear; to be afraid",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -53054,8 +53054,8 @@
   {
     "id": "3.0:2:成",
     "hanzi": "成",
-    "pinyin": "Chéng",
-    "english": "surname Cheng",
+    "pinyin": "chéng",
+    "english": "to become; to accomplish",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -53351,8 +53351,8 @@
   {
     "id": "3.0:2:提",
     "hanzi": "提",
-    "pinyin": "dī",
-    "english": "used in 防 and 溜",
+    "pinyin": "tí",
+    "english": "to carry (hanging down from the hand)",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -53899,8 +53899,8 @@
   {
     "id": "3.0:2:查",
     "hanzi": "查",
-    "pinyin": "Zhā",
-    "english": "surname Zha",
+    "pinyin": "chá",
+    "english": "to check; to investigate",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -54000,8 +54000,8 @@
   {
     "id": "3.0:2:段",
     "hanzi": "段",
-    "pinyin": "Duàn",
-    "english": "surname Duan",
+    "pinyin": "duàn",
+    "english": "section; paragraph",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -54144,8 +54144,8 @@
   {
     "id": "3.0:2:海",
     "hanzi": "海",
-    "pinyin": "Hǎi",
-    "english": "surname Hai",
+    "pinyin": "hǎi",
+    "english": "sea",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -54198,8 +54198,8 @@
   {
     "id": "3.0:2:满",
     "hanzi": "满",
-    "pinyin": "Mǎn",
-    "english": "Manchu ethnic group",
+    "pinyin": "mǎn",
+    "english": "full; satisfied",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -54473,7 +54473,7 @@
     "id": "3.0:2:画",
     "hanzi": "画",
     "pinyin": "huà",
-    "english": "to draw; to paint",
+    "english": "to draw; picture",
     "system": "3.0",
     "level": "2",
     "themes": [
@@ -54502,7 +54502,7 @@
     "id": "3.0:2:留",
     "hanzi": "留",
     "pinyin": "liú",
-    "english": "old variant of 留",
+    "english": "to stay; to leave behind",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -54668,7 +54668,7 @@
     "id": "3.0:2:碗",
     "hanzi": "碗",
     "pinyin": "wǎn",
-    "english": "variant of 碗",
+    "english": "bowl",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -54677,7 +54677,7 @@
     "id": "3.0:2:碰",
     "hanzi": "碰",
     "pinyin": "pèng",
-    "english": "variant of 碰",
+    "english": "to touch; to bump into",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -54712,8 +54712,8 @@
   {
     "id": "3.0:2:离",
     "hanzi": "离",
-    "pinyin": "chī",
-    "english": "mythical beast (archaic)",
+    "pinyin": "lí",
+    "english": "to leave",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -54913,8 +54913,8 @@
   {
     "id": "3.0:2:米",
     "hanzi": "米",
-    "pinyin": "Mǐ",
-    "english": "surname Mi",
+    "pinyin": "mǐ",
+    "english": "rice; meter",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -54922,8 +54922,8 @@
   {
     "id": "3.0:2:红",
     "hanzi": "红",
-    "pinyin": "Hóng",
-    "english": "surname Hong",
+    "pinyin": "hóng",
+    "english": "red",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -54952,7 +54952,7 @@
     "id": "3.0:2:纸",
     "hanzi": "纸",
     "pinyin": "zhǐ",
-    "english": "variant of 纸",
+    "english": "paper",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -54981,8 +54981,8 @@
   {
     "id": "3.0:2:组",
     "hanzi": "组",
-    "pinyin": "Zǔ",
-    "english": "surname Zu",
+    "pinyin": "zǔ",
+    "english": "group",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -55139,7 +55139,7 @@
     "id": "3.0:2:背",
     "hanzi": "背",
     "pinyin": "bēi",
-    "english": "variant of 背",
+    "english": "to carry on the back",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -55231,7 +55231,7 @@
     "id": "3.0:2:船",
     "hanzi": "船",
     "pinyin": "chuán",
-    "english": "variant of 船",
+    "english": "boat; ship",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -55294,7 +55294,7 @@
     "id": "3.0:2:草",
     "hanzi": "草",
     "pinyin": "cǎo",
-    "english": "variant of 草",
+    "english": "grass",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -55329,8 +55329,8 @@
   {
     "id": "3.0:2:药水",
     "hanzi": "药水",
-    "pinyin": "Yào shuǐ",
-    "english": "Yaksu in North Korea, near the border with Liaoning and Jiling province",
+    "pinyin": "yào shuǐ",
+    "english": "liquid medicine",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -55356,8 +55356,8 @@
   {
     "id": "3.0:2:蓝",
     "hanzi": "蓝",
-    "pinyin": "Lán",
-    "english": "surname Lan",
+    "pinyin": "lán",
+    "english": "blue",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -55383,8 +55383,8 @@
   {
     "id": "3.0:2:蛋",
     "hanzi": "蛋",
-    "pinyin": "Dàn",
-    "english": "variant of 蜑",
+    "pinyin": "dàn",
+    "english": "egg",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -55446,7 +55446,7 @@
   {
     "id": "3.0:2:西北",
     "hanzi": "西北",
-    "pinyin": "Xī běi",
+    "pinyin": "xī běi",
     "english": "Northwest China (Shaanxi, Gansu, Qinghai, Ningxia, Xinjiang)",
     "system": "3.0",
     "level": "2",
@@ -55474,7 +55474,7 @@
     "id": "3.0:2:西方",
     "hanzi": "西方",
     "pinyin": "Xī fāng",
-    "english": "the West",
+    "english": "west; western world",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -55527,8 +55527,8 @@
   {
     "id": "3.0:2:角",
     "hanzi": "角",
-    "pinyin": "Jué",
-    "english": "surname Jue",
+    "pinyin": "jiǎo",
+    "english": "corner; angle",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -55622,7 +55622,7 @@
     "id": "3.0:2:词",
     "hanzi": "词",
     "pinyin": "cí",
-    "english": "old variant of 词",
+    "english": "word; term",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -55765,8 +55765,8 @@
   {
     "id": "3.0:2:越",
     "hanzi": "越",
-    "pinyin": "Yuè",
-    "english": "generic word for peoples or states of south China or south Asia at different historical periods",
+    "pinyin": "yuè",
+    "english": "to exceed; more",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -55995,7 +55995,7 @@
     "id": "3.0:2:遍",
     "hanzi": "遍",
     "pinyin": "biàn",
-    "english": "variant of 遍",
+    "english": "everywhere; one time",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -56205,8 +56205,8 @@
   {
     "id": "3.0:2:闻",
     "hanzi": "闻",
-    "pinyin": "Wén",
-    "english": "surname Wen",
+    "pinyin": "wén",
+    "english": "to hear; to smell",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -56232,8 +56232,8 @@
   {
     "id": "3.0:2:阴",
     "hanzi": "阴",
-    "pinyin": "Yīn",
-    "english": "surname Yin",
+    "pinyin": "yīn",
+    "english": "cloudy; shade",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -56342,8 +56342,8 @@
   {
     "id": "3.0:2:雪",
     "hanzi": "雪",
-    "pinyin": "Xuě",
-    "english": "surname Xue",
+    "pinyin": "xuě",
+    "english": "snow",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -56461,8 +56461,8 @@
   {
     "id": "3.0:2:题",
     "hanzi": "题",
-    "pinyin": "Tí",
-    "english": "surname Ti",
+    "pinyin": "tí",
+    "english": "question; topic",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -56553,8 +56553,8 @@
   {
     "id": "3.0:2:鱼",
     "hanzi": "鱼",
-    "pinyin": "Yú",
-    "english": "surname Yu",
+    "pinyin": "yú",
+    "english": "fish",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -56562,8 +56562,8 @@
   {
     "id": "3.0:2:鸟",
     "hanzi": "鸟",
-    "pinyin": "diǎo",
-    "english": "variant of 屌",
+    "pinyin": "niǎo",
+    "english": "bird",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -56580,8 +56580,8 @@
   {
     "id": "3.0:2:黄",
     "hanzi": "黄",
-    "pinyin": "Huáng",
-    "english": "surname Huang or Hwang",
+    "pinyin": "huáng",
+    "english": "yellow",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -56598,8 +56598,8 @@
   {
     "id": "3.0:2:黑",
     "hanzi": "黑",
-    "pinyin": "Hēi",
-    "english": "abbr. for Heilongjiang province 黑龙江",
+    "pinyin": "hēi",
+    "english": "black",
     "system": "3.0",
     "level": "2",
     "themes": []
@@ -56967,8 +56967,8 @@
   {
     "id": "3.0:3:乐",
     "hanzi": "乐",
-    "pinyin": "Lè",
-    "english": "surname Le",
+    "pinyin": "lè",
+    "english": "happy",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -57327,8 +57327,8 @@
   {
     "id": "3.0:3:付",
     "hanzi": "付",
-    "pinyin": "Fù",
-    "english": "surname Fu",
+    "pinyin": "fù",
+    "english": "to pay",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -57399,8 +57399,8 @@
   {
     "id": "3.0:3:任",
     "hanzi": "任",
-    "pinyin": "Rén",
-    "english": "surname Ren",
+    "pinyin": "rèn",
+    "english": "to assign",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -57579,8 +57579,8 @@
   {
     "id": "3.0:3:保",
     "hanzi": "保",
-    "pinyin": "Bǎo",
-    "english": "Bulgaria",
+    "pinyin": "bǎo",
+    "english": "to defend; to protect; to keep",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -57669,8 +57669,8 @@
   {
     "id": "3.0:3:修",
     "hanzi": "修",
-    "pinyin": "Xiū",
-    "english": "surname Xiu",
+    "pinyin": "xiū",
+    "english": "to decorate",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -58020,8 +58020,8 @@
   {
     "id": "3.0:3:刀",
     "hanzi": "刀",
-    "pinyin": "Dāo",
-    "english": "surname Dao",
+    "pinyin": "dāo",
+    "english": "knife",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -58263,8 +58263,8 @@
   {
     "id": "3.0:3:力",
     "hanzi": "力",
-    "pinyin": "Lì",
-    "english": "surname Li",
+    "pinyin": "lì",
+    "english": "power",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -58362,8 +58362,8 @@
   {
     "id": "3.0:3:化",
     "hanzi": "化",
-    "pinyin": "huā",
-    "english": "variant of 花",
+    "pinyin": "huà",
+    "english": "to make into",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -58380,8 +58380,8 @@
   {
     "id": "3.0:3:区",
     "hanzi": "区",
-    "pinyin": "Oū",
-    "english": "surname Ou",
+    "pinyin": "qū",
+    "english": "area",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -58533,8 +58533,8 @@
   {
     "id": "3.0:3:双",
     "hanzi": "双",
-    "pinyin": "Shuāng",
-    "english": "surname Shuang",
+    "pinyin": "shuāng",
+    "english": "two",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -58552,7 +58552,7 @@
     "id": "3.0:3:反复",
     "hanzi": "反复",
     "pinyin": "fǎn fù",
-    "english": "variant of 反复",
+    "english": "repeatedly",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -58713,8 +58713,8 @@
   {
     "id": "3.0:3:古",
     "hanzi": "古",
-    "pinyin": "Gǔ",
-    "english": "surname Gu",
+    "pinyin": "gǔ",
+    "english": "ancient",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -58794,8 +58794,8 @@
   {
     "id": "3.0:3:台",
     "hanzi": "台",
-    "pinyin": "Tái",
-    "english": "Taiwan (abbr.)",
+    "pinyin": "tái",
+    "english": "(classical) you (in letters)",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -59028,8 +59028,8 @@
   {
     "id": "3.0:3:和平",
     "hanzi": "和平",
-    "pinyin": "Hé píng",
-    "english": "Heping District of Shenyang city 沈阳市, Liaoning",
+    "pinyin": "hé píng",
+    "english": "peace",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -59136,8 +59136,8 @@
   {
     "id": "3.0:3:围",
     "hanzi": "围",
-    "pinyin": "Wéi",
-    "english": "surname Wei",
+    "pinyin": "wéi",
+    "english": "to encircle",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -59181,8 +59181,8 @@
   {
     "id": "3.0:3:土",
     "hanzi": "土",
-    "pinyin": "Tǔ",
-    "english": "Tu (ethnic group)",
+    "pinyin": "tǔ",
+    "english": "earth",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -59676,8 +59676,8 @@
   {
     "id": "3.0:3:室",
     "hanzi": "室",
-    "pinyin": "Shì",
-    "english": "surname Shi",
+    "pinyin": "shì",
+    "english": "room",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -59730,8 +59730,8 @@
   {
     "id": "3.0:3:富",
     "hanzi": "富",
-    "pinyin": "Fù",
-    "english": "surname Fu",
+    "pinyin": "fù",
+    "english": "rich",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -59956,7 +59956,7 @@
     "id": "3.0:3:布",
     "hanzi": "布",
     "pinyin": "bù",
-    "english": "variant of 布",
+    "english": "to announce",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -60216,8 +60216,8 @@
   {
     "id": "3.0:3:张",
     "hanzi": "张",
-    "pinyin": "Zhāng",
-    "english": "surname Zhang",
+    "pinyin": "zhāng",
+    "english": "to open up",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -60225,8 +60225,8 @@
   {
     "id": "3.0:3:强",
     "hanzi": "强",
-    "pinyin": "Qiáng",
-    "english": "surname Qiang",
+    "pinyin": "jiàng",
+    "english": "stubborn",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -60444,7 +60444,7 @@
     "id": "3.0:3:念",
     "hanzi": "念",
     "pinyin": "niàn",
-    "english": "variant of 念, to read aloud",
+    "english": "to read",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -60605,8 +60605,8 @@
   {
     "id": "3.0:3:成功",
     "hanzi": "成功",
-    "pinyin": "Chéng gōng",
-    "english": "Chenggong or Chengkung town in Taitung County 台东县, southeast Taiwan",
+    "pinyin": "chéng gōng",
+    "english": "success",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -61064,8 +61064,8 @@
   {
     "id": "3.0:3:支",
     "hanzi": "支",
-    "pinyin": "Zhī",
-    "english": "surname Zhi",
+    "pinyin": "zhī",
+    "english": "to support",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -61173,7 +61173,7 @@
     "id": "3.0:3:救",
     "hanzi": "救",
     "pinyin": "jiù",
-    "english": "variant of 救",
+    "english": "to save",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -61407,7 +61407,7 @@
     "id": "3.0:3:时",
     "hanzi": "时",
     "pinyin": "shí",
-    "english": "old variant of 时",
+    "english": "o'clock",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -61415,8 +61415,8 @@
   {
     "id": "3.0:3:时代",
     "hanzi": "时代",
-    "pinyin": "Shí dài",
-    "english": "Time, US weekly news magazine",
+    "pinyin": "shí dài",
+    "english": "age",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -61577,8 +61577,8 @@
   {
     "id": "3.0:3:朝",
     "hanzi": "朝",
-    "pinyin": "Cháo",
-    "english": "abbr. for 朝鲜 Korea",
+    "pinyin": "cháo",
+    "english": "imperial or royal court",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -61587,7 +61587,7 @@
     "id": "3.0:3:期",
     "hanzi": "期",
     "pinyin": "qī",
-    "english": "variant of 期",
+    "english": "period",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -61658,8 +61658,8 @@
   {
     "id": "3.0:3:束",
     "hanzi": "束",
-    "pinyin": "Shù",
-    "english": "surname Shu",
+    "pinyin": "shù",
+    "english": "to bind",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -61811,8 +61811,8 @@
   {
     "id": "3.0:3:步",
     "hanzi": "步",
-    "pinyin": "Bù",
-    "english": "surname Bu",
+    "pinyin": "bù",
+    "english": "a step",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -61928,8 +61928,8 @@
   {
     "id": "3.0:3:汤",
     "hanzi": "汤",
-    "pinyin": "Tāng",
-    "english": "surname Tang",
+    "pinyin": "tāng",
+    "english": "soup",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -62037,7 +62037,7 @@
     "id": "3.0:3:深",
     "hanzi": "深",
     "pinyin": "shēn",
-    "english": "old variant of 深",
+    "english": "deep; dark",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -62072,8 +62072,8 @@
   {
     "id": "3.0:3:游",
     "hanzi": "游",
-    "pinyin": "Yóu",
-    "english": "surname You",
+    "pinyin": "yóu",
+    "english": "to swim",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -62153,8 +62153,8 @@
   {
     "id": "3.0:3:火",
     "hanzi": "火",
-    "pinyin": "Huǒ",
-    "english": "surname Huo",
+    "pinyin": "huǒ",
+    "english": "fire",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -62190,7 +62190,7 @@
     "id": "3.0:3:照",
     "hanzi": "照",
     "pinyin": "zhào",
-    "english": "variant of 照",
+    "english": "to shine",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -62243,8 +62243,8 @@
   {
     "id": "3.0:3:牛",
     "hanzi": "牛",
-    "pinyin": "Niú",
-    "english": "surname Niu",
+    "pinyin": "niú",
+    "english": "cow",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -62297,8 +62297,8 @@
   {
     "id": "3.0:3:环",
     "hanzi": "环",
-    "pinyin": "Huán",
-    "english": "surname Huan",
+    "pinyin": "huán",
+    "english": "ring",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -62324,8 +62324,8 @@
   {
     "id": "3.0:3:现代",
     "hanzi": "现代",
-    "pinyin": "Xiàn dài",
-    "english": "Hyundai, South Korean company",
+    "pinyin": "xiàn dài",
+    "english": "modern times",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -62594,8 +62594,8 @@
   {
     "id": "3.0:3:皮",
     "hanzi": "皮",
-    "pinyin": "Pí",
-    "english": "surname Pi",
+    "pinyin": "pí",
+    "english": "leather",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -62630,8 +62630,8 @@
   {
     "id": "3.0:3:直",
     "hanzi": "直",
-    "pinyin": "Zhí",
-    "english": "surname Zhi",
+    "pinyin": "zhí",
+    "english": "straight",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -62837,8 +62837,8 @@
   {
     "id": "3.0:3:祝",
     "hanzi": "祝",
-    "pinyin": "Zhù",
-    "english": "surname Zhu",
+    "pinyin": "zhù",
+    "english": "to pray for",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -62855,8 +62855,8 @@
   {
     "id": "3.0:3:福",
     "hanzi": "福",
-    "pinyin": "Fú",
-    "english": "surname Fu",
+    "pinyin": "fú",
+    "english": "good fortune",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -63018,7 +63018,7 @@
     "id": "3.0:3:管",
     "hanzi": "管",
     "pinyin": "guǎn",
-    "english": "variant of 管",
+    "english": "to take care (of)",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -63162,7 +63162,7 @@
     "id": "3.0:3:线",
     "hanzi": "线",
     "pinyin": "xiàn",
-    "english": "variant of 线",
+    "english": "thread",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -63314,8 +63314,8 @@
   {
     "id": "3.0:3:羊",
     "hanzi": "羊",
-    "pinyin": "Yáng",
-    "english": "surname Yang",
+    "pinyin": "yáng",
+    "english": "sheep",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -63323,8 +63323,8 @@
   {
     "id": "3.0:3:美",
     "hanzi": "美",
-    "pinyin": "Měi",
-    "english": "(bound form) the Americas (abbr. for 洲)",
+    "pinyin": "měi",
+    "english": "beautiful",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -63378,7 +63378,7 @@
     "id": "3.0:3:群",
     "hanzi": "群",
     "pinyin": "qún",
-    "english": "variant of 群",
+    "english": "group",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -63405,7 +63405,7 @@
     "id": "3.0:3:老板",
     "hanzi": "老板",
     "pinyin": "lǎo bǎn",
-    "english": "variant of 老板",
+    "english": "boss",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -63477,7 +63477,7 @@
     "id": "3.0:3:联系",
     "hanzi": "联系",
     "pinyin": "lián xì",
-    "english": "variant of 联系",
+    "english": "connection",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -63819,7 +63819,7 @@
     "id": "3.0:3:裤子",
     "hanzi": "裤子",
     "pinyin": "kù zi",
-    "english": "variant of 裤子, trousers",
+    "english": "pants",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -64169,8 +64169,8 @@
   {
     "id": "3.0:3:谈",
     "hanzi": "谈",
-    "pinyin": "Tán",
-    "english": "surname Tan",
+    "pinyin": "tán",
+    "english": "to speak",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -64214,8 +64214,8 @@
   {
     "id": "3.0:3:费",
     "hanzi": "费",
-    "pinyin": "Fèi",
-    "english": "surname Fei",
+    "pinyin": "fèi",
+    "english": "to cost",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -64504,8 +64504,8 @@
   {
     "id": "3.0:3:连",
     "hanzi": "连",
-    "pinyin": "Lián",
-    "english": "surname Lian",
+    "pinyin": "lián",
+    "english": "to link",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -64774,8 +64774,8 @@
   {
     "id": "3.0:3:金",
     "hanzi": "金",
-    "pinyin": "Jīn",
-    "english": "surname Jin",
+    "pinyin": "jīn",
+    "english": "gold",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -64792,8 +64792,8 @@
   {
     "id": "3.0:3:钟",
     "hanzi": "钟",
-    "pinyin": "Zhōng",
-    "english": "surname Zhong",
+    "pinyin": "zhōng",
+    "english": "handleless cup",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -64801,8 +64801,8 @@
   {
     "id": "3.0:3:铁",
     "hanzi": "铁",
-    "pinyin": "Tiě",
-    "english": "surname Tie",
+    "pinyin": "tiě",
+    "english": "iron (metal)",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -64918,8 +64918,8 @@
   {
     "id": "3.0:3:随",
     "hanzi": "随",
-    "pinyin": "Suí",
-    "english": "surname Sui",
+    "pinyin": "suí",
+    "english": "to follow",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -65152,8 +65152,8 @@
   {
     "id": "3.0:3:马",
     "hanzi": "马",
-    "pinyin": "Mǎ",
-    "english": "surname Ma",
+    "pinyin": "mǎ",
+    "english": "horse",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -65188,8 +65188,8 @@
   {
     "id": "3.0:3:齐",
     "hanzi": "齐",
-    "pinyin": "Qí",
-    "english": "(name of states and dynasties at several different periods)",
+    "pinyin": "qí",
+    "english": "neat",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -65197,8 +65197,8 @@
   {
     "id": "3.0:3:龙",
     "hanzi": "龙",
-    "pinyin": "Lóng",
-    "english": "surname Long",
+    "pinyin": "lóng",
+    "english": "dragon",
     "system": "3.0",
     "level": "3",
     "themes": []
@@ -65386,8 +65386,8 @@
   {
     "id": "3.0:4:严",
     "hanzi": "严",
-    "pinyin": "Yán",
-    "english": "surname Yan",
+    "pinyin": "yán",
+    "english": "tight (closely sealed)",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -66691,8 +66691,8 @@
   {
     "id": "3.0:4:单",
     "hanzi": "单",
-    "pinyin": "Shàn",
-    "english": "surname Shan",
+    "pinyin": "dān",
+    "english": "bill",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -66737,7 +66737,7 @@
     "id": "3.0:4:却",
     "hanzi": "却",
     "pinyin": "què",
-    "english": "old variant of 却",
+    "english": "but",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -67168,8 +67168,8 @@
   {
     "id": "3.0:4:咸",
     "hanzi": "咸",
-    "pinyin": "Xián",
-    "english": "surname Xian",
+    "pinyin": "xián",
+    "english": "all",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -67627,8 +67627,8 @@
   {
     "id": "3.0:4:大众",
     "hanzi": "大众",
-    "pinyin": "Dà zhòng",
-    "english": "Volkswagen (automobile manufacturer)",
+    "pinyin": "dà zhòng",
+    "english": "the masses",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -67735,8 +67735,8 @@
   {
     "id": "3.0:4:大陆",
     "hanzi": "大陆",
-    "pinyin": "Dà lù",
-    "english": "mainland China (reference to the PRC)",
+    "pinyin": "dà lù",
+    "english": "continent; mainland",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -67924,8 +67924,8 @@
   {
     "id": "3.0:4:孙子",
     "hanzi": "孙子",
-    "pinyin": "Sūn zǐ",
-    "english": "Sun Tzu, also known as Sun Wu 孙武 (c. 500 BC, dates of birth and death uncertain), general, strategist and philosopher of the Spring and Autumn Period (700-475 BC), believed to be the author of the “Art of War” 孙子兵法, one of the Seven Military Classics of ancient China 武经七书",
+    "pinyin": "sūn zi",
+    "english": "grandson",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -67933,8 +67933,8 @@
   {
     "id": "3.0:4:季",
     "hanzi": "季",
-    "pinyin": "Jì",
-    "english": "surname Ji",
+    "pinyin": "jì",
+    "english": "season",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -68023,8 +68023,8 @@
   {
     "id": "3.0:4:安",
     "hanzi": "安",
-    "pinyin": "Ān",
-    "english": "surname An",
+    "pinyin": "ān",
+    "english": "(bound form) calm; peaceful",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -68041,8 +68041,8 @@
   {
     "id": "3.0:4:官",
     "hanzi": "官",
-    "pinyin": "Guān",
-    "english": "surname Guan",
+    "pinyin": "guān",
+    "english": "government official",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -68069,7 +68069,7 @@
     "id": "3.0:4:宝",
     "hanzi": "宝",
     "pinyin": "bǎo",
-    "english": "variant of 宝",
+    "english": "jewel",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -68140,8 +68140,8 @@
   {
     "id": "3.0:4:宽",
     "hanzi": "宽",
-    "pinyin": "Kuān",
-    "english": "surname Kuan",
+    "pinyin": "kuān",
+    "english": "wide",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -68167,8 +68167,8 @@
   {
     "id": "3.0:4:密",
     "hanzi": "密",
-    "pinyin": "Mì",
-    "english": "surname Mi",
+    "pinyin": "mì",
+    "english": "secret",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -68437,8 +68437,8 @@
   {
     "id": "3.0:4:帅",
     "hanzi": "帅",
-    "pinyin": "Shuài",
-    "english": "surname Shuai",
+    "pinyin": "shuài",
+    "english": "(bound form) commander-in-chief",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -68518,8 +68518,8 @@
   {
     "id": "3.0:4:应",
     "hanzi": "应",
-    "pinyin": "Yīng",
-    "english": "surname Ying",
+    "pinyin": "yīng",
+    "english": "to agree (to do sth)",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -68563,8 +68563,8 @@
   {
     "id": "3.0:4:延长",
     "hanzi": "延长",
-    "pinyin": "Yán cháng",
-    "english": "Yanchang county in Yan'an 安, Shaanxi",
+    "pinyin": "yán cháng",
+    "english": "to prolong",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -68644,8 +68644,8 @@
   {
     "id": "3.0:4:归",
     "hanzi": "归",
-    "pinyin": "Guī",
-    "english": "surname Gui",
+    "pinyin": "guī",
+    "english": "to return",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -68879,7 +68879,7 @@
     "id": "3.0:4:恶心",
     "hanzi": "恶心",
     "pinyin": "ě xīn",
-    "english": "variant of 恶心",
+    "english": "nausea",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -68977,8 +68977,8 @@
   {
     "id": "3.0:4:戴",
     "hanzi": "戴",
-    "pinyin": "Dài",
-    "english": "surname Dai",
+    "pinyin": "dài",
+    "english": "to put on or wear (glasses, hat, gloves etc)",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -69472,8 +69472,8 @@
   {
     "id": "3.0:4:摇",
     "hanzi": "摇",
-    "pinyin": "Yáo",
-    "english": "surname Yao",
+    "pinyin": "yáo",
+    "english": "to shake",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -69536,7 +69536,7 @@
     "id": "3.0:4:收获",
     "hanzi": "收获",
     "pinyin": "shōu huò",
-    "english": "variant of 收获",
+    "english": "to harvest",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -69625,8 +69625,8 @@
   {
     "id": "3.0:4:散",
     "hanzi": "散",
-    "pinyin": "sàn",
-    "english": "variant of 散",
+    "pinyin": "sǎn",
+    "english": "scattered",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -69688,8 +69688,8 @@
   {
     "id": "3.0:4:方",
     "hanzi": "方",
-    "pinyin": "Fāng",
-    "english": "surname Fang",
+    "pinyin": "fāng",
+    "english": "square",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -69842,7 +69842,7 @@
     "id": "3.0:4:晒",
     "hanzi": "晒",
     "pinyin": "shài",
-    "english": "variant of 晒",
+    "english": "(of the sun) to shine on",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -69896,7 +69896,7 @@
     "id": "3.0:4:暗",
     "hanzi": "暗",
     "pinyin": "àn",
-    "english": "variant of 暗",
+    "english": "dark",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -69913,8 +69913,8 @@
   {
     "id": "3.0:4:曾",
     "hanzi": "曾",
-    "pinyin": "Zēng",
-    "english": "surname Zeng",
+    "pinyin": "céng",
+    "english": "once",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -70129,8 +70129,8 @@
   {
     "id": "3.0:4:松",
     "hanzi": "松",
-    "pinyin": "Sōng",
-    "english": "surname Song",
+    "pinyin": "sōng",
+    "english": "pine",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -70210,8 +70210,8 @@
   {
     "id": "3.0:4:树林",
     "hanzi": "树林",
-    "pinyin": "Shù lín",
-    "english": "Shulin city in New Taipei City 市, Taiwan",
+    "pinyin": "shù lín",
+    "english": "woods",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -70462,8 +70462,8 @@
   {
     "id": "3.0:4:江",
     "hanzi": "江",
-    "pinyin": "Jiāng",
-    "english": "surname Jiang",
+    "pinyin": "jiāng",
+    "english": "river",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -70562,7 +70562,7 @@
     "id": "3.0:4:法",
     "hanzi": "法",
     "pinyin": "fǎ",
-    "english": "variant of 法",
+    "english": "law",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -70624,8 +70624,8 @@
   {
     "id": "3.0:4:浅",
     "hanzi": "浅",
-    "pinyin": "jiān",
-    "english": "sound of moving water",
+    "pinyin": "qiǎn",
+    "english": "shallow; light",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -70733,7 +70733,7 @@
     "id": "3.0:4:湿",
     "hanzi": "湿",
     "pinyin": "shī",
-    "english": "variant of 湿",
+    "english": "moist",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -71020,8 +71020,8 @@
   {
     "id": "3.0:4:王",
     "hanzi": "王",
-    "pinyin": "Wáng",
-    "english": "surname Wang",
+    "pinyin": "wáng",
+    "english": "king or monarch",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -71209,8 +71209,8 @@
   {
     "id": "3.0:4:盖",
     "hanzi": "盖",
-    "pinyin": "Gě",
-    "english": "surname Ge",
+    "pinyin": "gài",
+    "english": "lid",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -72037,8 +72037,8 @@
   {
     "id": "3.0:4:网络",
     "hanzi": "网络",
-    "pinyin": "Wǎng luò",
-    "english": "Internet",
+    "pinyin": "wǎng luò",
+    "english": "network (computing, telecommunications, transport etc)",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -72451,8 +72451,8 @@
   {
     "id": "3.0:4:薄",
     "hanzi": "薄",
-    "pinyin": "Bó",
-    "english": "surname Bo",
+    "pinyin": "báo",
+    "english": "thin",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -72668,7 +72668,7 @@
     "id": "3.0:4:词汇",
     "hanzi": "词汇",
     "pinyin": "cí huì",
-    "english": "variant of 词汇",
+    "english": "vocabulary",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -72685,8 +72685,8 @@
   {
     "id": "3.0:4:诗",
     "hanzi": "诗",
-    "pinyin": "Shī",
-    "english": "abbr. for Shijing 诗经, the Book of Songs",
+    "pinyin": "shī",
+    "english": "poem",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -72874,8 +72874,8 @@
   {
     "id": "3.0:4:资源",
     "hanzi": "资源",
-    "pinyin": "Zī yuán",
-    "english": "Ziyuan county in Guilin 林, Guangxi",
+    "pinyin": "zī yuán",
+    "english": "natural resource (such as water or minerals)",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -73082,7 +73082,7 @@
     "id": "3.0:4:辣",
     "hanzi": "辣",
     "pinyin": "là",
-    "english": "old variant of 辣",
+    "english": "hot (spicy)",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -73279,8 +73279,8 @@
   {
     "id": "3.0:4:遇",
     "hanzi": "遇",
-    "pinyin": "Yù",
-    "english": "surname Yu",
+    "pinyin": "yù",
+    "english": "to meet",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -73477,8 +73477,8 @@
   {
     "id": "3.0:4:闪",
     "hanzi": "闪",
-    "pinyin": "Shǎn",
-    "english": "surname Shan",
+    "pinyin": "shǎn",
+    "english": "to dodge",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -73505,7 +73505,7 @@
     "id": "3.0:4:闹",
     "hanzi": "闹",
     "pinyin": "nào",
-    "english": "variant of 闹",
+    "english": "noisy",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -73532,7 +73532,7 @@
     "id": "3.0:4:阳台",
     "hanzi": "阳台",
     "pinyin": "yáng tái",
-    "english": "variant of 阳台",
+    "english": "balcony",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -73720,8 +73720,8 @@
   {
     "id": "3.0:4:非",
     "hanzi": "非",
-    "pinyin": "Fēi",
-    "english": "abbr. for 洲, Africa",
+    "pinyin": "fēi",
+    "english": "to not be; not",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -73756,8 +73756,8 @@
   {
     "id": "3.0:4:项",
     "hanzi": "项",
-    "pinyin": "Xiàng",
-    "english": "surname Xiang",
+    "pinyin": "xiàng",
+    "english": "back of neck",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -73891,8 +73891,8 @@
   {
     "id": "3.0:4:鲜",
     "hanzi": "鲜",
-    "pinyin": "xiǎn",
-    "english": "variant of 鲜",
+    "pinyin": "xiān",
+    "english": "fresh",
     "system": "3.0",
     "level": "4",
     "themes": []
@@ -74215,8 +74215,8 @@
   {
     "id": "3.0:5:丑",
     "hanzi": "丑",
-    "pinyin": "Chǒu",
-    "english": "surname Chou",
+    "pinyin": "chǒu",
+    "english": "clown",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -74476,8 +74476,8 @@
   {
     "id": "3.0:5:乘",
     "hanzi": "乘",
-    "pinyin": "Chéng",
-    "english": "surname Cheng",
+    "pinyin": "chéng",
+    "english": "to ride",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -74746,8 +74746,8 @@
   {
     "id": "3.0:5:令",
     "hanzi": "令",
-    "pinyin": "líng",
-    "english": "used in 令",
+    "pinyin": "lǐng",
+    "english": "classifier for a ream of paper",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -75215,7 +75215,7 @@
     "id": "3.0:5:兔",
     "hanzi": "兔",
     "pinyin": "tù",
-    "english": "variant of 兔",
+    "english": "rabbit",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -75377,7 +75377,7 @@
     "id": "3.0:5:冒",
     "hanzi": "冒",
     "pinyin": "mào",
-    "english": "old variant of 冒",
+    "english": "to emit",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -75458,7 +75458,7 @@
     "id": "3.0:5:凭",
     "hanzi": "凭",
     "pinyin": "píng",
-    "english": "variant of 凭",
+    "english": "to lean against",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -75664,8 +75664,8 @@
   {
     "id": "3.0:5:剪",
     "hanzi": "剪",
-    "pinyin": "Jiǎn",
-    "english": "surname Jian",
+    "pinyin": "jiǎn",
+    "english": "scissors",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -76286,7 +76286,7 @@
     "id": "3.0:5:合并",
     "hanzi": "合并",
     "pinyin": "hé bìng",
-    "english": "variant of 合并",
+    "english": "to merge",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -76547,7 +76547,7 @@
     "id": "3.0:5:回避",
     "hanzi": "回避",
     "pinyin": "huí bì",
-    "english": "variant of 回避",
+    "english": "to shun",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -76862,7 +76862,7 @@
     "id": "3.0:5:大伙儿",
     "hanzi": "大伙儿",
     "pinyin": "dà huǒ r",
-    "english": "erhua variant of 大伙",
+    "english": "everybody",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -76942,8 +76942,8 @@
   {
     "id": "3.0:5:大都",
     "hanzi": "大都",
-    "pinyin": "Dà dū",
-    "english": "Dadu, capital of China during the Yuan Dynasty (1280-1368), modern day Beijing",
+    "pinyin": "dà dōu",
+    "english": "for the most part",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -77249,7 +77249,7 @@
     "id": "3.0:5:射",
     "hanzi": "射",
     "pinyin": "shè",
-    "english": "old variant of 射",
+    "english": "to shoot",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -77456,7 +77456,7 @@
     "id": "3.0:5:岸",
     "hanzi": "岸",
     "pinyin": "àn",
-    "english": "variant of 岸",
+    "english": "bank; shore; beach; coast",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -77501,7 +77501,7 @@
     "id": "3.0:5:差一点儿",
     "hanzi": "差一点儿",
     "pinyin": "chà yī diǎn r",
-    "english": "erhua variant of 差一点",
+    "english": "almost",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -77519,7 +77519,7 @@
     "id": "3.0:5:差点儿",
     "hanzi": "差点儿",
     "pinyin": "chà diǎn r",
-    "english": "erhua variant of 差点",
+    "english": "almost",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -78158,7 +78158,7 @@
     "id": "3.0:5:戏",
     "hanzi": "戏",
     "pinyin": "xì",
-    "english": "variant of 戏",
+    "english": "trick",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -78616,8 +78616,8 @@
   {
     "id": "3.0:5:挣",
     "hanzi": "挣",
-    "pinyin": "zhēng",
-    "english": "used in 挣扎",
+    "pinyin": "zhèng",
+    "english": "to struggle to get free",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -79184,7 +79184,7 @@
     "id": "3.0:5:暖",
     "hanzi": "暖",
     "pinyin": "nuǎn",
-    "english": "old variant of 暖",
+    "english": "warm",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -79363,8 +79363,8 @@
   {
     "id": "3.0:5:枪",
     "hanzi": "枪",
-    "pinyin": "Qiāng",
-    "english": "surname Qiang",
+    "pinyin": "qiāng",
+    "english": "gun",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -80047,8 +80047,8 @@
   {
     "id": "3.0:5:滑",
     "hanzi": "滑",
-    "pinyin": "Huá",
-    "english": "surname Hua",
+    "pinyin": "huá",
+    "english": "to slip; to slide",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -80245,8 +80245,8 @@
   {
     "id": "3.0:5:熊",
     "hanzi": "熊",
-    "pinyin": "Xióng",
-    "english": "surname Xiong",
+    "pinyin": "xióng",
+    "english": "bear",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -80884,8 +80884,8 @@
   {
     "id": "3.0:5:礼",
     "hanzi": "礼",
-    "pinyin": "Lǐ",
-    "english": "surname Li",
+    "pinyin": "lǐ",
+    "english": "gift",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -80938,8 +80938,8 @@
   {
     "id": "3.0:5:神",
     "hanzi": "神",
-    "pinyin": "Shén",
-    "english": "God",
+    "pinyin": "shén",
+    "english": "deity",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -81055,8 +81055,8 @@
   {
     "id": "3.0:5:立",
     "hanzi": "立",
-    "pinyin": "Lì",
-    "english": "surname Li",
+    "pinyin": "lì",
+    "english": "to stand",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -81128,7 +81128,7 @@
     "id": "3.0:5:答复",
     "hanzi": "答复",
     "pinyin": "dá fù",
-    "english": "variant of 答复",
+    "english": "to answer",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -81451,8 +81451,8 @@
   {
     "id": "3.0:5:联想",
     "hanzi": "联想",
-    "pinyin": "Lián xiǎng",
-    "english": "Lenovo",
+    "pinyin": "lián xiǎng",
+    "english": "to associate (cognitively)",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -81605,7 +81605,7 @@
     "id": "3.0:5:脆",
     "hanzi": "脆",
     "pinyin": "cuì",
-    "english": "old variant of 脆",
+    "english": "brittle",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -81830,7 +81830,7 @@
     "id": "3.0:5:蛇",
     "hanzi": "蛇",
     "pinyin": "shé",
-    "english": "variant of 蛇",
+    "english": "snake",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -82594,8 +82594,8 @@
   {
     "id": "3.0:5:迟",
     "hanzi": "迟",
-    "pinyin": "Chí",
-    "english": "surname Chi",
+    "pinyin": "chí",
+    "english": "late",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -82873,8 +82873,8 @@
   {
     "id": "3.0:5:长寿",
     "hanzi": "长寿",
-    "pinyin": "Cháng shòu",
-    "english": "Changshou suburban district of Chongqing municipality, formerly in Sichuan",
+    "pinyin": "cháng shòu",
+    "english": "longevity",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -83080,8 +83080,8 @@
   {
     "id": "3.0:5:雨水",
     "hanzi": "雨水",
-    "pinyin": "Yǔ shuǐ",
-    "english": "Yushui or Rain Water, 2nd of the 24 solar terms 二十四节气 19th February-5th March",
+    "pinyin": "yǔ shuǐ",
+    "english": "rainwater; rainfall; rain",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -83098,8 +83098,8 @@
   {
     "id": "3.0:5:青",
     "hanzi": "青",
-    "pinyin": "Qīng",
-    "english": "abbr. for 海, Qinghai Province",
+    "pinyin": "qīng",
+    "english": "green",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -83423,7 +83423,7 @@
     "id": "3.0:5:鼓",
     "hanzi": "鼓",
     "pinyin": "gǔ",
-    "english": "old variant of 鼓",
+    "english": "drum",
     "system": "3.0",
     "level": "5",
     "themes": []
@@ -83755,8 +83755,8 @@
   {
     "id": "3.0:6:与",
     "hanzi": "与",
-    "pinyin": "yú",
-    "english": "variant of 欤",
+    "pinyin": "yǔ",
+    "english": "and",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -83953,8 +83953,8 @@
   {
     "id": "3.0:6:于",
     "hanzi": "于",
-    "pinyin": "Yú",
-    "english": "surname Yu",
+    "pinyin": "yú",
+    "english": "to go",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -83971,8 +83971,8 @@
   {
     "id": "3.0:6:井",
     "hanzi": "井",
-    "pinyin": "Jǐng",
-    "english": "Jing, one of the 28 constellations of Chinese astronomy",
+    "pinyin": "jǐng",
+    "english": "a well",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -84061,8 +84061,8 @@
   {
     "id": "3.0:6:仰",
     "hanzi": "仰",
-    "pinyin": "Yǎng",
-    "english": "surname Yang",
+    "pinyin": "yǎng",
+    "english": "to face upward",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -84071,7 +84071,7 @@
     "id": "3.0:6:仿佛",
     "hanzi": "仿佛",
     "pinyin": "fǎng fú",
-    "english": "variant of 仿佛",
+    "english": "to seem",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -84205,8 +84205,8 @@
   {
     "id": "3.0:6:佛",
     "hanzi": "佛",
-    "pinyin": "Fó",
-    "english": "Buddha; Buddhism (abbr. for 陀)",
+    "pinyin": "fú",
+    "english": "seemingly",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -84466,8 +84466,8 @@
   {
     "id": "3.0:6:党",
     "hanzi": "党",
-    "pinyin": "Dǎng",
-    "english": "surname Dang",
+    "pinyin": "dǎng",
+    "english": "party",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -84592,8 +84592,8 @@
   {
     "id": "3.0:6:内地",
     "hanzi": "内地",
-    "pinyin": "Nèi dì",
-    "english": "mainland China (PRC excluding Hong Kong and Macau, but including islands such as Hainan)",
+    "pinyin": "nèi dì",
+    "english": "inland",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -84683,7 +84683,7 @@
     "id": "3.0:6:冲击",
     "hanzi": "冲击",
     "pinyin": "chōng jī",
-    "english": "variant of 冲击",
+    "english": "to attack",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -84719,7 +84719,7 @@
     "id": "3.0:6:净",
     "hanzi": "净",
     "pinyin": "jìng",
-    "english": "variant of 净",
+    "english": "clean",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -84934,8 +84934,8 @@
   {
     "id": "3.0:6:利",
     "hanzi": "利",
-    "pinyin": "Lì",
-    "english": "surname Li",
+    "pinyin": "lì",
+    "english": "sharp",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -85195,8 +85195,8 @@
   {
     "id": "3.0:6:印",
     "hanzi": "印",
-    "pinyin": "Yìn",
-    "english": "surname Yin",
+    "pinyin": "yìn",
+    "english": "to print",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -85249,8 +85249,8 @@
   {
     "id": "3.0:6:原",
     "hanzi": "原",
-    "pinyin": "Yuán",
-    "english": "surname Yuan",
+    "pinyin": "yuán",
+    "english": "former",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -85546,8 +85546,8 @@
   {
     "id": "3.0:6:吉利",
     "hanzi": "吉利",
-    "pinyin": "Jí lì",
-    "english": "Geely, Chinese car make",
+    "pinyin": "jí lì",
+    "english": "auspicious",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -85744,8 +85744,8 @@
   {
     "id": "3.0:6:商城",
     "hanzi": "商城",
-    "pinyin": "Shāng chéng",
-    "english": "see 商城县",
+    "pinyin": "shāng chéng",
+    "english": "shopping center",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -85772,7 +85772,7 @@
     "id": "3.0:6:嘛",
     "hanzi": "嘛",
     "pinyin": "má",
-    "english": "used in 吽",
+    "english": "(Tw) (coll.) what?",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -85799,7 +85799,7 @@
     "id": "3.0:6:因",
     "hanzi": "因",
     "pinyin": "yīn",
-    "english": "old variant of 因",
+    "english": "cause",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -85825,8 +85825,8 @@
   {
     "id": "3.0:6:园",
     "hanzi": "园",
-    "pinyin": "Yuán",
-    "english": "surname Yuan",
+    "pinyin": "yuán",
+    "english": "land used for growing plants",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -86032,8 +86032,8 @@
   {
     "id": "3.0:6:塞",
     "hanzi": "塞",
-    "pinyin": "Sāi",
-    "english": "Serbia",
+    "pinyin": "sāi",
+    "english": "to stop up",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -86689,8 +86689,8 @@
   {
     "id": "3.0:6:宫",
     "hanzi": "宫",
-    "pinyin": "Gōng",
-    "english": "surname Gong",
+    "pinyin": "gōng",
+    "english": "palace",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -86779,8 +86779,8 @@
   {
     "id": "3.0:6:将军",
     "hanzi": "将军",
-    "pinyin": "Jiāng jūn",
-    "english": "(common place name)",
+    "pinyin": "jiāng jūn",
+    "english": "general",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -86924,7 +86924,7 @@
     "id": "3.0:6:岛",
     "hanzi": "岛",
     "pinyin": "dǎo",
-    "english": "variant of 岛",
+    "english": "island",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -87689,7 +87689,7 @@
     "id": "3.0:6:懒",
     "hanzi": "懒",
     "pinyin": "lǎn",
-    "english": "variant of 懒",
+    "english": "lazy",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -87796,8 +87796,8 @@
   {
     "id": "3.0:6:扁",
     "hanzi": "扁",
-    "pinyin": "Piān",
-    "english": "surname Pian",
+    "pinyin": "biǎn",
+    "english": "flat",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -88040,7 +88040,7 @@
     "id": "3.0:6:拖",
     "hanzi": "拖",
     "pinyin": "tuō",
-    "english": "variant of 拖",
+    "english": "to drag",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -88238,7 +88238,7 @@
     "id": "3.0:6:据",
     "hanzi": "据",
     "pinyin": "jù",
-    "english": "variant of 据",
+    "english": "according to",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -88327,8 +88327,8 @@
   {
     "id": "3.0:6:揭",
     "hanzi": "揭",
-    "pinyin": "Jiē",
-    "english": "surname Jie",
+    "pinyin": "jiē",
+    "english": "to take the lid off",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -88624,8 +88624,8 @@
   {
     "id": "3.0:6:新兴",
     "hanzi": "新兴",
-    "pinyin": "Xīn xīng",
-    "english": "Xinxing county in Yunfu 云浮, Guangdong",
+    "pinyin": "xīn xīng",
+    "english": "(of markets, industries, infectious diseases etc) rising",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -88822,8 +88822,8 @@
   {
     "id": "3.0:6:景",
     "hanzi": "景",
-    "pinyin": "Jǐng",
-    "english": "surname Jing",
+    "pinyin": "jǐng",
+    "english": "(bound form) scenery",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -89030,7 +89030,7 @@
     "id": "3.0:6:杂",
     "hanzi": "杂",
     "pinyin": "zá",
-    "english": "variant of 杂",
+    "english": "mixed",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -89038,8 +89038,8 @@
   {
     "id": "3.0:6:权",
     "hanzi": "权",
-    "pinyin": "Quán",
-    "english": "surname Quan",
+    "pinyin": "quán",
+    "english": "authority",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -89191,8 +89191,8 @@
   {
     "id": "3.0:6:档",
     "hanzi": "档",
-    "pinyin": "dǎng",
-    "english": "(Tw) variant of 挡, gear",
+    "pinyin": "dàng",
+    "english": "official records",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -89767,8 +89767,8 @@
   {
     "id": "3.0:6:海湾",
     "hanzi": "海湾",
-    "pinyin": "Hǎi wān",
-    "english": "(Persian) Gulf",
+    "pinyin": "hǎi wān",
+    "english": "bay",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -89857,8 +89857,8 @@
   {
     "id": "3.0:6:清",
     "hanzi": "清",
-    "pinyin": "Qīng",
-    "english": "Qing (Wade-Giles: Ch'ing) dynasty of imperial China (1644-1911)",
+    "pinyin": "qīng",
+    "english": "(of water etc) clear; clean",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -90164,7 +90164,7 @@
     "id": "3.0:6:煮",
     "hanzi": "煮",
     "pinyin": "zhǔ",
-    "english": "variant of 煮",
+    "english": "to cook",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -90487,8 +90487,8 @@
   {
     "id": "3.0:6:田",
     "hanzi": "田",
-    "pinyin": "Tián",
-    "english": "surname Tian",
+    "pinyin": "tián",
+    "english": "field",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -90568,8 +90568,8 @@
   {
     "id": "3.0:6:番",
     "hanzi": "番",
-    "pinyin": "Pān",
-    "english": "surname Pan",
+    "pinyin": "fān",
+    "english": "foreign (non-Chinese)",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -90964,8 +90964,8 @@
   {
     "id": "3.0:6:章",
     "hanzi": "章",
-    "pinyin": "Zhāng",
-    "english": "surname Zhang",
+    "pinyin": "zhāng",
+    "english": "chapter",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -91090,8 +91090,8 @@
   {
     "id": "3.0:6:粥",
     "hanzi": "粥",
-    "pinyin": "yù",
-    "english": "used in 荤粥",
+    "pinyin": "zhōu",
+    "english": "congee",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -91388,7 +91388,7 @@
     "id": "3.0:6:聊天儿",
     "hanzi": "聊天儿",
     "pinyin": "liáo tiān r",
-    "english": "erhua variant of 聊天",
+    "english": "to chat",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -91478,7 +91478,7 @@
     "id": "3.0:6:肯",
     "hanzi": "肯",
     "pinyin": "kěn",
-    "english": "old variant of 肯",
+    "english": "to agree; to consent",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -91801,8 +91801,8 @@
   {
     "id": "3.0:6:藏",
     "hanzi": "藏",
-    "pinyin": "Zàng",
-    "english": "Tibet",
+    "pinyin": "cáng",
+    "english": "to conceal",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -92035,8 +92035,8 @@
   {
     "id": "3.0:6:解",
     "hanzi": "解",
-    "pinyin": "Xiè",
-    "english": "surname Xie",
+    "pinyin": "jiě",
+    "english": "to divide",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -92269,8 +92269,8 @@
   {
     "id": "3.0:6:赖",
     "hanzi": "赖",
-    "pinyin": "Lài",
-    "english": "surname Lai",
+    "pinyin": "lài",
+    "english": "to depend on",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -92387,7 +92387,7 @@
     "id": "3.0:6:趟",
     "hanzi": "趟",
     "pinyin": "tāng",
-    "english": "old variant of 趟",
+    "english": "to wade",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -92486,7 +92486,7 @@
     "id": "3.0:6:踩",
     "hanzi": "踩",
     "pinyin": "cǎi",
-    "english": "variant of 踩",
+    "english": "to step on",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -92782,8 +92782,8 @@
   {
     "id": "3.0:6:通道",
     "hanzi": "通道",
-    "pinyin": "Tōng dào",
-    "english": "Tongdao Dong autonomous county in Huaihua 怀化, Hunan",
+    "pinyin": "tōng dào",
+    "english": "(communications) channel",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -92792,7 +92792,7 @@
     "id": "3.0:6:逼",
     "hanzi": "逼",
     "pinyin": "bī",
-    "english": "variant of 逼",
+    "english": "to compel",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -92963,7 +92963,7 @@
     "id": "3.0:6:野",
     "hanzi": "野",
     "pinyin": "yě",
-    "english": "old variant of 野",
+    "english": "field",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -93025,8 +93025,8 @@
   {
     "id": "3.0:6:钻",
     "hanzi": "钻",
-    "pinyin": "zuàn",
-    "english": "variant of 钻",
+    "pinyin": "zuān",
+    "english": "to drill",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -93053,7 +93053,7 @@
     "id": "3.0:6:铺",
     "hanzi": "铺",
     "pinyin": "pù",
-    "english": "variant of 铺",
+    "english": "store",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -93134,7 +93134,7 @@
     "id": "3.0:6:阔",
     "hanzi": "阔",
     "pinyin": "kuò",
-    "english": "variant of 阔",
+    "english": "rich",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -93286,8 +93286,8 @@
   {
     "id": "3.0:6:露",
     "hanzi": "露",
-    "pinyin": "Lù",
-    "english": "surname Lu",
+    "pinyin": "lòu",
+    "english": "to show",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -93367,8 +93367,8 @@
   {
     "id": "3.0:6:顾",
     "hanzi": "顾",
-    "pinyin": "Gù",
-    "english": "surname Gu",
+    "pinyin": "gù",
+    "english": "to look after",
     "system": "3.0",
     "level": "6",
     "themes": []
@@ -93611,7 +93611,7 @@
     "id": "3.0:7-9:一个劲儿",
     "hanzi": "一个劲儿",
     "pinyin": "yī gè jìn r",
-    "english": "erhua variant of 一个劲",
+    "english": "continuously",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -94087,8 +94087,8 @@
   {
     "id": "3.0:7-9:丁",
     "hanzi": "丁",
-    "pinyin": "Dīng",
-    "english": "surname Ding",
+    "pinyin": "dīng",
+    "english": "male adult",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -95230,8 +95230,8 @@
   {
     "id": "3.0:7-9:业",
     "hanzi": "业",
-    "pinyin": "Yè",
-    "english": "surname Ye",
+    "pinyin": "yè",
+    "english": "line of business",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -95464,8 +95464,8 @@
   {
     "id": "3.0:7-9:中庸",
     "hanzi": "中庸",
-    "pinyin": "Zhōng yōng",
-    "english": "the Doctrine of the Mean, one of the Four Books 四书",
+    "pinyin": "zhōng yōng",
+    "english": "golden mean (Confucianism)",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -95536,8 +95536,8 @@
   {
     "id": "3.0:7-9:丰满",
     "hanzi": "丰满",
-    "pinyin": "Fēng mǎn",
-    "english": "Fengman district of Jilin city 吉林市, Jilin province",
+    "pinyin": "fēng mǎn",
+    "english": "ample",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -96265,8 +96265,8 @@
   {
     "id": "3.0:7-9:互助",
     "hanzi": "互助",
-    "pinyin": "Hù zhù",
-    "english": "Huzhu Tuzu autonomous county in Haidong prefecture 海东地区, Qinghai",
+    "pinyin": "hù zhù",
+    "english": "to help each other",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -96482,7 +96482,7 @@
     "id": "3.0:7-9:亩",
     "hanzi": "亩",
     "pinyin": "mǔ",
-    "english": "old variant of 亩",
+    "english": "classifier for fields",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -96743,7 +96743,7 @@
     "id": "3.0:7-9:人缘儿",
     "hanzi": "人缘儿",
     "pinyin": "rén yuán r",
-    "english": "erhua variant of 人缘",
+    "english": "relations with other people",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -96823,8 +96823,8 @@
   {
     "id": "3.0:7-9:仇",
     "hanzi": "仇",
-    "pinyin": "Qiú",
-    "english": "surname Qiu",
+    "pinyin": "chóu",
+    "english": "hatred",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -97022,7 +97022,7 @@
     "id": "3.0:7-9:以",
     "hanzi": "以",
     "pinyin": "yǐ",
-    "english": "old variant of 以",
+    "english": "to use",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -97867,8 +97867,8 @@
   {
     "id": "3.0:7-9:余",
     "hanzi": "余",
-    "pinyin": "Yú",
-    "english": "surname Yu",
+    "pinyin": "yú",
+    "english": "(literary) I; me",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -98210,7 +98210,7 @@
     "id": "3.0:7-9:俊",
     "hanzi": "俊",
     "pinyin": "jùn",
-    "english": "old variant of 俊",
+    "english": "smart",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -98506,8 +98506,8 @@
   {
     "id": "3.0:7-9:倔",
     "hanzi": "倔",
-    "pinyin": "jué",
-    "english": "used in 倔强",
+    "pinyin": "juè",
+    "english": "gruff; surly",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -99145,8 +99145,8 @@
   {
     "id": "3.0:7-9:光泽",
     "hanzi": "光泽",
-    "pinyin": "Guāng zé",
-    "english": "Guangze county in Nanping 平 Fujian",
+    "pinyin": "guāng zé",
+    "english": "luster",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -99299,7 +99299,7 @@
     "id": "3.0:7-9:兜儿",
     "hanzi": "兜儿",
     "pinyin": "dōu r",
-    "english": "erhua variant of 兜",
+    "english": "pocket",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -100216,8 +100216,8 @@
   {
     "id": "3.0:7-9:冷战",
     "hanzi": "冷战",
-    "pinyin": "Lěng zhàn",
-    "english": "(US-Soviet) Cold War",
+    "pinyin": "lěng zhàn",
+    "english": "cold war",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -100450,8 +100450,8 @@
   {
     "id": "3.0:7-9:凤凰",
     "hanzi": "凤凰",
-    "pinyin": "Fèng huáng",
-    "english": "Fenghuang County in Xiangxi Tujia and Miao Autonomous Prefecture 州",
+    "pinyin": "fèng huáng",
+    "english": "phoenix",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -100523,7 +100523,7 @@
     "id": "3.0:7-9:凶狠",
     "hanzi": "凶狠",
     "pinyin": "xiōng hěn",
-    "english": "variant of 狠",
+    "english": "cruel",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -101098,8 +101098,8 @@
   {
     "id": "3.0:7-9:创",
     "hanzi": "创",
-    "pinyin": "chuàng",
-    "english": "variant of 创",
+    "pinyin": "chuāng",
+    "english": "a wound",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -101999,7 +101999,7 @@
     "id": "3.0:7-9:动荡",
     "hanzi": "动荡",
     "pinyin": "dòng dàng",
-    "english": "variant of 动荡",
+    "english": "unrest (social or political)",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -102035,7 +102035,7 @@
     "id": "3.0:7-9:劫",
     "hanzi": "劫",
     "pinyin": "jié",
-    "english": "variant of 劫",
+    "english": "to rob",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -102214,8 +102214,8 @@
   {
     "id": "3.0:7-9:勾",
     "hanzi": "勾",
-    "pinyin": "Gōu",
-    "english": "surname Gou",
+    "pinyin": "gōu",
+    "english": "to attract",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -102260,7 +102260,7 @@
     "id": "3.0:7-9:包扎",
     "hanzi": "包扎",
     "pinyin": "bāo zā",
-    "english": "variant of 包扎",
+    "english": "to wrap up",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -103709,7 +103709,7 @@
     "id": "3.0:7-9:叠",
     "hanzi": "叠",
     "pinyin": "dié",
-    "english": "variant of 叠",
+    "english": "to fold",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -104717,7 +104717,7 @@
     "id": "3.0:7-9:启蒙",
     "hanzi": "启蒙",
     "pinyin": "qǐ méng",
-    "english": "variant of 启蒙",
+    "english": "to instruct the young",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -105994,8 +105994,8 @@
   {
     "id": "3.0:7-9:国徽",
     "hanzi": "国徽",
-    "pinyin": "Guó huī",
-    "english": "the national emblem of the PRC (a red circle containing the five stars of the PRC flag over Tiananmen 天安门)",
+    "pinyin": "guó huī",
+    "english": "national emblem",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -106786,8 +106786,8 @@
   {
     "id": "3.0:7-9:墨",
     "hanzi": "墨",
-    "pinyin": "Mò",
-    "english": "surname Mo",
+    "pinyin": "mò",
+    "english": "ink stick",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -106813,8 +106813,8 @@
   {
     "id": "3.0:7-9:壮",
     "hanzi": "壮",
-    "pinyin": "Zhuàng",
-    "english": "Zhuang ethnic group of Guangxi, the PRC's second most numerous ethnic group",
+    "pinyin": "zhuàng",
+    "english": "to strengthen",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -106948,8 +106948,8 @@
   {
     "id": "3.0:7-9:复兴",
     "hanzi": "复兴",
-    "pinyin": "Fù xīng",
-    "english": "Fuxing district of Handan city 邯郸市, Hebei",
+    "pinyin": "fù xīng",
+    "english": "to revive",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -107480,7 +107480,7 @@
     "id": "3.0:7-9:大腕儿",
     "hanzi": "大腕儿",
     "pinyin": "dà wàn r",
-    "english": "erhua variant of 大腕",
+    "english": "(coll.) big name",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -107596,8 +107596,8 @@
   {
     "id": "3.0:7-9:天桥",
     "hanzi": "天桥",
-    "pinyin": "Tiān qiáo",
-    "english": "Tianqiao district of Jinan city 济南市, Shandong",
+    "pinyin": "tiān qiáo",
+    "english": "overhead walkway",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -107659,8 +107659,8 @@
   {
     "id": "3.0:7-9:太平",
     "hanzi": "太平",
-    "pinyin": "Tài píng",
-    "english": "place name",
+    "pinyin": "tài píng",
+    "english": "peace and security",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -107812,8 +107812,8 @@
   {
     "id": "3.0:7-9:头条",
     "hanzi": "头条",
-    "pinyin": "Tóu tiáo",
-    "english": "Toutiao, personalized content recommendation app (abbr. for 今日头条)",
+    "pinyin": "tóu tiáo",
+    "english": "lead story (on the news)",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -107849,7 +107849,7 @@
     "id": "3.0:7-9:夸",
     "hanzi": "夸",
     "pinyin": "kuā",
-    "english": "used in 克",
+    "english": "to boast; to exaggerate",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -108092,7 +108092,7 @@
     "id": "3.0:7-9:奥运会",
     "hanzi": "奥运会",
     "pinyin": "Aò yùn huì",
-    "english": "abbr. for 奥林匹克运动会",
+    "english": "Olympic Games",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -108424,8 +108424,8 @@
   {
     "id": "3.0:7-9:姜",
     "hanzi": "姜",
-    "pinyin": "Jiāng",
-    "english": "surname Jiang",
+    "pinyin": "jiāng",
+    "english": "ginger",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -108478,8 +108478,8 @@
   {
     "id": "3.0:7-9:威信",
     "hanzi": "威信",
-    "pinyin": "Wēi xìn",
-    "english": "Weixin county in Zhaotong 通, Yunnan",
+    "pinyin": "wēi xìn",
+    "english": "prestige",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -108964,8 +108964,8 @@
   {
     "id": "3.0:7-9:安宁",
     "hanzi": "安宁",
-    "pinyin": "Ān níng",
-    "english": "Anning District of Lanzhou City 兰州市, Gansu",
+    "pinyin": "ān níng",
+    "english": "peaceful",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -108973,8 +108973,8 @@
   {
     "id": "3.0:7-9:安定",
     "hanzi": "安定",
-    "pinyin": "Ān dìng",
-    "english": "Anting township in Tainan county 台南县, Taiwan",
+    "pinyin": "ān dìng",
+    "english": "stable; calm; settled",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -109081,8 +109081,8 @@
   {
     "id": "3.0:7-9:宗",
     "hanzi": "宗",
-    "pinyin": "Zōng",
-    "english": "surname Zong",
+    "pinyin": "zōng",
+    "english": "school",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -109550,7 +109550,7 @@
     "id": "3.0:7-9:家伙",
     "hanzi": "家伙",
     "pinyin": "jiā huo",
-    "english": "variant of 伙",
+    "english": "household dish, implement or furniture",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -109828,8 +109828,8 @@
   {
     "id": "3.0:7-9:富裕",
     "hanzi": "富裕",
-    "pinyin": "Fù yù",
-    "english": "Fuyu county in Qiqihar 齐齐哈尔, Heilongjiang",
+    "pinyin": "fù yù",
+    "english": "prosperous",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -110188,8 +110188,8 @@
   {
     "id": "3.0:7-9:小康",
     "hanzi": "小康",
-    "pinyin": "Xiǎo kāng",
-    "english": "Xiaokang, a Confucian near-ideal state of society, second only to Datong 同",
+    "pinyin": "xiǎo kāng",
+    "english": "moderately affluent",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -110341,8 +110341,8 @@
   {
     "id": "3.0:7-9:尚",
     "hanzi": "尚",
-    "pinyin": "Shàng",
-    "english": "surname Shang",
+    "pinyin": "shàng",
+    "english": "still",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -110558,7 +110558,7 @@
     "id": "3.0:7-9:局限",
     "hanzi": "局限",
     "pinyin": "jú xiàn",
-    "english": "variant of 限",
+    "english": "to limit",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -111080,7 +111080,7 @@
     "id": "3.0:7-9:帆",
     "hanzi": "帆",
     "pinyin": "fān",
-    "english": "variant of 帆",
+    "english": "sail",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -111214,8 +111214,8 @@
   {
     "id": "3.0:7-9:席",
     "hanzi": "席",
-    "pinyin": "Xí",
-    "english": "surname Xi",
+    "pinyin": "xí",
+    "english": "woven mat",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -111358,8 +111358,8 @@
   {
     "id": "3.0:7-9:平和",
     "hanzi": "平和",
-    "pinyin": "Píng hé",
-    "english": "Pinghe county in Zhangzhou 州, Fujian",
+    "pinyin": "píng hé",
+    "english": "gentle",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -111907,8 +111907,8 @@
   {
     "id": "3.0:7-9:延",
     "hanzi": "延",
-    "pinyin": "Yán",
-    "english": "surname Yan",
+    "pinyin": "yán",
+    "english": "to prolong",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -112222,8 +112222,8 @@
   {
     "id": "3.0:7-9:弓",
     "hanzi": "弓",
-    "pinyin": "Gōng",
-    "english": "surname Gong",
+    "pinyin": "gōng",
+    "english": "a bow (weapon)",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -112330,8 +112330,8 @@
   {
     "id": "3.0:7-9:张扬",
     "hanzi": "张扬",
-    "pinyin": "Zhāng Yáng",
-    "english": "Zhang Yang (1967-), PRC film director and screenwriter",
+    "pinyin": "zhāng yáng",
+    "english": "to display ostentatiously",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -112978,8 +112978,8 @@
   {
     "id": "3.0:7-9:德",
     "hanzi": "德",
-    "pinyin": "Dé",
-    "english": "Germany",
+    "pinyin": "dé",
+    "english": "virtue",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -113878,8 +113878,8 @@
   {
     "id": "3.0:7-9:恶",
     "hanzi": "恶",
-    "pinyin": "ě",
-    "english": "used in 恶心",
+    "pinyin": "è",
+    "english": "evil",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -113951,7 +113951,7 @@
     "id": "3.0:7-9:悠闲",
     "hanzi": "悠闲",
     "pinyin": "yōu xián",
-    "english": "variant of 悠闲",
+    "english": "leisurely",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -115085,7 +115085,7 @@
     "id": "3.0:7-9:打盹儿",
     "hanzi": "打盹儿",
     "pinyin": "dǎ dǔn r",
-    "english": "erhua variant of 打盹",
+    "english": "to doze off",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -115282,8 +115282,8 @@
   {
     "id": "3.0:7-9:扬",
     "hanzi": "扬",
-    "pinyin": "Yáng",
-    "english": "abbr. for 扬州",
+    "pinyin": "yáng",
+    "english": "to raise",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -116749,8 +116749,8 @@
   {
     "id": "3.0:7-9:振兴",
     "hanzi": "振兴",
-    "pinyin": "Zhèn xīng",
-    "english": "Zhengxing district of Dandong city 丹东市, Liaoning",
+    "pinyin": "zhèn xīng",
+    "english": "to revive; to revitalize; to invigorate; to re-energize",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -117452,7 +117452,7 @@
     "id": "3.0:7-9:掺",
     "hanzi": "掺",
     "pinyin": "chān",
-    "english": "variant of 搀",
+    "english": "to mix",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -118702,8 +118702,8 @@
   {
     "id": "3.0:7-9:文",
     "hanzi": "文",
-    "pinyin": "Wén",
-    "english": "surname Wen",
+    "pinyin": "wén",
+    "english": "language",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -118792,8 +118792,8 @@
   {
     "id": "3.0:7-9:斗",
     "hanzi": "斗",
-    "pinyin": "Dǒu",
-    "english": "abbr. for the Big Dipper constellation 星",
+    "pinyin": "dǒu",
+    "english": "dry measure for grain equal to ten 升 or one-tenth of a 石",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -118981,8 +118981,8 @@
   {
     "id": "3.0:7-9:方言",
     "hanzi": "方言",
-    "pinyin": "Fāng yán",
-    "english": "the first Chinese dialect dictionary, edited by Yang Xiong 扬雄 in 1st century, containing over 9000 characters",
+    "pinyin": "fāng yán",
+    "english": "topolect",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -119828,7 +119828,7 @@
     "id": "3.0:7-9:晃",
     "hanzi": "晃",
     "pinyin": "huǎng",
-    "english": "variant of 晃",
+    "english": "to dazzle",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -120052,8 +120052,8 @@
   {
     "id": "3.0:7-9:曲",
     "hanzi": "曲",
-    "pinyin": "Qū",
-    "english": "surname Qu",
+    "pinyin": "qū",
+    "english": "bent",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -120475,8 +120475,8 @@
   {
     "id": "3.0:7-9:末日",
     "hanzi": "末日",
-    "pinyin": "Mò rì",
-    "english": "Judgment Day (in Christian eschatology)",
+    "pinyin": "mò rì",
+    "english": "last day",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -120772,8 +120772,8 @@
   {
     "id": "3.0:7-9:来宾",
     "hanzi": "来宾",
-    "pinyin": "Lái bīn",
-    "english": "Laibin prefecture-level city in Guangxi",
+    "pinyin": "lái bīn",
+    "english": "guest",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -120934,8 +120934,8 @@
   {
     "id": "3.0:7-9:枚",
     "hanzi": "枚",
-    "pinyin": "Méi",
-    "english": "surname Mei",
+    "pinyin": "méi",
+    "english": "classifier for coins, rings, badges, pearls, sporting medals, rockets, satellites etc",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -121052,7 +121052,7 @@
     "id": "3.0:7-9:柜台",
     "hanzi": "柜台",
     "pinyin": "guì tái",
-    "english": "variant of 柜台",
+    "english": "sales counter",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -121150,8 +121150,8 @@
   {
     "id": "3.0:7-9:标致",
     "hanzi": "标致",
-    "pinyin": "Biāo zhì",
-    "english": "Peugeot",
+    "pinyin": "biāo zhi",
+    "english": "beautiful (of woman)",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -121574,7 +121574,7 @@
     "id": "3.0:7-9:棋",
     "hanzi": "棋",
     "pinyin": "qí",
-    "english": "variant of 棋",
+    "english": "chess",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -121700,7 +121700,7 @@
     "id": "3.0:7-9:榨",
     "hanzi": "榨",
     "pinyin": "zhà",
-    "english": "variant of 榨",
+    "english": "to press",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -122942,7 +122942,7 @@
     "id": "3.0:7-9:没准儿",
     "hanzi": "没准儿",
     "pinyin": "méi zhǔn r",
-    "english": "erhua variant of 没准",
+    "english": "not sure",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -123149,7 +123149,7 @@
     "id": "3.0:7-9:泄",
     "hanzi": "泄",
     "pinyin": "xiè",
-    "english": "variant of 泄",
+    "english": "(bound form) to leak out; to discharge; (fig.) to divulge",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -124201,8 +124201,8 @@
   {
     "id": "3.0:7-9:清新",
     "hanzi": "清新",
-    "pinyin": "Qīng xīn",
-    "english": "Qingxin county in Qingyuan 清远, Guangdong",
+    "pinyin": "qīng xīn",
+    "english": "fresh and clean",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -124210,8 +124210,8 @@
   {
     "id": "3.0:7-9:清明",
     "hanzi": "清明",
-    "pinyin": "Qīng míng",
-    "english": "Qingming or Pure Brightness, 5th of the 24 solar terms 二十四节气 5th-19th April",
+    "pinyin": "qīng míng",
+    "english": "clear and bright",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -124372,8 +124372,8 @@
   {
     "id": "3.0:7-9:温泉",
     "hanzi": "温泉",
-    "pinyin": "Wēn quán",
-    "english": "Arishang Nahiyisi or Wenquan county in Börtala Mongol autonomous prefecture 博尔塔拉蒙古自治州, Xinjiang",
+    "pinyin": "wēn quán",
+    "english": "hot spring",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -124390,8 +124390,8 @@
   {
     "id": "3.0:7-9:港",
     "hanzi": "港",
-    "pinyin": "Gǎng",
-    "english": "Hong Kong (abbr. for 港)",
+    "pinyin": "gǎng",
+    "english": "harbor",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -124642,8 +124642,8 @@
   {
     "id": "3.0:7-9:滨海",
     "hanzi": "滨海",
-    "pinyin": "Bīn hǎi",
-    "english": "Binhai (place name)",
+    "pinyin": "bīn hǎi",
+    "english": "coastal",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -125524,8 +125524,8 @@
   {
     "id": "3.0:7-9:焦",
     "hanzi": "焦",
-    "pinyin": "Jiāo",
-    "english": "surname Jiao",
+    "pinyin": "jiāo",
+    "english": "burnt",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -125902,8 +125902,8 @@
   {
     "id": "3.0:7-9:牡丹",
     "hanzi": "牡丹",
-    "pinyin": "Mǔ dan",
-    "english": "Mudan District of Heze City 菏泽市, Shandong",
+    "pinyin": "mǔ dan",
+    "english": "tree peony (Paeonia suffruticosa)",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -126262,8 +126262,8 @@
   {
     "id": "3.0:7-9:狮子",
     "hanzi": "狮子",
-    "pinyin": "Shī zǐ",
-    "english": "Leo (star sign)",
+    "pinyin": "shī zi",
+    "english": "lion",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -126416,7 +126416,7 @@
     "id": "3.0:7-9:玩意儿",
     "hanzi": "玩意儿",
     "pinyin": "wán yì r",
-    "english": "erhua variant of 玩意",
+    "english": "toy",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -127334,7 +127334,7 @@
     "id": "3.0:7-9:痒",
     "hanzi": "痒",
     "pinyin": "yǎng",
-    "english": "variant of 痒",
+    "english": "to itch",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -127684,8 +127684,8 @@
   {
     "id": "3.0:7-9:盛",
     "hanzi": "盛",
-    "pinyin": "Shèng",
-    "english": "surname Sheng",
+    "pinyin": "chéng",
+    "english": "to hold",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -128567,7 +128567,7 @@
     "id": "3.0:7-9:砖",
     "hanzi": "砖",
     "pinyin": "zhuān",
-    "english": "variant of 砖",
+    "english": "brick",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -129061,8 +129061,8 @@
   {
     "id": "3.0:7-9:祭",
     "hanzi": "祭",
-    "pinyin": "Zhài",
-    "english": "surname Zhai",
+    "pinyin": "jì",
+    "english": "to offer a sacrifice to (gods or ancestors)",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -129349,8 +129349,8 @@
   {
     "id": "3.0:7-9:秤",
     "hanzi": "秤",
-    "pinyin": "chēng",
-    "english": "variant of 称, to weigh",
+    "pinyin": "chèng",
+    "english": "steelyard",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -129881,7 +129881,7 @@
     "id": "3.0:7-9:竖",
     "hanzi": "竖",
     "pinyin": "shù",
-    "english": "variant of 竖",
+    "english": "to erect",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -130078,8 +130078,8 @@
   {
     "id": "3.0:7-9:筑",
     "hanzi": "筑",
-    "pinyin": "Zhù",
-    "english": "short name for Guiyang 贵阳",
+    "pinyin": "zhù",
+    "english": "five-string lute",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -130294,8 +130294,8 @@
   {
     "id": "3.0:7-9:管子",
     "hanzi": "管子",
-    "pinyin": "Guǎn zǐ",
-    "english": "Guanzi or Guan Zhong 管仲 (-645 BC), famous politician of Qi 齐国 of Spring and Autumn period",
+    "pinyin": "guǎn zi",
+    "english": "tube",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -130456,8 +130456,8 @@
   {
     "id": "3.0:7-9:粘",
     "hanzi": "粘",
-    "pinyin": "nián",
-    "english": "variant of 黏",
+    "pinyin": "zhān",
+    "english": "to glue",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -130637,7 +130637,7 @@
     "id": "3.0:7-9:糊",
     "hanzi": "糊",
     "pinyin": "hú",
-    "english": "variant of 糊",
+    "english": "muddled",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -131096,7 +131096,7 @@
     "id": "3.0:7-9:纳闷儿",
     "hanzi": "纳闷儿",
     "pinyin": "nà mèn r",
-    "english": "erhua variant of 纳闷",
+    "english": "puzzled",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -131266,8 +131266,8 @@
   {
     "id": "3.0:7-9:经",
     "hanzi": "经",
-    "pinyin": "Jīng",
-    "english": "surname Jing",
+    "pinyin": "jīng",
+    "english": "classics",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -131474,7 +131474,7 @@
     "id": "3.0:7-9:绣",
     "hanzi": "绣",
     "pinyin": "xiù",
-    "english": "variant of 绣",
+    "english": "to embroider; embroidery",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -131555,7 +131555,7 @@
     "id": "3.0:7-9:绷",
     "hanzi": "绷",
     "pinyin": "bēng",
-    "english": "variant of 绷",
+    "english": "to draw tight",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -131896,8 +131896,8 @@
   {
     "id": "3.0:7-9:罗",
     "hanzi": "罗",
-    "pinyin": "Luó",
-    "english": "surname Luo",
+    "pinyin": "luó",
+    "english": "gauze",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -132004,8 +132004,8 @@
   {
     "id": "3.0:7-9:美德",
     "hanzi": "美德",
-    "pinyin": "Měi Dé",
-    "english": "USA and Germany",
+    "pinyin": "měi dé",
+    "english": "virtue",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -132140,7 +132140,7 @@
     "id": "3.0:7-9:老伴儿",
     "hanzi": "老伴儿",
     "pinyin": "lǎo bàn r",
-    "english": "erhua variant of 老伴",
+    "english": "(coll.) (of an old couple) husband or wife",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -132220,8 +132220,8 @@
   {
     "id": "3.0:7-9:耍",
     "hanzi": "耍",
-    "pinyin": "Shuǎ",
-    "english": "surname Shua",
+    "pinyin": "shuǎ",
+    "english": "to play with",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -133813,8 +133813,8 @@
   {
     "id": "3.0:7-9:苗",
     "hanzi": "苗",
-    "pinyin": "Miáo",
-    "english": "Hmong or Miao ethnic group of southwest China",
+    "pinyin": "miáo",
+    "english": "sprout",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -134363,7 +134363,7 @@
     "id": "3.0:7-9:葬",
     "hanzi": "葬",
     "pinyin": "zàng",
-    "english": "old variant of 葬",
+    "english": "to bury (the dead)",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -134596,8 +134596,8 @@
   {
     "id": "3.0:7-9:虾",
     "hanzi": "虾",
-    "pinyin": "há",
-    "english": "used in 虾蟆",
+    "pinyin": "xiā",
+    "english": "shrimp",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -134732,7 +134732,7 @@
     "id": "3.0:7-9:蠢",
     "hanzi": "蠢",
     "pinyin": "chǔn",
-    "english": "variant of 蠢",
+    "english": "stupid",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -135074,7 +135074,7 @@
     "id": "3.0:7-9:裸",
     "hanzi": "裸",
     "pinyin": "luǒ",
-    "english": "variant of 裸",
+    "english": "naked",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -135613,8 +135613,8 @@
   {
     "id": "3.0:7-9:计",
     "hanzi": "计",
-    "pinyin": "Jì",
-    "english": "surname Ji",
+    "pinyin": "jì",
+    "english": "to calculate",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -135856,8 +135856,8 @@
   {
     "id": "3.0:7-9:许",
     "hanzi": "许",
-    "pinyin": "Xǔ",
-    "english": "surname Xu",
+    "pinyin": "xǔ",
+    "english": "to allow",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -138368,7 +138368,7 @@
     "id": "3.0:7-9:辞",
     "hanzi": "辞",
     "pinyin": "cí",
-    "english": "old variant of 辞",
+    "english": "to resign",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -139925,7 +139925,7 @@
     "id": "3.0:7-9:邪",
     "hanzi": "邪",
     "pinyin": "xié",
-    "english": "old variant of 邪",
+    "english": "demonic",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -140419,8 +140419,8 @@
   {
     "id": "3.0:7-9:金子",
     "hanzi": "金子",
-    "pinyin": "Jīn zǐ",
-    "english": "Kaneko (Japanese surname)",
+    "pinyin": "jīn zi",
+    "english": "gold",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -140564,7 +140564,7 @@
     "id": "3.0:7-9:钩",
     "hanzi": "钩",
     "pinyin": "gōu",
-    "english": "variant of 钩",
+    "english": "to hook",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -140627,7 +140627,7 @@
     "id": "3.0:7-9:铅",
     "hanzi": "铅",
     "pinyin": "qiān",
-    "english": "old variant of 铅",
+    "english": "lead (chemistry)",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -140744,7 +140744,7 @@
     "id": "3.0:7-9:锈",
     "hanzi": "锈",
     "pinyin": "xiù",
-    "english": "variant of 锈",
+    "english": "to rust",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -140815,8 +140815,8 @@
   {
     "id": "3.0:7-9:锯",
     "hanzi": "锯",
-    "pinyin": "jū",
-    "english": "variant of 锔",
+    "pinyin": "jù",
+    "english": "a saw",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -140851,8 +140851,8 @@
   {
     "id": "3.0:7-9:长征",
     "hanzi": "长征",
-    "pinyin": "Cháng zhēng",
-    "english": "Long March (retreat of the Red Army 1934-1935)",
+    "pinyin": "cháng zhēng",
+    "english": "expedition",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -141023,7 +141023,7 @@
     "id": "3.0:7-9:闸",
     "hanzi": "闸",
     "pinyin": "zhá",
-    "english": "old variant of 闸",
+    "english": "sluice",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -141311,7 +141311,7 @@
     "id": "3.0:7-9:附",
     "hanzi": "附",
     "pinyin": "fù",
-    "english": "variant of 附",
+    "english": "to add; to attach",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -141869,7 +141869,7 @@
     "id": "3.0:7-9:雇",
     "hanzi": "雇",
     "pinyin": "gù",
-    "english": "variant of 雇",
+    "english": "to employ",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -141905,7 +141905,7 @@
     "id": "3.0:7-9:雕",
     "hanzi": "雕",
     "pinyin": "diāo",
-    "english": "variant of 雕, to engrave",
+    "english": "to carve",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -142723,8 +142723,8 @@
   {
     "id": "3.0:7-9:颇",
     "hanzi": "颇",
-    "pinyin": "Pō",
-    "english": "surname Po",
+    "pinyin": "pō",
+    "english": "rather",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -142985,7 +142985,7 @@
     "id": "3.0:7-9:飘",
     "hanzi": "飘",
     "pinyin": "piāo",
-    "english": "variant of 飘",
+    "english": "to float",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -143137,8 +143137,8 @@
   {
     "id": "3.0:7-9:饶",
     "hanzi": "饶",
-    "pinyin": "Ráo",
-    "english": "surname Rao",
+    "pinyin": "ráo",
+    "english": "rich",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -143156,7 +143156,7 @@
     "id": "3.0:7-9:馅儿",
     "hanzi": "馅儿",
     "pinyin": "xiàn r",
-    "english": "erhua variant of 馅",
+    "english": "(of food) filling; stuffing",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -143308,8 +143308,8 @@
   {
     "id": "3.0:7-9:驮",
     "hanzi": "驮",
-    "pinyin": "tuó",
-    "english": "variant of 驮",
+    "pinyin": "duò",
+    "english": "load carried by a pack animal",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -143362,8 +143362,8 @@
   {
     "id": "3.0:7-9:驾",
     "hanzi": "驾",
-    "pinyin": "Jià",
-    "english": "surname Jia",
+    "pinyin": "jià",
+    "english": "to harness",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -143399,7 +143399,7 @@
     "id": "3.0:7-9:验",
     "hanzi": "验",
     "pinyin": "yàn",
-    "english": "variant of 验",
+    "english": "to examine",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -143578,8 +143578,8 @@
   {
     "id": "3.0:7-9:高明",
     "hanzi": "高明",
-    "pinyin": "Gāo míng",
-    "english": "Gaoming District of Foshan City 市, Guangdong",
+    "pinyin": "gāo míng",
+    "english": "brilliant; superior; wise",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -143669,7 +143669,7 @@
     "id": "3.0:7-9:魂",
     "hanzi": "魂",
     "pinyin": "hún",
-    "english": "old variant of 魂",
+    "english": "soul; spirit; immortal soul (that can be detached from the body)",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -143795,7 +143795,7 @@
     "id": "3.0:7-9:鹅",
     "hanzi": "鹅",
     "pinyin": "é",
-    "english": "variant of 鹅",
+    "english": "goose",
     "system": "3.0",
     "level": "7-9",
     "themes": []
@@ -143840,7 +143840,7 @@
     "id": "3.0:7-9:麻",
     "hanzi": "麻",
     "pinyin": "má",
-    "english": "variant of 麻",
+    "english": "hemp",
     "system": "3.0",
     "level": "7-9",
     "themes": []

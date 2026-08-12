@@ -1,7 +1,11 @@
 import catalog from "./hsk-catalog.json";
 import {
   getHanziCharacters,
+  paginateLearnUnits,
+  paginatePracticeEntries,
+  paginateTestEntries,
   resolveWorksheetLayout,
+  splitEntryIntoCharacterUnits,
 } from "./layout";
 import type { WorksheetEntry, WorksheetSettings } from "./types";
 
@@ -76,37 +80,40 @@ function estimateWorksheetPages(
   if (entries.length === 0) return 0;
 
   const layout = resolveWorksheetLayout(settings);
+  const worksheetEntries = toWorksheetEntries(entries);
   if (settings.mode === "quiz") {
-    return Math.ceil(entries.length / layout.testEntriesPerPage);
+    return paginateTestEntries(worksheetEntries, layout).length;
   }
-
-  const characterCount = entries.reduce(
-    (count, entry) => count + getHanziCharacters(entry.hanzi).length,
-    0,
-  );
-  if (characterCount === 0) return 0;
 
   if (settings.mode === "write") {
-    const rowsPerEntry = 1 + settings.extraBlankRows;
-    const entriesPerPage = Math.max(
-      1,
-      Math.floor(layout.rowsPerPage / rowsPerEntry),
-    );
-    return Math.ceil(characterCount / entriesPerPage);
+    return paginatePracticeEntries(
+      worksheetEntries,
+      layout,
+      settings.extraBlankRows,
+    ).length;
   }
 
-  const strokeRows =
-    settings.strokeOrderMode === "off"
-      ? 0
-      : settings.strokeOrderMode === "compact"
-        ? 1
-        : 2;
-  const estimatedWeight = 1 + strokeRows + settings.extraBlankRows;
-  const charactersPerPage = Math.max(
-    1,
-    Math.floor(layout.learnPageWeight / estimatedWeight),
+  const units = worksheetEntries.flatMap((entry, index) =>
+    splitEntryIntoCharacterUnits(entry, index + 1),
   );
-  return Math.ceil(characterCount / charactersPerPage);
+  if (units.length === 0) return 0;
+
+  // Detailed stroke data loads asynchronously in the renderer. For a stable
+  // pre-preview estimate, budget two full stroke rows (16 strokes) per Hanzi;
+  // paginateLearnUnits then applies the renderer's real weighting and page
+  // breaks. Compact/off modes use their exact renderer weights.
+  const conservativeStrokeCount = layout.strokeFramesPerRow * 2;
+  const strokeCounts = new Map(
+    units.map((unit) => [unit.character, conservativeStrokeCount]),
+  );
+
+  return paginateLearnUnits(
+    units,
+    strokeCounts,
+    settings.strokeOrderMode,
+    layout,
+    settings.extraBlankRows,
+  ).length;
 }
 
 export function summarizeHskSelection(

@@ -8,7 +8,10 @@ import { createHash } from "node:crypto";
 import { writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
-import { worksheetTemplates } from "../src/features/worksheets/data.ts";
+import {
+  vocabularyByHanzi,
+  worksheetTemplates,
+} from "../src/features/worksheets/data.ts";
 
 const SOURCE_COMMIT = "7ac65bf1a6387d35f1ade478906172a19311c7f9";
 const SOURCE_SHA256 =
@@ -70,6 +73,70 @@ function buildThemeMembership() {
   return memberships;
 }
 
+const NON_TEACHING_MEANING =
+  /^(?:surname\b|used in\b|abbr\.?\s+for\b)|\b(?:archaic|variant of)\b/i;
+
+function normalizePinyin(value) {
+  return value.normalize("NFC").toLocaleLowerCase().replace(/\s+/g, " ").trim();
+}
+
+function isTeachingMeaning(value) {
+  return typeof value === "string" &&
+    value.trim().length > 0 &&
+    !NON_TEACHING_MEANING.test(value.trim());
+}
+
+function selectTeachingSense(source) {
+  const forms = Array.isArray(source.f) ? source.f : [];
+  const preferred = vocabularyByHanzi.get(source.s);
+  const preferredIsUsable =
+    preferred && isTeachingMeaning(preferred.english)
+      ? preferred
+      : undefined;
+
+  const ranked = forms
+    .map((form, index) => {
+      const pinyin =
+        typeof form?.i?.y === "string" ? form.i.y.trim() : "";
+      const meanings = Array.isArray(form?.m)
+        ? form.m.filter((meaning) => typeof meaning === "string")
+        : [];
+      const teachingMeaning = meanings.find(isTeachingMeaning);
+      const matchesPreferred = Boolean(
+        preferredIsUsable &&
+          pinyin &&
+          normalizePinyin(preferredIsUsable.pinyin) === normalizePinyin(pinyin),
+      );
+
+      return {
+        index,
+        pinyin,
+        fallbackMeaning: meanings[0]?.trim() ?? "",
+        teachingMeaning,
+        matchesPreferred,
+        score:
+          (matchesPreferred ? 100 : 0) +
+          (teachingMeaning ? 10 : 0) +
+          (pinyin && pinyin[0] === pinyin[0]?.toLocaleLowerCase() ? 1 : 0),
+      };
+    })
+    .filter((candidate) => candidate.pinyin);
+
+  ranked.sort(
+    (left, right) => right.score - left.score || left.index - right.index,
+  );
+  const selected = ranked[0];
+  if (!selected) return null;
+
+  return {
+    pinyin: selected.pinyin,
+    english:
+      selected.matchesPreferred && preferredIsUsable
+        ? preferredIsUsable.english.trim()
+        : selected.teachingMeaning?.trim() ?? selected.fallbackMeaning,
+  };
+}
+
 async function fetchUpstreamCatalog() {
   const response = await fetch(SOURCE_URL);
   if (!response.ok) {
@@ -90,12 +157,10 @@ async function fetchUpstreamCatalog() {
 }
 
 function compactEntry(source, classification, themes) {
-  const firstForm = source.f?.[0];
   const hanzi = typeof source.s === "string" ? source.s.trim() : "";
-  const pinyin =
-    typeof firstForm?.i?.y === "string" ? firstForm.i.y.trim() : "";
-  const english =
-    typeof firstForm?.m?.[0] === "string" ? firstForm.m[0].trim() : "";
+  const sense = selectTeachingSense(source);
+  const pinyin = sense?.pinyin ?? "";
+  const english = sense?.english ?? "";
 
   if (!hanzi || !pinyin || !english) return null;
 
