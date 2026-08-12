@@ -21,6 +21,13 @@ import {
 import { Link, useRouter } from "@/core/i18n/navigation";
 import { cn } from "@/lib/utils";
 
+import {
+  createWorksheetDraft,
+  isSameWorksheetSnapshot,
+  parseWorksheetDraft,
+  WORKSHEET_DRAFT_STORAGE_KEY,
+  type WorksheetDraftEnvelope,
+} from "../draft";
 import { createWorksheetEntryId } from "../ids";
 import { localize } from "../i18n";
 import {
@@ -31,6 +38,8 @@ import {
 import {
   defaultWorksheetSettings,
   type PaperSize,
+  type PracticeStrength,
+  type StrokeOrderMode,
   type WorksheetEntry,
   type WorksheetDifficulty,
   type WorksheetMode,
@@ -91,6 +100,10 @@ export function GeneratorClient({
     }).format(new Date()),
   });
   const [isEnriching, setIsEnriching] = useState(false);
+  const [pendingDraft, setPendingDraft] =
+    useState<WorksheetDraftEnvelope | null>(null);
+  const [draftSavedAt, setDraftSavedAt] = useState<number | null>(null);
+  const [draftReady, setDraftReady] = useState(false);
   const [message, setMessage] = useState(
     autoEnrich
       ? t("Filling in Hanzi and Pinyin…", "正在补全汉字和拼音…")
@@ -103,6 +116,10 @@ export function GeneratorClient({
   const completed = useMemo(
     () => entries.filter((entry) => entry.status === "complete").length,
     [entries],
+  );
+  const currentSnapshot = useMemo<WorksheetSnapshot>(
+    () => ({ version: 2, entries, settings }),
+    [entries, settings],
   );
 
   function updateEntry(id: string, field: keyof WorksheetEntry, value: string) {
@@ -199,6 +216,71 @@ export function GeneratorClient({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoEnrich]);
 
+  useEffect(() => {
+    try {
+      const draft = parseWorksheetDraft(
+        localStorage.getItem(WORKSHEET_DRAFT_STORAGE_KEY),
+      );
+      if (draft && !isSameWorksheetSnapshot(draft.snapshot, currentSnapshot)) {
+        setPendingDraft(draft);
+      } else if (draft) {
+        setDraftSavedAt(draft.savedAt);
+      }
+    } catch {
+      setDraftSavedAt(null);
+    } finally {
+      setDraftReady(true);
+    }
+    // Compare against the worksheet supplied by this page, once on mount.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!draftReady || pendingDraft) return;
+    const timer = window.setTimeout(() => {
+      try {
+        const draft = createWorksheetDraft(currentSnapshot);
+        localStorage.setItem(
+          WORKSHEET_DRAFT_STORAGE_KEY,
+          JSON.stringify(draft),
+        );
+        setDraftSavedAt(draft.savedAt);
+      } catch {
+        setDraftSavedAt(null);
+      }
+    }, 600);
+
+    return () => window.clearTimeout(timer);
+  }, [currentSnapshot, draftReady, pendingDraft]);
+
+  function restoreDraft() {
+    if (!pendingDraft) return;
+    setEntries(pendingDraft.snapshot.entries);
+    setSettings(pendingDraft.snapshot.settings);
+    setDraftSavedAt(pendingDraft.savedAt);
+    setPendingDraft(null);
+    setMessage(t("Worksheet restored from this device.", "已恢复此设备上的字帖草稿。"));
+  }
+
+  function discardDraft() {
+    try {
+      localStorage.removeItem(WORKSHEET_DRAFT_STORAGE_KEY);
+    } finally {
+      setPendingDraft(null);
+      setDraftSavedAt(null);
+      setMessage(t("Saved draft discarded.", "已放弃保存的草稿。"));
+    }
+  }
+
+  function clearSavedDraft() {
+    try {
+      localStorage.removeItem(WORKSHEET_DRAFT_STORAGE_KEY);
+    } finally {
+      setDraftSavedAt(null);
+      setMessage(t("Local draft cleared.", "本地草稿已清除。"));
+    }
+  }
+
   function openPreview() {
     const snapshot: WorksheetSnapshot = {
       version: 2,
@@ -234,6 +316,41 @@ export function GeneratorClient({
           <span className="h-px flex-1 bg-[#d6cfc2]" />
           <StepBadge label={t("Print", "下载打印")} number="3" />
         </div>
+
+        {pendingDraft ? (
+          <section
+            aria-label={t("Saved worksheet draft", "已保存的字帖草稿")}
+            className="mt-5 flex flex-col gap-4 rounded border border-[#d8b67a] bg-[#fff8e8] p-4 shadow-[0_8px_24px_rgba(72,48,17,0.08)] sm:flex-row sm:items-center sm:justify-between"
+          >
+            <div>
+              <p className="font-semibold text-[#172942]">
+                {t("Restore worksheet from this device?", "恢复此设备上的字帖草稿？")}
+              </p>
+              <p className="mt-1 text-sm leading-6 text-[#5f6877]">
+                {t(
+                  `${pendingDraft.snapshot.entries.length} rows saved ${new Intl.DateTimeFormat("en-US", { dateStyle: "medium", timeStyle: "short" }).format(pendingDraft.savedAt)}.`,
+                  `共 ${pendingDraft.snapshot.entries.length} 行，保存于 ${new Intl.DateTimeFormat("zh-CN", { dateStyle: "medium", timeStyle: "short" }).format(pendingDraft.savedAt)}。`,
+                )}
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-wrap gap-2">
+              <button
+                type="button"
+                className="hs-primary-button text-sm"
+                onClick={restoreDraft}
+              >
+                {t("Restore worksheet", "恢复字帖")}
+              </button>
+              <button
+                type="button"
+                className="hs-secondary-button text-sm"
+                onClick={discardDraft}
+              >
+                {t("Discard", "放弃")}
+              </button>
+            </div>
+          </section>
+        ) : null}
 
         <div className="mt-7 grid gap-4 xl:grid-cols-[275px_minmax(500px,1fr)_minmax(390px,0.78fr)]">
           <SettingsPanel settings={settings} setSettings={setSettings} />
@@ -473,30 +590,51 @@ export function GeneratorClient({
       </main>
 
       <div className="hs-no-print fixed inset-x-0 bottom-0 z-40 border-t border-[#d8d0c2] bg-[#fffdf9]/96 backdrop-blur">
-        <div className="hs-container flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-end">
-          <button
-            type="button"
-            className="hs-secondary-button min-w-56"
-            onClick={openPreview}
-            disabled={entries.length === 0}
-          >
-            <Eye className="size-4" /> {t("Preview full page", "完整预览")}
-          </button>
-          <button
-            type="button"
-            className="hs-primary-button min-w-72"
-            onClick={openPreview}
-            disabled={entries.length === 0}
-          >
-            {settings.profile === "tablet" ? (
-              <Download className="size-4" />
+        <div className="hs-container flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex min-h-8 items-center gap-3 text-xs text-[#617084]">
+            {draftSavedAt ? (
+              <>
+                <span className="flex items-center gap-1.5 text-[#237553]">
+                  <Check className="size-3.5" />
+                  {t("Saved locally", "已保存到本地")}
+                </span>
+                <button
+                  type="button"
+                  className="underline decoration-[#b7afa2] underline-offset-4 hover:text-[#b62822]"
+                  onClick={clearSavedDraft}
+                >
+                  {t("Clear saved draft", "清除本地草稿")}
+                </button>
+              </>
             ) : (
-              <Printer className="size-4" />
+              <span>{t("Autosaves on this device", "自动保存在此设备")}</span>
             )}
-            {settings.profile === "tablet"
-              ? t("Download 3:4 PDF", "下载 3:4 PDF")
-              : t("Print / Save PDF", "下载 / 打印 PDF")}
-          </button>
+          </div>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <button
+              type="button"
+              className="hs-secondary-button min-w-56"
+              onClick={openPreview}
+              disabled={entries.length === 0}
+            >
+              <Eye className="size-4" /> {t("Preview full page", "完整预览")}
+            </button>
+            <button
+              type="button"
+              className="hs-primary-button min-w-72"
+              onClick={openPreview}
+              disabled={entries.length === 0}
+            >
+              {settings.profile === "tablet" ? (
+                <Download className="size-4" />
+              ) : (
+                <Printer className="size-4" />
+              )}
+              {settings.profile === "tablet"
+                ? t("Download 3:4 PDF", "下载 3:4 PDF")
+                : t("Print / Save PDF", "下载 / 打印 PDF")}
+            </button>
+          </div>
         </div>
       </div>
     </PublicPageShell>
@@ -684,7 +822,7 @@ function SettingsPanel({
   const profilePreset = getWorksheetProfilePreset(settings.profile);
 
   return (
-    <aside className="hs-card self-start p-4 xl:sticky xl:top-20">
+    <aside className="hs-card self-start p-4 xl:sticky xl:top-20 xl:max-h-[calc(100vh-10rem)] xl:overflow-y-auto">
       <SettingSection title={t("Writing profile", "书写模板")}>
         <div className="grid grid-cols-2 gap-2">
           {Object.values(worksheetProfilePresets).map((preset) => (
@@ -724,6 +862,35 @@ function SettingsPanel({
           onChange={(mode) => patch({ mode: mode as WorksheetMode })}
         />
       </SettingSection>
+      {settings.mode !== "quiz" ? (
+        <>
+          <SettingSection title={t("Practice strength", "练习引导强度")}>
+            <Segmented
+              value={settings.practiceStrength}
+              options={[
+                ["guided", t("Guided", "引导")],
+                ["balanced", t("Balanced", "均衡")],
+                ["independent", t("Independent", "独立")],
+              ]}
+              onChange={(practiceStrength) =>
+                patch({ practiceStrength: practiceStrength as PracticeStrength })
+              }
+            />
+          </SettingSection>
+          <SettingSection title={t("Extra blank row", "额外空白行")}>
+            <Segmented
+              value={String(settings.extraBlankRows)}
+              options={[
+                ["0", t("Off", "关闭")],
+                ["1", t("Add one", "增加一行")],
+              ]}
+              onChange={(extraBlankRows) =>
+                patch({ extraBlankRows: extraBlankRows === "1" ? 1 : 0 })
+              }
+            />
+          </SettingSection>
+        </>
+      ) : null}
       <SettingSection
         title={t(
           `Cell size · ${settings.cellSize}${profilePreset.size.unit}`,
@@ -770,11 +937,27 @@ function SettingsPanel({
           checked={settings.showPinyin}
           onChange={(showPinyin) => patch({ showPinyin })}
         />
-        <ToggleRow
-          label={t("Stroke order", "笔顺")}
-          checked={settings.showStrokeOrder}
-          onChange={(showStrokeOrder) => patch({ showStrokeOrder })}
-        />
+        {settings.mode === "trace" ? (
+          <div className="mt-3">
+            <span className="mb-2 block text-xs font-semibold text-[#455367]">
+              {t("Stroke order", "笔顺")}
+            </span>
+            <Segmented
+              value={settings.strokeOrderMode}
+              options={[
+                ["detailed", t("Detailed", "详细")],
+                ["compact", t("Compact", "精简")],
+                ["off", t("Off", "关闭")],
+              ]}
+              onChange={(strokeOrderMode) =>
+                patch({
+                  strokeOrderMode: strokeOrderMode as StrokeOrderMode,
+                  showStrokeOrder: strokeOrderMode !== "off",
+                })
+              }
+            />
+          </div>
+        ) : null}
       </SettingSection>
       <SettingSection title={t("Difficulty", "难度")}>
         <Segmented

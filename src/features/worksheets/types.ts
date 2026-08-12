@@ -4,6 +4,8 @@ export type WorksheetProfile = "kids" | "adult" | "tablet" | "brush";
 export type PaperSize = "a4" | "letter" | "tablet";
 export type WorksheetDifficulty = "beginner" | "advanced";
 export type PrintMargin = "normal" | "narrow";
+export type PracticeStrength = "guided" | "balanced" | "independent";
+export type StrokeOrderMode = "detailed" | "compact" | "off";
 export type EntryStatus = "complete" | "needs-review";
 
 export interface WorksheetEntry {
@@ -21,6 +23,9 @@ export interface WorksheetSettings {
   grid: GridStyle;
   showPinyin: boolean;
   showStrokeOrder: boolean;
+  practiceStrength: PracticeStrength;
+  extraBlankRows: 0 | 1;
+  strokeOrderMode: StrokeOrderMode;
   paperSize: PaperSize;
   difficulty: WorksheetDifficulty;
   printMargin: PrintMargin;
@@ -74,6 +79,9 @@ export const defaultWorksheetSettings: WorksheetSettings = {
   grid: "tian",
   showPinyin: true,
   showStrokeOrder: true,
+  practiceStrength: "balanced",
+  extraBlankRows: 0,
+  strokeOrderMode: "detailed",
   paperSize: "a4",
   difficulty: "beginner",
   printMargin: "normal",

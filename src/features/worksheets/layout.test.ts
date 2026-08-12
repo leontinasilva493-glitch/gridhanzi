@@ -124,6 +124,41 @@ test("Kids practice has one model, two trace, and five blank cells", () => {
   );
 });
 
+test("practice strength changes guidance without changing the row width", () => {
+  const layout = resolveWorksheetLayout(settings("kids"));
+  const guided = buildPracticeCells("家", layout, "guided");
+  const independent = buildPracticeCells("家", layout, "independent");
+  const guidedBrush = buildPracticeCells(
+    "家",
+    resolveWorksheetLayout(settings("brush")),
+    "guided",
+  );
+
+  assert.equal(guided.length, 8);
+  assert.deepEqual(guided.map((cell) => cell.kind), [
+    "model",
+    "trace",
+    "trace",
+    "trace",
+    "trace",
+    "blank",
+    "blank",
+    "blank",
+  ]);
+  assert.equal(independent.length, 8);
+  assert.deepEqual(independent.map((cell) => cell.kind), [
+    "model",
+    "blank",
+    "blank",
+    "blank",
+    "blank",
+    "blank",
+    "blank",
+    "blank",
+  ]);
+  assert.equal(guidedBrush.at(-1)?.kind, "blank");
+});
+
 test("Adult, Tablet, and Brush preserve their teaching patterns", () => {
   const adult = buildPracticeCells(
     "学",
@@ -192,6 +227,18 @@ test("practice pagination splits a word only when it exceeds a page", () => {
   assert.equal(pages[1]?.[0]?.showContext, true);
 });
 
+test("one extra blank row halves Kids practice capacity without losing units", () => {
+  const entries = ["一", "二", "三", "四", "五"].map((hanzi) => entry(hanzi));
+  const pages = paginatePracticeEntries(
+    entries,
+    resolveWorksheetLayout(settings("kids")),
+    1,
+  );
+
+  assert.deepEqual(pages.map((page) => page.length), [4, 1]);
+  assert.deepEqual(pages.flat().map((unit) => unit.character), ["一", "二", "三", "四", "五"]);
+});
+
 test("test worksheets use profile-aware prompt capacities", () => {
   const entries = Array.from({ length: 21 }, (_, index) =>
     entry("家", `row-${index}`),
@@ -253,7 +300,7 @@ test("learn pagination uses real stroke-row weight without losing units", () => 
   const pages = paginateLearnUnits(
     units,
     counts,
-    true,
+    "detailed",
     resolveWorksheetLayout(settings("kids")),
   );
 
@@ -262,4 +309,20 @@ test("learn pagination uses real stroke-row weight without losing units", () => 
     pages.flat().map((unit) => unit.character),
     ["一", "二", "三", "四", "五"],
   );
+});
+
+test("learn pagination accounts for compact strokes and an extra blank row", () => {
+  const units = ["一", "二", "三", "四", "五"].flatMap((hanzi, index) =>
+    splitEntryIntoCharacterUnits(entry(hanzi, `compact-${index}`)),
+  );
+  const counts = new Map(units.map((unit) => [unit.character, 5]));
+  const pages = paginateLearnUnits(
+    units,
+    counts,
+    "compact",
+    resolveWorksheetLayout(settings("kids")),
+    1,
+  );
+
+  assert.deepEqual(pages.map((page) => page.length), [2, 2, 1]);
 });

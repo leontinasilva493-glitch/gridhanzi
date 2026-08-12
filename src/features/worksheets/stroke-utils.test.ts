@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { buildCumulativeStrokeFrames } from "./stroke-utils";
+import { buildCumulativeStrokeFrames, selectStrokeFrames } from "./stroke-utils";
 
 test("buildCumulativeStrokeFrames returns one cumulative frame per stroke", () => {
   assert.deepEqual(buildCumulativeStrokeFrames(["a", "b", "c"]), [
@@ -18,3 +18,10 @@ test("buildCumulativeStrokeFrames limits printable cards without losing order", 
   assert.equal(buildCumulativeStrokeFrames(strokes, 8).length, 8);
 });
 
+test("selectStrokeFrames keeps milestones for compact mode and the final shape", () => {
+  const frames = Array.from({ length: 10 }, (_, index) => index + 1);
+
+  assert.deepEqual(selectStrokeFrames(frames, "compact"), [1, 4, 7, 10]);
+  assert.deepEqual(selectStrokeFrames(frames, "detailed"), frames);
+  assert.deepEqual(selectStrokeFrames(frames, "off"), []);
+});

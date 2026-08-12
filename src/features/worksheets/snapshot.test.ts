@@ -61,3 +61,43 @@ test("invalid snapshot input falls back to safe defaults", () => {
   assert.equal(normalized.settings.profile, "kids");
   assert.equal(normalized.settings.cellSize, 22);
 });
+
+test("normalizes new practice controls and migrates the legacy stroke toggle", () => {
+  const current = normalizeWorksheetSnapshot({
+    version: 2,
+    entries: [],
+    settings: {
+      ...defaultWorksheetSettings,
+      practiceStrength: "guided",
+      extraBlankRows: 1,
+      strokeOrderMode: "compact",
+    },
+  });
+  const legacyOff = normalizeWorksheetSnapshot({
+    version: 2,
+    entries: [],
+    settings: {
+      ...defaultWorksheetSettings,
+      showStrokeOrder: false,
+      strokeOrderMode: undefined,
+    },
+  });
+  const invalid = normalizeWorksheetSnapshot({
+    version: 2,
+    entries: [],
+    settings: {
+      ...defaultWorksheetSettings,
+      practiceStrength: "maximum",
+      extraBlankRows: 9,
+      strokeOrderMode: "sometimes",
+    },
+  });
+
+  assert.equal(current.settings.practiceStrength, "guided");
+  assert.equal(current.settings.extraBlankRows, 1);
+  assert.equal(current.settings.strokeOrderMode, "compact");
+  assert.equal(legacyOff.settings.strokeOrderMode, "off");
+  assert.equal(invalid.settings.practiceStrength, "balanced");
+  assert.equal(invalid.settings.extraBlankRows, 0);
+  assert.equal(invalid.settings.strokeOrderMode, "detailed");
+});
