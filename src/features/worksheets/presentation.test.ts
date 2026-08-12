@@ -229,6 +229,30 @@ test("template detail vocabulary card can shrink on mobile", async () => {
   );
 });
 
+test("HSK workflow links stay additive across teachers, templates, details, and stroke-order pages", async () => {
+  const [
+    teachersSource,
+    templatesSource,
+    detailSource,
+    strokeSource,
+  ] = await Promise.all([
+    projectFile("src/features/worksheets/components/for-teachers-page.tsx"),
+    projectFile("src/features/worksheets/components/templates-page.tsx"),
+    projectFile("src/features/worksheets/components/template-detail-page.tsx"),
+    projectFile("src/features/worksheets/components/stroke-order-character-page.tsx"),
+  ]);
+
+  assert.match(teachersSource, /hskPickerHref = "\/generator\?hskSystem=2\.0&hskLevel=1"/);
+  assert.match(teachersSource, /Choose an HSK list/);
+  assert.match(templatesSource, /hskPickerHref = "\/generator\?hskSystem=2\.0&hskLevel=1"/);
+  assert.match(templatesSource, /Choose by HSK version/);
+  assert.match(detailSource, /template\.category === "hsk"/);
+  assert.match(detailSource, /Choose HSK 2\.0 or 3\.0 list/);
+  assert.match(strokeSource, /\/generator\?words=/);
+  assert.match(strokeSource, /hskPickerHref = "\/generator\?hskSystem=2\.0&hskLevel=1"/);
+  assert.match(strokeSource, /Browse HSK lists/);
+});
+
 test("curated stroke-order pages combine practice with useful character content", async () => {
   const [clientSource, pageSource, hubSource] = await Promise.all([
     projectFile("src/features/worksheets/components/stroke-order-client.tsx"),

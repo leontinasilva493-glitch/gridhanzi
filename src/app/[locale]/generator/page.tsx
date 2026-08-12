@@ -8,11 +8,20 @@ import {
   getTemplateBySlug,
   parseVocabularyInput,
 } from "@/features/worksheets/engine";
+import type { HskLevel, HskSystem } from "@/features/worksheets/hsk";
 import { parseWorksheetProfile } from "@/features/worksheets/profiles";
 import type { WorksheetDifficulty } from "@/features/worksheets/types";
 import { isChineseLocale } from "@/features/worksheets/i18n";
 import { envConfigs } from "@/config";
 import { buildPageSeoMetadata, toAbsoluteUrl } from "@/features/worksheets/seo";
+
+const DEFAULT_HSK_SELECTION = {
+  system: "2.0",
+  level: "1",
+} as const satisfies { system: HskSystem; level: HskLevel };
+
+const HSK_20_LEVELS = new Set<HskLevel>(["1", "2", "3", "4", "5", "6"]);
+const HSK_30_LEVELS = new Set<HskLevel>(["1", "2", "3", "4", "5", "6", "7-9"]);
 
 const englishGeneratorCopy = {
   title: "Chinese Worksheet Generator: Free Mandarin Practice Sheets",
@@ -49,6 +58,21 @@ const chineseGeneratorCopy = {
 
 function getGeneratorCopy(locale: string) {
   return isChineseLocale(locale) ? chineseGeneratorCopy : englishGeneratorCopy;
+}
+
+export function parseGeneratorHskSelection(query: {
+  hskSystem?: string;
+  hskLevel?: string;
+}): { system: HskSystem; level: HskLevel } {
+  if (query.hskSystem === "2.0" && HSK_20_LEVELS.has(query.hskLevel as HskLevel)) {
+    return { system: "2.0", level: query.hskLevel as HskLevel };
+  }
+
+  if (query.hskSystem === "3.0" && HSK_30_LEVELS.has(query.hskLevel as HskLevel)) {
+    return { system: "3.0", level: query.hskLevel as HskLevel };
+  }
+
+  return DEFAULT_HSK_SELECTION;
 }
 
 export async function generateMetadata({ params }: {
@@ -93,11 +117,14 @@ export default async function GeneratorPage({
     profile?: string;
     difficulty?: WorksheetDifficulty;
     auto?: string;
+    hskSystem?: string;
+    hskLevel?: string;
   }>;
 }) {
   const [{ locale }, query] = await Promise.all([params, searchParams]);
   const copy = getGeneratorCopy(locale);
   const chinese = isChineseLocale(locale);
+  const initialHskSelection = parseGeneratorHskSelection(query);
   const template = getTemplateBySlug(query.template);
   const templateEntries = query.template
     ? cloneTemplateEntries(query.template)
@@ -183,6 +210,8 @@ export default async function GeneratorPage({
         autoEnrich={query.auto === "1" && wordEntries.length > 0}
         templateTitle={template?.title}
         templateChineseTitle={template?.chineseTitle}
+        initialHskSystem={initialHskSelection.system}
+        initialHskLevel={initialHskSelection.level}
       />
     </>
   );

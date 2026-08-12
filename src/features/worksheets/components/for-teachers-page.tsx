@@ -33,6 +33,7 @@ const featuredTemplates = featuredSlugs.flatMap((slug) => {
 const previewTemplate =
   worksheetTemplates.find((template) => template.slug === "school-classroom") ??
   worksheetTemplates[0];
+const hskPickerHref = "/generator?hskSystem=2.0&hskLevel=1";
 
 export function ForTeachersPage() {
   if (!previewTemplate) return null;
@@ -77,6 +78,9 @@ export function ForTeachersPage() {
                 </Link>
                 <Link href="/templates" className="hs-secondary-button min-w-44">
                   Browse word lists <ArrowRight className="size-4" />
+                </Link>
+                <Link href={hskPickerHref} className="hs-secondary-button min-w-44">
+                  Choose an HSK list <ArrowRight className="size-4" />
                 </Link>
               </div>
               <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-[#45556a]">
@@ -166,6 +170,13 @@ export function ForTeachersPage() {
                 View all templates <ArrowRight className="size-4" />
               </Link>
             </div>
+            <p className="mt-4 text-sm text-[#566276]">
+              Need a level list instead?{" "}
+              <Link href={hskPickerHref} className="font-semibold text-[#24466e] hover:text-[#b62822]">
+                Choose an HSK list
+              </Link>
+              .
+            </p>
             <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {featuredTemplates.map((template) => (
                 <article key={template.slug} className="hs-card p-5">

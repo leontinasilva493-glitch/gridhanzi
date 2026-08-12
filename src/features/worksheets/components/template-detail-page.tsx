@@ -13,6 +13,7 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
   const siteUrl = envConfigs.app_url.replace(/\/$/, "");
   const canonicalUrl = `${siteUrl}/templates/${template.slug}`;
   const pageHeading = template.h1 ?? `${template.title} Chinese Writing Worksheet`;
+  const hskPickerHref = "/generator?hskSystem=2.0&hskLevel=1";
   const related = worksheetTemplates
     .filter((candidate) => candidate.slug !== template.slug)
     .sort((left, right) => Number(right.category === template.category) - Number(left.category === template.category))
@@ -94,7 +95,18 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
               <Link href={`/generator?template=${template.slug}&profile=${template.recommendedProfile}`} className="hs-secondary-button min-w-56">
                 <Eye className="size-5" /> Preview worksheet
               </Link>
+              {template.category === "hsk" ? (
+                <Link href={hskPickerHref} className="hs-secondary-button min-w-56">
+                  Choose HSK 2.0 or 3.0 list
+                </Link>
+              ) : null}
             </div>
+            {template.category === "hsk" ? (
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-[#5b687a]">
+                This worksheet stays editable. If you need an explicit exam version,
+                start from the HSK picker and choose HSK 2.0 or HSK 3.0 yourself.
+              </p>
+            ) : null}
           </div>
           <div className="mx-auto w-full max-w-[480px] sm:rotate-[3deg]">
             <WorksheetMiniature

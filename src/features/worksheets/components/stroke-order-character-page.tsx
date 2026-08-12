@@ -22,6 +22,7 @@ export function StrokeOrderCharacterPage({
   const pathname = `${localePrefix}/stroke-order/${entry.character}`;
   const pageUrl = `${envConfigs.app_url.replace(/\/$/, "")}${pathname}`;
   const worksheetHref = `/generator?words=${encodeURIComponent(entry.character)}`;
+  const hskPickerHref = "/generator?hskSystem=2.0&hskLevel=1";
   const relatedCharacters = strokeOrderCharacters.filter(
     (candidate) => candidate.character !== entry.character,
   );
@@ -156,22 +157,44 @@ export function StrokeOrderCharacterPage({
         </section>
 
         <section className="mt-8" aria-labelledby="hsk-title">
-          <p className="hs-kicker">Level reference</p>
-          <h2 id="hsk-title" className="hs-display mt-2 text-3xl font-bold">
-            HSK information for {entry.character}
-          </h2>
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            {entry.hsk.map((item) => (
-              <article key={`${item.system}-${item.level}`} className="hs-card p-5">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <h3 className="font-bold text-[#172b49]">{item.system}</h3>
-                  <span className="rounded-full bg-[#e8f2ec] px-3 py-1 text-xs font-bold text-[#267254]">
-                    {item.level}
-                  </span>
-                </div>
-                <p className="mt-3 text-sm leading-6 text-[#5d6878]">{item.note}</p>
-              </article>
-            ))}
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="hs-kicker">Level reference</p>
+              <h2 id="hsk-title" className="hs-display mt-2 text-3xl font-bold">
+                HSK information for {entry.character}
+              </h2>
+            </div>
+            <Link href={hskPickerHref} className="hs-secondary-button">
+              Browse HSK lists
+            </Link>
+          </div>
+          <div className="mt-4 grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(250px,0.8fr)]">
+            <div className="grid gap-4 md:grid-cols-2">
+              {entry.hsk.map((item) => (
+                <article key={`${item.system}-${item.level}`} className="hs-card p-5">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <h3 className="font-bold text-[#172b49]">{item.system}</h3>
+                    <span className="rounded-full bg-[#e8f2ec] px-3 py-1 text-xs font-bold text-[#267254]">
+                      {item.level}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-[#5d6878]">{item.note}</p>
+                </article>
+              ))}
+            </div>
+            <article className="hs-card border-[#d8c49f] bg-[#fff9ed] p-5">
+              <h3 className="font-bold text-[#172b49]">Need a full HSK list?</h3>
+              <p className="mt-3 text-sm leading-6 text-[#5d6878]">
+                Keep this character in the worksheet shortcut above, or open the
+                HSK picker to choose a full HSK 2.0 or HSK 3.0 level list.
+              </p>
+              <Link
+                href={hskPickerHref}
+                className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-[#24466e] hover:text-[#b62822]"
+              >
+                Browse HSK lists <ArrowRight className="size-4" />
+              </Link>
+            </article>
           </div>
         </section>
 

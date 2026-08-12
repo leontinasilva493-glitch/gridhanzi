@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 import { buildPublicSitemapPaths } from "./seo";
 
@@ -199,4 +199,38 @@ test("teacher landing page is public, specific, and limited to current features"
     /Coming soon|class management|subscription|saved vocabulary lists/i,
   );
   assert.ok(buildPublicSitemapPaths().includes("/for-teachers"));
+});
+
+test("generator HSK query parser keeps valid values and falls back safely", async () => {
+  const moduleUrl = pathToFileURL(
+    projectPath("src/app/[locale]/generator/page.tsx"),
+  ).href;
+  const { parseGeneratorHskSelection } = (await import(moduleUrl)) as {
+    parseGeneratorHskSelection: (query: {
+      hskSystem?: string;
+      hskLevel?: string;
+    }) => { system: "2.0" | "3.0"; level: "1" | "2" | "3" | "4" | "5" | "6" | "7-9" };
+  };
+
+  assert.deepEqual(
+    parseGeneratorHskSelection({ hskSystem: "2.0", hskLevel: "6" }),
+    { system: "2.0", level: "6" },
+  );
+  assert.deepEqual(
+    parseGeneratorHskSelection({ hskSystem: "3.0", hskLevel: "7-9" }),
+    { system: "3.0", level: "7-9" },
+  );
+  assert.deepEqual(
+    parseGeneratorHskSelection({ hskSystem: "3.0", hskLevel: "9" }),
+    { system: "2.0", level: "1" },
+  );
+  assert.deepEqual(
+    parseGeneratorHskSelection({ hskSystem: "2.0", hskLevel: "7-9" }),
+    { system: "2.0", level: "1" },
+  );
+  assert.deepEqual(
+    parseGeneratorHskSelection({ hskSystem: "4.0", hskLevel: "2" }),
+    { system: "2.0", level: "1" },
+  );
+  assert.deepEqual(parseGeneratorHskSelection({}), { system: "2.0", level: "1" });
 });
