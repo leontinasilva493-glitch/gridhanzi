@@ -45,6 +45,22 @@ test("generator exposes recoverable local draft controls", async () => {
   assert.match(source, /xl:max-h-\[calc\(100vh-10rem\)\] xl:overflow-y-auto/);
 });
 
+test("generator exposes a lazy-loaded HSK picker with version-aware copy", async () => {
+  const [generatorSource, pickerSource, pickerStateSource] = await Promise.all([
+    projectFile("src/features/worksheets/components/generator-client.tsx"),
+    projectFile("src/features/worksheets/components/hsk-picker.tsx"),
+    projectFile("src/features/worksheets/hsk-picker-state.ts"),
+  ]);
+
+  assert.match(generatorSource, /<HskPicker/);
+  assert.match(pickerSource, /Choose from HSK/);
+  assert.match(pickerSource, /dynamic import\("\.\.\/hsk"\)|import\("\.\.\/hsk"\)/);
+  assert.match(pickerSource, /HSK 3\.0.*2026.*global trials/);
+  assert.match(pickerSource, /Select filtered/);
+  assert.match(pickerSource, /Add selected to worksheet/);
+  assert.match(pickerStateSource, /gridhanzi:hsk-picker:v1/);
+});
+
 test("template directory leads with real printable outcomes", async () => {
   const source = await projectFile(
     "src/features/worksheets/components/templates-page.tsx",

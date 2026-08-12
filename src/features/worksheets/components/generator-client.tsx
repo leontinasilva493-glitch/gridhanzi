@@ -47,6 +47,8 @@ import {
   type WorksheetSettings,
   type WorksheetSnapshot,
 } from "../types";
+import type { HskLevel, HskSystem } from "../hsk";
+import { HskPicker } from "./hsk-picker";
 import { PublicPageShell } from "./site-shell";
 import { WorksheetPaper } from "./worksheet-paper";
 
@@ -64,6 +66,8 @@ export function GeneratorClient({
   breadcrumbLabel,
   templateTitle,
   templateChineseTitle,
+  initialHskSystem,
+  initialHskLevel,
 }: {
   initialEntries: WorksheetEntry[];
   initialMode?: WorksheetMode;
@@ -75,6 +79,8 @@ export function GeneratorClient({
   breadcrumbLabel?: string;
   templateTitle?: string;
   templateChineseTitle?: string;
+  initialHskSystem?: HskSystem;
+  initialHskLevel?: HskLevel;
 }) {
   const router = useRouter();
   const locale = useLocale();
@@ -281,6 +287,67 @@ export function GeneratorClient({
     }
   }
 
+  function addHskEntries(nextEntries: WorksheetEntry[]) {
+    let addedCount = 0;
+    let skippedCount = 0;
+
+    setEntries((current) => {
+      const existingHanzi = new Set(
+        current
+          .map((entry) => entry.hanzi.trim())
+          .filter((value) => value.length > 0),
+      );
+      const acceptedEntries: WorksheetEntry[] = [];
+
+      for (const entry of nextEntries) {
+        const normalizedHanzi = entry.hanzi.trim();
+        if (!normalizedHanzi || existingHanzi.has(normalizedHanzi)) {
+          skippedCount += 1;
+          continue;
+        }
+
+        existingHanzi.add(normalizedHanzi);
+        acceptedEntries.push({
+          ...entry,
+          id: createWorksheetEntryId(),
+          status: "complete",
+        });
+      }
+
+      addedCount = acceptedEntries.length;
+      return acceptedEntries.length > 0
+        ? [...current, ...acceptedEntries]
+        : current;
+    });
+
+    if (addedCount > 0 && skippedCount > 0) {
+      setMessage(
+        t(
+          `Added ${addedCount} HSK words. Skipped ${skippedCount} duplicates already in your worksheet.`,
+          `已加入 ${addedCount} 个 HSK 词条，并跳过了 ${skippedCount} 个当前字帖中的重复项。`,
+        ),
+      );
+      return;
+    }
+
+    if (addedCount > 0) {
+      setMessage(
+        t(
+          `Added ${addedCount} HSK words to your worksheet.`,
+          `已把 ${addedCount} 个 HSK 词条加入当前字帖。`,
+        ),
+      );
+      return;
+    }
+
+    setMessage(
+      t(
+        `All ${skippedCount} selected HSK words were already in your worksheet.`,
+        `所选的 ${skippedCount} 个 HSK 词条都已存在于当前字帖中。`,
+      ),
+    );
+  }
+
   function openPreview() {
     const snapshot: WorksheetSnapshot = {
       version: 2,
@@ -361,6 +428,15 @@ export function GeneratorClient({
               <span className="flex items-center gap-1 text-sm font-medium text-[#237553]">
                 {t(`${completed} words ready`, `${completed} 个词已完成`)} <Check className="size-4" />
               </span>
+            </div>
+            <div className="mt-4">
+              <HskPicker
+                currentEntries={entries}
+                settings={settings}
+                initialSystem={initialHskSystem}
+                initialLevel={initialHskLevel}
+                onAddEntries={addHskEntries}
+              />
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
               <button
