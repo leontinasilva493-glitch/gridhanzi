@@ -43,6 +43,7 @@ import {
   type WorksheetEntry,
   type WorksheetDifficulty,
   type WorksheetMode,
+  type WorksheetOutput,
   type WorksheetProfile,
   type WorksheetSettings,
   type WorksheetSnapshot,
@@ -50,7 +51,7 @@ import {
 import type { HskLevel, HskSystem } from "../hsk";
 import { HskPicker } from "./hsk-picker";
 import { PublicPageShell } from "./site-shell";
-import { WorksheetPaper } from "./worksheet-paper";
+import { WorksheetRenderer } from "./worksheet-renderer";
 
 export const WORKSHEET_STORAGE_KEY = "gridhanzi:worksheet:v1";
 export const LEGACY_WORKSHEET_STORAGE_KEY = "hanzisheets:worksheet:v1";
@@ -127,6 +128,8 @@ export function GeneratorClient({
     () => ({ version: 2, entries, settings }),
     [entries, settings],
   );
+  const isDigitalPdf =
+    settings.output === "worksheet" && settings.paperSize === "tablet";
 
   function updateEntry(id: string, field: keyof WorksheetEntry, value: string) {
     setEntries((current) =>
@@ -636,7 +639,7 @@ export function GeneratorClient({
                 {t("Live preview", "实时预览")}
               </span>
               <span className="text-xs text-[#657083]">
-                {settings.paperSize === "tablet"
+                {isDigitalPdf
                   ? "Digital 3:4"
                   : settings.paperSize === "a4"
                     ? "A4 · Portrait"
@@ -648,7 +651,7 @@ export function GeneratorClient({
                 key={settings.profile}
                 className="hs-profile-preview"
               >
-                <WorksheetPaper
+                <WorksheetRenderer
                   entries={entries}
                   settings={settings}
                   compact
@@ -701,12 +704,12 @@ export function GeneratorClient({
               onClick={openPreview}
               disabled={entries.length === 0}
             >
-              {settings.profile === "tablet" ? (
+              {isDigitalPdf ? (
                 <Download className="size-4" />
               ) : (
                 <Printer className="size-4" />
               )}
-              {settings.profile === "tablet"
+              {isDigitalPdf
                 ? t("Download 3:4 PDF", "下载 3:4 PDF")
                 : t("Print / Save PDF", "下载 / 打印 PDF")}
             </button>
@@ -879,9 +882,16 @@ function SettingsPanel({
 }) {
   const locale = useLocale();
   const t = (english: string, chinese: string) => localize(locale, english, chinese);
+  const isFlashcards = settings.output === "flashcards";
 
   function patch(value: Partial<WorksheetSettings>) {
-    setSettings((current) => ({ ...current, ...value }));
+    setSettings((current) => {
+      const next = { ...current, ...value };
+      if (next.output === "flashcards" && next.paperSize === "tablet") {
+        next.paperSize = "a4";
+      }
+      return next;
+    });
   }
 
   function selectProfile(profile: WorksheetProfile) {
@@ -899,6 +909,52 @@ function SettingsPanel({
 
   return (
     <aside className="hs-card self-start p-4 xl:sticky xl:top-20 xl:max-h-[calc(100vh-10rem)] xl:overflow-y-auto">
+      <SettingSection title={t("Output", "输出")}>
+        <Segmented
+          value={settings.output}
+          options={[
+            ["worksheet", t("Worksheet", "字帖")],
+            ["flashcards", t("Flashcards", "闪卡")],
+          ]}
+          onChange={(output) => patch({ output: output as WorksheetOutput })}
+        />
+      </SettingSection>
+      {isFlashcards ? (
+        <>
+          <SettingSection title={t("Cards per page", "每页卡片数")}>
+            <Segmented
+              value={String(settings.flashcardsPerPage)}
+              options={[
+                ["6", "6"],
+                ["9", "9"],
+              ]}
+              onChange={(flashcardsPerPage) =>
+                patch({
+                  flashcardsPerPage: flashcardsPerPage === "9" ? 9 : 6,
+                })
+              }
+            />
+          </SettingSection>
+          <SettingSection title={t("Flashcard content", "闪卡内容")}>
+            <ToggleRow
+              label={t("Show Pinyin", "显示拼音")}
+              checked={settings.flashcardShowPinyin}
+              onChange={(flashcardShowPinyin) =>
+                patch({ flashcardShowPinyin })
+              }
+            />
+            <ToggleRow
+              label={t("Show English", "显示英文")}
+              checked={settings.flashcardShowEnglish}
+              onChange={(flashcardShowEnglish) =>
+                patch({ flashcardShowEnglish })
+              }
+            />
+          </SettingSection>
+        </>
+      ) : null}
+      {!isFlashcards ? (
+        <>
       <SettingSection title={t("Writing profile", "书写模板")}>
         <div className="grid grid-cols-2 gap-2">
           {Object.values(worksheetProfilePresets).map((preset) => (
@@ -1035,6 +1091,8 @@ function SettingsPanel({
           </div>
         ) : null}
       </SettingSection>
+        </>
+      ) : null}
       <SettingSection title={t("Difficulty", "难度")}>
         <Segmented
           value={settings.difficulty}
@@ -1050,7 +1108,10 @@ function SettingsPanel({
       <SettingSection title={t("Paper", "纸张")}>
         <Segmented
           value={settings.paperSize}
-          options={profilePreset.pageFormats.map((paper) => [
+          options={(isFlashcards
+            ? (["a4", "letter"] as const)
+            : profilePreset.pageFormats
+          ).map((paper) => [
             paper,
             paper === "tablet"
               ? "Digital · 3:4"

@@ -14,6 +14,7 @@ import {
   type WorksheetDifficulty,
   type WorksheetEntry,
   type WorksheetMode,
+  type WorksheetOutput,
   type WorksheetProfile,
   type WorksheetSnapshot,
 } from "./types";
@@ -58,6 +59,12 @@ function validMode(value: unknown): WorksheetMode {
     : defaultWorksheetSettings.mode;
 }
 
+function validOutput(value: unknown): WorksheetOutput {
+  return value === "flashcards" || value === "worksheet"
+    ? value
+    : defaultWorksheetSettings.output;
+}
+
 function validGrid(value: unknown, fallback: GridStyle): GridStyle {
   return value === "mi" || value === "tian" ? value : fallback;
 }
@@ -84,6 +91,10 @@ function validPracticeStrength(value: unknown): PracticeStrength {
   return value === "guided" || value === "independent" || value === "balanced"
     ? value
     : defaultWorksheetSettings.practiceStrength;
+}
+
+function validFlashcardsPerPage(value: unknown): 6 | 9 {
+  return value === 9 ? 9 : 6;
 }
 
 function validStrokeOrderMode(
@@ -120,10 +131,15 @@ export function normalizeWorksheetSnapshot(value: unknown): WorksheetSnapshot {
   const profile = migrated.profile;
   const preset = getWorksheetProfilePreset(profile);
   const cellSize = clampWorksheetCellSize(profile, migrated.cellSize);
-  const paperSize = getCompatiblePaperSize(
+  const output = validOutput(rawSettings.output);
+  const compatiblePaperSize = getCompatiblePaperSize(
     profile,
     validPaper(rawSettings.paperSize),
   );
+  const paperSize =
+    output === "flashcards" && compatiblePaperSize === "tablet"
+      ? "a4"
+      : compatiblePaperSize;
   const strokeOrderMode = validStrokeOrderMode(
     rawSettings.strokeOrderMode,
     rawSettings.showStrokeOrder,
@@ -136,6 +152,7 @@ export function normalizeWorksheetSnapshot(value: unknown): WorksheetSnapshot {
       ...defaultWorksheetSettings,
       profile,
       cellSize,
+      output,
       mode: validMode(rawSettings.mode),
       grid: validGrid(rawSettings.grid, preset.defaultGrid),
       showPinyin:
@@ -146,6 +163,15 @@ export function normalizeWorksheetSnapshot(value: unknown): WorksheetSnapshot {
       practiceStrength: validPracticeStrength(rawSettings.practiceStrength),
       extraBlankRows: rawSettings.extraBlankRows === 1 ? 1 : 0,
       strokeOrderMode,
+      flashcardsPerPage: validFlashcardsPerPage(rawSettings.flashcardsPerPage),
+      flashcardShowPinyin:
+        typeof rawSettings.flashcardShowPinyin === "boolean"
+          ? rawSettings.flashcardShowPinyin
+          : defaultWorksheetSettings.flashcardShowPinyin,
+      flashcardShowEnglish:
+        typeof rawSettings.flashcardShowEnglish === "boolean"
+          ? rawSettings.flashcardShowEnglish
+          : defaultWorksheetSettings.flashcardShowEnglish,
       paperSize,
       difficulty: validDifficulty(rawSettings.difficulty),
       printMargin: validMargin(rawSettings.printMargin),

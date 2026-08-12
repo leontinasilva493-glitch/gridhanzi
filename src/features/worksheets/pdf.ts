@@ -1,4 +1,4 @@
-import type { PaperSize } from "./types";
+import type { PaperSize, WorksheetOutput } from "./types";
 
 export type PdfExportProgress = {
   current: number;
@@ -8,21 +8,26 @@ export type PdfExportProgress = {
 export type DownloadWorksheetPdfOptions = {
   pages: HTMLElement[];
   paperSize: PaperSize;
+  output?: WorksheetOutput;
   title: string;
   studentName?: string;
   date?: string;
   onProgress?: (progress: PdfExportProgress) => void;
 };
 
-export function buildWorksheetPdfFilename(title: string): string {
+export function buildWorksheetPdfFilename(
+  title: string,
+  output: WorksheetOutput = "worksheet",
+): string {
   const slug = title
     .normalize("NFKC")
     .toLocaleLowerCase()
     .replace(/[^\p{Letter}\p{Number}]+/gu, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 80);
+  const suffix = output === "flashcards" ? "flashcards" : "worksheet";
 
-  return slug ? `${slug}-worksheet.pdf` : "chinese-worksheet.pdf";
+  return slug ? `${slug}-${suffix}.pdf` : "chinese-worksheet.pdf";
 }
 
 export function getPdfPageSize(paperSize: PaperSize) {
@@ -56,6 +61,12 @@ export function getPdfCaptureGeometry({
 
 export function getPdfHeaderCropHeight(canvasHeight: number) {
   return Math.max(1, Math.round(canvasHeight * 0.115));
+}
+
+export function shouldRecomposeWorksheetPdfHeader(
+  output: WorksheetOutput = "worksheet",
+) {
+  return output === "worksheet";
 }
 
 export function getPdfHeaderFont(sizePx: number): string {
@@ -169,6 +180,7 @@ async function waitForWorksheetAssets(pages: HTMLElement[], title: string) {
 export async function downloadWorksheetPdf({
   pages,
   paperSize,
+  output = "worksheet",
   title,
   studentName = "",
   date = "",
@@ -242,36 +254,41 @@ export async function downloadWorksheetPdf({
       onProgress?.({ current: index + 1, total: pages.length });
       const canvas = await capturePage(page);
 
-      const composedCanvas = document.createElement("canvas");
-      const composedContext = composedCanvas.getContext("2d");
+      let exportCanvas = canvas;
+      if (shouldRecomposeWorksheetPdfHeader(output)) {
+        const composedCanvas = document.createElement("canvas");
+        const composedContext = composedCanvas.getContext("2d");
 
-      if (!composedContext) {
-        throw new Error("Unable to compose the worksheet PDF page.");
-      }
+        if (!composedContext) {
+          throw new Error("Unable to compose the worksheet PDF page.");
+        }
 
-      composedCanvas.width = canvas.width;
-      composedCanvas.height = canvas.height;
-      composedContext.drawImage(canvas, 0, 0);
-      const headerHeight = getPdfHeaderCropHeight(canvas.height);
-      composedContext.fillStyle = "#ffffff";
-      composedContext.fillRect(0, 0, canvas.width, headerHeight);
+        composedCanvas.width = canvas.width;
+        composedCanvas.height = canvas.height;
+        composedContext.drawImage(canvas, 0, 0);
+        const headerHeight = getPdfHeaderCropHeight(canvas.height);
+        composedContext.fillStyle = "#ffffff";
+        composedContext.fillRect(0, 0, canvas.width, headerHeight);
 
-      if (index === 0) {
-        documentHeaderCanvas ??= createPdfHeaderCanvas({
-          width: canvas.width,
-          height: headerHeight,
-          title,
-          studentName,
-          date,
-        });
-        composedContext.drawImage(documentHeaderCanvas, 0, 0);
+        if (index === 0) {
+          documentHeaderCanvas ??= createPdfHeaderCanvas({
+            width: canvas.width,
+            height: headerHeight,
+            title,
+            studentName,
+            date,
+          });
+          composedContext.drawImage(documentHeaderCanvas, 0, 0);
+        }
+
+        exportCanvas = composedCanvas;
       }
 
       const pageNumber = index + 1;
       pdf.addPage(size.format, "portrait");
       pdf.setPage(pageNumber);
       pdf.addImage(
-        composedCanvas.toDataURL("image/jpeg", 0.96),
+        exportCanvas.toDataURL("image/jpeg", 0.96),
         "JPEG",
         0,
         0,
@@ -286,5 +303,5 @@ export async function downloadWorksheetPdf({
     window.scrollTo(previousScroll.x, previousScroll.y);
   }
 
-  pdf.save(buildWorksheetPdfFilename(title));
+  pdf.save(buildWorksheetPdfFilename(title, output));
 }

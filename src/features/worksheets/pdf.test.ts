@@ -8,14 +8,22 @@ import {
   getPdfCaptureGeometry,
   getPdfHeaderCropHeight,
   getPdfPageSize,
+  shouldRecomposeWorksheetPdfHeader,
 } from "./pdf";
 
 test("buildWorksheetPdfFilename creates a safe useful filename", () => {
   assert.equal(
-    buildWorksheetPdfFilename("Family / 我的家人"),
+    buildWorksheetPdfFilename("Family / 我的家人", "worksheet"),
     "family-我的家人-worksheet.pdf",
   );
-  assert.equal(buildWorksheetPdfFilename("  "), "chinese-worksheet.pdf");
+  assert.equal(
+    buildWorksheetPdfFilename("Family / 我的家人", "flashcards"),
+    "family-我的家人-flashcards.pdf",
+  );
+  assert.equal(
+    buildWorksheetPdfFilename("  ", "worksheet"),
+    "chinese-worksheet.pdf",
+  );
 });
 
 test("getPdfPageSize maps worksheet paper settings to PDF dimensions", () => {
@@ -47,6 +55,11 @@ test("PDF capture geometry resets every worksheet page to its own origin", () =>
 
 test("PDF header crop stays above the first worksheet row", () => {
   assert.equal(getPdfHeaderCropHeight(1263), 145);
+});
+
+test("flashcard PDF export skips worksheet header recomposition", () => {
+  assert.equal(shouldRecomposeWorksheetPdfHeader("worksheet"), true);
+  assert.equal(shouldRecomposeWorksheetPdfHeader("flashcards"), false);
 });
 
 test("PDF headers use the loaded Chinese web font with system fallbacks", () => {

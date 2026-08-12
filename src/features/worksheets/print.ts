@@ -10,5 +10,6 @@ export function getWorksheetPaperAttributes(
     "data-background": String(showBackground),
     "data-profile": settings.profile,
     "data-cell-size": String(settings.cellSize),
+    "data-output": settings.output,
   } as const;
 }

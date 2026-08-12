@@ -61,6 +61,27 @@ test("generator exposes a lazy-loaded HSK picker with version-aware copy", async
   assert.match(pickerStateSource, /gridhanzi:hsk-picker:v1/);
 });
 
+test("generator and preview expose flashcard output controls through a shared renderer", async () => {
+  const [generatorSource, previewSource, rendererSource, flashcardSource] =
+    await Promise.all([
+      projectFile("src/features/worksheets/components/generator-client.tsx"),
+      projectFile("src/features/worksheets/components/print-preview-client.tsx"),
+      projectFile("src/features/worksheets/components/worksheet-renderer.tsx"),
+      projectFile("src/features/worksheets/components/flashcard-paper.tsx"),
+    ]);
+
+  assert.match(generatorSource, /Output/);
+  assert.match(generatorSource, /Flashcards/);
+  assert.match(generatorSource, /Cards per page/);
+  assert.match(generatorSource, /Show English/);
+  assert.match(generatorSource, /Show Pinyin/);
+  assert.match(rendererSource, /WorksheetRenderer/);
+  assert.match(rendererSource, /settings\.output === "flashcards"/);
+  assert.match(previewSource, /snapshot\.settings\.output === "worksheet"/);
+  assert.match(flashcardSource, /hs-flashcard-grid/);
+  assert.match(flashcardSource, /hs-flashcard-cut-line/);
+});
+
 test("template directory leads with real printable outcomes", async () => {
   const source = await projectFile(
     "src/features/worksheets/components/templates-page.tsx",

@@ -101,3 +101,41 @@ test("normalizes new practice controls and migrates the legacy stroke toggle", (
   assert.equal(invalid.settings.extraBlankRows, 0);
   assert.equal(invalid.settings.strokeOrderMode, "detailed");
 });
+
+test("legacy snapshots gain worksheet output defaults", () => {
+  const normalized = normalizeWorksheetSnapshot({
+    version: 2,
+    entries: [],
+    settings: {
+      ...defaultWorksheetSettings,
+      title: "Family review",
+    },
+  });
+
+  assert.equal(normalized.settings.output, "worksheet");
+  assert.equal(normalized.settings.flashcardsPerPage, 6);
+  assert.equal(normalized.settings.flashcardShowPinyin, true);
+  assert.equal(normalized.settings.flashcardShowEnglish, true);
+});
+
+test("flashcard snapshots round-trip output settings and normalize tablet paper back to A4", () => {
+  const normalized = normalizeWorksheetSnapshot({
+    version: 2,
+    entries: [],
+    settings: {
+      ...defaultWorksheetSettings,
+      profile: "tablet",
+      paperSize: "tablet",
+      output: "flashcards",
+      flashcardsPerPage: 9,
+      flashcardShowPinyin: false,
+      flashcardShowEnglish: true,
+    },
+  });
+
+  assert.equal(normalized.settings.output, "flashcards");
+  assert.equal(normalized.settings.flashcardsPerPage, 9);
+  assert.equal(normalized.settings.flashcardShowPinyin, false);
+  assert.equal(normalized.settings.flashcardShowEnglish, true);
+  assert.equal(normalized.settings.paperSize, "a4");
+});

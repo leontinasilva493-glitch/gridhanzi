@@ -80,3 +80,24 @@ test("compares worksheet content while ignoring generated row identifiers", () =
   assert.equal(isSameWorksheetSnapshot(snapshot(), sameContent), true);
   assert.equal(isSameWorksheetSnapshot(snapshot(), changedContent), false);
 });
+
+test("worksheet drafts preserve flashcard output settings through storage", () => {
+  const draft = createWorksheetDraft(
+    snapshot({
+      settings: {
+        ...defaultWorksheetSettings,
+        output: "flashcards",
+        flashcardsPerPage: 9,
+        flashcardShowPinyin: false,
+        flashcardShowEnglish: true,
+      },
+    }),
+    NOW,
+  );
+  const parsed = parseWorksheetDraft(JSON.stringify(draft), NOW + 1_000);
+
+  assert.equal(parsed?.snapshot.settings.output, "flashcards");
+  assert.equal(parsed?.snapshot.settings.flashcardsPerPage, 9);
+  assert.equal(parsed?.snapshot.settings.flashcardShowPinyin, false);
+  assert.equal(parsed?.snapshot.settings.flashcardShowEnglish, true);
+});
