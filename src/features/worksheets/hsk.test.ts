@@ -7,6 +7,11 @@ import {
   summarizeHskSelection,
   toWorksheetEntries,
 } from "./hsk";
+import {
+  paginateLearnUnits,
+  resolveWorksheetLayout,
+  splitEntryIntoCharacterUnits,
+} from "./layout";
 import { defaultWorksheetSettings } from "./types";
 
 function fixture(hanzi: string, index: number): HskCatalogEntry {
@@ -159,14 +164,26 @@ test("summarizeHskSelection uses practice pagination for write page counts", () 
   assert.equal(summary.estimatedPageCount, 3);
 });
 
-test("summarizeHskSelection gives an exact conservative learn page estimate", () => {
+test("summarizeHskSelection matches initial renderer learn pagination", () => {
   const entries = ["一", "二", "三", "四", "五"].map(fixture);
-
-  const summary = summarizeHskSelection(entries, {
+  const settings = {
     ...defaultWorksheetSettings,
     mode: "trace",
     strokeOrderMode: "detailed",
-  });
+  } as const;
+  const worksheetEntries = toWorksheetEntries(entries);
+  const units = worksheetEntries.flatMap((entry, index) =>
+    splitEntryIntoCharacterUnits(entry, index + 1),
+  );
+  const initialRendererPageCount = paginateLearnUnits(
+    units,
+    new Map(units.map((unit) => [unit.character, 0])),
+    settings.strokeOrderMode,
+    resolveWorksheetLayout(settings),
+    settings.extraBlankRows,
+  ).length;
 
-  assert.equal(summary.estimatedPageCount, 3);
+  const summary = summarizeHskSelection(entries, settings);
+
+  assert.equal(summary.estimatedPageCount, initialRendererPageCount);
 });

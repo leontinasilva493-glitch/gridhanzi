@@ -98,13 +98,11 @@ function estimateWorksheetPages(
   );
   if (units.length === 0) return 0;
 
-  // Detailed stroke data loads asynchronously in the renderer. For a stable
-  // pre-preview estimate, budget two full stroke rows (16 strokes) per Hanzi;
-  // paginateLearnUnits then applies the renderer's real weighting and page
-  // breaks. Compact/off modes use their exact renderer weights.
-  const conservativeStrokeCount = layout.strokeFramesPerRow * 2;
+  // Match the renderer's deterministic initial state before its asynchronous
+  // stroke data has loaded. This is an approximate/initial UI estimate: the
+  // final preview may repaginate after real stroke counts become available.
   const strokeCounts = new Map(
-    units.map((unit) => [unit.character, conservativeStrokeCount]),
+    units.map((unit) => [unit.character, 0]),
   );
 
   return paginateLearnUnits(
