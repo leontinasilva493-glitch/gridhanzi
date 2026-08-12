@@ -75,6 +75,18 @@ export function getPdfCaptureGeometry({
   };
 }
 
+export function getPdfCaptureGeometryFromPage(page: {
+  offsetWidth: number;
+  offsetHeight: number;
+  getBoundingClientRect(): { width: number; height: number };
+}) {
+  const rect = page.getBoundingClientRect();
+  return getPdfCaptureGeometry({
+    width: page.offsetWidth > 0 ? page.offsetWidth : rect.width,
+    height: page.offsetHeight > 0 ? page.offsetHeight : rect.height,
+  });
+}
+
 export function getPdfHeaderCropHeight(canvasHeight: number) {
   return Math.max(1, Math.round(canvasHeight * 0.115));
 }
@@ -160,7 +172,7 @@ export function prepareFlashcardCaptureClone<T extends StyleCopyNode>(
 }
 
 function createPdfCapturePage(page: HTMLElement) {
-  const geometry = getPdfCaptureGeometry(page.getBoundingClientRect());
+  const geometry = getPdfCaptureGeometryFromPage(page);
   const host = document.createElement("div");
   const clonedPage = page.cloneNode(true) as HTMLElement;
 

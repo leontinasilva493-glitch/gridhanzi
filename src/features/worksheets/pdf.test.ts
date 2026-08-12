@@ -5,10 +5,11 @@ import * as pdfModule from "./pdf";
 
 import {
   buildWorksheetPdfFilename,
-  prepareFlashcardCaptureClone,
   getPdfCaptureGeometry,
+  getPdfCaptureGeometryFromPage,
   getPdfHeaderCropHeight,
   getPdfPageSize,
+  prepareFlashcardCaptureClone,
   shouldRecomposeWorksheetPdfHeader,
 } from "./pdf";
 
@@ -56,6 +57,48 @@ test("PDF capture geometry resets every worksheet page to its own origin", () =>
     scrollX: 0,
     scrollY: 0,
   });
+});
+
+test("PDF capture geometry prefers unscaled layout size from offset dimensions", () => {
+  assert.deepEqual(
+    getPdfCaptureGeometryFromPage({
+      offsetWidth: 794,
+      offsetHeight: 1123,
+      getBoundingClientRect() {
+        return {
+          width: 675.2,
+          height: 954.6,
+        };
+      },
+    }),
+    {
+      width: 794,
+      height: 1123,
+      scrollX: 0,
+      scrollY: 0,
+    },
+  );
+});
+
+test("PDF capture geometry falls back to bounding rect when offset size is unavailable", () => {
+  assert.deepEqual(
+    getPdfCaptureGeometryFromPage({
+      offsetWidth: 0,
+      offsetHeight: 0,
+      getBoundingClientRect() {
+        return {
+          width: 706.4,
+          height: 998.7,
+        };
+      },
+    }),
+    {
+      width: 706,
+      height: 999,
+      scrollX: 0,
+      scrollY: 0,
+    },
+  );
 });
 
 test("PDF header crop stays above the first worksheet row", () => {
