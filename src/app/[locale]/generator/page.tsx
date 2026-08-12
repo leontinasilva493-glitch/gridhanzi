@@ -10,6 +10,7 @@ import {
 } from "@/features/worksheets/engine";
 import type { HskLevel, HskSystem } from "@/features/worksheets/hsk";
 import { parseWorksheetProfile } from "@/features/worksheets/profiles";
+import { parseCharacterStandard } from "@/features/worksheets/traditional";
 import type { WorksheetDifficulty } from "@/features/worksheets/types";
 import { isChineseLocale } from "@/features/worksheets/i18n";
 import { envConfigs } from "@/config";
@@ -137,18 +138,20 @@ export default async function GeneratorPage({
     auto?: string;
     hskSystem?: string;
     hskLevel?: string;
+    script?: string;
   }>;
 }) {
   const [{ locale }, query] = await Promise.all([params, searchParams]);
   const copy = getGeneratorCopy(locale);
   const chinese = isChineseLocale(locale);
   const initialHskQuery = parseGeneratorHskQuery(query);
+  const characterStandard = parseCharacterStandard(query.script);
   const template = getTemplateBySlug(query.template);
   const templateEntries = query.template
-    ? cloneTemplateEntries(query.template)
+    ? cloneTemplateEntries(query.template, characterStandard)
     : [];
   const wordEntries = query.words
-    ? enrichVocabularyLocally(parseVocabularyInput(query.words))
+    ? enrichVocabularyLocally(parseVocabularyInput(query.words), characterStandard)
     : [];
 
   return (
@@ -216,7 +219,7 @@ export default async function GeneratorPage({
             ? templateEntries
             : wordEntries.length > 0
               ? wordEntries
-              : cloneTemplateEntries("family").slice(0, 4)
+              : cloneTemplateEntries("family", characterStandard).slice(0, 4)
         }
         initialMode={query.mode}
         initialProfile={parseWorksheetProfile(
@@ -231,6 +234,7 @@ export default async function GeneratorPage({
         initialHskSystem={
           initialHskQuery.hasExplicitSelection ? initialHskQuery.system : undefined
         }
+        initialCharacterStandard={characterStandard}
         initialHskLevel={
           initialHskQuery.hasExplicitSelection ? initialHskQuery.level : undefined
         }

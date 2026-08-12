@@ -104,6 +104,15 @@ test("toWorksheetEntries creates complete worksheet rows", () => {
   ]);
 });
 
+test("toWorksheetEntries converts HSK rows to Taiwan Traditional", () => {
+  const source = [fixture("软件", 1), fixture("自行车", 2)];
+
+  assert.deepEqual(
+    toWorksheetEntries(source, "traditional-tw").map((entry) => entry.hanzi),
+    ["軟體", "腳踏車"],
+  );
+});
+
 test("catalogue chooses modern teaching senses for common beginner words", () => {
   const expected = [
     ["三", "sān", "three"],

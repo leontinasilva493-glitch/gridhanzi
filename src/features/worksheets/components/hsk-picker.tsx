@@ -269,7 +269,9 @@ export function HskPicker({
   function addSelectedToWorksheet() {
     if (!catalogRuntime || selectedEntries.length === 0) return;
 
-    onAddEntries(catalogRuntime.toWorksheetEntries(selectedEntries));
+    onAddEntries(
+      catalogRuntime.toWorksheetEntries(selectedEntries, settings.characterStandard),
+    );
   }
 
   return (

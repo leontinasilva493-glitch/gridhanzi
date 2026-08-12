@@ -31,7 +31,7 @@ import {
 import { WorksheetRenderer } from "./worksheet-renderer";
 
 const fallbackSnapshot: WorksheetSnapshot = {
-  version: 2,
+  version: 3,
   entries: cloneTemplateEntries("family").slice(0, 4),
   settings: {
     ...defaultWorksheetSettings,

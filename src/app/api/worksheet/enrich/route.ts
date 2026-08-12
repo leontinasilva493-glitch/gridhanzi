@@ -7,7 +7,8 @@ import {
   parseWorksheetEnrichmentRequest,
 } from "@/features/worksheets/ai";
 import { enrichVocabularyLocally } from "@/features/worksheets/engine";
-import type { WorksheetDifficulty } from "@/features/worksheets/types";
+import { convertWorksheetEntries } from "@/features/worksheets/traditional";
+import type { CharacterStandard, WorksheetDifficulty } from "@/features/worksheets/types";
 import {
   enforceMinIntervalRateLimit,
   type RateLimitBinding,
@@ -30,9 +31,10 @@ async function getWorksheetRateLimitBinding(): Promise<
 async function enrichWithGemini(
   values: string[],
   difficulty: WorksheetDifficulty,
+  characterStandard: CharacterStandard,
   apiKey: string,
 ) {
-  const prompt = buildWorksheetPrompt(values, difficulty);
+  const prompt = buildWorksheetPrompt(values, difficulty, characterStandard);
   const response = await fetchWithGeminiRetry(
     () =>
       fetch(
@@ -77,8 +79,8 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const { values, difficulty } = parsed;
-  const localEntries = enrichVocabularyLocally(values);
+  const { values, difficulty, characterStandard } = parsed;
+  const localEntries = enrichVocabularyLocally(values, characterStandard);
   const apiKey = process.env.GEMINI_API_KEY?.trim();
 
   if (!apiKey) {
@@ -98,9 +100,12 @@ export async function POST(request: NextRequest) {
   if (limited) return limited;
 
   try {
-    const aiEntries = await enrichWithGemini(values, difficulty, apiKey);
+    const aiEntries = await enrichWithGemini(values, difficulty, characterStandard, apiKey);
     if (aiEntries.length === values.length) {
-      return NextResponse.json({ entries: aiEntries, source: "gemini" });
+      return NextResponse.json({
+        entries: convertWorksheetEntries(aiEntries, "simplified", characterStandard),
+        source: "gemini",
+      });
     }
   } catch (error) {
     console.error("Worksheet enrichment fell back to local data.", error);

@@ -102,6 +102,39 @@ test("buildWorksheetPrompt allows concise native wording for advanced users", ()
   assert.doesNotMatch(prompt, /HSK 1-2/i);
 });
 
+test("buildWorksheetPrompt requests Taiwan Traditional Chinese when selected", () => {
+  const prompt = buildWorksheetPrompt(
+    ["software", "bicycle"],
+    "beginner",
+    "traditional-tw",
+  );
+
+  assert.match(prompt, /Taiwan Traditional Chinese/i);
+  assert.match(prompt, /Taiwan-localized word choices/i);
+  assert.doesNotMatch(prompt, /common simplified Chinese/i);
+});
+
+test("parseWorksheetEnrichmentRequest carries the selected script", () => {
+  const parsed = parseWorksheetEnrichmentRequest({
+    values: ["family"],
+    difficulty: "advanced",
+    characterStandard: "traditional-tw",
+  });
+
+  assert.equal(parsed.ok, true);
+  if (parsed.ok) assert.equal(parsed.characterStandard, "traditional-tw");
+});
+
+test("parseWorksheetEnrichmentRequest defaults unknown scripts to Simplified", () => {
+  const parsed = parseWorksheetEnrichmentRequest({
+    values: ["family"],
+    characterStandard: "unknown",
+  });
+
+  assert.equal(parsed.ok, true);
+  if (parsed.ok) assert.equal(parsed.characterStandard, "simplified");
+});
+
 test("isRetryableGeminiStatus retries throttling and server failures only", () => {
   assert.equal(isRetryableGeminiStatus(408), true);
   assert.equal(isRetryableGeminiStatus(429), true);
@@ -115,11 +148,13 @@ test("parseWorksheetEnrichmentRequest validates values and difficulty", () => {
     parseWorksheetEnrichmentRequest({
       values: [" family ", "妈妈"],
       difficulty: "advanced",
+      characterStandard: "simplified",
     }),
     {
       ok: true,
       values: ["family", "妈妈"],
       difficulty: "advanced",
+      characterStandard: "simplified",
     },
   );
 

@@ -7,7 +7,7 @@ import { useLocale } from "next-intl";
 import { useRouter } from "@/core/i18n/navigation";
 import { MAX_VOCABULARY_CHARS } from "../engine";
 import { localize } from "../i18n";
-import type { WorksheetDifficulty } from "../types";
+import type { CharacterStandard, WorksheetDifficulty } from "../types";
 
 const familyExample = ["family", "mother", "father", "younger sister"].join(
   "\n",
@@ -22,11 +22,13 @@ export function HomeWorkbench() {
   const [value, setValue] = useState("");
   const [difficulty, setDifficulty] =
     useState<WorksheetDifficulty>("beginner");
+  const [characterStandard, setCharacterStandard] =
+    useState<CharacterStandard>("simplified");
 
   function submit() {
     if (!value.trim()) return;
     router.push(
-      `/generator?words=${encodeURIComponent(value.trim())}&difficulty=${difficulty}&auto=1`,
+      `/generator?words=${encodeURIComponent(value.trim())}&difficulty=${difficulty}&script=${characterStandard}&auto=1`,
     );
   }
 
@@ -77,6 +79,36 @@ export function HomeWorkbench() {
               onClick={() => setDifficulty(option)}
               className={`rounded px-3 py-1.5 text-xs font-semibold ${
                 difficulty === option
+                  ? "bg-[#17304f] text-white"
+                  : "text-[#4d5a6d]"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded border border-[#ded7ca] bg-[#fbf8f2] p-3">
+        <div>
+          <p className="text-sm font-semibold text-[#172942]">
+            {t("Character standard", "字形標準")}
+          </p>
+          <p className="mt-0.5 text-xs text-[#657083]">
+            {t("Choose before generating; you can switch again in the editor.", "生成前選擇，進入編輯器後仍可切換。")}
+          </p>
+        </div>
+        <div className="flex rounded border border-[#d5cdbf] bg-white p-0.5">
+          {([
+            ["simplified", t("Simplified", "簡體")],
+            ["traditional-tw", t("Traditional (Taiwan)", "台灣正體")],
+          ] as const).map(([option, label]) => (
+            <button
+              key={option}
+              type="button"
+              aria-pressed={characterStandard === option}
+              onClick={() => setCharacterStandard(option)}
+              className={`rounded px-3 py-1.5 text-xs font-semibold ${
+                characterStandard === option
                   ? "bg-[#17304f] text-white"
                   : "text-[#4d5a6d]"
               }`}

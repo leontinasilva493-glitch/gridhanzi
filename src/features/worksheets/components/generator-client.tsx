@@ -30,6 +30,7 @@ import {
 } from "../draft";
 import { createWorksheetEntryId } from "../ids";
 import { localize } from "../i18n";
+import { convertWorksheetEntries } from "../traditional";
 import {
   getCompatiblePaperSize,
   getWorksheetProfilePreset,
@@ -37,6 +38,7 @@ import {
 } from "../profiles";
 import {
   defaultWorksheetSettings,
+  type CharacterStandard,
   type PaperSize,
   type PracticeStrength,
   type StrokeOrderMode,
@@ -61,6 +63,7 @@ export function GeneratorClient({
   initialMode,
   initialProfile = "kids",
   initialDifficulty = "beginner",
+  initialCharacterStandard = "simplified",
   autoEnrich = false,
   pageTitle,
   pageDescription,
@@ -75,6 +78,7 @@ export function GeneratorClient({
   initialMode?: WorksheetMode;
   initialProfile?: WorksheetProfile;
   initialDifficulty?: WorksheetDifficulty;
+  initialCharacterStandard?: CharacterStandard;
   autoEnrich?: boolean;
   pageTitle?: string;
   pageDescription?: string;
@@ -93,6 +97,7 @@ export function GeneratorClient({
   const [entries, setEntries] = useState(initialEntries);
   const [settings, setSettings] = useState<WorksheetSettings>({
     ...defaultWorksheetSettings,
+    characterStandard: initialCharacterStandard,
     profile: initialProfile,
     cellSize: initialProfilePreset.size.default,
     grid: initialProfilePreset.defaultGrid,
@@ -127,7 +132,7 @@ export function GeneratorClient({
     [entries],
   );
   const currentSnapshot = useMemo<WorksheetSnapshot>(
-    () => ({ version: 2, entries, settings }),
+    () => ({ version: 3, entries, settings }),
     [entries, settings],
   );
   const isDigitalPdf =
@@ -172,7 +177,11 @@ export function GeneratorClient({
       const response = await fetch("/api/worksheet/enrich", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ values, difficulty: settings.difficulty }),
+        body: JSON.stringify({
+          values,
+          difficulty: settings.difficulty,
+          characterStandard: settings.characterStandard,
+        }),
       });
       const payload = (await response.json()) as {
         entries?: WorksheetEntry[];
@@ -355,7 +364,7 @@ export function GeneratorClient({
 
   function openPreview() {
     const snapshot: WorksheetSnapshot = {
-      version: 2,
+      version: 3,
       entries,
       settings,
     };
@@ -425,7 +434,20 @@ export function GeneratorClient({
         ) : null}
 
         <div className="mt-7 grid gap-4 xl:grid-cols-[275px_minmax(500px,1fr)_minmax(390px,0.78fr)]">
-          <SettingsPanel settings={settings} setSettings={setSettings} />
+          <SettingsPanel
+            settings={settings}
+            setSettings={setSettings}
+            onCharacterStandardChange={(characterStandard) => {
+              setEntries((current) =>
+                convertWorksheetEntries(
+                  current,
+                  settings.characterStandard,
+                  characterStandard,
+                ),
+              );
+              setSettings((current) => ({ ...current, characterStandard }));
+            }}
+          />
 
           <section className="hs-card min-w-0 p-4 sm:p-5">
             <div className="flex flex-wrap items-center justify-between gap-3">
@@ -879,9 +901,11 @@ function SupportCard({
 function SettingsPanel({
   settings,
   setSettings,
+  onCharacterStandardChange,
 }: {
   settings: WorksheetSettings;
   setSettings: React.Dispatch<React.SetStateAction<WorksheetSettings>>;
+  onCharacterStandardChange: (value: CharacterStandard) => void;
 }) {
   const locale = useLocale();
   const t = (english: string, chinese: string) => localize(locale, english, chinese);
@@ -912,6 +936,22 @@ function SettingsPanel({
 
   return (
     <aside className="hs-card self-start p-4 xl:sticky xl:top-20 xl:max-h-[calc(100vh-10rem)] xl:overflow-y-auto">
+      <SettingSection title={t("Character standard", "字形標準")}>
+        <Segmented
+          value={settings.characterStandard}
+          options={[
+            ["simplified", t("Simplified", "簡體")],
+            ["traditional-tw", t("Traditional (Taiwan)", "台灣正體")],
+          ]}
+          onChange={(value) => onCharacterStandardChange(value as CharacterStandard)}
+        />
+        <p className="mt-2 text-[0.68rem] leading-4 text-[#657083]">
+          {t(
+            "Taiwan mode uses phrase-aware regional word choices. Pinyin remains available; Zhuyin is not included yet.",
+            "台灣模式採用詞組感知的台灣常用詞；目前保留拼音，尚未提供注音。",
+          )}
+        </p>
+      </SettingSection>
       <SettingSection title={t("Output", "输出")}>
         <Segmented
           value={settings.output}

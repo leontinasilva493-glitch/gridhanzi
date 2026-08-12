@@ -6,6 +6,7 @@ import {
 } from "./profiles";
 import {
   defaultWorksheetSettings,
+  type CharacterStandard,
   type GridStyle,
   type PaperSize,
   type PracticeStrength,
@@ -57,6 +58,10 @@ function validMode(value: unknown): WorksheetMode {
   return value === "trace" || value === "quiz" || value === "write"
     ? value
     : defaultWorksheetSettings.mode;
+}
+
+function validCharacterStandard(value: unknown): CharacterStandard {
+  return value === "traditional-tw" ? value : "simplified";
 }
 
 function validOutput(value: unknown): WorksheetOutput {
@@ -146,10 +151,11 @@ export function normalizeWorksheetSnapshot(value: unknown): WorksheetSnapshot {
   );
 
   return {
-    version: 2,
+    version: 3,
     entries: normalizeEntries(snapshot.entries),
     settings: {
       ...defaultWorksheetSettings,
+      characterStandard: validCharacterStandard(rawSettings.characterStandard),
       profile,
       cellSize,
       output,

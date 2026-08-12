@@ -8,6 +8,8 @@ import {
   splitEntryIntoCharacterUnits,
 } from "./layout";
 import type { WorksheetEntry, WorksheetSettings } from "./types";
+import { convertChineseText } from "./traditional";
+import type { CharacterStandard } from "./types";
 
 export type HskSystem = "2.0" | "3.0";
 export type HskLevel = "1" | "2" | "3" | "4" | "5" | "6" | "7-9";
@@ -63,10 +65,11 @@ export function filterHskCatalog(filter: HskFilter): HskCatalogEntry[] {
 
 export function toWorksheetEntries(
   entries: readonly HskCatalogEntry[],
+  characterStandard: CharacterStandard = "simplified",
 ): WorksheetEntry[] {
   return entries.map(({ id, hanzi, pinyin, english }) => ({
     id,
-    hanzi,
+    hanzi: convertChineseText(hanzi, "simplified", characterStandard),
     pinyin,
     english,
     status: "complete",

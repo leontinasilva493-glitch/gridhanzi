@@ -15,7 +15,7 @@ const NOW = Date.UTC(2026, 7, 12, 4, 0, 0);
 
 function snapshot(overrides: Partial<WorksheetSnapshot> = {}): WorksheetSnapshot {
   return {
-    version: 2,
+    version: 3,
     entries: [
       {
         id: "row-1",

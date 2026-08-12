@@ -1,4 +1,5 @@
 export type WorksheetMode = "trace" | "write" | "quiz";
+export type CharacterStandard = "simplified" | "traditional-tw";
 export type WorksheetOutput = "worksheet" | "flashcards";
 export type GridStyle = "tian" | "mi";
 export type WorksheetProfile = "kids" | "adult" | "tablet" | "brush";
@@ -18,6 +19,7 @@ export interface WorksheetEntry {
 }
 
 export interface WorksheetSettings {
+  characterStandard: CharacterStandard;
   profile: WorksheetProfile;
   cellSize: number;
   output: WorksheetOutput;
@@ -72,12 +74,13 @@ export interface WorksheetTemplateSummary {
 }
 
 export interface WorksheetSnapshot {
-  version: 2;
+  version: 3;
   entries: WorksheetEntry[];
   settings: WorksheetSettings;
 }
 
 export const defaultWorksheetSettings: WorksheetSettings = {
+  characterStandard: "simplified",
   profile: "kids",
   cellSize: 22,
   output: "worksheet",

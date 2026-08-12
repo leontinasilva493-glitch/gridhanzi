@@ -4,7 +4,7 @@ import test from "node:test";
 import { normalizeWorksheetSnapshot } from "./snapshot";
 import { defaultWorksheetSettings } from "./types";
 
-test("normalizes legacy density snapshots into version 2 profiles", () => {
+test("normalizes legacy density snapshots into version 3 profiles", () => {
   const compact = normalizeWorksheetSnapshot({
     version: 1,
     entries: [],
@@ -22,7 +22,8 @@ test("normalizes legacy density snapshots into version 2 profiles", () => {
     },
   });
 
-  assert.equal(compact.version, 2);
+  assert.equal(compact.version, 3);
+  assert.equal(compact.settings.characterStandard, "simplified");
   assert.equal(compact.settings.profile, "adult");
   assert.equal(compact.settings.cellSize, 16);
   assert.equal(large.settings.profile, "kids");
@@ -60,6 +61,21 @@ test("invalid snapshot input falls back to safe defaults", () => {
   assert.deepEqual(normalized.entries, []);
   assert.equal(normalized.settings.profile, "kids");
   assert.equal(normalized.settings.cellSize, 22);
+  assert.equal(normalized.settings.characterStandard, "simplified");
+});
+
+test("preserves the Taiwan Traditional character standard in version 3 drafts", () => {
+  const normalized = normalizeWorksheetSnapshot({
+    version: 3,
+    entries: [],
+    settings: {
+      ...defaultWorksheetSettings,
+      characterStandard: "traditional-tw",
+    },
+  });
+
+  assert.equal(normalized.version, 3);
+  assert.equal(normalized.settings.characterStandard, "traditional-tw");
 });
 
 test("normalizes new practice controls and migrates the legacy stroke toggle", () => {

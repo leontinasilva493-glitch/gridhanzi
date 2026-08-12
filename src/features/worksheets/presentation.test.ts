@@ -135,6 +135,11 @@ test("worksheet practice glyphs use the approved Kaiti stack without synthetic b
     css,
     /--font-hanzi-practice:[^;]*"KaiTi"[^;]*"STKaiti"[^;]*"Kaiti SC"[^;]*"LXGW WenKai GB"[^;]*"Noto Serif SC"[^;]*serif;/,
   );
+  assert.doesNotMatch(css, /--font-hanzi-practice-tw:/);
+  assert.doesNotMatch(
+    css,
+    /\.hs-paper\[data-character-standard="traditional-tw"\][^{]*\{[\s\S]*?--font-hanzi-practice:/,
+  );
   assert.match(
     css,
     /\.hs-grid-cell\s*\{[^}]*container-type:\s*inline-size;[^}]*font-family:\s*var\(--font-hanzi-practice\);[^}]*font-weight:\s*400;[^}]*font-synthesis:\s*none;/,
