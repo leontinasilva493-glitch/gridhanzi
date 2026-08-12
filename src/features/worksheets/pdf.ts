@@ -15,6 +15,22 @@ export type DownloadWorksheetPdfOptions = {
   onProgress?: (progress: PdfExportProgress) => void;
 };
 
+type StylePropertyReader = {
+  length: number;
+  item(index: number): string | null;
+  getPropertyValue(name: string): string;
+  getPropertyPriority(name: string): string;
+};
+
+type StylePropertyWriter = {
+  setProperty(name: string, value: string, priority?: string): void;
+};
+
+type StyleCopyNode = {
+  style: StylePropertyWriter;
+  children: ArrayLike<StyleCopyNode>;
+};
+
 export function buildWorksheetPdfFilename(
   title: string,
   output: WorksheetOutput = "worksheet",
@@ -84,6 +100,65 @@ export async function loadPdfHeaderFont(
   }
 }
 
+function copyComputedStyleDeclaration(
+  sourceStyle: StylePropertyReader,
+  targetStyle: StylePropertyWriter,
+) {
+  for (let index = 0; index < sourceStyle.length; index += 1) {
+    const propertyName = sourceStyle.item(index);
+    if (!propertyName) continue;
+
+    targetStyle.setProperty(
+      propertyName,
+      sourceStyle.getPropertyValue(propertyName),
+      sourceStyle.getPropertyPriority(propertyName),
+    );
+  }
+}
+
+function applyPdfCaptureRootOverrides(targetStyle: StylePropertyWriter) {
+  targetStyle.setProperty("width", "100%");
+  targetStyle.setProperty("height", "100%");
+  targetStyle.setProperty("min-height", "0");
+  targetStyle.setProperty("margin", "0");
+  targetStyle.setProperty("transform", "none");
+  targetStyle.setProperty("box-shadow", "none");
+}
+
+function copyComputedStylesRecursive(
+  sourceNode: StyleCopyNode,
+  targetNode: StyleCopyNode,
+  getComputedStyleForNode: (node: StyleCopyNode) => StylePropertyReader,
+) {
+  copyComputedStyleDeclaration(
+    getComputedStyleForNode(sourceNode),
+    targetNode.style,
+  );
+  const childCount = Math.min(
+    sourceNode.children.length,
+    targetNode.children.length,
+  );
+  for (let index = 0; index < childCount; index += 1) {
+    const sourceChild = sourceNode.children[index];
+    const targetChild = targetNode.children[index];
+    if (!sourceChild || !targetChild) continue;
+    copyComputedStylesRecursive(
+      sourceChild,
+      targetChild,
+      getComputedStyleForNode,
+    );
+  }
+}
+
+export function prepareFlashcardCaptureClone<T extends StyleCopyNode>(
+  sourceNode: T,
+  targetNode: T,
+  getComputedStyleForNode: (node: StyleCopyNode) => StylePropertyReader,
+) {
+  copyComputedStylesRecursive(sourceNode, targetNode, getComputedStyleForNode);
+  applyPdfCaptureRootOverrides(targetNode.style);
+}
+
 function createPdfCapturePage(page: HTMLElement) {
   const geometry = getPdfCaptureGeometry(page.getBoundingClientRect());
   const host = document.createElement("div");
@@ -100,14 +175,7 @@ function createPdfCapturePage(page: HTMLElement) {
     zIndex: "2147483647",
     background: "#ffffff",
   });
-  Object.assign(clonedPage.style, {
-    width: "100%",
-    height: "100%",
-    minHeight: "0",
-    margin: "0",
-    transform: "none",
-    boxShadow: "none",
-  });
+  applyPdfCaptureRootOverrides(clonedPage.style);
 
   host.append(clonedPage);
   document.body.append(host);
@@ -232,6 +300,18 @@ export async function downloadWorksheetPdf({
           clonedDocument.body.style.margin = "0";
           clonedHost.style.top = "0";
           clonedHost.style.left = "0";
+          if (output === "flashcards") {
+            const clonedPage = clonedHost.firstElementChild;
+            if (clonedPage instanceof HTMLElement) {
+              prepareFlashcardCaptureClone(
+                page as unknown as StyleCopyNode,
+                clonedPage as unknown as StyleCopyNode,
+                (node) =>
+                  window.getComputedStyle(node as unknown as Element),
+              );
+              applyPdfCaptureRootOverrides(clonedPage.style);
+            }
+          }
         },
       });
     } finally {

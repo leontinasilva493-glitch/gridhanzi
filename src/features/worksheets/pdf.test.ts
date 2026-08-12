@@ -5,6 +5,7 @@ import * as pdfModule from "./pdf";
 
 import {
   buildWorksheetPdfFilename,
+  prepareFlashcardCaptureClone,
   getPdfCaptureGeometry,
   getPdfHeaderCropHeight,
   getPdfPageSize,
@@ -126,4 +127,104 @@ test("PDF export keeps system fallbacks when the web font cannot load", async ()
       "家庭练习",
     ),
   );
+});
+
+test("prepareFlashcardCaptureClone recursively copies computed styles and preserves capture root overrides", () => {
+  type PropertyTuple = [name: string, value: string, priority?: string];
+  type FakeNode = {
+    style: {
+      setProperty(name: string, value: string, priority?: string): void;
+      applied: PropertyTuple[];
+    };
+    children: FakeNode[];
+  };
+
+  const createTargetNode = (): FakeNode => {
+    const applied: PropertyTuple[] = [];
+    return {
+      style: {
+        applied,
+        setProperty(name: string, value: string, priority = "") {
+          applied.push([name, value, priority]);
+        },
+      },
+      children: [],
+    };
+  };
+
+  const rootTarget = createTargetNode();
+  const childTarget = createTargetNode();
+  rootTarget.children.push(childTarget);
+
+  const rootSource: FakeNode = {
+    style: rootTarget.style,
+    children: [
+      {
+        style: childTarget.style,
+        children: [],
+      },
+    ],
+  };
+
+  const computedStyles = new Map<object, Record<string, string>>([
+    [
+      rootSource,
+      {
+        display: "grid",
+        "--card-gap": "12px",
+        width: "794px",
+        transform: "scale(0.9)",
+      },
+    ],
+    [
+      rootSource.children[0]!,
+      {
+        color: "rgb(20, 37, 63)",
+        "font-size": "16px",
+      },
+    ],
+  ]);
+
+  const getComputedStyleForNode = (node: {
+    style: { setProperty(name: string, value: string, priority?: string): void };
+    children: ArrayLike<unknown>;
+  }) => {
+    const style = computedStyles.get(node) ?? {};
+    const names = Object.keys(style);
+    return {
+      length: names.length,
+      item(index: number) {
+        return names[index] ?? null;
+      },
+      getPropertyValue(name: string) {
+        return style[name] ?? "";
+      },
+      getPropertyPriority(_name: string) {
+        return "";
+      },
+    };
+  };
+
+  prepareFlashcardCaptureClone(
+    rootSource,
+    rootTarget,
+    getComputedStyleForNode,
+  );
+
+  assert.deepEqual(rootTarget.style.applied, [
+    ["display", "grid", ""],
+    ["--card-gap", "12px", ""],
+    ["width", "794px", ""],
+    ["transform", "scale(0.9)", ""],
+    ["width", "100%", ""],
+    ["height", "100%", ""],
+    ["min-height", "0", ""],
+    ["margin", "0", ""],
+    ["transform", "none", ""],
+    ["box-shadow", "none", ""],
+  ]);
+  assert.deepEqual(childTarget.style.applied, [
+    ["color", "rgb(20, 37, 63)", ""],
+    ["font-size", "16px", ""],
+  ]);
 });
