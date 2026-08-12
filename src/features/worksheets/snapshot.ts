@@ -8,7 +8,9 @@ import {
   defaultWorksheetSettings,
   type GridStyle,
   type PaperSize,
+  type PracticeStrength,
   type PrintMargin,
+  type StrokeOrderMode,
   type WorksheetDifficulty,
   type WorksheetEntry,
   type WorksheetMode,
@@ -78,6 +80,24 @@ function validMargin(value: unknown): PrintMargin {
     : defaultWorksheetSettings.printMargin;
 }
 
+function validPracticeStrength(value: unknown): PracticeStrength {
+  return value === "guided" || value === "independent" || value === "balanced"
+    ? value
+    : defaultWorksheetSettings.practiceStrength;
+}
+
+function validStrokeOrderMode(
+  value: unknown,
+  legacyShowStrokeOrder: unknown,
+): StrokeOrderMode {
+  if (value === "compact" || value === "off" || value === "detailed") {
+    return value;
+  }
+  return legacyShowStrokeOrder === false
+    ? "off"
+    : defaultWorksheetSettings.strokeOrderMode;
+}
+
 export function normalizeWorksheetSnapshot(value: unknown): WorksheetSnapshot {
   const snapshot = isRecord(value) ? value : {};
   const rawSettings = isRecord(snapshot.settings) ? snapshot.settings : {};
@@ -104,6 +124,10 @@ export function normalizeWorksheetSnapshot(value: unknown): WorksheetSnapshot {
     profile,
     validPaper(rawSettings.paperSize),
   );
+  const strokeOrderMode = validStrokeOrderMode(
+    rawSettings.strokeOrderMode,
+    rawSettings.showStrokeOrder,
+  );
 
   return {
     version: 2,
@@ -118,10 +142,10 @@ export function normalizeWorksheetSnapshot(value: unknown): WorksheetSnapshot {
         typeof rawSettings.showPinyin === "boolean"
           ? rawSettings.showPinyin
           : defaultWorksheetSettings.showPinyin,
-      showStrokeOrder:
-        typeof rawSettings.showStrokeOrder === "boolean"
-          ? rawSettings.showStrokeOrder
-          : defaultWorksheetSettings.showStrokeOrder,
+      showStrokeOrder: strokeOrderMode !== "off",
+      practiceStrength: validPracticeStrength(rawSettings.practiceStrength),
+      extraBlankRows: rawSettings.extraBlankRows === 1 ? 1 : 0,
+      strokeOrderMode,
       paperSize,
       difficulty: validDifficulty(rawSettings.difficulty),
       printMargin: validMargin(rawSettings.printMargin),

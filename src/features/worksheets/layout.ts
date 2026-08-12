@@ -1,5 +1,7 @@
 import { getWorksheetProfilePreset } from "./profiles";
 import type {
+  PracticeStrength,
+  StrokeOrderMode,
   WorksheetEntry,
   WorksheetProfile,
   WorksheetSettings,
@@ -193,16 +195,24 @@ export function splitEntryIntoCharacterUnits(
 export function buildPracticeCells(
   character: string,
   layout: WorksheetLayoutSpec,
+  strength: PracticeStrength = "balanced",
 ): PracticeCell[] {
   const preset = getWorksheetProfilePreset(layout.profile);
-  const teachingCells = preset.modelCells + preset.traceCells;
+  const modelCells = Math.min(1, preset.modelCells);
+  const traceCells =
+    strength === "guided"
+      ? Math.min(4, Math.max(0, layout.practiceColumns - modelCells - 1))
+      : strength === "independent"
+        ? 0
+        : preset.traceCells;
+  const teachingCells = modelCells + traceCells;
 
   return Array.from({ length: layout.practiceColumns }, (_, index) => {
-    if (index < preset.modelCells) {
+    if (index < modelCells) {
       return { kind: "model" as const, value: character };
     }
     if (index < teachingCells) {
-      const traceIndex = index - preset.modelCells;
+      const traceIndex = index - modelCells;
       return {
         kind: "trace" as const,
         value: character,
@@ -217,8 +227,12 @@ export function buildPracticeCells(
 export function paginatePracticeEntries(
   entries: WorksheetEntry[],
   layout: WorksheetLayoutSpec,
+  extraBlankRows: 0 | 1 = 0,
 ): CharacterPracticeUnit[][] {
-  const capacity = layout.rowsPerPage;
+  const capacity = Math.max(
+    1,
+    Math.floor(layout.rowsPerPage / (1 + extraBlankRows)),
+  );
   const pages: CharacterPracticeUnit[][] = [];
   let currentPage: CharacterPracticeUnit[] = [];
 
@@ -297,27 +311,31 @@ export function getLearnStrokeRowCount(
 function getLearnUnitWeight(
   unit: CharacterPracticeUnit,
   strokeCounts: ReadonlyMap<string, number>,
-  showStrokeOrder: boolean,
+  strokeOrderMode: StrokeOrderMode,
   framesPerRow: number,
+  extraBlankRows: 0 | 1,
 ): number {
-  if (!showStrokeOrder) return 1;
-  return (
-    1 +
-    Math.max(
-      1,
-      getLearnStrokeRowCount(
-        strokeCounts.get(unit.character) ?? 0,
-        framesPerRow,
-      ),
-    )
-  );
+  const strokeWeight =
+    strokeOrderMode === "off"
+      ? 0
+      : strokeOrderMode === "compact"
+        ? 1
+        : Math.max(
+            1,
+            getLearnStrokeRowCount(
+              strokeCounts.get(unit.character) ?? 0,
+              framesPerRow,
+            ),
+          );
+  return 1 + strokeWeight + extraBlankRows;
 }
 
 export function paginateLearnUnits(
   units: CharacterPracticeUnit[],
   strokeCounts: ReadonlyMap<string, number>,
-  showStrokeOrder: boolean,
+  strokeOrderMode: StrokeOrderMode,
   layout: WorksheetLayoutSpec,
+  extraBlankRows: 0 | 1 = 0,
 ): CharacterPracticeUnit[][] {
   const pages: CharacterPracticeUnit[][] = [];
   let currentPage: CharacterPracticeUnit[] = [];
@@ -327,8 +345,9 @@ export function paginateLearnUnits(
     const weight = getLearnUnitWeight(
       unit,
       strokeCounts,
-      showStrokeOrder,
+      strokeOrderMode,
       layout.strokeFramesPerRow,
+      extraBlankRows,
     );
     if (
       currentPage.length > 0 &&

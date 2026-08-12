@@ -33,6 +33,31 @@ test("mobile vocabulary cards expose visible localized reorder actions", async (
   assert.match(source, /t\("Delete", "删除"\)/);
 });
 
+test("generator exposes recoverable local draft controls", async () => {
+  const source = await projectFile(
+    "src/features/worksheets/components/generator-client.tsx",
+  );
+
+  assert.match(source, /Restore worksheet/);
+  assert.match(source, /Discard/);
+  assert.match(source, /Saved locally/);
+  assert.match(source, /Clear saved draft/);
+  assert.match(source, /xl:max-h-\[calc\(100vh-10rem\)\] xl:overflow-y-auto/);
+});
+
+test("template directory leads with real printable outcomes", async () => {
+  const source = await projectFile(
+    "src/features/worksheets/components/templates-page.tsx",
+  );
+
+  assert.match(source, /See what you can print/);
+  assert.match(source, /For first characters/);
+  assert.match(source, /For HSK review/);
+  assert.match(source, /For everyday vocabulary/);
+  assert.match(source, /showcaseTemplates/);
+  assert.match(source, /<WorksheetCardPreview/);
+});
+
 test("worksheet practice glyphs use the approved Kaiti stack without synthetic bold", async () => {
   const [css, worksheetSource, previewSource, layoutSource, packageSource] =
     await Promise.all([

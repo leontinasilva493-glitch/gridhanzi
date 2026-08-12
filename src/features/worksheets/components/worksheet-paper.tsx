@@ -20,7 +20,10 @@ import {
   type WorksheetLayoutSpec,
 } from "../layout";
 import { getWorksheetPaperAttributes } from "../print";
-import { buildCumulativeStrokeFrames } from "../stroke-utils";
+import {
+  buildCumulativeStrokeFrames,
+  selectStrokeFrames,
+} from "../stroke-utils";
 import type {
   GridStyle,
   WorksheetEntry,
@@ -177,7 +180,9 @@ export function WorksheetPaper({
   );
   const characterKey = uniqueCharacters.join("");
   const shouldLoadStrokes =
-    settings.mode === "trace" && settings.showStrokeOrder && showAnswers;
+    settings.mode === "trace" &&
+    settings.strokeOrderMode !== "off" &&
+    showAnswers;
   const layout = useMemo(
     () => resolveWorksheetLayout(settings),
     [settings],
@@ -258,9 +263,11 @@ export function WorksheetPaper({
   const pages = useMemo(() => {
     let resolvedPages;
     if (settings.mode === "write") {
-      resolvedPages = paginatePracticeEntries(entries, layout).map(
-        (units) => ({ kind: "practice" as const, units }),
-      );
+      resolvedPages = paginatePracticeEntries(
+        entries,
+        layout,
+        settings.extraBlankRows,
+      ).map((units) => ({ kind: "practice" as const, units }));
     } else if (settings.mode === "quiz") {
       resolvedPages = paginateTestEntries(entries, layout).map((pageEntries) => ({
         kind: "test" as const,
@@ -276,8 +283,9 @@ export function WorksheetPaper({
       resolvedPages = paginateLearnUnits(
         strokeCharacterUnits,
         strokeCounts,
-        settings.showStrokeOrder && showAnswers,
+        showAnswers ? settings.strokeOrderMode : "off",
         layout,
+        settings.extraBlankRows,
       ).map((units) => ({ kind: "learn" as const, units }));
     }
 
@@ -287,7 +295,8 @@ export function WorksheetPaper({
     entries,
     layout,
     settings.mode,
-    settings.showStrokeOrder,
+    settings.extraBlankRows,
+    settings.strokeOrderMode,
     showAnswers,
     strokeState.data,
     strokeCharacterUnits,
@@ -479,7 +488,11 @@ function PracticeWorksheetPage({
             className="grid justify-center"
             style={getPracticeGridStyle(layout)}
           >
-            {buildPracticeCells(unit.character, layout).map((cell, cellIndex) => (
+            {buildPracticeCells(
+              unit.character,
+              layout,
+              settings.practiceStrength,
+            ).map((cell, cellIndex) => (
               <GridCell
                 key={`${unit.id}-${cellIndex}`}
                 grid={settings.grid}
@@ -489,6 +502,21 @@ function PracticeWorksheetPage({
               </GridCell>
             ))}
           </div>
+          {Array.from({ length: settings.extraBlankRows }, (_, rowIndex) => (
+            <div
+              key={`${unit.id}-blank-${rowIndex}`}
+              className="mt-[0.65%] grid justify-center"
+              style={getPracticeGridStyle(layout)}
+              aria-label={`Blank practice row for ${unit.character}`}
+            >
+              {Array.from({ length: layout.practiceColumns }, (_, cellIndex) => (
+                <GridCell
+                  key={cellIndex}
+                  grid={settings.grid}
+                />
+              ))}
+            </div>
+          ))}
         </section>
       ))}
     </div>
@@ -547,10 +575,16 @@ function LearnWorksheetPage({
     <div className="hs-learn-page space-y-[1.8%]">
       {units.map((unit) => {
         const strokes = strokeData.get(unit.character);
-        const frames =
-          strokesReady && strokes ? buildCumulativeStrokeFrames(strokes) : [];
-        const frameRows = chunk(frames, layout.strokeFramesPerRow);
-        const strokeColumns = layout.strokeFramesPerRow + 1;
+        const frames = selectStrokeFrames(
+          strokesReady && strokes ? buildCumulativeStrokeFrames(strokes) : [],
+          settings.strokeOrderMode,
+        );
+        const framesPerRow =
+          settings.strokeOrderMode === "compact"
+            ? 4
+            : layout.strokeFramesPerRow;
+        const frameRows = chunk(frames, framesPerRow);
+        const strokeColumns = framesPerRow + 1;
 
         return (
           <section
@@ -571,7 +605,7 @@ function LearnWorksheetPage({
               compact={false}
             />
 
-            {settings.showStrokeOrder && showAnswers ? (
+            {settings.strokeOrderMode !== "off" && showAnswers ? (
               !strokesReady ? (
                 <div
                   className="mb-[0.65%] grid gap-[0.55%]"
@@ -605,7 +639,7 @@ function LearnWorksheetPage({
                         {rowIndex === 0 ? unit.character : ""}
                       </GridCell>
                       {Array.from(
-                        { length: layout.strokeFramesPerRow },
+                        { length: framesPerRow },
                         (_, frameIndex) => {
                         const frame = row[frameIndex];
                         return frame ? (
@@ -614,9 +648,7 @@ function LearnWorksheetPage({
                             frame={frame}
                             character={unit.character}
                             strokeNumber={
-                              rowIndex * layout.strokeFramesPerRow +
-                              frameIndex +
-                              1
+                              frame.length
                             }
                             transform={transform}
                             grid={settings.grid}
@@ -643,7 +675,11 @@ function LearnWorksheetPage({
               className="grid justify-center"
               style={getPracticeGridStyle(layout)}
             >
-              {buildPracticeCells(unit.character, layout).map((cell, cellIndex) => (
+              {buildPracticeCells(
+                unit.character,
+                layout,
+                settings.practiceStrength,
+              ).map((cell, cellIndex) => (
                 <GridCell
                   key={cellIndex}
                   grid={settings.grid}
@@ -653,6 +689,21 @@ function LearnWorksheetPage({
                 </GridCell>
               ))}
             </div>
+            {Array.from({ length: settings.extraBlankRows }, (_, rowIndex) => (
+              <div
+                key={`${unit.id}-blank-${rowIndex}`}
+                className="mt-[0.65%] grid justify-center"
+                style={getPracticeGridStyle(layout)}
+                aria-label={`Blank practice row for ${unit.character}`}
+              >
+                {Array.from({ length: layout.practiceColumns }, (_, cellIndex) => (
+                  <GridCell
+                    key={cellIndex}
+                    grid={settings.grid}
+                  />
+                ))}
+              </div>
+            ))}
           </section>
         );
       })}

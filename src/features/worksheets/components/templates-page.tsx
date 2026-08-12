@@ -20,6 +20,24 @@ type TemplateDirectoryGroup = {
   slugs: string[];
 };
 
+const templateShowcase = [
+  {
+    slug: "chinese-first-characters",
+    eyebrow: "For first characters",
+    note: "Large, calm writing targets for a learner's first printable page.",
+  },
+  {
+    slug: "hsk-1",
+    eyebrow: "For HSK review",
+    note: "Turn a level-based vocabulary set into editable recognition and writing practice.",
+  },
+  {
+    slug: "family",
+    eyebrow: "For everyday vocabulary",
+    note: "Start from a useful topic, then tune the guidance and blank writing space.",
+  },
+] as const;
+
 const templateDirectoryGroups: TemplateDirectoryGroup[] = [
   {
     id: "quick-start",
@@ -128,6 +146,15 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
         .filter((template): template is WorksheetTemplateSummary => Boolean(template)),
     }));
   }, [templates]);
+  const showcaseTemplates = useMemo(() => {
+    const templatesBySlug = new Map(
+      templates.map((template) => [template.slug, template]),
+    );
+    return templateShowcase.flatMap((showcase) => {
+      const template = templatesBySlug.get(showcase.slug);
+      return template ? [{ ...showcase, template }] : [];
+    });
+  }, [templates]);
 
   return (
     <PublicPageShell active="templates">
@@ -171,6 +198,68 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
             <Link href="/for-teachers" className="hs-secondary-button text-sm">
               Teacher workflow
             </Link>
+          </div>
+        </section>
+
+        <section
+          className="mt-8"
+          aria-labelledby="template-outcomes-title"
+        >
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="hs-kicker">Real worksheet outcomes</p>
+              <h2
+                id="template-outcomes-title"
+                className="hs-display mt-2 text-3xl font-bold"
+              >
+                See what you can print
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-[#5b687a]">
+                Compare the finished page direction first. Every example stays
+                editable before you print or save a PDF.
+              </p>
+            </div>
+            <span className="rounded-full border border-[#d7d0c4] bg-[#fffefa] px-3 py-1.5 text-xs font-semibold text-[#617084]">
+              Preview → edit → print
+            </span>
+          </div>
+
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {showcaseTemplates.map(({ eyebrow, note, template }) => (
+              <article
+                key={template.slug}
+                className="group overflow-hidden rounded border border-[#ded7ca] bg-[#fffefa] shadow-[0_12px_34px_rgba(23,41,66,0.07)]"
+              >
+                <div className="relative overflow-hidden border-b border-[#e2d8ca] bg-[radial-gradient(circle_at_top_left,#fff8e8_0,#f2e9da_52%,#e8ddcb_100%)] p-5">
+                  <span className="absolute right-4 top-4 rounded-full bg-[#172942] px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-white">
+                    Printable
+                  </span>
+                  <WorksheetCardPreview
+                    entries={template.previewEntries}
+                    title={template.title}
+                    chineseTitle={template.chineseTitle}
+                    className="mx-auto mt-5 max-w-64 rotate-[-1deg] transition duration-300 group-hover:rotate-0 group-hover:-translate-y-1"
+                  />
+                </div>
+                <div className="p-5">
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#a42b26]">
+                    {eyebrow}
+                  </p>
+                  <h3 className="hs-display mt-2 text-xl font-bold text-[#172942]">
+                    {template.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-[#5b687a]">
+                    {note}
+                  </p>
+                  <Link
+                    href={`/generator?template=${template.slug}`}
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[#24466e] hover:text-[#b62822]"
+                  >
+                    Use this layout <ArrowRight className="size-4" />
+                  </Link>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
