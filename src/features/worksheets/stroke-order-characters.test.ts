@@ -1,6 +1,19 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+const approvedFirstBatch = [
+  "\u7684", "\u4e00", "\u662f", "\u5728", "\u4e86", "\u6211", "\u4f60", "\u4eba",
+  "\u6765", "\u53bb", "\u8bf4", "\u5b66", "\u7ecf", "\u4f53", "\u8bae",
+] as const;
+
+const firstBatchTiers: Record<(typeof approvedFirstBatch)[number], string> = {
+  "\u7684": "High-frequency", "\u4e00": "High-frequency", "\u662f": "High-frequency",
+  "\u5728": "High-frequency", "\u4e86": "High-frequency", "\u6211": "High-frequency",
+  "\u4f60": "Beginner", "\u4eba": "Beginner", "\u6765": "Beginner", "\u53bb": "Beginner",
+  "\u8bf4": "Beginner", "\u5b66": "Beginner", "\u7ecf": "Advanced", "\u4f53": "Advanced",
+  "\u8bae": "Advanced",
+};
+
 import {
   filterIndexableStrokeOrderCharacters,
   getStrokeOrderCharacter,
@@ -8,10 +21,76 @@ import {
   strokeOrderCharacters,
 } from "./stroke-order-characters";
 
+test("published character order contains the existing guides plus the approved first batch", () => {
+  assert.deepEqual(strokeOrderCharacters.map((entry) => entry.character), [
+    "\u7231", "\u5e74", "\u4f5b", ...approvedFirstBatch,
+  ]);
+});
+
+test("every approved first-batch guide has its assigned tier and four vocabulary examples", () => {
+  for (const character of approvedFirstBatch) {
+    const entry = getStrokeOrderCharacter(character);
+    assert.ok(entry, `${character} is published`);
+    assert.equal(entry.learningTier, firstBatchTiers[character], `${character} tier`);
+    assert.ok(entry.examples.length >= 4, `${character} vocabulary examples`);
+  }
+});
+
+test("complete guides meet the full content contract and link to complete related guides", () => {
+  for (const entry of strokeOrderCharacters) {
+    assert.equal(entry.publicationStatus, "complete", entry.character);
+    assert.ok(entry.importance.trim().length > 30, `${entry.character} importance`);
+    assert.ok(entry.components.length > 0, `${entry.character} components`);
+    assert.ok(entry.readingNotes.trim().length > 30, `${entry.character} reading notes`);
+    assert.ok(entry.useNotes.trim().length > 30, `${entry.character} use notes`);
+    assert.ok(entry.commonMistake.trim().length > 30, `${entry.character} common mistake`);
+    assert.ok(entry.confusableCharacter.guidance.trim().length > 30, `${entry.character} confusable guidance`);
+    assert.ok(entry.relatedCharacters.length > 0, `${entry.character} related guides`);
+    for (const related of entry.relatedCharacters) assert.ok(getStrokeOrderCharacter(related), `${entry.character} links to ${related}`);
+  }
+});
+
+test("every complete guide has one Starter, Developing, and Stretch sentence", () => {
+  for (const entry of strokeOrderCharacters) {
+    assert.deepEqual(entry.exampleSentences.map((sentence) => sentence.learningLabel).sort(), [
+      "Developing", "Starter", "Stretch",
+    ], `${entry.character} graded sentences`);
+  }
+});
+
+test("priority guides preserve their required reading and usage distinctions", () => {
+  const requiredCopy: Array<[string, RegExp]> = [
+    ["\u7684", /neutral-tone|d[ií]|d[eě]|possessive|modification/i],
+    ["\u4e00", /dictionary tone|fourth tone|first|second|third/i],
+    ["\u5728", /location|progressive|verb/i], ["\u4e86", /completed|change-of-state|sentence-final/i],
+    ["\u8bf4", /shu[oō]|shu[iu]|everyday|default/i], ["\u6765", /speaker|reference point|direction/i],
+    ["\u53bb", /speaker|reference point|direction/i],
+  ];
+  for (const [character, expression] of requiredCopy) {
+    const entry = getStrokeOrderCharacter(character);
+    assert.ok(entry, `${character} is published`);
+    assert.match(`${entry.readingNotes} ${entry.useNotes} ${entry.usage}`, expression, character);
+  }
+});
+
+test("SEO and substantive teaching fields remain unique across published guides", () => {
+  const normalize = (value: string) => value.replace(/\s+/g, " ").trim().toLowerCase();
+  const fields = ["importance", "readingNotes", "useNotes", "usage", "writingTip", "commonMistake"] as const;
+  for (const field of fields) {
+    const values = strokeOrderCharacters.map((entry) => normalize(entry[field]));
+    assert.equal(new Set(values).size, values.length, `${field} is not duplicated`);
+  }
+  for (const values of [
+    strokeOrderCharacters.map((entry) => normalize(entry.seo.title)),
+    strokeOrderCharacters.map((entry) => normalize(entry.seo.description)),
+    strokeOrderCharacters.map((entry) => normalize(entry.confusableCharacter.guidance)),
+  ]) assert.equal(new Set(values).size, values.length, "published copy is not duplicated");
+});
+
 test("curated stroke-order pages contain complete learning content", () => {
   assert.deepEqual(
     strokeOrderCharacters.map((entry) => entry.character),
-    ["爱", "年", "佛"],
+    ["爱", "年", "佛", ...approvedFirstBatch],
   );
 
   for (const entry of strokeOrderCharacters) {
