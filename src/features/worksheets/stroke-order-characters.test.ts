@@ -220,6 +220,45 @@ test("related characters resolve to other indexable guides", () => {
   }
 });
 
+test("tier grouping includes every indexable guide exactly once in learner-path order", async () => {
+  const data = await import("./stroke-order-characters");
+  const groupByTier = (data as typeof data & {
+    groupStrokeOrderCharactersByTier?: (entries: typeof indexableStrokeOrderCharacters) => Array<{
+      tier: string;
+      entries: typeof indexableStrokeOrderCharacters;
+    }>;
+  }).groupStrokeOrderCharactersByTier;
+
+  assert.equal(typeof groupByTier, "function");
+  const groups = groupByTier!(indexableStrokeOrderCharacters);
+
+  assert.deepEqual(groups.map((group) => group.tier), [
+    "High-frequency",
+    "Beginner",
+    "Advanced",
+    "Foundation",
+  ]);
+  assert.deepEqual(
+    groups.flatMap((group) => group.entries.map((entry) => entry.character)).sort(),
+    indexableStrokeOrderCharacters.map((entry) => entry.character).sort(),
+  );
+});
+
+test("explicit related characters resolve defensively without broad guide discovery", async () => {
+  const data = await import("./stroke-order-characters");
+  const resolveRelated = (data as typeof data & {
+    getRelatedStrokeOrderCharacters?: (entry: Pick<typeof indexableStrokeOrderCharacters[number], "relatedCharacters">) => typeof indexableStrokeOrderCharacters;
+  }).getRelatedStrokeOrderCharacters;
+
+  assert.equal(typeof resolveRelated, "function");
+  assert.deepEqual(
+    resolveRelated!({ relatedCharacters: ["我", "not-a-guide"] }).map(
+      (entry) => entry.character,
+    ),
+    ["我"],
+  );
+});
+
 test("character lookup accepts URL-encoded route parameters", () => {
   assert.equal(getStrokeOrderCharacter("%E7%88%B1")?.character, "爱");
   assert.equal(getStrokeOrderCharacter("%E5%B9%B4")?.character, "年");

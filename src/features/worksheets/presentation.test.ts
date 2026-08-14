@@ -261,6 +261,38 @@ test("HSK workflow links stay additive across teachers, templates, details, and 
   assert.match(strokeSource, /Browse HSK lists/);
 });
 
+test("stroke-order guides render their differentiated learning dossier fields", async () => {
+  const source = await projectFile(
+    "src/features/worksheets/components/stroke-order-character-page.tsx",
+  );
+
+  assert.match(source, /entry\.learningTier/);
+  assert.match(source, /entry\.importance/);
+  assert.match(source, /entry\.components\.map/);
+  assert.match(source, /entry\.readingNotes/);
+  assert.match(source, /entry\.useNotes/);
+  assert.match(source, /entry\.exampleSentences\.map/);
+  assert.match(source, /sentence\.learningLabel/);
+  assert.match(source, /sentence\.hanzi/);
+  assert.match(source, /sentence\.pinyin/);
+  assert.match(source, /sentence\.meaning/);
+  assert.match(source, /entry\.commonMistake/);
+  assert.match(source, /entry\.confusableCharacter\.character/);
+  assert.match(source, /entry\.confusableCharacter\.guidance/);
+  assert.match(source, /getRelatedStrokeOrderCharacters\(entry\)/);
+});
+
+test("stroke-order hub exposes the ordered learning paths and both HSK pickers", async () => {
+  const source = await projectFile("src/app/[locale]/stroke-order/page.tsx");
+
+  assert.match(source, /strokeOrderLearningTiers/);
+  assert.match(source, /groupStrokeOrderCharactersByTier/);
+  assert.match(source, /High-frequency[\s\S]*Beginner[\s\S]*Advanced[\s\S]*Foundation/);
+  assert.match(source, /\/generator\?hskSystem=3\.0&hskLevel=1/);
+  assert.match(source, /\/generator\?hskSystem=2\.0&hskLevel=1/);
+  assert.match(source, /View guide/);
+});
+
 test("curated stroke-order pages combine practice with useful character content", async () => {
   const [clientSource, pageSource, hubSource] = await Promise.all([
     projectFile("src/features/worksheets/components/stroke-order-client.tsx"),
@@ -285,12 +317,12 @@ test("curated stroke-order pages combine practice with useful character content"
   assert.match(pageSource, /entry\.hsk\.map/);
   assert.match(pageSource, /entry\.examples\.map/);
   assert.match(pageSource, /entry\.writingTip/);
-  assert.match(pageSource, /strokeOrderCharacters\.filter/);
+  assert.match(pageSource, /getRelatedStrokeOrderCharacters\(entry\)/);
   assert.match(pageSource, /\/generator\?words=/);
   assert.match(pageSource, /Add .* to a worksheet/);
   assert.doesNotMatch(pageSource, /bg-white px-6 text-\[#172b49\]/);
 
-  assert.match(hubSource, /strokeOrderCharacters\.map/);
-  assert.match(hubSource, /Popular character guides/);
+  assert.match(hubSource, /groupedStrokeOrderCharacters\.map/);
+  assert.match(hubSource, /Character guide learning paths/);
   assert.match(hubSource, /href=\{`\/stroke-order\/\$\{entry\.character\}`\}/);
 });

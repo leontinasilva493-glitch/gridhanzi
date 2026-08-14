@@ -490,6 +490,44 @@ const strokeOrderCharacterByHanzi = new Map<string, StrokeOrderCharacter>(
   indexableStrokeOrderCharacters.map((entry) => [entry.character, entry]),
 );
 
+export const strokeOrderLearningTiers = [
+  "High-frequency",
+  "Beginner",
+  "Advanced",
+  "Foundation",
+] as const;
+
+export type StrokeOrderLearningTier = (typeof strokeOrderLearningTiers)[number];
+
+function getStrokeOrderLearningTier(
+  entry: Pick<StrokeOrderCharacter, "learningTier">,
+): StrokeOrderLearningTier {
+  if (entry.learningTier === "High-frequency" || entry.learningTier === "Beginner") {
+    return entry.learningTier;
+  }
+
+  return entry.learningTier === "Advanced" || entry.learningTier === "Advanced extension"
+    ? "Advanced"
+    : "Foundation";
+}
+
+export function groupStrokeOrderCharactersByTier(
+  entries: readonly StrokeOrderCharacter[],
+): Array<{ tier: StrokeOrderLearningTier; entries: StrokeOrderCharacter[] }> {
+  return strokeOrderLearningTiers.map((tier) => ({
+    tier,
+    entries: entries.filter((entry) => getStrokeOrderLearningTier(entry) === tier),
+  }));
+}
+
+export function getRelatedStrokeOrderCharacters(
+  entry: Pick<StrokeOrderCharacter, "relatedCharacters">,
+): StrokeOrderCharacter[] {
+  return entry.relatedCharacters
+    .map((character) => strokeOrderCharacterByHanzi.get(character))
+    .filter((candidate): candidate is StrokeOrderCharacter => candidate !== undefined);
+}
+
 export function getStrokeOrderCharacter(
   character: string,
 ): StrokeOrderCharacter | undefined {
