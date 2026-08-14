@@ -385,13 +385,56 @@ type BatchGuideSeed = Omit<
   "hsk" | "publicationStatus"
 > & { hskNote: string };
 
-function publishedBatchGuide({ hskNote, ...entry }: BatchGuideSeed): StrokeOrderCharacter {
+const batchHskCards: Record<string, StrokeOrderCharacter["hsk"]> = {
+  "说": [
+    { system: "HSK 2.0", level: "Level 1", note: "Word-family anchor: 说话 is listed at Level 1; it does not establish an official standalone level for everyday shuō." },
+    { system: "HSK 3.0", level: "Level 1", note: "Word-family anchor: 说话 is listed at Level 1; the standalone shuì record is not evidence for everyday shuō." },
+  ],
+  "学": [
+    { system: "HSK 2.0", level: "Level 1", note: "Word-family anchor: student and school vocabulary is listed at Level 1; this is not a standalone-character level claim." },
+    { system: "HSK 3.0", level: "Level 1", note: "Exact 学 (xué) record is listed at Level 1." },
+  ],
+  "经": [
+    { system: "HSK 2.0", level: "Level 2", note: "Word-family anchor: 已经 is listed at Level 2; this is not a standalone-character level claim." },
+    { system: "HSK 3.0", level: "Level 2", note: "Word-family anchors: 经常 and 经过 are listed at Level 2; this is not a standalone-character level claim." },
+  ],
+  "体": [
+    { system: "HSK 2.0", level: "Level 2", note: "Word-family anchor: 身体 is listed at Level 2; this is not a standalone-character level claim." },
+    { system: "HSK 3.0", level: "Level 1", note: "Word-family anchor: 身体 is listed at Level 1; this is not a standalone-character level claim." },
+  ],
+  "议": [
+    { system: "HSK 2.0", level: "Level 3", note: "Word-family anchor: 会议 is listed at Level 3; this is not a standalone-character level claim." },
+    { system: "HSK 3.0", level: "Level 3", note: "Word-family anchor: 会议 is listed at Level 3; this is not a standalone-character level claim." },
+  ],
+  "我": [
+    { system: "HSK 2.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+    { system: "HSK 3.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+  ],
+  "你": [
+    { system: "HSK 2.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+    { system: "HSK 3.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+  ],
+  "人": [
+    { system: "HSK 2.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+    { system: "HSK 3.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+  ],
+  "来": [
+    { system: "HSK 2.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+    { system: "HSK 3.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+  ],
+  "去": [
+    { system: "HSK 2.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+    { system: "HSK 3.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+  ],
+};
+
+function publishedBatchGuide({ hskNote: _hskNote, ...entry }: BatchGuideSeed): StrokeOrderCharacter {
+  const hsk = batchHskCards[entry.character];
+  if (!hsk) throw new Error(`Missing explicit HSK cards for ${entry.character}`);
+
   return {
     ...entry,
-    hsk: [
-      { system: "HSK 2.0", level: hskNote.includes("Level 3") ? "Level 3" : hskNote.includes("Level 2") ? "Level 2" : "Level 1", note: hskNote },
-      { system: "HSK 3.0", level: hskNote.includes("Level 3") ? "Level 3" : hskNote.includes("Level 2") ? "Level 2" : "Level 1", note: hskNote },
-    ],
+    hsk,
     publicationStatus: "complete",
   };
 }

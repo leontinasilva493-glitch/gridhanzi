@@ -285,6 +285,21 @@ test("curated Hanzi pages have static routes and unique sitemap entries", async 
     "/stroke-order/爱",
     "/stroke-order/年",
     "/stroke-order/佛",
+    "/stroke-order/的",
+    "/stroke-order/一",
+    "/stroke-order/是",
+    "/stroke-order/在",
+    "/stroke-order/了",
+    "/stroke-order/我",
+    "/stroke-order/你",
+    "/stroke-order/人",
+    "/stroke-order/来",
+    "/stroke-order/去",
+    "/stroke-order/说",
+    "/stroke-order/学",
+    "/stroke-order/经",
+    "/stroke-order/体",
+    "/stroke-order/议",
   ]);
 
   const routeSource = await readFile(

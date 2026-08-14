@@ -27,6 +27,35 @@ test("published character order contains the existing guides plus the approved f
   ]);
 });
 
+test("source-bound HSK cards preserve literal per-system word-family anchors", () => {
+  const expected: Record<string, Array<{ system: string; level: string; note: string }>> = {
+    "\u7ecf": [
+      { system: "HSK 2.0", level: "Level 2", note: "Word-family anchor: 已经 is listed at Level 2; this is not a standalone-character level claim." },
+      { system: "HSK 3.0", level: "Level 2", note: "Word-family anchors: 经常 and 经过 are listed at Level 2; this is not a standalone-character level claim." },
+    ],
+    "\u4f53": [
+      { system: "HSK 2.0", level: "Level 2", note: "Word-family anchor: 身体 is listed at Level 2; this is not a standalone-character level claim." },
+      { system: "HSK 3.0", level: "Level 1", note: "Word-family anchor: 身体 is listed at Level 1; this is not a standalone-character level claim." },
+    ],
+    "\u8bae": [
+      { system: "HSK 2.0", level: "Level 3", note: "Word-family anchor: 会议 is listed at Level 3; this is not a standalone-character level claim." },
+      { system: "HSK 3.0", level: "Level 3", note: "Word-family anchor: 会议 is listed at Level 3; this is not a standalone-character level claim." },
+    ],
+    "\u8bf4": [
+      { system: "HSK 2.0", level: "Level 1", note: "Word-family anchor: 说话 is listed at Level 1; it does not establish an official standalone level for everyday shuō." },
+      { system: "HSK 3.0", level: "Level 1", note: "Word-family anchor: 说话 is listed at Level 1; the standalone shuì record is not evidence for everyday shuō." },
+    ],
+    "\u5b66": [
+      { system: "HSK 2.0", level: "Level 1", note: "Word-family anchor: student and school vocabulary is listed at Level 1; this is not a standalone-character level claim." },
+      { system: "HSK 3.0", level: "Level 1", note: "Exact 学 (xué) record is listed at Level 1." },
+    ],
+  };
+
+  for (const [character, cards] of Object.entries(expected)) {
+    assert.deepEqual(getStrokeOrderCharacter(character)?.hsk, cards, character);
+  }
+});
+
 test("every approved first-batch guide has its assigned tier and four vocabulary examples", () => {
   for (const character of approvedFirstBatch) {
     const entry = getStrokeOrderCharacter(character);
