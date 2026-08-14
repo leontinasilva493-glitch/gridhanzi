@@ -6,7 +6,10 @@ const approvedFirstBatch = [
   "\u6765", "\u53bb", "\u8bf4", "\u5b66", "\u7ecf", "\u4f53", "\u8bae",
 ] as const;
 
-const firstBatchTiers: Record<(typeof approvedFirstBatch)[number], string> = {
+const firstBatchTiers: Record<
+  (typeof approvedFirstBatch)[number],
+  StrokeOrderLearningTier
+> = {
   "\u7684": "High-frequency", "\u4e00": "High-frequency", "\u662f": "High-frequency",
   "\u5728": "High-frequency", "\u4e86": "High-frequency", "\u6211": "High-frequency",
   "\u4f60": "Beginner", "\u4eba": "Beginner", "\u6765": "Beginner", "\u53bb": "Beginner",
@@ -19,6 +22,9 @@ import {
   getStrokeOrderCharacter,
   indexableStrokeOrderCharacters,
   strokeOrderCharacters,
+  strokeOrderLearningTiers,
+  type StrokeOrderCharacter,
+  type StrokeOrderLearningTier,
 } from "./stroke-order-characters";
 
 test("published character order contains the existing guides plus the approved first batch", () => {
@@ -27,33 +33,101 @@ test("published character order contains the existing guides plus the approved f
   ]);
 });
 
-test("source-bound HSK cards preserve literal per-system word-family anchors", () => {
-  const expected: Record<string, Array<{ system: string; level: string; note: string }>> = {
+test("source-bound HSK cards preserve literal per-system evidence anchors", () => {
+  const expected: Record<
+    string,
+    Array<{
+      system: string;
+      level: string;
+      evidenceKind: "standalone" | "word-family";
+      note: string;
+    }>
+  > = {
+    "\u4f5b": [
+      {
+        system: "HSK 3.0",
+        level: "Level 6",
+        evidenceKind: "word-family",
+        note: "Reading-specific Level 6 evidence: 佛教 supports fó and Buddhism, while standalone 佛 (fú) and 仿佛 (fǎngfú) mean seemingly; this is not a general standalone fó level claim.",
+      },
+    ],
     "\u7ecf": [
-      { system: "HSK 2.0", level: "Level 2", note: "Word-family anchor: 已经 is listed at Level 2; this is not a standalone-character level claim." },
-      { system: "HSK 3.0", level: "Level 2", note: "Word-family anchors: 经常 and 经过 are listed at Level 2; this is not a standalone-character level claim." },
+      { system: "HSK 2.0", level: "Level 2", evidenceKind: "word-family", note: "Word-family anchor: 已经 is listed at Level 2; this is not a standalone-character level claim." },
+      { system: "HSK 3.0", level: "Level 2", evidenceKind: "word-family", note: "Word-family anchors: 经常 and 经过 are listed at Level 2; this is not a standalone-character level claim." },
     ],
     "\u4f53": [
-      { system: "HSK 2.0", level: "Level 2", note: "Word-family anchor: 身体 is listed at Level 2; this is not a standalone-character level claim." },
-      { system: "HSK 3.0", level: "Level 1", note: "Word-family anchor: 身体 is listed at Level 1; this is not a standalone-character level claim." },
+      { system: "HSK 2.0", level: "Level 2", evidenceKind: "word-family", note: "Word-family anchor: 身体 is listed at Level 2; this is not a standalone-character level claim." },
+      { system: "HSK 3.0", level: "Level 1", evidenceKind: "word-family", note: "Word-family anchor: 身体 is listed at Level 1; this is not a standalone-character level claim." },
     ],
     "\u8bae": [
-      { system: "HSK 2.0", level: "Level 3", note: "Word-family anchor: 会议 is listed at Level 3; this is not a standalone-character level claim." },
-      { system: "HSK 3.0", level: "Level 3", note: "Word-family anchor: 会议 is listed at Level 3; this is not a standalone-character level claim." },
+      { system: "HSK 2.0", level: "Level 3", evidenceKind: "word-family", note: "Word-family anchor: 会议 is listed at Level 3; this is not a standalone-character level claim." },
+      { system: "HSK 3.0", level: "Level 3", evidenceKind: "word-family", note: "Word-family anchor: 会议 is listed at Level 3; this is not a standalone-character level claim." },
     ],
     "\u8bf4": [
-      { system: "HSK 2.0", level: "Level 1", note: "Word-family anchor: 说话 is listed at Level 1; it does not establish an official standalone level for everyday shuō." },
-      { system: "HSK 3.0", level: "Level 1", note: "Word-family anchor: 说话 is listed at Level 1; the standalone shuì record is not evidence for everyday shuō." },
+      { system: "HSK 2.0", level: "Level 1", evidenceKind: "word-family", note: "Word-family anchor: 说话 is listed at Level 1; it does not establish an official standalone level for everyday shuō." },
+      { system: "HSK 3.0", level: "Level 1", evidenceKind: "word-family", note: "Word-family anchor: 说话 is listed at Level 1; the standalone shuì record is not evidence for everyday shuō." },
     ],
     "\u5b66": [
-      { system: "HSK 2.0", level: "Level 1", note: "Word-family anchor: student and school vocabulary is listed at Level 1; this is not a standalone-character level claim." },
-      { system: "HSK 3.0", level: "Level 1", note: "Exact 学 (xué) record is listed at Level 1." },
+      { system: "HSK 2.0", level: "Level 1", evidenceKind: "word-family", note: "Word-family anchor: student and school vocabulary is listed at Level 1; this is not a standalone-character level claim." },
+      { system: "HSK 3.0", level: "Level 1", evidenceKind: "standalone", note: "Exact 学 (xué) record is listed at Level 1." },
     ],
   };
 
   for (const [character, cards] of Object.entries(expected)) {
     assert.deepEqual(getStrokeOrderCharacter(character)?.hsk, cards, character);
   }
+});
+
+test("every HSK card declares standalone or word-family evidence", () => {
+  for (const entry of strokeOrderCharacters) {
+    for (const card of entry.hsk) {
+      assert.ok(
+        ["standalone", "word-family"].includes(
+          (card as { evidenceKind?: string }).evidenceKind ?? "",
+        ),
+        `${entry.character} ${card.system} ${card.level}`,
+      );
+    }
+  }
+});
+
+test("JSON-LD educational levels include standalone evidence and omit word-family-only evidence", async () => {
+  const data = await import("./stroke-order-characters");
+  const getEducationalLevels = (data as typeof data & {
+    getStrokeOrderEducationalLevels?: (
+      entry: Pick<StrokeOrderCharacter, "hsk">,
+    ) => string[];
+  }).getStrokeOrderEducationalLevels;
+  const buildLearningResource = (data as typeof data & {
+    buildStrokeOrderLearningResourceData?: (
+      entry: StrokeOrderCharacter,
+      pageUrl: string,
+    ) => Record<string, unknown>;
+  }).buildStrokeOrderLearningResourceData;
+  const standaloneGuide = getStrokeOrderCharacter("\u7684");
+  const wordFamilyGuide = getStrokeOrderCharacter("\u7ecf");
+
+  assert.equal(typeof getEducationalLevels, "function");
+  assert.equal(typeof buildLearningResource, "function");
+  assert.ok(standaloneGuide);
+  assert.ok(wordFamilyGuide);
+  assert.deepEqual(getEducationalLevels!(standaloneGuide), [
+    "HSK 2.0 Level 1",
+    "HSK 3.0 Level 1",
+  ]);
+  assert.deepEqual(getEducationalLevels!(wordFamilyGuide), []);
+  assert.deepEqual(
+    buildLearningResource!(standaloneGuide, "https://gridhanzi.org/stroke-order/的")
+      .educationalLevel,
+    ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+  );
+  assert.equal(
+    Object.hasOwn(
+      buildLearningResource!(wordFamilyGuide, "https://gridhanzi.org/stroke-order/经"),
+      "educationalLevel",
+    ),
+    false,
+  );
 });
 
 test("every approved first-batch guide has its assigned tier and four vocabulary examples", () => {
@@ -85,6 +159,58 @@ test("every complete guide has one Starter, Developing, and Stretch sentence", (
       "Developing", "Starter", "Stretch",
     ], `${entry.character} graded sentences`);
   }
+});
+
+test("every graded sentence contains the character taught by its guide", () => {
+  for (const entry of strokeOrderCharacters) {
+    for (const sentence of entry.exampleSentences) {
+      assert.ok(
+        sentence.hanzi.includes(entry.character),
+        `${entry.character} ${sentence.learningLabel}: ${sentence.hanzi}`,
+      );
+    }
+  }
+});
+
+test("了 records the two strokes without assigning the hook to stroke one", () => {
+  const entry = getStrokeOrderCharacter("了");
+
+  assert.ok(entry);
+  assert.equal(entry.radical, "亅");
+  assert.deepEqual(entry.components, [
+    {
+      character: "了",
+      explanation:
+        "Stroke 1 is 横撇: a short horizontal that turns into a left-falling stroke. Stroke 2 is 弯钩: a vertical stroke that curves into the finishing hook.",
+    },
+  ]);
+  assert.equal(
+    entry.writingTip,
+    "Write stroke 1 as a compact 横撇, turning from the short horizontal into a left fall. Begin stroke 2 separately, draw the vertical curve, and finish with a small 弯钩.",
+  );
+  assert.doesNotMatch(entry.components[0].explanation, /stroke 1[^.]*hook/i);
+  assert.doesNotMatch(entry.writingTip, /first stroke[^.]*hook/i);
+});
+
+test("经 records simplified 纟 plus 𢀖 and contrasts 轻 by its left component", () => {
+  const entry = getStrokeOrderCharacter("经");
+
+  assert.ok(entry);
+  assert.deepEqual(entry.components, [
+    {
+      character: "纟",
+      explanation: "The silk radical is narrow and forms three compact left-side strokes.",
+    },
+    {
+      character: "𢀖",
+      explanation:
+        "The simplified right component 𢀖 supplies the taller structure and grounded base.",
+    },
+  ]);
+  assert.equal(
+    entry.confusableCharacter.guidance,
+    "经 and 轻 share the right component 𢀖; they differ on the left: 经 has 纟, while 轻 has 车.",
+  );
 });
 
 test("priority guides preserve their required reading and usage distinctions", () => {
@@ -133,7 +259,7 @@ test("curated stroke-order pages contain complete learning content", () => {
     assert.ok(entry.usageTitle.length > 0, `${entry.character} usage title`);
     assert.ok(entry.usage.length >= 80, `${entry.character} usage copy`);
     assert.ok(entry.writingTip.length >= 60, `${entry.character} writing tip`);
-    assert.ok(entry.examples.length >= 3, `${entry.character} example words`);
+    assert.ok(entry.examples.length >= 4, `${entry.character} example words`);
 
     for (const example of entry.examples) {
       assert.ok(example.hanzi.includes(entry.character) || entry.character === "佛");
@@ -232,15 +358,31 @@ test("tier grouping includes every indexable guide exactly once in learner-path 
   assert.equal(typeof groupByTier, "function");
   const groups = groupByTier!(indexableStrokeOrderCharacters);
 
-  assert.deepEqual(groups.map((group) => group.tier), [
+  assert.deepEqual(strokeOrderLearningTiers, [
     "High-frequency",
     "Beginner",
     "Advanced",
     "Foundation",
   ]);
+  assert.deepEqual(groups.map((group) => group.tier), strokeOrderLearningTiers);
+  assert.ok(
+    indexableStrokeOrderCharacters.every((entry) =>
+      strokeOrderLearningTiers.includes(entry.learningTier),
+    ),
+  );
   assert.deepEqual(
     groups.flatMap((group) => group.entries.map((entry) => entry.character)).sort(),
     indexableStrokeOrderCharacters.map((entry) => entry.character).sort(),
+  );
+  assert.throws(
+    () =>
+      groupByTier!([
+        {
+          ...indexableStrokeOrderCharacters[0],
+          learningTier: "Advanced typo",
+        } as unknown as StrokeOrderCharacter,
+      ]),
+    /Unknown stroke-order learning tier: Advanced typo/,
   );
 });
 

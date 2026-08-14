@@ -294,12 +294,13 @@ test("stroke-order hub exposes the ordered learning paths and both HSK pickers",
 });
 
 test("curated stroke-order pages combine practice with useful character content", async () => {
-  const [clientSource, pageSource, hubSource] = await Promise.all([
+  const [clientSource, pageSource, hubSource, characterDataSource] = await Promise.all([
     projectFile("src/features/worksheets/components/stroke-order-client.tsx"),
     projectFile(
       "src/features/worksheets/components/stroke-order-character-page.tsx",
     ).catch(() => ""),
     projectFile("src/app/[locale]/stroke-order/page.tsx"),
+    projectFile("src/features/worksheets/stroke-order-characters.ts"),
   ]);
 
   assert.match(clientSource, /initialCharacter/);
@@ -309,12 +310,16 @@ test("curated stroke-order pages combine practice with useful character content"
 
   assert.match(pageSource, /StrokeOrderCharacterPage/);
   assert.match(pageSource, /StructuredData/);
-  assert.match(pageSource, /"@type": "LearningResource"/);
+  assert.match(characterDataSource, /"@type": "LearningResource"/);
   assert.match(pageSource, /"@type": "BreadcrumbList"/);
   assert.match(pageSource, /<StrokeOrderClient/);
   assert.match(pageSource, /showSearch=\{false\}/);
   assert.match(pageSource, /showGuidance=\{false\}/);
-  assert.match(pageSource, /entry\.hsk\.map/);
+  assert.match(
+    pageSource,
+    /buildStrokeOrderLearningResourceData\(entry, pageUrl\)/,
+  );
+  assert.doesNotMatch(pageSource, /educationalLevel:\s*entry\.hsk\.map/);
   assert.match(pageSource, /entry\.examples\.map/);
   assert.match(pageSource, /entry\.writingTip/);
   assert.match(pageSource, /getRelatedStrokeOrderCharacters\(entry\)/);

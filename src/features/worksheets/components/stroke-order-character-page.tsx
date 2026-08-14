@@ -4,6 +4,7 @@ import { envConfigs } from "@/config";
 import { Link } from "@/core/i18n/navigation";
 
 import {
+  buildStrokeOrderLearningResourceData,
   getRelatedStrokeOrderCharacters,
   type StrokeOrderCharacter,
 } from "../stroke-order-characters";
@@ -29,23 +30,7 @@ export function StrokeOrderCharacterPage({
     <PublicPageShell active="stroke-order">
       <StructuredData
         data={[
-          {
-            "@context": "https://schema.org",
-            "@type": "LearningResource",
-            name: `${entry.character} (${entry.pinyin}) stroke order and writing guide`,
-            description: `Learn how to write ${entry.character} with animation, stroke-by-stroke diagrams, Pinyin, meaning, HSK information, and example words.`,
-            url: pageUrl,
-            inLanguage: "en",
-            learningResourceType: "Chinese character writing guide",
-            educationalLevel: entry.hsk.map(
-              (item) => `${item.system} ${item.level}`,
-            ),
-            teaches: [
-              `${entry.character} stroke order`,
-              `${entry.character} meaning`,
-              `${entry.character} vocabulary`,
-            ],
-          },
+          buildStrokeOrderLearningResourceData(entry, pageUrl),
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",

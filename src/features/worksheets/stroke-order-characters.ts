@@ -23,6 +23,23 @@ export interface StrokeOrderConfusableCharacter {
 
 export type StrokeOrderPublicationStatus = "complete" | "draft";
 
+export const strokeOrderLearningTiers = [
+  "High-frequency",
+  "Beginner",
+  "Advanced",
+  "Foundation",
+] as const;
+
+export type StrokeOrderLearningTier = (typeof strokeOrderLearningTiers)[number];
+export type StrokeOrderHskEvidenceKind = "standalone" | "word-family";
+
+export interface StrokeOrderHskCard {
+  system: string;
+  level: string;
+  evidenceKind: StrokeOrderHskEvidenceKind;
+  note: string;
+}
+
 export interface StrokeOrderCharacter {
   character: string;
   pinyin: string;
@@ -31,12 +48,8 @@ export interface StrokeOrderCharacter {
   radical: string;
   traditional: string;
   structure: string;
-  hsk: Array<{
-    system: string;
-    level: string;
-    note: string;
-  }>;
-  learningTier: string;
+  hsk: StrokeOrderHskCard[];
+  learningTier: StrokeOrderLearningTier;
   importance: string;
   components: StrokeOrderComponent[];
   readingNotes: string;
@@ -67,6 +80,37 @@ export function filterIndexableStrokeOrderCharacters<
   return entries.filter((entry) => entry.publicationStatus === "complete");
 }
 
+export function getStrokeOrderEducationalLevels(
+  entry: Pick<StrokeOrderCharacter, "hsk">,
+): string[] {
+  return entry.hsk
+    .filter((item) => item.evidenceKind === "standalone")
+    .map((item) => `${item.system} ${item.level}`);
+}
+
+export function buildStrokeOrderLearningResourceData(
+  entry: StrokeOrderCharacter,
+  pageUrl: string,
+) {
+  const educationalLevel = getStrokeOrderEducationalLevels(entry);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    name: `${entry.character} (${entry.pinyin}) stroke order and writing guide`,
+    description: `Learn how to write ${entry.character} with animation, stroke-by-stroke diagrams, Pinyin, meaning, HSK information, and example words.`,
+    url: pageUrl,
+    inLanguage: "en",
+    learningResourceType: "Chinese character writing guide",
+    ...(educationalLevel.length > 0 ? { educationalLevel } : {}),
+    teaches: [
+      `${entry.character} stroke order`,
+      `${entry.character} meaning`,
+      `${entry.character} vocabulary`,
+    ],
+  };
+}
+
 const strokeOrderCharacterEntries: StrokeOrderCharacter[] = [
   {
     character: "爱",
@@ -80,11 +124,13 @@ const strokeOrderCharacterEntries: StrokeOrderCharacter[] = [
       {
         system: "HSK 2.0",
         level: "Level 1",
+        evidenceKind: "standalone",
         note: "A foundation character used to express love, preference, and affection.",
       },
       {
         system: "HSK 3.0",
         level: "Level 1",
+        evidenceKind: "standalone",
         note: "Introduced in beginner vocabulary and early recognition and writing practice.",
       },
     ],
@@ -167,11 +213,13 @@ const strokeOrderCharacterEntries: StrokeOrderCharacter[] = [
       {
         system: "HSK 2.0",
         level: "Level 1",
+        evidenceKind: "standalone",
         note: "A core time word used for dates, age, school years, and annual events.",
       },
       {
         system: "HSK 3.0",
         level: "Level 1",
+        evidenceKind: "standalone",
         note: "Appears in beginner time expressions such as this year, next year, and New Year.",
       },
     ],
@@ -253,11 +301,12 @@ const strokeOrderCharacterEntries: StrokeOrderCharacter[] = [
     hsk: [
       {
         system: "HSK 3.0",
-        level: "Levels 7–9",
-        note: "The standalone character belongs to the advanced vocabulary band, while 仿佛 is commonly encountered earlier.",
+        level: "Level 6",
+        evidenceKind: "word-family",
+        note: "Reading-specific Level 6 evidence: 佛教 supports fó and Buddhism, while standalone 佛 (fú) and 仿佛 (fǎngfú) mean seemingly; this is not a general standalone fó level claim.",
       },
     ],
-    learningTier: "Advanced extension",
+    learningTier: "Advanced",
     importance:
       "佛 introduces a high-value reading contrast: the religious reading fó and the common word 仿佛, where it is read fú.",
     components: [
@@ -325,7 +374,7 @@ const strokeOrderCharacterEntries: StrokeOrderCharacter[] = [
 strokeOrderCharacterEntries.push(
   {
     character: "的", pinyin: "de", meaning: "possessive and descriptive particle", strokes: 8, radical: "白", traditional: "的", structure: "Left-right",
-    hsk: [{ system: "HSK 2.0", level: "Level 1", note: "Listed as a standalone Level 1 grammar character." }, { system: "HSK 3.0", level: "Level 1", note: "Listed in the local Level 1 catalogue." }], learningTier: "High-frequency",
+    hsk: [{ system: "HSK 2.0", level: "Level 1", evidenceKind: "standalone", note: "Listed as a standalone Level 1 grammar character." }, { system: "HSK 3.0", level: "Level 1", evidenceKind: "standalone", note: "Listed in the local Level 1 catalogue." }], learningTier: "High-frequency",
     importance: "的 connects a description or owner to the noun that follows, so it appears throughout beginner reading, listening, and personal introductions.",
     components: [{ character: "白", explanation: "The left component is the wider visual anchor and should stay upright." }, { character: "勺", explanation: "The right component is compact, with its final dot kept inside the character width." }],
     readingNotes: "The grammatical particle is neutral-tone de. Read 的 as dí in 的确 and dì in 目的; these lexical readings do not replace the everyday particle reading.",
@@ -336,7 +385,7 @@ strokeOrderCharacterEntries.push(
   },
   {
     character: "一", pinyin: "yī", meaning: "one", strokes: 1, radical: "一", traditional: "一", structure: "Single-component",
-    hsk: [{ system: "HSK 2.0", level: "Level 1", note: "Listed as a standalone Level 1 number." }, { system: "HSK 3.0", level: "Level 1", note: "Listed in the local Level 1 catalogue." }], learningTier: "High-frequency",
+    hsk: [{ system: "HSK 2.0", level: "Level 1", evidenceKind: "standalone", note: "Listed as a standalone Level 1 number." }, { system: "HSK 3.0", level: "Level 1", evidenceKind: "standalone", note: "Listed in the local Level 1 catalogue." }], learningTier: "High-frequency",
     importance: "一 is the first number learners write and a building block for dates, quantities, clocks, and many common expressions.",
     components: [{ character: "一", explanation: "The single horizontal stroke is the complete character and should be level, calm, and slightly longer than tall characters' inner horizontals." }],
     readingNotes: "Its dictionary tone is yī. In normal speech it changes to yí before a fourth tone and to yì before a first, second, or third tone; these are tone changes, not three dictionary readings.",
@@ -347,7 +396,7 @@ strokeOrderCharacterEntries.push(
   },
   {
     character: "是", pinyin: "shì", meaning: "to be; correct", strokes: 9, radical: "日", traditional: "是", structure: "Top-bottom",
-    hsk: [{ system: "HSK 2.0", level: "Level 1", note: "Listed as a standalone Level 1 character." }, { system: "HSK 3.0", level: "Level 1", note: "Listed in the local Level 1 catalogue." }], learningTier: "High-frequency",
+    hsk: [{ system: "HSK 2.0", level: "Level 1", evidenceKind: "standalone", note: "Listed as a standalone Level 1 character." }, { system: "HSK 3.0", level: "Level 1", evidenceKind: "standalone", note: "Listed in the local Level 1 catalogue." }], learningTier: "High-frequency",
     importance: "是 supports identity, classification, confirmation, and many short question-and-answer patterns that beginners use every day.",
     components: [{ character: "日", explanation: "The top 日 is a balanced rectangle with a clear middle horizontal." }, { character: "疋", explanation: "The lower visual section widens gradually and finishes with a rightward foot." }],
     readingNotes: "是 is read shì with a falling tone. Keep its sound distinct from 十 shí, which differs by both vowel and tone.",
@@ -358,7 +407,7 @@ strokeOrderCharacterEntries.push(
   },
   {
     character: "在", pinyin: "zài", meaning: "at; in; be doing", strokes: 6, radical: "土", traditional: "在", structure: "Semi-enclosed",
-    hsk: [{ system: "HSK 2.0", level: "Level 1", note: "Listed as a standalone Level 1 character." }, { system: "HSK 3.0", level: "Level 1", note: "Listed in the local Level 1 catalogue." }], learningTier: "High-frequency",
+    hsk: [{ system: "HSK 2.0", level: "Level 1", evidenceKind: "standalone", note: "Listed as a standalone Level 1 character." }, { system: "HSK 3.0", level: "Level 1", evidenceKind: "standalone", note: "Listed in the local Level 1 catalogue." }], learningTier: "High-frequency",
     importance: "在 lets learners say where people and objects are, then extends naturally to actions in progress.",
     components: [{ character: "𠂇", explanation: "The upper-left covering strokes frame the space without closing it." }, { character: "土", explanation: "The lower 土 provides the grounded base and should remain centred." }],
     readingNotes: "在 is read zài with a falling tone. Its pronunciation is stable in both location and progressive patterns.",
@@ -368,12 +417,12 @@ strokeOrderCharacterEntries.push(
     commonMistake: "Do not write 土 too high; it belongs below the open upper strokes and needs a clear bottom horizontal.", confusableCharacter: { character: "左", guidance: "左 has 工 at the bottom, while 在 has 土 with a shorter upper horizontal and longer base." }, relatedCharacters: ["是", "学"], publicationStatus: "complete", seo: { title: "在 (zài) Stroke Order: Location and Progressive Guide", description: "Practise 在 (zài) with stroke order, location and progressive verb patterns, vocabulary, graded sentences, and writing guidance." },
   },
   {
-    character: "了", pinyin: "le", meaning: "completion or change particle", strokes: 2, radical: "了", traditional: "了", structure: "Single-component",
-    hsk: [{ system: "HSK 2.0", level: "Level 1", note: "Listed as a standalone Level 1 grammar character." }, { system: "HSK 3.0", level: "Level 1", note: "Listed in the local Level 1 catalogue." }], learningTier: "High-frequency",
+    character: "了", pinyin: "le", meaning: "completion or change particle", strokes: 2, radical: "亅", traditional: "了", structure: "Single-component",
+    hsk: [{ system: "HSK 2.0", level: "Level 1", evidenceKind: "standalone", note: "Listed as a standalone Level 1 grammar character." }, { system: "HSK 3.0", level: "Level 1", evidenceKind: "standalone", note: "Listed in the local Level 1 catalogue." }], learningTier: "High-frequency",
     importance: "了 helps beginners express a finished action or a new situation, two meanings that must be learned through sentence context.",
-    components: [{ character: "了", explanation: "The first stroke turns down into a hook, followed by a separate curved second stroke." }],
+    components: [{ character: "了", explanation: "Stroke 1 is 横撇: a short horizontal that turns into a left-falling stroke. Stroke 2 is 弯钩: a vertical stroke that curves into the finishing hook." }],
     readingNotes: "The particle is normally neutral-tone le. Read it with the sentence pattern instead of forcing it to mean one English tense.",
-    useNotes: "After a verb, 了 can mark a completed action. At sentence end, 了 can mark a change of state: 下雨了 means 'It has started to rain,' not simply a completed verb.", usageTitle: "Completed actions and new situations", usage: "了 is short but carries important information. Put it after a verb when an action has been completed, and notice it at the end of a sentence when the situation has newly changed. These uses can occur together, but they should not be treated as identical.", writingTip: "Make the hook in the first stroke clear but small, then place the second curved stroke separately with open space between the two strokes.",
+    useNotes: "After a verb, 了 can mark a completed action. At sentence end, 了 can mark a change of state: 下雨了 means 'It has started to rain,' not simply a completed verb.", usageTitle: "Completed actions and new situations", usage: "了 is short but carries important information. Put it after a verb when an action has been completed, and notice it at the end of a sentence when the situation has newly changed. These uses can occur together, but they should not be treated as identical.", writingTip: "Write stroke 1 as a compact 横撇, turning from the short horizontal into a left fall. Begin stroke 2 separately, draw the vertical curve, and finish with a small 弯钩.",
     examples: [{ hanzi: "来了", pinyin: "lái le", meaning: "has come" }, { hanzi: "看了", pinyin: "kàn le", meaning: "watched; read" }, { hanzi: "好了", pinyin: "hǎo le", meaning: "all right now; finished" }, { hanzi: "下雨了", pinyin: "xià yǔ le", meaning: "it has started raining" }],
     exampleSentences: [{ learningLabel: "Starter", hanzi: "我看了电影。", pinyin: "Wǒ kàn le diànyǐng.", meaning: "I watched a film." }, { learningLabel: "Developing", hanzi: "他来了，我们开始吧。", pinyin: "Tā lái le, wǒmen kāishǐ ba.", meaning: "He has arrived, so let us begin." }, { learningLabel: "Stretch", hanzi: "天黑了，孩子已经回家了。", pinyin: "Tiān hēi le, háizi yǐjīng huí jiā le.", meaning: "It has become dark, and the child has already gone home." }],
     commonMistake: "Do not join the two strokes into one long shape; the second stroke begins separately.", confusableCharacter: { character: "子", guidance: "子 has additional horizontal and lower strokes, while 了 has only the hook stroke and one separate curve." }, relatedCharacters: ["来", "去"], publicationStatus: "complete", seo: { title: "了 (le) Stroke Order: Completion and Change Guide", description: "Learn 了 (le) stroke order with completed-action and change-of-state patterns, vocabulary, graded examples, and handwriting tips." },
@@ -387,44 +436,44 @@ type BatchGuideSeed = Omit<
 
 const batchHskCards: Record<string, StrokeOrderCharacter["hsk"]> = {
   "说": [
-    { system: "HSK 2.0", level: "Level 1", note: "Word-family anchor: 说话 is listed at Level 1; it does not establish an official standalone level for everyday shuō." },
-    { system: "HSK 3.0", level: "Level 1", note: "Word-family anchor: 说话 is listed at Level 1; the standalone shuì record is not evidence for everyday shuō." },
+    { system: "HSK 2.0", level: "Level 1", evidenceKind: "word-family", note: "Word-family anchor: 说话 is listed at Level 1; it does not establish an official standalone level for everyday shuō." },
+    { system: "HSK 3.0", level: "Level 1", evidenceKind: "word-family", note: "Word-family anchor: 说话 is listed at Level 1; the standalone shuì record is not evidence for everyday shuō." },
   ],
   "学": [
-    { system: "HSK 2.0", level: "Level 1", note: "Word-family anchor: student and school vocabulary is listed at Level 1; this is not a standalone-character level claim." },
-    { system: "HSK 3.0", level: "Level 1", note: "Exact 学 (xué) record is listed at Level 1." },
+    { system: "HSK 2.0", level: "Level 1", evidenceKind: "word-family", note: "Word-family anchor: student and school vocabulary is listed at Level 1; this is not a standalone-character level claim." },
+    { system: "HSK 3.0", level: "Level 1", evidenceKind: "standalone", note: "Exact 学 (xué) record is listed at Level 1." },
   ],
   "经": [
-    { system: "HSK 2.0", level: "Level 2", note: "Word-family anchor: 已经 is listed at Level 2; this is not a standalone-character level claim." },
-    { system: "HSK 3.0", level: "Level 2", note: "Word-family anchors: 经常 and 经过 are listed at Level 2; this is not a standalone-character level claim." },
+    { system: "HSK 2.0", level: "Level 2", evidenceKind: "word-family", note: "Word-family anchor: 已经 is listed at Level 2; this is not a standalone-character level claim." },
+    { system: "HSK 3.0", level: "Level 2", evidenceKind: "word-family", note: "Word-family anchors: 经常 and 经过 are listed at Level 2; this is not a standalone-character level claim." },
   ],
   "体": [
-    { system: "HSK 2.0", level: "Level 2", note: "Word-family anchor: 身体 is listed at Level 2; this is not a standalone-character level claim." },
-    { system: "HSK 3.0", level: "Level 1", note: "Word-family anchor: 身体 is listed at Level 1; this is not a standalone-character level claim." },
+    { system: "HSK 2.0", level: "Level 2", evidenceKind: "word-family", note: "Word-family anchor: 身体 is listed at Level 2; this is not a standalone-character level claim." },
+    { system: "HSK 3.0", level: "Level 1", evidenceKind: "word-family", note: "Word-family anchor: 身体 is listed at Level 1; this is not a standalone-character level claim." },
   ],
   "议": [
-    { system: "HSK 2.0", level: "Level 3", note: "Word-family anchor: 会议 is listed at Level 3; this is not a standalone-character level claim." },
-    { system: "HSK 3.0", level: "Level 3", note: "Word-family anchor: 会议 is listed at Level 3; this is not a standalone-character level claim." },
+    { system: "HSK 2.0", level: "Level 3", evidenceKind: "word-family", note: "Word-family anchor: 会议 is listed at Level 3; this is not a standalone-character level claim." },
+    { system: "HSK 3.0", level: "Level 3", evidenceKind: "word-family", note: "Word-family anchor: 会议 is listed at Level 3; this is not a standalone-character level claim." },
   ],
   "我": [
-    { system: "HSK 2.0", level: "Level 1", note: "Exact standalone Level 1 row." },
-    { system: "HSK 3.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+    { system: "HSK 2.0", level: "Level 1", evidenceKind: "standalone", note: "Exact standalone Level 1 row." },
+    { system: "HSK 3.0", level: "Level 1", evidenceKind: "standalone", note: "Exact standalone Level 1 row." },
   ],
   "你": [
-    { system: "HSK 2.0", level: "Level 1", note: "Exact standalone Level 1 row." },
-    { system: "HSK 3.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+    { system: "HSK 2.0", level: "Level 1", evidenceKind: "standalone", note: "Exact standalone Level 1 row." },
+    { system: "HSK 3.0", level: "Level 1", evidenceKind: "standalone", note: "Exact standalone Level 1 row." },
   ],
   "人": [
-    { system: "HSK 2.0", level: "Level 1", note: "Exact standalone Level 1 row." },
-    { system: "HSK 3.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+    { system: "HSK 2.0", level: "Level 1", evidenceKind: "standalone", note: "Exact standalone Level 1 row." },
+    { system: "HSK 3.0", level: "Level 1", evidenceKind: "standalone", note: "Exact standalone Level 1 row." },
   ],
   "来": [
-    { system: "HSK 2.0", level: "Level 1", note: "Exact standalone Level 1 row." },
-    { system: "HSK 3.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+    { system: "HSK 2.0", level: "Level 1", evidenceKind: "standalone", note: "Exact standalone Level 1 row." },
+    { system: "HSK 3.0", level: "Level 1", evidenceKind: "standalone", note: "Exact standalone Level 1 row." },
   ],
   "去": [
-    { system: "HSK 2.0", level: "Level 1", note: "Exact standalone Level 1 row." },
-    { system: "HSK 3.0", level: "Level 1", note: "Exact standalone Level 1 row." },
+    { system: "HSK 2.0", level: "Level 1", evidenceKind: "standalone", note: "Exact standalone Level 1 row." },
+    { system: "HSK 3.0", level: "Level 1", evidenceKind: "standalone", note: "Exact standalone Level 1 row." },
   ],
 };
 
@@ -450,7 +499,7 @@ strokeOrderCharacterEntries.push(
   }),
   publishedBatchGuide({
     character: "经", pinyin: "jīng", meaning: "pass through; classics; experience word family", strokes: 8, radical: "纟", traditional: "經", structure: "Left-right", learningTier: "Advanced", hskNote: "已经 begins at HSK 2.0 Level 2; 经常 and 经过 begin at HSK 3.0 Level 2.",
-    importance: "经 is best learned through its word family, where it contributes to time, movement, experience, and familiar higher-level vocabulary.", components: [{ character: "纟", explanation: "The silk radical is narrow and forms three compact left-side strokes." }, { character: "圣", explanation: "The right component supplies the taller vertical structure and grounded base." }], readingNotes: "经 is read jīng with a high level tone in common word-family items such as 已经 and 经常.", useNotes: "Treat 经 as word-family material rather than a beginner standalone sentence word. 已经, 经常, and 经过 have distinct patterns and recorded Level 2 anchors.", usageTitle: "A Level 2 word family", usage: "经 appears in useful words that learners encounter after the first beginner layer. Its word family connects completed time, regular frequency, and passing through a place. Practise the full words so the character gains meaning from a reliable context.", writingTip: "Keep 纟 narrow and separate from the taller right side; let the right-side bottom horizontal provide the base.", examples: [{ hanzi: "已经", pinyin: "yǐjīng", meaning: "already" }, { hanzi: "经常", pinyin: "jīngcháng", meaning: "often" }, { hanzi: "经过", pinyin: "jīngguò", meaning: "pass through" }, { hanzi: "经验", pinyin: "jīngyàn", meaning: "experience" }], exampleSentences: [{ learningLabel: "Starter", hanzi: "我已经到了。", pinyin: "Wǒ yǐjīng dào le.", meaning: "I have already arrived." }, { learningLabel: "Developing", hanzi: "她经常在这里学习。", pinyin: "Tā jīngcháng zài zhèlǐ xuéxí.", meaning: "She often studies here." }, { learningLabel: "Stretch", hanzi: "我们经过学校以后去图书馆。", pinyin: "Wǒmen jīngguò xuéxiào yǐhòu qù túshūguǎn.", meaning: "After passing the school, we go to the library." }], commonMistake: "Do not merge the three strokes of 纟 into one zigzag; each has a distinct small turn.", confusableCharacter: { character: "轻", guidance: "Both use 纟, but 经 has 圣 on the right whereas 轻 has a different vehicle-related right side." }, relatedCharacters: ["体", "议"], seo: { title: "经 (jīng) Stroke Order: Word Family Writing Guide", description: "Learn 经 (jīng) stroke order through 已经, 经常, and 经过, with graded examples and handwriting guidance." },
+    importance: "经 is best learned through its word family, where it contributes to time, movement, experience, and familiar higher-level vocabulary.", components: [{ character: "纟", explanation: "The silk radical is narrow and forms three compact left-side strokes." }, { character: "𢀖", explanation: "The simplified right component 𢀖 supplies the taller structure and grounded base." }], readingNotes: "经 is read jīng with a high level tone in common word-family items such as 已经 and 经常.", useNotes: "Treat 经 as word-family material rather than a beginner standalone sentence word. 已经, 经常, and 经过 have distinct patterns and recorded Level 2 anchors.", usageTitle: "A Level 2 word family", usage: "经 appears in useful words that learners encounter after the first beginner layer. Its word family connects completed time, regular frequency, and passing through a place. Practise the full words so the character gains meaning from a reliable context.", writingTip: "Keep 纟 narrow and separate from the taller right side; let the right-side bottom horizontal provide the base.", examples: [{ hanzi: "已经", pinyin: "yǐjīng", meaning: "already" }, { hanzi: "经常", pinyin: "jīngcháng", meaning: "often" }, { hanzi: "经过", pinyin: "jīngguò", meaning: "pass through" }, { hanzi: "经验", pinyin: "jīngyàn", meaning: "experience" }], exampleSentences: [{ learningLabel: "Starter", hanzi: "我已经到了。", pinyin: "Wǒ yǐjīng dào le.", meaning: "I have already arrived." }, { learningLabel: "Developing", hanzi: "她经常在这里学习。", pinyin: "Tā jīngcháng zài zhèlǐ xuéxí.", meaning: "She often studies here." }, { learningLabel: "Stretch", hanzi: "我们经过学校以后去图书馆。", pinyin: "Wǒmen jīngguò xuéxiào yǐhòu qù túshūguǎn.", meaning: "After passing the school, we go to the library." }], commonMistake: "Do not merge the three strokes of 纟 into one zigzag; each has a distinct small turn.", confusableCharacter: { character: "轻", guidance: "经 and 轻 share the right component 𢀖; they differ on the left: 经 has 纟, while 轻 has 车." }, relatedCharacters: ["体", "议"], seo: { title: "经 (jīng) Stroke Order: Word Family Writing Guide", description: "Learn 经 (jīng) stroke order through 已经, 经常, and 经过, with graded examples and handwriting guidance." },
   }),
   publishedBatchGuide({
     character: "体", pinyin: "tǐ", meaning: "body; form; system word family", strokes: 7, radical: "亻", traditional: "體", structure: "Left-right", learningTier: "Advanced", hskNote: "身体 begins at HSK 2.0 Level 2 and is the main early word-family anchor.",
@@ -458,7 +507,7 @@ strokeOrderCharacterEntries.push(
   }),
   publishedBatchGuide({
     character: "议", pinyin: "yì", meaning: "discuss; deliberate word family", strokes: 5, radical: "讠", traditional: "議", structure: "Left-right", learningTier: "Advanced", hskNote: "会议 appears at HSK 2.0 and HSK 3.0 Level 3; use it as a word-family anchor.",
-    importance: "议 is most useful through formal discussion and meeting vocabulary, where it signals deliberation rather than casual beginner speech.", components: [{ character: "讠", explanation: "The speech radical is compact and written first." }, { character: "义", explanation: "The right component has an open diagonal shape and final crossing stroke." }], readingNotes: "议 is read yì with a falling tone in 会议, 议论, and 建议-related vocabulary.", useNotes: "Learn 议 in complete words such as 会议 and 议论. The recorded Level 3 meeting anchor supports word-family learning, not an unsupported standalone beginner level.", usageTitle: "Discussion and meeting word family", usage: "议 appears in language about discussing, proposing, and holding meetings. It is an advanced extension because learners normally meet it inside longer words. Practise the full word with its situation, such as a meeting or a suggestion, rather than using a bare character.", writingTip: "Write the narrow 讠 first, then keep 义 open enough for its crossing diagonal to remain visible.", examples: [{ hanzi: "会议", pinyin: "huìyì", meaning: "meeting" }, { hanzi: "议论", pinyin: "yìlùn", meaning: "discuss; comment" }, { hanzi: "建议", pinyin: "jiànyì", meaning: "suggestion" }, { hanzi: "议题", pinyin: "yìtí", meaning: "agenda topic" }], exampleSentences: [{ learningLabel: "Starter", hanzi: "下午有一个会议。", pinyin: "Xiàwǔ yǒu yí ge huìyì.", meaning: "There is a meeting this afternoon." }, { learningLabel: "Developing", hanzi: "我们讨论这个问题。", pinyin: "Wǒmen tǎolùn zhège wèntí.", meaning: "We discuss this question." }, { learningLabel: "Stretch", hanzi: "会议开始前，请准备你的建议。", pinyin: "Huìyì kāishǐ qián, qǐng zhǔnbèi nǐ de jiànyì.", meaning: "Please prepare your suggestion before the meeting begins." }], commonMistake: "Do not write 讠 as full 言 or let the right-side diagonal close into a box.", confusableCharacter: { character: "义", guidance: "义 is the right component alone; 议 adds the speech radical 讠 on the left." }, relatedCharacters: ["经", "体"], seo: { title: "议 (yì) Stroke Order: Meeting Word Family Guide", description: "Learn 议 (yì) through 会议 and discussion vocabulary, with stroke order, graded examples, and writing guidance." },
+    importance: "议 is most useful through formal discussion and meeting vocabulary, where it signals deliberation rather than casual beginner speech.", components: [{ character: "讠", explanation: "The speech radical is compact and written first." }, { character: "义", explanation: "The right component has an open diagonal shape and final crossing stroke." }], readingNotes: "议 is read yì with a falling tone in 会议, 议论, and 建议-related vocabulary.", useNotes: "Learn 议 in complete words such as 会议 and 议论. The recorded Level 3 meeting anchor supports word-family learning, not an unsupported standalone beginner level.", usageTitle: "Discussion and meeting word family", usage: "议 appears in language about discussing, proposing, and holding meetings. It is an advanced extension because learners normally meet it inside longer words. Practise the full word with its situation, such as a meeting or a suggestion, rather than using a bare character.", writingTip: "Write the narrow 讠 first, then keep 义 open enough for its crossing diagonal to remain visible.", examples: [{ hanzi: "会议", pinyin: "huìyì", meaning: "meeting" }, { hanzi: "议论", pinyin: "yìlùn", meaning: "discuss; comment" }, { hanzi: "建议", pinyin: "jiànyì", meaning: "suggestion" }, { hanzi: "议题", pinyin: "yìtí", meaning: "agenda topic" }], exampleSentences: [{ learningLabel: "Starter", hanzi: "下午有一个会议。", pinyin: "Xiàwǔ yǒu yí ge huìyì.", meaning: "There is a meeting this afternoon." }, { learningLabel: "Developing", hanzi: "我们在会议上讨论这个问题。", pinyin: "Wǒmen zài huìyì shàng tǎolùn zhège wèntí.", meaning: "We discuss this question at the meeting." }, { learningLabel: "Stretch", hanzi: "会议开始前，请准备你的建议。", pinyin: "Huìyì kāishǐ qián, qǐng zhǔnbèi nǐ de jiànyì.", meaning: "Please prepare your suggestion before the meeting begins." }], commonMistake: "Do not write 讠 as full 言 or let the right-side diagonal close into a box.", confusableCharacter: { character: "义", guidance: "义 is the right component alone; 议 adds the speech radical 讠 on the left." }, relatedCharacters: ["经", "体"], seo: { title: "议 (yì) Stroke Order: Meeting Word Family Guide", description: "Learn 议 (yì) through 会议 and discussion vocabulary, with stroke order, graded examples, and writing guidance." },
   }),
 );
 
@@ -490,25 +539,15 @@ const strokeOrderCharacterByHanzi = new Map<string, StrokeOrderCharacter>(
   indexableStrokeOrderCharacters.map((entry) => [entry.character, entry]),
 );
 
-export const strokeOrderLearningTiers = [
-  "High-frequency",
-  "Beginner",
-  "Advanced",
-  "Foundation",
-] as const;
-
-export type StrokeOrderLearningTier = (typeof strokeOrderLearningTiers)[number];
-
 function getStrokeOrderLearningTier(
   entry: Pick<StrokeOrderCharacter, "learningTier">,
 ): StrokeOrderLearningTier {
-  if (entry.learningTier === "High-frequency" || entry.learningTier === "Beginner") {
-    return entry.learningTier;
+  const tier = entry.learningTier as string;
+  if ((strokeOrderLearningTiers as readonly string[]).includes(tier)) {
+    return tier as StrokeOrderLearningTier;
   }
 
-  return entry.learningTier === "Advanced" || entry.learningTier === "Advanced extension"
-    ? "Advanced"
-    : "Foundation";
+  throw new Error(`Unknown stroke-order learning tier: ${tier}`);
 }
 
 export function groupStrokeOrderCharactersByTier(
