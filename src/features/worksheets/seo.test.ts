@@ -4,6 +4,12 @@ import path from "node:path";
 import test from "node:test";
 
 import { worksheetTemplates } from "./data";
+import { strokeOrderCharacters } from "./stroke-order-characters";
+import {
+  buildPublicSitemapPaths,
+  buildStrokeOrderSitemapPaths,
+  toAbsoluteUrl,
+} from "./seo";
 import * as worksheetSeo from "./seo";
 import GeneratorPage, {
   generateMetadata as generateGeneratorMetadata,
@@ -11,7 +17,6 @@ import GeneratorPage, {
 import sitemap from "../../app/sitemap";
 import robots from "../../app/robots";
 
-const { buildPublicSitemapPaths, toAbsoluteUrl } = worksheetSeo;
 const projectRoot = process.cwd();
 
 test("buildPublicSitemapPaths includes every differentiated template page", () => {
@@ -257,6 +262,19 @@ test("route metadata owns canonicals instead of inheriting the homepage URL", as
     const source = await readFile(path.join(projectRoot, route), "utf8");
     assert.match(source, /buildPageSeoMetadata/, route);
   }
+});
+
+test("stroke-order sitemap paths exclude a synthetic draft entry", () => {
+  const paths = buildStrokeOrderSitemapPaths([
+    ...strokeOrderCharacters,
+    { character: "草稿", publicationStatus: "draft" as const },
+  ]);
+
+  assert.equal(paths.includes("/stroke-order/草稿"), false);
+  assert.deepEqual(
+    paths,
+    strokeOrderCharacters.map((entry) => `/stroke-order/${entry.character}`),
+  );
 });
 
 test("curated Hanzi pages have static routes and unique sitemap entries", async () => {

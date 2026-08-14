@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { StrokeOrderClient } from "@/features/worksheets/components/stroke-order-client";
 import { PublicPageShell } from "@/features/worksheets/components/site-shell";
-import { strokeOrderCharacters } from "@/features/worksheets/stroke-order-characters";
+import { indexableStrokeOrderCharacters as strokeOrderCharacters } from "@/features/worksheets/stroke-order-characters";
 import { envConfigs } from "@/config";
 import { Link } from "@/core/i18n/navigation";
 import { buildPageSeoMetadata } from "@/features/worksheets/seo";

@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  filterIndexableStrokeOrderCharacters,
   getStrokeOrderCharacter,
+  indexableStrokeOrderCharacters,
   strokeOrderCharacters,
 } from "./stroke-order-characters";
 
@@ -38,6 +40,76 @@ test("character lookup exposes only curated indexable entries", () => {
   assert.equal(getStrokeOrderCharacter("年")?.pinyin, "nián");
   assert.equal(getStrokeOrderCharacter("佛")?.pinyin, "fó");
   assert.equal(getStrokeOrderCharacter("永"), undefined);
+});
+
+test("complete guides expose the publishing and learning-content contract", () => {
+  for (const entry of strokeOrderCharacters) {
+    assert.equal(entry.publicationStatus, "complete", entry.character);
+    assert.ok(entry.learningTier.length > 0, `${entry.character} learning tier`);
+    assert.ok(entry.importance.length > 0, `${entry.character} importance`);
+    assert.ok(entry.components.length > 0, `${entry.character} components`);
+    assert.ok(
+      entry.components.every(
+        (component) =>
+          component.character.length > 0 && component.explanation.length > 0,
+      ),
+      `${entry.character} component explanations`,
+    );
+    assert.ok(entry.readingNotes.length > 0, `${entry.character} reading notes`);
+    assert.ok(entry.useNotes.length > 0, `${entry.character} use notes`);
+    assert.ok(entry.exampleSentences.length >= 3, `${entry.character} sentences`);
+    assert.ok(
+      entry.exampleSentences.every(
+        (sentence) =>
+          sentence.hanzi.length > 0 &&
+          sentence.pinyin.length > 0 &&
+          sentence.meaning.length > 0,
+      ),
+      `${entry.character} sentence details`,
+    );
+    assert.ok(entry.commonMistake.length > 0, `${entry.character} common mistake`);
+    assert.ok(
+      entry.confusableCharacter.character.length > 0 &&
+        entry.confusableCharacter.guidance.length > 0,
+      `${entry.character} confusable character guidance`,
+    );
+    assert.ok(entry.relatedCharacters.length > 0, `${entry.character} related characters`);
+    assert.ok(entry.seo.title.length > 0, `${entry.character} SEO title`);
+    assert.ok(entry.seo.description.length > 0, `${entry.character} SEO description`);
+  }
+
+  assert.equal(
+    new Set(strokeOrderCharacters.map((entry) => entry.seo.title)).size,
+    strokeOrderCharacters.length,
+  );
+  assert.equal(
+    new Set(strokeOrderCharacters.map((entry) => entry.seo.description)).size,
+    strokeOrderCharacters.length,
+  );
+});
+
+test("publication filter keeps synthetic drafts out of indexable collections", () => {
+  const published = filterIndexableStrokeOrderCharacters([
+    ...strokeOrderCharacters,
+    { character: "草稿", publicationStatus: "draft" as const },
+  ]);
+
+  assert.deepEqual(published, indexableStrokeOrderCharacters);
+  assert.equal(published.some((entry) => entry.character === "草稿"), false);
+});
+
+test("related characters resolve to other indexable guides", () => {
+  for (const entry of indexableStrokeOrderCharacters) {
+    for (const relatedCharacter of entry.relatedCharacters) {
+      assert.notEqual(relatedCharacter, entry.character);
+      assert.ok(
+        indexableStrokeOrderCharacters.some(
+          (candidate) => candidate.character === relatedCharacter,
+        ),
+        `${entry.character} related guide ${relatedCharacter}`,
+      );
+    }
+  }
 });
 
 test("character lookup accepts URL-encoded route parameters", () => {
