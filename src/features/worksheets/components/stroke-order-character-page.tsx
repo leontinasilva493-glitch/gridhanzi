@@ -25,6 +25,7 @@ export function StrokeOrderCharacterPage({
   const worksheetHref = `/generator?words=${encodeURIComponent(entry.character)}`;
   const hskPickerHref = "/generator?hskSystem=2.0&hskLevel=1";
   const relatedCharacters = getRelatedStrokeOrderCharacters(entry);
+  const [h1Lead = "", h1Tail = ""] = entry.seo.h1.split(entry.character);
 
   return (
     <PublicPageShell active="stroke-order">
@@ -71,7 +72,7 @@ export function StrokeOrderCharacterPage({
           <div>
             <p className="hs-kicker">Character writing guide</p>
             <h1 className="hs-display mt-3 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl">
-              <span className="hs-hanzi-context">{entry.character}</span> ({entry.pinyin}): {entry.meaning} — Stroke Order &amp; Writing Guide
+              {h1Lead}<span className="hs-hanzi-context">{entry.character}</span>{h1Tail}
             </h1>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-[#566276]">
               Watch every stroke, inspect the complete written sequence, learn
@@ -145,7 +146,7 @@ export function StrokeOrderCharacterPage({
           <article className="hs-card p-6 sm:p-8">
             <p className="hs-kicker">Say it clearly</p>
             <h2 className="hs-display mt-2 text-3xl font-bold">
-              Pronunciation notes
+              Pronunciation notes for {entry.character} ({entry.pinyin})
             </h2>
             <p className="mt-4 text-base leading-8 text-[#4e5d70]">
               {entry.readingNotes}
@@ -251,7 +252,7 @@ export function StrokeOrderCharacterPage({
           <article className="hs-card border-[#d8c49f] bg-[#fff9ed] p-6">
             <p className="hs-kicker">Common mistake</p>
             <h2 className="hs-display mt-2 text-2xl font-bold">
-              A writing check before you practise
+              Common writing mistakes with {entry.character}
             </h2>
             <p className="mt-3 text-sm leading-7 text-[#5a5f65]">
               {entry.commonMistake}
@@ -303,7 +304,7 @@ export function StrokeOrderCharacterPage({
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className="hs-kicker">Keep exploring</p>
-              <h2 className="hs-display mt-2 text-2xl font-bold">More stroke-order guides</h2>
+              <h2 className="hs-display mt-2 text-2xl font-bold">More stroke-order guides for {entry.character}</h2>
             </div>
             <Link href="/stroke-order" className="hs-secondary-button">
               Search another character <ArrowRight className="size-4" />

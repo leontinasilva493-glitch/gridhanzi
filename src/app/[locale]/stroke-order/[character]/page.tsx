@@ -7,7 +7,7 @@ import {
   getStrokeOrderCharacter,
   indexableStrokeOrderCharacters,
 } from "@/features/worksheets/stroke-order-characters";
-import { buildPageSeoMetadata } from "@/features/worksheets/seo";
+import { buildPageSeoMetadata, toAbsoluteUrl } from "@/features/worksheets/seo";
 
 type PageProps = {
   params: Promise<{ locale: string; character: string }>;
@@ -41,6 +41,12 @@ export async function generateMetadata({
       ...pageSeo.openGraph,
       title,
       description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [toAbsoluteUrl(envConfigs.app_url, "/og-gridhanzi.png")],
     },
   };
 }
