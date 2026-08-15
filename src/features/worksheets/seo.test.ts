@@ -16,6 +16,7 @@ import GeneratorPage, {
 } from "../../app/[locale]/generator/page";
 import sitemap from "../../app/sitemap";
 import robots from "../../app/robots";
+import { generateMetadata as generateStrokeOrderMetadata } from "../../app/[locale]/stroke-order/[character]/page";
 
 const projectRoot = process.cwd();
 
@@ -316,4 +317,32 @@ test("curated Hanzi pages have static routes and unique sitemap entries", async 
   assert.match(routeSource, /notFound\(\)/);
   assert.match(routeSource, /buildPageSeoMetadata/);
   assert.match(routeSource, /StrokeOrderCharacterPage/);
+});
+
+test("character routes publish approved standard, Open Graph, and Twitter metadata", async () => {
+  const approvedMetadata = [
+    ["\u7684", "\u7684 (de) Stroke Order, Meaning & Grammar", "Learn how to write \u7684 (de), the common possessive and descriptive particle. See its 8 strokes, neutral-tone usage, example words, sentences, and worksheet practice."],
+    ["\u4f60", "\u4f60 (n\u01d0) Stroke Order, Meaning & Examples", "Learn how to write \u4f60 (n\u01d0), meaning \u201cyou.\u201d See its 7-stroke structure and practise \u4f60\u597d, \u4f60\u4eec and other useful phrases and sentences."],
+    ["\u7ecf", "\u7ecf (j\u012bng) Stroke Order, Meaning & Common Words", "Learn how to write \u7ecf (j\u012bng) through \u5df2\u7ecf, \u7ecf\u5e38, \u7ecf\u8fc7 and \u7ecf\u9a8c. See its 8 strokes, \u7e9f + \u22016 structure and example sentences."],
+    ["\u4f5b", "\u4f5b (f\u00f3/f\u00fa) Stroke Order, Meaning & Readings", "Learn how to write \u4f5b and distinguish f\u00f3 in Buddhist vocabulary from f\u00fa in \u4eff\u4f5b. See its 7 strokes, components, example words and sentences."],
+  ] as const;
+
+  for (const [character, title, description] of approvedMetadata) {
+    const metadata = await generateStrokeOrderMetadata({
+      params: Promise.resolve({ locale: "zh", character }),
+    });
+
+    assert.equal(metadata.twitter?.title, title, `${character} Twitter title`);
+    assert.equal(metadata.twitter?.description, description, `${character} Twitter description`);
+    assert.equal(metadata.title, title, `${character} title`);
+    assert.equal(metadata.description, description, `${character} description`);
+    assert.equal(metadata.openGraph?.title, title, `${character} Open Graph title`);
+    assert.equal(metadata.openGraph?.description, description, `${character} Open Graph description`);
+    assert.equal(
+      metadata.alternates?.canonical,
+      `https://gridhanzi.org/zh/stroke-order/${character}`,
+      `${character} canonical`,
+    );
+    assert.deepEqual(metadata.robots, { index: false, follow: true }, `${character} Chinese noindex`);
+  }
 });

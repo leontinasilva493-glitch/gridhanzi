@@ -415,3 +415,49 @@ test("佛 explains its alternate reading in 仿佛", () => {
   assert.match(`${entry.usage} ${entry.examples.map((word) => word.pinyin).join(" ")}`, /fú/);
   assert.ok(entry.examples.some((word) => word.hanzi === "仿佛"));
 });
+
+test("published character guides expose the approved character-specific search metadata", () => {
+  const approvedSeo = [
+    ["\u7684", "de", "de", "\u7684 (de) Stroke Order, Meaning & Grammar", "How to Write \u7684 (de): Stroke Order, Meaning & Usage", "Learn how to write \u7684 (de), the common possessive and descriptive particle. See its 8 strokes, neutral-tone usage, example words, sentences, and worksheet practice."],
+    ["\u4e00", "y\u012b", "y\u012b", "\u4e00 (y\u012b) Stroke Order, Meaning & Tone Changes", "How to Write \u4e00 (y\u012b): Stroke Order and Tone Changes", "Learn how to write \u4e00 (y\u012b), meaning \u201cone.\u201d Follow its single stroke and understand when y\u012b changes to y\u00ed or y\u00ec in common words and sentences."],
+    ["\u662f", "sh\u00ec", "sh\u00ec", "\u662f (sh\u00ec) Stroke Order, Meaning & Usage", "How to Write \u662f (sh\u00ec): Stroke Order, Meaning & Usage", "Learn how to write \u662f (sh\u00ec), meaning \u201cto be\u201d or \u201ccorrect.\u201d See its 9 strokes and learn identity, question and negation patterns with examples."],
+    ["\u5728", "z\u00e0i", "z\u00e0i", "\u5728 (z\u00e0i) Stroke Order, Meaning & Grammar", "How to Write \u5728 (z\u00e0i): Location and Ongoing Actions", "Learn how to write \u5728 (z\u00e0i) and use it for location and ongoing actions. Follow its 6 strokes and practise common grammar patterns and sentences."],
+    ["\u4e86", "le", "le", "\u4e86 (le) Stroke Order, Meaning & Grammar", "How to Write \u4e86 (le): Stroke Order and Two Core Uses", "Learn how to write \u4e86 (le) and use it for completed actions and changes of state. See its 2 strokes, example sentences and common learner mistakes."],
+    ["\u6211", "w\u01d2", "w\u01d2", "\u6211 (w\u01d2) Stroke Order, Meaning & Examples", "How to Write \u6211 (w\u01d2): Stroke Order, Meaning & Examples", "Learn how to write \u6211 (w\u01d2), meaning \u201cI\u201d or \u201cme.\u201d Follow its 7 strokes and practise first-person phrases, sentences and printable writing grids."],
+    ["\u4f60", "n\u01d0", "n\u01d0", "\u4f60 (n\u01d0) Stroke Order, Meaning & Examples", "How to Write \u4f60 (n\u01d0): Stroke Order, Meaning & Examples", "Learn how to write \u4f60 (n\u01d0), meaning \u201cyou.\u201d See its 7-stroke structure and practise \u4f60\u597d, \u4f60\u4eec and other useful phrases and sentences."],
+    ["\u4eba", "r\u00e9n", "r\u00e9n", "\u4eba (r\u00e9n) Stroke Order, Meaning & Examples", "How to Write \u4eba (r\u00e9n): Stroke Order, Meaning & Examples", "Learn how to write \u4eba (r\u00e9n), meaning \u201cperson\u201d or \u201cpeople.\u201d Follow its 2 strokes, compare \u4eba with \u5165, and practise common words and sentences."],
+    ["\u6765", "l\u00e1i", "l\u00e1i", "\u6765 (l\u00e1i) Stroke Order, Meaning & Direction", "How to Write \u6765 (l\u00e1i): Stroke Order and Directional Use", "Learn how to write \u6765 (l\u00e1i), meaning \u201cto come.\u201d Follow its 7 strokes and understand movement toward a speaker or reference point by comparing \u6765 and \u53bb."],
+    ["\u53bb", "q\u00f9", "q\u00f9", "\u53bb (q\u00f9) Stroke Order, Meaning & Direction", "How to Write \u53bb (q\u00f9): Stroke Order and Directional Use", "Learn how to write \u53bb (q\u00f9), meaning \u201cto go.\u201d See its 5 strokes and understand movement away from a reference point through words and sentences."],
+    ["\u8bf4", "shu\u014d", "shu\u014d", "\u8bf4 (shu\u014d) Stroke Order, Meaning & Readings", "How to Write \u8bf4 (shu\u014d): Stroke Order, Usage & Readings", "Learn how to write \u8bf4 (shu\u014d), meaning \u201cto say\u201d or \u201cspeak.\u201d See its 9 strokes, everyday speech patterns and the alternate shu\u00ec reading in \u8bf4\u670d."],
+    ["\u5b66", "xu\u00e9", "xu\u00e9", "\u5b66 (xu\u00e9) Stroke Order, Meaning & Examples", "How to Write \u5b66 (xu\u00e9): Stroke Order, Meaning & Word Family", "Learn how to write \u5b66 (xu\u00e9), meaning \u201clearn\u201d or \u201cstudy.\u201d Explore its structure and practise useful words including \u5b66\u751f, \u5b66\u6821 and \u5b66\u4e60."],
+    ["\u7ecf", "j\u012bng", "j\u012bng", "\u7ecf (j\u012bng) Stroke Order, Meaning & Common Words", "How to Write \u7ecf (j\u012bng): Stroke Order and Common Words", "Learn how to write \u7ecf (j\u012bng) through \u5df2\u7ecf, \u7ecf\u5e38, \u7ecf\u8fc7 and \u7ecf\u9a8c. See its 8 strokes, \u7e9f + \u22016 structure and example sentences."],
+    ["\u4f53", "t\u01d0", "t\u01d0", "\u4f53 (t\u01d0) Stroke Order, Meaning & Common Words", "How to Write \u4f53 (t\u01d0): Stroke Order and Common Words", "Learn how to write \u4f53 (t\u01d0) through \u8eab\u4f53, \u4f53\u80b2, \u4f53\u91cd and \u6574\u4f53. Follow its 7 strokes and compare its \u4ebb + \u672c structure with \u4f11."],
+    ["\u8bae", "y\u00ec", "y\u00ec", "\u8bae (y\u00ec) Stroke Order, Meaning & Common Words", "How to Write \u8bae (y\u00ec): Stroke Order and Discussion Words", "Learn how to write \u8bae (y\u00ec) through \u4f1a\u8bae, \u5efa\u8bae, \u8bae\u8bba and \u8bae\u9898. See its 5 strokes, \u8ba0 + \u4e49 structure and meeting-related examples."],
+    ["\u7231", "\u00e0i", "\u00e0i", "\u7231 (\u00e0i) Stroke Order, Meaning & Examples", "How to Write \u7231 (\u00e0i): Stroke Order, Meaning & Examples", "Learn how to write \u7231 (\u00e0i), meaning \u201cto love\u201d or \u201clike.\u201d Follow its 10 strokes and practise common words, graded sentences and printable grids."],
+    ["\u5e74", "ni\u00e1n", "ni\u00e1n", "\u5e74 (ni\u00e1n) Stroke Order, Meaning & Examples", "How to Write \u5e74 (ni\u00e1n): Stroke Order, Meaning & Examples", "Learn how to write \u5e74 (ni\u00e1n), meaning \u201cyear.\u201d Follow its 6 strokes and practise calendar words such as \u4eca\u5e74, \u660e\u5e74 and \u53bb\u5e74."],
+    ["\u4f5b", "f\u00f3", "f\u00f3/f\u00fa", "\u4f5b (f\u00f3/f\u00fa) Stroke Order, Meaning & Readings", "How to Write \u4f5b (f\u00f3/f\u00fa): Stroke Order and Readings", "Learn how to write \u4f5b and distinguish f\u00f3 in Buddhist vocabulary from f\u00fa in \u4eff\u4f5b. See its 7 strokes, components, example words and sentences."],
+  ] as const;
+
+  for (const [character, pinyin, displayPinyin, title, h1, description] of approvedSeo) {
+    const entry = getStrokeOrderCharacter(character);
+
+    assert.ok(entry, `${character} is published`);
+    assert.equal(entry.pinyin, pinyin, `${character} primary Pinyin`);
+    assert.equal(entry.seo.title, title, `${character} title`);
+    assert.equal(entry.seo.description, description, `${character} description`);
+    assert.equal(entry.seo.h1, h1, `${character} H1`);
+    assert.ok(entry.seo.title.includes(character), `${character} title character`);
+    assert.ok(entry.seo.title.includes(displayPinyin), `${character} title Pinyin`);
+    assert.ok(entry.seo.title.includes("Stroke Order"), `${character} title stroke order`);
+    assert.ok(entry.seo.description.includes(character), `${character} description character`);
+    assert.ok(entry.seo.description.includes(pinyin), `${character} description Pinyin`);
+    assert.ok(entry.seo.h1.includes(character), `${character} H1 character`);
+    assert.ok(entry.seo.h1.includes(displayPinyin), `${character} H1 Pinyin`);
+  }
+});
+
+test("every published character guide provides a character-specific SEO H1", () => {
+  for (const entry of strokeOrderCharacters) {
+    assert.equal(typeof entry.seo.h1, "string", `${entry.character} H1 exists`);
+  }
+});
