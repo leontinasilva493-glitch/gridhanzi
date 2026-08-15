@@ -25,7 +25,11 @@ export function StrokeOrderCharacterPage({
   const worksheetHref = `/generator?words=${encodeURIComponent(entry.character)}`;
   const hskPickerHref = "/generator?hskSystem=2.0&hskLevel=1";
   const relatedCharacters = getRelatedStrokeOrderCharacters(entry);
-  const [h1Lead = "", h1Tail = ""] = entry.seo.h1.split(entry.character);
+  const h1CharacterIndex = entry.seo.h1.indexOf(entry.character);
+  const h1Lead = entry.seo.h1.slice(0, h1CharacterIndex);
+  const h1Tail = entry.seo.h1.slice(
+    h1CharacterIndex + entry.character.length,
+  );
 
   return (
     <PublicPageShell active="stroke-order">
@@ -72,7 +76,13 @@ export function StrokeOrderCharacterPage({
           <div>
             <p className="hs-kicker">Character writing guide</p>
             <h1 className="hs-display mt-3 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl">
-              {h1Lead}<span className="hs-hanzi-context">{entry.character}</span>{h1Tail}
+              {h1CharacterIndex >= 0 ? (
+                <>
+                  {h1Lead}
+                  <span className="hs-hanzi-context">{entry.character}</span>
+                  {h1Tail}
+                </>
+              ) : entry.seo.h1}
             </h1>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-[#566276]">
               Watch every stroke, inspect the complete written sequence, learn
@@ -304,7 +314,7 @@ export function StrokeOrderCharacterPage({
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className="hs-kicker">Keep exploring</p>
-              <h2 className="hs-display mt-2 text-2xl font-bold">More stroke-order guides for {entry.character}</h2>
+              <h2 className="hs-display mt-2 text-2xl font-bold">Characters related to {entry.character}</h2>
             </div>
             <Link href="/stroke-order" className="hs-secondary-button">
               Search another character <ArrowRight className="size-4" />

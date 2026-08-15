@@ -430,7 +430,7 @@ test("published character guides expose the approved character-specific search m
     ["\u53bb", "q\u00f9", "q\u00f9", "\u53bb (q\u00f9) Stroke Order, Meaning & Direction", "How to Write \u53bb (q\u00f9): Stroke Order and Directional Use", "Learn how to write \u53bb (q\u00f9), meaning \u201cto go.\u201d See its 5 strokes and understand movement away from a reference point through words and sentences."],
     ["\u8bf4", "shu\u014d", "shu\u014d", "\u8bf4 (shu\u014d) Stroke Order, Meaning & Readings", "How to Write \u8bf4 (shu\u014d): Stroke Order, Usage & Readings", "Learn how to write \u8bf4 (shu\u014d), meaning \u201cto say\u201d or \u201cspeak.\u201d See its 9 strokes, everyday speech patterns and the alternate shu\u00ec reading in \u8bf4\u670d."],
     ["\u5b66", "xu\u00e9", "xu\u00e9", "\u5b66 (xu\u00e9) Stroke Order, Meaning & Examples", "How to Write \u5b66 (xu\u00e9): Stroke Order, Meaning & Word Family", "Learn how to write \u5b66 (xu\u00e9), meaning \u201clearn\u201d or \u201cstudy.\u201d Explore its structure and practise useful words including \u5b66\u751f, \u5b66\u6821 and \u5b66\u4e60."],
-    ["\u7ecf", "j\u012bng", "j\u012bng", "\u7ecf (j\u012bng) Stroke Order, Meaning & Common Words", "How to Write \u7ecf (j\u012bng): Stroke Order and Common Words", "Learn how to write \u7ecf (j\u012bng) through \u5df2\u7ecf, \u7ecf\u5e38, \u7ecf\u8fc7 and \u7ecf\u9a8c. See its 8 strokes, \u7e9f + \u22016 structure and example sentences."],
+    ["\u7ecf", "j\u012bng", "j\u012bng", "\u7ecf (j\u012bng) Stroke Order, Meaning & Common Words", "How to Write \u7ecf (j\u012bng): Stroke Order and Common Words", "Learn how to write \u7ecf (j\u012bng) through \u5df2\u7ecf, \u7ecf\u5e38, \u7ecf\u8fc7 and \u7ecf\u9a8c. See its 8 strokes, \u7e9f + \u{22016} structure and example sentences."],
     ["\u4f53", "t\u01d0", "t\u01d0", "\u4f53 (t\u01d0) Stroke Order, Meaning & Common Words", "How to Write \u4f53 (t\u01d0): Stroke Order and Common Words", "Learn how to write \u4f53 (t\u01d0) through \u8eab\u4f53, \u4f53\u80b2, \u4f53\u91cd and \u6574\u4f53. Follow its 7 strokes and compare its \u4ebb + \u672c structure with \u4f11."],
     ["\u8bae", "y\u00ec", "y\u00ec", "\u8bae (y\u00ec) Stroke Order, Meaning & Common Words", "How to Write \u8bae (y\u00ec): Stroke Order and Discussion Words", "Learn how to write \u8bae (y\u00ec) through \u4f1a\u8bae, \u5efa\u8bae, \u8bae\u8bba and \u8bae\u9898. See its 5 strokes, \u8ba0 + \u4e49 structure and meeting-related examples."],
     ["\u7231", "\u00e0i", "\u00e0i", "\u7231 (\u00e0i) Stroke Order, Meaning & Examples", "How to Write \u7231 (\u00e0i): Stroke Order, Meaning & Examples", "Learn how to write \u7231 (\u00e0i), meaning \u201cto love\u201d or \u201clike.\u201d Follow its 10 strokes and practise common words, graded sentences and printable grids."],
@@ -460,4 +460,12 @@ test("every published character guide provides a character-specific SEO H1", () 
   for (const entry of strokeOrderCharacters) {
     assert.equal(typeof entry.seo.h1, "string", `${entry.character} H1 exists`);
   }
+});
+
+test("经 SEO keeps the approved supplementary-plane component glyph", () => {
+  const description = getStrokeOrderCharacter("经")?.seo.description;
+
+  assert.ok(description);
+  assert.match(description, /纟 \+ 𢀖 structure/);
+  assert.doesNotMatch(description, /∁6|\\u22016/);
 });

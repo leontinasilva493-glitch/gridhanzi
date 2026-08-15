@@ -1,9 +1,78 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { NextIntlClientProvider } from "next-intl";
+
+import { StrokeOrderCharacterPage } from "./components/stroke-order-character-page";
+import {
+  getStrokeOrderCharacter,
+  type StrokeOrderCharacter,
+} from "./stroke-order-characters";
 
 const projectFile = (path: string) =>
   readFile(new URL(`../../../${path}`, import.meta.url), "utf8");
+
+const renderCharacterPage = (entry: StrokeOrderCharacter) =>
+  renderToStaticMarkup(
+    createElement(
+      NextIntlClientProvider,
+      {
+        locale: "en",
+        messages: {},
+        children: createElement(StrokeOrderCharacterPage, {
+          entry,
+          locale: "en",
+        }),
+      },
+    ),
+  );
+
+const headingMarkup = (html: string, level: 1 | 2) =>
+  html.match(new RegExp(`<h${level}\\b[^>]*>[\\s\\S]*?<\\/h${level}>`, "g")) ?? [];
+
+const headingText = (markup: string) =>
+  markup
+    .replace(/<[^>]+>/g, "")
+    .replaceAll("&amp;", "&")
+    .replaceAll("&quot;", '"')
+    .replaceAll("&#x27;", "'")
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">");
+
+test("stroke-order character page renders its approved H1 and character-specific H2s", () => {
+  const entry = getStrokeOrderCharacter("经");
+  assert.ok(entry);
+
+  const html = renderCharacterPage(entry);
+  const h1s = headingMarkup(html, 1);
+  const h2s = headingMarkup(html, 2).map(headingText);
+
+  assert.equal(h1s.length, 1);
+  assert.equal(headingText(h1s[0]), entry.seo.h1);
+  assert.ok(h2s.includes(`Pronunciation notes for ${entry.character} (${entry.pinyin})`));
+  assert.ok(h2s.includes(`Common writing mistakes with ${entry.character}`));
+  assert.ok(h2s.includes(`Characters related to ${entry.character}`));
+});
+
+test("stroke-order character page preserves a repeated character in the H1 suffix", () => {
+  const entry = getStrokeOrderCharacter("经");
+  assert.ok(entry);
+  const repeatedH1 = "How to Write 经 (jīng): Compare 经 in Words";
+  const html = renderCharacterPage({
+    ...entry,
+    seo: { ...entry.seo, h1: repeatedH1 },
+  });
+  const h1s = headingMarkup(html, 1);
+
+  assert.equal(h1s.length, 1);
+  assert.equal(headingText(h1s[0]), repeatedH1);
+  assert.equal(
+    h1s[0].match(/<span class="hs-hanzi-context">经<\/span>/g)?.length,
+    1,
+  );
+});
 
 test("homepage workbench keeps one primary action and a low-emphasis example", async () => {
   const source = await projectFile(
