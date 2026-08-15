@@ -4,7 +4,8 @@ import { envConfigs } from "@/config";
 import { Link } from "@/core/i18n/navigation";
 
 import {
-  strokeOrderCharacters,
+  buildStrokeOrderLearningResourceData,
+  getRelatedStrokeOrderCharacters,
   type StrokeOrderCharacter,
 } from "../stroke-order-characters";
 import { StructuredData } from "./structured-data";
@@ -22,31 +23,19 @@ export function StrokeOrderCharacterPage({
   const pathname = `${localePrefix}/stroke-order/${entry.character}`;
   const pageUrl = `${envConfigs.app_url.replace(/\/$/, "")}${pathname}`;
   const worksheetHref = `/generator?words=${encodeURIComponent(entry.character)}`;
-  const relatedCharacters = strokeOrderCharacters.filter(
-    (candidate) => candidate.character !== entry.character,
+  const hskPickerHref = "/generator?hskSystem=2.0&hskLevel=1";
+  const relatedCharacters = getRelatedStrokeOrderCharacters(entry);
+  const h1CharacterIndex = entry.seo.h1.indexOf(entry.character);
+  const h1Lead = entry.seo.h1.slice(0, h1CharacterIndex);
+  const h1Tail = entry.seo.h1.slice(
+    h1CharacterIndex + entry.character.length,
   );
 
   return (
     <PublicPageShell active="stroke-order">
       <StructuredData
         data={[
-          {
-            "@context": "https://schema.org",
-            "@type": "LearningResource",
-            name: `${entry.character} (${entry.pinyin}) stroke order and writing guide`,
-            description: `Learn how to write ${entry.character} with animation, stroke-by-stroke diagrams, Pinyin, meaning, HSK information, and example words.`,
-            url: pageUrl,
-            inLanguage: "en",
-            learningResourceType: "Chinese character writing guide",
-            educationalLevel: entry.hsk.map(
-              (item) => `${item.system} ${item.level}`,
-            ),
-            teaches: [
-              `${entry.character} stroke order`,
-              `${entry.character} meaning`,
-              `${entry.character} vocabulary`,
-            ],
-          },
+          buildStrokeOrderLearningResourceData(entry, pageUrl),
           {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
@@ -87,13 +76,27 @@ export function StrokeOrderCharacterPage({
           <div>
             <p className="hs-kicker">Character writing guide</p>
             <h1 className="hs-display mt-3 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl">
-              <span className="hs-hanzi-context">{entry.character}</span> ({entry.pinyin}): {entry.meaning} — Stroke Order &amp; Writing Guide
+              {h1CharacterIndex >= 0 ? (
+                <>
+                  {h1Lead}
+                  <span className="hs-hanzi-context">{entry.character}</span>
+                  {h1Tail}
+                </>
+              ) : entry.seo.h1}
             </h1>
             <p className="mt-4 max-w-3xl text-lg leading-8 text-[#566276]">
               Watch every stroke, inspect the complete written sequence, learn
               where this character appears, and add it to a printable practice
               sheet.
             </p>
+            <div className="mt-5 flex flex-wrap items-center gap-3">
+              <span className="rounded-full bg-[#e8f2ec] px-3 py-1.5 text-sm font-bold text-[#267254]">
+                {entry.learningTier}
+              </span>
+              <p className="max-w-2xl text-sm leading-6 text-[#4e5d70]">
+                {entry.importance}
+              </p>
+            </div>
           </div>
           <div
             aria-hidden="true"
@@ -108,6 +111,25 @@ export function StrokeOrderCharacterPage({
           <Fact label="Stroke count" value={`${entry.strokes} strokes`} />
           <Fact label="Radical" value={entry.radical} hanzi />
           <Fact label="Structure" value={entry.structure} />
+        </section>
+
+        <section className="mt-8" aria-labelledby="components-title">
+          <p className="hs-kicker">Character anatomy</p>
+          <h2 id="components-title" className="hs-display mt-2 text-3xl font-bold">
+            Components to notice in {entry.character}
+          </h2>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {entry.components.map((component) => (
+              <article key={`${component.character}-${component.explanation}`} className="hs-card min-w-0 p-5">
+                <p className="hs-hanzi-context text-4xl font-semibold text-[#172b49]">
+                  {component.character}
+                </p>
+                <p className="mt-3 text-sm leading-6 text-[#5d6878]">
+                  {component.explanation}
+                </p>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="mt-8" aria-labelledby="animation-title">
@@ -130,48 +152,70 @@ export function StrokeOrderCharacterPage({
           />
         </section>
 
-        <section className="mt-8 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+        <section className="mt-8 grid gap-4 lg:grid-cols-2" aria-label="Pronunciation and use guidance">
           <article className="hs-card p-6 sm:p-8">
-            <p className="hs-kicker">Meaning and use</p>
+            <p className="hs-kicker">Say it clearly</p>
             <h2 className="hs-display mt-2 text-3xl font-bold">
-              {entry.usageTitle}
+              Pronunciation notes for {entry.character} ({entry.pinyin})
             </h2>
             <p className="mt-4 text-base leading-8 text-[#4e5d70]">
-              {entry.usage}
+              {entry.readingNotes}
             </p>
           </article>
 
           <article className="hs-card border-[#d8c49f] bg-[#fff9ed] p-6 sm:p-8">
-            <div className="flex items-center gap-2 text-[#9d3c32]">
-              <Lightbulb className="size-5" />
-              <span className="text-sm font-bold uppercase tracking-[0.16em]">Writing tip</span>
-            </div>
+            <p className="hs-kicker">Use it in real life</p>
             <h2 className="hs-display mt-3 text-2xl font-bold">
-              Keep {entry.character} balanced
+              {entry.usageTitle}
             </h2>
             <p className="mt-3 text-sm leading-7 text-[#5a5f65]">
-              {entry.writingTip}
+              {entry.useNotes}
+            </p>
+            <p className="mt-3 text-sm leading-7 text-[#5a5f65]">
+              {entry.usage}
             </p>
           </article>
         </section>
 
         <section className="mt-8" aria-labelledby="hsk-title">
-          <p className="hs-kicker">Level reference</p>
-          <h2 id="hsk-title" className="hs-display mt-2 text-3xl font-bold">
-            HSK information for {entry.character}
-          </h2>
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            {entry.hsk.map((item) => (
-              <article key={`${item.system}-${item.level}`} className="hs-card p-5">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <h3 className="font-bold text-[#172b49]">{item.system}</h3>
-                  <span className="rounded-full bg-[#e8f2ec] px-3 py-1 text-xs font-bold text-[#267254]">
-                    {item.level}
-                  </span>
-                </div>
-                <p className="mt-3 text-sm leading-6 text-[#5d6878]">{item.note}</p>
-              </article>
-            ))}
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="hs-kicker">Level reference</p>
+              <h2 id="hsk-title" className="hs-display mt-2 text-3xl font-bold">
+                HSK information for {entry.character}
+              </h2>
+            </div>
+            <Link href={hskPickerHref} className="hs-secondary-button">
+              Browse HSK lists
+            </Link>
+          </div>
+          <div className="mt-4 grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(250px,0.8fr)]">
+            <div className="grid gap-4 md:grid-cols-2">
+              {entry.hsk.map((item) => (
+                <article key={`${item.system}-${item.level}`} className="hs-card p-5">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <h3 className="font-bold text-[#172b49]">{item.system}</h3>
+                    <span className="rounded-full bg-[#e8f2ec] px-3 py-1 text-xs font-bold text-[#267254]">
+                      {item.level}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-[#5d6878]">{item.note}</p>
+                </article>
+              ))}
+            </div>
+            <article className="hs-card border-[#d8c49f] bg-[#fff9ed] p-5">
+              <h3 className="font-bold text-[#172b49]">Need a full HSK list?</h3>
+              <p className="mt-3 text-sm leading-6 text-[#5d6878]">
+                Keep this character in the worksheet shortcut above, or open the
+                HSK picker to choose a full HSK 2.0 or HSK 3.0 level list.
+              </p>
+              <Link
+                href={hskPickerHref}
+                className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-[#24466e] hover:text-[#b62822]"
+              >
+                Browse HSK lists <ArrowRight className="size-4" />
+              </Link>
+            </article>
           </div>
         </section>
 
@@ -191,6 +235,61 @@ export function StrokeOrderCharacterPage({
               </article>
             ))}
           </div>
+        </section>
+
+        <section className="mt-8" aria-labelledby="sentences-title">
+          <p className="hs-kicker">Read it in steps</p>
+          <h2 id="sentences-title" className="hs-display mt-2 text-3xl font-bold">
+            Graded sentences with {entry.character}
+          </h2>
+          <div className="mt-4 grid gap-4 lg:grid-cols-3">
+            {entry.exampleSentences.map((sentence) => (
+              <article key={`${sentence.learningLabel}-${sentence.hanzi}`} className="hs-card min-w-0 p-5">
+                <span className="inline-flex rounded-full bg-[#f7efe3] px-3 py-1 text-xs font-bold text-[#9d3c32]">
+                  {sentence.learningLabel}
+                </span>
+                <p className="hs-hanzi-context mt-4 text-2xl leading-9 text-[#172b49]">
+                  {sentence.hanzi}
+                </p>
+                <p className="mt-3 font-semibold text-[#b62822]">{sentence.pinyin}</p>
+                <p className="mt-1 text-sm leading-6 text-[#5d6878]">{sentence.meaning}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-8 grid gap-4 lg:grid-cols-2" aria-label="Mistake and confusable character guidance">
+          <article className="hs-card border-[#d8c49f] bg-[#fff9ed] p-6">
+            <p className="hs-kicker">Common mistake</p>
+            <h2 className="hs-display mt-2 text-2xl font-bold">
+              Common writing mistakes with {entry.character}
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-[#5a5f65]">
+              {entry.commonMistake}
+            </p>
+          </article>
+          <article className="hs-card border-[#cbd7e5] bg-[#f5f8fb] p-6">
+            <p className="hs-kicker">Do not mix these up</p>
+            <h2 className="hs-display mt-2 text-2xl font-bold">
+              <span className="hs-hanzi-context">{entry.confusableCharacter.character}</span> and {entry.character}
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-[#5a5f65]">
+              {entry.confusableCharacter.guidance}
+            </p>
+          </article>
+        </section>
+
+        <section className="mt-8 hs-card border-[#d8c49f] bg-[#fff9ed] p-6 sm:p-8" aria-labelledby="writing-tip-title">
+          <div className="flex items-center gap-2 text-[#9d3c32]">
+            <Lightbulb className="size-5" />
+            <span className="text-sm font-bold uppercase tracking-[0.16em]">Writing tip</span>
+          </div>
+          <h2 id="writing-tip-title" className="hs-display mt-3 text-2xl font-bold">
+            Keep {entry.character} balanced
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#5a5f65]">
+            {entry.writingTip}
+          </p>
         </section>
 
         <section className="mt-9 grid items-center gap-6 rounded border border-[#233e62] bg-[#172b49] p-6 text-white sm:p-8 lg:grid-cols-[1fr_auto]">
@@ -215,7 +314,7 @@ export function StrokeOrderCharacterPage({
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className="hs-kicker">Keep exploring</p>
-              <h2 className="hs-display mt-2 text-2xl font-bold">More stroke-order guides</h2>
+              <h2 className="hs-display mt-2 text-2xl font-bold">Characters related to {entry.character}</h2>
             </div>
             <Link href="/stroke-order" className="hs-secondary-button">
               Search another character <ArrowRight className="size-4" />

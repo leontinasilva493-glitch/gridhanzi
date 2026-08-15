@@ -112,6 +112,7 @@ const templateDirectoryGroups: TemplateDirectoryGroup[] = [
     ],
   },
 ];
+const hskPickerHref = "/generator?hskSystem=2.0&hskLevel=1";
 
 export function TemplatesPage({ templates }: { templates: WorksheetTemplateSummary[] }) {
   const [query, setQuery] = useState("");
@@ -197,6 +198,9 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
             </Link>
             <Link href="/for-teachers" className="hs-secondary-button text-sm">
               Teacher workflow
+            </Link>
+            <Link href={hskPickerHref} className="hs-secondary-button text-sm">
+              Choose by HSK version
             </Link>
           </div>
         </section>
@@ -304,9 +308,19 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
                       {group.description}
                     </p>
                   </div>
-                  <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#617084]">
-                    {group.templates.length} templates
-                  </span>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#617084]">
+                      {group.templates.length} templates
+                    </span>
+                    {group.id === "hsk-worksheets" ? (
+                      <Link
+                        href={hskPickerHref}
+                        className="inline-flex items-center gap-1 rounded-full border border-[#d7d0c4] bg-white px-3 py-1 text-xs font-semibold text-[#24466e] hover:border-[#b62822] hover:text-[#b62822]"
+                      >
+                        Choose by HSK version <ArrowRight className="size-3.5" />
+                      </Link>
+                    ) : null}
+                  </div>
                 </div>
 
                 <div

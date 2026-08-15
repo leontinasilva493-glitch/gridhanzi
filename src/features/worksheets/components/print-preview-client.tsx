@@ -28,10 +28,10 @@ import {
   LEGACY_WORKSHEET_STORAGE_KEY,
   WORKSHEET_STORAGE_KEY,
 } from "./generator-client";
-import { WorksheetPaper } from "./worksheet-paper";
+import { WorksheetRenderer } from "./worksheet-renderer";
 
 const fallbackSnapshot: WorksheetSnapshot = {
-  version: 2,
+  version: 3,
   entries: cloneTemplateEntries("family").slice(0, 4),
   settings: {
     ...defaultWorksheetSettings,
@@ -61,7 +61,8 @@ export function PrintPreviewClient() {
   } | null>(null);
   const [pdfError, setPdfError] = useState("");
   const profilePreset = getWorksheetProfilePreset(snapshot.settings.profile);
-  const isTablet = snapshot.settings.profile === "tablet";
+  const canShowAnswers = snapshot.settings.output === "worksheet";
+  const isTablet = paperSize === "tablet";
 
   useEffect(() => {
     const saved =
@@ -88,7 +89,8 @@ export function PrintPreviewClient() {
     ...snapshot.settings,
     paperSize,
     printMargin,
-    showStrokeOrder: showAnswers && snapshot.settings.showStrokeOrder,
+    showStrokeOrder:
+      canShowAnswers && showAnswers && snapshot.settings.showStrokeOrder,
   };
   async function handlePdfDownload() {
     const pageElements = Array.from(
@@ -101,6 +103,7 @@ export function PrintPreviewClient() {
       await downloadWorksheetPdf({
         pages: pageElements,
         paperSize,
+        output: snapshot.settings.output,
         title: snapshot.settings.title,
         studentName: snapshot.settings.studentName,
         date: snapshot.settings.date,
@@ -127,7 +130,10 @@ export function PrintPreviewClient() {
           <ToolbarSelect
             label={t("Paper size", "纸张尺寸")}
             value={paperSize}
-            options={profilePreset.pageFormats.map(
+            options={(snapshot.settings.output === "flashcards"
+              ? (["a4", "letter"] as const)
+              : profilePreset.pageFormats
+            ).map(
               (paper) =>
                 [
                   paper,
@@ -224,11 +230,11 @@ export function PrintPreviewClient() {
               marginBottom: `${Math.max(0, zoom - 85) * 8}px`,
             }}
           >
-            <WorksheetPaper
+            <WorksheetRenderer
               entries={snapshot.entries}
               settings={printSettings}
               showBackground={backgroundGraphics}
-              showAnswers={showAnswers}
+              showAnswers={canShowAnswers ? showAnswers : false}
               onPageCountChange={setPageCount}
             />
           </div>
@@ -242,12 +248,14 @@ export function PrintPreviewClient() {
             checked={backgroundGraphics}
             onChange={setBackgroundGraphics}
           />
-          <PrintToggle
-            label={t("Show answers", "显示答案")}
-            description={t("Keep model characters and stroke-order diagrams.", "保留示范汉字和笔顺图。")}
-            checked={showAnswers}
-            onChange={setShowAnswers}
-          />
+          {snapshot.settings.output === "worksheet" ? (
+            <PrintToggle
+              label={t("Show answers", "显示答案")}
+              description={t("Keep model characters and stroke-order diagrams.", "保留示范汉字和笔顺图。")}
+              checked={showAnswers}
+              onChange={setShowAnswers}
+            />
+          ) : null}
           {!isTablet ? (
             <label className="mt-6 block border-t border-[#ddd7cd] pt-5 text-sm font-semibold">
               {t("Margins", "页边距")}

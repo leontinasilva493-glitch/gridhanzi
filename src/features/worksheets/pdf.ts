@@ -1,4 +1,4 @@
-import type { PaperSize } from "./types";
+import type { PaperSize, WorksheetOutput } from "./types";
 
 export type PdfExportProgress = {
   current: number;
@@ -8,21 +8,42 @@ export type PdfExportProgress = {
 export type DownloadWorksheetPdfOptions = {
   pages: HTMLElement[];
   paperSize: PaperSize;
+  output?: WorksheetOutput;
   title: string;
   studentName?: string;
   date?: string;
   onProgress?: (progress: PdfExportProgress) => void;
 };
 
-export function buildWorksheetPdfFilename(title: string): string {
+type StylePropertyReader = {
+  length: number;
+  item(index: number): string | null;
+  getPropertyValue(name: string): string;
+  getPropertyPriority(name: string): string;
+};
+
+type StylePropertyWriter = {
+  setProperty(name: string, value: string, priority?: string): void;
+};
+
+type StyleCopyNode = {
+  style: StylePropertyWriter;
+  children: ArrayLike<StyleCopyNode>;
+};
+
+export function buildWorksheetPdfFilename(
+  title: string,
+  output: WorksheetOutput = "worksheet",
+): string {
   const slug = title
     .normalize("NFKC")
     .toLocaleLowerCase()
     .replace(/[^\p{Letter}\p{Number}]+/gu, "-")
     .replace(/^-+|-+$/g, "")
     .slice(0, 80);
+  const suffix = output === "flashcards" ? "flashcards" : "worksheet";
 
-  return slug ? `${slug}-worksheet.pdf` : "chinese-worksheet.pdf";
+  return slug ? `${slug}-${suffix}.pdf` : `chinese-${suffix}.pdf`;
 }
 
 export function getPdfPageSize(paperSize: PaperSize) {
@@ -54,8 +75,26 @@ export function getPdfCaptureGeometry({
   };
 }
 
+export function getPdfCaptureGeometryFromPage(page: {
+  offsetWidth: number;
+  offsetHeight: number;
+  getBoundingClientRect(): { width: number; height: number };
+}) {
+  const rect = page.getBoundingClientRect();
+  return getPdfCaptureGeometry({
+    width: page.offsetWidth > 0 ? page.offsetWidth : rect.width,
+    height: page.offsetHeight > 0 ? page.offsetHeight : rect.height,
+  });
+}
+
 export function getPdfHeaderCropHeight(canvasHeight: number) {
   return Math.max(1, Math.round(canvasHeight * 0.115));
+}
+
+export function shouldRecomposeWorksheetPdfHeader(
+  output: WorksheetOutput = "worksheet",
+) {
+  return output === "worksheet";
 }
 
 export function getPdfHeaderFont(sizePx: number): string {
@@ -73,8 +112,67 @@ export async function loadPdfHeaderFont(
   }
 }
 
+function copyComputedStyleDeclaration(
+  sourceStyle: StylePropertyReader,
+  targetStyle: StylePropertyWriter,
+) {
+  for (let index = 0; index < sourceStyle.length; index += 1) {
+    const propertyName = sourceStyle.item(index);
+    if (!propertyName) continue;
+
+    targetStyle.setProperty(
+      propertyName,
+      sourceStyle.getPropertyValue(propertyName),
+      sourceStyle.getPropertyPriority(propertyName),
+    );
+  }
+}
+
+function applyPdfCaptureRootOverrides(targetStyle: StylePropertyWriter) {
+  targetStyle.setProperty("width", "100%");
+  targetStyle.setProperty("height", "100%");
+  targetStyle.setProperty("min-height", "0");
+  targetStyle.setProperty("margin", "0");
+  targetStyle.setProperty("transform", "none");
+  targetStyle.setProperty("box-shadow", "none");
+}
+
+function copyComputedStylesRecursive(
+  sourceNode: StyleCopyNode,
+  targetNode: StyleCopyNode,
+  getComputedStyleForNode: (node: StyleCopyNode) => StylePropertyReader,
+) {
+  copyComputedStyleDeclaration(
+    getComputedStyleForNode(sourceNode),
+    targetNode.style,
+  );
+  const childCount = Math.min(
+    sourceNode.children.length,
+    targetNode.children.length,
+  );
+  for (let index = 0; index < childCount; index += 1) {
+    const sourceChild = sourceNode.children[index];
+    const targetChild = targetNode.children[index];
+    if (!sourceChild || !targetChild) continue;
+    copyComputedStylesRecursive(
+      sourceChild,
+      targetChild,
+      getComputedStyleForNode,
+    );
+  }
+}
+
+export function prepareFlashcardCaptureClone<T extends StyleCopyNode>(
+  sourceNode: T,
+  targetNode: T,
+  getComputedStyleForNode: (node: StyleCopyNode) => StylePropertyReader,
+) {
+  copyComputedStylesRecursive(sourceNode, targetNode, getComputedStyleForNode);
+  applyPdfCaptureRootOverrides(targetNode.style);
+}
+
 function createPdfCapturePage(page: HTMLElement) {
-  const geometry = getPdfCaptureGeometry(page.getBoundingClientRect());
+  const geometry = getPdfCaptureGeometryFromPage(page);
   const host = document.createElement("div");
   const clonedPage = page.cloneNode(true) as HTMLElement;
 
@@ -89,14 +187,7 @@ function createPdfCapturePage(page: HTMLElement) {
     zIndex: "2147483647",
     background: "#ffffff",
   });
-  Object.assign(clonedPage.style, {
-    width: "100%",
-    height: "100%",
-    minHeight: "0",
-    margin: "0",
-    transform: "none",
-    boxShadow: "none",
-  });
+  applyPdfCaptureRootOverrides(clonedPage.style);
 
   host.append(clonedPage);
   document.body.append(host);
@@ -169,6 +260,7 @@ async function waitForWorksheetAssets(pages: HTMLElement[], title: string) {
 export async function downloadWorksheetPdf({
   pages,
   paperSize,
+  output = "worksheet",
   title,
   studentName = "",
   date = "",
@@ -220,6 +312,18 @@ export async function downloadWorksheetPdf({
           clonedDocument.body.style.margin = "0";
           clonedHost.style.top = "0";
           clonedHost.style.left = "0";
+          if (output === "flashcards") {
+            const clonedPage = clonedHost.firstElementChild;
+            if (clonedPage instanceof HTMLElement) {
+              prepareFlashcardCaptureClone(
+                page as unknown as StyleCopyNode,
+                clonedPage as unknown as StyleCopyNode,
+                (node) =>
+                  window.getComputedStyle(node as unknown as Element),
+              );
+              applyPdfCaptureRootOverrides(clonedPage.style);
+            }
+          }
         },
       });
     } finally {
@@ -242,36 +346,41 @@ export async function downloadWorksheetPdf({
       onProgress?.({ current: index + 1, total: pages.length });
       const canvas = await capturePage(page);
 
-      const composedCanvas = document.createElement("canvas");
-      const composedContext = composedCanvas.getContext("2d");
+      let exportCanvas = canvas;
+      if (shouldRecomposeWorksheetPdfHeader(output)) {
+        const composedCanvas = document.createElement("canvas");
+        const composedContext = composedCanvas.getContext("2d");
 
-      if (!composedContext) {
-        throw new Error("Unable to compose the worksheet PDF page.");
-      }
+        if (!composedContext) {
+          throw new Error("Unable to compose the worksheet PDF page.");
+        }
 
-      composedCanvas.width = canvas.width;
-      composedCanvas.height = canvas.height;
-      composedContext.drawImage(canvas, 0, 0);
-      const headerHeight = getPdfHeaderCropHeight(canvas.height);
-      composedContext.fillStyle = "#ffffff";
-      composedContext.fillRect(0, 0, canvas.width, headerHeight);
+        composedCanvas.width = canvas.width;
+        composedCanvas.height = canvas.height;
+        composedContext.drawImage(canvas, 0, 0);
+        const headerHeight = getPdfHeaderCropHeight(canvas.height);
+        composedContext.fillStyle = "#ffffff";
+        composedContext.fillRect(0, 0, canvas.width, headerHeight);
 
-      if (index === 0) {
-        documentHeaderCanvas ??= createPdfHeaderCanvas({
-          width: canvas.width,
-          height: headerHeight,
-          title,
-          studentName,
-          date,
-        });
-        composedContext.drawImage(documentHeaderCanvas, 0, 0);
+        if (index === 0) {
+          documentHeaderCanvas ??= createPdfHeaderCanvas({
+            width: canvas.width,
+            height: headerHeight,
+            title,
+            studentName,
+            date,
+          });
+          composedContext.drawImage(documentHeaderCanvas, 0, 0);
+        }
+
+        exportCanvas = composedCanvas;
       }
 
       const pageNumber = index + 1;
       pdf.addPage(size.format, "portrait");
       pdf.setPage(pageNumber);
       pdf.addImage(
-        composedCanvas.toDataURL("image/jpeg", 0.96),
+        exportCanvas.toDataURL("image/jpeg", 0.96),
         "JPEG",
         0,
         0,
@@ -286,5 +395,5 @@ export async function downloadWorksheetPdf({
     window.scrollTo(previousScroll.x, previousScroll.y);
   }
 
-  pdf.save(buildWorksheetPdfFilename(title));
+  pdf.save(buildWorksheetPdfFilename(title, output));
 }

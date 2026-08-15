@@ -10,5 +10,8 @@ export function getWorksheetPaperAttributes(
     "data-background": String(showBackground),
     "data-profile": settings.profile,
     "data-cell-size": String(settings.cellSize),
+    "data-output": settings.output,
+    "data-character-standard": settings.characterStandard,
+    lang: settings.characterStandard === "traditional-tw" ? "zh-Hant-TW" : "zh-Hans",
   } as const;
 }

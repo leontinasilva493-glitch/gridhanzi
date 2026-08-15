@@ -8,11 +8,21 @@ import {
   getTemplateBySlug,
   parseVocabularyInput,
 } from "@/features/worksheets/engine";
+import type { HskLevel, HskSystem } from "@/features/worksheets/hsk";
 import { parseWorksheetProfile } from "@/features/worksheets/profiles";
+import { parseCharacterStandard } from "@/features/worksheets/traditional";
 import type { WorksheetDifficulty } from "@/features/worksheets/types";
 import { isChineseLocale } from "@/features/worksheets/i18n";
 import { envConfigs } from "@/config";
 import { buildPageSeoMetadata, toAbsoluteUrl } from "@/features/worksheets/seo";
+
+const DEFAULT_HSK_SELECTION = {
+  system: "2.0",
+  level: "1",
+} as const satisfies { system: HskSystem; level: HskLevel };
+
+const HSK_20_LEVELS = new Set<HskLevel>(["1", "2", "3", "4", "5", "6"]);
+const HSK_30_LEVELS = new Set<HskLevel>(["1", "2", "3", "4", "5", "6", "7-9"]);
 
 const englishGeneratorCopy = {
   title: "Chinese Worksheet Generator: Free Mandarin Practice Sheets",
@@ -49,6 +59,39 @@ const chineseGeneratorCopy = {
 
 function getGeneratorCopy(locale: string) {
   return isChineseLocale(locale) ? chineseGeneratorCopy : englishGeneratorCopy;
+}
+
+export function parseGeneratorHskSelection(query: {
+  hskSystem?: string;
+  hskLevel?: string;
+}): { system: HskSystem; level: HskLevel } {
+  if (query.hskSystem === "2.0" && HSK_20_LEVELS.has(query.hskLevel as HskLevel)) {
+    return { system: "2.0", level: query.hskLevel as HskLevel };
+  }
+
+  if (query.hskSystem === "3.0" && HSK_30_LEVELS.has(query.hskLevel as HskLevel)) {
+    return { system: "3.0", level: query.hskLevel as HskLevel };
+  }
+
+  return DEFAULT_HSK_SELECTION;
+}
+
+export function parseGeneratorHskQuery(query: {
+  hskSystem?: string;
+  hskLevel?: string;
+}):
+  | { hasExplicitSelection: false }
+  | { hasExplicitSelection: true; system: HskSystem; level: HskLevel } {
+  if (!query.hskSystem && !query.hskLevel) {
+    return { hasExplicitSelection: false };
+  }
+
+  const selection = parseGeneratorHskSelection(query);
+  return {
+    hasExplicitSelection: true,
+    system: selection.system,
+    level: selection.level,
+  };
 }
 
 export async function generateMetadata({ params }: {
@@ -93,17 +136,22 @@ export default async function GeneratorPage({
     profile?: string;
     difficulty?: WorksheetDifficulty;
     auto?: string;
+    hskSystem?: string;
+    hskLevel?: string;
+    script?: string;
   }>;
 }) {
   const [{ locale }, query] = await Promise.all([params, searchParams]);
   const copy = getGeneratorCopy(locale);
   const chinese = isChineseLocale(locale);
+  const initialHskQuery = parseGeneratorHskQuery(query);
+  const characterStandard = parseCharacterStandard(query.script);
   const template = getTemplateBySlug(query.template);
   const templateEntries = query.template
-    ? cloneTemplateEntries(query.template)
+    ? cloneTemplateEntries(query.template, characterStandard)
     : [];
   const wordEntries = query.words
-    ? enrichVocabularyLocally(parseVocabularyInput(query.words))
+    ? enrichVocabularyLocally(parseVocabularyInput(query.words), characterStandard)
     : [];
 
   return (
@@ -171,7 +219,7 @@ export default async function GeneratorPage({
             ? templateEntries
             : wordEntries.length > 0
               ? wordEntries
-              : cloneTemplateEntries("family").slice(0, 4)
+              : cloneTemplateEntries("family", characterStandard).slice(0, 4)
         }
         initialMode={query.mode}
         initialProfile={parseWorksheetProfile(
@@ -183,6 +231,14 @@ export default async function GeneratorPage({
         autoEnrich={query.auto === "1" && wordEntries.length > 0}
         templateTitle={template?.title}
         templateChineseTitle={template?.chineseTitle}
+        initialHskSystem={
+          initialHskQuery.hasExplicitSelection ? initialHskQuery.system : undefined
+        }
+        initialCharacterStandard={characterStandard}
+        initialHskLevel={
+          initialHskQuery.hasExplicitSelection ? initialHskQuery.level : undefined
+        }
+        hasInitialHskSelection={initialHskQuery.hasExplicitSelection}
       />
     </>
   );

@@ -1,5 +1,6 @@
-import type { WorksheetDifficulty, WorksheetEntry } from "./types";
+import type { CharacterStandard, WorksheetDifficulty, WorksheetEntry } from "./types";
 import { normalizeVocabularyValues } from "./engine";
+import { parseCharacterStandard } from "./traditional";
 
 type UnknownRecord = Record<string, unknown>;
 
@@ -10,11 +11,17 @@ function isRecord(value: unknown): value is UnknownRecord {
 export function buildWorksheetPrompt(
   values: string[],
   difficulty: WorksheetDifficulty,
+  characterStandard: CharacterStandard = "simplified",
 ): string {
+  const isTaiwanTraditional = characterStandard === "traditional-tw";
   const difficultyInstruction =
     difficulty === "beginner"
-      ? "Use common simplified Chinese suitable for HSK 1-2 learners. Avoid rare characters and prefer short, easy-to-write wording."
-      : "Use concise, natural native-level simplified Chinese while preserving the meaning and tone.";
+      ? isTaiwanTraditional
+        ? "Use common Taiwan Traditional Chinese suitable for beginner Mandarin learners. Use Taiwan-localized word choices, avoid rare characters, and prefer short, easy-to-write wording."
+        : "Use common simplified Chinese suitable for HSK 1-2 learners. Avoid rare characters and prefer short, easy-to-write wording."
+      : isTaiwanTraditional
+        ? "Use concise, natural native-level Taiwan Traditional Chinese with Taiwan-localized word choices while preserving the meaning and tone."
+        : "Use concise, natural native-level simplified Chinese while preserving the meaning and tone.";
 
   return [
     "You prepare Mandarin Chinese worksheets for teachers and parents.",
@@ -38,6 +45,7 @@ export type WorksheetEnrichmentRequest =
       ok: true;
       values: string[];
       difficulty: WorksheetDifficulty;
+      characterStandard: CharacterStandard;
     }
   | {
       ok: false;
@@ -66,11 +74,13 @@ export function parseWorksheetEnrichmentRequest(
 
   const difficulty =
     body.difficulty === "advanced" ? "advanced" : "beginner";
+  const characterStandard = parseCharacterStandard(body.characterStandard);
 
   return {
     ok: true,
     values: normalized.values,
     difficulty,
+    characterStandard,
   };
 }
 

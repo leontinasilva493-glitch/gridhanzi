@@ -4,6 +4,7 @@ import test from "node:test";
 import { localVocabularySize } from "./data";
 
 import {
+  cloneTemplateEntries,
   enrichVocabularyLocally,
   getWorksheetEntriesPerPage,
   getTemplateBySlug,
@@ -146,6 +147,35 @@ test("getTemplateBySlug returns the curated family template", () => {
   assert.equal(family?.title, "Family");
   assert.equal(family?.entries.length, 24);
   assert.equal(family?.entries[0]?.hanzi, "家庭");
+});
+
+test("enrichVocabularyLocally converts rows to Taiwan Traditional", () => {
+  const entries = enrichVocabularyLocally(
+    ["老师", "软件", "自行车"],
+    "traditional-tw",
+  );
+
+  assert.deepEqual(entries.map((entry) => entry.hanzi), [
+    "老師",
+    "軟體",
+    "腳踏車",
+  ]);
+});
+
+test("enrichVocabularyLocally resolves Taiwan Traditional input through the local dictionary", () => {
+  const [entry] = enrichVocabularyLocally(["媽媽"], "traditional-tw");
+
+  assert.equal(entry?.hanzi, "媽媽");
+  assert.equal(entry?.pinyin, "māma");
+  assert.equal(entry?.english, "mother");
+  assert.equal(entry?.status, "complete");
+});
+
+test("cloneTemplateEntries returns Taiwan Traditional template rows", () => {
+  const entries = cloneTemplateEntries("family", "traditional-tw");
+
+  assert.ok(entries.some((entry) => entry.hanzi === "爺爺"));
+  assert.ok(entries.some((entry) => entry.hanzi === "兒子"));
 });
 
 test("getTemplateBySlug returns undefined for unknown slugs", () => {

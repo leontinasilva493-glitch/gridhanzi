@@ -3,7 +3,8 @@ import {
   vocabularyByHanzi,
   worksheetTemplates,
 } from "./data";
-import type { WorksheetEntry, WorksheetTemplate } from "./types";
+import { convertChineseText, convertWorksheetEntries } from "./traditional";
+import type { CharacterStandard, WorksheetEntry, WorksheetTemplate } from "./types";
 
 const HANZI_PATTERN = /\p{Script=Han}/u;
 export const WORKSHEET_ENTRIES_PER_PAGE = 4;
@@ -79,21 +80,32 @@ function resolveMixedRow(value: string) {
   return { hanzi, english };
 }
 
-export function enrichVocabularyLocally(values: string[]): WorksheetEntry[] {
+export function enrichVocabularyLocally(
+  values: string[],
+  characterStandard: CharacterStandard = "simplified",
+): WorksheetEntry[] {
   return values.map((value, index) => {
     const mixed = resolveMixedRow(value);
+    const normalizedHanzi = mixed.hanzi
+      ? convertChineseText(mixed.hanzi, "traditional-tw", "simplified")
+      : undefined;
+    const normalizedValue = convertChineseText(
+      value,
+      "traditional-tw",
+      "simplified",
+    );
     const record =
-      (mixed.hanzi ? vocabularyByHanzi.get(mixed.hanzi) : undefined) ??
+      (normalizedHanzi ? vocabularyByHanzi.get(normalizedHanzi) : undefined) ??
       (mixed.english
         ? vocabularyByEnglish.get(mixed.english.toLowerCase())
         : undefined) ??
-      vocabularyByHanzi.get(value) ??
+      vocabularyByHanzi.get(normalizedValue) ??
       vocabularyByEnglish.get(value.toLowerCase());
 
     if (record) {
       return {
         id: `row-${index + 1}`,
-        hanzi: record.hanzi,
+        hanzi: convertChineseText(record.hanzi, "simplified", characterStandard),
         pinyin: record.pinyin,
         english: record.english,
         status: "complete",
@@ -104,7 +116,11 @@ export function enrichVocabularyLocally(values: string[]): WorksheetEntry[] {
 
     return {
       id: `row-${index + 1}`,
-      hanzi: isHanzi ? mixed.hanzi ?? value : mixed.hanzi ?? "",
+      hanzi: convertChineseText(
+        isHanzi ? mixed.hanzi ?? value : mixed.hanzi ?? "",
+        "simplified",
+        characterStandard,
+      ),
       pinyin: "",
       english: isHanzi ? mixed.english ?? "" : mixed.english ?? value,
       status: "needs-review",
@@ -118,13 +134,18 @@ export function getTemplateBySlug(
   return worksheetTemplates.find((template) => template.slug === slug);
 }
 
-export function cloneTemplateEntries(slug: string): WorksheetEntry[] {
+export function cloneTemplateEntries(
+  slug: string,
+  characterStandard: CharacterStandard = "simplified",
+): WorksheetEntry[] {
   const template = getTemplateBySlug(slug);
-  return (
+  return convertWorksheetEntries(
     template?.entries.map((entry, index) => ({
       ...entry,
       id: `row-${index + 1}`,
-    })) ?? []
+    })) ?? [],
+    "simplified",
+    characterStandard,
   );
 }
 

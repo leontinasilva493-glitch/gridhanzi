@@ -4,14 +4,20 @@ import path from "node:path";
 import test from "node:test";
 
 import { worksheetTemplates } from "./data";
+import { strokeOrderCharacters } from "./stroke-order-characters";
+import {
+  buildPublicSitemapPaths,
+  buildStrokeOrderSitemapPaths,
+  toAbsoluteUrl,
+} from "./seo";
 import * as worksheetSeo from "./seo";
 import GeneratorPage, {
   generateMetadata as generateGeneratorMetadata,
 } from "../../app/[locale]/generator/page";
 import sitemap from "../../app/sitemap";
 import robots from "../../app/robots";
+import { generateMetadata as generateStrokeOrderMetadata } from "../../app/[locale]/stroke-order/[character]/page";
 
-const { buildPublicSitemapPaths, toAbsoluteUrl } = worksheetSeo;
 const projectRoot = process.cwd();
 
 test("buildPublicSitemapPaths includes every differentiated template page", () => {
@@ -259,6 +265,19 @@ test("route metadata owns canonicals instead of inheriting the homepage URL", as
   }
 });
 
+test("stroke-order sitemap paths exclude a synthetic draft entry", () => {
+  const paths = buildStrokeOrderSitemapPaths([
+    ...strokeOrderCharacters,
+    { character: "草稿", publicationStatus: "draft" as const },
+  ]);
+
+  assert.equal(paths.includes("/stroke-order/草稿"), false);
+  assert.deepEqual(
+    paths,
+    strokeOrderCharacters.map((entry) => `/stroke-order/${entry.character}`),
+  );
+});
+
 test("curated Hanzi pages have static routes and unique sitemap entries", async () => {
   const characterPaths = buildPublicSitemapPaths().filter((pathname) =>
     pathname.startsWith("/stroke-order/"),
@@ -267,6 +286,21 @@ test("curated Hanzi pages have static routes and unique sitemap entries", async 
     "/stroke-order/爱",
     "/stroke-order/年",
     "/stroke-order/佛",
+    "/stroke-order/的",
+    "/stroke-order/一",
+    "/stroke-order/是",
+    "/stroke-order/在",
+    "/stroke-order/了",
+    "/stroke-order/我",
+    "/stroke-order/你",
+    "/stroke-order/人",
+    "/stroke-order/来",
+    "/stroke-order/去",
+    "/stroke-order/说",
+    "/stroke-order/学",
+    "/stroke-order/经",
+    "/stroke-order/体",
+    "/stroke-order/议",
   ]);
 
   const routeSource = await readFile(
@@ -283,4 +317,32 @@ test("curated Hanzi pages have static routes and unique sitemap entries", async 
   assert.match(routeSource, /notFound\(\)/);
   assert.match(routeSource, /buildPageSeoMetadata/);
   assert.match(routeSource, /StrokeOrderCharacterPage/);
+});
+
+test("character routes publish approved standard, Open Graph, and Twitter metadata", async () => {
+  const approvedMetadata = [
+    ["\u7684", "\u7684 (de) Stroke Order, Meaning & Grammar", "Learn how to write \u7684 (de), the common possessive and descriptive particle. See its 8 strokes, neutral-tone usage, example words, sentences, and worksheet practice."],
+    ["\u4f60", "\u4f60 (n\u01d0) Stroke Order, Meaning & Examples", "Learn how to write \u4f60 (n\u01d0), meaning \u201cyou.\u201d See its 7-stroke structure and practise \u4f60\u597d, \u4f60\u4eec and other useful phrases and sentences."],
+    ["\u7ecf", "\u7ecf (j\u012bng) Stroke Order, Meaning & Common Words", "Learn how to write \u7ecf (j\u012bng) through \u5df2\u7ecf, \u7ecf\u5e38, \u7ecf\u8fc7 and \u7ecf\u9a8c. See its 8 strokes, \u7e9f + \u{22016} structure and example sentences."],
+    ["\u4f5b", "\u4f5b (f\u00f3/f\u00fa) Stroke Order, Meaning & Readings", "Learn how to write \u4f5b and distinguish f\u00f3 in Buddhist vocabulary from f\u00fa in \u4eff\u4f5b. See its 7 strokes, components, example words and sentences."],
+  ] as const;
+
+  for (const [character, title, description] of approvedMetadata) {
+    const metadata = await generateStrokeOrderMetadata({
+      params: Promise.resolve({ locale: "zh", character }),
+    });
+
+    assert.equal(metadata.twitter?.title, title, `${character} Twitter title`);
+    assert.equal(metadata.twitter?.description, description, `${character} Twitter description`);
+    assert.equal(metadata.title, title, `${character} title`);
+    assert.equal(metadata.description, description, `${character} description`);
+    assert.equal(metadata.openGraph?.title, title, `${character} Open Graph title`);
+    assert.equal(metadata.openGraph?.description, description, `${character} Open Graph description`);
+    assert.equal(
+      metadata.alternates?.canonical,
+      `https://gridhanzi.org/zh/stroke-order/${character}`,
+      `${character} canonical`,
+    );
+    assert.deepEqual(metadata.robots, { index: false, follow: true }, `${character} Chinese noindex`);
+  }
 });

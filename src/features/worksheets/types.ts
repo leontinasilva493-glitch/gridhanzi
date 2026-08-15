@@ -1,4 +1,6 @@
 export type WorksheetMode = "trace" | "write" | "quiz";
+export type CharacterStandard = "simplified" | "traditional-tw";
+export type WorksheetOutput = "worksheet" | "flashcards";
 export type GridStyle = "tian" | "mi";
 export type WorksheetProfile = "kids" | "adult" | "tablet" | "brush";
 export type PaperSize = "a4" | "letter" | "tablet";
@@ -17,8 +19,10 @@ export interface WorksheetEntry {
 }
 
 export interface WorksheetSettings {
+  characterStandard: CharacterStandard;
   profile: WorksheetProfile;
   cellSize: number;
+  output: WorksheetOutput;
   mode: WorksheetMode;
   grid: GridStyle;
   showPinyin: boolean;
@@ -26,6 +30,9 @@ export interface WorksheetSettings {
   practiceStrength: PracticeStrength;
   extraBlankRows: 0 | 1;
   strokeOrderMode: StrokeOrderMode;
+  flashcardsPerPage: 6 | 9;
+  flashcardShowPinyin: boolean;
+  flashcardShowEnglish: boolean;
   paperSize: PaperSize;
   difficulty: WorksheetDifficulty;
   printMargin: PrintMargin;
@@ -67,14 +74,16 @@ export interface WorksheetTemplateSummary {
 }
 
 export interface WorksheetSnapshot {
-  version: 2;
+  version: 3;
   entries: WorksheetEntry[];
   settings: WorksheetSettings;
 }
 
 export const defaultWorksheetSettings: WorksheetSettings = {
+  characterStandard: "simplified",
   profile: "kids",
   cellSize: 22,
+  output: "worksheet",
   mode: "trace",
   grid: "tian",
   showPinyin: true,
@@ -82,6 +91,9 @@ export const defaultWorksheetSettings: WorksheetSettings = {
   practiceStrength: "balanced",
   extraBlankRows: 0,
   strokeOrderMode: "detailed",
+  flashcardsPerPage: 6,
+  flashcardShowPinyin: true,
+  flashcardShowEnglish: true,
   paperSize: "a4",
   difficulty: "beginner",
   printMargin: "normal",

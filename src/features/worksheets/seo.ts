@@ -1,7 +1,22 @@
 import type { Metadata } from "next";
 
 import { worksheetTemplates } from "./data";
-import { strokeOrderCharacters } from "./stroke-order-characters";
+import {
+  filterIndexableStrokeOrderCharacters,
+  indexableStrokeOrderCharacters,
+  type StrokeOrderPublicationStatus,
+} from "./stroke-order-characters";
+
+export function buildStrokeOrderSitemapPaths(
+  entries: ReadonlyArray<{
+    character: string;
+    publicationStatus: StrokeOrderPublicationStatus;
+  }> = indexableStrokeOrderCharacters,
+): string[] {
+  return filterIndexableStrokeOrderCharacters(entries).map(
+    (entry) => `/stroke-order/${entry.character}`,
+  );
+}
 
 export function buildPublicSitemapPaths(): string[] {
   return [
@@ -10,9 +25,7 @@ export function buildPublicSitemapPaths(): string[] {
     "/english-to-chinese-writing-practice",
     "/templates",
     "/stroke-order",
-    ...strokeOrderCharacters.map(
-      (entry) => `/stroke-order/${entry.character}`,
-    ),
+    ...buildStrokeOrderSitemapPaths(),
     "/for-teachers",
     ...worksheetTemplates.map((template) => `/templates/${template.slug}`),
   ];
