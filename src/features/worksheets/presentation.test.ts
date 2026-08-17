@@ -74,6 +74,18 @@ test("stroke-order character page preserves a repeated character in the H1 suffi
   );
 });
 
+test("牛 and 来 pages render a crawlable 牛来 context card", () => {
+  for (const character of ["牛", "来"] as const) {
+    const entry = getStrokeOrderCharacter(character);
+    assert.ok(entry, `${character} is published`);
+
+    const html = renderCharacterPage(entry);
+    assert.match(html, /Why .*牛来/);
+    assert.match(html, /href="\/chinese-slang\/niu-lai"/);
+    assert.match(html, /not an HSK|not a standard|film title/i);
+  }
+});
+
 test("homepage workbench keeps one primary action and a low-emphasis example", async () => {
   const source = await projectFile(
     "src/features/worksheets/components/home-workbench.tsx",

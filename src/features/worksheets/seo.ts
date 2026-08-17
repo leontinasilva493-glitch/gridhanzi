@@ -26,6 +26,7 @@ export function buildPublicSitemapPaths(): string[] {
     "/templates",
     "/stroke-order",
     ...buildStrokeOrderSitemapPaths(),
+    "/chinese-slang/niu-lai",
     "/for-teachers",
     ...worksheetTemplates.map((template) => `/templates/${template.slug}`),
   ];

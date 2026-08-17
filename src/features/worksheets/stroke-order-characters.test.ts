@@ -6,6 +6,8 @@ const approvedFirstBatch = [
   "\u6765", "\u53bb", "\u8bf4", "\u5b66", "\u7ecf", "\u4f53", "\u8bae",
 ] as const;
 
+const trendingCharacter = "\u725b";
+
 const firstBatchTiers: Record<
   (typeof approvedFirstBatch)[number],
   StrokeOrderLearningTier
@@ -29,7 +31,7 @@ import {
 
 test("published character order contains the existing guides plus the approved first batch", () => {
   assert.deepEqual(strokeOrderCharacters.map((entry) => entry.character), [
-    "\u7231", "\u5e74", "\u4f5b", ...approvedFirstBatch,
+    "\u7231", "\u5e74", "\u4f5b", ...approvedFirstBatch, trendingCharacter,
   ]);
 });
 
@@ -43,6 +45,26 @@ test("source-bound HSK cards preserve literal per-system evidence anchors", () =
       note: string;
     }>
   > = {
+    "\u725b": [
+      {
+        system: "HSK 2.0",
+        level: "Level 2",
+        evidenceKind: "word-family",
+        note: "Word-family anchor: \u725b\u5976 is listed at Level 2; this is not a standalone-character level claim.",
+      },
+      {
+        system: "HSK 3.0",
+        level: "Level 1",
+        evidenceKind: "word-family",
+        note: "Word-family anchor: \u725b\u5976 is listed at Level 1; this is not a standalone-character level claim.",
+      },
+      {
+        system: "HSK 3.0",
+        level: "Level 3",
+        evidenceKind: "standalone",
+        note: "Exact \u725b (ni\u00fa) record is listed at Level 3.",
+      },
+    ],
     "\u4f5b": [
       {
         system: "HSK 3.0",
@@ -245,7 +267,7 @@ test("SEO and substantive teaching fields remain unique across published guides"
 test("curated stroke-order pages contain complete learning content", () => {
   assert.deepEqual(
     strokeOrderCharacters.map((entry) => entry.character),
-    ["爱", "年", "佛", ...approvedFirstBatch],
+    ["爱", "年", "佛", ...approvedFirstBatch, trendingCharacter],
   );
 
   for (const entry of strokeOrderCharacters) {
@@ -273,7 +295,23 @@ test("character lookup exposes only curated indexable entries", () => {
   assert.equal(getStrokeOrderCharacter("爱")?.pinyin, "ài");
   assert.equal(getStrokeOrderCharacter("年")?.pinyin, "nián");
   assert.equal(getStrokeOrderCharacter("佛")?.pinyin, "fó");
+  assert.equal(getStrokeOrderCharacter("牛")?.pinyin, "niú");
   assert.equal(getStrokeOrderCharacter("永"), undefined);
+});
+
+test("牛 and 来 expose an explicit 牛来 context without treating the title as HSK vocabulary", () => {
+  for (const character of ["牛", "来"] as const) {
+    const entry = getStrokeOrderCharacter(character) as
+      | (StrokeOrderCharacter & {
+          trendContext?: { title: string; summary: string; href: string; linkLabel: string };
+        })
+      | undefined;
+
+    assert.ok(entry, `${character} is published`);
+    assert.equal(entry.trendContext?.href, "/chinese-slang/niu-lai");
+    assert.match(entry.trendContext?.title ?? "", /牛来/);
+    assert.match(entry.trendContext?.summary ?? "", /not an HSK|not a standard|film title/i);
+  }
 });
 
 test("complete guides expose the publishing and learning-content contract", () => {
@@ -436,6 +474,7 @@ test("published character guides expose the approved character-specific search m
     ["\u7231", "\u00e0i", "\u00e0i", "\u7231 (\u00e0i) Stroke Order, Meaning & Examples", "How to Write \u7231 (\u00e0i): Stroke Order, Meaning & Examples", "Learn how to write \u7231 (\u00e0i), meaning \u201cto love\u201d or \u201clike.\u201d Follow its 10 strokes and practise common words, graded sentences and printable grids."],
     ["\u5e74", "ni\u00e1n", "ni\u00e1n", "\u5e74 (ni\u00e1n) Stroke Order, Meaning & Examples", "How to Write \u5e74 (ni\u00e1n): Stroke Order, Meaning & Examples", "Learn how to write \u5e74 (ni\u00e1n), meaning \u201cyear.\u201d Follow its 6 strokes and practise calendar words such as \u4eca\u5e74, \u660e\u5e74 and \u53bb\u5e74."],
     ["\u4f5b", "f\u00f3", "f\u00f3/f\u00fa", "\u4f5b (f\u00f3/f\u00fa) Stroke Order, Meaning & Readings", "How to Write \u4f5b (f\u00f3/f\u00fa): Stroke Order and Readings", "Learn how to write \u4f5b and distinguish f\u00f3 in Buddhist vocabulary from f\u00fa in \u4eff\u4f5b. See its 7 strokes, components, example words and sentences."],
+    ["\u725b", "ni\u00fa", "ni\u00fa", "\u725b (ni\u00fa) Stroke Order, Meaning & Slang Use", "How to Write \u725b (ni\u00fa): Stroke Order, Meaning & Slang", "Learn how to write \u725b (ni\u00fa), meaning cow or ox, and why it can mean \u201cawesome\u201d in Chinese slang. Follow its 4 strokes, common words and the \u725b\u6765 meme context."],
   ] as const;
 
   for (const [character, pinyin, displayPinyin, title, h1, description] of approvedSeo) {
