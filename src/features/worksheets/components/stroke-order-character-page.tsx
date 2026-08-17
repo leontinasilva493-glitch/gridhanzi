@@ -177,6 +177,24 @@ export function StrokeOrderCharacterPage({
           </article>
         </section>
 
+        {entry.trendContext ? (
+          <aside className="mt-8 rounded border border-[#d8c49f] bg-[#fff9ed] p-6 sm:p-8" aria-labelledby="trend-context-title">
+            <p className="hs-kicker">Chinese in current culture</p>
+            <h2 id="trend-context-title" className="hs-display mt-2 text-3xl font-bold">
+              {entry.trendContext.title}
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-[#5a5f65]">
+              {entry.trendContext.summary}
+            </p>
+            <Link
+              href={entry.trendContext.href}
+              className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-[#24466e] hover:text-[#b62822]"
+            >
+              {entry.trendContext.linkLabel} <ArrowRight className="size-4" />
+            </Link>
+          </aside>
+        ) : null}
+
         <section className="mt-8" aria-labelledby="hsk-title">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
