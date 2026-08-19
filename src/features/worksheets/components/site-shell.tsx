@@ -25,6 +25,13 @@ const strokeOrderMenuLinks = [
   ["Radicals", "/templates/radicals"],
 ] as const;
 
+const gridPaperMenuLinks = [
+  ["All Printable Grids", "/grids"],
+  ["Tian Zi Ge PDF", "/grids/tian-zi-ge"],
+  ["Mi Zi Ge PDF", "/grids/mi-zi-ge"],
+  ["Blank Writing Paper", "/grids/blank"],
+] as const;
+
 const navMenus = [
   {
     label: "Templates",
@@ -35,6 +42,11 @@ const navMenus = [
     label: "Stroke Order",
     key: "stroke-order",
     links: strokeOrderMenuLinks,
+  },
+  {
+    label: "Printable Grids",
+    key: "grids",
+    links: gridPaperMenuLinks,
   },
 ] as const;
 
@@ -221,7 +233,8 @@ export function HanziSiteFooter() {
         <FooterColumn
           title="Teaching tools"
           links={[
-            ["Worksheet Generator", "/generator"],
+          ["Worksheet Generator", "/generator"],
+            ["Printable Grids", "/grids"],
             ["Stroke Order", "/stroke-order"],
             ["Practice Types", "/#practice-types"],
           ]}

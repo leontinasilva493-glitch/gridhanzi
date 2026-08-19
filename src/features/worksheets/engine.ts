@@ -13,6 +13,19 @@ export const MAX_VOCABULARY_ROWS = 40;
 export const MAX_VOCABULARY_CHARS = 600;
 export const MAX_VOCABULARY_ROW_CHARS = 120;
 
+export function containsUnsupportedInputScript(input: string): boolean {
+  for (const character of input) {
+    if (
+      /^\p{Letter}$/u.test(character) &&
+      !/^[\p{Script=Latin}\p{Script=Han}]$/u.test(character)
+    ) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 export type VocabularyNormalizationResult =
   | { ok: true; values: string[] }
   | { ok: false; error: string };

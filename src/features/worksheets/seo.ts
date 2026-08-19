@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { worksheetTemplates } from "./data";
+import { gridPaperPages } from "./grid-pages";
 import {
   filterIndexableStrokeOrderCharacters,
   indexableStrokeOrderCharacters,
@@ -24,6 +25,8 @@ export function buildPublicSitemapPaths(): string[] {
     "/generator",
     "/english-to-chinese-writing-practice",
     "/templates",
+    "/grids",
+    ...gridPaperPages.map((page) => `/grids/${page.slug}`),
     "/stroke-order",
     ...buildStrokeOrderSitemapPaths(),
     "/chinese-slang/niu-lai",

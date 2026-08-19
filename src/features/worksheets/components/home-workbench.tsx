@@ -1,11 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles } from "lucide-react";
+import { AlertCircle, Sparkles } from "lucide-react";
 import { useLocale } from "next-intl";
 
 import { useRouter } from "@/core/i18n/navigation";
-import { MAX_VOCABULARY_CHARS } from "../engine";
+import {
+  containsUnsupportedInputScript,
+  MAX_VOCABULARY_CHARS,
+} from "../engine";
 import { localize } from "../i18n";
 import type { CharacterStandard, WorksheetDifficulty } from "../types";
 
@@ -24,6 +27,7 @@ export function HomeWorkbench() {
     useState<WorksheetDifficulty>("beginner");
   const [characterStandard, setCharacterStandard] =
     useState<CharacterStandard>("simplified");
+  const hasUnsupportedInputScript = containsUnsupportedInputScript(value);
 
   function submit() {
     if (!value.trim()) return;
@@ -138,6 +142,22 @@ export function HomeWorkbench() {
               : "family\nmother\nfather"
         }
       />
+      {hasUnsupportedInputScript ? (
+        <p
+          id="hero-vocabulary-language-notice"
+          role="status"
+          aria-live="polite"
+          className="mt-2 flex items-start gap-2 rounded border border-[#e6c98f] bg-[#fff8e8] px-3 py-2 text-[13px] leading-5 text-[#8a5a12]"
+        >
+          <AlertCircle className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+          <span>
+            {t(
+              "Currently supports English or Hanzi input. More languages are in development.",
+              "目前暂仅支持英语或汉字输入，更多语言持续开发中。",
+            )}
+          </span>
+        </p>
+      ) : null}
       <div className="mt-2 flex justify-between gap-4 text-xs text-[#657083]">
         <p>
           {t(

@@ -10,8 +10,9 @@ import {
 } from "@/features/worksheets/engine";
 import type { HskLevel, HskSystem } from "@/features/worksheets/hsk";
 import { parseWorksheetProfile } from "@/features/worksheets/profiles";
+import { parseGridQuery } from "@/features/worksheets/grid-pages";
 import { parseCharacterStandard } from "@/features/worksheets/traditional";
-import type { WorksheetDifficulty } from "@/features/worksheets/types";
+import type { GridStyle, WorksheetDifficulty } from "@/features/worksheets/types";
 import { isChineseLocale } from "@/features/worksheets/i18n";
 import { envConfigs } from "@/config";
 import { buildPageSeoMetadata, toAbsoluteUrl } from "@/features/worksheets/seo";
@@ -94,6 +95,12 @@ export function parseGeneratorHskQuery(query: {
   };
 }
 
+export function parseGeneratorGridQuery(query: {
+  grid?: string;
+}): GridStyle | undefined {
+  return parseGridQuery(query.grid);
+}
+
 export async function generateMetadata({ params }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
@@ -139,6 +146,7 @@ export default async function GeneratorPage({
     hskSystem?: string;
     hskLevel?: string;
     script?: string;
+    grid?: string;
   }>;
 }) {
   const [{ locale }, query] = await Promise.all([params, searchParams]);
@@ -146,6 +154,7 @@ export default async function GeneratorPage({
   const chinese = isChineseLocale(locale);
   const initialHskQuery = parseGeneratorHskQuery(query);
   const characterStandard = parseCharacterStandard(query.script);
+  const initialGrid = parseGeneratorGridQuery(query);
   const template = getTemplateBySlug(query.template);
   const templateEntries = query.template
     ? cloneTemplateEntries(query.template, characterStandard)
@@ -225,6 +234,7 @@ export default async function GeneratorPage({
         initialProfile={parseWorksheetProfile(
           query.profile ?? template?.recommendedProfile,
         )}
+        initialGrid={initialGrid}
         initialDifficulty={
           query.difficulty === "advanced" ? "advanced" : "beginner"
         }

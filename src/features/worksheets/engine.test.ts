@@ -5,6 +5,7 @@ import { localVocabularySize } from "./data";
 
 import {
   cloneTemplateEntries,
+  containsUnsupportedInputScript,
   enrichVocabularyLocally,
   getWorksheetEntriesPerPage,
   getTemplateBySlug,
@@ -21,6 +22,14 @@ test("parseVocabularyInput trims lines and removes blank rows", () => {
     parseVocabularyInput(" family \n\n妈妈\n father, 爸爸 "),
     ["family", "妈妈", "father, 爸爸"],
   );
+});
+
+test("detects unsupported writing systems without flagging English or Hanzi", () => {
+  assert.equal(containsUnsupportedInputScript("family\n妈妈"), false);
+  assert.equal(containsUnsupportedInputScript("café, mother"), false);
+  assert.equal(containsUnsupportedInputScript("こんにちは"), true);
+  assert.equal(containsUnsupportedInputScript("안녕하세요"), true);
+  assert.equal(containsUnsupportedInputScript("Привет"), true);
 });
 
 test("enrichVocabularyLocally resolves English, Chinese, and mixed rows", () => {
