@@ -39,6 +39,7 @@ import {
 import {
   defaultWorksheetSettings,
   type CharacterStandard,
+  type GridStyle,
   type PaperSize,
   type PracticeStrength,
   type StrokeOrderMode,
@@ -62,6 +63,7 @@ export function GeneratorClient({
   initialEntries,
   initialMode,
   initialProfile = "kids",
+  initialGrid,
   initialDifficulty = "beginner",
   initialCharacterStandard = "simplified",
   autoEnrich = false,
@@ -77,6 +79,7 @@ export function GeneratorClient({
   initialEntries: WorksheetEntry[];
   initialMode?: WorksheetMode;
   initialProfile?: WorksheetProfile;
+  initialGrid?: GridStyle;
   initialDifficulty?: WorksheetDifficulty;
   initialCharacterStandard?: CharacterStandard;
   autoEnrich?: boolean;
@@ -100,7 +103,7 @@ export function GeneratorClient({
     characterStandard: initialCharacterStandard,
     profile: initialProfile,
     cellSize: initialProfilePreset.size.default,
-    grid: initialProfilePreset.defaultGrid,
+    grid: initialGrid ?? initialProfilePreset.defaultGrid,
     paperSize: initialProfilePreset.pageFormats[0] ?? "a4",
     mode: initialMode ?? defaultWorksheetSettings.mode,
     difficulty: initialDifficulty,

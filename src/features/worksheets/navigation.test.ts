@@ -23,6 +23,7 @@ test("primary navigation stays task-based and keeps a responsive worksheet CTA",
   assert.match(navSource, /label: "Worksheet Maker"/);
   assert.match(headerSource, /label: "Templates"/);
   assert.match(headerSource, /label: "Stroke Order"/);
+  assert.match(headerSource, /label: "Printable Grids"/);
   assert.doesNotMatch(navSource, /For Teachers/);
   assert.doesNotMatch(headerSource, /No sign-up required/);
   assert.ok(

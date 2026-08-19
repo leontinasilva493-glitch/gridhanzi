@@ -21,6 +21,10 @@ test("buildPublicSitemapPaths includes every differentiated template page", () =
   assert.ok(paths.includes("/generator"));
   assert.ok(paths.includes("/english-to-chinese-writing-practice"));
   assert.ok(paths.includes("/templates"));
+  assert.ok(paths.includes("/grids"));
+  assert.ok(paths.includes("/grids/tian-zi-ge"));
+  assert.ok(paths.includes("/grids/mi-zi-ge"));
+  assert.ok(paths.includes("/grids/blank"));
   assert.ok(paths.includes("/stroke-order"));
   assert.ok(paths.includes("/for-teachers"));
   for (const template of worksheetTemplates) {
@@ -250,6 +254,8 @@ test("route metadata owns canonicals instead of inheriting the homepage URL", as
     "src/app/[locale]/english-to-chinese-writing-practice/page.tsx",
     "src/app/[locale]/templates/page.tsx",
     "src/app/[locale]/templates/[slug]/page.tsx",
+    "src/app/[locale]/grids/page.tsx",
+    "src/app/[locale]/grids/[slug]/page.tsx",
     "src/app/[locale]/stroke-order/page.tsx",
     "src/app/[locale]/for-teachers/page.tsx",
   ];
