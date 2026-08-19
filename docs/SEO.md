@@ -17,6 +17,8 @@ other.
 | `/templates` | Printable Chinese Writing Worksheets |
 | `/templates/[slug]` | `[Topic] Chinese Writing Worksheet` |
 | `/stroke-order` | Chinese Stroke Order |
+| `/stroke-order/[character]` | Curated character stroke order, meaning, and usage |
+| `/chinese-slang/niu-lai` | Niu Lai meaning and Chinese movie meme context |
 | `/for-teachers` | Chinese Worksheets for Teachers |
 | `/zh/generator` | 中文汉字字帖生成器 |
 
@@ -63,6 +65,8 @@ Index pages only when they contain differentiated public value.
   editable worksheet workflow for English-input vocabulary searches.
 - Every curated template detail page with its own vocabulary, metadata,
   learning goal, teaching tip, and practice activity.
+- Curated English character guides and the sourced `/chinese-slang/niu-lai`
+  explainer, because each has differentiated language-learning value.
 - `/zh/generator`, because it has a Chinese interface and an English alternate.
 
 ### Do not index
@@ -103,6 +107,10 @@ PDFs, teachers, parents, and learners where those concepts help the visitor.
 
 - Homepage: `Organization`, `WebSite`, and `WebApplication`.
 - Template detail: `LearningResource` and `BreadcrumbList`.
+- Character detail: `LearningResource` and `BreadcrumbList`.
+- `/chinese-slang/niu-lai`: `Article` and `BreadcrumbList`. Keep the page's
+  reviewed date and visible sources aligned with the markup; do not use
+  `Movie` markup unless the site becomes a maintained film-data authority.
 - FAQ markup may remain when the visible questions and answers match it, but
   it is not treated as a growth target because general education sites do not
   normally receive Google FAQ rich results.

@@ -1,9 +1,90 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { NextIntlClientProvider } from "next-intl";
+
+import { StrokeOrderCharacterPage } from "./components/stroke-order-character-page";
+import {
+  getStrokeOrderCharacter,
+  type StrokeOrderCharacter,
+} from "./stroke-order-characters";
 
 const projectFile = (path: string) =>
   readFile(new URL(`../../../${path}`, import.meta.url), "utf8");
+
+const renderCharacterPage = (entry: StrokeOrderCharacter) =>
+  renderToStaticMarkup(
+    createElement(
+      NextIntlClientProvider,
+      {
+        locale: "en",
+        messages: {},
+        children: createElement(StrokeOrderCharacterPage, {
+          entry,
+          locale: "en",
+        }),
+      },
+    ),
+  );
+
+const headingMarkup = (html: string, level: 1 | 2) =>
+  html.match(new RegExp(`<h${level}\\b[^>]*>[\\s\\S]*?<\\/h${level}>`, "g")) ?? [];
+
+const headingText = (markup: string) =>
+  markup
+    .replace(/<[^>]+>/g, "")
+    .replaceAll("&amp;", "&")
+    .replaceAll("&quot;", '"')
+    .replaceAll("&#x27;", "'")
+    .replaceAll("&lt;", "<")
+    .replaceAll("&gt;", ">");
+
+test("stroke-order character page renders its approved H1 and character-specific H2s", () => {
+  const entry = getStrokeOrderCharacter("经");
+  assert.ok(entry);
+
+  const html = renderCharacterPage(entry);
+  const h1s = headingMarkup(html, 1);
+  const h2s = headingMarkup(html, 2).map(headingText);
+
+  assert.equal(h1s.length, 1);
+  assert.equal(headingText(h1s[0]), entry.seo.h1);
+  assert.ok(h2s.includes(`Pronunciation notes for ${entry.character} (${entry.pinyin})`));
+  assert.ok(h2s.includes(`Common writing mistakes with ${entry.character}`));
+  assert.ok(h2s.includes(`Characters related to ${entry.character}`));
+});
+
+test("stroke-order character page preserves a repeated character in the H1 suffix", () => {
+  const entry = getStrokeOrderCharacter("经");
+  assert.ok(entry);
+  const repeatedH1 = "How to Write 经 (jīng): Compare 经 in Words";
+  const html = renderCharacterPage({
+    ...entry,
+    seo: { ...entry.seo, h1: repeatedH1 },
+  });
+  const h1s = headingMarkup(html, 1);
+
+  assert.equal(h1s.length, 1);
+  assert.equal(headingText(h1s[0]), repeatedH1);
+  assert.equal(
+    h1s[0].match(/<span class="hs-hanzi-context">经<\/span>/g)?.length,
+    1,
+  );
+});
+
+test("牛 and 来 pages render a crawlable 牛来 context card", () => {
+  for (const character of ["牛", "来"] as const) {
+    const entry = getStrokeOrderCharacter(character);
+    assert.ok(entry, `${character} is published`);
+
+    const html = renderCharacterPage(entry);
+    assert.match(html, /Why .*牛来/);
+    assert.match(html, /href="\/chinese-slang\/niu-lai"/);
+    assert.match(html, /not an HSK|not a standard|film title/i);
+  }
+});
 
 test("homepage workbench keeps one primary action and a low-emphasis example", async () => {
   const source = await projectFile(
@@ -261,13 +342,46 @@ test("HSK workflow links stay additive across teachers, templates, details, and 
   assert.match(strokeSource, /Browse HSK lists/);
 });
 
+test("stroke-order guides render their differentiated learning dossier fields", async () => {
+  const source = await projectFile(
+    "src/features/worksheets/components/stroke-order-character-page.tsx",
+  );
+
+  assert.match(source, /entry\.learningTier/);
+  assert.match(source, /entry\.importance/);
+  assert.match(source, /entry\.components\.map/);
+  assert.match(source, /entry\.readingNotes/);
+  assert.match(source, /entry\.useNotes/);
+  assert.match(source, /entry\.exampleSentences\.map/);
+  assert.match(source, /sentence\.learningLabel/);
+  assert.match(source, /sentence\.hanzi/);
+  assert.match(source, /sentence\.pinyin/);
+  assert.match(source, /sentence\.meaning/);
+  assert.match(source, /entry\.commonMistake/);
+  assert.match(source, /entry\.confusableCharacter\.character/);
+  assert.match(source, /entry\.confusableCharacter\.guidance/);
+  assert.match(source, /getRelatedStrokeOrderCharacters\(entry\)/);
+});
+
+test("stroke-order hub exposes the ordered learning paths and both HSK pickers", async () => {
+  const source = await projectFile("src/app/[locale]/stroke-order/page.tsx");
+
+  assert.match(source, /strokeOrderLearningTiers/);
+  assert.match(source, /groupStrokeOrderCharactersByTier/);
+  assert.match(source, /High-frequency[\s\S]*Beginner[\s\S]*Advanced[\s\S]*Foundation/);
+  assert.match(source, /\/generator\?hskSystem=3\.0&hskLevel=1/);
+  assert.match(source, /\/generator\?hskSystem=2\.0&hskLevel=1/);
+  assert.match(source, /View guide/);
+});
+
 test("curated stroke-order pages combine practice with useful character content", async () => {
-  const [clientSource, pageSource, hubSource] = await Promise.all([
+  const [clientSource, pageSource, hubSource, characterDataSource] = await Promise.all([
     projectFile("src/features/worksheets/components/stroke-order-client.tsx"),
     projectFile(
       "src/features/worksheets/components/stroke-order-character-page.tsx",
     ).catch(() => ""),
     projectFile("src/app/[locale]/stroke-order/page.tsx"),
+    projectFile("src/features/worksheets/stroke-order-characters.ts"),
   ]);
 
   assert.match(clientSource, /initialCharacter/);
@@ -277,20 +391,24 @@ test("curated stroke-order pages combine practice with useful character content"
 
   assert.match(pageSource, /StrokeOrderCharacterPage/);
   assert.match(pageSource, /StructuredData/);
-  assert.match(pageSource, /"@type": "LearningResource"/);
+  assert.match(characterDataSource, /"@type": "LearningResource"/);
   assert.match(pageSource, /"@type": "BreadcrumbList"/);
   assert.match(pageSource, /<StrokeOrderClient/);
   assert.match(pageSource, /showSearch=\{false\}/);
   assert.match(pageSource, /showGuidance=\{false\}/);
-  assert.match(pageSource, /entry\.hsk\.map/);
+  assert.match(
+    pageSource,
+    /buildStrokeOrderLearningResourceData\(entry, pageUrl\)/,
+  );
+  assert.doesNotMatch(pageSource, /educationalLevel:\s*entry\.hsk\.map/);
   assert.match(pageSource, /entry\.examples\.map/);
   assert.match(pageSource, /entry\.writingTip/);
-  assert.match(pageSource, /strokeOrderCharacters\.filter/);
+  assert.match(pageSource, /getRelatedStrokeOrderCharacters\(entry\)/);
   assert.match(pageSource, /\/generator\?words=/);
   assert.match(pageSource, /Add .* to a worksheet/);
   assert.doesNotMatch(pageSource, /bg-white px-6 text-\[#172b49\]/);
 
-  assert.match(hubSource, /strokeOrderCharacters\.map/);
-  assert.match(hubSource, /Popular character guides/);
+  assert.match(hubSource, /groupedStrokeOrderCharacters\.map/);
+  assert.match(hubSource, /Character guide learning paths/);
   assert.match(hubSource, /href=\{`\/stroke-order\/\$\{entry\.character\}`\}/);
 });

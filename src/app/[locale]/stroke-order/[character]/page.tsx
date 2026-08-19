@@ -5,16 +5,16 @@ import { envConfigs } from "@/config";
 import { StrokeOrderCharacterPage } from "@/features/worksheets/components/stroke-order-character-page";
 import {
   getStrokeOrderCharacter,
-  strokeOrderCharacters,
+  indexableStrokeOrderCharacters,
 } from "@/features/worksheets/stroke-order-characters";
-import { buildPageSeoMetadata } from "@/features/worksheets/seo";
+import { buildPageSeoMetadata, toAbsoluteUrl } from "@/features/worksheets/seo";
 
 type PageProps = {
   params: Promise<{ locale: string; character: string }>;
 };
 
 export function generateStaticParams() {
-  return strokeOrderCharacters.map((entry) => ({
+  return indexableStrokeOrderCharacters.map((entry) => ({
     character: entry.character,
   }));
 }
@@ -26,8 +26,7 @@ export async function generateMetadata({
   const entry = getStrokeOrderCharacter(character);
   if (!entry) return {};
 
-  const title = `${entry.character} (${entry.pinyin}) Stroke Order, Meaning & How to Write`;
-  const description = `Learn how to write ${entry.character} (${entry.pinyin}) with animated stroke order, step-by-step diagrams, meaning, HSK level, example words, and a printable worksheet.`;
+  const { title, description } = entry.seo;
   const pageSeo = buildPageSeoMetadata(
     envConfigs.app_url,
     `/stroke-order/${entry.character}`,
@@ -42,6 +41,12 @@ export async function generateMetadata({
       ...pageSeo.openGraph,
       title,
       description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [toAbsoluteUrl(envConfigs.app_url, "/og-gridhanzi.png")],
     },
   };
 }

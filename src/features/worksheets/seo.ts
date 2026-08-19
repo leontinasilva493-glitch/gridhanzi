@@ -2,7 +2,22 @@ import type { Metadata } from "next";
 
 import { worksheetTemplates } from "./data";
 import { gridPaperPages } from "./grid-pages";
-import { strokeOrderCharacters } from "./stroke-order-characters";
+import {
+  filterIndexableStrokeOrderCharacters,
+  indexableStrokeOrderCharacters,
+  type StrokeOrderPublicationStatus,
+} from "./stroke-order-characters";
+
+export function buildStrokeOrderSitemapPaths(
+  entries: ReadonlyArray<{
+    character: string;
+    publicationStatus: StrokeOrderPublicationStatus;
+  }> = indexableStrokeOrderCharacters,
+): string[] {
+  return filterIndexableStrokeOrderCharacters(entries).map(
+    (entry) => `/stroke-order/${entry.character}`,
+  );
+}
 
 export function buildPublicSitemapPaths(): string[] {
   return [
@@ -13,9 +28,8 @@ export function buildPublicSitemapPaths(): string[] {
     "/grids",
     ...gridPaperPages.map((page) => `/grids/${page.slug}`),
     "/stroke-order",
-    ...strokeOrderCharacters.map(
-      (entry) => `/stroke-order/${entry.character}`,
-    ),
+    ...buildStrokeOrderSitemapPaths(),
+    "/chinese-slang/niu-lai",
     "/for-teachers",
     ...worksheetTemplates.map((template) => `/templates/${template.slug}`),
   ];
