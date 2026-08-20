@@ -171,6 +171,18 @@ test("homepage task entries link to the three core destinations", async () => {
   assert.doesNotMatch(homeSource, /<Step icon=/);
 });
 
+test("blank grid acquisition links route users to the printable grid pages", async () => {
+  const [homeSource, templatesSource, generatorSource] = await Promise.all([
+    projectFile("src/features/worksheets/components/home-page.tsx"),
+    projectFile("src/features/worksheets/components/templates-page.tsx"),
+    projectFile("src/features/worksheets/components/generator-client.tsx"),
+  ]);
+
+  assert.match(homeSource, /href="\/grids"[\s\S]*?printable Hanzi grid PDFs/i);
+  assert.match(templatesSource, /href="\/grids"[\s\S]*?Blank grid PDFs/i);
+  assert.match(generatorSource, /href="\/grids"[\s\S]*?printable grid PDFs/i);
+});
+
 test("teacher landing page is public, specific, and limited to current features", async () => {
   const routePath = projectPath("src/app/[locale]/for-teachers/page.tsx");
   const componentPath = projectPath(

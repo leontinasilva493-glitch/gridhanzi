@@ -107,7 +107,7 @@ test("template pages use concrete teaching copy and distinct descriptions", asyn
 
   assert.match(
     templatesSource,
-    /Choose an editable word list, Tian Zi Ge paper, Mi Zi Ge paper, or\s*printable Hanzi grid template/,
+    /Choose a ready-made topic, Pinyin, or HSK worksheet, then edit the\s*Hanzi, grid, and paper size before saving a PDF/,
   );
   assert.match(detailSource, /Editable worksheet/);
   assert.match(detailSource, /What students practise/);
@@ -143,21 +143,18 @@ test("SEO anchors remain while stroke-order guidance stays direct", async () => 
     layoutSource,
     homePageSource,
     generatorPageSource,
-    templatesPageSource,
     strokePageSource,
     strokeClientSource,
   ] = await Promise.all([
     projectFile("src/app/layout.tsx"),
     projectFile("src/app/[locale]/page.tsx"),
     projectFile("src/app/[locale]/generator/page.tsx"),
-    projectFile("src/app/[locale]/templates/page.tsx"),
     projectFile("src/app/[locale]/stroke-order/page.tsx"),
     projectFile("src/features/worksheets/components/stroke-order-client.tsx"),
   ]);
 
   assert.match(homePageSource, /Chinese Character Worksheet Generator - Free Practice Sheets/);
   assert.match(generatorPageSource, /Chinese Worksheet Generator: Free Mandarin Practice Sheets/);
-  assert.match(templatesPageSource, /Printable Chinese Writing Worksheets & Hanzi Grid Paper/);
   assert.match(strokePageSource, /Chinese Stroke Order/);
   assert.doesNotMatch(`${layoutSource}\n${homePageSource}`, /real stroke order/i);
   assert.match(strokeClientSource, /Watch the full animation once\./);

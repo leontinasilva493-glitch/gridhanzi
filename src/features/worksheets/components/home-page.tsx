@@ -124,7 +124,12 @@ export function HomePage() {
             <Link href="/templates" className="font-semibold text-[#b62822]">
               Chinese character practice sheet templates
             </Link>{" "}
-            and open any topic in the worksheet generator.
+            and open any topic in the worksheet generator. Need empty practice
+            cells instead? Download{" "}
+            <Link href="/grids" className="font-semibold text-[#b62822]">
+              printable Hanzi grid PDFs
+            </Link>
+            .
           </p>
         </section>
 

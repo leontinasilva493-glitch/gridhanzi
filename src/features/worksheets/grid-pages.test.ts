@@ -10,6 +10,7 @@ import {
 } from "./grid-pages";
 import { buildPublicSitemapPaths } from "./seo";
 import { parseGeneratorGridQuery } from "../../app/[locale]/generator/page";
+import { generateMetadata as generateGridPaperMetadata } from "../../app/[locale]/grids/[slug]/page";
 
 const projectRoot = process.cwd();
 
@@ -58,4 +59,16 @@ test("publishes a real PDF asset for every grid page", async () => {
     assert.equal(source.subarray(0, 5).toString("ascii"), "%PDF-", page.slug);
     assert.ok(source.length > 500, page.slug);
   }
+});
+
+test("blank grid metadata describes the real Tian Zi Ge download", async () => {
+  const metadata = await generateGridPaperMetadata({
+    params: Promise.resolve({ locale: "en", slug: "blank" }),
+  });
+
+  assert.deepEqual(metadata.title, {
+    absolute: "Blank Hanzi Grid PDF - Free Printable Practice Paper | GridHanzi",
+  });
+  assert.match(metadata.description ?? "", /blank Tian Zi Ge/i);
+  assert.doesNotMatch(metadata.description ?? "", /plain (?:cell|grid)/i);
 });

@@ -128,18 +128,18 @@ export const gridPaperPages: GridPaperPage[] = [
     slug: "blank",
     grid: "tian",
     profile: "kids",
-    title: "Blank Chinese Writing Practice Paper - Free Printable PDF | GridHanzi",
+    title: "Blank Hanzi Grid PDF - Free Printable Practice Paper | GridHanzi",
     description:
-      "Free printable blank Chinese writing practice paper PDF. Download Hanzi handwriting grid paper with Tian Zi Ge and Mi Zi Ge options.",
-    h1: "Blank Chinese Writing Practice Paper",
+      "Download a free blank Tian Zi Ge Hanzi grid PDF with empty guide cells for Chinese writing practice. A4 printable, with no characters and no sign-up.",
+    h1: "Blank Hanzi Grid Paper (Free PDF)",
     eyebrow: "Blank Hanzi practice paper",
     previewTitle: "Blank Chinese Writing Paper",
     pdfHref: "/downloads/blank-chinese-writing-practice-paper.pdf",
     pdfFilename: "blank-chinese-writing-practice-paper.pdf",
     generatorHref: "/generator?grid=tian-zi-ge",
     intro: [
-      "Blank Chinese writing practice paper is a flexible starting point when you already know what characters or vocabulary you want to practise. The empty cells keep the page uncluttered while still giving each Hanzi a consistent writing area.",
-      "Use the free printable PDF for independent handwriting, copying from a textbook, dictation, or a quick review sheet. If you want more guidance, choose Tian Zi Ge or Mi Zi Ge in the generator and add the exact rows, Pinyin, meanings, or tracing steps your learner needs.",
+      "This blank Chinese writing practice paper has empty Tian Zi Ge cells: there are no printed characters, but each square keeps the horizontal and vertical guide lines that help learners judge centre and proportion.",
+      "Use the free printable PDF for independent handwriting, copying from a textbook, dictation, or a quick review sheet. If you want printed models, choose Tian Zi Ge or Mi Zi Ge in the generator and add the exact rows, Pinyin, meanings, or tracing steps your learner needs.",
     ],
     sections: [
       {
@@ -147,8 +147,8 @@ export const gridPaperPages: GridPaperPage[] = [
         body: "Download the one-page A4 PDF for a clean set of blank Chinese writing cells. It is ready to print and does not require an account, so you can make a few copies before a lesson or keep it beside a vocabulary book.",
       },
       {
-        heading: "Choose Your Grid: Tian Zi Ge, Mi Zi Ge or Plain",
-        body: "Tian Zi Ge adds a horizontal and vertical cross, Mi Zi Ge adds diagonal guides, and a plain blank cell removes the internal guides. Pick the lightest amount of support that still helps the learner place the character confidently, then switch styles when the practice goal changes.",
+        heading: "What Blank Means on This Practice Paper",
+        body: "Blank means the PDF has no model characters or vocabulary printed inside the cells. The downloadable sheet still uses Tian Zi Ge cross guides. For diagonal guidance, choose the separate Mi Zi Ge PDF; for a worksheet with printed Hanzi, open the generator.",
       },
       {
         heading: "Make Custom Practice Sheets",
@@ -159,12 +159,12 @@ export const gridPaperPages: GridPaperPage[] = [
       {
         question: "Is the blank Chinese writing paper really empty?",
         answer:
-          "Yes. The downloadable PDF contains blank writing cells without printed vocabulary or model characters, so you can copy from any lesson source.",
+          "Yes. The downloadable PDF contains no printed vocabulary or model characters. Its empty cells retain Tian Zi Ge cross guides so you can copy from any lesson source.",
       },
       {
         question: "Which grid should I choose for Chinese handwriting?",
         answer:
-          "Choose Tian Zi Ge for centre and proportion guides, Mi Zi Ge for extra diagonal guidance, or plain cells when the learner is ready for less support.",
+          "Choose this blank Tian Zi Ge sheet for centre and proportion guides, or use the separate Mi Zi Ge sheet when the learner needs additional diagonal guidance.",
       },
       {
         question: "Can I turn the blank paper into a custom worksheet?",
