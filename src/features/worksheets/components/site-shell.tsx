@@ -8,6 +8,8 @@ import { LocaleSwitch } from "./locale-switch";
 
 const navItems = [
   { href: "/generator", label: "Worksheet Maker", key: "generator" },
+  { href: "/hsk", label: "HSK Lists", key: "hsk" },
+  { href: "/compare", label: "Compare", key: "compare" },
 ] as const;
 
 const templateMenuLinks = [
@@ -74,9 +76,9 @@ export function HanziSiteHeader({ active }: { active?: string }) {
               key={item.key}
               href={item.href}
               className={cn(
-                "relative flex items-center px-5 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822]",
+                "relative flex items-center px-3 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822] xl:px-4",
                 active === item.key &&
-                  "text-[#b62822] after:absolute after:inset-x-5 after:bottom-0 after:h-0.5 after:bg-[#b62822]",
+                  "text-[#b62822] after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-[#b62822]",
               )}
             >
               {item.label}
@@ -149,9 +151,9 @@ function DesktopNavMenu({
     <details className="group relative flex">
       <summary
         className={cn(
-          "relative flex cursor-pointer list-none items-center gap-1 px-5 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822] [&::-webkit-details-marker]:hidden",
+          "relative flex cursor-pointer list-none items-center gap-1 px-3 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822] xl:px-4 [&::-webkit-details-marker]:hidden",
           active === menu.key &&
-            "text-[#b62822] after:absolute after:inset-x-5 after:bottom-0 after:h-0.5 after:bg-[#b62822]",
+            "text-[#b62822] after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-[#b62822]",
         )}
       >
         {menu.label}
@@ -243,8 +245,9 @@ export function HanziSiteFooter() {
           title="Resources"
           links={[
             ["For Teachers", "/for-teachers"],
+            ["HSK Vocabulary", "/hsk"],
+            ["Character Comparisons", "/compare"],
             ["Learning Tips", "/templates"],
-            ["FAQ", "/#faq"],
           ]}
         />
       </div>

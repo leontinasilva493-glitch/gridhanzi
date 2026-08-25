@@ -8,6 +8,11 @@ const approvedFirstBatch = [
 
 const trendingCharacter = "\u725b";
 
+const contentClusterCharacters = [
+  "好", "不", "没", "有", "上", "下", "大", "小", "家", "水",
+  "书", "吃", "喝", "二", "再", "得", "地", "坏",
+] as const;
+
 const firstBatchTiers: Record<
   (typeof approvedFirstBatch)[number],
   StrokeOrderLearningTier
@@ -32,7 +37,50 @@ import {
 test("published character order contains the existing guides plus the approved first batch", () => {
   assert.deepEqual(strokeOrderCharacters.map((entry) => entry.character), [
     "\u7231", "\u5e74", "\u4f5b", ...approvedFirstBatch, trendingCharacter,
+    ...contentClusterCharacters,
   ]);
+});
+
+test("content-cluster guides expose exact HSK evidence and differentiated teaching copy", () => {
+  const expectedLevels: Record<(typeof contentClusterCharacters)[number], string[]> = {
+    好: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    不: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    没: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    有: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    上: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    下: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    大: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    小: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    家: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    水: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    书: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    吃: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    喝: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    二: ["HSK 2.0 Level 1", "HSK 3.0 Level 1"],
+    再: ["HSK 2.0 Level 2", "HSK 3.0 Level 1"],
+    得: ["HSK 2.0 Level 2", "HSK 3.0 Level 2"],
+    地: ["HSK 2.0 Level 3", "HSK 3.0 Level 1"],
+    坏: ["HSK 2.0 Level 3", "HSK 3.0 Level 1"],
+  };
+
+  const titles = new Set<string>();
+  const usageTitles = new Set<string>();
+  for (const character of contentClusterCharacters) {
+    const entry = getStrokeOrderCharacter(character);
+    assert.ok(entry, `${character} is published`);
+    assert.deepEqual(
+      entry.hsk.map((card) => `${card.system} ${card.level}`),
+      expectedLevels[character],
+      `${character} exact HSK levels`,
+    );
+    assert.ok(entry.hsk.every((card) => card.evidenceKind === "standalone"));
+    assert.ok(entry.examples.length >= 4, `${character} vocabulary examples`);
+    assert.equal(entry.exampleSentences.length, 3, `${character} graded sentences`);
+    titles.add(entry.seo.title);
+    usageTitles.add(entry.usageTitle);
+  }
+  assert.equal(titles.size, contentClusterCharacters.length);
+  assert.equal(usageTitles.size, contentClusterCharacters.length);
 });
 
 test("source-bound HSK cards preserve literal per-system evidence anchors", () => {
@@ -267,7 +315,7 @@ test("SEO and substantive teaching fields remain unique across published guides"
 test("curated stroke-order pages contain complete learning content", () => {
   assert.deepEqual(
     strokeOrderCharacters.map((entry) => entry.character),
-    ["爱", "年", "佛", ...approvedFirstBatch, trendingCharacter],
+    ["爱", "年", "佛", ...approvedFirstBatch, trendingCharacter, ...contentClusterCharacters],
   );
 
   for (const entry of strokeOrderCharacters) {

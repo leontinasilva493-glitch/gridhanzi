@@ -3,6 +3,7 @@ import { ArrowRight, FilePlus2, Lightbulb } from "lucide-react";
 import { envConfigs } from "@/config";
 import { Link } from "@/core/i18n/navigation";
 
+import { getComparisonPagesForCharacter } from "../comparison-pages";
 import {
   buildStrokeOrderLearningResourceData,
   getRelatedStrokeOrderCharacters,
@@ -25,6 +26,7 @@ export function StrokeOrderCharacterPage({
   const worksheetHref = `/generator?words=${encodeURIComponent(entry.character)}`;
   const hskPickerHref = "/generator?hskSystem=2.0&hskLevel=1";
   const relatedCharacters = getRelatedStrokeOrderCharacters(entry);
+  const comparisonGuides = getComparisonPagesForCharacter(entry.character);
   const h1CharacterIndex = entry.seo.h1.indexOf(entry.character);
   const h1Lead = entry.seo.h1.slice(0, h1CharacterIndex);
   const h1Tail = entry.seo.h1.slice(
@@ -203,9 +205,14 @@ export function StrokeOrderCharacterPage({
                 HSK information for {entry.character}
               </h2>
             </div>
-            <Link href={hskPickerHref} className="hs-secondary-button">
-              Browse HSK lists
-            </Link>
+            <div className="flex flex-wrap gap-2">
+              <Link href="/hsk" className="hs-secondary-button">
+                Browse HSK lists
+              </Link>
+              <Link href={hskPickerHref} className="hs-secondary-button">
+                Open HSK picker
+              </Link>
+            </div>
           </div>
           <div className="mt-4 grid gap-4 md:grid-cols-[minmax(0,1fr)_minmax(250px,0.8fr)]">
             <div className="grid gap-4 md:grid-cols-2">
@@ -228,10 +235,10 @@ export function StrokeOrderCharacterPage({
                 HSK picker to choose a full HSK 2.0 or HSK 3.0 level list.
               </p>
               <Link
-                href={hskPickerHref}
+                href="/hsk"
                 className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-[#24466e] hover:text-[#b62822]"
               >
-                Browse HSK lists <ArrowRight className="size-4" />
+                Compare HSK lists <ArrowRight className="size-4" />
               </Link>
             </article>
           </div>
@@ -327,6 +334,25 @@ export function StrokeOrderCharacterPage({
             <FilePlus2 className="size-5" /> Add {entry.character} to a worksheet
           </Link>
         </section>
+
+        {comparisonGuides.length ? (
+          <section className="mt-10 rounded border border-[#d8c49f] bg-[#fff9ed] p-6 sm:p-8" aria-labelledby="comparison-guides-title">
+            <p className="hs-kicker">Choose the right character</p>
+            <h2 id="comparison-guides-title" className="hs-display mt-2 text-2xl font-bold">
+              Compare {entry.character} with characters learners confuse
+            </h2>
+            <p className="mt-3 max-w-3xl text-sm leading-7 text-[#5a5f65]">
+              Stroke order makes the form memorable; the comparison guide adds the sentence rule, viewpoint, or visual cue needed to choose it correctly.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {comparisonGuides.map((guide) => (
+                <Link key={guide.slug} href={`/compare/${guide.slug}`} className="hs-secondary-button min-h-12 bg-white">
+                  {guide.characters.join(" vs ")} <ArrowRight className="size-4" />
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <section className="mt-10 border-t border-[#ded7ca] pt-8">
           <div className="flex flex-wrap items-end justify-between gap-3">

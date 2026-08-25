@@ -78,6 +78,8 @@ export interface StrokeOrderCharacter {
   };
 }
 
+import { expandedStrokeOrderCharacters } from "./stroke-order-character-expansion";
+
 type StrokeOrderPublicationCandidate = Pick<
   StrokeOrderCharacter,
   "publicationStatus"
@@ -591,9 +593,12 @@ strokeOrderCharacterEntries.push(
   }),
 );
 
+strokeOrderCharacterEntries.push(...expandedStrokeOrderCharacters);
+
 const publishedCharacterOrder = [
   "\u7231", "\u5e74", "\u4f5b", "\u7684", "\u4e00", "\u662f", "\u5728", "\u4e86", "\u6211",
   "\u4f60", "\u4eba", "\u6765", "\u53bb", "\u8bf4", "\u5b66", "\u7ecf", "\u4f53", "\u8bae", "\u725b",
+  "好", "不", "没", "有", "上", "下", "大", "小", "家", "水", "书", "吃", "喝", "二", "再", "得", "地", "坏",
 ] as const;
 
 export const indexableStrokeOrderCharacters = filterIndexableStrokeOrderCharacters(
