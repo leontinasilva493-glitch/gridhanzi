@@ -38,9 +38,9 @@
 assert.deepEqual(
   hskPublicPages.map((page) => page.pathname),
   [
-    "/hsk/2.0/level-1", "/hsk/3.0/level-1",
-    "/hsk/2.0/level-2", "/hsk/3.0/level-2",
-    "/hsk/2.0/level-3", "/hsk/3.0/level-3",
+    "/hsk/2-0/level-1", "/hsk/3-0/level-1",
+    "/hsk/2-0/level-2", "/hsk/3-0/level-2",
+    "/hsk/2-0/level-3", "/hsk/3-0/level-3",
   ],
 );
 assert.equal(filterPublicHskEntries(entries, "ai")[0].hanzi, "爱");
@@ -99,7 +99,7 @@ Expected: PASS.
 
 ```ts
 assert.equal(generateStaticParams().length, 6);
-assert.equal(metadata.alternates?.canonical, "https://gridhanzi.org/hsk/3.0/level-1");
+assert.equal(metadata.alternates?.canonical, "https://gridhanzi.org/hsk/3-0/level-1");
 assert.equal(renderedH1Count, 1);
 assert.match(html, /Search Hanzi, Pinyin, or English/);
 assert.match(html, /Open HSK 3\.0 Level 1 in the worksheet picker/);

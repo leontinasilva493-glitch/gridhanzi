@@ -14,7 +14,7 @@ This release adds 34 English-indexable public pages in priority order.
 ### P0
 
 - HSK hub: `/hsk`
-- HSK level pages: `/hsk/2.0/level-1`, `/hsk/3.0/level-1`
+- HSK level pages: `/hsk/2-0/level-1`, `/hsk/3-0/level-1`
 - Character guides: `好`, `不`, `没`, `有`, `上`, `下`, `大`, `小`, `家`, `水`
 
 ### P1
@@ -24,8 +24,8 @@ This release adds 34 English-indexable public pages in priority order.
 
 ### P2
 
-- HSK level pages: `/hsk/2.0/level-2`, `/hsk/3.0/level-2`,
-  `/hsk/2.0/level-3`, `/hsk/3.0/level-3`
+- HSK level pages: `/hsk/2-0/level-2`, `/hsk/3-0/level-2`,
+  `/hsk/2-0/level-3`, `/hsk/3-0/level-3`
 - Character guides: `书`, `吃`, `喝`, `二`, `再`, `得`, `地`, `坏`
 - Comparison pages: `好-坏`, `人-入`, `牛-午`
 

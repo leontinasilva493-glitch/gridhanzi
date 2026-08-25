@@ -60,7 +60,10 @@ export default function StrokeOrderPage() {
               Open the existing picker to choose the version and level that fit your study plan, then return here for focused stroke-order practice.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
-              <Link href="/generator?hskSystem=3.0&hskLevel=1" className="hs-primary-button min-h-12 px-5">
+              <Link href="/hsk" className="hs-primary-button min-h-12 px-5">
+                Browse HSK vocabulary lists <ArrowRight className="size-4" />
+              </Link>
+              <Link href="/generator?hskSystem=3.0&hskLevel=1" className="hs-secondary-button min-h-12 px-5">
                 Choose HSK 3.0 Level 1 <ArrowRight className="size-4" />
               </Link>
               <Link href="/generator?hskSystem=2.0&hskLevel=1" className="hs-secondary-button min-h-12 px-5">

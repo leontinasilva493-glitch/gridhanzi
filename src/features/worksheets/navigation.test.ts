@@ -21,6 +21,8 @@ test("primary navigation stays task-based and keeps a responsive worksheet CTA",
   const headerSource = shellSource.slice(0, shellSource.indexOf("export function HanziSiteFooter"));
 
   assert.match(navSource, /label: "Worksheet Maker"/);
+  assert.match(navSource, /label: "HSK Lists"/);
+  assert.match(navSource, /label: "Compare"/);
   assert.match(headerSource, /label: "Templates"/);
   assert.match(headerSource, /label: "Stroke Order"/);
   assert.match(headerSource, /label: "Printable Grids"/);
@@ -119,6 +121,8 @@ test("footer topic links open the matching template detail pages", async () => {
 
   assert.match(shellSource, /\["Numbers", "\/templates\/numbers"\]/);
   assert.match(shellSource, /\["Colors", "\/templates\/colors"\]/);
+  assert.match(shellSource, /\["HSK Vocabulary", "\/hsk"\]/);
+  assert.match(shellSource, /\["Character Comparisons", "\/compare"\]/);
 });
 
 test("worksheet preview exists for locale routes and remains excluded from search", async () => {
@@ -227,7 +231,7 @@ test("generator HSK query parser keeps valid values, falls back safely, and only
   );
   assert.deepEqual(
     parseGeneratorHskQuery({ hskSystem: "3.0", hskLevel: "9" }),
-    { hasExplicitSelection: true, system: "2.0", level: "1" },
+    { hasExplicitSelection: true, system: "3.0", level: "1" },
   );
   assert.deepEqual(
     parseGeneratorHskQuery({ hskSystem: "2.0", hskLevel: "7-9" }),
@@ -237,6 +241,16 @@ test("generator HSK query parser keeps valid values, falls back safely, and only
     parseGeneratorHskQuery({ hskSystem: "4.0", hskLevel: "2" }),
     { hasExplicitSelection: true, system: "2.0", level: "1" },
   );
+  assert.deepEqual(parseGeneratorHskQuery({ hskSystem: "3.0" }), {
+    hasExplicitSelection: true,
+    system: "3.0",
+    level: "1",
+  });
+  assert.deepEqual(parseGeneratorHskQuery({ hskSystem: "2.0" }), {
+    hasExplicitSelection: true,
+    system: "2.0",
+    level: "1",
+  });
   assert.deepEqual(parseGeneratorHskQuery({ hskLevel: "5" }), {
     hasExplicitSelection: true,
     system: "2.0",
