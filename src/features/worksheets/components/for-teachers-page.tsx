@@ -82,6 +82,9 @@ export function ForTeachersPage() {
                 <Link href={hskPickerHref} className="hs-secondary-button min-w-44">
                   Choose an HSK list <ArrowRight className="size-4" />
                 </Link>
+                <Link href="/hsk" className="hs-secondary-button min-w-44">
+                  Review HSK vocabulary <ArrowRight className="size-4" />
+                </Link>
               </div>
               <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-[#45556a]">
                 <li className="flex items-center gap-2">

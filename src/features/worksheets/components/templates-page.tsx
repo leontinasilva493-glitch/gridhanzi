@@ -203,6 +203,9 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
             <Link href={hskPickerHref} className="hs-secondary-button text-sm">
               Choose by HSK version
             </Link>
+            <Link href="/hsk" className="hs-secondary-button text-sm">
+              Browse HSK vocabulary
+            </Link>
           </div>
         </section>
 

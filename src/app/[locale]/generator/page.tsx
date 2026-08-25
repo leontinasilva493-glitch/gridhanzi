@@ -74,6 +74,10 @@ export function parseGeneratorHskSelection(query: {
     return { system: "3.0", level: query.hskLevel as HskLevel };
   }
 
+  if (query.hskSystem === "2.0" || query.hskSystem === "3.0") {
+    return { system: query.hskSystem, level: "1" };
+  }
+
   return DEFAULT_HSK_SELECTION;
 }
 

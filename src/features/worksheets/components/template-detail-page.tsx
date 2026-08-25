@@ -96,9 +96,14 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
                 <Eye className="size-5" /> Preview worksheet
               </Link>
               {template.category === "hsk" ? (
-                <Link href={hskPickerHref} className="hs-secondary-button min-w-56">
-                  Choose HSK 2.0 or 3.0 list
-                </Link>
+                <>
+                  <Link href="/hsk" className="hs-secondary-button min-w-56">
+                    Browse HSK vocabulary
+                  </Link>
+                  <Link href={hskPickerHref} className="hs-secondary-button min-w-56">
+                    Choose HSK 2.0 or 3.0 list
+                  </Link>
+                </>
               ) : null}
             </div>
             {template.category === "hsk" ? (

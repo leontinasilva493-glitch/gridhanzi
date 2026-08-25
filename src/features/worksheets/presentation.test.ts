@@ -6,6 +6,10 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { NextIntlClientProvider } from "next-intl";
 
 import { StrokeOrderCharacterPage } from "./components/stroke-order-character-page";
+import { HskLevelPage } from "./components/hsk-level-page";
+import { ComparisonDetailPage } from "./components/comparison-detail-page";
+import { hskPublicPages } from "./hsk-pages";
+import { getComparisonPage } from "./comparison-pages";
 import {
   getStrokeOrderCharacter,
   type StrokeOrderCharacter,
@@ -40,6 +44,61 @@ const headingText = (markup: string) =>
     .replaceAll("&#x27;", "'")
     .replaceAll("&lt;", "<")
     .replaceAll("&gt;", ">");
+
+const structuredDataFromMarkup = (html: string) =>
+  Array.from(
+    html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g),
+    (match) => JSON.parse(match[1]) as Record<string, unknown> | Record<string, unknown>[],
+  ).flat();
+
+test("untranslated Chinese HSK and comparison routes declare their visible content as English", () => {
+  const hskPage = hskPublicPages[0];
+  const comparisonPage = getComparisonPage("的-得-地");
+  assert.ok(hskPage);
+  assert.ok(comparisonPage);
+
+  const hskHtml = renderToStaticMarkup(
+    createElement(
+      NextIntlClientProvider,
+      {
+        locale: "zh",
+        messages: {},
+        children: createElement(HskLevelPage, { page: hskPage, locale: "zh" }),
+      },
+    ),
+  );
+  const comparisonHtml = renderToStaticMarkup(
+    createElement(
+      NextIntlClientProvider,
+      {
+        locale: "zh",
+        messages: {},
+        children: createElement(ComparisonDetailPage, {
+          page: comparisonPage,
+          locale: "zh",
+        }),
+      },
+    ),
+  );
+
+  const hskCollection = structuredDataFromMarkup(hskHtml).find(
+    (entry) => entry["@type"] === "CollectionPage",
+  );
+  const comparisonResource = structuredDataFromMarkup(comparisonHtml).find(
+    (entry) => entry["@type"] === "LearningResource",
+  );
+
+  assert.equal(hskCollection?.inLanguage, "en");
+  assert.equal(
+    hskCollection?.url,
+    "https://gridhanzi.org/zh/hsk/2-0/level-1",
+  );
+  assert.equal(comparisonResource?.inLanguage, "en");
+  assert.equal(
+    comparisonResource?.url,
+    "https://gridhanzi.org/zh/compare/的-得-地",
+  );
+});
 
 test("stroke-order character page renders its approved H1 and character-specific H2s", () => {
   const entry = getStrokeOrderCharacter("经");

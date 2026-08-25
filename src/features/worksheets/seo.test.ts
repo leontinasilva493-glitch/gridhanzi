@@ -5,6 +5,8 @@ import test from "node:test";
 
 import { worksheetTemplates } from "./data";
 import { strokeOrderCharacters } from "./stroke-order-characters";
+import { comparisonPages } from "./comparison-pages";
+import { getHskPublicPath, hskPublicPages } from "./hsk-pages";
 import {
   buildPublicSitemapPaths,
   buildStrokeOrderSitemapPaths,
@@ -18,6 +20,8 @@ import sitemap from "../../app/sitemap";
 import robots from "../../app/robots";
 import { generateMetadata as generateStrokeOrderMetadata } from "../../app/[locale]/stroke-order/[character]/page";
 import { generateMetadata as generateTemplatesMetadata } from "../../app/[locale]/templates/page";
+import { generateMetadata as generateHskLevelMetadata } from "../../app/[locale]/hsk/[system]/[level]/page";
+import { generateMetadata as generateComparisonMetadata } from "../../app/[locale]/compare/[slug]/page";
 
 const projectRoot = process.cwd();
 
@@ -33,10 +37,18 @@ test("buildPublicSitemapPaths includes every differentiated template page", () =
   assert.ok(paths.includes("/grids/mi-zi-ge"));
   assert.ok(paths.includes("/grids/blank"));
   assert.ok(paths.includes("/stroke-order"));
+  assert.ok(paths.includes("/hsk"));
+  assert.ok(paths.includes("/compare"));
   assert.ok(paths.includes("/for-teachers"));
   assert.ok(paths.includes("/chinese-slang/niu-lai"));
   for (const template of worksheetTemplates) {
     assert.ok(paths.includes(`/templates/${template.slug}`), template.slug);
+  }
+  for (const page of hskPublicPages) {
+    assert.ok(paths.includes(getHskPublicPath(page)));
+  }
+  for (const page of comparisonPages) {
+    assert.ok(paths.includes(`/compare/${page.slug}`));
   }
   assert.equal(new Set(paths).size, paths.length);
 });
@@ -223,6 +235,46 @@ test("page metadata self-canonicalizes indexable pages and noindexes untranslate
   });
 });
 
+test("HSK and comparison routes preserve the English-indexable and untranslated-Chinese metadata contract", async () => {
+  const [englishHsk, chineseHsk, englishComparison, chineseComparison] =
+    await Promise.all([
+      generateHskLevelMetadata({
+        params: Promise.resolve({ locale: "en", system: "2-0", level: "level-1" }),
+      }),
+      generateHskLevelMetadata({
+        params: Promise.resolve({ locale: "zh", system: "2-0", level: "level-1" }),
+      }),
+      generateComparisonMetadata({
+        params: Promise.resolve({ locale: "en", slug: "的-得-地" }),
+      }),
+      generateComparisonMetadata({
+        params: Promise.resolve({ locale: "zh", slug: "的-得-地" }),
+      }),
+    ]);
+
+  assert.equal(
+    englishHsk.alternates?.canonical,
+    "https://gridhanzi.org/hsk/2-0/level-1",
+  );
+  assert.equal(englishHsk.robots, undefined);
+  assert.equal(
+    chineseHsk.alternates?.canonical,
+    "https://gridhanzi.org/zh/hsk/2-0/level-1",
+  );
+  assert.deepEqual(chineseHsk.robots, { index: false, follow: true });
+
+  assert.equal(
+    englishComparison.alternates?.canonical,
+    "https://gridhanzi.org/compare/的-得-地",
+  );
+  assert.equal(englishComparison.robots, undefined);
+  assert.equal(
+    chineseComparison.alternates?.canonical,
+    "https://gridhanzi.org/zh/compare/的-得-地",
+  );
+  assert.deepEqual(chineseComparison.robots, { index: false, follow: true });
+});
+
 test("the indexable Chinese generator localizes search metadata and application schema", async () => {
   const metadata = await generateGeneratorMetadata({
     params: Promise.resolve({ locale: "zh" }),
@@ -348,6 +400,24 @@ test("curated Hanzi pages have static routes and unique sitemap entries", async 
     "/stroke-order/体",
     "/stroke-order/议",
     "/stroke-order/牛",
+    "/stroke-order/好",
+    "/stroke-order/不",
+    "/stroke-order/没",
+    "/stroke-order/有",
+    "/stroke-order/上",
+    "/stroke-order/下",
+    "/stroke-order/大",
+    "/stroke-order/小",
+    "/stroke-order/家",
+    "/stroke-order/水",
+    "/stroke-order/书",
+    "/stroke-order/吃",
+    "/stroke-order/喝",
+    "/stroke-order/二",
+    "/stroke-order/再",
+    "/stroke-order/得",
+    "/stroke-order/地",
+    "/stroke-order/坏",
   ]);
 
   const routeSource = await readFile(
