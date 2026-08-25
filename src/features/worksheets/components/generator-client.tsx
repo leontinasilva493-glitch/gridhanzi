@@ -767,9 +767,14 @@ function GeneratorSupportSections() {
               handwriting practice sheet, or short recall test.
             </p>
           </div>
-          <Link href="/templates" className="hs-secondary-button text-sm">
-            Browse editable templates
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/templates" className="hs-secondary-button text-sm">
+              Browse editable templates
+            </Link>
+            <Link href="/grids" className="hs-secondary-button text-sm">
+              Printable grid PDFs
+            </Link>
+          </div>
         </div>
         <div className="mt-5 grid gap-4 md:grid-cols-3">
           <SupportCard title="Paste a word list">

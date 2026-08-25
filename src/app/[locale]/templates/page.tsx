@@ -11,9 +11,11 @@ export async function generateMetadata({ params }: {
 }): Promise<Metadata> {
   const { locale } = await params;
   return {
-    title: "Printable Chinese Writing Worksheets & Hanzi Grid Paper",
+    title: {
+      absolute: "Free Printable Chinese Writing Worksheets (PDF) | GridHanzi",
+    },
     description:
-      "Browse printable Chinese writing worksheets, Hanzi grid paper, Tian Zi Ge, Mi Zi Ge, topic word lists, and HSK practice sheets, then edit and print.",
+      "Browse free printable Chinese writing worksheets with Hanzi, Pinyin, tracing, topic word lists, and HSK practice, then edit and save a PDF.",
     ...buildPageSeoMetadata(envConfigs.app_url, "/templates", locale),
   };
 }

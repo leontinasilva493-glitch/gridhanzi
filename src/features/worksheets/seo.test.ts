@@ -19,6 +19,7 @@ import GeneratorPage, {
 import sitemap from "../../app/sitemap";
 import robots from "../../app/robots";
 import { generateMetadata as generateStrokeOrderMetadata } from "../../app/[locale]/stroke-order/[character]/page";
+import { generateMetadata as generateTemplatesMetadata } from "../../app/[locale]/templates/page";
 import { generateMetadata as generateHskLevelMetadata } from "../../app/[locale]/hsk/[system]/[level]/page";
 import { generateMetadata as generateComparisonMetadata } from "../../app/[locale]/compare/[slug]/page";
 
@@ -50,6 +51,44 @@ test("buildPublicSitemapPaths includes every differentiated template page", () =
     assert.ok(paths.includes(`/compare/${page.slug}`));
   }
   assert.equal(new Set(paths).size, paths.length);
+});
+
+test("worksheet acquisition pages publish distinct search-result promises", async () => {
+  const templatesMetadata = await generateTemplatesMetadata({
+    params: Promise.resolve({ locale: "en" }),
+  });
+  assert.deepEqual(
+    templatesMetadata.title,
+    {
+      absolute: "Free Printable Chinese Writing Worksheets (PDF) | GridHanzi",
+    },
+  );
+
+  const expectedTemplates = {
+    "pinyin-practice": {
+      seoTitle: "Hanzi and Pinyin Practice Worksheet - Free Printable",
+      h1: "Hanzi and Pinyin Practice Worksheet",
+    },
+    "top-100-chinese-characters": {
+      seoTitle: "Top 100 Chinese Characters to Practice - Printable List",
+      h1: "100 Chinese Characters to Practice",
+    },
+    "blank-tianzige-grid": {
+      seoTitle: "Tian Zi Ge Beginner Worksheet - 18 Editable Hanzi",
+      h1: "Tian Zi Ge Beginner Character Worksheet",
+    },
+    "blank-mi-zi-ge-grid": {
+      seoTitle: "Mi Zi Ge Beginner Worksheet - 18 Editable Hanzi",
+      h1: "Mi Zi Ge Beginner Character Worksheet",
+    },
+  } as const;
+
+  for (const [slug, expected] of Object.entries(expectedTemplates)) {
+    const template = worksheetTemplates.find((candidate) => candidate.slug === slug);
+    assert.ok(template, slug);
+    assert.equal(template.seoTitle, expected.seoTitle, slug);
+    assert.equal(template.h1, expected.h1, slug);
+  }
 });
 
 test("toAbsoluteUrl normalizes base and path slashes", () => {
