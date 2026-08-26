@@ -47,6 +47,14 @@ export default function StrokeOrderPage() {
             Enter a character to watch the strokes, practise on screen, or add
             it to a worksheet.
           </p>
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <Link href="/practice" className="hs-primary-button min-h-12 px-5">
+              Start continuous practice <ArrowRight className="size-4" />
+            </Link>
+            <Link href="#popular-guides-title" className="hs-secondary-button min-h-12 px-5">
+              Browse character guides
+            </Link>
+          </div>
         </header>
         <StrokeOrderClient />
 

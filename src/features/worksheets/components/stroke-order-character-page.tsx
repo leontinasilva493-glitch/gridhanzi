@@ -9,6 +9,7 @@ import {
   getRelatedStrokeOrderCharacters,
   type StrokeOrderCharacter,
 } from "../stroke-order-characters";
+import { buildPracticeHref } from "../practice-session";
 import { StructuredData } from "./structured-data";
 import { StrokeOrderClient } from "./stroke-order-client";
 import { PublicPageShell } from "./site-shell";
@@ -142,9 +143,14 @@ export function StrokeOrderCharacterPage({
                 Animated stroke order for {entry.character}
               </h2>
             </div>
-            <span className="rounded-full border border-[#d1c8b9] bg-white px-3 py-1.5 text-xs font-semibold text-[#566276]">
-              Traditional: <span className="hs-hanzi-context">{entry.traditional}</span>
-            </span>
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="rounded-full border border-[#d1c8b9] bg-white px-3 py-1.5 text-xs font-semibold text-[#566276]">
+                Traditional: <span className="hs-hanzi-context">{entry.traditional}</span>
+              </span>
+              <Link href={buildPracticeHref(entry.character)} className="hs-primary-button min-h-10 px-4 py-2 text-sm">
+                Practise in a continuous set <ArrowRight className="size-4" />
+              </Link>
+            </div>
           </div>
           <StrokeOrderClient
             initialCharacter={entry.character}

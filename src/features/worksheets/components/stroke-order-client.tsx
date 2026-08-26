@@ -50,6 +50,9 @@ type StrokeOrderClientProps = {
   initialInfo?: Pick<StrokeOrderCharacter, "pinyin" | "meaning" | "strokes">;
   showSearch?: boolean;
   showGuidance?: boolean;
+  autoStartPractice?: boolean;
+  sessionMode?: boolean;
+  onPracticeComplete?: (character: string) => void;
 };
 
 export function StrokeOrderClient({
@@ -57,6 +60,9 @@ export function StrokeOrderClient({
   initialInfo,
   showSearch = true,
   showGuidance = true,
+  autoStartPractice = false,
+  sessionMode = false,
+  onPracticeComplete,
 }: StrokeOrderClientProps = {}) {
   const targetRef = useRef<HTMLDivElement>(null);
   const writerRef = useRef<HanziWriterType | null>(null);
@@ -256,6 +262,7 @@ export function StrokeOrderClient({
     if (nextStrokeIndex >= totalStrokes) {
       setPracticeStatus("complete");
       setPracticeMessage("Complete — the standard template character is fully filled.");
+      onPracticeComplete?.(character);
       return;
     }
 
@@ -276,6 +283,15 @@ export function StrokeOrderClient({
       y: ((event.clientY - bounds.top) / bounds.height) * 300,
     };
   }
+
+  useEffect(() => {
+    if (!autoStartPractice || !characterData || loadError) return;
+
+    const frame = window.requestAnimationFrame(() => {
+      void beginPractice();
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [autoStartPractice, character, characterData, loadError]);
 
   return (
     <>
@@ -300,7 +316,9 @@ export function StrokeOrderClient({
         </div>
       ) : null}
 
-      <section className="mt-7 grid gap-4 lg:grid-cols-[0.95fr_1.05fr]">
+      <section
+        className={`${sessionMode ? "mt-4" : "mt-7"} grid gap-4 lg:grid-cols-[0.95fr_1.05fr]`}
+      >
         <div className="hs-card p-4">
           <div className="mx-auto aspect-square max-w-[300px] bg-white">
             <div
@@ -428,10 +446,12 @@ export function StrokeOrderClient({
         </div>
       </section>
 
-      <section className="hs-card mt-4 p-4">
-        <h2 className="hs-display text-xl font-bold">Stroke-by-stroke</h2>
-        <StrokeSequence character={character} limit={info.strokes || 6} className="mt-4" />
-      </section>
+      {!sessionMode ? (
+        <section className="hs-card mt-4 p-4">
+          <h2 className="hs-display text-xl font-bold">Stroke-by-stroke</h2>
+          <StrokeSequence character={character} limit={info.strokes || 6} className="mt-4" />
+        </section>
+      ) : null}
 
       {showGuidance ? (
         <section className="mt-4 grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
