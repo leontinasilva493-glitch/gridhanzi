@@ -18,6 +18,7 @@ other.
 | `/templates/[slug]` | `[Topic] Chinese Writing Worksheet` |
 | `/stroke-order` | Chinese Stroke Order |
 | `/stroke-order/[character]` | Curated character stroke order, meaning, and usage |
+| `/practice` | Continuous on-screen character practice product surface (`noindex`) |
 | `/chinese-slang/niu-lai` | Niu Lai meaning and Chinese movie meme context |
 | `/for-teachers` | Chinese Worksheets for Teachers |
 | `/zh/generator` | 中文汉字字帖生成器 |
@@ -71,6 +72,10 @@ Index pages only when they contain differentiated public value.
 
 ### Do not index
 
+- `/practice` and `/zh/practice`: interactive continuous-practice surfaces
+  that support the indexed stroke-order hub and character guides. Keep them
+  `noindex, follow` and out of the sitemap until they earn differentiated
+  search intent beyond the existing stroke-order routes.
 - `/worksheet/preview` and `/zh/worksheet/preview`: transient browser state,
   controlled with page-level `noindex` metadata and omitted from the sitemap.
 - Untranslated Chinese marketing routes: use `noindex, follow` and omit them

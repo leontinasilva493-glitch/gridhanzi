@@ -22,6 +22,7 @@ const templateMenuLinks = [
 
 const strokeOrderMenuLinks = [
   ["Stroke Order Tool", "/stroke-order"],
+  ["Continuous Practice", "/practice"],
   ["Practice Sheets", "/templates/stroke-order-practice"],
   ["Basic Strokes", "/templates/basic-strokes"],
   ["Radicals", "/templates/radicals"],
@@ -238,6 +239,7 @@ export function HanziSiteFooter() {
           ["Worksheet Generator", "/generator"],
             ["Printable Grids", "/grids"],
             ["Stroke Order", "/stroke-order"],
+            ["Continuous Practice", "/practice"],
             ["Practice Types", "/#practice-types"],
           ]}
         />
