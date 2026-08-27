@@ -49,7 +49,11 @@ export function buildPageSeoMetadata(
   baseUrl: string,
   pathname: string,
   locale: string,
-  options: { chineseIndexable?: boolean } = {},
+  options: {
+    chineseIndexable?: boolean;
+    title?: string;
+    description?: string;
+  } = {},
 ): Metadata {
   const englishPath = pathname === "/" ? "/" : `/${pathname.replace(/^\/+/, "")}`;
   const localizedPath =
@@ -84,6 +88,8 @@ export function buildPageSeoMetadata(
       url: canonical,
       siteName: "GridHanzi",
       type: "website",
+      ...(options.title ? { title: options.title } : {}),
+      ...(options.description ? { description: options.description } : {}),
       images: [
         {
           url: toAbsoluteUrl(baseUrl, "/og-gridhanzi.png"),
@@ -93,5 +99,15 @@ export function buildPageSeoMetadata(
         },
       ],
     },
+    ...(options.title && options.description
+      ? {
+          twitter: {
+            card: "summary_large_image" as const,
+            title: options.title,
+            description: options.description,
+            images: [toAbsoluteUrl(baseUrl, "/og-gridhanzi.png")],
+          },
+        }
+      : {}),
   };
 }

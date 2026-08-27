@@ -36,11 +36,11 @@ const mvpTemplateSeoExpectations = {
     h1: "HSK 3 Workplace Chinese Worksheet",
   },
   "top-100-chinese-characters": {
-    seoTitle: "Top 100 Chinese Characters to Practice - Printable List",
+    seoTitle: "Top 100 Chinese Characters Practice",
     h1: "100 Chinese Characters to Practice",
   },
   "blank-tianzige-grid": {
-    seoTitle: "Tian Zi Ge Beginner Worksheet - 18 Editable Hanzi",
+    seoTitle: "Editable Tian Zi Ge Worksheet (18 Hanzi)",
     h1: "Tian Zi Ge Beginner Character Worksheet",
   },
   "chinese-first-characters": {
@@ -60,7 +60,7 @@ const mvpTemplateSeoExpectations = {
     h1: "Top 200 Chinese Characters Writing Practice",
   },
   "blank-mi-zi-ge-grid": {
-    seoTitle: "Mi Zi Ge Beginner Worksheet - 18 Editable Hanzi",
+    seoTitle: "Editable Mi Zi Ge Worksheet (18 Hanzi)",
     h1: "Mi Zi Ge Beginner Character Worksheet",
   },
   "chinese-numbers-1-100": {

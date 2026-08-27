@@ -19,10 +19,15 @@ export async function generateMetadata({ params }: {
   const page = getGridPaperPage(slug);
   if (!page) return {};
 
-  const pageSeo = buildPageSeoMetadata(envConfigs.app_url, `/grids/${page.slug}`, locale);
+  const pageSeo = buildPageSeoMetadata(
+    envConfigs.app_url,
+    `/grids/${page.slug}`,
+    locale,
+    { title: page.title, description: page.description },
+  );
   return {
     ...pageSeo,
-    title: { absolute: page.title },
+    title: page.title,
     description: page.description,
     openGraph: {
       ...pageSeo.openGraph,

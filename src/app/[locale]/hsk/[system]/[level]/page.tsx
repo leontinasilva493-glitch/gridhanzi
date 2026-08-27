@@ -22,7 +22,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const page = getHskPublicPageFromRoute(system, level);
   if (!page) return {};
   const pathname = getHskPublicPath(page);
-  const seo = buildPageSeoMetadata(envConfigs.app_url, pathname, locale);
+  const seo = buildPageSeoMetadata(envConfigs.app_url, pathname, locale, {
+    title: page.title,
+    description: page.description,
+  });
   return { ...seo, title: page.title, description: page.description, openGraph: { ...seo.openGraph, title: page.title, description: page.description } };
 }
 

@@ -28,7 +28,7 @@ export const gridPaperPages: GridPaperPage[] = [
     slug: "tian-zi-ge",
     grid: "tian",
     profile: "kids",
-    title: "Tian Zi Ge Printable PDF - Free Chinese Grid Paper | GridHanzi",
+    title: "Free Tian Zi Ge Printable Grid Paper",
     description:
       "Free printable Tian Zi Ge (田字格) grid paper PDF for Chinese character writing practice. Download blank tianzige sheets with cross guide lines. No sign-up.",
     h1: "Free Tian Zi Ge (田字格) Printable Grid Paper",
@@ -78,7 +78,7 @@ export const gridPaperPages: GridPaperPage[] = [
     slug: "mi-zi-ge",
     grid: "mi",
     profile: "brush",
-    title: "Mi Zi Ge Printable PDF - Free Chinese Grid Paper | GridHanzi",
+    title: "Free Mi Zi Ge Printable Grid Paper",
     description:
       "Free printable Mi Zi Ge (米字格) grid paper PDF with diagonal guide lines for Chinese character writing practice. Download blank mizige sheets instantly.",
     h1: "Free Mi Zi Ge (米字格) Printable Grid Paper",
@@ -128,7 +128,7 @@ export const gridPaperPages: GridPaperPage[] = [
     slug: "blank",
     grid: "tian",
     profile: "kids",
-    title: "Blank Hanzi Grid PDF - Free Printable Practice Paper | GridHanzi",
+    title: "Blank Hanzi Grid Paper PDF",
     description:
       "Download a free blank Tian Zi Ge Hanzi grid PDF with empty guide cells for Chinese writing practice. A4 printable, with no characters and no sign-up.",
     h1: "Blank Hanzi Grid Paper (Free PDF)",

@@ -187,6 +187,45 @@ test("blank grid acquisition links route users to the printable grid pages", asy
   assert.match(generatorSource, /href="\/grids"[\s\S]*?printable grid PDFs/i);
 });
 
+test("English-input practice receives contextual links from the acquisition journey", async () => {
+  const [homeSource, generatorSource, teacherSource] = await Promise.all([
+    projectFile("src/features/worksheets/components/home-page.tsx"),
+    projectFile("src/features/worksheets/components/generator-client.tsx"),
+    projectFile("src/features/worksheets/components/for-teachers-page.tsx"),
+  ]);
+
+  assert.match(
+    homeSource,
+    /href="\/english-to-chinese-writing-practice"[\s\S]*?English to Chinese writing practice/i,
+  );
+  assert.match(
+    generatorSource,
+    /href="\/english-to-chinese-writing-practice"[\s\S]*?English to Chinese writing practice/i,
+  );
+  assert.match(
+    teacherSource,
+    /href="\/english-to-chinese-writing-practice"[\s\S]*?English to Chinese writing practice/i,
+  );
+});
+
+test("homepage tool chooser links each major search intent to its canonical route", async () => {
+  const homeSource = await projectFile(
+    "src/features/worksheets/components/home-page.tsx",
+  );
+
+  assert.match(homeSource, /Choose the Right Chinese Writing Tool/);
+  for (const route of [
+    "/generator",
+    "/templates",
+    "/grids",
+    "/hsk",
+    "/stroke-order",
+    "/english-to-chinese-writing-practice",
+  ]) {
+    assert.match(homeSource, new RegExp(`href="${route}"`), route);
+  }
+});
+
 test("teacher landing page is public, specific, and limited to current features", async () => {
   const routePath = projectPath("src/app/[locale]/for-teachers/page.tsx");
   const componentPath = projectPath(
@@ -202,7 +241,10 @@ test("teacher landing page is public, specific, and limited to current features"
   ]);
 
   assert.match(routeSource, /Chinese Worksheets for Teachers/);
-  assert.match(componentSource, /Create Chinese worksheets for your class/);
+  assert.match(
+    componentSource,
+    /Chinese Worksheets for Teachers, Made from Your Word List/,
+  );
   assert.match(componentSource, /Learn, practise, and test/);
   assert.match(componentSource, /Classroom word lists/);
   assert.match(componentSource, /href="\/generator"/);

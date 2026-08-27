@@ -77,7 +77,7 @@ export const comparisonPages: readonly ComparisonPage[] = [
   },
   {
     slug: "来-去", category: "Direction and contrast", characters: ["来", "去"],
-    title: "来 vs 去: Chinese Direction from the Reference Point",
+    title: "来 vs 去: Direction and Usage",
     description: "Choose 来 or 去 by locating the speaker or reference point. Compare arrivals, departures, compound directions, invitations, and common learner errors.",
     heading: "来 vs 去: direction depends on the reference point",
     intro: "English ‘come’ and ‘go’ are a useful start, but Mandarin direction becomes clearer when you mark the place the conversation treats as ‘here’.",
@@ -111,7 +111,7 @@ export const comparisonPages: readonly ComparisonPage[] = [
   },
   {
     slug: "上-下", category: "Direction and contrast", characters: ["上", "下"],
-    title: "上 vs 下: Chinese Position, Direction, and Time Pairs",
+    title: "上 vs 下: Meaning, Direction & Time",
     description: "Compare 上 and 下 across space, movement, schedules, vehicles, and previous/next time. Learn which side of a noun changes the meaning.",
     heading: "上 vs 下: one spatial pair, several useful extensions",
     intro: "The basic contrast is above versus below, but Mandarin reuses that orientation for movement, class schedules, vehicles, and time periods.",
@@ -145,7 +145,7 @@ export const comparisonPages: readonly ComparisonPage[] = [
   },
   {
     slug: "人-入", category: "Shape and recognition", characters: ["人", "入"],
-    title: "人 vs 入: Stroke Direction and Character Recognition",
+    title: "人 vs 入: Stroke Order Differences",
     description: "Tell 人 (person) from 入 (enter) by stroke order, crossing position, opening shape, vocabulary context, and short handwriting drills.",
     heading: "人 vs 入: use the first stroke and crossing point",
     intro: "In some fonts these two-stroke characters look almost identical. Handwriting reveals the distinction through which stroke begins, which stroke is longer, and where the forms open.",
@@ -162,7 +162,7 @@ export const comparisonPages: readonly ComparisonPage[] = [
   },
   {
     slug: "牛-午", category: "Shape and recognition", characters: ["牛", "午"],
-    title: "牛 vs 午: Stroke Crossings, Meaning, and Memory Tips",
+    title: "牛 vs 午: How to Tell Them Apart",
     description: "Distinguish 牛 (cow; impressive) from 午 (noon) by the central vertical, horizontal crossing, stroke sequence, word families, and guided practice.",
     heading: "牛 vs 午: check where the vertical crosses",
     intro: "牛 and 午 share four familiar strokes, but the central vertical behaves differently. That small structural cue separates cattle and slang from noon and time words.",

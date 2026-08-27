@@ -14,7 +14,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale, slug } = await params;
   const page = getComparisonPage(slug);
   if (!page) return {};
-  const seo = buildPageSeoMetadata(envConfigs.app_url, `/compare/${page.slug}`, locale);
+  const seo = buildPageSeoMetadata(
+    envConfigs.app_url,
+    `/compare/${page.slug}`,
+    locale,
+    { title: page.title, description: page.description },
+  );
   return { ...seo, title: page.title, description: page.description, openGraph: { ...seo.openGraph, title: page.title, description: page.description } };
 }
 

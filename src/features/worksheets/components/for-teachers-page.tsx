@@ -65,7 +65,7 @@ export function ForTeachersPage() {
             <div>
               <p className="hs-kicker">Chinese worksheets for teachers</p>
               <h1 className="hs-display mt-3 max-w-3xl text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.4rem]">
-                Create Chinese worksheets for your class.
+                Chinese Worksheets for Teachers, Made from Your Word List
               </h1>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-[#4f5d71]">
                 Paste vocabulary from a lesson plan or spreadsheet, check the
@@ -179,6 +179,16 @@ export function ForTeachersPage() {
                 Choose an HSK list
               </Link>
               .
+            </p>
+            <p className="mt-3 text-sm text-[#566276]">
+              Preparing a bilingual list? Start with{" "}
+              <Link
+                href="/english-to-chinese-writing-practice"
+                className="font-semibold text-[#24466e] hover:text-[#b62822]"
+              >
+                English to Chinese writing practice
+              </Link>{" "}
+              and check every matched Hanzi and Pinyin row before printing.
             </p>
             <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {featuredTemplates.map((template) => (

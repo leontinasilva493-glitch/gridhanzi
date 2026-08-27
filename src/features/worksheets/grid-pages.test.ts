@@ -26,6 +26,15 @@ test("defines the three printable grid landing pages with keyword PDFs", () => {
     assert.ok(page.faqs.length >= 3, page.slug);
     assert.match(page.pdfHref, /^\/downloads\/.+\.pdf$/);
   }
+
+  assert.deepEqual(
+    gridPaperPages.map((page) => page.title),
+    [
+      "Free Tian Zi Ge Printable Grid Paper",
+      "Free Mi Zi Ge Printable Grid Paper",
+      "Blank Hanzi Grid Paper PDF",
+    ],
+  );
 });
 
 test("resolves grid pages and generator grid query values", () => {
@@ -66,9 +75,7 @@ test("blank grid metadata describes the real Tian Zi Ge download", async () => {
     params: Promise.resolve({ locale: "en", slug: "blank" }),
   });
 
-  assert.deepEqual(metadata.title, {
-    absolute: "Blank Hanzi Grid PDF - Free Printable Practice Paper | GridHanzi",
-  });
+  assert.equal(metadata.title, "Blank Hanzi Grid Paper PDF");
   assert.match(metadata.description ?? "", /blank Tian Zi Ge/i);
   assert.doesNotMatch(metadata.description ?? "", /plain (?:cell|grid)/i);
 });

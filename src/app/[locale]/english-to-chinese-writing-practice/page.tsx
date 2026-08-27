@@ -23,10 +23,13 @@ export async function generateMetadata({ params }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const pageSeo = buildPageSeoMetadata(envConfigs.app_url, pagePath, locale);
   const title = "English to Chinese Writing Practice";
   const description =
     "Turn English vocabulary into an editable Chinese writing practice worksheet with Hanzi, Pinyin, tracing grids, and printable PDF output.";
+  const pageSeo = buildPageSeoMetadata(envConfigs.app_url, pagePath, locale, {
+    title,
+    description,
+  });
 
   return {
     ...pageSeo,
@@ -97,6 +100,7 @@ export default function Page() {
         breadcrumbLabel="English to Chinese Practice"
         templateTitle="English to Chinese Writing Practice"
         templateChineseTitle="\u82f1\u6587\u8f6c\u4e2d\u6587\u7ec3\u4e60"
+        showEnglishPracticeLink={false}
       />
     </>
   );

@@ -6,6 +6,7 @@ import { worksheetTemplates } from "@/features/worksheets/data";
 import { getTemplateBySlug } from "@/features/worksheets/engine";
 import { TemplateDetailPage } from "@/features/worksheets/components/template-detail-page";
 import { buildPageSeoMetadata } from "@/features/worksheets/seo";
+import { buildTemplateSeoCopy } from "@/features/worksheets/templates";
 
 export const dynamicParams = false;
 
@@ -20,15 +21,14 @@ export async function generateMetadata({ params }: {
   const template = getTemplateBySlug(slug);
   if (!template) return {};
 
+  const { title, description } = buildTemplateSeoCopy(template);
+
   const pageSeo = buildPageSeoMetadata(
     envConfigs.app_url,
     `/templates/${template.slug}`,
     locale,
+    { title, description },
   );
-  const title = template.seoTitle ?? `${template.title} Chinese Writing Worksheet`;
-  const description =
-    template.seoDescription ??
-    `${template.description} Open the word list in the worksheet generator, edit it, and download a printable PDF.`;
 
   return {
     ...pageSeo,
