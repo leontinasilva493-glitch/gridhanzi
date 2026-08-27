@@ -11,8 +11,8 @@ other.
 
 | Route | Primary search intent |
 | --- | --- |
-| `/` | Chinese Character Practice Sheet Generator |
-| `/generator` | Chinese Worksheet Generator |
+| `/` | Chinese Character Worksheet Generator |
+| `/generator` | Chinese Worksheet Generator from Your Word List |
 | `/english-to-chinese-writing-practice` | English to Chinese Writing Practice |
 | `/templates` | Printable Chinese Writing Worksheets |
 | `/templates/[slug]` | `[Topic] Chinese Writing Worksheet` |

@@ -8,7 +8,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const title = "HSK Vocabulary Lists: HSK 2.0 vs 3.0";
   const description = "Compare searchable HSK 2.0 and HSK 3.0 vocabulary lists, select words by Hanzi, Pinyin, or English, and make printable writing practice.";
-  const seo = buildPageSeoMetadata(envConfigs.app_url, "/hsk", locale);
+  const seo = buildPageSeoMetadata(envConfigs.app_url, "/hsk", locale, {
+    title,
+    description,
+  });
   return { ...seo, title, description, openGraph: { ...seo.openGraph, title, description } };
 }
 

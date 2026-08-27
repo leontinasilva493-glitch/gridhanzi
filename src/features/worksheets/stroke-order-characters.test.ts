@@ -504,7 +504,7 @@ test("佛 explains its alternate reading in 仿佛", () => {
 
 test("published character guides expose the approved character-specific search metadata", () => {
   const approvedSeo = [
-    ["\u7684", "de", "de", "\u7684 (de) Stroke Order, Meaning & Grammar", "How to Write \u7684 (de): Stroke Order, Meaning & Usage", "Learn how to write \u7684 (de), the common possessive and descriptive particle. See its 8 strokes, neutral-tone usage, example words, sentences, and worksheet practice."],
+    ["\u7684", "de", "de", "\u7684 (de) Stroke Order, Meaning & Grammar", "How to Write \u7684 (de): Stroke Order, Meaning & Usage", "Learn how to write \u7684 (de), the common possessive and descriptive particle. See its 8 strokes, neutral-tone usage, example words, sentences, and practice tips."],
     ["\u4e00", "y\u012b", "y\u012b", "\u4e00 (y\u012b) Stroke Order, Meaning & Tone Changes", "How to Write \u4e00 (y\u012b): Stroke Order and Tone Changes", "Learn how to write \u4e00 (y\u012b), meaning \u201cone.\u201d Follow its single stroke and understand when y\u012b changes to y\u00ed or y\u00ec in common words and sentences."],
     ["\u662f", "sh\u00ec", "sh\u00ec", "\u662f (sh\u00ec) Stroke Order, Meaning & Usage", "How to Write \u662f (sh\u00ec): Stroke Order, Meaning & Usage", "Learn how to write \u662f (sh\u00ec), meaning \u201cto be\u201d or \u201ccorrect.\u201d See its 9 strokes and learn identity, question and negation patterns with examples."],
     ["\u5728", "z\u00e0i", "z\u00e0i", "\u5728 (z\u00e0i) Stroke Order, Meaning & Grammar", "How to Write \u5728 (z\u00e0i): Location and Ongoing Actions", "Learn how to write \u5728 (z\u00e0i) and use it for location and ongoing actions. Follow its 6 strokes and practise common grammar patterns and sentences."],

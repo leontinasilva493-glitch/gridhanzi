@@ -10,13 +10,18 @@ export async function generateMetadata({ params }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const title = "Free Printable Chinese Writing Worksheets (PDF) | GridHanzi";
+  const description =
+    "Browse free printable Chinese writing worksheets with Hanzi, Pinyin, tracing, topic word lists, and HSK practice, then edit and save a PDF.";
   return {
     title: {
-      absolute: "Free Printable Chinese Writing Worksheets (PDF) | GridHanzi",
+      absolute: title,
     },
-    description:
-      "Browse free printable Chinese writing worksheets with Hanzi, Pinyin, tracing, topic word lists, and HSK practice, then edit and save a PDF.",
-    ...buildPageSeoMetadata(envConfigs.app_url, "/templates", locale),
+    description,
+    ...buildPageSeoMetadata(envConfigs.app_url, "/templates", locale, {
+      title,
+      description,
+    }),
   };
 }
 

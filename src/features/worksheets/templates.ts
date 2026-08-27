@@ -18,6 +18,26 @@ export interface WorksheetTemplateFilters {
   age: string | "all";
 }
 
+export function buildTemplateSeoCopy(template: WorksheetTemplate): {
+  title: string;
+  description: string;
+} {
+  const title =
+    template.seoTitle ??
+    (/(?:Writing Practice|Practice|Strokes|Radicals|Copying)$/i.test(
+      template.title,
+    )
+      ? `${template.title} Worksheet`
+      : /Chinese/i.test(template.title)
+        ? `${template.title} Writing Worksheet`
+        : `${template.title} Chinese Writing Worksheet`);
+  const description =
+    template.seoDescription ??
+    `${template.description} Edit Hanzi and Pinyin, then print a PDF.`;
+
+  return { title, description };
+}
+
 export function filterWorksheetTemplates<T extends FilterableWorksheetTemplate>(
   templates: T[],
   filters: WorksheetTemplateFilters,

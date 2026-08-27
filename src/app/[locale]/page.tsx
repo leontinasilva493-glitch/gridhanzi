@@ -8,15 +8,21 @@ import {
   toAbsoluteUrl,
 } from "@/features/worksheets/seo";
 
+const homeTitle = "Chinese Character Worksheet Generator";
+const homeDescription =
+  "Use this free Chinese character worksheet generator to turn English or Chinese word lists into editable Hanzi, Pinyin, tracing, and writing-grid PDFs.";
+
 export async function generateMetadata({ params }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
   return {
-    title: "Chinese Character Worksheet Generator - Free Practice Sheets",
-    description:
-      "Create free, printable Chinese character worksheets. Add editable Hanzi, Pinyin, tracing, writing grids, and Hanzi grid paper, then download a PDF.",
-    ...buildPageSeoMetadata(envConfigs.app_url, "/", locale),
+    title: homeTitle,
+    description: homeDescription,
+    ...buildPageSeoMetadata(envConfigs.app_url, "/", locale, {
+      title: homeTitle,
+      description: homeDescription,
+    }),
   };
 }
 
@@ -41,14 +47,13 @@ export default function Page() {
           {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            name: "GridHanzi — Chinese Character Practice Sheet Generator",
+            name: homeTitle,
             alternateName: "GridHanzi",
             applicationCategory: "EducationalApplication",
             operatingSystem: "Any",
             isAccessibleForFree: true,
             url: envConfigs.app_url,
-            description:
-              "Create printable Chinese character worksheets from any English or Chinese vocabulary list with editable Hanzi, Pinyin, tracing, writing grids, and Hanzi grid paper.",
+            description: homeDescription,
           },
           {
             "@context": "https://schema.org",

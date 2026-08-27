@@ -16,6 +16,10 @@ test("comparison collection publishes the eight approved intent-owned pages", ()
   assert.equal(new Set(comparisonPages.map((page) => page.title)).size, 8);
   assert.equal(new Set(comparisonPages.map((page) => page.description)).size, 8);
   assert.equal(new Set(comparisonPages.map((page) => page.intro)).size, 8);
+  assert.equal(getComparisonPage("上-下")?.title, "上 vs 下: Meaning, Direction & Time");
+  assert.equal(getComparisonPage("来-去")?.title, "来 vs 去: Direction and Usage");
+  assert.equal(getComparisonPage("人-入")?.title, "人 vs 入: Stroke Order Differences");
+  assert.equal(getComparisonPage("牛-午")?.title, "牛 vs 午: How to Tell Them Apart");
 });
 
 test("each comparison page has enough differentiated teaching material", () => {

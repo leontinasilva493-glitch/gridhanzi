@@ -16,11 +16,16 @@ export async function generateMetadata({ params }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const title = "Chinese Stroke Order";
+  const description =
+    "Enter a Chinese character to see its stroke order, play one stroke at a time, practise on screen, or add it to a worksheet.";
   return {
-    title: "Chinese Stroke Order",
-    description:
-      "Enter a Chinese character to see its stroke order, play one stroke at a time, practise on screen, or add it to a worksheet.",
-    ...buildPageSeoMetadata(envConfigs.app_url, "/stroke-order", locale),
+    title,
+    description,
+    ...buildPageSeoMetadata(envConfigs.app_url, "/stroke-order", locale, {
+      title,
+      description,
+    }),
   };
 }
 

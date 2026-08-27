@@ -26,9 +26,9 @@ const HSK_20_LEVELS = new Set<HskLevel>(["1", "2", "3", "4", "5", "6"]);
 const HSK_30_LEVELS = new Set<HskLevel>(["1", "2", "3", "4", "5", "6", "7-9"]);
 
 const englishGeneratorCopy = {
-  title: "Chinese Worksheet Generator: Free Mandarin Practice Sheets",
+  title: "Chinese Worksheet Generator from Your Word List",
   description:
-    "Make free Mandarin practice sheets with editable Hanzi, Pinyin, tracing, Chinese writing grids, Hanzi grid paper, and printable PDF output.",
+    "Build a custom Chinese worksheet from your own word list. Edit Hanzi and Pinyin, choose Tian Zi Ge or Mi Zi Ge, and download a printable PDF.",
   applicationName: "GridHanzi Chinese Worksheet Generator",
   applicationDescription:
     "Create printable Mandarin and Chinese worksheets from English or Chinese vocabulary with editable Hanzi, Pinyin, writing grids, Hanzi grid paper, stroke-order guidance, and PDF output.",
@@ -114,7 +114,11 @@ export async function generateMetadata({ params }: {
     envConfigs.app_url,
     "/generator",
     locale,
-    { chineseIndexable: true },
+    {
+      chineseIndexable: true,
+      title: copy.title,
+      description: copy.description,
+    },
   );
 
   return {

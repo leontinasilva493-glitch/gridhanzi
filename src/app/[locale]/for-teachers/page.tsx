@@ -8,21 +8,23 @@ export async function generateMetadata({ params }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const title = "Chinese Worksheets for Teachers";
+  const description =
+    "Create editable Chinese handwriting worksheets, tracing pages, and short recall tests from your own classroom word list.";
   const pageSeo = buildPageSeoMetadata(
     envConfigs.app_url,
     "/for-teachers",
     locale,
+    { title, description },
   );
   return {
     ...pageSeo,
-    title: "Chinese Worksheets for Teachers",
-    description:
-      "Create editable Chinese handwriting worksheets, tracing pages, and short recall tests from your own classroom word list.",
+    title,
+    description,
     openGraph: {
       ...pageSeo.openGraph,
-      title: "Chinese Worksheets for Teachers",
-      description:
-        "Paste your classroom vocabulary, check the Hanzi and Pinyin, and download a printable Chinese worksheet.",
+      title,
+      description,
     },
   };
 }

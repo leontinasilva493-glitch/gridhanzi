@@ -6,6 +6,7 @@ import {
   ClipboardPaste,
   FileText,
   GraduationCap,
+  Languages,
   PencilLine,
   Printer,
   ShieldCheck,
@@ -35,10 +36,10 @@ export function HomePage() {
               Free Chinese Character Worksheet Generator
             </h1>
             <p className="mt-4 max-w-2xl text-lg leading-8 text-[#435166]">
-              Create free, printable Chinese character worksheets from your own
-              English or Chinese word list. Edit the Hanzi and Pinyin, choose
-              Hanzi grid paper, tracing grids, or writing grids, then download
-              a PDF—no sign-up required.
+              Use this free Chinese character worksheet generator to turn your own
+              English or Chinese word list into printable practice sheets. Edit the
+              Hanzi and Pinyin, choose tracing, Tian Zi Ge, Mi Zi Ge, or blank
+              writing grids, then download an A4 or US Letter PDF—no sign-up required.
             </p>
             <div className="mt-8">
               <HomeWorkbench />
@@ -91,11 +92,67 @@ export function HomePage() {
         </section>
 
         <section className="hs-container hs-content-visibility py-14">
+          <p className="hs-kicker">One site, clear starting points</p>
+          <h2 className="hs-display mt-2 text-3xl font-bold">
+            Choose the Right Chinese Writing Tool
+          </h2>
+          <p className="mt-3 max-w-3xl leading-7 text-[#566276]">
+            Start with the page that matches the job: build from your own words,
+            open a ready-made list, print empty grids, or focus on vocabulary and
+            stroke order.
+          </p>
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <ToolLink
+              href="/generator"
+              icon={ClipboardPaste}
+              title="Chinese worksheet generator from your word list"
+            >
+              Edit Hanzi and Pinyin before printing a custom practice sheet.
+            </ToolLink>
+            <ToolLink
+              href="/templates"
+              icon={BookOpen}
+              title="Printable Chinese writing worksheets"
+            >
+              Choose an editable topic, classroom, or HSK word list.
+            </ToolLink>
+            <ToolLink
+              href="/grids"
+              icon={FileText}
+              title="Tian Zi Ge and Mi Zi Ge PDFs"
+            >
+              Download blank Hanzi grid paper for immediate handwriting practice.
+            </ToolLink>
+            <ToolLink
+              href="/hsk"
+              icon={GraduationCap}
+              title="HSK vocabulary lists"
+            >
+              Compare HSK 2.0 and 3.0 levels, then send selected words to a worksheet.
+            </ToolLink>
+            <ToolLink
+              href="/stroke-order"
+              icon={PencilLine}
+              title="Chinese stroke order guides"
+            >
+              Check one character’s strokes, meaning, and practice options.
+            </ToolLink>
+            <ToolLink
+              href="/english-to-chinese-writing-practice"
+              icon={Languages}
+              title="English to Chinese writing practice"
+            >
+              Begin with English vocabulary, then review the matched Hanzi and Pinyin.
+            </ToolLink>
+          </div>
+        </section>
+
+        <section className="hs-container hs-content-visibility py-14">
           <p className="hs-kicker">Practice sheet workflow</p>
           <div className="mt-2 flex flex-wrap items-end justify-between gap-5">
             <div>
               <h2 className="hs-display text-3xl font-bold">
-                Make a Chinese character practice sheet in 3 steps
+                How to Use the Chinese Character Worksheet Generator
               </h2>
               <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]">
                 GridHanzi keeps the worksheet useful first: paste vocabulary,
@@ -389,6 +446,40 @@ function TaskLink({
         </span>
         <span className="mt-2 block text-sm leading-6 text-[#617084]">
           {children}
+        </span>
+      </span>
+    </Link>
+  );
+}
+
+function ToolLink({
+  href,
+  icon: Icon,
+  title,
+  children,
+}: {
+  href: string;
+  icon: typeof ClipboardPaste;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      className="group rounded border border-[#ded7ca] bg-[#fffefa] p-5 transition hover:-translate-y-0.5 hover:border-[#b62822] hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b62822] focus-visible:ring-offset-2"
+    >
+      <span className="flex items-start gap-3">
+        <span className="grid size-10 shrink-0 place-items-center rounded-full bg-[#f3eee3] text-[#315f47]">
+          <Icon className="size-4" />
+        </span>
+        <span className="min-w-0">
+          <span className="hs-display flex items-start justify-between gap-3 font-bold text-[#172942]">
+            {title}
+            <ArrowRight className="mt-0.5 size-4 shrink-0 text-[#b62822] transition-transform group-hover:translate-x-1" />
+          </span>
+          <span className="mt-2 block text-sm leading-6 text-[#617084]">
+            {children}
+          </span>
         </span>
       </span>
     </Link>

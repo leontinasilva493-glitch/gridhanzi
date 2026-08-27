@@ -16,12 +16,21 @@ import * as worksheetSeo from "./seo";
 import GeneratorPage, {
   generateMetadata as generateGeneratorMetadata,
 } from "../../app/[locale]/generator/page";
+import { generateMetadata as generateHomeMetadata } from "../../app/[locale]/page";
 import sitemap from "../../app/sitemap";
 import robots from "../../app/robots";
 import { generateMetadata as generateStrokeOrderMetadata } from "../../app/[locale]/stroke-order/[character]/page";
+import { generateMetadata as generateStrokeOrderDirectoryMetadata } from "../../app/[locale]/stroke-order/page";
 import { generateMetadata as generateTemplatesMetadata } from "../../app/[locale]/templates/page";
+import { generateMetadata as generateTemplateDetailMetadata } from "../../app/[locale]/templates/[slug]/page";
 import { generateMetadata as generateHskLevelMetadata } from "../../app/[locale]/hsk/[system]/[level]/page";
 import { generateMetadata as generateComparisonMetadata } from "../../app/[locale]/compare/[slug]/page";
+import { generateMetadata as generateComparisonDirectoryMetadata } from "../../app/[locale]/compare/page";
+import { generateMetadata as generateGridDirectoryMetadata } from "../../app/[locale]/grids/page";
+import { generateMetadata as generateGridDetailMetadata } from "../../app/[locale]/grids/[slug]/page";
+import { generateMetadata as generateHskDirectoryMetadata } from "../../app/[locale]/hsk/page";
+import { generateMetadata as generateForTeachersMetadata } from "../../app/[locale]/for-teachers/page";
+import { generateMetadata as generateEnglishPracticeMetadata } from "../../app/[locale]/english-to-chinese-writing-practice/page";
 
 const projectRoot = process.cwd();
 
@@ -66,19 +75,19 @@ test("worksheet acquisition pages publish distinct search-result promises", asyn
 
   const expectedTemplates = {
     "pinyin-practice": {
-      seoTitle: "Hanzi and Pinyin Practice Worksheet - Free Printable",
+      seoTitle: "Hanzi and Pinyin Practice Worksheet",
       h1: "Hanzi and Pinyin Practice Worksheet",
     },
     "top-100-chinese-characters": {
-      seoTitle: "Top 100 Chinese Characters to Practice - Printable List",
+      seoTitle: "Top 100 Chinese Characters Practice",
       h1: "100 Chinese Characters to Practice",
     },
     "blank-tianzige-grid": {
-      seoTitle: "Tian Zi Ge Beginner Worksheet - 18 Editable Hanzi",
+      seoTitle: "Editable Tian Zi Ge Worksheet (18 Hanzi)",
       h1: "Tian Zi Ge Beginner Character Worksheet",
     },
     "blank-mi-zi-ge-grid": {
-      seoTitle: "Mi Zi Ge Beginner Worksheet - 18 Editable Hanzi",
+      seoTitle: "Editable Mi Zi Ge Worksheet (18 Hanzi)",
       h1: "Mi Zi Ge Beginner Character Worksheet",
     },
   } as const;
@@ -88,6 +97,147 @@ test("worksheet acquisition pages publish distinct search-result promises", asyn
     assert.ok(template, slug);
     assert.equal(template.seoTitle, expected.seoTitle, slug);
     assert.equal(template.h1, expected.h1, slug);
+  }
+});
+
+test("core acquisition pages publish focused titles and matching social metadata", async () => {
+  const [home, generator, grids, comparisons] = await Promise.all([
+    generateHomeMetadata({ params: Promise.resolve({ locale: "en" }) }),
+    generateGeneratorMetadata({ params: Promise.resolve({ locale: "en" }) }),
+    generateGridDirectoryMetadata({ params: Promise.resolve({ locale: "en" }) }),
+    generateComparisonDirectoryMetadata({
+      params: Promise.resolve({ locale: "en" }),
+    }),
+  ]);
+
+  const expectations = [
+    [
+      home,
+      "Chinese Character Worksheet Generator",
+      "Use this free Chinese character worksheet generator to turn English or Chinese word lists into editable Hanzi, Pinyin, tracing, and writing-grid PDFs.",
+    ],
+    [
+      generator,
+      "Chinese Worksheet Generator from Your Word List",
+      "Build a custom Chinese worksheet from your own word list. Edit Hanzi and Pinyin, choose Tian Zi Ge or Mi Zi Ge, and download a printable PDF.",
+    ],
+    [
+      grids,
+      "Hanzi Grid Paper: Tian Zi Ge & Mi Zi Ge",
+      "Free printable Hanzi grid paper for Chinese writing practice. Download Tian Zi Ge, Mi Zi Ge and blank grid PDFs, or make custom Hanzi worksheets.",
+    ],
+    [
+      comparisons,
+      "Commonly Confused Chinese Characters",
+      "Compare 的得地, 不没, 来去, 在再, 上下, 好坏, 人入, and 牛午 with decision rules, corrected examples, stroke cues, and worksheets.",
+    ],
+  ] as const;
+
+  for (const [metadata, title, description] of expectations) {
+    assert.equal(metadata.title, title);
+    assert.equal(metadata.description, description);
+    assert.equal(metadata.openGraph?.title, title);
+    assert.equal(metadata.openGraph?.description, description);
+    assert.equal(metadata.twitter?.title, title);
+    assert.equal(metadata.twitter?.description, description);
+  }
+});
+
+test("template detail metadata stays unique and concise after the GridHanzi suffix", async () => {
+  const metadata = await Promise.all(
+    worksheetTemplates.map((template) =>
+      generateTemplateDetailMetadata({
+        params: Promise.resolve({ locale: "en", slug: template.slug }),
+      }),
+    ),
+  );
+  const titles = metadata.map((entry) => String(entry.title));
+  const descriptions = metadata.map((entry) => String(entry.description));
+
+  assert.equal(new Set(titles).size, worksheetTemplates.length);
+  assert.equal(new Set(descriptions).size, worksheetTemplates.length);
+  for (const [index, title] of titles.entries()) {
+    assert.ok(
+      `${title} | GridHanzi`.length <= 60,
+      `${worksheetTemplates[index]?.slug} title is too long: ${title}`,
+    );
+  }
+  for (const [index, description] of descriptions.entries()) {
+    assert.ok(
+      description.length >= 90 && description.length <= 160,
+      `${worksheetTemplates[index]?.slug} description length is ${description.length}`,
+    );
+  }
+});
+
+test("indexable page families align standard, Open Graph, and Twitter metadata", async () => {
+  const cases = await Promise.all([
+    generateTemplatesMetadata({ params: Promise.resolve({ locale: "en" }) }).then(
+      (metadata) => ({
+        metadata,
+        title: "Free Printable Chinese Writing Worksheets (PDF) | GridHanzi",
+      }),
+    ),
+    generateTemplateDetailMetadata({
+      params: Promise.resolve({ locale: "en", slug: "family" }),
+    }).then((metadata) => ({
+      metadata,
+      title: "Family Chinese Writing Worksheet",
+    })),
+    generateGridDetailMetadata({
+      params: Promise.resolve({ locale: "en", slug: "blank" }),
+    }).then((metadata) => ({
+      metadata,
+      title: "Blank Hanzi Grid Paper PDF",
+    })),
+    generateHskDirectoryMetadata({ params: Promise.resolve({ locale: "en" }) }).then(
+      (metadata) => ({
+        metadata,
+        title: "HSK Vocabulary Lists: HSK 2.0 vs 3.0",
+      }),
+    ),
+    generateHskLevelMetadata({
+      params: Promise.resolve({ locale: "en", system: "2-0", level: "level-1" }),
+    }).then((metadata) => ({
+      metadata,
+      title: "HSK 2.0 Level 1 Vocabulary List",
+    })),
+    generateComparisonMetadata({
+      params: Promise.resolve({ locale: "en", slug: "来-去" }),
+    }).then((metadata) => ({
+      metadata,
+      title: "来 vs 去: Direction and Usage",
+    })),
+    generateStrokeOrderDirectoryMetadata({
+      params: Promise.resolve({ locale: "en" }),
+    }).then((metadata) => ({
+      metadata,
+      title: "Chinese Stroke Order",
+    })),
+    generateForTeachersMetadata({ params: Promise.resolve({ locale: "en" }) }).then(
+      (metadata) => ({ metadata, title: "Chinese Worksheets for Teachers" }),
+    ),
+    generateEnglishPracticeMetadata({
+      params: Promise.resolve({ locale: "en" }),
+    }).then((metadata) => ({
+      metadata,
+      title: "English to Chinese Writing Practice",
+    })),
+  ]);
+
+  for (const { metadata, title } of cases) {
+    assert.equal(metadata.openGraph?.title, title, `${title} Open Graph title`);
+    assert.equal(
+      metadata.openGraph?.description,
+      metadata.description,
+      `${title} Open Graph description`,
+    );
+    assert.equal(metadata.twitter?.title, title, `${title} Twitter title`);
+    assert.equal(
+      metadata.twitter?.description,
+      metadata.description,
+      `${title} Twitter description`,
+    );
   }
 });
 
@@ -438,7 +588,7 @@ test("curated Hanzi pages have static routes and unique sitemap entries", async 
 
 test("character routes publish approved standard, Open Graph, and Twitter metadata", async () => {
   const approvedMetadata = [
-    ["\u7684", "\u7684 (de) Stroke Order, Meaning & Grammar", "Learn how to write \u7684 (de), the common possessive and descriptive particle. See its 8 strokes, neutral-tone usage, example words, sentences, and worksheet practice."],
+    ["\u7684", "\u7684 (de) Stroke Order, Meaning & Grammar", "Learn how to write \u7684 (de), the common possessive and descriptive particle. See its 8 strokes, neutral-tone usage, example words, sentences, and practice tips."],
     ["\u4f60", "\u4f60 (n\u01d0) Stroke Order, Meaning & Examples", "Learn how to write \u4f60 (n\u01d0), meaning \u201cyou.\u201d See its 7-stroke structure and practise \u4f60\u597d, \u4f60\u4eec and other useful phrases and sentences."],
     ["\u7ecf", "\u7ecf (j\u012bng) Stroke Order, Meaning & Common Words", "Learn how to write \u7ecf (j\u012bng) through \u5df2\u7ecf, \u7ecf\u5e38, \u7ecf\u8fc7 and \u7ecf\u9a8c. See its 8 strokes, \u7e9f + \u{22016} structure and example sentences."],
     ["\u4f5b", "\u4f5b (f\u00f3/f\u00fa) Stroke Order, Meaning & Readings", "Learn how to write \u4f5b and distinguish f\u00f3 in Buddhist vocabulary from f\u00fa in \u4eff\u4f5b. See its 7 strokes, components, example words and sentences."],

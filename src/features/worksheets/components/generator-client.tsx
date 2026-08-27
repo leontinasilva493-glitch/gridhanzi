@@ -72,6 +72,7 @@ export function GeneratorClient({
   breadcrumbLabel,
   templateTitle,
   templateChineseTitle,
+  showEnglishPracticeLink = true,
   initialHskSystem,
   initialHskLevel,
   hasInitialHskSelection = false,
@@ -88,6 +89,7 @@ export function GeneratorClient({
   breadcrumbLabel?: string;
   templateTitle?: string;
   templateChineseTitle?: string;
+  showEnglishPracticeLink?: boolean;
   initialHskSystem?: HskSystem;
   initialHskLevel?: HskLevel;
   hasInitialHskSelection?: boolean;
@@ -693,7 +695,9 @@ export function GeneratorClient({
           </aside>
         </div>
 
-        <GeneratorSupportSections />
+        <GeneratorSupportSections
+          showEnglishPracticeLink={showEnglishPracticeLink}
+        />
       </main>
 
       <div className="hs-no-print fixed inset-x-0 bottom-0 z-40 border-t border-[#d8d0c2] bg-[#fffdf9]/96 backdrop-blur">
@@ -748,7 +752,11 @@ export function GeneratorClient({
   );
 }
 
-function GeneratorSupportSections() {
+function GeneratorSupportSections({
+  showEnglishPracticeLink,
+}: {
+  showEnglishPracticeLink: boolean;
+}) {
   return (
     <div className="mt-12 grid gap-10 pb-6">
       <section aria-labelledby="generator-steps-title">
@@ -766,6 +774,18 @@ function GeneratorSupportSections() {
               Hanzi and Pinyin, then print the same list as a lesson page,
               handwriting practice sheet, or short recall test.
             </p>
+            {showEnglishPracticeLink ? (
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]">
+                Starting from translations? Open the dedicated{" "}
+                <Link
+                  href="/english-to-chinese-writing-practice"
+                  className="font-semibold text-[#24466e] hover:text-[#b62822]"
+                >
+                  English to Chinese writing practice
+                </Link>{" "}
+                page for an editable starter list.
+              </p>
+            ) : null}
           </div>
           <div className="flex flex-wrap gap-3">
             <Link href="/templates" className="hs-secondary-button text-sm">
