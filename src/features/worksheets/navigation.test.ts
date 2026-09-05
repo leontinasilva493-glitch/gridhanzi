@@ -73,6 +73,20 @@ test("stroke order navigation stays compact and links to the tool plus basics", 
   );
   assert.match(strokeSource, /\["Basic Strokes", "\/templates\/basic-strokes"\]/);
   assert.match(strokeSource, /\["Radicals", "\/templates\/radicals"\]/);
+  assert.match(strokeSource, /\["Stroke Order Rules", "\/chinese-stroke-order-rules"\]/);
+  assert.match(strokeSource, /\["Character Components", "\/chinese-character-components"\]/);
+});
+
+test("HSK and stroke-order hubs expose the new P0 learning paths", async () => {
+  const [hskSource, strokeSource] = await Promise.all([
+    projectFile("src/features/worksheets/components/hsk-directory-page.tsx"),
+    projectFile("src/app/[locale]/stroke-order/page.tsx"),
+  ]);
+
+  assert.match(hskSource, /href="\/hsk-level-checker"/);
+  assert.match(hskSource, /Thirteen curated lists/);
+  assert.match(strokeSource, /href="\/chinese-stroke-order-rules"/);
+  assert.match(strokeSource, /href="\/chinese-character-components"/);
 });
 
 test("template category page carries the detailed third-level worksheet links", async () => {

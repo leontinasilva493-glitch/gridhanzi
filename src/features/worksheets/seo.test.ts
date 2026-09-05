@@ -6,6 +6,7 @@ import test from "node:test";
 import { worksheetTemplates } from "./data";
 import { strokeOrderCharacters } from "./stroke-order-characters";
 import { comparisonPages } from "./comparison-pages";
+import { characterComponentPages } from "./character-components";
 import { getHskPublicPath, hskPublicPages } from "./hsk-pages";
 import {
   buildPublicSitemapPaths,
@@ -31,6 +32,10 @@ import { generateMetadata as generateGridDetailMetadata } from "../../app/[local
 import { generateMetadata as generateHskDirectoryMetadata } from "../../app/[locale]/hsk/page";
 import { generateMetadata as generateForTeachersMetadata } from "../../app/[locale]/for-teachers/page";
 import { generateMetadata as generateEnglishPracticeMetadata } from "../../app/[locale]/english-to-chinese-writing-practice/page";
+import { generateMetadata as generateHskCheckerMetadata } from "../../app/[locale]/hsk-level-checker/page";
+import { generateMetadata as generateStrokeRulesMetadata } from "../../app/[locale]/chinese-stroke-order-rules/page";
+import { generateMetadata as generateComponentDirectoryMetadata } from "../../app/[locale]/chinese-character-components/page";
+import { generateMetadata as generateComponentDetailMetadata } from "../../app/[locale]/components/[slug]/page";
 
 const projectRoot = process.cwd();
 
@@ -50,6 +55,9 @@ test("buildPublicSitemapPaths includes every differentiated template page", () =
   assert.ok(paths.includes("/compare"));
   assert.ok(paths.includes("/for-teachers"));
   assert.ok(paths.includes("/chinese-slang/niu-lai"));
+  assert.ok(paths.includes("/hsk-level-checker"));
+  assert.ok(paths.includes("/chinese-stroke-order-rules"));
+  assert.ok(paths.includes("/chinese-character-components"));
   for (const template of worksheetTemplates) {
     assert.ok(paths.includes(`/templates/${template.slug}`), template.slug);
   }
@@ -59,7 +67,57 @@ test("buildPublicSitemapPaths includes every differentiated template page", () =
   for (const page of comparisonPages) {
     assert.ok(paths.includes(`/compare/${page.slug}`));
   }
+  for (const page of characterComponentPages) {
+    assert.ok(paths.includes(`/components/${page.slug}`), page.slug);
+  }
   assert.equal(new Set(paths).size, paths.length);
+});
+
+test("P0 learning pages publish unique TDH and aligned social metadata", async () => {
+  const metadata = await Promise.all([
+    generateHskCheckerMetadata({ params: Promise.resolve({ locale: "en" }) }),
+    generateStrokeRulesMetadata({ params: Promise.resolve({ locale: "en" }) }),
+    generateComponentDirectoryMetadata({ params: Promise.resolve({ locale: "en" }) }),
+    ...characterComponentPages.map((page) =>
+      generateComponentDetailMetadata({
+        params: Promise.resolve({ locale: "en", slug: page.slug }),
+      }),
+    ),
+    ...hskPublicPages
+      .filter((page) => ["4", "5", "6", "7-9"].includes(page.level))
+      .map((page) =>
+        generateHskLevelMetadata({
+          params: Promise.resolve({
+            locale: "en",
+            system: page.system.replace(".", "-"),
+            level: `level-${page.level}`,
+          }),
+        }),
+      ),
+  ]);
+
+  const titles = metadata.map((entry) => String(entry.title));
+  const descriptions = metadata.map((entry) => String(entry.description));
+  assert.equal(new Set(titles).size, metadata.length);
+  assert.equal(new Set(descriptions).size, metadata.length);
+  for (const entry of metadata) {
+    assert.ok(String(entry.description).length >= 90);
+    assert.ok(String(entry.description).length <= 160);
+    assert.equal(entry.openGraph?.title, entry.title);
+    assert.equal(entry.openGraph?.description, entry.description);
+    assert.equal(entry.twitter?.title, entry.title);
+    assert.equal(entry.twitter?.description, entry.description);
+  }
+});
+
+test("the expanded HSK hub TDH describes full level coverage and text analysis", async () => {
+  const metadata = await generateHskDirectoryMetadata({
+    params: Promise.resolve({ locale: "en" }),
+  });
+  assert.match(String(metadata.description), /Levels 1-9/);
+  assert.match(String(metadata.description), /check Chinese text/);
+  assert.equal(metadata.openGraph?.description, metadata.description);
+  assert.equal(metadata.twitter?.description, metadata.description);
 });
 
 test("worksheet acquisition pages publish distinct search-result promises", async () => {

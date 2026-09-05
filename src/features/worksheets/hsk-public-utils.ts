@@ -5,6 +5,8 @@ import {
   type HskSystem,
 } from "./hsk";
 
+export const publicHskPageSize = 60;
+
 function normalizeSearchText(value: string): string {
   return value
     .normalize("NFD")
@@ -33,6 +35,13 @@ export function filterPublicHskEntries(
       normalizeSearchText(value).includes(normalizedQuery),
     ),
   );
+}
+
+export function getVisiblePublicHskEntries(
+  entries: readonly HskCatalogEntry[],
+  visibleCount: number,
+): HskCatalogEntry[] {
+  return entries.slice(0, Math.max(0, visibleCount));
 }
 
 export function summarizePublicHskEntries(

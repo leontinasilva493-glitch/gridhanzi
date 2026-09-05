@@ -4,6 +4,7 @@ import { worksheetTemplates } from "./data";
 import { gridPaperPages } from "./grid-pages";
 import { getHskPublicPath, hskPublicPages } from "./hsk-pages";
 import { comparisonPages } from "./comparison-pages";
+import { characterComponentPages } from "./character-components";
 import {
   filterIndexableStrokeOrderCharacters,
   indexableStrokeOrderCharacters,
@@ -33,9 +34,13 @@ export function buildPublicSitemapPaths(): string[] {
     ...buildStrokeOrderSitemapPaths(),
     "/hsk",
     ...hskPublicPages.map(getHskPublicPath),
+    "/hsk-level-checker",
     "/compare",
     ...comparisonPages.map((page) => `/compare/${page.slug}`),
     "/chinese-slang/niu-lai",
+    "/chinese-stroke-order-rules",
+    "/chinese-character-components",
+    ...characterComponentPages.map((page) => `/components/${page.slug}`),
     "/for-teachers",
     ...worksheetTemplates.map((template) => `/templates/${template.slug}`),
   ];
