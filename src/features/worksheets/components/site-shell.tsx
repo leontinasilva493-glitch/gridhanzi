@@ -22,6 +22,8 @@ const templateMenuLinks = [
 
 const strokeOrderMenuLinks = [
   ["Stroke Order Tool", "/stroke-order"],
+  ["Stroke Order Rules", "/chinese-stroke-order-rules"],
+  ["Character Components", "/chinese-character-components"],
   ["Continuous Practice", "/practice"],
   ["Practice Sheets", "/templates/stroke-order-practice"],
   ["Basic Strokes", "/templates/basic-strokes"],
@@ -248,8 +250,9 @@ export function HanziSiteFooter() {
           links={[
             ["For Teachers", "/for-teachers"],
             ["HSK Vocabulary", "/hsk"],
+            ["HSK Level Checker", "/hsk-level-checker"],
             ["Character Comparisons", "/compare"],
-            ["Learning Tips", "/templates"],
+            ["Character Components", "/chinese-character-components"],
           ]}
         />
       </div>

@@ -9,6 +9,8 @@ import type { HskCatalogEntry, HskLevel, HskSystem } from "../hsk";
 import {
   buildPublicHskWorksheetHref,
   filterPublicHskEntries,
+  getVisiblePublicHskEntries,
+  publicHskPageSize,
   selectVisiblePublicHskEntries,
   summarizePublicHskEntries,
   togglePublicHskSelection,
@@ -27,6 +29,7 @@ export function HskLevelBrowser({
 }) {
   const [query, setQuery] = useState("");
   const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set());
+  const [visibleCount, setVisibleCount] = useState(publicHskPageSize);
   const filteredEntries = useMemo(
     () => filterPublicHskEntries(entries, query),
     [entries, query],
@@ -34,6 +37,10 @@ export function HskLevelBrowser({
   const selectedEntries = useMemo(
     () => entries.filter((entry) => selectedIds.has(entry.id)),
     [entries, selectedIds],
+  );
+  const visibleEntries = useMemo(
+    () => getVisiblePublicHskEntries(filteredEntries, visibleCount),
+    [filteredEntries, visibleCount],
   );
   const summary = summarizePublicHskEntries(selectedEntries);
   const worksheetHref = buildPublicHskWorksheetHref(
@@ -64,14 +71,20 @@ export function HskLevelBrowser({
               <Search className="size-4 shrink-0 text-[#617084]" aria-hidden="true" />
               <input
                 value={query}
-                onChange={(event) => setQuery(event.target.value)}
+                onChange={(event) => {
+                  setQuery(event.target.value);
+                  setVisibleCount(publicHskPageSize);
+                }}
                 placeholder="Try 爱, xue sheng, or teacher"
                 className="min-w-0 flex-1 bg-transparent py-3 text-base outline-none"
               />
               {query ? (
                 <button
                   type="button"
-                  onClick={() => setQuery("")}
+                  onClick={() => {
+                    setQuery("");
+                    setVisibleCount(publicHskPageSize);
+                  }}
                   className="grid size-8 place-items-center rounded hover:bg-[#f1ece3]"
                   aria-label="Clear search"
                 >
@@ -115,7 +128,7 @@ export function HskLevelBrowser({
           <span>English</span>
         </div>
         <ul className="min-w-[620px] divide-y divide-[#ece5d9]">
-          {filteredEntries.map((entry) => {
+          {visibleEntries.map((entry) => {
             const checked = selectedIds.has(entry.id);
             const hasGuide = guideCharacters.includes(entry.hanzi);
             return (
@@ -152,6 +165,20 @@ export function HskLevelBrowser({
           </div>
         ) : null}
       </div>
+      {filteredEntries.length > visibleEntries.length ? (
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+          <p className="text-sm text-[#617084]">
+            Showing {visibleEntries.length} of {filteredEntries.length} matching entries.
+          </p>
+          <button
+            type="button"
+            onClick={() => setVisibleCount((current) => current + publicHskPageSize)}
+            className="hs-secondary-button min-h-12"
+          >
+            Show {Math.min(publicHskPageSize, filteredEntries.length - visibleEntries.length)} more
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }

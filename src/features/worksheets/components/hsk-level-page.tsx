@@ -76,15 +76,72 @@ export function HskLevelPage({ page, locale }: { page: HskPublicPage; locale: st
           </aside>
         </section>
 
+        {page.highlights && page.challenges && page.practiceBrief ? (
+          <>
+            <section className="mt-10" aria-labelledby="level-highlights-title">
+              <p className="hs-kicker">What changes at this level</p>
+              <h2 id="level-highlights-title" className="hs-display mt-2 text-3xl font-bold">
+                Skills to build—not just words to collect
+              </h2>
+              <div className="mt-5 grid gap-4 lg:grid-cols-3">
+                {page.highlights.map((highlight, index) => (
+                  <article key={highlight.title} className="hs-card p-6">
+                    <span className="text-sm font-bold text-[#b62822]">0{index + 1}</span>
+                    <h3 className="hs-display mt-2 text-xl font-bold">{highlight.title}</h3>
+                    <p className="mt-3 text-sm leading-7 text-[#566276]">{highlight.description}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-10 grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px]" aria-labelledby="level-challenges-title">
+              <article className="hs-card p-6 sm:p-8">
+                <p className="hs-kicker">Common learner traps</p>
+                <h2 id="level-challenges-title" className="hs-display mt-2 text-3xl font-bold">
+                  Three challenges worth isolating
+                </h2>
+                <div className="mt-5 space-y-5">
+                  {page.challenges.map((challenge) => (
+                    <div key={challenge.title} className="border-l-2 border-[#b62822] pl-4">
+                      <h3 className="font-bold text-[#172b49]">{challenge.title}</h3>
+                      <p className="mt-1 text-sm leading-7 text-[#566276]">{challenge.guidance}</p>
+                    </div>
+                  ))}
+                </div>
+              </article>
+              <aside className="rounded border border-[#233e62] bg-[#172b49] p-6 text-white">
+                <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#f4c9b7]">Practice brief</p>
+                <h2 className="hs-display mt-2 text-2xl font-bold !text-white">{page.practiceBrief.title}</h2>
+                <p className="mt-3 text-sm leading-7 text-blue-100/80">{page.practiceBrief.description}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {page.practiceBrief.sampleTerms.map((term) => (
+                    <span key={term} className="rounded-full border border-white/25 px-3 py-1.5 text-sm">{term}</span>
+                  ))}
+                </div>
+                <Link
+                  href={`/generator?words=${encodeURIComponent(page.practiceBrief.sampleTerms.join(","))}`}
+                  className="hs-primary-button mt-5 min-h-12"
+                >
+                  Make this focused worksheet <ArrowRight className="size-4" />
+                </Link>
+              </aside>
+            </section>
+          </>
+        ) : null}
+
         <section className="mt-9" aria-labelledby="vocabulary-title">
           <p className="hs-kicker">Search and select</p>
           <h2 id="vocabulary-title" className="hs-display mt-2 text-3xl font-bold">{page.title}: complete searchable list</h2>
           <p className="mt-3 max-w-3xl text-sm leading-7 text-[#566276]">
             Select a small review set or send the full level to the worksheet maker. Character names with published writing guides link directly to stroke order, usage, and graded examples.
           </p>
+          <p className="mt-2 max-w-3xl text-xs leading-6 text-[#6b7584]">
+            Level labels follow the bundled HSK catalog. This study list helps organize vocabulary and handwriting; it does not predict an official exam score.
+          </p>
           <HskLevelBrowser entries={entries} system={page.system} level={page.level} guideCharacters={[...page.featuredCharacters]} />
         </section>
 
+        {page.featuredCharacters.length ? (
         <section className="mt-10" aria-labelledby="character-path-title">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
@@ -102,10 +159,15 @@ export function HskLevelPage({ page, locale }: { page: HskPublicPage; locale: st
             ))}
           </div>
         </section>
+        ) : null}
 
         <section className="mt-10 grid gap-4 lg:grid-cols-3" aria-label="Related learning tools">
-          <Related title="Compare confusing forms" text="Learn the decision rule between 的, 得, 地 and other high-frequency pairs." href="/compare" label="Open comparisons" />
-          <Related title="Start from a template" text={`Use the ready-made ${page.templateSlug.toUpperCase().replace("-", " ")} sequence with a tested worksheet layout.`} href={`/templates/${page.templateSlug}`} label="View template" />
+          <Related title="Check your own Chinese text" text="Paste a passage, compare its HSK 2.0 and 3.0 profile, and isolate the words above your target level." href="/hsk-level-checker" label="Open level checker" />
+          {page.templateSlug ? (
+            <Related title="Start from a template" text={`Use the ready-made ${page.templateSlug.toUpperCase().replace("-", " ")} sequence with a tested worksheet layout.`} href={`/templates/${page.templateSlug}`} label="View template" />
+          ) : (
+            <Related title="Build a selective review" text="Open this full level in the worksheet maker, then filter it down to a practical active-writing set." href={`/generator?hskSystem=${page.system}&hskLevel=${page.level}`} label="Choose words in generator" />
+          )}
           <Related title="Choose a printable grid" text="Match the practice stage with Tian Zi Ge, Mi Zi Ge, or blank writing paper." href="/grids" label="Browse grids" />
         </section>
       </main>

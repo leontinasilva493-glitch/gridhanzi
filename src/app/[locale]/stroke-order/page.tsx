@@ -59,6 +59,12 @@ export default function StrokeOrderPage() {
             <Link href="#popular-guides-title" className="hs-secondary-button min-h-12 px-5">
               Browse character guides
             </Link>
+            <Link href="/chinese-stroke-order-rules" className="hs-secondary-button min-h-12 px-5">
+              Learn the order rules
+            </Link>
+            <Link href="/chinese-character-components" className="hs-secondary-button min-h-12 px-5">
+              Explore components
+            </Link>
           </div>
         </header>
         <StrokeOrderClient />

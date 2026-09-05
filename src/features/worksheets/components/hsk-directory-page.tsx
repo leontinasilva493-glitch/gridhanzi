@@ -19,7 +19,7 @@ export function HskDirectoryPage({ locale }: { locale: string }) {
           "@context": "https://schema.org",
           "@type": "CollectionPage",
           name: "HSK Vocabulary Lists for Chinese Writing Practice",
-          description: "Compare HSK 2.0 and HSK 3.0 beginner and intermediate vocabulary lists, then create custom handwriting worksheets.",
+          description: "Compare HSK 2.0 and HSK 3.0 vocabulary from beginner through advanced levels, then analyze text and create focused handwriting worksheets.",
           url: pageUrl,
           inLanguage: "en",
         },
@@ -51,11 +51,14 @@ export function HskDirectoryPage({ locale }: { locale: string }) {
             <p className="mt-3 text-sm leading-7 text-[#5a5f65]">
               Use HSK 2.0 for the familiar compact six-level path. Use HSK 3.0 for the broader current vocabulary framework. The lists stay separate so word membership is never blurred.
             </p>
+            <Link href="/hsk-level-checker" className="mt-4 inline-flex items-center gap-1 font-bold text-[#24466e] hover:text-[#b62822]">
+              Check the level of your own text <ArrowRight className="size-4" />
+            </Link>
           </aside>
         </header>
 
         <section className="mt-9" aria-labelledby="levels-title">
-          <p className="hs-kicker">Six curated lists</p>
+          <p className="hs-kicker">Thirteen curated lists</p>
           <h2 id="levels-title" className="hs-display mt-2 text-3xl font-bold">Start with your system and level</h2>
           <div className="mt-5 grid gap-5 lg:grid-cols-2">
             {hskPublicPages.map((page) => {
@@ -90,6 +93,7 @@ export function HskDirectoryPage({ locale }: { locale: string }) {
             Use the character guides for stroke order, the comparison guides for words learners confuse, or begin with a ready-made HSK worksheet template.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
+            <Link href="/hsk-level-checker" className="hs-primary-button">Analyze a Chinese text</Link>
             <Link href="/stroke-order" className="hs-secondary-button border-white/30 bg-white text-[#172b49]">Browse character guides</Link>
             <Link href="/compare" className="hs-secondary-button border-white/30 bg-transparent text-white hover:bg-white/10">Compare similar characters</Link>
             <Link href="/templates#hsk-worksheets" className="hs-secondary-button border-white/30 bg-transparent text-white hover:bg-white/10">Open HSK templates</Link>

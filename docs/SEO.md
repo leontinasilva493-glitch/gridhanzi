@@ -18,6 +18,11 @@ other.
 | `/templates/[slug]` | `[Topic] Chinese Writing Worksheet` |
 | `/stroke-order` | Chinese Stroke Order |
 | `/stroke-order/[character]` | Curated character stroke order, meaning, and usage |
+| `/chinese-stroke-order-rules` | Chinese stroke order rules and exceptions |
+| `/chinese-character-components` | Chinese character meaning and sound components |
+| `/components/[slug]` | One curated component family and writing pattern |
+| `/hsk-level-checker` | HSK level checker for Chinese text |
+| `/hsk/[system]/[level]` | Version-specific HSK vocabulary and writing practice |
 | `/practice` | Continuous on-screen character practice product surface (`noindex`) |
 | `/chinese-slang/niu-lai` | Niu Lai meaning and Chinese movie meme context |
 | `/for-teachers` | Chinese Worksheets for Teachers |
@@ -68,6 +73,9 @@ Index pages only when they contain differentiated public value.
   learning goal, teaching tip, and practice activity.
 - Curated English character guides and the sourced `/chinese-slang/niu-lai`
   explainer, because each has differentiated language-learning value.
+- The HSK text checker, advanced HSK list pages, stroke-order rules guide,
+  component hub, and six reviewed component guides. Their utilities and
+  editorial fields provide value beyond a generated dictionary record.
 - `/zh/generator`, because it has a Chinese interface and an English alternate.
 
 ### Do not index

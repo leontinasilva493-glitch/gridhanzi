@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
 
 import { envConfigs } from "@/config";
-import { HskDirectoryPage } from "@/features/worksheets/components/hsk-directory-page";
+import { StrokeOrderRulesPage } from "@/features/worksheets/components/stroke-order-rules-page";
 import { buildPageSeoMetadata } from "@/features/worksheets/seo";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  const title = "HSK Vocabulary Lists: HSK 2.0 vs 3.0";
-  const description = "Compare HSK 2.0 and HSK 3.0 Levels 1-9, search vocabulary by Hanzi, Pinyin, or English, check Chinese text, and create printable writing practice.";
-  const seo = buildPageSeoMetadata(envConfigs.app_url, "/hsk", locale, {
-    title,
-    description,
-  });
+  const title = "Chinese Stroke Order Rules with Examples";
+  const description = "Learn eight core Chinese stroke order rules with clear Hanzi examples, important exceptions, common layout mistakes, and printable writing practice.";
+  const seo = buildPageSeoMetadata(envConfigs.app_url, "/chinese-stroke-order-rules", locale, { title, description });
   return { ...seo, title, description, openGraph: { ...seo.openGraph, title, description } };
 }
 
 export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return <HskDirectoryPage locale={locale} />;
+  return <StrokeOrderRulesPage locale={locale} />;
 }

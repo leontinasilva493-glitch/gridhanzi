@@ -5,6 +5,8 @@ import {
   buildPublicHskWorksheetHref,
   filterPublicHskEntries,
   getHskPublicEntries,
+  getVisiblePublicHskEntries,
+  publicHskPageSize,
   selectVisiblePublicHskEntries,
   summarizePublicHskEntries,
   togglePublicHskSelection,
@@ -16,19 +18,65 @@ import {
   hskPublicPages,
 } from "./hsk-pages";
 
-test("public HSK pages expose six distinct system and level combinations", () => {
-  assert.equal(hskPublicPages.length, 6);
+test("public HSK pages expose every supported system and level combination", () => {
+  assert.equal(hskPublicPages.length, 13);
   assert.deepEqual(
     hskPublicPages.map((page) => `${page.system}:${page.level}`),
-    ["2.0:1", "3.0:1", "2.0:2", "3.0:2", "2.0:3", "3.0:3"],
+    [
+      "2.0:1",
+      "3.0:1",
+      "2.0:2",
+      "3.0:2",
+      "2.0:3",
+      "3.0:3",
+      "2.0:4",
+      "2.0:5",
+      "2.0:6",
+      "3.0:4",
+      "3.0:5",
+      "3.0:6",
+      "3.0:7-9",
+    ],
   );
-  assert.equal(new Set(hskPublicPages.map((page) => page.intro)).size, 6);
-  assert.equal(new Set(hskPublicPages.map((page) => page.description)).size, 6);
+  assert.equal(
+    new Set(hskPublicPages.map((page) => page.intro)).size,
+    hskPublicPages.length,
+  );
+  assert.equal(
+    new Set(hskPublicPages.map((page) => page.description)).size,
+    hskPublicPages.length,
+  );
+});
+
+test("advanced HSK pages carry page-specific teaching briefs instead of number-swapped copy", () => {
+  const advancedPages = hskPublicPages.filter((page) =>
+    ["4", "5", "6", "7-9"].includes(page.level),
+  );
+
+  assert.equal(advancedPages.length, 7);
+  for (const page of advancedPages) {
+    assert.equal(page.highlights?.length, 3, `${page.system}:${page.level} highlights`);
+    assert.equal(page.challenges?.length, 3, `${page.system}:${page.level} challenges`);
+    assert.ok(page.practiceBrief, `${page.system}:${page.level} practice brief`);
+    assert.equal(page.practiceBrief?.sampleTerms.length, 4);
+    const levelEntries = new Set(
+      getHskPublicEntries(page.system, page.level).map((entry) => entry.hanzi),
+    );
+    for (const term of page.practiceBrief?.sampleTerms ?? []) {
+      assert.ok(levelEntries.has(term), `${page.system}:${page.level} missing ${term}`);
+    }
+  }
+
+  for (const field of ["focus", "practiceBrief"] as const) {
+    const values = advancedPages.map((page) => JSON.stringify(page[field]));
+    assert.equal(new Set(values).size, advancedPages.length, field);
+  }
 });
 
 test("public HSK page lookup rejects unknown route combinations", () => {
   assert.equal(getHskPublicPage("2.0", "1")?.title, "HSK 2.0 Level 1 Vocabulary List");
-  assert.equal(getHskPublicPage("3.0", "7-9"), undefined);
+  assert.equal(getHskPublicPage("3.0", "7-9")?.level, "7-9");
+  assert.equal(getHskPublicPage("2.0", "7-9"), undefined);
   assert.equal(getHskPublicPage("4.0", "1"), undefined);
 });
 
@@ -97,9 +145,26 @@ test("public HSK paths use dot-free system slugs while preserving display versio
     "/hsk/3-0/level-2",
     "/hsk/2-0/level-3",
     "/hsk/3-0/level-3",
+    "/hsk/2-0/level-4",
+    "/hsk/2-0/level-5",
+    "/hsk/2-0/level-6",
+    "/hsk/3-0/level-4",
+    "/hsk/3-0/level-5",
+    "/hsk/3-0/level-6",
+    "/hsk/3-0/level-7-9",
   ]);
   assert.equal(getHskPublicPageFromRoute("2-0", "level-1")?.system, "2.0");
+  assert.equal(getHskPublicPageFromRoute("3-0", "level-7-9")?.level, "7-9");
   assert.equal(getHskPublicPageFromRoute("2.0", "level-1"), undefined);
+});
+
+test("large public HSK lists render progressively without changing search scope", () => {
+  const entries = getHskPublicEntries("3.0", "7-9");
+  assert.ok(entries.length > 5_000);
+  assert.equal(publicHskPageSize, 60);
+  assert.equal(getVisiblePublicHskEntries(entries, publicHskPageSize).length, 60);
+  assert.equal(getVisiblePublicHskEntries(entries, publicHskPageSize * 2).length, 120);
+  assert.equal(getVisiblePublicHskEntries(entries, entries.length + 1).length, entries.length);
 });
 
 test("public HSK selection toggles one id without mutating the current set", () => {
