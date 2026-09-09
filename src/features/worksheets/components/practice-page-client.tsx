@@ -66,7 +66,7 @@ export function PracticePageClient({
         );
       }
     } catch {
-      window.localStorage.removeItem(RECENT_STORAGE_KEY);
+      // Ignore blocked storage or a damaged history; practice still works in memory.
     }
   }, []);
 
@@ -128,7 +128,11 @@ export function PracticePageClient({
     setCompleted((current) => new Set(current).add(completedCharacter));
     setRecent((current) => {
       const next = addRecentPracticeCharacter(current, completedCharacter);
-      window.localStorage.setItem(RECENT_STORAGE_KEY, JSON.stringify(next));
+      try {
+        window.localStorage.setItem(RECENT_STORAGE_KEY, JSON.stringify(next));
+      } catch {
+        // Completion and automatic advance must not depend on persistence.
+      }
       return next;
     });
     cancelAutoAdvance();
