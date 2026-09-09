@@ -29,6 +29,7 @@ export interface WorksheetSettings {
   showStrokeOrder: boolean;
   practiceStrength: PracticeStrength;
   extraBlankRows: 0 | 1;
+  repeatToFill?: boolean;
   strokeOrderMode: StrokeOrderMode;
   flashcardsPerPage: 6 | 9;
   flashcardShowPinyin: boolean;
@@ -90,6 +91,7 @@ export const defaultWorksheetSettings: WorksheetSettings = {
   showStrokeOrder: true,
   practiceStrength: "balanced",
   extraBlankRows: 0,
+  repeatToFill: false,
   strokeOrderMode: "detailed",
   flashcardsPerPage: 6,
   flashcardShowPinyin: true,

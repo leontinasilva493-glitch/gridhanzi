@@ -155,3 +155,9 @@ test("flashcard snapshots round-trip output settings and normalize tablet paper 
   assert.equal(normalized.settings.flashcardShowEnglish, true);
   assert.equal(normalized.settings.paperSize, "a4");
 });
+
+test("repeat fill survives preview snapshots and defaults off for old drafts", () => {
+  assert.equal(normalizeWorksheetSnapshot({settings:{repeatToFill:true}}).settings.repeatToFill,true);
+  assert.equal(normalizeWorksheetSnapshot({settings:{}}).settings.repeatToFill,false);
+  assert.equal(normalizeWorksheetSnapshot({settings:{repeatToFill:'true'}}).settings.repeatToFill,false);
+});

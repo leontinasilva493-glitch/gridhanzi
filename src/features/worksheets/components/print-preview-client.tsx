@@ -1,4 +1,5 @@
 "use client";
+import { RepeatFillControl } from "./repeat-fill-control";
 
 import { useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
@@ -242,6 +243,13 @@ export function PrintPreviewClient() {
 
         <aside className="hs-no-print border-l border-[#d4d4d0] bg-[#fffdf9] p-6">
           <h1 className="hs-display text-2xl font-bold">{t("Print settings", "打印与下载设置")}</h1>
+ {canShowAnswers && snapshot.settings.mode !== "quiz" && <RepeatFillControl
+ enabled={!!snapshot.settings.repeatToFill} disabled={!snapshot.entries.some(entry => /\p{Script=Han}/u.test(entry.hanzi))}
+ chinese={locale === "zh"} onChange={repeatToFill => {
+ const next = { ...snapshot, settings: { ...snapshot.settings, repeatToFill } };
+ setSnapshot(next); sessionStorage.setItem(WORKSHEET_STORAGE_KEY, JSON.stringify(next));
+ }} />}
+
           <PrintToggle
             label={t("Background graphics", "背景图形")}
             description={t("Keep grid lines and tracing colour in the PDF.", "在 PDF 中保留格线和描红颜色。")}

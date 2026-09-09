@@ -364,3 +364,43 @@ export function paginateLearnUnits(
   if (currentPage.length > 0) pages.push(currentPage);
   return pages;
 }
+
+
+/** Repeat source characters into the last page without changing source entries. */
+export function fillLastPracticePage(
+  pages: CharacterPracticeUnit[][],
+  capacity: number,
+  weight: (unit: CharacterPracticeUnit) => number,
+): CharacterPracticeUnit[][] {
+  const source = pages.flat();
+  if (!source.length) return pages;
+  const last = [...pages[pages.length - 1]];
+  let used = last.reduce((sum, unit) => sum + weight(unit), 0);
+  let index = 0;
+  while (true) {
+    const unit = source[index % source.length];
+    const size = weight(unit);
+    if (size <= 0 || used + size > capacity) break;
+    last.push({ ...unit, id: `${unit.id}-repeat-${index}`, showContext: index === 0 || unit.showContext });
+    used += size;
+    index += 1;
+  }
+  return [...pages.slice(0, -1), last];
+}
+
+
+// Match the square stroke grids and spacing used by LearnPage, in paper units.
+export function estimateLearnUnitHeight(
+  strokeCount: number,
+  mode: StrokeOrderMode,
+  layout: WorksheetLayoutSpec,
+  extraBlankRows: 0 | 1,
+): number {
+  const columns = mode === "compact" ? 5 : 9;
+  const strokeRows = mode === "off" ? 0 : mode === "compact" ? 1
+    : Math.max(1, Math.ceil(strokeCount / 8));
+  const strokeSize = layout.usableWidth * (1 - (columns - 1) * 0.0055) / columns;
+  return (1 + extraBlankRows) * (layout.cellSize + layout.usableWidth * 0.0065)
+    + strokeRows * (strokeSize + layout.usableWidth * 0.0055)
+    + layout.contextHeight * 2 + layout.usableWidth * 0.018;
+}

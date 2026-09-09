@@ -1,4 +1,5 @@
 "use client";
+import { RepeatFillControl } from "./repeat-fill-control";
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocale } from "next-intl";
@@ -676,6 +677,9 @@ export function GeneratorClient({
                     : "US Letter · Portrait"}
               </span>
             </div>
+            {settings.output === "worksheet" && settings.mode !== "quiz" && <RepeatFillControl
+ enabled={!!settings.repeatToFill} disabled={!entries.some(entry => /\p{Script=Han}/u.test(entry.hanzi))}
+ chinese={locale === "zh"} onChange={repeatToFill => setSettings(current => ({ ...current, repeatToFill }))} />}
             {entries.length > 0 ? (
               <div
                 key={settings.profile}
