@@ -73,24 +73,35 @@ export function HskPicker({
   );
   const [loadError, setLoadError] = useState("");
   const [catalogRuntime, setCatalogRuntime] = useState<HskRuntime | null>(null);
-  const [state, setState] = useState<HskPickerState>(() => {
-    if (typeof window === "undefined") return fallbackState;
-    return resolveInitialHskPickerState({
-      persistedRaw: window.localStorage.getItem(HSK_PICKER_STORAGE_KEY),
-      hasExplicitSelection: openOnMount,
-      initialSystem,
-      initialLevel,
-      fallbackState,
-    });
-  });
+  const [state, setState] = useState<HskPickerState>(fallbackState);
+  const [storageReady, setStorageReady] = useState(false);
 
   useEffect(() => {
+    try {
+      setState(resolveInitialHskPickerState({
+        persistedRaw: window.localStorage.getItem(HSK_PICKER_STORAGE_KEY),
+        hasExplicitSelection: openOnMount,
+        initialSystem,
+        initialLevel,
+        fallbackState,
+      }));
+    } catch {
+      // Storage is optional, including access to the localStorage property itself.
+    } finally {
+      setStorageReady(true);
+    }
+    // Restore once; later picker choices must not be reset by a parent render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!storageReady) return;
     try {
       window.localStorage.setItem(HSK_PICKER_STORAGE_KEY, JSON.stringify(state));
     } catch {
       // Ignore storage write failures so the picker remains usable.
     }
-  }, [state]);
+  }, [state, storageReady]);
 
   async function ensureCatalogLoaded(forceReload = false) {
     if (catalogRuntime && !forceReload) return;

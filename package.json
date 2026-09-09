@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vinext dev",
     "test": "node --import tsx --test \"src/**/*.test.ts\"",
+    "test:browser": "node scripts/browser-regression.mjs",
     "build": "vinext build",
     "start": "vinext start",
     "deploy": "sh -c 'set -a && [ -f .env.production ] && . ./.env.production; set +a && exec npx vinext deploy'"

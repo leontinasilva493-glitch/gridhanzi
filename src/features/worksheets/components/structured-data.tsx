@@ -1,4 +1,11 @@
 export function StructuredData({ data }: { data: object | object[] }) {
-  const json = JSON.stringify(data).replace(/</g, "\\u003c");
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: json }} />;
+  // Safari's document parser can fail on otherwise valid top-level JSON-LD arrays.
+  const entities = Array.isArray(data) ? data : [data];
+  return <>{entities.map((entity, index) => (
+    <script
+      key={index}
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(entity).replace(/</g, "\\u003c") }}
+    />
+  ))}</>;
 }

@@ -15,7 +15,6 @@ import {
 
 import { Link } from "@/core/i18n/navigation";
 
-import { cloneTemplateEntries } from "../engine";
 import {
   defaultWorksheetSettings,
   type WorksheetSnapshot,
@@ -33,10 +32,10 @@ import { WorksheetRenderer } from "./worksheet-renderer";
 
 const fallbackSnapshot: WorksheetSnapshot = {
   version: 3,
-  entries: cloneTemplateEntries("family").slice(0, 4),
+  entries: [],
   settings: {
     ...defaultWorksheetSettings,
-    title: "My Family · 我的家人",
+    title: "My Chinese Worksheet",
     date: "",
   },
 };
@@ -61,28 +60,40 @@ export function PrintPreviewClient() {
     total: number;
   } | null>(null);
   const [pdfError, setPdfError] = useState("");
+  const [previewReady, setPreviewReady] = useState(false);
+  const [loadError, setLoadError] = useState(false);
+  const [storageWarning, setStorageWarning] = useState(false);
   const profilePreset = getWorksheetProfilePreset(snapshot.settings.profile);
   const canShowAnswers = snapshot.settings.output === "worksheet";
   const isTablet = paperSize === "tablet";
 
   useEffect(() => {
-    const saved =
-      sessionStorage.getItem(WORKSHEET_STORAGE_KEY) ??
-      sessionStorage.getItem(LEGACY_WORKSHEET_STORAGE_KEY);
-    if (!saved) return;
     try {
+      const saved =
+        sessionStorage.getItem(WORKSHEET_STORAGE_KEY) ??
+        sessionStorage.getItem(LEGACY_WORKSHEET_STORAGE_KEY);
+      if (!saved) {
+        setLoadError(true);
+        return;
+      }
       const parsed = JSON.parse(saved) as unknown;
       const normalized = normalizeWorksheetSnapshot(parsed);
       if (normalized.entries.length > 0) {
-        sessionStorage.setItem(WORKSHEET_STORAGE_KEY, saved);
-        sessionStorage.removeItem(LEGACY_WORKSHEET_STORAGE_KEY);
         setSnapshot(normalized);
         setPaperSize(normalized.settings.paperSize);
         setPrintMargin(normalized.settings.printMargin);
+        setPreviewReady(true);
+        try {
+          sessionStorage.setItem(WORKSHEET_STORAGE_KEY, JSON.stringify(normalized));
+          sessionStorage.removeItem(LEGACY_WORKSHEET_STORAGE_KEY);
+        } catch {
+          setStorageWarning(true);
+        }
+      } else {
+        setLoadError(true);
       }
     } catch {
-      sessionStorage.removeItem(WORKSHEET_STORAGE_KEY);
-      sessionStorage.removeItem(LEGACY_WORKSHEET_STORAGE_KEY);
+      setLoadError(true);
     }
   }, []);
 
@@ -119,6 +130,23 @@ export function PrintPreviewClient() {
     } finally {
       setPdfProgress(null);
     }
+  }
+
+  if (!previewReady) {
+    return (
+      <main className="min-h-screen bg-[#eeeeec] px-6 py-16 text-[#14253f]">
+        <div className="hs-card mx-auto max-w-xl p-6">
+          <p role={loadError ? "alert" : "status"}>
+            {loadError
+              ? t("Could not load your worksheet. Return to the editor and open the preview again. Your browser may be blocking site storage.", "无法载入字帖，请返回编辑器重新打开预览。浏览器可能限制了网站存储。")
+              : t("Loading your worksheet…", "正在载入字帖……")}
+          </p>
+          <Link href="/generator" className="hs-secondary-button mt-5">
+            {t("Back to editor", "返回编辑器")}
+          </Link>
+        </div>
+      </main>
+    );
   }
 
   return (
@@ -247,7 +275,13 @@ export function PrintPreviewClient() {
  enabled={!!snapshot.settings.repeatToFill} disabled={!snapshot.entries.some(entry => /\p{Script=Han}/u.test(entry.hanzi))}
  chinese={locale === "zh"} onChange={repeatToFill => {
  const next = { ...snapshot, settings: { ...snapshot.settings, repeatToFill } };
- setSnapshot(next); sessionStorage.setItem(WORKSHEET_STORAGE_KEY, JSON.stringify(next));
+ setSnapshot(next);
+ try {
+   sessionStorage.setItem(WORKSHEET_STORAGE_KEY, JSON.stringify(next));
+   setStorageWarning(false);
+ } catch {
+   setStorageWarning(true);
+ }
  }} />}
 
           <PrintToggle
@@ -291,6 +325,11 @@ export function PrintPreviewClient() {
                   "需要保存文件时下载 PDF；需要选择打印机或份数时使用打印。",
                 )}
           </div>
+          {storageWarning ? (
+            <p role="status" className="mt-4 rounded border border-amber-200 bg-amber-50 p-3 text-sm text-amber-900">
+              {t("Changes are available on this page but could not be saved. Download or print before leaving.", "修改已在此页面生效，但无法保存。离开前请先下载或打印。")}
+            </p>
+          ) : null}
           {pdfError ? (
             <p
               role="alert"

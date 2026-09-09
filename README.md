@@ -34,7 +34,7 @@ pricing.
 
 ## Tech Stack
 
-- Next.js App Router through Vinext.
+- Next.js App Router conventions through Vinext 0.0.51 and Vite 8.
 - React 19.
 - TypeScript.
 - Tailwind CSS.
@@ -80,11 +80,22 @@ pnpm exec tsc --noEmit
 pnpm build
 ```
 
-The latest verified run passed:
+For browser regressions, start the production build with `pnpm start --port 4337`
+and run `pnpm test:browser` in another terminal. The script uses an existing
+`playwright` installation (Chromium); set `PLAYWRIGHT_MODULE` to its absolute
+package directory when it is installed outside this repository. For a standalone
+setup, install Playwright with `pnpm add --save-dev playwright` and its browser
+with `pnpm exec playwright install chromium`.
 
-- `pnpm test` - 106 tests passed.
-- `pnpm exec tsc --noEmit` - passed.
-- `pnpm build` - passed.
+`QA_BASE_URL` defaults to `http://127.0.0.1:4337` and only accepts loopback hosts.
+`QA_FILTER` selects a scenario by name. Results are saved under the ignored
+`artifacts/browser-regression/` directory. Tests block analytics and paid
+enrichment; they check hydration across time zones, JSON-LD documents, blocked
+storage, draft/HSK restoration, character conversion, and PDF output.
+
+See [`docs/browser-stability.md`](docs/browser-stability.md) for the Clarity
+findings, remaining diagnostic evidence, and Safari release checks. Run fresh
+checks for each change rather than relying on a historical test count.
 
 Public indexing rules, route keyword ownership, metadata requirements,
 performance budgets, and the post-deploy Search Console checklist are

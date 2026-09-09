@@ -31,7 +31,6 @@ import {
 } from "../draft";
 import { createWorksheetEntryId } from "../ids";
 import { localize } from "../i18n";
-import { convertWorksheetEntries } from "../traditional";
 import {
   getCompatiblePaperSize,
   getWorksheetProfilePreset,
@@ -113,13 +112,11 @@ export function GeneratorClient({
     title: hasTemplate
       ? `${templateTitle} · ${templateChineseTitle}`
       : "My Chinese Worksheet",
-    date: new Intl.DateTimeFormat("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    }).format(new Date()),
+    date: "",
   });
   const [isEnriching, setIsEnriching] = useState(false);
+  const [isConverting, setIsConverting] = useState(false);
+  const conversionPending = useRef(false);
   const [pendingDraft, setPendingDraft] =
     useState<WorksheetDraftEnvelope | null>(null);
   const [draftSavedAt, setDraftSavedAt] = useState<number | null>(null);
@@ -243,11 +240,21 @@ export function GeneratorClient({
   }, [autoEnrich]);
 
   useEffect(() => {
+    // Keep SSR deterministic, then use the same local date for the editor and
+    // its initial draft comparison so an unchanged draft does not prompt itself.
+    const date = new Intl.DateTimeFormat("en-US", {
+      month: "short", day: "numeric", year: "numeric",
+    }).format(new Date());
+    const initialSnapshot = {
+      ...currentSnapshot,
+      settings: { ...currentSnapshot.settings, date },
+    };
+    setSettings((current) => current.date ? current : { ...current, date });
     try {
       const draft = parseWorksheetDraft(
         localStorage.getItem(WORKSHEET_DRAFT_STORAGE_KEY),
       );
-      if (draft && !isSameWorksheetSnapshot(draft.snapshot, currentSnapshot)) {
+      if (draft && !isSameWorksheetSnapshot(draft.snapshot, initialSnapshot)) {
         setPendingDraft(draft);
       } else if (draft) {
         setDraftSavedAt(draft.savedAt);
@@ -291,20 +298,24 @@ export function GeneratorClient({
   function discardDraft() {
     try {
       localStorage.removeItem(WORKSHEET_DRAFT_STORAGE_KEY);
-    } finally {
-      setPendingDraft(null);
-      setDraftSavedAt(null);
-      setMessage(t("Saved draft discarded.", "已放弃保存的草稿。"));
+    } catch {
+      setMessage(t("Could not remove the saved draft. Your current worksheet is unchanged.", "无法移除保存的草稿，当前字帖未受影响。"));
+      return;
     }
+    setPendingDraft(null);
+    setDraftSavedAt(null);
+    setMessage(t("Saved draft discarded.", "已放弃保存的草稿。"));
   }
 
   function clearSavedDraft() {
     try {
       localStorage.removeItem(WORKSHEET_DRAFT_STORAGE_KEY);
-    } finally {
-      setDraftSavedAt(null);
-      setMessage(t("Local draft cleared.", "本地草稿已清除。"));
+    } catch {
+      setMessage(t("Could not remove the saved draft. Your current worksheet is unchanged.", "无法移除保存的草稿，当前字帖未受影响。"));
+      return;
     }
+    setDraftSavedAt(null);
+    setMessage(t("Local draft cleared.", "本地草稿已清除。"));
   }
 
   function addHskEntries(nextEntries: WorksheetEntry[]) {
@@ -369,18 +380,46 @@ export function GeneratorClient({
   }
 
   function openPreview() {
+    if (conversionPending.current) return;
     const snapshot: WorksheetSnapshot = {
       version: 3,
       entries,
       settings,
     };
-    sessionStorage.setItem(WORKSHEET_STORAGE_KEY, JSON.stringify(snapshot));
+    try {
+      sessionStorage.setItem(WORKSHEET_STORAGE_KEY, JSON.stringify(snapshot));
+    } catch {
+      setMessage(t(
+        "Could not open the print preview because this browser cannot save your worksheet. Keep this page open and allow site storage, then try again.",
+        "浏览器无法保存当前字帖，暂时无法打开打印预览。请保留此页面，允许网站存储后重试。",
+      ));
+      return;
+    }
     router.push("/worksheet/preview");
+  }
+
+  async function changeCharacterStandard(characterStandard: CharacterStandard) {
+    if (isEnriching || conversionPending.current || characterStandard === settings.characterStandard) return;
+    conversionPending.current = true;
+    setIsConverting(true);
+    setMessage(t("Switching character standard…", "正在切换字形……"));
+    try {
+      const { convertWorksheetEntries } = await import("../traditional");
+      setEntries((current) => convertWorksheetEntries(current, settings.characterStandard, characterStandard));
+      setSettings((current) => ({ ...current, characterStandard }));
+      setMessage(t("Character standard updated.", "字形已更新。"));
+    } catch {
+      setMessage(t("Could not load character conversion. Your words are unchanged; please try again.", "暂时无法加载字形转换，词表未更改，请重试。"));
+    } finally {
+      conversionPending.current = false;
+      setIsConverting(false);
+    }
   }
 
   return (
     <PublicPageShell active="generator" footer={false}>
       <main className="hs-container pb-28 pt-6">
+        <fieldset disabled={isConverting} className="min-w-0" aria-busy={isConverting}>
         <div className="flex items-center gap-2 text-sm text-[#617084]">
           <Link href="/" className="hover:text-[#b62822]">
             {t("Home", "首页")}
@@ -443,16 +482,8 @@ export function GeneratorClient({
           <SettingsPanel
             settings={settings}
             setSettings={setSettings}
-            onCharacterStandardChange={(characterStandard) => {
-              setEntries((current) =>
-                convertWorksheetEntries(
-                  current,
-                  settings.characterStandard,
-                  characterStandard,
-                ),
-              );
-              setSettings((current) => ({ ...current, characterStandard }));
-            }}
+            conversionDisabled={isEnriching}
+            onCharacterStandardChange={changeCharacterStandard}
           />
 
           <section className="hs-card min-w-0 p-4 sm:p-5">
@@ -659,7 +690,7 @@ export function GeneratorClient({
               <span className="flex items-center gap-1 text-amber-600">
                 <AlertCircle className="size-4" /> {t("Check ambiguity", "检查歧义")}
               </span>
-              <span>{message}</span>
+              <span role="status">{message}</span>
             </div>
           </section>
 
@@ -702,6 +733,7 @@ export function GeneratorClient({
         <GeneratorSupportSections
           showEnglishPracticeLink={showEnglishPracticeLink}
         />
+        </fieldset>
       </main>
 
       <div className="hs-no-print fixed inset-x-0 bottom-0 z-40 border-t border-[#d8d0c2] bg-[#fffdf9]/96 backdrop-blur">
@@ -730,7 +762,7 @@ export function GeneratorClient({
               type="button"
               className="hs-secondary-button min-w-56"
               onClick={openPreview}
-              disabled={entries.length === 0}
+              disabled={entries.length === 0 || isConverting}
             >
               <Eye className="size-4" /> {t("Preview full page", "完整预览")}
             </button>
@@ -738,7 +770,7 @@ export function GeneratorClient({
               type="button"
               className="hs-primary-button min-w-72"
               onClick={openPreview}
-              disabled={entries.length === 0}
+              disabled={entries.length === 0 || isConverting}
             >
               {isDigitalPdf ? (
                 <Download className="size-4" />
@@ -934,10 +966,12 @@ function SettingsPanel({
   settings,
   setSettings,
   onCharacterStandardChange,
+  conversionDisabled,
 }: {
   settings: WorksheetSettings;
   setSettings: React.Dispatch<React.SetStateAction<WorksheetSettings>>;
   onCharacterStandardChange: (value: CharacterStandard) => void;
+  conversionDisabled: boolean;
 }) {
   const locale = useLocale();
   const t = (english: string, chinese: string) => localize(locale, english, chinese);
@@ -971,6 +1005,7 @@ function SettingsPanel({
       <SettingSection title={t("Character standard", "字形標準")}>
         <Segmented
           value={settings.characterStandard}
+          disabled={conversionDisabled}
           options={[
             ["simplified", t("Simplified", "簡體")],
             ["traditional-tw", t("Traditional (Taiwan)", "台灣正體")],

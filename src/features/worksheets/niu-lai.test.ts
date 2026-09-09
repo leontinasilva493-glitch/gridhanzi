@@ -61,8 +61,8 @@ test("the rendered 牛来 page exposes differentiated learning content and safe 
   assert.match(html, /https:\/\/www\.bjnews\.com\.cn/);
   assert.match(html, /https:\/\/www\.reddit\.com\/r\/boxoffice/);
   const scripts = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
-  assert.equal(scripts.length, 1);
-  const structuredData = JSON.parse(scripts[0][1]) as Array<{ "@type": string }>;
+  assert.equal(scripts.length, 2);
+  const structuredData = scripts.map((script) => JSON.parse(script[1])) as Array<{ "@type": string }>;
   assert.deepEqual(
     structuredData.map((entry) => entry["@type"]),
     ["Article", "BreadcrumbList"],
