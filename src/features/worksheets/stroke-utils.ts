@@ -23,3 +23,12 @@ export function selectStrokeFrames<T>(
   );
   return indexes.map((index) => frames[index]!);
 }
+
+export function resolveStrokeCount(
+  loadedStrokeCount: number | undefined,
+  listedStrokeCount: number,
+): number {
+  return loadedStrokeCount && loadedStrokeCount > 0
+    ? loadedStrokeCount
+    : listedStrokeCount;
+}

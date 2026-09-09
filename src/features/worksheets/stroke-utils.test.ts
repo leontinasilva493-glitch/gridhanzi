@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { buildCumulativeStrokeFrames, selectStrokeFrames } from "./stroke-utils";
+import {
+  buildCumulativeStrokeFrames,
+  resolveStrokeCount,
+  selectStrokeFrames,
+} from "./stroke-utils";
 
 test("buildCumulativeStrokeFrames returns one cumulative frame per stroke", () => {
   assert.deepEqual(buildCumulativeStrokeFrames(["a", "b", "c"]), [
@@ -24,4 +28,10 @@ test("selectStrokeFrames keeps milestones for compact mode and the final shape",
   assert.deepEqual(selectStrokeFrames(frames, "compact"), [1, 4, 7, 10]);
   assert.deepEqual(selectStrokeFrames(frames, "detailed"), frames);
   assert.deepEqual(selectStrokeFrames(frames, "off"), []);
+});
+
+test("loaded character data replaces an unavailable editorial stroke count", () => {
+  assert.equal(resolveStrokeCount(2, 0), 2);
+  assert.equal(resolveStrokeCount(undefined, 7), 7);
+  assert.equal(resolveStrokeCount(0, 0), 0);
 });

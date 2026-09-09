@@ -16,7 +16,7 @@ other.
 | `/english-to-chinese-writing-practice` | English to Chinese Writing Practice |
 | `/templates` | Printable Chinese Writing Worksheets |
 | `/templates/[slug]` | `[Topic] Chinese Writing Worksheet` |
-| `/stroke-order` | Chinese Stroke Order |
+| `/stroke-order` | Chinese stroke order with typed or private handwriting lookup |
 | `/stroke-order/[character]` | Curated character stroke order, meaning, and usage |
 | `/chinese-stroke-order-rules` | Chinese stroke order rules and exceptions |
 | `/chinese-character-components` | Chinese character meaning and sound components |

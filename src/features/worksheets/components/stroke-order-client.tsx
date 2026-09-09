@@ -22,6 +22,7 @@ import {
   type TracePoint,
 } from "../stroke-trace";
 import type { StrokeOrderCharacter } from "../stroke-order-characters";
+import { resolveStrokeCount } from "../stroke-utils";
 
 import { StrokeSequence } from "./stroke-sequence";
 import { TemplateTraceLayer } from "./template-trace-layer";
@@ -85,8 +86,12 @@ export function StrokeOrderClient({
           meaning: "Meaning not listed",
           strokes: 0,
         });
+  const resolvedStrokeCount = resolveStrokeCount(
+    characterData?.strokes.length,
+    info.strokes,
+  );
   const strokeLabels = Array.from(
-    { length: info.strokes || 6 },
+    { length: resolvedStrokeCount || 6 },
     (_, index) => `Stroke ${index + 1}`,
   );
 
@@ -375,7 +380,9 @@ export function StrokeOrderClient({
                 void leavePractice().then(() => {
                   void writerRef.current?.animateStroke(strokeIndex);
                   setStrokeIndex((current) =>
-                    info.strokes > 0 ? (current + 1) % info.strokes : current + 1,
+                    resolvedStrokeCount > 0
+                      ? (current + 1) % resolvedStrokeCount
+                      : current + 1,
                   );
                 });
               }}
@@ -409,7 +416,9 @@ export function StrokeOrderClient({
                 <h2 className="text-2xl font-bold">{info.pinyin}</h2>
                 <p className="mt-2 text-[#566276]">{info.meaning}</p>
                 <p className="mt-3 font-semibold">
-                  {info.strokes ? `${info.strokes} strokes` : "Stroke count not listed"}
+                  {resolvedStrokeCount
+                    ? `${resolvedStrokeCount} strokes`
+                    : "Stroke count not listed"}
                 </p>
               </div>
             </div>
@@ -449,7 +458,7 @@ export function StrokeOrderClient({
       {!sessionMode ? (
         <section className="hs-card mt-4 p-4">
           <h2 className="hs-display text-xl font-bold">Stroke-by-stroke</h2>
-          <StrokeSequence character={character} limit={info.strokes || 6} className="mt-4" />
+          <StrokeSequence character={character} limit={resolvedStrokeCount || 6} className="mt-4" />
         </section>
       ) : null}
 
