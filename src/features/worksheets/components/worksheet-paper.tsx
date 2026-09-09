@@ -1,4 +1,5 @@
 "use client";
+import { fillLastPracticePage, estimateLearnUnitHeight } from "../layout";
 
 import { useEffect, useMemo, useState } from "react";
 import type { CharacterJson } from "hanzi-writer";
@@ -289,12 +290,26 @@ export function WorksheetPaper({
       ).map((units) => ({ kind: "learn" as const, units }));
     }
 
+    if (settings.repeatToFill && settings.mode !== "quiz") {
+      const counts = new Map(uniqueCharacters.map(character => [character, strokeState.data.get(character)?.length ?? 0]));
+      const unitPages = resolvedPages.map(page => "units" in page ? page.units : []);
+      const filled = fillLastPracticePage(unitPages,
+        settings.mode === "write" ? layout.rowsPerPage : layout.contentHeight,
+        unit => settings.mode === "write" ? 1 + settings.extraBlankRows : estimateLearnUnitHeight(
+          counts.get(unit.character) ?? 0,
+          showAnswers ? settings.strokeOrderMode : "off",
+          layout,
+          settings.extraBlankRows,
+        ));
+      resolvedPages = filled.map(units => ({ kind: settings.mode === "write" ? "practice" as const : "learn" as const, units }));
+    }
     return compact ? resolvedPages.slice(0, 1) : resolvedPages;
   }, [
     compact,
     entries,
     layout,
     settings.mode,
+    settings.repeatToFill,
     settings.extraBlankRows,
     settings.strokeOrderMode,
     showAnswers,
