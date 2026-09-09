@@ -7,6 +7,7 @@ import {
   BookOpen,
   Check,
   Dice5,
+  PenLine,
   Search,
   Sparkles,
 } from "lucide-react";
@@ -146,12 +147,20 @@ export function PracticePageClient({
       <section className="hs-card mt-7 overflow-hidden border-[#d8c49f] bg-[#fffaf0]">
         <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
           <div>
-            <label
-              htmlFor="practice-character-input"
-              className="text-sm font-bold text-[#172b49]"
-            >
-              Practise any single Hanzi
-            </label>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <label
+                htmlFor="practice-character-input"
+                className="text-sm font-bold text-[#172b49]"
+              >
+                Practise any single Hanzi
+              </label>
+              <Link
+                href="/stroke-order?mode=draw#character-lookup"
+                className="flex items-center gap-1 text-xs font-bold text-[#b62822] hover:text-[#8f1f1a]"
+              >
+                <PenLine className="size-3.5" /> Draw to find a character
+              </Link>
+            </div>
             <div className="mt-2 flex max-w-xl gap-2">
               <div className="relative min-w-0 flex-1">
                 <Search className="absolute left-3 top-1/2 size-5 -translate-y-1/2 text-[#6b7584]" />

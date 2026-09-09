@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 
-import { StrokeOrderClient } from "@/features/worksheets/components/stroke-order-client";
+import { StrokeOrderLookupClient } from "@/features/worksheets/components/stroke-order-lookup-client";
 import { PublicPageShell } from "@/features/worksheets/components/site-shell";
 import {
   groupStrokeOrderCharactersByTier,
@@ -11,6 +11,7 @@ import {
 import { envConfigs } from "@/config";
 import { Link } from "@/core/i18n/navigation";
 import { buildPageSeoMetadata } from "@/features/worksheets/seo";
+import { resolveStrokeOrderLookupCharacter } from "@/features/worksheets/handwriting-input";
 
 export async function generateMetadata({ params }: {
   params: Promise<{ locale: string }>;
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: {
   const { locale } = await params;
   const title = "Chinese Stroke Order";
   const description =
-    "Enter a Chinese character to see its stroke order, play one stroke at a time, practise on screen, or add it to a worksheet.";
+    "Type or draw a Chinese character to identify it, see its stroke order, practise on screen, and add the Hanzi to a printable worksheet.";
   return {
     title,
     description,
@@ -29,7 +30,15 @@ export async function generateMetadata({ params }: {
   };
 }
 
-export default function StrokeOrderPage() {
+export default async function StrokeOrderPage({
+  searchParams,
+}: {
+  searchParams?: Promise<{ character?: string | string[]; mode?: string | string[] }>;
+} = {}) {
+  const query = searchParams ? await searchParams : {};
+  const initialCharacter = resolveStrokeOrderLookupCharacter(
+    Array.isArray(query.character) ? query.character[0] : query.character,
+  );
   const groupedStrokeOrderCharacters = groupStrokeOrderCharactersByTier(
     strokeOrderCharacters,
   );
@@ -49,8 +58,8 @@ export default function StrokeOrderPage() {
             Chinese Stroke Order
           </h1>
           <p className="mt-2 text-[#566276]">
-            Enter a character to watch the strokes, practise on screen, or add
-            it to a worksheet.
+            Type a Hanzi or draw one you cannot identify, then watch its strokes,
+            practise on screen, or add it to a worksheet.
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             <Link href="/practice" className="hs-primary-button min-h-12 px-5">
@@ -67,7 +76,7 @@ export default function StrokeOrderPage() {
             </Link>
           </div>
         </header>
-        <StrokeOrderClient />
+        <StrokeOrderLookupClient initialCharacter={initialCharacter} initialMode={query.mode === "draw" ? "draw" : "type"} />
 
         <section className="mt-10 border-t border-[#ded7ca] pt-8" aria-labelledby="hsk-paths-title">
           <div className="rounded border border-[#d8c49f] bg-[#fff9ed] p-6 sm:p-8">
