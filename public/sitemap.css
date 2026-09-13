@@ -1,0 +1,82 @@
+@charset "UTF-8";
+@namespace sm url("http://www.sitemaps.org/schemas/sitemap/0.9");
+@namespace xhtml url("http://www.w3.org/1999/xhtml");
+
+/* Style the XML itself: no HTML negotiation or client-side XSLT required. */
+sm|urlset {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 48px 32px 64px;
+  background: #f5f7f5;
+  color: #20372d;
+  font: 15px/1.65 "Segoe UI", "Microsoft YaHei", sans-serif;
+  counter-reset: sitemap-row;
+}
+
+sm|urlset::before {
+  display: block;
+  order: -2;
+  content: "GridHanzi / XML Sitemap";
+  padding: 0 0 24px;
+  border-bottom: 3px solid #286246;
+  margin-bottom: 24px;
+  font: 600 34px/1.25 Georgia, "Microsoft YaHei", serif;
+  letter-spacing: -0.5px;
+}
+
+sm|urlset::after {
+  display: block;
+  order: -1;
+  content: "共 " counter(sitemap-row) " 个规范网址 · UTF-8 XML\A站内优先级说明：1.0 首页 · 0.9 核心生成工具 · 0.8 分类与工具入口 · 0.7 专题及详情页。\AGoogle 忽略 priority 和 changefreq；这些数值是站内相对优先级，不是 Google 排名权重。\A未填写 lastmod：目前没有可靠的逐页内容更新日期，不使用构建时间代替。";
+  white-space: pre-line;
+  padding: 0 0 24px;
+  border-bottom: 1px solid #b5c8bb;
+  margin-bottom: 24px;
+  color: #435c50;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+sm|url {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 166px;
+  align-items: baseline;
+  gap: 16px;
+  padding: 16px;
+  background: #fff;
+  border-bottom: 1px solid #dce5df;
+  counter-increment: sitemap-row;
+}
+
+sm|url:nth-of-type(even) { background: #edf2ee; }
+sm|url::before {
+  content: counter(sitemap-row, decimal-leading-zero);
+  color: #6d8075;
+  font-variant-numeric: tabular-nums;
+}
+sm|loc {
+  display: block;
+  overflow-wrap: anywhere;
+  color: #204d36;
+  font-family: Consolas, "Microsoft YaHei", monospace;
+  font-size: 14px;
+}
+sm|priority {
+  display: block;
+  white-space: nowrap;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+sm|priority::before { content: "站内优先级  "; font-weight: 400; color: #63786b; }
+/* Hreflang remains in the source for crawlers, without stray browser text. */
+xhtml|link { display: none; }
+
+@media (max-width: 640px) {
+  sm|urlset { padding: 24px 12px; }
+  sm|urlset::before { font-size: 26px; }
+  sm|url { grid-template-columns: 28px minmax(0, 1fr); gap: 8px; padding: 12px; }
+  sm|priority { grid-column: 2; font-size: 12px; }
+}
