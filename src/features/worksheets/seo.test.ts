@@ -18,7 +18,7 @@ import GeneratorPage, {
   generateMetadata as generateGeneratorMetadata,
 } from "../../app/[locale]/generator/page";
 import { generateMetadata as generateHomeMetadata } from "../../app/[locale]/page";
-import sitemap from "../../app/sitemap";
+import sitemap from "./sitemap";
 import robots from "../../app/robots";
 import { generateMetadata as generateStrokeOrderMetadata } from "../../app/[locale]/stroke-order/[character]/page";
 import { generateMetadata as generateStrokeOrderDirectoryMetadata } from "../../app/[locale]/stroke-order/page";
@@ -310,7 +310,7 @@ test("sitemap submits only canonical, indexable language pages", () => {
   const entries = sitemap();
   const expectedUrls = [
     ...buildPublicSitemapPaths().map((pathname) =>
-      toAbsoluteUrl("https://gridhanzi.org", pathname),
+      new URL(toAbsoluteUrl("https://gridhanzi.org", pathname)).href,
     ),
     "https://gridhanzi.org/zh/generator",
   ];
@@ -320,7 +320,7 @@ test("sitemap submits only canonical, indexable language pages", () => {
     expectedUrls,
   );
   for (const entry of entries) {
-    assert.equal("priority" in entry, false);
+    assert.ok(typeof entry.priority === "number" && entry.priority >= 0 && entry.priority <= 1);
     assert.equal("changeFrequency" in entry, false);
     assert.doesNotMatch(entry.url, /\/api\/|\/worksheet\/preview/);
   }

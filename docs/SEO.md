@@ -236,3 +236,31 @@ Use Search Console as the ranking source of truth. Compare 28-day periods for:
 
 Do not rewrite pages from a single day of data. Prioritize pages with sustained
 impressions and low CTR, or pages whose useful content is not being indexed.
+
+## Discovery file encoding and structure
+
+- `/sitemap.xml` is served by `src/app/sitemap.xml/route.ts`, using the shared
+  entry builder in `src/features/worksheets/sitemap.ts`.
+- Use UTF-8 XML, an explicit charset, escaped XML values, and absolute URLs.
+  Chinese path segments use percent encoding; this is URL encoding, not mojibake.
+- Preserve reciprocal English/Chinese generator alternates. Keep transient,
+  untranslated, and noindex routes out of the sitemap.
+- Do not invent lastmod dates. Google ignores priority and changefreq.
+  The optional priority field now describes editorial navigation tiers only:
+  1.0 homepage, 0.9 core generators, 0.8 hubs/tools, 0.7 topic/detail pages.
+  These values are not measured SEO authority or a Google ranking signal.
+- A CSS processing instruction loads `/sitemap.css` for a numbered, responsive
+  browser view of the XML. Source indentation alone does not fix browsers that
+  render XML with XHTML alternates as unformatted text. Crawlers still receive
+  the same XML for every user agent, without HTML content negotiation.
+- Run `python scripts/sitemap-browser-check.py` against a local preview
+  (defaults to port 4338; override `QA_BASE_URL`) to verify desktop/mobile layout.
+- `/llms.txt` is an optional Markdown directory for other consumers, not a
+  Google Search requirement or a crawler permission grant. `/llm.txt` is not
+  maintained; use the plural filename.
+- Production robots.txt can include Cloudflare-managed content before the app's
+  rules. Local edits cannot remove that injected section. Review it separately
+  in Cloudflare if crawler access policy needs to change.
+
+References: [Google sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
+and [Google AI optimization guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide).
