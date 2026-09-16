@@ -5,6 +5,7 @@ import { Link } from "@/core/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 import { LocaleSwitch } from "./locale-switch";
+import { EmailFeedbackLink } from "./email-feedback-link";
 
 const navItems = [
   { href: "/generator", label: "Worksheet Maker", key: "generator" },
@@ -73,7 +74,7 @@ export function HanziSiteHeader({ active }: { active?: string }) {
           />
         </Link>
 
-        <nav className="hidden items-stretch self-stretch lg:flex">
+        <nav className="hidden items-stretch self-stretch xl:flex">
           {navItems.map((item) => (
             <Link
               key={item.key}
@@ -92,7 +93,8 @@ export function HanziSiteHeader({ active }: { active?: string }) {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 xl:flex">
+          <EmailFeedbackLink />
           <LocaleSwitch />
           {active !== "generator" ? (
             <Link href="/generator" className="hs-primary-button min-h-10 px-4 py-2 text-sm">
@@ -101,7 +103,8 @@ export function HanziSiteHeader({ active }: { active?: string }) {
           ) : null}
         </div>
 
-        <div className="ml-auto flex items-center gap-2 lg:hidden">
+        <div className="ml-auto flex items-center gap-2 xl:hidden">
+          <EmailFeedbackLink />
           {active !== "generator" ? (
             <Link href="/generator" className="hs-primary-button min-h-9 px-3 py-2 text-xs sm:text-sm">
               Create
