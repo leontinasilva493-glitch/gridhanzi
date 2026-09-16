@@ -225,6 +225,15 @@ export function HanziSiteFooter() {
             Make a Chinese worksheet from your own word list. Edit it, print
             it, and use it again when the class is ready to review.
           </p>
+          <p className="mt-4 text-sm text-blue-100/75">
+            Questions or feedback? Contact us:
+            <a
+              href="mailto:support@gridhanzi.org"
+              className="mt-1 block w-fit break-all text-white underline underline-offset-4 hover:text-blue-200"
+            >
+              support@gridhanzi.org
+            </a>
+          </p>
         </div>
         <FooterColumn
           title="Templates"
