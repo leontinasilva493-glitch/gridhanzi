@@ -442,6 +442,15 @@ export function GeneratorClient({
           <span className="h-px flex-1 bg-[#d6cfc2]" />
           <StepBadge label={t("Print", "下载打印")} number="3" />
         </div>
+        <p className="hs-no-print mt-3 text-sm text-[#566276]">
+          {t("Questions or feedback? Email us: ", "遇到问题或有建议？欢迎来信：")}
+          <a
+            href="mailto:support@gridhanzi.org"
+            className="break-all text-[#b62822] underline underline-offset-4 hover:text-[#17253c]"
+          >
+            support@gridhanzi.org
+          </a>
+        </p>
 
         {pendingDraft ? (
           <section
