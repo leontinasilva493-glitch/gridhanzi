@@ -83,6 +83,7 @@ export function PrintPreviewClient() {
         setPaperSize(normalized.settings.paperSize);
         setPrintMargin(normalized.settings.printMargin);
         setPreviewReady(true);
+        window.setTimeout(() => window.dispatchEvent(new Event("gridhanzi:preview-ready")), 250);
         try {
           sessionStorage.setItem(WORKSHEET_STORAGE_KEY, JSON.stringify(normalized));
           sessionStorage.removeItem(LEGACY_WORKSHEET_STORAGE_KEY);
