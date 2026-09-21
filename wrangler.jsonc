@@ -15,6 +15,14 @@
         "limit": 10,
         "period": 60
       }
+    },
+    {
+      "name": "FEEDBACK_RATE_LIMITER",
+      "namespace_id": "145052252",
+      "simple": { "limit": 3, "period": 60 }
     }
+  ],
+  "send_email": [
+    { "name": "FEEDBACK_EMAIL" }
   ]
 }

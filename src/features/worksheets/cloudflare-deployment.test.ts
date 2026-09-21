@@ -20,13 +20,32 @@ test("Cloudflare deploys the GridHanzi Worker with shared API rate limiting", as
   const wrangler = JSON.parse(await projectFile("wrangler.jsonc"));
 
   assert.equal(wrangler.name, "gridhanzi");
-  assert.deepEqual(wrangler.ratelimits, [
+  assert.deepEqual(
+    wrangler.ratelimits.find(
+      (item: { name: string }) => item.name === "WORKSHEET_RATE_LIMITER",
+    ),
     {
       name: "WORKSHEET_RATE_LIMITER",
       namespace_id: "145052251",
       simple: { limit: 10, period: 60 },
     },
-  ]);
+  );
+  assert.deepEqual(
+    wrangler.ratelimits.find(
+      (item: { name: string }) => item.name === "FEEDBACK_RATE_LIMITER",
+    ),
+    {
+      name: "FEEDBACK_RATE_LIMITER",
+      namespace_id: "145052252",
+      simple: { limit: 3, period: 60 },
+    },
+  );
+  assert.notEqual(wrangler.ratelimits[0].namespace_id, "145052252");
+  assert.ok(
+    wrangler.send_email.some(
+      (item: { name: string }) => item.name === "FEEDBACK_EMAIL",
+    ),
+  );
 });
 
 test("Cloudflare and local installs use the lockfile-compatible pnpm version", async () => {

@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { routing } from "@/core/i18n/config";
+import { FeedbackSurvey } from "@/features/worksheets/components/feedback-survey";
 
 export default async function LocaleLayout({
   children,
@@ -17,5 +18,10 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
 
-  return <NextIntlClientProvider>{children}</NextIntlClientProvider>;
+  return (
+    <NextIntlClientProvider>
+      <FeedbackSurvey locale={locale} />
+      {children}
+    </NextIntlClientProvider>
+  );
 }

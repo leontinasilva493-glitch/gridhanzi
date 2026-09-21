@@ -50,9 +50,13 @@ test("Cloudflare client IP cannot be bypassed with a spoofed forwarded header", 
     keyPrefix: `spoofed-xff-${crypto.randomUUID()}`,
   };
 
-  assert.equal(await enforceMinIntervalRateLimit(request("198.51.100.1"), options), null);
   assert.equal(
-    (await enforceMinIntervalRateLimit(request("198.51.100.2"), options))?.status,
+    await enforceMinIntervalRateLimit(request("198.51.100.1"), options),
+    null,
+  );
+  assert.equal(
+    (await enforceMinIntervalRateLimit(request("198.51.100.2"), options))
+      ?.status,
     429,
   );
 });
@@ -82,7 +86,10 @@ test("a shared binding can reject a stable per-IP route key", async () => {
     },
   );
 
-  assert.equal(receivedKey, "worksheet-enrich|POST|/api/worksheet/enrich|203.0.113.20");
+  assert.equal(
+    receivedKey,
+    "worksheet-enrich|POST|/api/worksheet/enrich|203.0.113.20",
+  );
   assert.equal(response?.status, 429);
   assert.equal(response?.headers.get("retry-after"), "60");
 });
@@ -115,19 +122,36 @@ test("a shared binding failure blocks paid traffic with a retryable response", a
 test("Cloudflare config provides a shared worksheet rate-limit binding", async () => {
   const config = JSON.parse(await projectFile("wrangler.jsonc"));
 
-  assert.deepEqual(config.ratelimits, [
+  assert.deepEqual(
+    config.ratelimits.find(
+      (item: { name: string }) => item.name === "WORKSHEET_RATE_LIMITER",
+    ),
     {
       name: "WORKSHEET_RATE_LIMITER",
       namespace_id: "145052251",
       simple: { limit: 10, period: 60 },
     },
-  ]);
+  );
+  assert.deepEqual(
+    config.ratelimits.find(
+      (item: { name: string }) => item.name === "FEEDBACK_RATE_LIMITER",
+    ),
+    {
+      name: "FEEDBACK_RATE_LIMITER",
+      namespace_id: "145052252",
+      simple: { limit: 3, period: 60 },
+    },
+  );
 });
 
 test("the worksheet route spends rate-limit capacity only before a paid call", async () => {
   const source = await projectFile("src/app/api/worksheet/enrich/route.ts");
-  const validationIndex = source.indexOf("parseWorksheetEnrichmentRequest(body)");
-  const apiKeyIndex = source.indexOf("const apiKey = process.env.GEMINI_API_KEY");
+  const validationIndex = source.indexOf(
+    "parseWorksheetEnrichmentRequest(body)",
+  );
+  const apiKeyIndex = source.indexOf(
+    "const apiKey = process.env.GEMINI_API_KEY",
+  );
   const limiterIndex = source.indexOf("await enforceMinIntervalRateLimit");
 
   assert.ok(validationIndex >= 0);
