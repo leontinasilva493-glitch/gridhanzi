@@ -3,9 +3,12 @@ import { Clarity } from "./clarity";
 import { Plausible } from "./plausible";
 
 const DEFAULT_CLARITY_PROJECT_ID = "xqa6y21mp0";
+const DEFAULT_GOOGLE_ANALYTICS_ID = "G-GQR6DKVGGN";
 
 export function Analytics() {
-  const gaId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID?.trim();
+  const gaId =
+    process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID?.trim() ||
+    DEFAULT_GOOGLE_ANALYTICS_ID;
   const clarityProjectId =
     process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID?.trim() ||
     DEFAULT_CLARITY_PROJECT_ID;
@@ -16,8 +19,8 @@ export function Analytics() {
 
   return (
     <>
-      {clarityProjectId ? <Clarity projectId={clarityProjectId} /> : null}
       {gaId ? <GoogleAnalytics measurementId={gaId} /> : null}
+      {clarityProjectId ? <Clarity projectId={clarityProjectId} /> : null}
       {plausibleDomain ? (
         <Plausible
           domain={plausibleDomain}
