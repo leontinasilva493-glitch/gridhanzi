@@ -1,11 +1,12 @@
 import catalog from "./hsk-catalog.json";
+import { teachingSenses } from "./teaching-senses";
 import {
   getHanziCharacters,
+  buildLearnUnits,
   paginateLearnUnits,
   paginatePracticeEntries,
   paginateTestEntries,
   resolveWorksheetLayout,
-  splitEntryIntoCharacterUnits,
 } from "./layout";
 import type { WorksheetEntry, WorksheetSettings } from "./types";
 import { convertChineseText } from "./traditional";
@@ -37,7 +38,9 @@ export interface HskSelectionSummary {
   estimatedPageCount: number;
 }
 
-export const hskCatalog = catalog as HskCatalogEntry[];
+export const hskCatalog: HskCatalogEntry[] = (catalog as HskCatalogEntry[]).map((entry) => ({
+  ...entry, ...teachingSenses[entry.hanzi],
+}));
 
 function normalizeSearchText(value: string): string {
   return value
@@ -96,9 +99,7 @@ function estimateWorksheetPages(
     ).length;
   }
 
-  const units = worksheetEntries.flatMap((entry, index) =>
-    splitEntryIntoCharacterUnits(entry, index + 1),
-  );
+  const units = buildLearnUnits(worksheetEntries, settings.uniqueCharactersOnly);
   if (units.length === 0) return 0;
 
   // Match the renderer's deterministic initial state before its asynchronous
@@ -114,6 +115,7 @@ function estimateWorksheetPages(
     settings.strokeOrderMode,
     layout,
     settings.extraBlankRows,
+    settings.keepWordsTogether,
   ).length;
 }
 

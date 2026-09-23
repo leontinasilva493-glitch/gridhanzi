@@ -1,3 +1,5 @@
+
+import { UiText } from "./ui-text";
 import { ArrowRight, BookOpen, GraduationCap, ShieldCheck } from "lucide-react";
 
 import { envConfigs } from "@/config";
@@ -37,27 +39,21 @@ export function HskLevelCheckerPage({ locale }: { locale: string }) {
       ]} />
       <main className="hs-container pb-16 pt-6">
         <nav aria-label="Breadcrumb" className="text-sm text-[#617084]">
-          <Link href="/">Home</Link> <span aria-hidden="true"> / </span>
+          <Link href="/"><UiText>{"Home"}</UiText></Link> <span aria-hidden="true"> / </span>
           <Link href="/hsk">HSK Vocabulary Lists</Link> <span aria-hidden="true"> / </span>
           <span aria-current="page">Level Checker</span>
         </nav>
 
         <header className="mt-6 grid gap-7 border-b border-[#ded7ca] pb-9 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
           <div>
-            <p className="hs-kicker">Turn a reading into a study list</p>
-            <h1 className="hs-display mt-3 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl">
-              HSK Level Checker for Chinese Text
-            </h1>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-[#566276]">
-              Paste a lesson, article excerpt, or message. Compare its HSK 2.0 and 3.0 vocabulary profile, isolate terms above your target, and send the difficult set into a printable writing worksheet.
-            </p>
+            <p className="hs-kicker"><UiText>{"Turn a reading into a study list"}</UiText></p>
+            <h1 className="hs-display mt-3 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl"><UiText>{"HSK Level Checker for Chinese Text"}</UiText></h1>
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-[#566276]"><UiText>{"Paste a lesson, article excerpt, or message. Compare its HSK 2.0 and 3.0 vocabulary profile, isolate terms above your target, and send the difficult set into a printable writing worksheet."}</UiText></p>
           </div>
           <div className="rounded border border-[#d8c49f] bg-[#fff9ed] p-5">
             <ShieldCheck className="size-6 text-[#267254]" />
-            <h2 className="hs-display mt-3 text-xl font-bold">A study aid, not a score</h2>
-            <p className="mt-2 text-sm leading-7 text-[#566276]">
-              The report classifies catalog matches. It does not predict an official exam score, comprehension, grammar control, or speaking ability.
-            </p>
+            <h2 className="hs-display mt-3 text-xl font-bold"><UiText>{"A study aid, not a score"}</UiText></h2>
+            <p className="mt-2 text-sm leading-7 text-[#566276]"><UiText>{"The report classifies catalog matches. It does not predict an official exam score, comprehension, grammar control, or speaking ability."}</UiText></p>
           </div>
         </header>
 
@@ -82,8 +78,8 @@ export function HskLevelCheckerPage({ locale }: { locale: string }) {
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link href="/hsk" className="hs-secondary-button min-h-12 border-white/30 bg-transparent text-white hover:bg-white/10">Browse HSK lists</Link>
-            <Link href="/generator" className="hs-primary-button min-h-12">Create worksheet <ArrowRight className="size-4" /></Link>
+            <Link href="/hsk" className="hs-secondary-button min-h-12 border-white/30 bg-transparent text-white hover:bg-white/10"><UiText>{"Browse HSK lists"}</UiText></Link>
+            <Link href="/generator" className="hs-primary-button min-h-12"><UiText>{"Create worksheet"}</UiText><ArrowRight className="size-4" /></Link>
           </div>
         </section>
       </main>

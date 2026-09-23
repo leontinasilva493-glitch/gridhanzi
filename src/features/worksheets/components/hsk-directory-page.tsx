@@ -1,3 +1,5 @@
+
+import { UiText } from "./ui-text";
 import { ArrowRight, BookOpen, ListChecks, Search } from "lucide-react";
 
 import { envConfigs } from "@/config";
@@ -34,32 +36,27 @@ export function HskDirectoryPage({ locale }: { locale: string }) {
       ]} />
       <main className="hs-container pb-16 pt-6">
         <nav aria-label="Breadcrumb" className="text-sm text-[#617084]">
-          <Link href="/">Home</Link> <span aria-hidden="true"> / </span> <span aria-current="page">HSK Vocabulary Lists</span>
+          <Link href="/"><UiText>{"Home"}</UiText></Link> <span aria-hidden="true"> / </span> <span aria-current="page">HSK Vocabulary Lists</span>
         </nav>
         <header className="mt-6 grid gap-8 border-b border-[#ded7ca] pb-10 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-center">
           <div>
-            <p className="hs-kicker">Choose the right vocabulary path</p>
-            <h1 className="hs-display mt-3 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl">
-              HSK vocabulary lists for Chinese writing practice
-            </h1>
-            <p className="mt-4 max-w-3xl text-lg leading-8 text-[#566276]">
-              Compare HSK 2.0 and HSK 3.0, search each level by Hanzi, Pinyin, or English, and send exactly the words you choose to a printable worksheet.
-            </p>
+            <p className="hs-kicker"><UiText>{"Choose the right vocabulary path"}</UiText></p>
+            <h1 className="hs-display mt-3 max-w-4xl text-4xl font-bold leading-tight sm:text-5xl"><UiText>{"HSK vocabulary lists for Chinese writing practice"}</UiText></h1>
+            <p className="mt-4 max-w-3xl text-lg leading-8 text-[#566276]"><UiText>{"Compare HSK 2.0 and HSK 3.0, search each level by Hanzi, Pinyin, or English, and send exactly the words you choose to a printable worksheet."}</UiText></p>
           </div>
           <aside className="rounded border border-[#d8c49f] bg-[#fff9ed] p-6">
-            <p className="text-sm font-bold text-[#9d3c32]">Not sure which version?</p>
+            <p className="text-sm font-bold text-[#9d3c32]"><UiText>{"Not sure which version?"}</UiText></p>
             <p className="mt-3 text-sm leading-7 text-[#5a5f65]">
               Use HSK 2.0 for the familiar compact six-level path. Use HSK 3.0 for the broader current vocabulary framework. The lists stay separate so word membership is never blurred.
             </p>
-            <Link href="/hsk-level-checker" className="mt-4 inline-flex items-center gap-1 font-bold text-[#24466e] hover:text-[#b62822]">
-              Check the level of your own text <ArrowRight className="size-4" />
+            <Link href="/hsk-level-checker" className="mt-4 inline-flex items-center gap-1 font-bold text-[#24466e] hover:text-[#b62822]"><UiText>{"Check the level of your own text"}</UiText><ArrowRight className="size-4" />
             </Link>
           </aside>
         </header>
 
         <section className="mt-9" aria-labelledby="levels-title">
-          <p className="hs-kicker">Thirteen curated lists</p>
-          <h2 id="levels-title" className="hs-display mt-2 text-3xl font-bold">Start with your system and level</h2>
+          <p className="hs-kicker"><UiText>{"Thirteen curated lists"}</UiText></p>
+          <h2 id="levels-title" className="hs-display mt-2 text-3xl font-bold"><UiText>{"Start with your system and level"}</UiText></h2>
           <div className="mt-5 grid gap-5 lg:grid-cols-2">
             {hskPublicPages.map((page) => {
               const summary = summarizePublicHskEntries(getHskPublicEntries(page.system, page.level));
@@ -71,8 +68,7 @@ export function HskDirectoryPage({ locale }: { locale: string }) {
                   </div>
                   <h3 className="hs-display mt-4 text-2xl font-bold">{page.title}</h3>
                   <p className="mt-3 flex-1 text-sm leading-7 text-[#566276]">{page.intro}</p>
-                  <Link href={getHskPublicPath(page)} className="mt-5 inline-flex items-center gap-1 font-bold text-[#24466e] hover:text-[#b62822]">
-                    Browse and select words <ArrowRight className="size-4" />
+                  <Link href={getHskPublicPath(page)} className="mt-5 inline-flex items-center gap-1 font-bold text-[#24466e] hover:text-[#b62822]"><UiText>{"Browse and select words"}</UiText><ArrowRight className="size-4" />
                   </Link>
                 </article>
               );
@@ -94,7 +90,7 @@ export function HskDirectoryPage({ locale }: { locale: string }) {
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
             <Link href="/hsk-level-checker" className="hs-primary-button">Analyze a Chinese text</Link>
-            <Link href="/stroke-order" className="hs-secondary-button border-white/30 bg-white text-[#172b49]">Browse character guides</Link>
+            <Link href="/stroke-order" className="hs-secondary-button border-white/30 bg-white text-[#172b49]"><UiText>{"Browse character guides"}</UiText></Link>
             <Link href="/compare" className="hs-secondary-button border-white/30 bg-transparent text-white hover:bg-white/10">Compare similar characters</Link>
             <Link href="/templates#hsk-worksheets" className="hs-secondary-button border-white/30 bg-transparent text-white hover:bg-white/10">Open HSK templates</Link>
           </div>

@@ -12,6 +12,7 @@ export type DownloadWorksheetPdfOptions = {
   title: string;
   studentName?: string;
   date?: string;
+  locale?: string;
   onProgress?: (progress: PdfExportProgress) => void;
 };
 
@@ -201,12 +202,14 @@ function createPdfHeaderCanvas({
   title,
   studentName,
   date,
+  locale,
 }: {
   width: number;
   height: number;
   title: string;
   studentName: string;
   date: string;
+  locale: string;
 }) {
   const canvas = document.createElement("canvas");
   canvas.width = width;
@@ -227,8 +230,8 @@ function createPdfHeaderCanvas({
 
   context.font = `500 ${Math.round(width * 0.014)}px Arial, sans-serif`;
   context.textAlign = "left";
-  context.fillText(`Name: ${studentName}`, width * 0.052, height * 0.78);
-  context.fillText(`Date: ${date}`, width * 0.716, height * 0.78);
+  context.fillText(`${locale.startsWith("zh") ? "姓名：" : "Name:"} ${studentName}`, width * 0.052, height * 0.78);
+  context.fillText(`${locale.startsWith("zh") ? "日期：" : "Date:"} ${date}`, width * 0.716, height * 0.78);
 
   context.strokeStyle = "#8f9297";
   context.lineWidth = Math.max(1, width * 0.001);
@@ -264,6 +267,7 @@ export async function downloadWorksheetPdf({
   title,
   studentName = "",
   date = "",
+  locale = "en",
   onProgress,
 }: DownloadWorksheetPdfOptions): Promise<void> {
   if (pages.length === 0) {
@@ -369,6 +373,7 @@ export async function downloadWorksheetPdf({
             title,
             studentName,
             date,
+            locale,
           });
           composedContext.drawImage(documentHeaderCanvas, 0, 0);
         }

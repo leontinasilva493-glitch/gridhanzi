@@ -13,6 +13,8 @@ import {
   worksheetTemplates,
 } from "../src/features/worksheets/data.ts";
 
+import { teachingSenses } from "../src/features/worksheets/teaching-senses.ts";
+
 const SOURCE_COMMIT = "7ac65bf1a6387d35f1ade478906172a19311c7f9";
 const SOURCE_SHA256 =
   "52d8e64ba65a6db4a38ea34302c6de5df53cdb5145254b25edcbf93b80676434";
@@ -87,6 +89,7 @@ function isTeachingMeaning(value) {
 }
 
 function selectTeachingSense(source) {
+  if (teachingSenses[source.s]) return teachingSenses[source.s];
   const forms = Array.isArray(source.f) ? source.f : [];
   const preferred = vocabularyByHanzi.get(source.s);
   const preferredIsUsable =

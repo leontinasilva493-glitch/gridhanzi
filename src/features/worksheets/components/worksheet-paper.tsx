@@ -1,4 +1,6 @@
 "use client";
+
+import { UiText, PageNumber } from "./ui-text";
 import { fillLastPracticePage, estimateLearnUnitHeight } from "../layout";
 
 import { useEffect, useMemo, useState } from "react";
@@ -15,7 +17,7 @@ import {
   paginatePracticeEntries,
   paginateTestEntries,
   resolveWorksheetLayout,
-  splitEntryIntoCharacterUnits,
+  buildLearnUnits,
   type CharacterPracticeUnit,
   type PracticeCell,
   type WorksheetLayoutSpec,
@@ -162,16 +164,11 @@ export function WorksheetPaper({
   onPageCountChange?: (pageCount: number) => void;
 }) {
   const characterUnits = useMemo(
-    () =>
-      entries.flatMap((entry, entryIndex) =>
-        splitEntryIntoCharacterUnits(entry, entryIndex + 1),
-      ),
-    [entries],
+    () => buildLearnUnits(entries, settings.mode === "trace" && settings.uniqueCharactersOnly),
+    [entries, settings.mode, settings.uniqueCharactersOnly],
   );
-  const strokeCharacterUnits = useMemo(
-    () => (compact ? characterUnits.slice(0, 4) : characterUnits),
-    [characterUnits, compact],
-  );
+  // Compact changes only the displayed page, never the input or pagination.
+  const strokeCharacterUnits = characterUnits;
   const uniqueCharacters = useMemo(
     () =>
       Array.from(
@@ -287,6 +284,7 @@ export function WorksheetPaper({
         showAnswers ? settings.strokeOrderMode : "off",
         layout,
         settings.extraBlankRows,
+        settings.keepWordsTogether,
       ).map((units) => ({ kind: "learn" as const, units }));
     }
 
@@ -303,13 +301,14 @@ export function WorksheetPaper({
         ));
       resolvedPages = filled.map(units => ({ kind: settings.mode === "write" ? "practice" as const : "learn" as const, units }));
     }
-    return compact ? resolvedPages.slice(0, 1) : resolvedPages;
+    return resolvedPages;
   }, [
     compact,
     entries,
     layout,
     settings.mode,
     settings.repeatToFill,
+    settings.keepWordsTogether,
     settings.extraBlankRows,
     settings.strokeOrderMode,
     showAnswers,
@@ -329,12 +328,12 @@ export function WorksheetPaper({
         ];
 
   useEffect(() => {
-    onPageCountChange?.(renderedPages.length);
-  }, [onPageCountChange, renderedPages.length]);
+    onPageCountChange?.(strokesReady ? renderedPages.length : 0);
+  }, [onPageCountChange, renderedPages.length, strokesReady]);
 
   return (
     <div className={cn("hs-paper-stack w-full", !compact && "space-y-6")}>
-      {renderedPages.map((page, pageIndex) => (
+      {(compact ? renderedPages.slice(0, 1) : renderedPages).map((page, pageIndex) => (
         <WorksheetPageFrame
           key={`${page.kind}-${pageIndex}`}
           settings={settings}
@@ -442,11 +441,9 @@ function WorksheetPageFrame({
             compact && "opacity-90",
           )}
         >
-          <span className="w-[60%] border-b border-[#8f9297] pb-1 text-left">
-            Name: {settings.studentName}
+          <span className="w-[60%] border-b border-[#8f9297] pb-1 text-left"><UiText>{"Name:"}</UiText>{" "}{settings.studentName}
           </span>
-          <span className="w-[26%] border-b border-[#8f9297] pb-1 text-left">
-            Date: {settings.date}
+          <span className="w-[26%] border-b border-[#8f9297] pb-1 text-left"><UiText>{"Date:"}</UiText>{" "}{settings.date}
           </span>
         </div>
       </header>
@@ -454,7 +451,7 @@ function WorksheetPageFrame({
       <div className={cn("mt-[2.7%]", compact && "mt-[3%]")}>{children}</div>
 
       <footer className="absolute inset-x-0 bottom-[1.5%] text-center text-[0.45rem] text-[#5b6573] sm:text-[0.55rem]">
-        Page {pageNumber} of {pageCount}
+        <PageNumber page={pageNumber} total={pageCount} />
       </footer>
     </article>
   );

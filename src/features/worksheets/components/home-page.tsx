@@ -1,3 +1,5 @@
+
+import { UiText } from "./ui-text";
 import {
   ArrowRight,
   BookOpen,
@@ -30,18 +32,11 @@ export function HomePage() {
   return (
     <PublicPageShell active="home">
       <main>
-        <section className="hs-container grid items-start gap-8 pb-12 pt-10 lg:grid-cols-[1.02fr_0.9fr] lg:pt-12">
+        <section className="hs-container grid items-start gap-8 pb-12 pt-6 sm:pt-10 lg:grid-cols-[1.02fr_0.9fr] lg:pt-12">
           <div>
-            <h1 className="hs-display max-w-3xl text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.55rem]">
-              Free Chinese Character Worksheet Generator
-            </h1>
-            <p className="mt-4 max-w-2xl text-lg leading-8 text-[#435166]">
-              Use this free Chinese character worksheet generator to turn your own
-              English or Chinese word list into printable practice sheets. Edit the
-              Hanzi and Pinyin, choose tracing, Tian Zi Ge, Mi Zi Ge, or blank
-              writing grids, then download an A4 or US Letter PDF—no sign-up required.
-            </p>
-            <div className="mt-8">
+            <h1 className="hs-display max-w-3xl text-3xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.55rem]"><UiText>{"Free Chinese Character Worksheet Generator"}</UiText></h1>
+            <p className="mt-3 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8 text-[#435166]"><UiText>{"Use this free Chinese character worksheet generator to turn your own English or Chinese word list into printable practice sheets. Edit the Hanzi and Pinyin, choose tracing, Tian Zi Ge, Mi Zi Ge, or blank writing grids, then download an A4 or US Letter PDF—no sign-up required."}</UiText></p>
+            <div className="mt-5 sm:mt-8">
               <HomeWorkbench />
             </div>
             <div className="hs-card mt-4 grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
@@ -72,120 +67,74 @@ export function HomePage() {
             href="/generator"
             icon={ClipboardPaste}
             title="Build from my word list"
-          >
-            Paste English or Chinese words and make a custom worksheet.
-          </TaskLink>
+          ><UiText>{"Paste English or Chinese words and make a custom worksheet."}</UiText></TaskLink>
           <TaskLink
             href="/templates"
             icon={BookOpen}
             title="Start with a worksheet"
-          >
-            Pick an editable topic or HSK word list to get started faster.
-          </TaskLink>
+          ><UiText>{"Pick an editable topic or HSK word list to get started faster."}</UiText></TaskLink>
           <TaskLink
             href="/stroke-order"
             icon={PencilLine}
             title="Check one character’s stroke order"
-          >
-            Look up the strokes before adding a character to your worksheet.
-          </TaskLink>
+          ><UiText>{"Look up the strokes before adding a character to your worksheet."}</UiText></TaskLink>
         </section>
 
         <section className="hs-container hs-content-visibility py-14">
-          <p className="hs-kicker">One site, clear starting points</p>
-          <h2 className="hs-display mt-2 text-3xl font-bold">
-            Choose the Right Chinese Writing Tool
-          </h2>
-          <p className="mt-3 max-w-3xl leading-7 text-[#566276]">
-            Start with the page that matches the job: build from your own words,
-            open a ready-made list, print empty grids, or focus on vocabulary and
-            stroke order.
-          </p>
+          <p className="hs-kicker"><UiText>{"One site, clear starting points"}</UiText></p>
+          <h2 className="hs-display mt-2 text-3xl font-bold"><UiText>{"Choose the Right Chinese Writing Tool"}</UiText></h2>
+          <p className="mt-3 max-w-3xl leading-7 text-[#566276]"><UiText>{"Start with the page that matches the job: build from your own words, open a ready-made list, print empty grids, or focus on vocabulary and stroke order."}</UiText></p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             <ToolLink
               href="/generator"
               icon={ClipboardPaste}
               title="Chinese worksheet generator from your word list"
-            >
-              Edit Hanzi and Pinyin before printing a custom practice sheet.
-            </ToolLink>
+            ><UiText>{"Edit Hanzi and Pinyin before printing a custom practice sheet."}</UiText></ToolLink>
             <ToolLink
               href="/templates"
               icon={BookOpen}
               title="Printable Chinese writing worksheets"
-            >
-              Choose an editable topic, classroom, or HSK word list.
-            </ToolLink>
+            ><UiText>{"Choose an editable topic, classroom, or HSK word list."}</UiText></ToolLink>
             <ToolLink
               href="/grids"
               icon={FileText}
               title="Tian Zi Ge and Mi Zi Ge PDFs"
-            >
-              Download blank Hanzi grid paper for immediate handwriting practice.
-            </ToolLink>
+            ><UiText>{"Download blank Hanzi grid paper for immediate handwriting practice."}</UiText></ToolLink>
             <ToolLink
               href="/hsk"
               icon={GraduationCap}
               title="HSK vocabulary lists"
-            >
-              Compare HSK 2.0 and 3.0 levels, then send selected words to a worksheet.
-            </ToolLink>
+            ><UiText>{"Compare HSK 2.0 and 3.0 levels, then send selected words to a worksheet."}</UiText></ToolLink>
             <ToolLink
               href="/stroke-order"
               icon={PencilLine}
               title="Chinese stroke order guides"
-            >
-              Check one character’s strokes, meaning, and practice options.
-            </ToolLink>
+            ><UiText>{"Check one character’s strokes, meaning, and practice options."}</UiText></ToolLink>
             <ToolLink
               href="/english-to-chinese-writing-practice"
               icon={Languages}
               title="English to Chinese writing practice"
-            >
-              Begin with English vocabulary, then review the matched Hanzi and Pinyin.
-            </ToolLink>
+            ><UiText>{"Begin with English vocabulary, then review the matched Hanzi and Pinyin."}</UiText></ToolLink>
           </div>
         </section>
 
         <section className="hs-container hs-content-visibility py-14">
-          <p className="hs-kicker">Practice sheet workflow</p>
+          <p className="hs-kicker"><UiText>{"Practice sheet workflow"}</UiText></p>
           <div className="mt-2 flex flex-wrap items-end justify-between gap-5">
             <div>
-              <h2 className="hs-display text-3xl font-bold">
-                How to Use the Chinese Character Worksheet Generator
-              </h2>
-              <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]">
-                GridHanzi keeps the worksheet useful first: paste vocabulary,
-                review the Chinese writing fields, then print a practice sheet
-                with grids, Pinyin, and optional stroke-order guidance.
-              </p>
+              <h2 className="hs-display text-3xl font-bold"><UiText>{"How to Use the Chinese Character Worksheet Generator"}</UiText></h2>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]"><UiText>{"GridHanzi keeps the worksheet useful first: paste vocabulary, review the Chinese writing fields, then print a practice sheet with grids, Pinyin, and optional stroke-order guidance."}</UiText></p>
             </div>
-            <Link href="/generator" className="hs-primary-button text-sm">
-              Create a practice sheet
-            </Link>
+            <Link href="/generator" className="hs-primary-button text-sm"><UiText>{"Create a practice sheet"}</UiText></Link>
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
-            <ProcessItem icon={ClipboardPaste} title="Paste words">
-              Start with English, Chinese, or a mixed classroom word list.
-            </ProcessItem>
-            <ProcessItem icon={CheckCircle2} title="Check Hanzi and Pinyin">
-              Edit every row before it becomes a printable worksheet.
-            </ProcessItem>
-            <ProcessItem icon={Printer} title="Print the PDF">
-              Choose tracing grids, blank writing cells, paper size, and PDF
-              output.
-            </ProcessItem>
+            <ProcessItem icon={ClipboardPaste} title="Paste words"><UiText>{"Start with English, Chinese, or a mixed classroom word list."}</UiText></ProcessItem>
+            <ProcessItem icon={CheckCircle2} title="Check Hanzi and Pinyin"><UiText>{"Edit every row before it becomes a printable worksheet."}</UiText></ProcessItem>
+            <ProcessItem icon={Printer} title="Print the PDF"><UiText>{"Choose tracing grids, blank writing cells, paper size, and PDF output."}</UiText></ProcessItem>
           </div>
-          <p className="mt-5 text-sm leading-6 text-[#5b687a]">
-            Need a faster start? Browse{" "}
-            <Link href="/templates" className="font-semibold text-[#b62822]">
-              Chinese character practice sheet templates
-            </Link>{" "}
-            and open any topic in the worksheet generator. Need empty practice
-            cells instead? Download{" "}
-            <Link href="/grids" className="font-semibold text-[#b62822]">
-              printable Hanzi grid PDFs
-            </Link>
+          <p className="mt-5 text-sm leading-6 text-[#5b687a]"><UiText>{"Need a faster start? Browse"}</UiText>{" "}{" "}
+            <Link href="/templates" className="font-semibold text-[#b62822]"><UiText>{"Chinese character practice sheet templates"}</UiText></Link>{" "}<UiText>{"and open any topic in the worksheet generator. Need empty practice cells instead? Download"}</UiText>{" "}{" "}
+            <Link href="/grids" className="font-semibold text-[#b62822]"><UiText>{"printable Hanzi grid PDFs"}</UiText></Link>
             .
           </p>
         </section>
@@ -193,16 +142,13 @@ export function HomePage() {
         <section className="hs-container hs-content-visibility py-14">
           <div className="flex items-end justify-between gap-5">
             <div>
-              <p className="hs-kicker">Editable word lists</p>
-              <h2 className="hs-display mt-2 text-3xl font-bold">
-                Start with a Chinese worksheet template
-              </h2>
+              <p className="hs-kicker"><UiText>{"Editable word lists"}</UiText></p>
+              <h2 className="hs-display mt-2 text-3xl font-bold"><UiText>{"Start with a Chinese worksheet template"}</UiText></h2>
             </div>
             <Link
               href="/templates"
               className="hidden items-center gap-1 text-sm font-semibold text-[#b62822] sm:flex"
-            >
-              View all templates <ArrowRight className="size-4" />
+            ><UiText>{"View all templates"}</UiText><ArrowRight className="size-4" />
             </Link>
           </div>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -214,17 +160,14 @@ export function HomePage() {
                   chineseTitle={template.chineseTitle}
                 />
                 <h3 className="hs-display mt-4 text-lg font-bold">
-                  {template.title}
+                  <UiText>{template.title}</UiText>
                 </h3>
                 <p className="mt-1 text-sm text-[#657083]">
-                  {template.age} · {template.wordCount} words
-                </p>
+                  <UiText>{template.age}</UiText> · {template.wordCount}<UiText>{"words"}</UiText></p>
                 <Link
                   href={`/templates/${template.slug}`}
                   className="hs-secondary-button mt-3 w-full text-sm"
-                >
-                  View {template.title} worksheet
-                </Link>
+                ><UiText>{"View"}</UiText><UiText>{template.title}</UiText><UiText>{"worksheet"}</UiText></Link>
               </article>
             ))}
           </div>
@@ -234,20 +177,12 @@ export function HomePage() {
           id="practice-types"
           className="hs-container hs-content-visibility pb-14"
         >
-          <p className="hs-kicker">One list, three uses</p>
-          <h2 className="hs-display mt-2 text-3xl font-bold">
-            Choose a Chinese character practice mode
-          </h2>
+          <p className="hs-kicker"><UiText>{"One list, three uses"}</UiText></p>
+          <h2 className="hs-display mt-2 text-3xl font-bold"><UiText>{"Choose a Chinese character practice mode"}</UiText></h2>
           <div className="mt-6 grid gap-5 lg:grid-cols-3">
-            <PracticeCard title="Learn new characters" mode="trace">
-              See the strokes in order, trace the character, then copy it.
-            </PracticeCard>
-            <PracticeCard title="Practice handwriting" mode="write">
-              Start with a model and tracing cells, then use the blank grids.
-            </PracticeCard>
-            <PracticeCard title="Test recall" mode="quiz">
-              Read the Pinyin or meaning, then write the word without a model.
-            </PracticeCard>
+            <PracticeCard title="Learn new characters" mode="trace"><UiText>{"See the strokes in order, trace the character, then copy it."}</UiText></PracticeCard>
+            <PracticeCard title="Practice handwriting" mode="write"><UiText>{"Start with a model and tracing cells, then use the blank grids."}</UiText></PracticeCard>
+            <PracticeCard title="Test recall" mode="quiz"><UiText>{"Read the Pinyin or meaning, then write the word without a model."}</UiText></PracticeCard>
           </div>
         </section>
 
@@ -256,30 +191,17 @@ export function HomePage() {
           className="hs-container hs-content-visibility grid gap-6 pb-14 lg:grid-cols-[1.1fr_0.9fr]"
         >
           <div className="hs-card p-7 sm:p-9">
-            <p className="hs-kicker">For regular lesson prep</p>
-            <h2 className="hs-display mt-2 text-3xl font-bold">
-              Create Chinese writing worksheets for class
-            </h2>
+            <p className="hs-kicker"><UiText>{"For regular lesson prep"}</UiText></p>
+            <h2 className="hs-display mt-2 text-3xl font-bold"><UiText>{"Create Chinese writing worksheets for class"}</UiText></h2>
             <div className="mt-8 grid gap-6 sm:grid-cols-3">
-              <WorkflowItem icon={ClipboardPaste} title="Paste this week’s words">
-                Copy them from your lesson plan or spreadsheet.
-              </WorkflowItem>
-              <WorkflowItem icon={CheckCircle2} title="Check bilingual fields">
-                Fix the Hanzi, Pinyin, or meaning if needed.
-              </WorkflowItem>
-              <WorkflowItem icon={Printer} title="Print practice and quizzes">
-                Use the same list for tracing and a later test.
-              </WorkflowItem>
+              <WorkflowItem icon={ClipboardPaste} title="Paste this week’s words"><UiText>{"Copy them from your lesson plan or spreadsheet."}</UiText></WorkflowItem>
+              <WorkflowItem icon={CheckCircle2} title="Check bilingual fields"><UiText>{"Fix the Hanzi, Pinyin, or meaning if needed."}</UiText></WorkflowItem>
+              <WorkflowItem icon={Printer} title="Print practice and quizzes"><UiText>{"Use the same list for tracing and a later test."}</UiText></WorkflowItem>
             </div>
           </div>
           <aside className="hs-card border-[#243e62] p-7 sm:p-9">
-            <h2 className="hs-display text-2xl font-bold">
-              Use one list for lessons, practice, and review
-            </h2>
-            <p className="mt-3 text-[#566276]">
-              Turn the same checked vocabulary into a guided lesson, a
-              handwriting page, or a short recall test.
-            </p>
+            <h2 className="hs-display text-2xl font-bold"><UiText>{"Use one list for lessons, practice, and review"}</UiText></h2>
+            <p className="mt-3 text-[#566276]"><UiText>{"Turn the same checked vocabulary into a guided lesson, a handwriting page, or a short recall test."}</UiText></p>
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
               {[
                 "Learn pages with stroke order",
@@ -293,26 +215,17 @@ export function HomePage() {
               ))}
             </ul>
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/for-teachers" className="hs-secondary-button">
-                See the teacher workflow
-              </Link>
-              <Link href="/generator" className="hs-primary-button">
-                Create a worksheet
-              </Link>
+              <Link href="/for-teachers" className="hs-secondary-button"><UiText>{"See the teacher workflow"}</UiText></Link>
+              <Link href="/generator" className="hs-primary-button"><UiText>{"Create a worksheet"}</UiText></Link>
             </div>
           </aside>
         </section>
 
         <section className="hs-container hs-card hs-content-visibility grid overflow-hidden lg:grid-cols-2">
           <div className="p-8 sm:p-10">
-            <p className="hs-kicker">Practice at home</p>
-            <h2 className="hs-display mt-2 text-3xl font-bold">
-              Print Chinese character practice sheets for home
-            </h2>
-            <p className="mt-4 max-w-xl leading-7 text-[#566276]">
-              Print the words from class and let your child trace them before
-              writing them without a model. No extra app or account is needed.
-            </p>
+            <p className="hs-kicker"><UiText>{"Practice at home"}</UiText></p>
+            <h2 className="hs-display mt-2 text-3xl font-bold"><UiText>{"Print Chinese character practice sheets for home"}</UiText></h2>
+            <p className="mt-4 max-w-xl leading-7 text-[#566276]"><UiText>{"Print the words from class and let your child trace them before writing them without a model. No extra app or account is needed."}</UiText></p>
             <ul className="mt-5 space-y-3 text-sm">
               {[
                 "Review this week’s words",
@@ -340,10 +253,8 @@ export function HomePage() {
           id="faq"
           className="hs-container hs-content-visibility py-14"
         >
-          <p className="hs-kicker">Questions before you print</p>
-          <h2 className="hs-display mt-2 text-3xl font-bold">
-            Frequently asked questions
-          </h2>
+          <p className="hs-kicker"><UiText>{"Questions before you print"}</UiText></p>
+          <h2 className="hs-display mt-2 text-3xl font-bold"><UiText>{"Frequently asked questions"}</UiText></h2>
           <div className="hs-card mt-6 divide-y divide-[#ded7ca]">
             {[
               [
@@ -369,10 +280,10 @@ export function HomePage() {
             ].map(([question, answer]) => (
               <details key={question} className="group px-5 py-4">
                 <summary className="cursor-pointer list-none font-semibold">
-                  {question}
+                  <UiText>{question}</UiText>
                 </summary>
                 <p className="mt-3 max-w-3xl text-sm leading-6 text-[#617084]">
-                  {answer}
+                  <UiText>{answer}</UiText>
                 </p>
               </details>
             ))}
@@ -395,7 +306,7 @@ function TrustItem({
       <span className="grid size-9 place-items-center rounded-full border border-[#8cb4a0] text-[#267254]">
         <Icon className="size-4" />
       </span>
-      {label}
+      <UiText>{label}</UiText>
     </div>
   );
 }
@@ -414,7 +325,7 @@ function ProcessItem({
       <span className="grid size-12 place-items-center rounded-full bg-[#f3eee3] text-[#315f47]">
         <Icon className="size-5" />
       </span>
-      <h3 className="hs-display mt-4 text-lg font-bold">{title}</h3>
+      <h3 className="hs-display mt-4 text-lg font-bold"><UiText>{title}</UiText></h3>
       <p className="mt-2 text-sm leading-6 text-[#5b687a]">{children}</p>
     </article>
   );
@@ -441,7 +352,7 @@ function TaskLink({
       </span>
       <span className="min-w-0 flex-1">
         <span className="hs-display flex items-start justify-between gap-3 text-lg font-bold">
-          {title}
+          <UiText>{title}</UiText>
           <ArrowRight className="mt-0.5 size-4 shrink-0 text-[#b62822] transition-transform group-hover:translate-x-1" />
         </span>
         <span className="mt-2 block text-sm leading-6 text-[#617084]">
@@ -474,7 +385,7 @@ function ToolLink({
         </span>
         <span className="min-w-0">
           <span className="hs-display flex items-start justify-between gap-3 font-bold text-[#172942]">
-            {title}
+            <UiText>{title}</UiText>
             <ArrowRight className="mt-0.5 size-4 shrink-0 text-[#b62822] transition-transform group-hover:translate-x-1" />
           </span>
           <span className="mt-2 block text-sm leading-6 text-[#617084]">
@@ -499,13 +410,12 @@ function PracticeCard({
     <article className="hs-card grid gap-5 p-5 sm:grid-cols-[0.9fr_1fr] lg:grid-cols-1">
       <PracticeModePreview mode={mode} />
       <div>
-        <h3 className="hs-display text-xl font-bold text-[#b62822]">{title}</h3>
+        <h3 className="hs-display text-xl font-bold text-[#b62822]"><UiText>{title}</UiText></h3>
         <p className="mt-2 text-sm leading-6 text-[#58667a]">{children}</p>
         <Link
           href={`/generator?template=family&mode=${mode}`}
           className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-[#102545]"
-        >
-          Try this mode <ArrowRight className="size-4" />
+        ><UiText>{"Try this mode"}</UiText><ArrowRight className="size-4" />
         </Link>
       </div>
     </article>
@@ -561,7 +471,7 @@ function WorkflowItem({
       <span className="grid size-12 place-items-center rounded-full bg-[#f2eee2] text-[#315f47]">
         <Icon className="size-5" />
       </span>
-      <h3 className="hs-display mt-4 font-bold">{title}</h3>
+      <h3 className="hs-display mt-4 font-bold"><UiText>{title}</UiText></h3>
       <p className="mt-2 text-sm leading-6 text-[#677286]">{children}</p>
     </div>
   );

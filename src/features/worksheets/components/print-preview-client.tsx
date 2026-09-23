@@ -83,7 +83,7 @@ export function PrintPreviewClient() {
         setPaperSize(normalized.settings.paperSize);
         setPrintMargin(normalized.settings.printMargin);
         setPreviewReady(true);
-        window.setTimeout(() => window.dispatchEvent(new Event("gridhanzi:preview-ready")), 250);
+
         try {
           sessionStorage.setItem(WORKSHEET_STORAGE_KEY, JSON.stringify(normalized));
           sessionStorage.removeItem(LEGACY_WORKSHEET_STORAGE_KEY);
@@ -105,6 +105,17 @@ export function PrintPreviewClient() {
     showStrokeOrder:
       canShowAnswers && showAnswers && snapshot.settings.showStrokeOrder,
   };
+  useEffect(() => {
+    if (!previewReady) return;
+    try {
+      sessionStorage.setItem(WORKSHEET_STORAGE_KEY, JSON.stringify({
+        ...snapshot, settings: { ...snapshot.settings, paperSize, printMargin },
+      }));
+    } catch {
+      setStorageWarning(true);
+    }
+  }, [snapshot, paperSize, printMargin, previewReady]);
+
   async function handlePdfDownload() {
     const pageElements = Array.from(
       printPagesRef.current?.querySelectorAll<HTMLElement>(".hs-paper") ?? [],
@@ -120,13 +131,15 @@ export function PrintPreviewClient() {
         title: snapshot.settings.title,
         studentName: snapshot.settings.studentName,
         date: snapshot.settings.date,
+        locale,
         onProgress: setPdfProgress,
       });
+      window.dispatchEvent(new Event("gridhanzi:download-complete"));
     } catch (error) {
       setPdfError(
         error instanceof Error
           ? error.message
-          : "The PDF could not be created. Try Print instead.",
+          : t("The PDF could not be created. Try Print instead.", "无法生成 PDF，请尝试打印。"),
       );
     } finally {
       setPdfProgress(null);
@@ -153,7 +166,7 @@ export function PrintPreviewClient() {
   return (
     <div className="min-h-screen bg-[#eeeeec] text-[#14253f]">
       <header className="hs-no-print sticky top-0 z-40 flex min-h-16 flex-wrap items-center justify-between gap-3 border-b border-[#d6d6d3] bg-[#fffdf9] px-4 py-2">
-        <Link href="/generator" className="flex items-center gap-2 font-semibold">
+        <Link href="/generator?resume=1" className="flex items-center gap-2 font-semibold">
           <ArrowLeft className="size-5" /> {t("Back to editor", "返回编辑器")}
         </Link>
         <div className="flex flex-wrap items-center justify-center gap-2">
@@ -181,14 +194,14 @@ export function PrintPreviewClient() {
           />
           <ToolbarChip
             label={t(
-              `${pageCount} ${pageCount === 1 ? "page" : "pages"}`,
-              `${pageCount} 页`,
+              pageCount ? `${pageCount} ${pageCount === 1 ? "page" : "pages"}` : "Calculating pages…",
+              pageCount ? `${pageCount} 页` : "正在计算页数……",
             )}
           />
           <div className="flex h-10 items-center rounded border border-[#d5d1c9] bg-white">
             <button
               type="button"
-              aria-label="Zoom out"
+              aria-label={t("Zoom out", "缩小")}
               className="grid h-full w-10 place-items-center"
               onClick={() => setZoom((value) => Math.max(55, value - 10))}
             >
@@ -197,7 +210,7 @@ export function PrintPreviewClient() {
             <span className="w-14 text-center text-sm">{zoom}%</span>
             <button
               type="button"
-              aria-label="Zoom in"
+              aria-label={t("Zoom in", "放大")}
               className="grid h-full w-10 place-items-center"
               onClick={() => setZoom((value) => Math.min(115, value + 10))}
             >
@@ -210,6 +223,7 @@ export function PrintPreviewClient() {
             <button
               type="button"
               className="hs-secondary-button"
+              disabled={pageCount === 0}
               onClick={() => window.print()}
             >
               <Printer className="size-4" /> {t("Print", "打印")}
@@ -219,7 +233,7 @@ export function PrintPreviewClient() {
             type="button"
             className="hs-primary-button"
             onClick={handlePdfDownload}
-            disabled={pdfProgress !== null}
+            disabled={pdfProgress !== null || pageCount === 0}
           >
             {pdfProgress ? (
               <LoaderCircle className="size-4 animate-spin" />
@@ -272,6 +286,7 @@ export function PrintPreviewClient() {
 
         <aside className="hs-no-print border-l border-[#d4d4d0] bg-[#fffdf9] p-6">
           <h1 className="hs-display text-2xl font-bold">{t("Print settings", "打印与下载设置")}</h1>
+          <button type="button" className="mt-3 text-sm underline underline-offset-4" onClick={() => window.dispatchEvent(new Event("gridhanzi:feedback-requested"))}>{t("Share feedback", "分享反馈")}</button>
  {canShowAnswers && snapshot.settings.mode !== "quiz" && <RepeatFillControl
  enabled={!!snapshot.settings.repeatToFill} disabled={!snapshot.entries.some(entry => /\p{Script=Han}/u.test(entry.hanzi))}
  chinese={locale === "zh"} onChange={repeatToFill => {

@@ -30,6 +30,8 @@ export interface WorksheetSettings {
   practiceStrength: PracticeStrength;
   extraBlankRows: 0 | 1;
   repeatToFill?: boolean;
+  keepWordsTogether?: boolean;
+  uniqueCharactersOnly?: boolean;
   strokeOrderMode: StrokeOrderMode;
   flashcardsPerPage: 6 | 9;
   flashcardShowPinyin: boolean;
@@ -92,6 +94,8 @@ export const defaultWorksheetSettings: WorksheetSettings = {
   practiceStrength: "balanced",
   extraBlankRows: 0,
   repeatToFill: false,
+  keepWordsTogether: true,
+  uniqueCharactersOnly: false,
   strokeOrderMode: "detailed",
   flashcardsPerPage: 6,
   flashcardShowPinyin: true,

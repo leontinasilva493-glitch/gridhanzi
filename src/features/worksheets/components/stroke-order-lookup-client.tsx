@@ -1,5 +1,7 @@
 "use client";
 
+import { UiText } from "./ui-text";
+
 import { useState } from "react";
 import { ArrowRight, BookOpen, Keyboard, PencilLine, Search } from "lucide-react";
 
@@ -66,8 +68,7 @@ export function StrokeOrderLookupClient({
               }`}
               onClick={() => setMode("type")}
             >
-              <Keyboard className="size-4" /> Type a character
-            </button>
+              <Keyboard className="size-4" /><UiText>{"Type a character"}</UiText></button>
             <button
               type="button"
               role="tab"
@@ -79,16 +80,13 @@ export function StrokeOrderLookupClient({
               }`}
               onClick={() => setMode("draw")}
             >
-              <PencilLine className="size-4" /> Draw a character
-            </button>
+              <PencilLine className="size-4" /><UiText>{"Draw a character"}</UiText></button>
           </div>
         </div>
 
         {mode === "type" ? (
           <div role="tabpanel" className="p-5 sm:p-6">
-            <label htmlFor="stroke-order-character-input" className="text-sm font-bold text-[#172b49]">
-              Chinese character
-            </label>
+            <label htmlFor="stroke-order-character-input" className="text-sm font-bold text-[#172b49]"><UiText>{"Chinese character"}</UiText></label>
             <div className="mt-2 flex gap-2">
               <div className="relative min-w-0 flex-1">
                 <Search className="absolute left-3 top-1/2 size-5 -translate-y-1/2 text-[#6b7584]" />
@@ -104,9 +102,7 @@ export function StrokeOrderLookupClient({
                   className="h-12 w-full rounded border border-[#cfc5b4] bg-white pl-11 pr-4 text-xl outline-none focus:border-[#b62822] focus:ring-4 focus:ring-red-100"
                 />
               </div>
-              <button type="button" className="hs-primary-button" onClick={submitTypedCharacter}>
-                Show stroke order
-              </button>
+              <button type="button" className="hs-primary-button" onClick={submitTypedCharacter}><UiText>{"Show stroke order"}</UiText></button>
             </div>
             {inputError ? (
               <p id="stroke-order-input-error" className="mt-2 text-sm font-semibold text-[#a4312b]">
@@ -123,7 +119,7 @@ export function StrokeOrderLookupClient({
 
       <div className="mx-auto mt-4 flex max-w-3xl flex-wrap items-center gap-3 rounded border border-[#d8d0c2] bg-white px-4 py-3">
         <p className="mr-auto text-sm text-[#5d6878]">
-          <span className="font-bold text-[#172b49]">Selected character</span>
+          <span className="font-bold text-[#172b49]"><UiText>{"Selected character"}</UiText></span>
           <span className="mx-2 hs-hanzi-context text-xl text-[#172b49]">{selectedCharacter}</span>
           {selectedEntry ? `${selectedEntry.pinyin} · ${selectedEntry.meaning}` : "Ready for stroke-order lookup"}
         </p>
@@ -138,8 +134,7 @@ export function StrokeOrderLookupClient({
         <Link
           href={`/practice?character=${encodeURIComponent(selectedCharacter)}`}
           className="hs-secondary-button min-h-10 px-3 py-2 text-sm"
-        >
-          Practise {selectedCharacter} <ArrowRight className="size-4" />
+        ><UiText>{"Practise"}</UiText>{selectedCharacter} <ArrowRight className="size-4" />
         </Link>
       </div>
 

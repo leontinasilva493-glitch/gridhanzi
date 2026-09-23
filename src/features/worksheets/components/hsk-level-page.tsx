@@ -1,3 +1,5 @@
+
+import { UiText } from "./ui-text";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 import { envConfigs } from "@/config";
@@ -41,7 +43,7 @@ export function HskLevelPage({ page, locale }: { page: HskPublicPage; locale: st
       ]} />
       <main className="hs-container pb-16 pt-6">
         <nav aria-label="Breadcrumb" className="text-sm text-[#617084]">
-          <Link href="/">Home</Link> <span aria-hidden="true"> / </span>
+          <Link href="/"><UiText>{"Home"}</UiText></Link> <span aria-hidden="true"> / </span>
           <Link href="/hsk">HSK Vocabulary Lists</Link> <span aria-hidden="true"> / </span>
           <span aria-current="page">{page.system} Level {page.level}</span>
         </nav>

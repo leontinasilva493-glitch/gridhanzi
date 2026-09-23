@@ -1,5 +1,7 @@
 "use client";
 
+import { UiText } from "./ui-text";
+
 import { useMemo, useState } from "react";
 import { ArrowRight, BarChart3, BookOpenCheck, SearchCheck } from "lucide-react";
 
@@ -47,9 +49,7 @@ export function HskLevelCheckerClient() {
       <div className="hs-card overflow-hidden border-[#cfc5b5]">
         <div className="grid gap-6 bg-[#fff9ed] p-5 sm:p-7 lg:grid-cols-[minmax(0,1fr)_280px]">
           <div>
-            <label htmlFor="hsk-checker-text" className="font-bold text-[#172b49]">
-              Paste Chinese text
-            </label>
+            <label htmlFor="hsk-checker-text" className="font-bold text-[#172b49]"><UiText>{"Paste Chinese text"}</UiText></label>
             <textarea
               id="hsk-checker-text"
               value={draft}
@@ -59,7 +59,7 @@ export function HskLevelCheckerClient() {
               placeholder="Paste a sentence, lesson, article excerpt, or class reading…"
             />
             <div className="mt-3 flex flex-wrap items-center gap-2">
-              <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#6b7584]">Try a sample</span>
+              <span className="text-xs font-bold uppercase tracking-[0.12em] text-[#6b7584]"><UiText>{"Try a sample"}</UiText></span>
               {examples.map((example) => (
                 <button
                   key={example.label}
@@ -78,7 +78,7 @@ export function HskLevelCheckerClient() {
 
           <div className="space-y-5">
             <fieldset>
-              <legend className="text-sm font-bold text-[#172b49]">HSK version</legend>
+              <legend className="text-sm font-bold text-[#172b49]"><UiText>{"HSK version"}</UiText></legend>
               <div className="mt-2 grid grid-cols-2 gap-2">
                 {(["3.0", "2.0"] as const).map((value) => (
                   <button
@@ -93,9 +93,7 @@ export function HskLevelCheckerClient() {
                 ))}
               </div>
             </fieldset>
-            <label className="block text-sm font-bold text-[#172b49]">
-              My target level
-              <select
+            <label className="block text-sm font-bold text-[#172b49]"><UiText>{"My target level"}</UiText><select
                 value={targetLevel}
                 onChange={(event) => setTargetLevel(event.target.value as HskLevel)}
                 className="mt-2 min-h-11 w-full rounded border border-[#cfc5b5] bg-white px-3 font-semibold"
@@ -109,12 +107,9 @@ export function HskLevelCheckerClient() {
               type="button"
               onClick={() => setSubmittedText(draft)}
               className="hs-primary-button min-h-12 w-full"
-            >
-              Analyze this text <SearchCheck className="size-4" />
+            ><UiText>{"Analyze this text"}</UiText><SearchCheck className="size-4" />
             </button>
-            <p className="text-xs leading-5 text-[#6b7584]">
-              The analysis runs in your browser. The text is not uploaded or stored.
-            </p>
+            <p className="text-xs leading-5 text-[#6b7584]"><UiText>{"The analysis runs in your browser. The text is not uploaded or stored."}</UiText></p>
           </div>
         </div>
 
@@ -126,8 +121,7 @@ export function HskLevelCheckerClient() {
                 {analysis.totalHanCharacters ? `${analysis.coveragePercent}% classified by this list` : "Add Chinese text to begin"}
               </h2>
             </div>
-            <Link href={worksheetHref} className="hs-primary-button min-h-12">
-              Practise difficult items <ArrowRight className="size-4" />
+            <Link href={worksheetHref} className="hs-primary-button min-h-12"><UiText>{"Practise difficult items"}</UiText><ArrowRight className="size-4" />
             </Link>
           </div>
 
@@ -140,7 +134,7 @@ export function HskLevelCheckerClient() {
           {analysis.totalHanCharacters ? (
             <div className="mt-7 grid gap-7 lg:grid-cols-[minmax(0,1.15fr)_minmax(300px,0.85fr)]">
               <div>
-                <h3 className="hs-display text-xl font-bold">Level distribution</h3>
+                <h3 className="hs-display text-xl font-bold"><UiText>{"Level distribution"}</UiText></h3>
                 <div className="mt-4 space-y-3">
                   {analysis.distribution.map((item) => {
                     const width = analysis.matchedTerms.length

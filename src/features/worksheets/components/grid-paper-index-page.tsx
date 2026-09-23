@@ -1,3 +1,5 @@
+
+import { UiText } from "./ui-text";
 import { ArrowRight, Download, FileText } from "lucide-react";
 
 import { Link } from "@/core/i18n/navigation";
@@ -62,16 +64,14 @@ export function GridPaperIndexPage() {
 
       <main className="hs-container pt-6">
         <div className="text-sm text-[#617084]">
-          <Link href="/" className="hover:text-[#b62822]">Home</Link>
+          <Link href="/" className="hover:text-[#b62822]"><UiText>{"Home"}</UiText></Link>
           <span className="px-2">/</span>
-          <span aria-current="page">Printable Grids</span>
+          <span aria-current="page"><UiText>{"Printable Grids"}</UiText></span>
         </div>
         <header className="mt-3 max-w-4xl">
-          <p className="hs-kicker">Printable Hanzi practice</p>
-          <h1 className="hs-display mt-3 text-4xl font-bold sm:text-5xl">Free Hanzi Grid Paper</h1>
-          <p className="mt-4 text-lg leading-8 text-[#566276]">
-            Download printable Tian Zi Ge, Mi Zi Ge, and blank Chinese writing paper PDFs, or open a template in the worksheet maker to add your own characters and practice settings.
-          </p>
+          <p className="hs-kicker"><UiText>{"Printable Hanzi practice"}</UiText></p>
+          <h1 className="hs-display mt-3 text-4xl font-bold sm:text-5xl"><UiText>{"Free Hanzi Grid Paper"}</UiText></h1>
+          <p className="mt-4 text-lg leading-8 text-[#566276]"><UiText>{"Download printable Tian Zi Ge, Mi Zi Ge, and blank Chinese writing paper PDFs, or open a template in the worksheet maker to add your own characters and practice settings."}</UiText></p>
         </header>
 
         <section className="mt-8 grid gap-5 md:grid-cols-3">
@@ -85,15 +85,12 @@ export function GridPaperIndexPage() {
                 <h2 className="hs-display mt-2 text-2xl font-bold">{page.slug === "blank" ? "Blank Writing Grid" : page.eyebrow.split(" /")[0]}</h2>
                 <p className="mt-3 text-sm leading-6 text-[#5b687a]">{page.description}</p>
                 <div className="mt-5 grid gap-2">
-                  <Link href={`/grids/${page.slug}`} className="hs-primary-button w-full">
-                    View printable page <ArrowRight className="size-4" />
+                  <Link href={`/grids/${page.slug}`} className="hs-primary-button w-full"><UiText>{"View printable page"}</UiText><ArrowRight className="size-4" />
                   </Link>
                   <a href={page.pdfHref} download={page.pdfFilename} className="hs-secondary-button w-full">
-                    <Download className="size-4" /> Download PDF
-                  </a>
+                    <Download className="size-4" /><UiText>{"Download PDF"}</UiText></a>
                   <Link href={page.generatorHref} className="inline-flex items-center justify-center gap-2 py-2 text-sm font-bold text-[#24466e]">
-                    <FileText className="size-4" /> Customise this grid
-                  </Link>
+                    <FileText className="size-4" /><UiText>{"Customise this grid"}</UiText></Link>
                 </div>
               </div>
             </article>
@@ -101,7 +98,7 @@ export function GridPaperIndexPage() {
         </section>
 
         <section className="hs-card mt-8 p-6 sm:p-8">
-          <h2 className="hs-display text-2xl font-bold">Frequently asked questions</h2>
+          <h2 className="hs-display text-2xl font-bold"><UiText>{"Frequently asked questions"}</UiText></h2>
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             <div>
               <h3 className="font-bold">What is Hanzi grid paper?</h3>

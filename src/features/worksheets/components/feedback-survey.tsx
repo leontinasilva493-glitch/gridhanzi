@@ -54,7 +54,7 @@ const copy: Record<Locale, Copy> = {
   en: {
     inviteTime: "What are you trying to finish, and where are you stuck?",
     invitePreview:
-      "Did your preview turn out as expected? Tell us what to change.",
+      "Your PDF is ready. Is there anything we should improve?",
     button: "Share feedback",
     title: "A quick question",
     close: "Close",
@@ -85,7 +85,7 @@ const copy: Record<Locale, Copy> = {
   },
   zh: {
     inviteTime: "你正在尝试完成什么？哪里卡住了？",
-    invitePreview: "预览结果符合预期吗？哪里需要改进？",
+    invitePreview: "PDF 已下载。使用过程中有什么需要改进？",
     button: "分享反馈",
     title: "简单问卷",
     close: "关闭",
@@ -141,31 +141,18 @@ export function FeedbackSurvey({
   const inviteButton = useRef<HTMLButtonElement>(null);
   const title = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
-    let visibleMs = 0;
-    let last = Date.now();
-    let interval: number | undefined;
-    let timeout: number | undefined;
     const fire = (value: Trigger) => {
       if (fired.current || lifecycleCooldown.current || isCooledDown()) return;
       fired.current = true;
       setTrigger(value);
-      if (interval) window.clearInterval(interval);
     };
-    const tick = () => {
-      const now = Date.now();
-      if (document.visibilityState === "visible") visibleMs += now - last;
-      last = now;
-      if (visibleMs >= 60000) fire("time-60s");
-    };
-    const onReady = () => {
-      timeout = window.setTimeout(() => fire("preview-ready"), 250);
-    };
-    interval = window.setInterval(tick, 1000);
-    window.addEventListener("gridhanzi:preview-ready", onReady);
+    const onDownloaded = () => fire("download-complete");
+    const onRequested = () => { setTrigger("manual"); setOpen(true); };
+    window.addEventListener("gridhanzi:download-complete", onDownloaded);
+    window.addEventListener("gridhanzi:feedback-requested", onRequested);
     return () => {
-      if (interval) window.clearInterval(interval);
-      if (timeout) window.clearTimeout(timeout);
-      window.removeEventListener("gridhanzi:preview-ready", onReady);
+      window.removeEventListener("gridhanzi:download-complete", onDownloaded);
+      window.removeEventListener("gridhanzi:feedback-requested", onRequested);
     };
   }, []);
   useEffect(() => {
@@ -226,7 +213,7 @@ export function FeedbackSurvey({
   }
   if (!trigger) return null;
   const inviteText =
-    trigger === "preview-ready" ? t.invitePreview : t.inviteTime;
+    trigger === "download-complete" ? t.invitePreview : t.inviteTime;
   return (
     <div
       data-feedback-invite
