@@ -1,5 +1,7 @@
 "use client";
 
+import { UiText, PageNumber } from "./ui-text";
+
 import { useEffect, useMemo } from "react";
 
 import { cn } from "@/lib/utils";
@@ -25,11 +27,8 @@ export function FlashcardPaper({
 }) {
   const pages = useMemo(() => {
     const paginated = paginateFlashcards(entries, settings.flashcardsPerPage);
-    if (compact) {
-      return paginated.slice(0, 1);
-    }
     return paginated;
-  }, [compact, entries, settings.flashcardsPerPage]);
+  }, [entries, settings.flashcardsPerPage]);
 
   const renderedPages =
     pages.length > 0 ? pages : [[] as WorksheetEntry[]];
@@ -42,7 +41,7 @@ export function FlashcardPaper({
 
   return (
     <div className={cn("hs-paper-stack w-full", !compact && "space-y-6")}>
-      {renderedPages.map((pageEntries, pageIndex) => (
+      {(compact ? renderedPages.slice(0, 1) : renderedPages).map((pageEntries, pageIndex) => (
         <article
           key={`flashcards-${pageIndex}`}
           className={cn("hs-paper mx-auto w-full overflow-hidden", className)}
@@ -58,16 +57,14 @@ export function FlashcardPaper({
           >
             <div className="flex items-end justify-between gap-4">
               <div>
-                <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#b62822]">
-                  Flashcards
-                </p>
+                <p className="text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-[#b62822]"><UiText>{"Flashcards"}</UiText></p>
                 <h2 className="hs-display mt-1 text-[1.35rem] font-bold text-[#17233a] sm:text-[1.7rem]">
                   {settings.title}
                 </h2>
               </div>
               <div className="text-right text-[0.6rem] text-[#59687a]">
-                <p>Name: {settings.studentName || "________"}</p>
-                <p>Date: {settings.date || "________"}</p>
+                <p><UiText>{"Name:"}</UiText>{" "}{settings.studentName || "________"}</p>
+                <p><UiText>{"Date:"}</UiText>{" "}{settings.date || "________"}</p>
               </div>
             </div>
           </header>
@@ -103,7 +100,7 @@ export function FlashcardPaper({
                   {slotEntry ? (
                     <>
                       <div className="flex items-center justify-between gap-3 text-[0.66rem] font-semibold uppercase tracking-[0.12em] text-[#6e7684]">
-                        <span>Card</span>
+                        <span><UiText>{"Card"}</UiText></span>
                         <span>
                           #{pageIndex * settings.flashcardsPerPage + slotIndex + 1}
                         </span>
@@ -133,7 +130,7 @@ export function FlashcardPaper({
           </div>
 
           <footer className="border-t border-[#d8d2c7] px-[5.4%] py-[2.8%] text-center text-[0.58rem] text-[#5b6573]">
-            Page {pageIndex + 1} of {renderedPages.length}
+            <PageNumber page={pageIndex + 1} total={renderedPages.length} />
           </footer>
         </article>
       ))}

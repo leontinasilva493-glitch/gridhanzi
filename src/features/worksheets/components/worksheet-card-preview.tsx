@@ -1,3 +1,4 @@
+import { UiText } from "./ui-text";
 import { cn } from "@/lib/utils";
 
 import type { WorksheetEntry } from "../types";
@@ -23,7 +24,7 @@ export function WorksheetCardPreview({
     >
       <div className="border-b border-[#ded7ca] bg-[#f5eddf] px-3 py-2 text-center">
         <p className="hs-display truncate text-sm font-bold text-[#17304f]">
-          {title}
+          <UiText>{title}</UiText>
         </p>
         <p className="truncate font-serif text-xs text-[#8b302b]">
           {chineseTitle}

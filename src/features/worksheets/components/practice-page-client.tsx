@@ -1,5 +1,7 @@
 "use client";
 
+import { UiText } from "./ui-text";
+
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowLeft,
@@ -155,15 +157,12 @@ export function PracticePageClient({
               <label
                 htmlFor="practice-character-input"
                 className="text-sm font-bold text-[#172b49]"
-              >
-                Practise any single Hanzi
-              </label>
+              ><UiText>{"Practise any single Hanzi"}</UiText></label>
               <Link
                 href="/stroke-order?mode=draw#character-lookup"
                 className="flex items-center gap-1 text-xs font-bold text-[#b62822] hover:text-[#8f1f1a]"
               >
-                <PenLine className="size-3.5" /> Draw to find a character
-              </Link>
+                <PenLine className="size-3.5" /><UiText>{"Draw to find a character"}</UiText></Link>
             </div>
             <div className="mt-2 flex max-w-xl gap-2">
               <div className="relative min-w-0 flex-1">
@@ -180,9 +179,7 @@ export function PracticePageClient({
                   aria-describedby={inputError ? "practice-input-error" : undefined}
                 />
               </div>
-              <button type="button" className="hs-primary-button" onClick={submitCharacter}>
-                Practise
-              </button>
+              <button type="button" className="hs-primary-button" onClick={submitCharacter}><UiText>{"Practise"}</UiText></button>
             </div>
             {inputError ? (
               <p id="practice-input-error" className="mt-2 text-sm font-semibold text-[#a4312b]">
@@ -192,13 +189,10 @@ export function PracticePageClient({
           </div>
           <div className="flex flex-wrap gap-2 lg:justify-end">
             <button type="button" className="hs-secondary-button" onClick={() => move(-1)}>
-              <ArrowLeft className="size-4" /> Previous
-            </button>
+              <ArrowLeft className="size-4" /><UiText>{"Previous"}</UiText></button>
             <button type="button" className="hs-secondary-button" onClick={chooseRandomCharacter}>
-              <Dice5 className="size-4" /> Random
-            </button>
-            <button type="button" className="hs-primary-button" onClick={() => move(1)}>
-              Next <ArrowRight className="size-4" />
+              <Dice5 className="size-4" /><UiText>{"Random"}</UiText></button>
+            <button type="button" className="hs-primary-button" onClick={() => move(1)}><UiText>{"Next"}</UiText><ArrowRight className="size-4" />
             </button>
           </div>
         </div>
@@ -212,9 +206,7 @@ export function PracticePageClient({
                 · {currentIndex + 1} of {queue.length}
               </span>
             </div>
-            <span className="text-xs font-semibold text-[#687487]">
-              Completed strokes move to the next character automatically.
-            </span>
+            <span className="text-xs font-semibold text-[#687487]"><UiText>{"Completed strokes move to the next character automatically."}</UiText></span>
           </div>
           <div className="mt-3 flex gap-2 overflow-x-auto pb-1" aria-label="Current practice queue">
             {queue.map((queueCharacter, index) => (
@@ -265,8 +257,7 @@ export function PracticePageClient({
         <div className="flex flex-wrap gap-2">
           {entry ? (
             <Link href={`/stroke-order/${entry.character}`} className="hs-secondary-button min-h-10 py-2 text-sm">
-              <BookOpen className="size-4" /> Open character guide
-            </Link>
+              <BookOpen className="size-4" /><UiText>{"Open character guide"}</UiText></Link>
           ) : (
             <Link href="/stroke-order" className="hs-secondary-button min-h-10 py-2 text-sm">
               <BookOpen className="size-4" /> Open stroke-order tool
@@ -275,9 +266,7 @@ export function PracticePageClient({
           <Link
             href={`/generator?words=${encodeURIComponent(character)}`}
             className="hs-secondary-button min-h-10 py-2 text-sm"
-          >
-            Print practice sheet
-          </Link>
+          ><UiText>{"Print practice sheet"}</UiText></Link>
         </div>
       </div>
 
@@ -302,18 +291,15 @@ export function PracticePageClient({
       ) : null}
 
       <section className="mt-10" aria-labelledby="recommended-practice-title">
-        <p className="hs-kicker">Recommended next</p>
+        <p className="hs-kicker"><UiText>{"Recommended next"}</UiText></p>
         <div className="mt-2 flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h2 id="recommended-practice-title" className="hs-display text-3xl font-bold">
-              Choose a character practice set
-            </h2>
+            <h2 id="recommended-practice-title" className="hs-display text-3xl font-bold"><UiText>{"Choose a character practice set"}</UiText></h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-[#5d6878]">
               Every recommended Hanzi has a complete GridHanzi character guide with stroke order, meaning, examples, and writing notes.
             </p>
           </div>
-          <Link href="/stroke-order" className="hs-secondary-button">
-            Browse all character guides <ArrowRight className="size-4" />
+          <Link href="/stroke-order" className="hs-secondary-button"><UiText>{"Browse all character guides"}</UiText><ArrowRight className="size-4" />
           </Link>
         </div>
         <div className="mt-5 grid gap-4 lg:grid-cols-3">
@@ -331,9 +317,7 @@ export function PracticePageClient({
                   type="button"
                   className="shrink-0 text-sm font-bold text-[#b62822] hover:text-[#8f1f1a]"
                   onClick={() => selectGroup(group.id)}
-                >
-                  Start set
-                </button>
+                ><UiText>{"Start set"}</UiText></button>
               </div>
               <div className="mt-4 flex flex-wrap gap-2">
                 {group.characters.map((recommendedCharacter) => (

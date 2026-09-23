@@ -1,3 +1,5 @@
+
+import { UiText } from "./ui-text";
 import { ArrowRight, Download, FileText, Printer } from "lucide-react";
 
 import { Link } from "@/core/i18n/navigation";
@@ -51,9 +53,9 @@ export function GridPaperPageView({ page }: { page: GridPaperPage }) {
 
       <main className="hs-container pt-5">
         <nav aria-label="Breadcrumb" className="text-sm text-[#617084]">
-          <Link href="/" className="hover:text-[#b62822]">Home</Link>
+          <Link href="/" className="hover:text-[#b62822]"><UiText>{"Home"}</UiText></Link>
           <span className="px-2">/</span>
-          <Link href="/grids" className="hover:text-[#b62822]">Printable Grids</Link>
+          <Link href="/grids" className="hover:text-[#b62822]"><UiText>{"Printable Grids"}</UiText></Link>
           <span className="px-2">/</span>
           <span aria-current="page">{page.eyebrow}</span>
         </nav>
@@ -73,8 +75,7 @@ export function GridPaperPageView({ page }: { page: GridPaperPage }) {
                 download={page.pdfFilename}
                 className="hs-primary-button min-w-64"
               >
-                <Download className="size-5" /> Download PDF
-              </a>
+                <Download className="size-5" /><UiText>{"Download PDF"}</UiText></a>
               <Link href={page.generatorHref} className="hs-secondary-button min-w-56">
                 <FileText className="size-5" /> Make a custom sheet
               </Link>
@@ -130,7 +131,7 @@ export function GridPaperPageView({ page }: { page: GridPaperPage }) {
         </section>
 
         <section className="hs-card mt-5 divide-y divide-[#ded7ca]">
-          <h2 className="hs-display p-5 text-2xl font-bold">Frequently asked questions</h2>
+          <h2 className="hs-display p-5 text-2xl font-bold"><UiText>{"Frequently asked questions"}</UiText></h2>
           {page.faqs.map((faq) => (
             <details key={faq.question} className="p-5">
               <summary className="cursor-pointer font-semibold">{faq.question}</summary>

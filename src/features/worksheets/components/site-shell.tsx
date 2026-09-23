@@ -1,3 +1,5 @@
+
+import { UiText } from "./ui-text";
 import type { ReactNode } from "react";
 import { ChevronDown, Menu } from "lucide-react";
 
@@ -85,7 +87,7 @@ export function HanziSiteHeader({ active }: { active?: string }) {
                   "text-[#b62822] after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-[#b62822]",
               )}
             >
-              {item.label}
+              <UiText>{item.label}</UiText>
             </Link>
           ))}
           {navMenus.map((menu) => (
@@ -97,23 +99,19 @@ export function HanziSiteHeader({ active }: { active?: string }) {
           <EmailFeedbackLink />
           <LocaleSwitch />
           {active !== "generator" ? (
-            <Link href="/generator" className="hs-primary-button min-h-10 px-4 py-2 text-sm">
-              Create Worksheet
-            </Link>
+            <Link href="/generator" className="hs-primary-button min-h-10 px-4 py-2 text-sm"><UiText>{"Create Worksheet"}</UiText></Link>
           ) : null}
         </div>
 
         <div className="ml-auto flex items-center gap-2 xl:hidden">
           <EmailFeedbackLink />
           {active !== "generator" ? (
-            <Link href="/generator" className="hs-primary-button min-h-9 px-3 py-2 text-xs sm:text-sm">
-              Create
-            </Link>
+            <Link href="/generator" className="hs-primary-button min-h-9 px-3 py-2 text-xs sm:text-sm"><UiText>{"Create"}</UiText></Link>
           ) : null}
           <details className="relative">
             <summary className="grid size-10 cursor-pointer list-none place-items-center rounded border border-[#d8d0c2] bg-white">
               <Menu className="size-5" />
-              <span className="sr-only">Open navigation</span>
+              <span className="sr-only"><UiText>{"Open navigation"}</UiText></span>
             </summary>
             <nav className="hs-card absolute right-0 top-12 grid w-64 overflow-hidden p-2">
               {navItems.map((item) => (
@@ -122,7 +120,7 @@ export function HanziSiteHeader({ active }: { active?: string }) {
                   href={item.href}
                   className="rounded px-3 py-2.5 text-sm font-medium hover:bg-[#f7f1e7]"
                 >
-                  {item.label}
+                  <UiText>{item.label}</UiText>
                 </Link>
               ))}
               {navMenus.map((menu) => (
@@ -130,9 +128,7 @@ export function HanziSiteHeader({ active }: { active?: string }) {
               ))}
               {active !== "generator" ? (
                 <div className="border-t border-[#ded7ca] p-2">
-                  <Link href="/generator" className="hs-primary-button w-full text-sm">
-                    Create Worksheet
-                  </Link>
+                  <Link href="/generator" className="hs-primary-button w-full text-sm"><UiText>{"Create Worksheet"}</UiText></Link>
                 </div>
               ) : null}
               <div className="border-t border-[#ded7ca] p-2">
@@ -162,7 +158,7 @@ function DesktopNavMenu({
             "text-[#b62822] after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-[#b62822]",
         )}
       >
-        {menu.label}
+        <UiText>{menu.label}</UiText>
         <ChevronDown className="size-4" aria-hidden="true" />
       </summary>
       <div
@@ -176,7 +172,7 @@ function DesktopNavMenu({
             href={href}
             className="block rounded px-3 py-2.5 text-sm font-medium text-[#17253c] hover:bg-[#f7f1e7] hover:text-[#b62822]"
           >
-            {label}
+            <UiText>{label}</UiText>
           </Link>
         ))}
       </div>
@@ -188,7 +184,7 @@ function MobileNavMenu({ menu }: { menu: (typeof navMenus)[number] }) {
   return (
     <details className="border-t border-[#ded7ca] first:border-t-0">
       <summary className="flex cursor-pointer list-none items-center justify-between rounded px-3 py-2.5 text-sm font-medium text-[#17253c] hover:bg-[#f7f1e7] [&::-webkit-details-marker]:hidden">
-        {menu.label}
+        <UiText>{menu.label}</UiText>
         <ChevronDown className="size-4" aria-hidden="true" />
       </summary>
       <div className="grid gap-0.5 px-3 pb-3">
@@ -198,7 +194,7 @@ function MobileNavMenu({ menu }: { menu: (typeof navMenus)[number] }) {
             href={href}
             className="block rounded py-1.5 pl-2 text-sm text-[#17253c] hover:bg-[#f7f1e7]"
           >
-            {label}
+            <UiText>{label}</UiText>
           </Link>
         ))}
       </div>
@@ -224,13 +220,8 @@ export function HanziSiteFooter() {
               GridHanzi
             </span>
           </div>
-          <p className="mt-4 max-w-xs text-sm leading-6 text-blue-100/75">
-            Make a Chinese worksheet from your own word list. Edit it, print
-            it, and use it again when the class is ready to review.
-          </p>
-          <p className="mt-4 text-sm text-blue-100/75">
-            Questions or feedback? Contact us:
-            <a
+          <p className="mt-4 max-w-xs text-sm leading-6 text-blue-100/75"><UiText>{"Make a Chinese worksheet from your own word list. Edit it, print it, and use it again when the class is ready to review."}</UiText></p>
+          <p className="mt-4 text-sm text-blue-100/75"><UiText>{"Questions or feedback? Contact us:"}</UiText><a
               href="mailto:support@gridhanzi.org"
               className="mt-1 block w-fit break-all text-white underline underline-offset-4 hover:text-blue-200"
             >
@@ -284,12 +275,12 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h2 className="font-serif text-base font-bold">{title}</h2>
+      <h2 className="font-serif text-base font-bold"><UiText>{title}</UiText></h2>
       <ul className="mt-3 space-y-2 text-sm text-blue-100/75">
         {links.map(([label, href]) => (
           <li key={label}>
             <Link href={href} className="hover:text-white">
-              {label}
+              <UiText>{label}</UiText>
             </Link>
           </li>
         ))}

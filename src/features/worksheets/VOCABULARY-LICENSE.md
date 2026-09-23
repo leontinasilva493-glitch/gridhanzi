@@ -65,3 +65,20 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Teaching-sense review (2026-09-23)
+
+`teaching-senses.ts` selects nine everyday teaching senses independently of
+upstream dictionary order: 东西、先生、便宜、妻子、地方、多少、意思、着、更.
+The overlay is shared by catalog browsing, import, local completion and catalog
+regeneration. It does not change level membership or remove alternative senses
+from the upstream source. This is a targeted review, not a certification of all
+HSK definitions.
+
+References for the distinction between dictionary senses:
+- National Academy for Educational Research, [shopping vocabulary](https://coct.naer.edu.tw/file/files/02_%E8%B3%BC%E7%89%A9%E5%8E%BB.pdf): 東西 as dōngxi / thing; stuff.
+- Ministry of Education, [便宜](https://dict.revised.moe.edu.tw/dictView.jsp?ID=25367): inexpensive pián yi versus convenient biàn yí.
+- The pinned upstream CC-CEDICT-derived forms remain the source of alternative readings.
+
+Pinyin uses standard Mandarin worksheet readings, including neutral syllables;
+selecting Taiwan character forms does not imply a regional pronunciation conversion.

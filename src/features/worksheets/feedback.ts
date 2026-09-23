@@ -14,7 +14,7 @@ export const AGE_RANGES = [
   "45-54",
   "55-plus",
 ] as const;
-export const TRIGGERS = ["time-60s", "preview-ready"] as const;
+export const TRIGGERS = ["time-60s", "preview-ready", "download-complete", "manual"] as const;
 export const LOCALES = ["en", "zh"] as const;
 export type Trigger = (typeof TRIGGERS)[number];
 export type Locale = (typeof LOCALES)[number];

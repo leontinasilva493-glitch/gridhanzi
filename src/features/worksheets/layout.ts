@@ -330,38 +330,52 @@ function getLearnUnitWeight(
   return 1 + strokeWeight + extraBlankRows;
 }
 
+/** One model per character is optional; the original vocabulary rows are retained. */
+export function buildLearnUnits(entries: WorksheetEntry[], uniqueCharactersOnly = false): CharacterPracticeUnit[] {
+  const seen = new Set<string>();
+  return entries.flatMap((entry, index) => splitEntryIntoCharacterUnits(entry, index + 1)).filter((unit) => {
+    if (!uniqueCharactersOnly) return true;
+    if (seen.has(unit.character)) return false;
+    seen.add(unit.character);
+    return true;
+  });
+}
+
 export function paginateLearnUnits(
   units: CharacterPracticeUnit[],
   strokeCounts: ReadonlyMap<string, number>,
   strokeOrderMode: StrokeOrderMode,
   layout: WorksheetLayoutSpec,
   extraBlankRows: 0 | 1 = 0,
+  keepWordsTogether = false,
 ): CharacterPracticeUnit[][] {
   const pages: CharacterPracticeUnit[][] = [];
   let currentPage: CharacterPracticeUnit[] = [];
   let currentWeight = 0;
-
+  const weight = (unit: CharacterPracticeUnit) => getLearnUnitWeight(unit, strokeCounts, strokeOrderMode, layout.strokeFramesPerRow, extraBlankRows);
+  const groups: CharacterPracticeUnit[][] = [];
   for (const unit of units) {
-    const weight = getLearnUnitWeight(
-      unit,
-      strokeCounts,
-      strokeOrderMode,
-      layout.strokeFramesPerRow,
-      extraBlankRows,
-    );
-    if (
-      currentPage.length > 0 &&
-      currentWeight + weight > layout.learnPageWeight
-    ) {
-      pages.push(currentPage);
-      currentPage = [];
-      currentWeight = 0;
-    }
-    currentPage.push(unit);
-    currentWeight += weight;
+    const last = groups.at(-1);
+    if (keepWordsTogether && last?.[0]?.entryId === unit.entryId) last.push(unit);
+    else groups.push([unit]);
   }
-
-  if (currentPage.length > 0) pages.push(currentPage);
+  function flush() {
+    if (currentPage.length) pages.push(currentPage);
+    currentPage = [];
+    currentWeight = 0;
+  }
+  for (const group of groups) {
+    const groupWeight = group.reduce((total, unit) => total + weight(unit), 0);
+    // A word longer than a whole page must still make progress across pages.
+    if (keepWordsTogether && groupWeight <= layout.learnPageWeight && currentWeight + groupWeight > layout.learnPageWeight) flush();
+    for (const unit of group) {
+      const unitWeight = weight(unit);
+      if (currentPage.length && currentWeight + unitWeight > layout.learnPageWeight) flush();
+      currentPage.push(unit);
+      currentWeight += unitWeight;
+    }
+  }
+  flush();
   return pages;
 }
 

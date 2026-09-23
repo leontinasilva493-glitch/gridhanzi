@@ -1,5 +1,7 @@
 "use client";
 
+import { UiText } from "./ui-text";
+
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
 import { ArrowRight, BookOpen, FileCheck2, PencilLine, Search } from "lucide-react";
@@ -162,13 +164,8 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
       <main className="hs-container pt-6">
         <div className="text-sm text-[#617084]">Home &nbsp;/&nbsp; Templates</div>
         <header className="mt-3">
-          <h1 className="hs-display text-4xl font-bold sm:text-5xl">
-            Printable Chinese Writing Worksheets
-          </h1>
-          <p className="mt-3 max-w-3xl text-lg text-[#566276]">
-            Choose a ready-made topic, Pinyin, or HSK worksheet, then edit the
-            Hanzi, grid, and paper size before saving a PDF.
-          </p>
+          <h1 className="hs-display text-4xl font-bold sm:text-5xl"><UiText>{"Printable Chinese Writing Worksheets"}</UiText></h1>
+          <p className="mt-3 max-w-3xl text-lg text-[#566276]"><UiText>{"Choose a ready-made topic, Pinyin, or HSK worksheet, then edit the Hanzi, grid, and paper size before saving a PDF."}</UiText></p>
         </header>
 
         <section
@@ -176,36 +173,19 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
           aria-labelledby="practice-sheet-templates-title"
         >
           <div>
-            <p className="hs-kicker">Editable practice sheets</p>
+            <p className="hs-kicker"><UiText>{"Editable practice sheets"}</UiText></p>
             <h2
               id="practice-sheet-templates-title"
               className="hs-display mt-2 text-3xl font-bold"
-            >
-              Chinese Character Practice Sheet Templates
-            </h2>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]">
-              Start from printable Chinese writing practice sheets for family,
-              numbers, colors, HSK, school, travel, Pinyin, and everyday topics.
-              Each template opens as an editable word list, so you can change
-              the Hanzi, Pinyin, grid, paper size, and PDF layout before printing.
-            </p>
+            ><UiText>{"Chinese Character Practice Sheet Templates"}</UiText></h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]"><UiText>{"Start from printable Chinese writing practice sheets for family, numbers, colors, HSK, school, travel, Pinyin, and everyday topics. Each template opens as an editable word list, so you can change the Hanzi, Pinyin, grid, paper size, and PDF layout before printing."}</UiText></p>
           </div>
           <div className="flex flex-wrap items-start gap-3 lg:justify-end">
-            <Link href="/generator" className="hs-primary-button text-sm">
-              Make a custom worksheet
-            </Link>
-            <Link href="/grids" className="hs-secondary-button text-sm">
-              Blank grid PDFs
-            </Link>
-            <Link href="/for-teachers" className="hs-secondary-button text-sm">
-              Teacher workflow
-            </Link>
-            <Link href={hskPickerHref} className="hs-secondary-button text-sm">
-              Choose by HSK version
-            </Link>
-            <Link href="/hsk" className="hs-secondary-button text-sm">
-              Browse HSK vocabulary
-            </Link>
+            <Link href="/generator" className="hs-primary-button text-sm"><UiText>{"Make a custom worksheet"}</UiText></Link>
+            <Link href="/grids" className="hs-secondary-button text-sm"><UiText>{"Blank grid PDFs"}</UiText></Link>
+            <Link href="/for-teachers" className="hs-secondary-button text-sm"><UiText>{"Teacher workflow"}</UiText></Link>
+            <Link href={hskPickerHref} className="hs-secondary-button text-sm"><UiText>{"Choose by HSK version"}</UiText></Link>
+            <Link href="/hsk" className="hs-secondary-button text-sm"><UiText>{"Browse HSK vocabulary"}</UiText></Link>
           </div>
         </section>
 
@@ -215,21 +195,14 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
         >
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="hs-kicker">Real worksheet outcomes</p>
+              <p className="hs-kicker"><UiText>{"Real worksheet outcomes"}</UiText></p>
               <h2
                 id="template-outcomes-title"
                 className="hs-display mt-2 text-3xl font-bold"
-              >
-                See what you can print
-              </h2>
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-[#5b687a]">
-                Compare the finished page direction first. Every example stays
-                editable before you print or save a PDF.
-              </p>
+              ><UiText>{"See what you can print"}</UiText></h2>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-[#5b687a]"><UiText>{"Compare the finished page direction first. Every example stays editable before you print or save a PDF."}</UiText></p>
             </div>
-            <span className="rounded-full border border-[#d7d0c4] bg-[#fffefa] px-3 py-1.5 text-xs font-semibold text-[#617084]">
-              Preview → edit → print
-            </span>
+            <span className="rounded-full border border-[#d7d0c4] bg-[#fffefa] px-3 py-1.5 text-xs font-semibold text-[#617084]"><UiText>{"Preview → edit → print"}</UiText></span>
           </div>
 
           <div className="mt-5 grid gap-4 md:grid-cols-3">
@@ -239,9 +212,7 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
                 className="group overflow-hidden rounded border border-[#ded7ca] bg-[#fffefa] shadow-[0_12px_34px_rgba(23,41,66,0.07)]"
               >
                 <div className="relative overflow-hidden border-b border-[#e2d8ca] bg-[radial-gradient(circle_at_top_left,#fff8e8_0,#f2e9da_52%,#e8ddcb_100%)] p-5">
-                  <span className="absolute right-4 top-4 rounded-full bg-[#172942] px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-white">
-                    Printable
-                  </span>
+                  <span className="absolute right-4 top-4 rounded-full bg-[#172942] px-2.5 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-white"><UiText>{"Printable"}</UiText></span>
                   <WorksheetCardPreview
                     entries={template.previewEntries}
                     title={template.title}
@@ -251,19 +222,18 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
                 </div>
                 <div className="p-5">
                   <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#a42b26]">
-                    {eyebrow}
+                    <UiText>{eyebrow}</UiText>
                   </p>
                   <h3 className="hs-display mt-2 text-xl font-bold text-[#172942]">
-                    {template.title}
+                    <UiText>{template.title}</UiText>
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-[#5b687a]">
-                    {note}
+                    <UiText>{note}</UiText>
                   </p>
                   <Link
                     href={`/generator?template=${template.slug}`}
                     className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[#24466e] hover:text-[#b62822]"
-                  >
-                    Use this layout <ArrowRight className="size-4" />
+                  ><UiText>{"Use this layout"}</UiText><ArrowRight className="size-4" />
                   </Link>
                 </div>
               </article>
@@ -274,10 +244,8 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
         <section className="mt-8" aria-labelledby="template-directory-title">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="hs-kicker">Browse by need</p>
-              <h2 id="template-directory-title" className="hs-display mt-2 text-3xl font-bold">
-                Find the right worksheet faster
-              </h2>
+              <p className="hs-kicker"><UiText>{"Browse by need"}</UiText></p>
+              <h2 id="template-directory-title" className="hs-display mt-2 text-3xl font-bold"><UiText>{"Find the right worksheet faster"}</UiText></h2>
             </div>
             <div className="flex flex-wrap gap-2">
               {templateDirectoryGroups.map((group) => (
@@ -286,7 +254,7 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
                   href={`#${group.id}`}
                   className="rounded-full border border-[#d7d0c4] bg-white px-3 py-2 text-sm font-semibold text-[#17253c] hover:border-[#b62822] hover:text-[#b62822]"
                 >
-                  {group.title}
+                  <UiText>{group.title}</UiText>
                 </a>
               ))}
             </div>
@@ -306,22 +274,20 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
                       id={`${group.id}-title`}
                       className="hs-display text-2xl font-bold"
                     >
-                      {group.title}
+                      <UiText>{group.title}</UiText>
                     </h3>
                     <p className="mt-1 max-w-2xl text-sm leading-6 text-[#5f6c7f]">
-                      {group.description}
+                      <UiText>{group.description}</UiText>
                     </p>
                   </div>
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[#617084]">
-                      {group.templates.length} templates
-                    </span>
+                      {group.templates.length}<UiText>{"templates"}</UiText></span>
                     {group.id === "hsk-worksheets" ? (
                       <Link
                         href={hskPickerHref}
                         className="inline-flex items-center gap-1 rounded-full border border-[#d7d0c4] bg-white px-3 py-1 text-xs font-semibold text-[#24466e] hover:border-[#b62822] hover:text-[#b62822]"
-                      >
-                        Choose by HSK version <ArrowRight className="size-3.5" />
+                      ><UiText>{"Choose by HSK version"}</UiText><ArrowRight className="size-3.5" />
                       </Link>
                     ) : null}
                   </div>
@@ -345,27 +311,23 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
                           href={`/templates/${template.slug}`}
                           className="hover:text-[#b62822]"
                         >
-                          {template.title}
+                          <UiText>{template.title}</UiText>
                         </Link>
                       </h4>
                       <p className="mt-1 text-sm leading-6 text-[#5f6c7f]">
                         {template.description}
                       </p>
                       <p className="mt-2 text-xs font-semibold text-[#657083]">
-                        {template.level} - {template.wordCount} words
-                      </p>
+                        {template.level} - {template.wordCount}<UiText>{"words"}</UiText></p>
                       <div className="mt-3 flex flex-wrap gap-2">
                         <Link
                           href={`/generator?template=${template.slug}`}
                           className="hs-primary-button px-3 py-2 text-xs"
-                        >
-                          Edit sheet
-                        </Link>
+                        ><UiText>{"Edit sheet"}</UiText></Link>
                         <Link
                           href={`/templates/${template.slug}`}
                           className="inline-flex items-center gap-1 px-1 py-2 text-xs font-semibold text-[#24466e] hover:text-[#b62822]"
-                        >
-                          Details <ArrowRight className="size-3.5" />
+                        ><UiText>{"Details"}</UiText><ArrowRight className="size-3.5" />
                         </Link>
                       </div>
                     </article>
@@ -379,7 +341,7 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
         <section className="hs-card mt-6 p-4 sm:p-5" aria-label="Template filters">
           <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto_auto]">
             <label className="relative min-w-0">
-              <span className="sr-only">Search templates</span>
+              <span className="sr-only"><UiText>{"Search templates"}</UiText></span>
               <Search className="absolute left-4 top-1/2 size-5 -translate-y-1/2 text-[#6a7586]" />
               <input
                 value={query}
@@ -419,7 +381,7 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
 
         <section className="mt-7">
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <h2 className="hs-display text-2xl font-bold">All worksheet templates</h2>
+            <h2 className="hs-display text-2xl font-bold"><UiText>{"All worksheet templates"}</UiText></h2>
             <span className="text-sm text-[#657083]">
               {filtered.length} {filtered.length === 1 ? "template" : "templates"}
             </span>
@@ -438,33 +400,29 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
                       href={`/templates/${template.slug}`}
                       className="hover:text-[#b62822]"
                     >
-                      {template.title}
+                      <UiText>{template.title}</UiText>
                     </Link>
                   </h3>
                   <p className="mt-1 text-xs leading-5 text-[#647083]">
-                    {template.chineseTitle} - {template.age}
+                    {template.chineseTitle} - <UiText>{template.age}</UiText>
                     <br />
-                    {template.level} - {template.wordCount} words
-                  </p>
+                    {template.level} - {template.wordCount}<UiText>{"words"}</UiText></p>
                   <Link
                     href={`/generator?template=${template.slug}`}
                     className="hs-primary-button mt-3 w-full text-sm"
-                  >
-                    Edit this practice sheet
-                  </Link>
+                  ><UiText>{"Edit this practice sheet"}</UiText></Link>
                   <Link
                     href={`/templates/${template.slug}`}
                     className="mt-2 inline-flex w-full items-center justify-center gap-1 text-sm font-semibold text-[#24466e] hover:text-[#b62822]"
-                  >
-                    Worksheet details <ArrowRight className="size-4" />
+                  ><UiText>{"Worksheet details"}</UiText><ArrowRight className="size-4" />
                   </Link>
                 </article>
               ))}
             </div>
           ) : (
             <div className="hs-card mt-4 p-10 text-center">
-              <h3 className="hs-display text-xl font-bold">No templates found</h3>
-              <p className="mt-2 text-sm text-[#617084]">Try another word or clear the filters.</p>
+              <h3 className="hs-display text-xl font-bold"><UiText>{"No templates found"}</UiText></h3>
+              <p className="mt-2 text-sm text-[#617084]"><UiText>{"Try another word or clear the filters."}</UiText></p>
               <button
                 type="button"
                 className="hs-secondary-button mt-4"
@@ -474,25 +432,17 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
                   setLevel("all");
                   setAge("all");
                 }}
-              >
-                Reset filters
-              </button>
+              ><UiText>{"Reset filters"}</UiText></button>
             </div>
           )}
         </section>
 
         <section className="hs-card mt-8 p-5 sm:p-7">
-          <h2 className="hs-display text-2xl font-bold">Choose a worksheet</h2>
+          <h2 className="hs-display text-2xl font-bold"><UiText>{"Choose a worksheet"}</UiText></h2>
           <div className="mt-5 grid gap-4 lg:grid-cols-3">
-            <GoalCard icon={BookOpen} title="Build vocabulary">
-              Pick a topic and review the words before students start writing.
-            </GoalCard>
-            <GoalCard icon={PencilLine} title="Practise handwriting">
-              Trace a model character, then write it again in blank grids.
-            </GoalCard>
-            <GoalCard icon={FileCheck2} title="Prepare for HSK">
-              Filter by HSK level and print the words your learner is studying.
-            </GoalCard>
+            <GoalCard icon={BookOpen} title="Build vocabulary"><UiText>{"Pick a topic and review the words before students start writing."}</UiText></GoalCard>
+            <GoalCard icon={PencilLine} title="Practise handwriting"><UiText>{"Trace a model character, then write it again in blank grids."}</UiText></GoalCard>
+            <GoalCard icon={FileCheck2} title="Prepare for HSK"><UiText>{"Filter by HSK level and print the words your learner is studying."}</UiText></GoalCard>
           </div>
         </section>
       </main>
@@ -520,7 +470,7 @@ function FilterSelect({
         onChange={(event) => onChange(event.target.value)}
         className="h-12 min-w-40 rounded border border-[#d7d0c4] bg-white px-3 text-sm font-normal"
       >
-        <option value="all">All {label.toLocaleLowerCase()}s</option>
+        <option value="all"><UiText>{"All"}</UiText>{" "}{label.toLocaleLowerCase()}s</option>
         {options.map((option) => (
           <option key={option} value={option}>{option}</option>
         ))}
@@ -542,8 +492,7 @@ function GoalCard({ icon: Icon, title, children }: {
       <div>
         <h3 className="hs-display text-lg font-bold">{title}</h3>
         <p className="mt-1 text-sm leading-6 text-[#5f6c7f]">{children}</p>
-        <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#b62822]">
-          Use the filters above <ArrowRight className="size-4" />
+        <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#b62822]"><UiText>{"Use the filters above"}</UiText><ArrowRight className="size-4" />
         </span>
       </div>
     </article>

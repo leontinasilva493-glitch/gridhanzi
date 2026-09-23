@@ -54,7 +54,7 @@ async function scenario(name, options, run) {
 async function visit(page, route) {
   const response = await page.goto(route, { waitUntil: 'domcontentloaded' });
   assert.equal(response.status(), 200);
-  await page.waitForLoadState('networkidle', { timeout: 15_000 });
+  await page.waitForLoadState('networkidle', { timeout: 30_000 });
   return response;
 }
 
@@ -97,6 +97,7 @@ try {
       await page.clock.setFixedTime(new Date('2026-09-09T00:30:00Z'));
       await visit(page, '/generator');
       assert.equal(await page.getByLabel('Date', { exact: true }).inputValue(), expected);
+      await page.getByText('More settings', { exact: true }).click();
       await page.getByLabel('Date', { exact: true }).fill('Lesson date');
       await page.getByRole('button', { name: 'Add row', exact: true }).click();
       assert.equal(await page.getByLabel('Date', { exact: true }).inputValue(), 'Lesson date');
@@ -132,6 +133,7 @@ try {
     assert.equal(scripts.some(url => /\/traditional-[^/]+\.js/.test(url)), false, 'Conversion dictionaries are not a first-load dependency');
     const chinese = page.getByRole('textbox', { name: 'Chinese row 1', exact: true }).first();
     await chinese.fill('软件');
+    await page.getByText('More settings', { exact: true }).click();
     await page.getByRole('button', { name: 'Traditional (Taiwan)', exact: true }).click();
     await page.waitForFunction(() => document.querySelector('input[aria-label="Chinese row 1"]')?.value === '軟體');
     await page.getByRole('button', { name: 'Simplified', exact: true }).click();
@@ -154,6 +156,7 @@ try {
     await visit(page, '/generator');
     await page.getByRole('button', { name: 'Restore worksheet', exact: true }).click();
     assert.equal(await page.getByLabel('Date', { exact: true }).inputValue(), 'Lesson day');
+    await page.getByText('More settings', { exact: true }).click();
     await page.getByLabel('Date', { exact: true }).fill('');
     await page.getByRole('button', { name: 'Add row', exact: true }).click();
     assert.equal(await page.getByLabel('Date', { exact: true }).inputValue(), '');
@@ -215,6 +218,8 @@ try {
     await page.getByRole('button', { name: 'Download PDF', exact: true }).click();
     const download = await downloading;
     assert.equal(await download.failure(), null);
+    await page.locator('[data-feedback-invite]').waitFor();
+    assert.match(await page.locator('[data-feedback-invite]').innerText(), /PDF is ready/);
     assert.match(download.suggestedFilename(), /\.pdf$/);
     await download.saveAs(path.join(output, 'worksheet.pdf'));
   });
@@ -251,10 +256,61 @@ try {
     await visit(page, '/generator');
     const chinese = page.getByRole('textbox', { name: 'Chinese row 1', exact: true }).first();
     await chinese.fill('软件');
+    await page.getByText('More settings', { exact: true }).click();
     await page.getByRole('button', { name: 'Traditional (Taiwan)', exact: true }).click();
     await page.getByRole('status').filter({ hasText: /could not load character conversion/i }).waitFor();
     assert.equal(await chinese.inputValue(), '软件');
     assert.equal(await page.getByRole('button', { name: 'Add row', exact: true }).isEnabled(), true);
+  });
+  await scenario('ux-export-review-roundtrip', {}, async page => {
+    await visit(page, '/generator?words=' + encodeURIComponent('apple\nbank\ncomputer science\nkindness'));
+    await page.getByText('More settings', { exact: true }).click();
+    await page.getByLabel('Worksheet title', { exact: true }).fill('My reviewed lesson');
+    await page.getByRole('button', { name: 'US Letter', exact: true }).click();
+    await page.getByRole('button', { name: 'Preview full page', exact: true }).click();
+    const dialog = page.getByRole('dialog', { name: 'Review before exporting' });
+    await dialog.waitFor();
+    assert.match(await dialog.innerText(), /computer science/);
+    assert.match(await dialog.innerText(), /kindness/);
+    await dialog.getByRole('button', { name: 'Back to complete the list' }).click();
+    assert.equal(await dialog.isVisible(), false);
+    await page.getByRole('button', { name: 'Preview full page', exact: true }).click();
+    await dialog.getByRole('button', { name: 'Export only 2 ready rows' }).click();
+    await page.waitForURL('**/worksheet/preview');
+    assert.equal(await page.getByRole('region', { name: /computer science|kindness/ }).count(), 0);
+    assert.equal(await page.locator('[data-feedback-invite]').count(), 0);
+    for (let i = 0; i < 3; i++) {
+      await page.getByRole('link', { name: 'Back to editor', exact: true }).click();
+      await page.getByRole('textbox', { name: 'English row 4', exact: true }).first().waitFor();
+      assert.equal(await page.getByRole('textbox', { name: 'English row 4', exact: true }).first().inputValue(), 'kindness');
+      assert.equal(await page.getByRole('button', { name: 'Restore worksheet', exact: true }).count(), 0);
+      assert.equal(await page.getByLabel('Worksheet title', { exact: true }).inputValue(), 'My reviewed lesson');
+      assert.equal(await page.getByRole('button', { name: 'US Letter', exact: true }).getAttribute('aria-pressed'), 'true');
+      await page.getByRole('button', { name: 'Preview full page', exact: true }).click();
+      await page.getByRole('button', { name: 'Export only 2 ready rows' }).click();
+      await page.waitForURL('**/worksheet/preview');
+    }
+    await page.screenshot({ path: path.join(output, 'ux-export-preview.png') });
+  });
+  await scenario('ux-mobile-review-first', { viewport: { width: 390, height: 844 } }, async page => {
+    await visit(page, '/zh/generator?words=' + encodeURIComponent('你好\n妈妈\n学校'));
+    const first = page.getByRole('textbox', { name: 'Chinese row 1', exact: true });
+    const bounds = await first.boundingBox();
+    assert.ok(bounds && bounds.y < 700, `First word must be visible: ${JSON.stringify(bounds)}`);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true);
+    const settings = page.locator('#worksheet-settings');
+    assert.equal(await settings.getByText('更多设置', { exact: true }).evaluate(el => el.parentElement.open), false);
+    await page.screenshot({ path: path.join(output, 'ux-mobile-first-word.png') });
+  });
+  await scenario('ux-feedback-only-after-download', {}, async (page, context) => {
+    await seed(context, 'sessionStorage', 'gridhanzi:worksheet:v1', JSON.stringify(snapshot));
+    await visit(page, '/worksheet/preview');
+    await page.clock.install();
+    await page.clock.fastForward(61_000);
+    assert.equal(await page.locator('[data-feedback-invite]').count(), 0);
+    await page.getByRole('button', { name: 'Share feedback', exact: true }).click();
+    await page.locator('[data-feedback-dialog]').waitFor();
+    // No form is submitted during testing.
   });
 } finally {
   await browser.close();

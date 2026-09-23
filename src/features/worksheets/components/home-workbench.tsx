@@ -95,16 +95,16 @@ export function HomeWorkbench() {
       <div className="mt-3 flex flex-wrap items-center justify-between gap-3 rounded border border-[#ded7ca] bg-[#fbf8f2] p-3">
         <div>
           <p className="text-sm font-semibold text-[#172942]">
-            {t("Character standard", "字形標準")}
+            {t("Character standard", "字形标准")}
           </p>
           <p className="mt-0.5 text-xs text-[#657083]">
-            {t("Choose before generating; you can switch again in the editor.", "生成前選擇，進入編輯器後仍可切換。")}
+            {t("Choose before generating; you can switch again in the editor.", "生成前选择，进入编辑器后仍可切换。")}
           </p>
         </div>
         <div className="flex rounded border border-[#d5cdbf] bg-white p-0.5">
           {([
-            ["simplified", t("Simplified", "簡體")],
-            ["traditional-tw", t("Traditional (Taiwan)", "台灣正體")],
+            ["simplified", t("Simplified", "简体")],
+            ["traditional-tw", t("Traditional (Taiwan)", "台湾正体")],
           ] as const).map(([option, label]) => (
             <button
               key={option}

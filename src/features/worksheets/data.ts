@@ -1,4 +1,5 @@
 import type { WorksheetEntry, WorksheetTemplate } from "./types";
+import { teachingSenses } from "./teaching-senses";
 import hskVocabulary from "./hsk-vocabulary.json";
 
 type VocabularyRecord = {
@@ -458,6 +459,7 @@ const vocabularyRecords: VocabularyRecord[] = Array.from(
       ...p0TemplateVocabularyRecords,
       ...mvpTemplateVocabularyRecords,
       ...p0ExpansionVocabularyRecords,
+      ...Object.entries(teachingSenses).map(([hanzi, sense]) => ({ hanzi, ...sense })),
     ].map(
       (record) => [record.hanzi, record],
     ),

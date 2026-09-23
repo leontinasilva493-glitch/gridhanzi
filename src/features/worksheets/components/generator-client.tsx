@@ -1,4 +1,6 @@
 "use client";
+
+import { UiText } from "./ui-text";
 import { RepeatFillControl } from "./repeat-fill-control";
 
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -31,6 +33,8 @@ import {
 } from "../draft";
 import { createWorksheetEntryId } from "../ids";
 import { localize } from "../i18n";
+import { normalizeWorksheetSnapshot } from "../snapshot";
+import { reviewWorksheetEntries, WORKSHEET_EDITOR_SESSION_KEY } from "../review";
 import {
   getCompatiblePaperSize,
   getWorksheetProfilePreset,
@@ -111,9 +115,12 @@ export function GeneratorClient({
     difficulty: initialDifficulty,
     title: hasTemplate
       ? `${templateTitle} · ${templateChineseTitle}`
-      : "My Chinese Worksheet",
+      : t("My Chinese Worksheet", "我的汉字字帖"),
     date: "",
   });
+  const exportDialog = useRef<HTMLDialogElement>(null);
+  const [previewPageCount, setPreviewPageCount] = useState(0);
+  const [resumeError, setResumeError] = useState(false);
   const [isEnriching, setIsEnriching] = useState(false);
   const [isConverting, setIsConverting] = useState(false);
   const conversionPending = useRef(false);
@@ -130,10 +137,8 @@ export function GeneratorClient({
   );
   const autoEnrichStarted = useRef(false);
 
-  const completed = useMemo(
-    () => entries.filter((entry) => entry.status === "complete").length,
-    [entries],
-  );
+  const review = useMemo(() => reviewWorksheetEntries(entries), [entries]);
+  const completed = review.ready.length;
   const currentSnapshot = useMemo<WorksheetSnapshot>(
     () => ({ version: 3, entries, settings }),
     [entries, settings],
@@ -232,7 +237,7 @@ export function GeneratorClient({
   }
 
   useEffect(() => {
-    if (!autoEnrich || autoEnrichStarted.current) return;
+    if (!autoEnrich || autoEnrichStarted.current || new URLSearchParams(window.location.search).has("resume")) return;
     autoEnrichStarted.current = true;
     void enrichEntries();
     // Run exactly once for the homepage handoff.
@@ -251,6 +256,18 @@ export function GeneratorClient({
     };
     setSettings((current) => current.date ? current : { ...current, date });
     try {
+      if (new URLSearchParams(window.location.search).get("resume") === "1") {
+        const saved = sessionStorage.getItem(WORKSHEET_EDITOR_SESSION_KEY);
+        if (!saved) throw new Error("Missing editor session");
+        const restored = normalizeWorksheetSnapshot(JSON.parse(saved));
+        if (!restored.entries.length) throw new Error("Empty editor session");
+        const preview = sessionStorage.getItem(WORKSHEET_STORAGE_KEY);
+        const previewSettings = preview ? normalizeWorksheetSnapshot(JSON.parse(preview)).settings : restored.settings;
+        setEntries(restored.entries);
+        setSettings(previewSettings);
+        setMessage(t("Back to your worksheet. All rows have been kept.", "已返回当前字帖，所有词条均已保留。"));
+        return;
+      }
       const draft = parseWorksheetDraft(
         localStorage.getItem(WORKSHEET_DRAFT_STORAGE_KEY),
       );
@@ -261,6 +278,11 @@ export function GeneratorClient({
       }
     } catch {
       setDraftSavedAt(null);
+      if (new URLSearchParams(window.location.search).has("resume")) {
+        setEntries([]);
+        setResumeError(true);
+        setMessage(t("Your editing session could not be restored. Please reopen your saved draft or paste your list again.", "无法恢复本次编辑，请重新打开保存的草稿或粘贴词表。"));
+      }
     } finally {
       setDraftReady(true);
     }
@@ -269,7 +291,7 @@ export function GeneratorClient({
   }, []);
 
   useEffect(() => {
-    if (!draftReady || pendingDraft) return;
+    if (!draftReady || pendingDraft || resumeError) return;
     const timer = window.setTimeout(() => {
       try {
         const draft = createWorksheetDraft(currentSnapshot);
@@ -284,7 +306,7 @@ export function GeneratorClient({
     }, 600);
 
     return () => window.clearTimeout(timer);
-  }, [currentSnapshot, draftReady, pendingDraft]);
+  }, [currentSnapshot, draftReady, pendingDraft, resumeError]);
 
   function restoreDraft() {
     if (!pendingDraft) return;
@@ -379,14 +401,20 @@ export function GeneratorClient({
     );
   }
 
-  function openPreview() {
-    if (conversionPending.current) return;
+  function openPreview(confirmed = false) {
+    if (conversionPending.current || isEnriching || !entries.length) return;
+    if (review.pending.length && !confirmed) {
+      exportDialog.current?.showModal();
+      return;
+    }
+    if (!review.ready.length) return;
     const snapshot: WorksheetSnapshot = {
       version: 3,
-      entries,
+      entries: review.ready,
       settings,
     };
     try {
+      sessionStorage.setItem(WORKSHEET_EDITOR_SESSION_KEY, JSON.stringify(currentSnapshot));
       sessionStorage.setItem(WORKSHEET_STORAGE_KEY, JSON.stringify(snapshot));
     } catch {
       setMessage(t(
@@ -395,6 +423,7 @@ export function GeneratorClient({
       ));
       return;
     }
+    exportDialog.current?.close();
     router.push("/worksheet/preview");
   }
 
@@ -442,7 +471,7 @@ export function GeneratorClient({
           <span className="h-px flex-1 bg-[#d6cfc2]" />
           <StepBadge label={t("Print", "下载打印")} number="3" />
         </div>
-        <p className="hs-no-print mt-3 text-sm text-[#566276]">
+        <p className="hs-no-print mt-3 hidden text-sm text-[#566276] sm:block">
           {t("Questions or feedback? Email us: ", "遇到问题或有建议？欢迎来信：")}
           <a
             href="mailto:support@gridhanzi.org"
@@ -488,30 +517,31 @@ export function GeneratorClient({
         ) : null}
 
         <div className="mt-7 grid gap-4 xl:grid-cols-[275px_minmax(500px,1fr)_minmax(390px,0.78fr)]">
-          <SettingsPanel
-            settings={settings}
-            setSettings={setSettings}
-            conversionDisabled={isEnriching}
-            onCharacterStandardChange={changeCharacterStandard}
-          />
-
-          <section className="hs-card min-w-0 p-4 sm:p-5">
+          <section id="review-words" className="hs-card order-1 min-w-0 p-4 sm:p-5 xl:order-2">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="hs-display text-2xl font-bold">{t("Review your list", "检查词汇表")}</h2>
               <span className="flex items-center gap-1 text-sm font-medium text-[#237553]">
-                {t(`${completed} words ready`, `${completed} 个词已完成`)} <Check className="size-4" />
+                {t(`${completed}/${entries.length} words ready · ${review.pending.length} to review`, `已完成 ${completed}/${entries.length} · 待处理 ${review.pending.length}`)} <Check className="size-4" />
               </span>
             </div>
-            <div className="mt-4">
-              <HskPicker
-                currentEntries={entries}
-                settings={settings}
-                initialSystem={initialHskSystem}
-                initialLevel={initialHskLevel}
-                openOnMount={hasInitialHskSelection}
-                onAddEntries={addHskEntries}
-              />
-            </div>
+            {review.pending.length > 0 && !isEnriching ? (
+              <div role="status" className="mt-3 rounded border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950">
+                <p className="font-semibold">{t("Some fields need your review before export.", "以下词条尚未完成，导出前请补填。")}</p>
+                <ul className="mt-2 space-y-1">
+                  {review.pending.map(({ entry, index, missing }) => (
+                    <li key={entry.id}>
+                      <button type="button" className="text-left underline underline-offset-2" onClick={() => {
+                        const inputs = document.querySelectorAll<HTMLInputElement>(`input[aria-label="Chinese row ${index + 1}"]`);
+                        Array.from(inputs).find((input) => input.getClientRects().length > 0)?.focus();
+                      }}>
+                        {index + 1}. {entry.hanzi || entry.english || t("Empty row", "空白行")} — {t("Missing: ", "缺少：")}{missing.map((field) => field === "hanzi" ? t("Hanzi", "汉字") : field === "pinyin" ? t("Pinyin", "拼音") : t("meaning", "英文释义")).join("、")}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-2 text-xs">{t("Auto-fill only covers supported vocabulary. Add missing fields manually when no match is available.", "自动补全仅覆盖可识别词汇；未匹配到的内容需要手动补填。")}</p>
+              </div>
+            ) : null}
             <div className="mt-4 flex flex-wrap gap-2">
               <button
                 type="button"
@@ -591,21 +621,21 @@ export function GeneratorClient({
                     </div>
                     <div className="flex justify-center gap-1">
                       <IconButton
-                        label="Move up"
+                        label={t("Move up", "上移")}
                         onClick={() => moveEntry(index, -1)}
                         disabled={index === 0}
                       >
                         <ArrowUp className="size-4" />
                       </IconButton>
                       <IconButton
-                        label="Move down"
+                        label={t("Move down", "下移")}
                         onClick={() => moveEntry(index, 1)}
                         disabled={index === entries.length - 1}
                       >
                         <ArrowDown className="size-4" />
                       </IconButton>
                       <IconButton
-                        label="Delete row"
+                        label={t("Delete row", "删除词条")}
                         onClick={() =>
                           setEntries((current) =>
                             current.filter((item) => item.id !== entry.id),
@@ -692,6 +722,17 @@ export function GeneratorClient({
                 </article>
               ))}
             </div>
+            <div className="mt-4">
+              <HskPicker
+                currentEntries={entries}
+                settings={settings}
+                initialSystem={initialHskSystem}
+                initialLevel={initialHskLevel}
+                openOnMount={hasInitialHskSelection}
+                onAddEntries={addHskEntries}
+              />
+            </div>
+            <a href="#worksheet-settings" className="hs-primary-button mt-4 w-full xl:hidden">{t("Next: choose practice settings", "下一步：选择练习方式")}</a>
             <div className="mt-4 flex flex-wrap gap-5 text-xs text-[#617084]">
               <span className="flex items-center gap-1 text-[#237553]">
                 <Check className="size-4" /> {t("Auto-filled", "已自动补全")}
@@ -703,7 +744,14 @@ export function GeneratorClient({
             </div>
           </section>
 
-          <aside className="hs-card self-start p-4 xl:sticky xl:top-20">
+          <SettingsPanel
+            settings={settings}
+            setSettings={setSettings}
+            conversionDisabled={isEnriching}
+            onCharacterStandardChange={changeCharacterStandard}
+          />
+
+          <aside id="worksheet-live-preview" className="hs-card order-3 self-start p-4 xl:sticky xl:top-20">
             <div className="mb-3 flex items-center justify-between text-sm">
               <span className="flex items-center gap-2 font-semibold">
                 <span className="size-2.5 rounded-full bg-[#23835d]" />
@@ -711,23 +759,25 @@ export function GeneratorClient({
               </span>
               <span className="text-xs text-[#657083]">
                 {isDigitalPdf
-                  ? "Digital 3:4"
+                  ? t("Digital 3:4", "平板 3:4")
                   : settings.paperSize === "a4"
-                    ? "A4 · Portrait"
-                    : "US Letter · Portrait"}
+                    ? t("A4 · Portrait", "A4 · 纵向")
+                    : t("US Letter · Portrait", "美式信纸 · 纵向")}
               </span>
             </div>
             {settings.output === "worksheet" && settings.mode !== "quiz" && <RepeatFillControl
  enabled={!!settings.repeatToFill} disabled={!entries.some(entry => /\p{Script=Han}/u.test(entry.hanzi))}
  chinese={locale === "zh"} onChange={repeatToFill => setSettings(current => ({ ...current, repeatToFill }))} />}
-            {entries.length > 0 ? (
+            <p className="mb-3 text-sm font-semibold" aria-live="polite">{review.ready.length === 0 ? t("Complete a vocabulary row to see the preview.", "完成词条后即可查看预览。") : previewPageCount > 0 ? t(`Showing page 1 of ${previewPageCount}. Open full preview to see every page.`, `第 1 页，共 ${previewPageCount} 页。完整预览可查看全部页面。`) : t("Calculating pages…", "正在计算页数……")}</p>
+            {review.ready.length > 0 ? (
               <div
                 key={settings.profile}
                 className="hs-profile-preview"
               >
                 <WorksheetRenderer
-                  entries={entries}
+                  entries={review.ready}
                   settings={settings}
+                  onPageCountChange={setPreviewPageCount}
                   compact
                 />
               </div>
@@ -745,6 +795,16 @@ export function GeneratorClient({
         </fieldset>
       </main>
 
+      <dialog ref={exportDialog} aria-labelledby="export-review-title" className="m-auto max-h-[85vh] w-[min(92vw,560px)] overflow-auto rounded-xl border border-[#d8d0c2] bg-[#fffdf9] p-6 text-[#172942] shadow-xl backdrop:bg-black/40">
+        <h2 id="export-review-title" className="text-xl font-bold">{t("Review before exporting", "导出前确认词条")}</h2>
+        <p className="mt-3">{t(`${review.pending.length} rows are incomplete and would be excluded:`, `以下 ${review.pending.length} 项尚未完成，将不会出现在成品中：`)}</p>
+        <ul className="my-4 list-inside list-disc space-y-1">{review.pending.map(({ entry, index }) => <li key={entry.id}>{index + 1}. {entry.hanzi || entry.english || t("Empty row", "空白行")}</li>)}</ul>
+        <p className="text-sm">{t("Your original list will remain in the editor.", "原始词表仍保留在编辑器中，不会删除。")}</p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <button type="button" autoFocus className="hs-primary-button" onClick={() => exportDialog.current?.close()}>{t("Back to complete the list", "返回补全")}</button>
+          <button type="button" className="hs-secondary-button" disabled={!review.ready.length} onClick={() => openPreview(true)}>{t(`Export only ${review.ready.length} ready rows`, `仅导出已完成的 ${review.ready.length} 项`)}</button>
+        </div>
+      </dialog>
       <div className="hs-no-print fixed inset-x-0 bottom-0 z-40 border-t border-[#d8d0c2] bg-[#fffdf9]/96 backdrop-blur">
         <div className="hs-container flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex min-h-8 items-center gap-3 text-xs text-[#617084]">
@@ -766,20 +826,20 @@ export function GeneratorClient({
               <span>{t("Autosaves on this device", "自动保存在此设备")}</span>
             )}
           </div>
-          <div className="flex flex-col gap-2 sm:flex-row">
+          <div className="grid grid-cols-2 gap-2 sm:flex">
             <button
               type="button"
-              className="hs-secondary-button min-w-56"
-              onClick={openPreview}
-              disabled={entries.length === 0 || isConverting}
+              className="hs-secondary-button min-w-0 px-3 text-sm sm:min-w-56"
+              onClick={() => openPreview()}
+              disabled={entries.length === 0 || isConverting || isEnriching}
             >
               <Eye className="size-4" /> {t("Preview full page", "完整预览")}
             </button>
             <button
               type="button"
-              className="hs-primary-button min-w-72"
-              onClick={openPreview}
-              disabled={entries.length === 0 || isConverting}
+              className="hs-primary-button min-w-0 px-3 text-sm sm:min-w-72"
+              onClick={() => openPreview()}
+              disabled={entries.length === 0 || isConverting || isEnriching}
             >
               {isDigitalPdf ? (
                 <Download className="size-4" />
@@ -805,66 +865,40 @@ function GeneratorSupportSections({
   return (
     <div className="mt-12 grid gap-10 pb-6">
       <section aria-labelledby="generator-steps-title">
-        <p className="hs-kicker">Worksheet workflow</p>
+        <p className="hs-kicker"><UiText>{"Worksheet workflow"}</UiText></p>
         <div className="mt-2 flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2
               id="generator-steps-title"
               className="hs-display text-3xl font-bold"
-            >
-              How the Chinese worksheet generator works
-            </h2>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]">
-              Start with English or Chinese vocabulary, review the generated
-              Hanzi and Pinyin, then print the same list as a lesson page,
-              handwriting practice sheet, or short recall test.
-            </p>
+            ><UiText>{"How the Chinese worksheet generator works"}</UiText></h2>
+            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]"><UiText>{"Start with English or Chinese vocabulary, review the generated Hanzi and Pinyin, then print the same list as a lesson page, handwriting practice sheet, or short recall test."}</UiText></p>
             {showEnglishPracticeLink ? (
-              <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]">
-                Starting from translations? Open the dedicated{" "}
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]"><UiText>{"Starting from translations? Open the dedicated"}</UiText>{" "}{" "}
                 <Link
                   href="/english-to-chinese-writing-practice"
                   className="font-semibold text-[#24466e] hover:text-[#b62822]"
-                >
-                  English to Chinese writing practice
-                </Link>{" "}
-                page for an editable starter list.
-              </p>
+                ><UiText>{"English to Chinese writing practice"}</UiText></Link>{" "}<UiText>{"page for an editable starter list."}</UiText></p>
             ) : null}
           </div>
           <div className="flex flex-wrap gap-3">
-            <Link href="/templates" className="hs-secondary-button text-sm">
-              Browse editable templates
-            </Link>
-            <Link href="/grids" className="hs-secondary-button text-sm">
-              Printable grid PDFs
-            </Link>
+            <Link href="/templates" className="hs-secondary-button text-sm"><UiText>{"Browse editable templates"}</UiText></Link>
+            <Link href="/grids" className="hs-secondary-button text-sm"><UiText>{"Printable grid PDFs"}</UiText></Link>
           </div>
         </div>
         <div className="mt-5 grid gap-4 md:grid-cols-3">
-          <SupportCard title="Paste a word list">
-            Add English, Chinese, or mixed vocabulary. The editor keeps every
-            row editable before you print.
-          </SupportCard>
-          <SupportCard title="Choose writing settings">
-            Set the grid, cell size, Pinyin, stroke-order guidance, paper size,
-            and practice mode for a Mandarin worksheet or Hanzi grid paper.
-          </SupportCard>
-          <SupportCard title="Preview and print">
-            Check the live preview, open the full print page, then save a PDF or
-            send the worksheet to a printer.
-          </SupportCard>
+          <SupportCard title="Paste a word list"><UiText>{"Add English, Chinese, or mixed vocabulary. The editor keeps every row editable before you print."}</UiText></SupportCard>
+          <SupportCard title="Choose writing settings"><UiText>{"Set the grid, cell size, Pinyin, stroke-order guidance, paper size, and practice mode for a Mandarin worksheet or Hanzi grid paper."}</UiText></SupportCard>
+          <SupportCard title="Preview and print"><UiText>{"Check the live preview, open the full print page, then save a PDF or send the worksheet to a printer."}</UiText></SupportCard>
         </div>
       </section>
 
       <section aria-labelledby="generator-settings-title">
-        <p className="hs-kicker">Printable worksheet controls</p>
+        <p className="hs-kicker"><UiText>{"Printable worksheet controls"}</UiText></p>
         <h2
           id="generator-settings-title"
           className="hs-display mt-2 text-3xl font-bold"
-        >
-          Worksheet settings teachers and parents expect
-        </h2>
+        ><UiText>{"Worksheet settings teachers and parents expect"}</UiText></h2>
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {[
             "Tian Zi Ge and Mi Zi Ge Hanzi grid paper",
@@ -877,20 +911,18 @@ function GeneratorSupportSections({
               className="flex min-h-24 items-start gap-3 rounded border border-[#ded7ca] bg-[#fffefa] p-4"
             >
               <Check className="mt-0.5 size-4 shrink-0 text-[#25815d]" />
-              <p className="text-sm leading-6 text-[#4f5d70]">{item}</p>
+              <p className="text-sm leading-6 text-[#4f5d70]"><UiText>{item}</UiText></p>
             </div>
           ))}
         </div>
       </section>
 
       <section aria-labelledby="generator-examples-title">
-        <p className="hs-kicker">Example worksheets</p>
+        <p className="hs-kicker"><UiText>{"Example worksheets"}</UiText></p>
         <h2
           id="generator-examples-title"
           className="hs-display mt-2 text-3xl font-bold"
-        >
-          Examples you can generate and edit
-        </h2>
+        ><UiText>{"Examples you can generate and edit"}</UiText></h2>
         <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {[
             ["Family practice sheet", "/generator?template=family"],
@@ -903,7 +935,7 @@ function GeneratorSupportSections({
               href={href}
               className="group flex min-h-24 items-center justify-between gap-4 rounded border border-[#ded7ca] bg-white p-4 font-semibold text-[#172942] transition hover:border-[#b62822]"
             >
-              <span>{label}</span>
+              <span><UiText>{label}</UiText></span>
               <Sparkles className="size-4 shrink-0 text-[#b62822] transition group-hover:scale-110" />
             </Link>
           ))}
@@ -915,13 +947,11 @@ function GeneratorSupportSections({
         aria-labelledby="generator-faq-title"
         className="pb-8"
       >
-        <p className="hs-kicker">Generator FAQ</p>
+        <p className="hs-kicker"><UiText>{"Generator FAQ"}</UiText></p>
         <h2
           id="generator-faq-title"
           className="hs-display mt-2 text-3xl font-bold"
-        >
-          Chinese worksheet generator questions
-        </h2>
+        ><UiText>{"Chinese worksheet generator questions"}</UiText></h2>
         <div className="mt-5 divide-y divide-[#ded7ca] rounded border border-[#ded7ca] bg-white">
           {[
             [
@@ -943,10 +973,10 @@ function GeneratorSupportSections({
           ].map(([question, answer]) => (
             <details key={question} className="group px-5 py-4">
               <summary className="cursor-pointer list-none font-semibold text-[#172942]">
-                {question}
+                <UiText>{question}</UiText>
               </summary>
               <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]">
-                {answer}
+                <UiText>{answer}</UiText>
               </p>
             </details>
           ))}
@@ -965,302 +995,80 @@ function SupportCard({
 }) {
   return (
     <article className="rounded border border-[#ded7ca] bg-white p-5">
-      <h3 className="hs-display text-lg font-bold text-[#172942]">{title}</h3>
+      <h3 className="hs-display text-lg font-bold text-[#172942]"><UiText>{title}</UiText></h3>
       <p className="mt-2 text-sm leading-6 text-[#5b687a]">{children}</p>
     </article>
   );
 }
 
-function SettingsPanel({
-  settings,
-  setSettings,
-  onCharacterStandardChange,
-  conversionDisabled,
-}: {
+function SettingsPanel({ settings, setSettings, onCharacterStandardChange, conversionDisabled }: {
   settings: WorksheetSettings;
   setSettings: React.Dispatch<React.SetStateAction<WorksheetSettings>>;
   onCharacterStandardChange: (value: CharacterStandard) => void;
   conversionDisabled: boolean;
 }) {
   const locale = useLocale();
-  const t = (english: string, chinese: string) => localize(locale, english, chinese);
+  const t = (en: string, zh: string) => localize(locale, en, zh);
   const isFlashcards = settings.output === "flashcards";
-
+  const preset = getWorksheetProfilePreset(settings.profile);
+  const names = { kids: t("Kids", "儿童"), adult: t("Adult", "成人"), tablet: t("Tablet", "平板"), brush: t("Brush", "毛笔") };
   function patch(value: Partial<WorksheetSettings>) {
     setSettings((current) => {
       const next = { ...current, ...value };
-      if (next.output === "flashcards" && next.paperSize === "tablet") {
-        next.paperSize = "a4";
-      }
+      if (next.output === "flashcards" && next.paperSize === "tablet") next.paperSize = "a4";
       return next;
     });
   }
-
   function selectProfile(profile: WorksheetProfile) {
-    const preset = getWorksheetProfilePreset(profile);
-    setSettings((current) => ({
-      ...current,
-      profile,
-      cellSize: preset.size.default,
-      grid: preset.defaultGrid,
-      paperSize: getCompatiblePaperSize(profile, current.paperSize),
-    }));
+    const next = getWorksheetProfilePreset(profile);
+    patch({ profile, cellSize: next.size.default, grid: next.defaultGrid, paperSize: getCompatiblePaperSize(profile, settings.paperSize) });
   }
-
-  const profilePreset = getWorksheetProfilePreset(settings.profile);
-
   return (
-    <aside className="hs-card self-start p-4 xl:sticky xl:top-20 xl:max-h-[calc(100vh-10rem)] xl:overflow-y-auto">
-      <SettingSection title={t("Character standard", "字形標準")}>
-        <Segmented
-          value={settings.characterStandard}
-          disabled={conversionDisabled}
-          options={[
-            ["simplified", t("Simplified", "簡體")],
-            ["traditional-tw", t("Traditional (Taiwan)", "台灣正體")],
-          ]}
-          onChange={(value) => onCharacterStandardChange(value as CharacterStandard)}
-        />
-        <p className="mt-2 text-[0.68rem] leading-4 text-[#657083]">
-          {t(
-            "Taiwan mode uses phrase-aware regional word choices. Pinyin remains available; Zhuyin is not included yet.",
-            "台灣模式採用詞組感知的台灣常用詞；目前保留拼音，尚未提供注音。",
-          )}
-        </p>
-      </SettingSection>
-      <SettingSection title={t("Output", "输出")}>
-        <Segmented
-          value={settings.output}
-          options={[
-            ["worksheet", t("Worksheet", "字帖")],
-            ["flashcards", t("Flashcards", "闪卡")],
-          ]}
-          onChange={(output) => patch({ output: output as WorksheetOutput })}
-        />
-      </SettingSection>
-      {isFlashcards ? (
-        <>
-          <SettingSection title={t("Cards per page", "每页卡片数")}>
-            <Segmented
-              value={String(settings.flashcardsPerPage)}
-              options={[
-                ["6", "6"],
-                ["9", "9"],
-              ]}
-              onChange={(flashcardsPerPage) =>
-                patch({
-                  flashcardsPerPage: flashcardsPerPage === "9" ? 9 : 6,
-                })
-              }
-            />
-          </SettingSection>
-          <SettingSection title={t("Flashcard content", "闪卡内容")}>
-            <ToggleRow
-              label={t("Show Pinyin", "显示拼音")}
-              checked={settings.flashcardShowPinyin}
-              onChange={(flashcardShowPinyin) =>
-                patch({ flashcardShowPinyin })
-              }
-            />
-            <ToggleRow
-              label={t("Show English", "显示英文")}
-              checked={settings.flashcardShowEnglish}
-              onChange={(flashcardShowEnglish) =>
-                patch({ flashcardShowEnglish })
-              }
-            />
-          </SettingSection>
-        </>
-      ) : null}
-      {!isFlashcards ? (
-        <>
-      <SettingSection title={t("Writing profile", "书写模板")}>
-        <div className="grid grid-cols-2 gap-2">
-          {Object.values(worksheetProfilePresets).map((preset) => (
-            <button
-              type="button"
-              key={preset.id}
-              aria-pressed={settings.profile === preset.id}
-              onClick={() => selectProfile(preset.id)}
-              className={cn(
-                "rounded border p-2.5 text-left transition",
-                settings.profile === preset.id
-                  ? "border-[#bd2923] bg-[#fff3ef] shadow-[inset_0_0_0_1px_#bd2923]"
-                  : "border-[#d5cdbf] bg-white hover:border-[#ad9f8b]",
-              )}
-            >
-              <strong className="block text-sm text-[#172942]">
-                {preset.label}
-              </strong>
-              <span className="mt-1 block text-[0.65rem] leading-4 text-[#657083]">
-                {preset.writingTool}
-              </span>
-            </button>
-          ))}
-        </div>
-        <p className="mt-2 text-[0.68rem] leading-4 text-[#657083]">
-          {profilePreset.description}
-        </p>
-      </SettingSection>
-      <SettingSection title={t("Worksheet type", "练习类型")}>
-        <Segmented
-          value={settings.mode}
-          options={[
-            ["trace", t("Learn", "新字精学")],
-            ["write", t("Practice", "描红临写")],
-            ["quiz", t("Test", "默写测试")],
-          ]}
-          onChange={(mode) => patch({ mode: mode as WorksheetMode })}
-        />
-      </SettingSection>
-      {settings.mode !== "quiz" ? (
-        <>
-          <SettingSection title={t("Practice strength", "练习引导强度")}>
-            <Segmented
-              value={settings.practiceStrength}
-              options={[
-                ["guided", t("Guided", "引导")],
-                ["balanced", t("Balanced", "均衡")],
-                ["independent", t("Independent", "独立")],
-              ]}
-              onChange={(practiceStrength) =>
-                patch({ practiceStrength: practiceStrength as PracticeStrength })
-              }
-            />
-          </SettingSection>
-          <SettingSection title={t("Extra blank row", "额外空白行")}>
-            <Segmented
-              value={String(settings.extraBlankRows)}
-              options={[
-                ["0", t("Off", "关闭")],
-                ["1", t("Add one", "增加一行")],
-              ]}
-              onChange={(extraBlankRows) =>
-                patch({ extraBlankRows: extraBlankRows === "1" ? 1 : 0 })
-              }
-            />
-          </SettingSection>
-        </>
-      ) : null}
-      <SettingSection
-        title={t(
-          `Cell size · ${settings.cellSize}${profilePreset.size.unit}`,
-          `格子尺寸 · ${settings.cellSize}${profilePreset.size.unit}`,
-        )}
-      >
-        <input
-          type="range"
-          aria-label="Cell size"
-          min={profilePreset.size.min}
-          max={profilePreset.size.max}
-          step={profilePreset.size.step}
-          value={settings.cellSize}
-          onChange={(event) =>
-            patch({ cellSize: Number(event.target.value) })
-          }
-          className="w-full accent-[#bd2923]"
-        />
-        <div className="mt-1 flex justify-between text-[0.65rem] text-[#657083]">
-          <span>
-            {profilePreset.size.min}
-            {profilePreset.size.unit}
-          </span>
-          <span>{profilePreset.writingTool}</span>
-          <span>
-            {profilePreset.size.max}
-            {profilePreset.size.unit}
-          </span>
-        </div>
-      </SettingSection>
-      <SettingSection title={t("Grid", "格子")}>
-        <Segmented
-          value={settings.grid}
-          options={[
-            ["tian", "Tian Zi Ge"],
-            ["mi", "Mi Zi Ge"],
-          ]}
-          onChange={(grid) => patch({ grid: grid as "tian" | "mi" })}
-        />
-      </SettingSection>
-      <SettingSection title={t("Options", "显示选项")}>
-        <ToggleRow
-          label="Pinyin"
-          checked={settings.showPinyin}
-          onChange={(showPinyin) => patch({ showPinyin })}
-        />
-        {settings.mode === "trace" ? (
-          <div className="mt-3">
-            <span className="mb-2 block text-xs font-semibold text-[#455367]">
-              {t("Stroke order", "笔顺")}
-            </span>
-            <Segmented
-              value={settings.strokeOrderMode}
-              options={[
-                ["detailed", t("Detailed", "详细")],
-                ["compact", t("Compact", "精简")],
-                ["off", t("Off", "关闭")],
-              ]}
-              onChange={(strokeOrderMode) =>
-                patch({
-                  strokeOrderMode: strokeOrderMode as StrokeOrderMode,
-                  showStrokeOrder: strokeOrderMode !== "off",
-                })
-              }
-            />
-          </div>
-        ) : null}
-      </SettingSection>
-        </>
-      ) : null}
-      <SettingSection title={t("Difficulty", "难度")}>
-        <Segmented
-          value={settings.difficulty}
-          options={[
-            ["beginner", t("Beginner", "入门 HSK 1-2")],
-            ["advanced", t("Advanced", "进阶母语级")],
-          ]}
-          onChange={(difficulty) =>
-            patch({ difficulty: difficulty as WorksheetDifficulty })
-          }
-        />
-      </SettingSection>
+    <aside id="worksheet-settings" className="hs-card order-2 self-start p-4 xl:order-1 xl:sticky xl:top-20 xl:max-h-[calc(100vh-10rem)] xl:overflow-y-auto">
+      <h2 className="hs-display mb-4 text-xl font-bold">{t("Choose practice settings", "选择练习方式")}</h2>
+      {!isFlashcards && <>
+        <SettingSection title={t("Worksheet type", "练习类型")}>
+          <Segmented value={settings.mode} options={[["trace", t("Learn", "新字精学")], ["write", t("Practice", "描红临写")], ["quiz", t("Test", "默写测试")]]} onChange={(mode) => patch({ mode: mode as WorksheetMode })} />
+        </SettingSection>
+        <SettingSection title={t("Writing profile", "书写模板")}>
+          <div className="grid grid-cols-2 gap-2">{Object.values(worksheetProfilePresets).map((item) => <button type="button" key={item.id} aria-pressed={settings.profile === item.id} onClick={() => selectProfile(item.id)} className={cn("rounded border p-2.5 text-left text-sm", settings.profile === item.id ? "border-[#bd2923] bg-[#fff3ef]" : "border-[#d5cdbf] bg-white")}><strong className="block">{names[item.id]}</strong><span className="text-xs text-[#657083]"><UiText>{item.writingTool}</UiText></span></button>)}</div>
+        </SettingSection>
+      </>}
       <SettingSection title={t("Paper", "纸张")}>
-        <Segmented
-          value={settings.paperSize}
-          options={(isFlashcards
-            ? (["a4", "letter"] as const)
-            : profilePreset.pageFormats
-          ).map((paper) => [
-            paper,
-            paper === "tablet"
-              ? "Digital · 3:4"
-              : paper === "a4"
-                ? "A4"
-                : "US Letter",
-          ])}
-          onChange={(paperSize) =>
-            patch({ paperSize: paperSize as PaperSize })
-          }
-        />
+        <Segmented value={settings.paperSize} options={(isFlashcards ? ["a4", "letter"] : preset.pageFormats).map((paper) => [paper, paper === "a4" ? "A4" : paper === "letter" ? t("US Letter", "美式信纸") : t("Digital 3:4", "平板 3:4")])} onChange={(paperSize) => patch({ paperSize: paperSize as PaperSize })} />
       </SettingSection>
-      <div className="space-y-3">
-        <Field
-          label={t("Worksheet title", "字帖标题")}
-          value={settings.title}
-          onChange={(title) => patch({ title })}
-        />
-        <Field
-          label={t("Name", "姓名")}
-          value={settings.studentName}
-          placeholder={t("Student name", "学生姓名")}
-          onChange={(studentName) => patch({ studentName })}
-        />
-        <Field
-          label={t("Date", "日期")}
-          value={settings.date}
-          onChange={(date) => patch({ date })}
-        />
-      </div>
+      <details className="rounded border border-[#ded7ca] p-3">
+        <summary className="cursor-pointer font-semibold">{t("More settings", "更多设置")}</summary>
+        <div className="mt-4">
+          <SettingSection title={t("Output", "输出")}><Segmented value={settings.output} options={[["worksheet", t("Worksheet", "字帖")], ["flashcards", t("Flashcards", "闪卡")]]} onChange={(output) => patch({ output: output as WorksheetOutput })} /></SettingSection>
+          <SettingSection title={t("Character standard", "字形标准")}>
+            <Segmented value={settings.characterStandard} disabled={conversionDisabled} options={[["simplified", t("Simplified", "简体")], ["traditional-tw", t("Traditional (Taiwan)", "台湾正体")]]} onChange={(value) => onCharacterStandardChange(value as CharacterStandard)} />
+            <p className="mt-2 text-xs text-[#657083]">{t("Taiwan forms keep Mandarin Pinyin. Zhuyin is not included.", "台湾字形保留普通话拼音，暂不提供注音。")}</p>
+          </SettingSection>
+          {isFlashcards ? <>
+            <SettingSection title={t("Cards per page", "每页卡片数")}><Segmented value={String(settings.flashcardsPerPage)} options={[["6", "6"], ["9", "9"]]} onChange={(value) => patch({ flashcardsPerPage: value === "9" ? 9 : 6 })} /></SettingSection>
+            <ToggleRow label={t("Show Pinyin", "显示拼音")} checked={settings.flashcardShowPinyin} onChange={(flashcardShowPinyin) => patch({ flashcardShowPinyin })} />
+            <ToggleRow label={t("Show English", "显示英文")} checked={settings.flashcardShowEnglish} onChange={(flashcardShowEnglish) => patch({ flashcardShowEnglish })} />
+          </> : <>
+            {settings.mode !== "quiz" && <>
+              <SettingSection title={t("Practice strength", "练习引导强度")}><Segmented value={settings.practiceStrength} options={[["guided", t("Guided", "引导")], ["balanced", t("Balanced", "均衡")], ["independent", t("Independent", "独立")]]} onChange={(practiceStrength) => patch({ practiceStrength: practiceStrength as PracticeStrength })} /></SettingSection>
+              <SettingSection title={t("Extra blank row", "额外空白行")}><Segmented value={String(settings.extraBlankRows)} options={[["0", t("Off", "关闭")], ["1", t("Add one", "增加一行")]]} onChange={(value) => patch({ extraBlankRows: value === "1" ? 1 : 0 })} /></SettingSection>
+            </>}
+            <SettingSection title={t(`Cell size · ${settings.cellSize}${preset.size.unit}`, `格子尺寸 · ${settings.cellSize}${preset.size.unit}`)}><input type="range" aria-label={t("Cell size", "格子尺寸")} min={preset.size.min} max={preset.size.max} step={preset.size.step} value={settings.cellSize} onChange={(event) => patch({ cellSize: Number(event.target.value) })} className="w-full accent-[#bd2923]" /></SettingSection>
+            <SettingSection title={t("Grid", "格子")}><Segmented value={settings.grid} options={[["tian", t("Tian Zi Ge", "田字格")], ["mi", t("Mi Zi Ge", "米字格")]]} onChange={(grid) => patch({ grid: grid as GridStyle })} /></SettingSection>
+            <ToggleRow label={t("Pinyin", "拼音")} checked={settings.showPinyin} onChange={(showPinyin) => patch({ showPinyin })} />
+            {settings.mode === "trace" && <SettingSection title={t("Learning layout", "教学排版")}>
+              <ToggleRow label={t("Keep each word on one page when it fits", "同一词尽量保持同页")} checked={settings.keepWordsTogether !== false} onChange={(keepWordsTogether) => patch({ keepWordsTogether })} />
+              <ToggleRow label={t("Teach each repeated character once", "相同字只教一次")} checked={!!settings.uniqueCharactersOnly} onChange={(uniqueCharactersOnly) => patch({ uniqueCharactersOnly })} />
+              <p className="mt-2 text-xs text-[#657083]">{t("Your word list stays unchanged. Turn these off for character-by-character teaching.", "词表保持不变。关闭后恢复逐字精学。")}</p>
+            </SettingSection>}
+            {settings.mode === "trace" && <SettingSection title={t("Stroke order", "笔顺")}><Segmented value={settings.strokeOrderMode} options={[["detailed", t("Detailed", "详细")], ["compact", t("Compact", "精简")], ["off", t("Off", "关闭")]]} onChange={(value) => patch({ strokeOrderMode: value as StrokeOrderMode, showStrokeOrder: value !== "off" })} /></SettingSection>}
+          </>}
+          <SettingSection title={t("Difficulty", "难度")}><Segmented value={settings.difficulty} options={[["beginner", t("Beginner", "入门 HSK 1–2")], ["advanced", t("Advanced", "进阶")]]} onChange={(difficulty) => patch({ difficulty: difficulty as WorksheetDifficulty })} /></SettingSection>
+          <div className="space-y-3"><Field label={t("Worksheet title", "字帖标题")} value={settings.title} onChange={(title) => patch({ title })} /><Field label={t("Name", "姓名")} value={settings.studentName} onChange={(studentName) => patch({ studentName })} /><Field label={t("Date", "日期")} value={settings.date} onChange={(date) => patch({ date })} /></div>
+        </div>
+      </details>
+      <a href="#worksheet-live-preview" className="hs-secondary-button mt-4 w-full xl:hidden">{t("Next: check preview", "下一步：检查预览")}</a>
     </aside>
   );
 }
@@ -1298,6 +1106,7 @@ function Segmented({
           type="button"
           key={option}
           disabled={disabled}
+          aria-pressed={value === option}
           onClick={() => onChange(option)}
           className={`min-h-10 border-r border-[#d5cdbf] px-2 text-xs font-semibold last:border-r-0 disabled:cursor-not-allowed disabled:opacity-55 ${
             value === option
@@ -1305,7 +1114,7 @@ function Segmented({
               : "bg-white text-[#20304a] hover:bg-[#faf5ec]"
           }`}
         >
-          {label}
+          <UiText>{label}</UiText>
         </button>
       ))}
     </div>
@@ -1323,7 +1132,7 @@ function ToggleRow({
 }) {
   return (
     <label className="flex cursor-pointer items-center justify-between py-1.5 text-sm">
-      {label}
+      <UiText>{label}</UiText>
       <input
         type="checkbox"
         className="peer sr-only"
@@ -1348,7 +1157,7 @@ function Field({
 }) {
   return (
     <label className="block text-xs font-semibold text-[#4f5d70]">
-      {label}
+      <UiText>{label}</UiText>
       <input
         value={value}
         placeholder={placeholder}
@@ -1389,7 +1198,7 @@ function MobileEditorField({
 }) {
   return (
     <label className="block text-xs font-semibold text-[#4f5d70]">
-      <span className="mb-1.5 block">{label}</span>
+      <span className="mb-1.5 block"><UiText>{label}</UiText></span>
       {children}
     </label>
   );
@@ -1454,7 +1263,7 @@ function StepBadge({
       >
         {complete ? <Check className="size-4" /> : number}
       </span>
-      <span className="hidden sm:inline">{label}</span>
+      <span className="hidden sm:inline"><UiText>{label}</UiText></span>
     </div>
   );
 }

@@ -1,5 +1,7 @@
 "use client";
 
+import { UiText } from "./ui-text";
+
 import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import {
   FilePlus2,
@@ -303,7 +305,7 @@ export function StrokeOrderClient({
       {showSearch ? (
         <div className="mx-auto mt-5 flex max-w-2xl gap-2">
           <label className="relative flex-1">
-            <span className="sr-only">Chinese character</span>
+            <span className="sr-only"><UiText>{"Chinese character"}</UiText></span>
             <Search className="absolute left-3 top-1/2 size-5 -translate-y-1/2 text-[#6b7584]" />
             <input
               value={input}
@@ -315,9 +317,7 @@ export function StrokeOrderClient({
               className="h-12 w-full rounded border border-[#d6cfc2] bg-white pl-11 pr-4 font-serif text-xl outline-none focus:border-[#315ed4] focus:ring-4 focus:ring-blue-100"
             />
           </label>
-          <button type="button" className="hs-primary-button" onClick={searchCharacter}>
-            Show stroke order
-          </button>
+          <button type="button" className="hs-primary-button" onClick={searchCharacter}><UiText>{"Show stroke order"}</UiText></button>
         </div>
       ) : null}
 
@@ -359,9 +359,7 @@ export function StrokeOrderClient({
               className="mx-auto mt-3 flex max-w-[300px] items-center gap-2 rounded-md border border-[#d8d0c2] bg-[#fbf7ef] px-3 py-2 text-xs text-[#46566b]"
               aria-live="polite"
             >
-              <span className="shrink-0 rounded-full bg-[#172b46] px-2 py-1 font-semibold text-white">
-                Follow & fill
-              </span>
+              <span className="shrink-0 rounded-full bg-[#172b46] px-2 py-1 font-semibold text-white"><UiText>{"Follow & fill"}</UiText></span>
               <span>{practiceMessage}</span>
             </div>
           ) : null}
@@ -423,26 +421,18 @@ export function StrokeOrderClient({
               </div>
             </div>
             <div className="mt-5 flex gap-2">
-              <span className="rounded border border-[#70a88c] px-3 py-1.5 text-xs font-semibold text-[#267254]">
-                Simplified
-              </span>
-              <span className="rounded border border-[#cfc8bc] px-3 py-1.5 text-xs">
-                Traditional
-              </span>
+              <span className="rounded border border-[#70a88c] px-3 py-1.5 text-xs font-semibold text-[#267254]"><UiText>{"Simplified"}</UiText></span>
+              <span className="rounded border border-[#cfc8bc] px-3 py-1.5 text-xs"><UiText>{"Traditional"}</UiText></span>
             </div>
             <Link
               href={`/generator?words=${encodeURIComponent(character)}`}
               className="hs-primary-button mt-6 w-full"
             >
-              <FilePlus2 className="size-4" /> Add to worksheet
-            </Link>
+              <FilePlus2 className="size-4" /><UiText>{"Add to worksheet"}</UiText></Link>
           </div>
           <div className="border-t border-[#ded7ca] pt-5 sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
-            <h3 className="font-semibold">Stroke sequence</h3>
-            <p className="mt-2 text-xs leading-5 text-[#6b7584]">
-              Stroke names differ between teaching systems. The animation shows
-              where each stroke starts and how it moves.
-            </p>
+            <h3 className="font-semibold"><UiText>{"Stroke sequence"}</UiText></h3>
+            <p className="mt-2 text-xs leading-5 text-[#6b7584]"><UiText>{"Stroke names differ between teaching systems. The animation shows where each stroke starts and how it moves."}</UiText></p>
             <ol className="mt-4 space-y-3 text-sm">
               {strokeLabels.map((stroke, index) => (
                   <li key={stroke} className="flex gap-4">
@@ -457,7 +447,7 @@ export function StrokeOrderClient({
 
       {!sessionMode ? (
         <section className="hs-card mt-4 p-4">
-          <h2 className="hs-display text-xl font-bold">Stroke-by-stroke</h2>
+          <h2 className="hs-display text-xl font-bold"><UiText>{"Stroke-by-stroke"}</UiText></h2>
           <StrokeSequence character={character} limit={resolvedStrokeCount || 6} className="mt-4" />
         </section>
       ) : null}
@@ -477,18 +467,14 @@ export function StrokeOrderClient({
           </article>
           <article className="hs-card grid items-center gap-5 p-6 sm:grid-cols-[1fr_190px]">
             <div>
-              <h2 className="hs-display text-2xl font-bold">
-                Practise this character
-              </h2>
+              <h2 className="hs-display text-2xl font-bold"><UiText>{"Practise this character"}</UiText></h2>
               <p className="mt-2 text-sm leading-6 text-[#5d6a7d]">
                 Open a worksheet for {character} with tracing and blank writing grids.
               </p>
               <Link
                 href={`/generator?words=${encodeURIComponent(character)}`}
                 className="hs-primary-button mt-5"
-              >
-                Open worksheet
-              </Link>
+              ><UiText>{"Open worksheet"}</UiText></Link>
             </div>
             <StrokeSequence character={character} limit={1} />
           </article>

@@ -1,5 +1,7 @@
 "use client";
 
+import { UiText } from "./ui-text";
+
 import { useMemo, useState } from "react";
 import { ArrowRight, Check, Search, X } from "lucide-react";
 
@@ -102,9 +104,7 @@ export function HskLevelBrowser({
                 type="button"
                 onClick={() => setSelectedIds(new Set())}
                 className="min-h-12 rounded px-4 text-sm font-bold text-[#9d3c32] hover:bg-[#f7efe3]"
-              >
-                Clear selection
-              </button>
+              ><UiText>{"Clear selection"}</UiText></button>
             ) : null}
           </div>
         </div>
