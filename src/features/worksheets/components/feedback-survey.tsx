@@ -217,7 +217,7 @@ export function FeedbackSurvey({
   return (
     <div
       data-feedback-invite
-      className="hs-no-print fixed inset-x-3 bottom-3 z-[70] sm:left-auto sm:right-5 sm:max-w-sm"
+      className="hs-no-print fixed left-1/2 top-1/2 z-[70] w-[calc(100vw-1.5rem)] max-w-sm -translate-x-1/2 -translate-y-1/2"
     >
       {!open ? (
         <InvitationCard
@@ -234,8 +234,8 @@ export function FeedbackSurvey({
           aria-labelledby="feedback-title"
           aria-describedby="feedback-description"
           className={[
-            "fixed inset-x-3 bottom-3 m-0 max-h-[calc(100vh-1.5rem)]",
-            "max-w-sm overflow-y-auto rounded-xl border border-[#d8d0c2]",
+            "relative m-0 max-h-[calc(100vh-1.5rem)] w-full overflow-y-auto",
+            "rounded-xl border border-[#d8d0c2]",
             "bg-[#fffdf9] p-5 text-[#14253f] shadow-2xl",
           ].join(" ")}
         >
@@ -295,7 +295,7 @@ function InvitationCard({
   onDismiss: () => void;
 }) {
   return (
-    <div className="rounded-xl border border-[#d8d0c2] bg-[#fffdf9] p-4 text-[#14253f] shadow-2xl">
+    <div className="w-full rounded-xl border border-[#d8d0c2] bg-[#fffdf9] p-4 text-[#14253f] shadow-2xl">
       <p className="font-semibold">{text}</p>
       <button
         ref={buttonRef}
