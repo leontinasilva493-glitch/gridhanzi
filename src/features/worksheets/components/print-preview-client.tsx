@@ -1,4 +1,5 @@
 "use client";
+import { trackWorksheetEvent } from "../analytics";
 import { RepeatFillControl } from "./repeat-fill-control";
 
 import { useEffect, useRef, useState } from "react";
@@ -120,6 +121,7 @@ export function PrintPreviewClient() {
     const pageElements = Array.from(
       printPagesRef.current?.querySelectorAll<HTMLElement>(".hs-paper") ?? [],
     );
+    trackWorksheetEvent("worksheet_download_start", snapshot.settings, snapshot.entries.length);
     setPdfError("");
     setPdfProgress({ current: 0, total: pageElements.length });
 
@@ -134,8 +136,10 @@ export function PrintPreviewClient() {
         locale,
         onProgress: setPdfProgress,
       });
+      trackWorksheetEvent("worksheet_download_success", snapshot.settings, snapshot.entries.length);
       window.dispatchEvent(new Event("gridhanzi:download-complete"));
     } catch (error) {
+      trackWorksheetEvent("worksheet_download_failure", snapshot.settings, snapshot.entries.length);
       setPdfError(
         error instanceof Error
           ? error.message
