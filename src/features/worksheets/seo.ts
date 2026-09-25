@@ -38,6 +38,7 @@ export function buildPublicSitemapPaths(): string[] {
     "/compare",
     ...comparisonPages.map((page) => `/compare/${page.slug}`),
     "/chinese-slang/niu-lai",
+    "/shenzhen-in-chinese",
     "/chinese-stroke-order-rules",
     "/chinese-character-components",
     ...characterComponentPages.map((page) => `/components/${page.slug}`),
