@@ -1,5 +1,6 @@
 "use client";
 
+import { trackWorksheetEvent } from "../analytics";
 import { UiText } from "./ui-text";
 import { RepeatFillControl } from "./repeat-fill-control";
 
@@ -34,7 +35,7 @@ import {
 import { createWorksheetEntryId } from "../ids";
 import { localize } from "../i18n";
 import { normalizeWorksheetSnapshot } from "../snapshot";
-import { reviewWorksheetEntries, WORKSHEET_EDITOR_SESSION_KEY } from "../review";
+import { missingWorksheetFields, reviewWorksheetEntries, WORKSHEET_EDITOR_SESSION_KEY } from "../review";
 import {
   getCompatiblePaperSize,
   getWorksheetProfilePreset,
@@ -137,8 +138,14 @@ export function GeneratorClient({
   );
   const autoEnrichStarted = useRef(false);
 
-  const review = useMemo(() => reviewWorksheetEntries(entries), [entries]);
+  const review = useMemo(() => reviewWorksheetEntries(entries, settings), [entries, settings]);
   const completed = review.ready.length;
+  const editorTracked = useRef(false);
+  useEffect(() => {
+    if (!draftReady || editorTracked.current) return;
+    editorTracked.current = true;
+    trackWorksheetEvent("worksheet_editor_open", settings, entries.length);
+  }, [draftReady, settings, entries.length]);
   const currentSnapshot = useMemo<WorksheetSnapshot>(
     () => ({ version: 3, entries, settings }),
     [entries, settings],
@@ -404,6 +411,7 @@ export function GeneratorClient({
   function openPreview(confirmed = false) {
     if (conversionPending.current || isEnriching || !entries.length) return;
     if (review.pending.length && !confirmed) {
+      trackWorksheetEvent("worksheet_review_blocked", settings, review.pending.length);
       exportDialog.current?.showModal();
       return;
     }
@@ -424,6 +432,7 @@ export function GeneratorClient({
       return;
     }
     exportDialog.current?.close();
+    trackWorksheetEvent("worksheet_preview_open", settings, review.ready.length);
     router.push("/worksheet/preview");
   }
 
@@ -615,7 +624,7 @@ export function GeneratorClient({
                           updateEntry(entry.id, "english", value)
                         }
                       />
-                      {entry.status === "needs-review" ? (
+                      {missingWorksheetFields(entry, settings).length > 0 ? (
                         <AlertCircle className="absolute right-2 top-1/2 size-4 -translate-y-1/2 text-amber-500" />
                       ) : null}
                     </div>
@@ -657,7 +666,7 @@ export function GeneratorClient({
                 >
                   <div className="flex items-center justify-between gap-3">
                     <strong className="text-sm">{t(`Word ${index + 1}`, `词条 ${index + 1}`)}</strong>
-                    {entry.status === "needs-review" ? (
+                    {missingWorksheetFields(entry, settings).length > 0 ? (
                       <span className="flex items-center gap-1 text-xs font-semibold text-amber-700">
                         <AlertCircle className="size-4" /> {t("Review", "待检查")}
                       </span>
@@ -769,6 +778,7 @@ export function GeneratorClient({
  enabled={!!settings.repeatToFill} disabled={!entries.some(entry => /\p{Script=Han}/u.test(entry.hanzi))}
  chinese={locale === "zh"} onChange={repeatToFill => setSettings(current => ({ ...current, repeatToFill }))} />}
             <p className="mb-3 text-sm font-semibold" aria-live="polite">{review.ready.length === 0 ? t("Complete a vocabulary row to see the preview.", "完成词条后即可查看预览。") : previewPageCount > 0 ? t(`Showing page 1 of ${previewPageCount}. Open full preview to see every page.`, `第 1 页，共 ${previewPageCount} 页。完整预览可查看全部页面。`) : t("Calculating pages…", "正在计算页数……")}</p>
+            {review.warnings.length > 0 && <p role="status" className="mb-3 text-sm text-[#657083]">{t("Some optional Pinyin or English fields are empty. These words will still be included in your worksheet.", "部分可选拼音或英文为空，这些汉字仍会保留在字帖中。")}</p>}
             {review.ready.length > 0 ? (
               <div
                 key={settings.profile}
@@ -797,8 +807,9 @@ export function GeneratorClient({
 
       <dialog ref={exportDialog} aria-labelledby="export-review-title" className="m-auto max-h-[85vh] w-[min(92vw,560px)] overflow-auto rounded-xl border border-[#d8d0c2] bg-[#fffdf9] p-6 text-[#172942] shadow-xl backdrop:bg-black/40">
         <h2 id="export-review-title" className="text-xl font-bold">{t("Review before exporting", "导出前确认词条")}</h2>
-        <p className="mt-3">{t(`${review.pending.length} rows are incomplete and would be excluded:`, `以下 ${review.pending.length} 项尚未完成，将不会出现在成品中：`)}</p>
+        <p className="mt-3">{t(`${review.pending.length} rows cannot be used in this output and would be excluded:`, `以下 ${review.pending.length} 项无法用于当前输出，将不会出现在成品中：`)}</p>
         <ul className="my-4 list-inside list-disc space-y-1">{review.pending.map(({ entry, index }) => <li key={entry.id}>{index + 1}. {entry.hanzi || entry.english || t("Empty row", "空白行")}</li>)}</ul>
+        <p className="mb-3 text-sm">{t("Each row needs Hanzi. Tests also need an English clue or visible Pinyin. Missing optional fields never exclude a word.", "每项需要有效汉字；测试模式还需要英文提示或显示的拼音。缺少可选字段不会排除汉字。")}</p>
         <p className="text-sm">{t("Your original list will remain in the editor.", "原始词表仍保留在编辑器中，不会删除。")}</p>
         <div className="mt-5 flex flex-wrap gap-3">
           <button type="button" autoFocus className="hs-primary-button" onClick={() => exportDialog.current?.close()}>{t("Back to complete the list", "返回补全")}</button>
@@ -1037,9 +1048,7 @@ function SettingsPanel({ settings, setSettings, onCharacterStandardChange, conve
       <SettingSection title={t("Paper", "纸张")}>
         <Segmented value={settings.paperSize} options={(isFlashcards ? ["a4", "letter"] : preset.pageFormats).map((paper) => [paper, paper === "a4" ? "A4" : paper === "letter" ? t("US Letter", "美式信纸") : t("Digital 3:4", "平板 3:4")])} onChange={(paperSize) => patch({ paperSize: paperSize as PaperSize })} />
       </SettingSection>
-      <details className="rounded border border-[#ded7ca] p-3">
-        <summary className="cursor-pointer font-semibold">{t("More settings", "更多设置")}</summary>
-        <div className="mt-4">
+      <div>
           <SettingSection title={t("Output", "输出")}><Segmented value={settings.output} options={[["worksheet", t("Worksheet", "字帖")], ["flashcards", t("Flashcards", "闪卡")]]} onChange={(output) => patch({ output: output as WorksheetOutput })} /></SettingSection>
           <SettingSection title={t("Character standard", "字形标准")}>
             <Segmented value={settings.characterStandard} disabled={conversionDisabled} options={[["simplified", t("Simplified", "简体")], ["traditional-tw", t("Traditional (Taiwan)", "台湾正体")]]} onChange={(value) => onCharacterStandardChange(value as CharacterStandard)} />
@@ -1050,20 +1059,24 @@ function SettingsPanel({ settings, setSettings, onCharacterStandardChange, conve
             <ToggleRow label={t("Show Pinyin", "显示拼音")} checked={settings.flashcardShowPinyin} onChange={(flashcardShowPinyin) => patch({ flashcardShowPinyin })} />
             <ToggleRow label={t("Show English", "显示英文")} checked={settings.flashcardShowEnglish} onChange={(flashcardShowEnglish) => patch({ flashcardShowEnglish })} />
           </> : <>
-            {settings.mode !== "quiz" && <>
-              <SettingSection title={t("Practice strength", "练习引导强度")}><Segmented value={settings.practiceStrength} options={[["guided", t("Guided", "引导")], ["balanced", t("Balanced", "均衡")], ["independent", t("Independent", "独立")]]} onChange={(practiceStrength) => patch({ practiceStrength: practiceStrength as PracticeStrength })} /></SettingSection>
-              <SettingSection title={t("Extra blank row", "额外空白行")}><Segmented value={String(settings.extraBlankRows)} options={[["0", t("Off", "关闭")], ["1", t("Add one", "增加一行")]]} onChange={(value) => patch({ extraBlankRows: value === "1" ? 1 : 0 })} /></SettingSection>
-            </>}
             <SettingSection title={t(`Cell size · ${settings.cellSize}${preset.size.unit}`, `格子尺寸 · ${settings.cellSize}${preset.size.unit}`)}><input type="range" aria-label={t("Cell size", "格子尺寸")} min={preset.size.min} max={preset.size.max} step={preset.size.step} value={settings.cellSize} onChange={(event) => patch({ cellSize: Number(event.target.value) })} className="w-full accent-[#bd2923]" /></SettingSection>
             <SettingSection title={t("Grid", "格子")}><Segmented value={settings.grid} options={[["tian", t("Tian Zi Ge", "田字格")], ["mi", t("Mi Zi Ge", "米字格")]]} onChange={(grid) => patch({ grid: grid as GridStyle })} /></SettingSection>
             <ToggleRow label={t("Pinyin", "拼音")} checked={settings.showPinyin} onChange={(showPinyin) => patch({ showPinyin })} />
-            {settings.mode === "trace" && <SettingSection title={t("Learning layout", "教学排版")}>
+            {settings.mode === "trace" && <SettingSection title={t("Stroke order", "笔顺")}><Segmented value={settings.strokeOrderMode} options={[["detailed", t("Detailed", "详细")], ["compact", t("Compact", "精简")], ["off", t("Off", "关闭")]]} onChange={(value) => patch({ strokeOrderMode: value as StrokeOrderMode, showStrokeOrder: value !== "off" })} /></SettingSection>}
+          </>}
+      </div>
+      <details className="rounded border border-[#ded7ca] p-3">
+        <summary className="cursor-pointer font-semibold">{t("More settings", "更多设置")}</summary>
+        <div className="mt-4">
+            {!isFlashcards && settings.mode !== "quiz" && <>
+              <SettingSection title={t("Practice strength", "练习引导强度")}><Segmented value={settings.practiceStrength} options={[["guided", t("Guided", "引导")], ["balanced", t("Balanced", "均衡")], ["independent", t("Independent", "独立")]]} onChange={(practiceStrength) => patch({ practiceStrength: practiceStrength as PracticeStrength })} /></SettingSection>
+              <SettingSection title={t("Extra blank row", "额外空白行")}><Segmented value={String(settings.extraBlankRows)} options={[["0", t("Off", "关闭")], ["1", t("Add one", "增加一行")]]} onChange={(value) => patch({ extraBlankRows: value === "1" ? 1 : 0 })} /></SettingSection>
+            </>}
+            {!isFlashcards && settings.mode === "trace" && <SettingSection title={t("Learning layout", "教学排版")}>
               <ToggleRow label={t("Keep each word on one page when it fits", "同一词尽量保持同页")} checked={settings.keepWordsTogether !== false} onChange={(keepWordsTogether) => patch({ keepWordsTogether })} />
               <ToggleRow label={t("Teach each repeated character once", "相同字只教一次")} checked={!!settings.uniqueCharactersOnly} onChange={(uniqueCharactersOnly) => patch({ uniqueCharactersOnly })} />
               <p className="mt-2 text-xs text-[#657083]">{t("Your word list stays unchanged. Turn these off for character-by-character teaching.", "词表保持不变。关闭后恢复逐字精学。")}</p>
             </SettingSection>}
-            {settings.mode === "trace" && <SettingSection title={t("Stroke order", "笔顺")}><Segmented value={settings.strokeOrderMode} options={[["detailed", t("Detailed", "详细")], ["compact", t("Compact", "精简")], ["off", t("Off", "关闭")]]} onChange={(value) => patch({ strokeOrderMode: value as StrokeOrderMode, showStrokeOrder: value !== "off" })} /></SettingSection>}
-          </>}
           <SettingSection title={t("Difficulty", "难度")}><Segmented value={settings.difficulty} options={[["beginner", t("Beginner", "入门 HSK 1–2")], ["advanced", t("Advanced", "进阶")]]} onChange={(difficulty) => patch({ difficulty: difficulty as WorksheetDifficulty })} /></SettingSection>
           <div className="space-y-3"><Field label={t("Worksheet title", "字帖标题")} value={settings.title} onChange={(title) => patch({ title })} /><Field label={t("Name", "姓名")} value={settings.studentName} onChange={(studentName) => patch({ studentName })} /><Field label={t("Date", "日期")} value={settings.date} onChange={(date) => patch({ date })} /></div>
         </div>

@@ -4,7 +4,9 @@ import { UiText, PageNumber } from "./ui-text";
 import { fillLastPracticePage, estimateLearnUnitHeight } from "../layout";
 
 import { useEffect, useMemo, useState } from "react";
-import type { CharacterJson } from "hanzi-writer";
+import { useLocale } from "next-intl";
+import { localize } from "../i18n";
+import { loadCharacterStrokes, withDeadline } from "../stroke-loader";
 
 import { cn } from "@/lib/utils";
 
@@ -163,6 +165,8 @@ export function WorksheetPaper({
   className?: string;
   onPageCountChange?: (pageCount: number) => void;
 }) {
+  const locale = useLocale();
+  const [strokeRetry, setStrokeRetry] = useState(0);
   const characterUnits = useMemo(
     () => buildLearnUnits(entries, settings.mode === "trace" && settings.uniqueCharactersOnly),
     [entries, settings.mode, settings.uniqueCharactersOnly],
@@ -210,45 +214,25 @@ export function WorksheetPaper({
       transform: null,
     });
 
-    void import("hanzi-writer")
-      .then(async ({ default: HanziWriter }) => {
-        const results = await Promise.all(
-          uniqueCharacters.map(async (character) => {
-            try {
-              const data = (await HanziWriter.loadCharacterData(character)) as
-                | CharacterJson
-                | undefined;
-              return [character, data?.strokes ?? null] as const;
-            } catch {
-              return [character, null] as const;
-            }
-          }),
-        );
-
-        if (!active) return;
-        setStrokeState({
-          key: characterKey,
-          ready: true,
-          data: new Map(results),
-          transform: HanziWriter.getScalingTransform(100, 100, 7),
-        });
-      })
-      .catch(() => {
-        if (!active) return;
-        setStrokeState({
-          key: characterKey,
-          ready: true,
-          data: new Map(
-            uniqueCharacters.map((character) => [character, null]),
-          ),
-          transform: null,
-        });
+    void Promise.all([
+      withDeadline(import("hanzi-writer"), null),
+      Promise.all(uniqueCharacters.map(async (character) =>
+        [character, await loadCharacterStrokes(character)] as const)),
+    ]).then(([module, results]) => {
+      if (!active) return;
+      setStrokeState({
+        key: characterKey,
+        ready: true,
+        data: new Map(results),
+        transform: module ? module.default.getScalingTransform(100, 100, 7) : null,
       });
+    });
 
     return () => {
       active = false;
     };
   }, [
+    strokeRetry,
     characterKey,
     shouldLoadStrokes,
     uniqueCharacters,
@@ -333,6 +317,14 @@ export function WorksheetPaper({
 
   return (
     <div className={cn("hs-paper-stack w-full", !compact && "space-y-6")}>
+      {shouldLoadStrokes && strokesReady && (!strokeState.transform || uniqueCharacters.some((character) => !strokeState.data.get(character)?.length)) && (
+        <div className="hs-no-print mb-3 rounded border border-amber-300 bg-amber-50 p-3 text-sm" role="status">
+          <p>{localize(locale, "Some stroke guides could not load. You can still print or download your worksheet without them.", "部分笔顺未能加载，仍可打印或下载不含这些笔顺的字帖。")}</p>
+          <button type="button" className="hs-secondary-button mt-2" onClick={() => setStrokeRetry((value) => value + 1)}>
+            {localize(locale, "Retry stroke guides", "重试笔顺加载")}
+          </button>
+        </div>
+      )}
       {(compact ? renderedPages.slice(0, 1) : renderedPages).map((page, pageIndex) => (
         <WorksheetPageFrame
           key={`${page.kind}-${pageIndex}`}
@@ -558,7 +550,7 @@ function VocabularyContext({
       )}
     >
       <strong>
-        {itemNumber}. {english || "Review this word"}
+        {itemNumber}. {english}
       </strong>
       {showPinyin && pinyin ? <span>{pinyin}</span> : null}
       <span className="hs-hanzi-context ml-auto text-[#6b7480]">{word}</span>

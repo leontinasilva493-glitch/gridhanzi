@@ -281,7 +281,7 @@ try {
     assert.equal(await page.locator('[data-feedback-invite]').count(), 0);
     for (let i = 0; i < 3; i++) {
       await page.getByRole('link', { name: 'Back to editor', exact: true }).click();
-      await page.getByRole('textbox', { name: 'English row 4', exact: true }).first().waitFor();
+      await page.getByText('Back to your worksheet. All rows have been kept.', { exact: true }).waitFor();
       assert.equal(await page.getByRole('textbox', { name: 'English row 4', exact: true }).first().inputValue(), 'kindness');
       assert.equal(await page.getByRole('button', { name: 'Restore worksheet', exact: true }).count(), 0);
       assert.equal(await page.getByLabel('Worksheet title', { exact: true }).inputValue(), 'My reviewed lesson');
@@ -301,6 +301,78 @@ try {
     const settings = page.locator('#worksheet-settings');
     assert.equal(await settings.getByText('更多设置', { exact: true }).evaluate(el => el.parentElement.open), false);
     await page.screenshot({ path: path.join(output, 'ux-mobile-first-word.png') });
+  });
+  await scenario('bounce-hanzi-only-export', {}, async page => {
+    await visit(page, '/generator?words=' + encodeURIComponent('你好'));
+    await page.getByRole('button', { name: 'Practice', exact: true }).click();
+    await page.getByRole('textbox', { name: 'English row 1', exact: true }).fill('');
+    await page.getByRole('textbox', { name: 'Pinyin row 1', exact: true }).fill('');
+    assert.equal(await page.getByRole('button', { name: 'Mi Zi Ge', exact: true }).isVisible(), true);
+    assert.equal(await page.getByRole('button', { name: 'Flashcards', exact: true }).isVisible(), true);
+    await page.getByRole('button', { name: 'Preview full page', exact: true }).click();
+    await page.waitForURL('**/worksheet/preview');
+    const stored = await page.evaluate(() => JSON.parse(sessionStorage.getItem('gridhanzi:worksheet:v1')));
+    assert.equal(stored.entries[0].hanzi, '你好');
+    assert.equal(stored.entries[0].english, '');
+    assert.equal(stored.entries[0].pinyin, '');
+    const downloading = page.waitForEvent('download', { timeout: 45_000 });
+    await page.getByRole('button', { name: 'Download PDF', exact: true }).click();
+    const download = await downloading;
+    assert.equal(await download.failure(), null);
+    await download.saveAs(path.join(output, 'hanzi-only.pdf'));
+    await page.screenshot({ path: path.join(output, 'hanzi-only-preview.png') });
+  });
+  await scenario('bounce-flashcard-and-quiz-fields', {}, async page => {
+    await visit(page, '/generator?words=' + encodeURIComponent('你好'));
+    await page.getByRole('textbox', { name: 'English row 1', exact: true }).fill('');
+    await page.getByRole('textbox', { name: 'Pinyin row 1', exact: true }).fill('');
+    await page.getByRole('button', { name: 'Test', exact: true }).click();
+    await page.getByRole('button', { name: 'Preview full page', exact: true }).click();
+    const dialog = page.getByRole('dialog', { name: 'Review before exporting' });
+    await dialog.waitFor();
+    assert.equal(await dialog.getByRole('button', { name: 'Export only 0 ready rows' }).isEnabled(), false);
+    await dialog.getByRole('button', { name: 'Back to complete the list' }).click();
+    await page.getByRole('button', { name: 'Flashcards', exact: true }).click();
+    await page.getByText('Show English', { exact: true }).click();
+    assert.equal(await page.getByRole('checkbox', { name: 'Show English', exact: true }).isChecked(), false);
+    await page.getByText('Show Pinyin', { exact: true }).click();
+    assert.equal(await page.getByRole('checkbox', { name: 'Show Pinyin', exact: true }).isChecked(), false);
+    await page.getByRole('button', { name: 'Preview full page', exact: true }).click();
+    await page.waitForURL('**/worksheet/preview');
+    assert.match(await page.locator('.hs-paper').first().innerText(), /你好/);
+    assert.equal(await page.getByRole('button', { name: 'Download PDF', exact: true }).isEnabled(), true);
+  });
+  await scenario('bounce-stroke-timeout-retry', {}, async (page, context) => {
+    let retrySucceeds = false;
+    await context.route(/hanzi-writer-data.*\.json/, async route => {
+      if (!retrySucceeds) return; // Deliberately leave the initial request unresolved.
+      await route.fulfill({ json: { strokes: ['M 0 0 L 100 100'], medians: [[[0, 0], [100, 100]]] } });
+    });
+    await seed(context, 'sessionStorage', 'gridhanzi:worksheet:v1', JSON.stringify({
+      ...snapshot, settings: { ...snapshot.settings, mode: 'trace', strokeOrderMode: 'detailed', showStrokeOrder: true },
+    }));
+    // networkidle would never occur: this test intentionally keeps a request pending.
+    await page.goto('/worksheet/preview', { waitUntil: 'domcontentloaded' });
+    await page.getByText('Some stroke guides could not load.', { exact: false }).waitFor({ timeout: 15_000 });
+    assert.equal(await page.getByRole('button', { name: 'Download PDF', exact: true }).isEnabled(), true);
+    const downloading = page.waitForEvent('download', { timeout: 45_000 });
+    await page.getByRole('button', { name: 'Download PDF', exact: true }).click();
+    const download = await downloading;
+    assert.equal(await download.failure(), null);
+    await download.saveAs(path.join(output, 'stroke-fallback.pdf'));
+    await page.screenshot({ path: path.join(output, 'stroke-fallback.png') });
+    retrySucceeds = true;
+    await page.getByRole('button', { name: 'Retry stroke guides', exact: true }).click();
+    await page.getByRole('button', { name: 'Retry stroke guides', exact: true }).waitFor({ state: 'hidden', timeout: 15_000 });
+    assert.equal(await page.getByRole('button', { name: 'Download PDF', exact: true }).isEnabled(), true);
+  });
+  await scenario('bounce-local-analytics-isolation', {}, async page => {
+    const requests = [];
+    page.on('request', request => { if (/clarity\.ms|google-analytics\.com|googletagmanager\.com|plausible\.io/.test(request.url())) requests.push(request.url()); });
+    await visit(page, '/generator');
+    assert.deepEqual(requests, []);
+    assert.equal(await page.evaluate(() => typeof window.gtag), 'undefined');
+    assert.equal(await page.evaluate(() => typeof window.clarity), 'undefined');
   });
   await scenario('ux-feedback-only-after-download', {}, async (page, context) => {
     await seed(context, 'sessionStorage', 'gridhanzi:worksheet:v1', JSON.stringify(snapshot));
