@@ -36,6 +36,7 @@ import { generateMetadata as generateHskCheckerMetadata } from "../../app/[local
 import { generateMetadata as generateStrokeRulesMetadata } from "../../app/[locale]/chinese-stroke-order-rules/page";
 import { generateMetadata as generateComponentDirectoryMetadata } from "../../app/[locale]/chinese-character-components/page";
 import { generateMetadata as generateComponentDetailMetadata } from "../../app/[locale]/components/[slug]/page";
+import { generateMetadata as generateShenzhenMetadata } from "../../app/[locale]/shenzhen-in-chinese/page";
 
 const projectRoot = process.cwd();
 
@@ -55,6 +56,7 @@ test("buildPublicSitemapPaths includes every differentiated template page", () =
   assert.ok(paths.includes("/compare"));
   assert.ok(paths.includes("/for-teachers"));
   assert.ok(paths.includes("/chinese-slang/niu-lai"));
+  assert.ok(paths.includes("/shenzhen-in-chinese"));
   assert.ok(paths.includes("/hsk-level-checker"));
   assert.ok(paths.includes("/chinese-stroke-order-rules"));
   assert.ok(paths.includes("/chinese-character-components"));
@@ -71,6 +73,17 @@ test("buildPublicSitemapPaths includes every differentiated template page", () =
     assert.ok(paths.includes(`/components/${page.slug}`), page.slug);
   }
   assert.equal(new Set(paths).size, paths.length);
+});
+
+test("Shenzhen vocabulary guide uses the stroke-order route and unique metadata", async () => {
+  const metadata = await generateShenzhenMetadata({
+    params: Promise.resolve({ locale: "en" }),
+  });
+
+  assert.equal(metadata.title, "Shenzhen (深圳): Meaning, Pronunciation & Writing Guide");
+  assert.match(String(metadata.description), /深圳.*Shēnzhèn/);
+  assert.equal(metadata.alternates?.canonical, "https://gridhanzi.org/shenzhen-in-chinese");
+  assert.ok(buildPublicSitemapPaths().includes("/shenzhen-in-chinese"));
 });
 
 test("P0 learning pages publish unique TDH and aligned social metadata", async () => {
