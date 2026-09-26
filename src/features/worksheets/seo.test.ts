@@ -37,6 +37,7 @@ import { generateMetadata as generateStrokeRulesMetadata } from "../../app/[loca
 import { generateMetadata as generateComponentDirectoryMetadata } from "../../app/[locale]/chinese-character-components/page";
 import { generateMetadata as generateComponentDetailMetadata } from "../../app/[locale]/components/[slug]/page";
 import { generateMetadata as generateShenzhenMetadata } from "../../app/[locale]/shenzhen-in-chinese/page";
+import { generateMetadata as generateThankYouMetadata } from "../../app/[locale]/thank-you-in-chinese/page";
 
 const projectRoot = process.cwd();
 
@@ -57,6 +58,7 @@ test("buildPublicSitemapPaths includes every differentiated template page", () =
   assert.ok(paths.includes("/for-teachers"));
   assert.ok(paths.includes("/chinese-slang/niu-lai"));
   assert.ok(paths.includes("/shenzhen-in-chinese"));
+  assert.ok(paths.includes("/thank-you-in-chinese"));
   assert.ok(paths.includes("/hsk-level-checker"));
   assert.ok(paths.includes("/chinese-stroke-order-rules"));
   assert.ok(paths.includes("/chinese-character-components"));
@@ -84,6 +86,17 @@ test("Shenzhen vocabulary guide uses the stroke-order route and unique metadata"
   assert.match(String(metadata.description), /深圳.*Shēnzhèn/);
   assert.equal(metadata.alternates?.canonical, "https://gridhanzi.org/shenzhen-in-chinese");
   assert.ok(buildPublicSitemapPaths().includes("/shenzhen-in-chinese"));
+});
+
+test("Thank You in Chinese guide publishes unique metadata and canonical", async () => {
+  const metadata = await generateThankYouMetadata({
+    params: Promise.resolve({ locale: "en" }),
+  });
+
+  assert.equal(metadata.title, "Thank You in Chinese: 谢谢 (Xièxie) Meaning & Usage");
+  assert.match(String(metadata.description), /谢谢.*xièxie/);
+  assert.equal(metadata.alternates?.canonical, "https://gridhanzi.org/thank-you-in-chinese");
+  assert.ok(buildPublicSitemapPaths().includes("/thank-you-in-chinese"));
 });
 
 test("P0 learning pages publish unique TDH and aligned social metadata", async () => {

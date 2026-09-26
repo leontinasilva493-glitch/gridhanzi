@@ -26,6 +26,7 @@ other.
 | `/practice` | Continuous on-screen character practice product surface (`noindex`) |
 | `/chinese-slang/niu-lai` | Niu Lai meaning and Chinese movie meme context |
 | `/shenzhen-in-chinese` | Shenzhen in Chinese: 深圳, Mandarin Pinyin, character meanings, examples, and writing practice |
+| `/thank-you-in-chinese` | Thank you in Chinese: 谢谢, Mandarin pronunciation, usage, and writing practice |
 | `/for-teachers` | Chinese Worksheets for Teachers |
 | `/zh/generator` | 中文汉字字帖生成器 |
 
@@ -124,6 +125,8 @@ PDFs, teachers, parents, and learners where those concepts help the visitor.
 - Character detail: `LearningResource` and `BreadcrumbList`.
 - `/shenzhen-in-chinese`: `LearningResource` and `BreadcrumbList`; keep common
   character senses distinct from claims about the place-name etymology.
+- `/thank-you-in-chinese`: `LearningResource` and `BreadcrumbList`; describe
+  the neutral-tone pronunciation of the second 谢 as the usual conversational reading.
 - `/chinese-slang/niu-lai`: `Article` and `BreadcrumbList`. Keep the page's
   reviewed date and visible sources aligned with the markup; do not use
   `Movie` markup unless the site becomes a maintained film-data authority.
@@ -196,7 +199,7 @@ After deployment, check:
 
 1. `/`, `/generator`, `/templates`, one template detail page,
    `/english-to-chinese-writing-practice`, `/stroke-order`, `/for-teachers`,
-   `/shenzhen-in-chinese`, and `/zh/generator` return 200.
+   `/shenzhen-in-chinese`, `/thank-you-in-chinese`, and `/zh/generator` return 200.
 2. Each page has the intended Title, H1, canonical, robots directive, and
    `og:image`.
 3. `/sitemap.xml` includes only the approved URLs.
