@@ -4,15 +4,17 @@ import { UiText } from "./ui-text";
 
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
-import { ArrowRight, BookOpen, FileCheck2, PencilLine, Search } from "lucide-react";
+import { ArrowRight, BookOpen, Download, FileCheck2, PencilLine, Search } from "lucide-react";
 
 import { Link } from "@/core/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 import { filterWorksheetTemplates } from "../templates";
+import { isReadyToPrintTemplate } from "../template-packs";
 import type { WorksheetTemplate, WorksheetTemplateSummary } from "../types";
 import { PublicPageShell } from "./site-shell";
 import { WorksheetCardPreview } from "./worksheet-card-preview";
+import { TemplatePackDownloadLink } from "./template-pack-download-link";
 
 type CategoryFilter = WorksheetTemplate["category"] | "all";
 type TemplateDirectoryGroup = {
@@ -26,17 +28,17 @@ const templateShowcase = [
   {
     slug: "chinese-first-characters",
     eyebrow: "For first characters",
-    note: "Large, calm writing targets for a learner's first printable page.",
+    note: "24 starter characters with guided tracing and room to write.",
   },
   {
-    slug: "hsk-1",
-    eyebrow: "For HSK review",
-    note: "Turn a level-based vocabulary set into editable recognition and writing practice.",
+    slug: "numbers",
+    eyebrow: "For number practice",
+    note: "10 numbers from one to ten for a focused first lesson.",
   },
   {
     slug: "family",
     eyebrow: "For everyday vocabulary",
-    note: "Start from a useful topic, then tune the guidance and blank writing space.",
+    note: "24 family words with a printable writing layout.",
   },
 ] as const;
 
@@ -168,41 +170,49 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
           <p className="mt-3 max-w-3xl text-lg text-[#566276]"><UiText>{"Choose a ready-made topic, Pinyin, or HSK worksheet, then edit the Hanzi, grid, and paper size before saving a PDF."}</UiText></p>
         </header>
 
-        <section
-          className="mt-6 grid gap-5 rounded border border-[#ded7ca] bg-[#fffefa] p-5 sm:p-7 lg:grid-cols-[minmax(0,1fr)_auto]"
-          aria-labelledby="practice-sheet-templates-title"
-        >
-          <div>
-            <p className="hs-kicker"><UiText>{"Editable practice sheets"}</UiText></p>
-            <h2
-              id="practice-sheet-templates-title"
-              className="hs-display mt-2 text-3xl font-bold"
-            ><UiText>{"Chinese Character Practice Sheet Templates"}</UiText></h2>
-            <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]"><UiText>{"Start from printable Chinese writing practice sheets for family, numbers, colors, HSK, school, travel, Pinyin, and everyday topics. Each template opens as an editable word list, so you can change the Hanzi, Pinyin, grid, paper size, and PDF layout before printing."}</UiText></p>
+        <section className="mt-6 rounded border border-[#ded7ca] bg-[#fffefa] p-5 sm:p-7" aria-labelledby="practice-sheet-templates-title">
+          <p className="hs-kicker"><UiText>{"Choose your starting point"}</UiText></p>
+          <h2 id="practice-sheet-templates-title" className="hs-display mt-2 text-3xl font-bold"><UiText>{"Chinese Character Practice Sheet Templates"}</UiText></h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]"><UiText>{"Download a finished writing sheet, choose an editable topic or HSK list, or build one from your own vocabulary. Every route leads to printable practice."}</UiText></p>
+          <div className="mt-5 grid gap-3 md:grid-cols-3">
+            <a href="#ready-to-print" className="rounded border border-[#d4c6aa] bg-[#fff7e8] p-5 hover:border-[#b62822] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b62822]">
+              <span className="hs-display block text-xl font-bold">Download a ready-made PDF</span>
+              <span className="mt-2 block text-sm leading-6 text-[#5b687a]">Start with first characters, numbers, or family words.</span>
+              <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#24466e]">See printable packs <ArrowRight className="size-4" /></span>
+            </a>
+            <a href="#template-directory-title" className="rounded border border-[#d7d0c4] bg-white p-5 hover:border-[#b62822] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b62822]">
+              <span className="hs-display block text-xl font-bold">Choose a topic or HSK sheet</span>
+              <span className="mt-2 block text-sm leading-6 text-[#5b687a]">Browse editable word lists for a specific lesson.</span>
+              <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#24466e]">Browse worksheets <ArrowRight className="size-4" /></span>
+            </a>
+            <Link href="/generator" className="rounded border border-[#d7d0c4] bg-white p-5 hover:border-[#b62822] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b62822]">
+              <span className="hs-display block text-xl font-bold">Make your own worksheet</span>
+              <span className="mt-2 block text-sm leading-6 text-[#5b687a]">Paste English or Chinese words, then edit and print.</span>
+              <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#24466e]">Open worksheet maker <ArrowRight className="size-4" /></span>
+            </Link>
           </div>
-          <div className="flex flex-wrap items-start gap-3 lg:justify-end">
-            <Link href="/generator" className="hs-primary-button text-sm"><UiText>{"Make a custom worksheet"}</UiText></Link>
-            <Link href="/grids" className="hs-secondary-button text-sm"><UiText>{"Blank grid PDFs"}</UiText></Link>
-            <Link href="/for-teachers" className="hs-secondary-button text-sm"><UiText>{"Teacher workflow"}</UiText></Link>
-            <Link href={hskPickerHref} className="hs-secondary-button text-sm"><UiText>{"Choose by HSK version"}</UiText></Link>
-            <Link href="/hsk" className="hs-secondary-button text-sm"><UiText>{"Browse HSK vocabulary"}</UiText></Link>
+          <div className="mt-5 flex flex-wrap gap-4 text-sm font-semibold text-[#24466e]">
+            <Link href="/grids" className="hover:text-[#b62822]">Blank grid PDFs</Link>
+            <Link href={hskPickerHref} className="hover:text-[#b62822]">Choose HSK 2.0 or 3.0</Link>
+            <Link href="/for-teachers" className="hover:text-[#b62822]">Teacher workflow</Link>
           </div>
         </section>
 
         <section
-          className="mt-8"
+          className="mt-8 scroll-mt-24"
+          id="ready-to-print"
           aria-labelledby="template-outcomes-title"
         >
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
-              <p className="hs-kicker"><UiText>{"Real worksheet outcomes"}</UiText></p>
+              <p className="hs-kicker"><UiText>{"Ready-to-print starter packs"}</UiText></p>
               <h2
                 id="template-outcomes-title"
                 className="hs-display mt-2 text-3xl font-bold"
-              ><UiText>{"See what you can print"}</UiText></h2>
-              <p className="mt-2 max-w-2xl text-sm leading-6 text-[#5b687a]"><UiText>{"Compare the finished page direction first. Every example stays editable before you print or save a PDF."}</UiText></p>
+              ><UiText>{"Download a finished Chinese worksheet"}</UiText></h2>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-[#5b687a]"><UiText>{"Choose A4 or US Letter for immediate printing. Open the same words in the editor whenever you want to customise them."}</UiText></p>
             </div>
-            <span className="rounded-full border border-[#d7d0c4] bg-[#fffefa] px-3 py-1.5 text-xs font-semibold text-[#617084]"><UiText>{"Preview → edit → print"}</UiText></span>
+            <span className="rounded-full border border-[#d7d0c4] bg-[#fffefa] px-3 py-1.5 text-xs font-semibold text-[#617084]"><UiText>{"Preview → download or edit"}</UiText></span>
           </div>
 
           <div className="mt-5 grid gap-4 md:grid-cols-3">
@@ -230,11 +240,21 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
                   <p className="mt-2 text-sm leading-6 text-[#5b687a]">
                     <UiText>{note}</UiText>
                   </p>
-                  <Link
-                    href={`/generator?template=${template.slug}`}
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[#24466e] hover:text-[#b62822]"
-                  ><UiText>{"Use this layout"}</UiText><ArrowRight className="size-4" />
-                  </Link>
+                  <p className="mt-2 text-xs font-semibold text-[#657083]">{template.wordCount} words · A4 and US Letter</p>
+                  {isReadyToPrintTemplate(template.slug) ? (
+                    <div className="mt-4 grid gap-2 sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
+                      <TemplatePackDownloadLink slug={template.slug} paperSize="a4" className="hs-primary-button text-sm">
+                        <Download className="size-4" /> Download A4
+                      </TemplatePackDownloadLink>
+                      <TemplatePackDownloadLink slug={template.slug} paperSize="letter" className="hs-secondary-button text-sm">
+                        <Download className="size-4" /> US Letter
+                      </TemplatePackDownloadLink>
+                    </div>
+                  ) : null}
+                  <div className="mt-3 flex flex-wrap gap-4 text-sm font-bold text-[#24466e]">
+                    <Link href={`/worksheet/preview?template=${template.slug}`} className="hover:text-[#b62822]">Preview all pages</Link>
+                    <Link href={`/generator?template=${template.slug}`} className="hover:text-[#b62822]">Edit this sheet <ArrowRight className="inline size-4" /></Link>
+                  </div>
                 </div>
               </article>
             ))}

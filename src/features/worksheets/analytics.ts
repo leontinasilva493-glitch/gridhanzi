@@ -19,3 +19,20 @@ export function trackWorksheetEvent(event: WorksheetEvent, settings: WorksheetSe
     // Optional analytics must never interrupt editing or exporting.
   }
 }
+
+export function trackTemplatePackDownloadClick(
+  templateSlug: string,
+  paperSize: "a4" | "letter",
+) {
+  if (typeof window === "undefined" || !isProductionAnalyticsHost(window.location.hostname)) return;
+  const analyticsWindow = window as Window & { gtag?: (...args: unknown[]) => void };
+  try {
+    analyticsWindow.gtag?.("event", "worksheet_pack_download_click", {
+      template_slug: templateSlug,
+      paper_size: paperSize,
+      page_location: window.location.origin + window.location.pathname,
+    });
+  } catch {
+    // Optional analytics must never interrupt a download.
+  }
+}

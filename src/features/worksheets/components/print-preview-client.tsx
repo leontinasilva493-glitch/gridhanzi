@@ -41,27 +41,30 @@ const fallbackSnapshot: WorksheetSnapshot = {
   },
 };
 
-export function PrintPreviewClient() {
+export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
+  templateSnapshot?: WorksheetSnapshot;
+  templateSlug?: string;
+} = {}) {
   const printPagesRef = useRef<HTMLDivElement>(null);
   const locale = useLocale();
   const t = (english: string, chinese: string) => localize(locale, english, chinese);
-  const [snapshot, setSnapshot] = useState(fallbackSnapshot);
+  const [snapshot, setSnapshot] = useState(templateSnapshot ?? fallbackSnapshot);
   const [zoom, setZoom] = useState(85);
   const [pageCount, setPageCount] = useState(1);
   const [showAnswers, setShowAnswers] = useState(true);
   const [backgroundGraphics, setBackgroundGraphics] = useState(true);
   const [paperSize, setPaperSize] = useState<PaperSize>(
-    fallbackSnapshot.settings.paperSize,
+    templateSnapshot?.settings.paperSize ?? fallbackSnapshot.settings.paperSize,
   );
   const [printMargin, setPrintMargin] = useState<PrintMargin>(
-    fallbackSnapshot.settings.printMargin,
+    templateSnapshot?.settings.printMargin ?? fallbackSnapshot.settings.printMargin,
   );
   const [pdfProgress, setPdfProgress] = useState<{
     current: number;
     total: number;
   } | null>(null);
   const [pdfError, setPdfError] = useState("");
-  const [previewReady, setPreviewReady] = useState(false);
+  const [previewReady, setPreviewReady] = useState(Boolean(templateSnapshot));
   const [loadError, setLoadError] = useState(false);
   const [storageWarning, setStorageWarning] = useState(false);
   const profilePreset = getWorksheetProfilePreset(snapshot.settings.profile);
@@ -69,6 +72,7 @@ export function PrintPreviewClient() {
   const isTablet = paperSize === "tablet";
 
   useEffect(() => {
+    if (templateSnapshot) return;
     try {
       const saved =
         sessionStorage.getItem(WORKSHEET_STORAGE_KEY) ??
@@ -97,7 +101,7 @@ export function PrintPreviewClient() {
     } catch {
       setLoadError(true);
     }
-  }, []);
+  }, [templateSnapshot]);
 
   const printSettings = {
     ...snapshot.settings,
@@ -107,7 +111,7 @@ export function PrintPreviewClient() {
       canShowAnswers && showAnswers && snapshot.settings.showStrokeOrder,
   };
   useEffect(() => {
-    if (!previewReady) return;
+    if (!previewReady || templateSnapshot) return;
     try {
       sessionStorage.setItem(WORKSHEET_STORAGE_KEY, JSON.stringify({
         ...snapshot, settings: { ...snapshot.settings, paperSize, printMargin },
@@ -115,7 +119,7 @@ export function PrintPreviewClient() {
     } catch {
       setStorageWarning(true);
     }
-  }, [snapshot, paperSize, printMargin, previewReady]);
+  }, [snapshot, paperSize, printMargin, previewReady, templateSnapshot]);
 
   async function handlePdfDownload() {
     const pageElements = Array.from(
@@ -170,7 +174,7 @@ export function PrintPreviewClient() {
   return (
     <div className="min-h-screen bg-[#eeeeec] text-[#14253f]">
       <header className="hs-no-print sticky top-0 z-40 flex min-h-16 flex-wrap items-center justify-between gap-3 border-b border-[#d6d6d3] bg-[#fffdf9] px-4 py-2">
-        <Link href="/generator?resume=1" className="flex items-center gap-2 font-semibold">
+        <Link href={templateSlug ? `/generator?template=${templateSlug}` : "/generator?resume=1"} className="flex items-center gap-2 font-semibold">
           <ArrowLeft className="size-5" /> {t("Back to editor", "返回编辑器")}
         </Link>
         <div className="flex flex-wrap items-center justify-center gap-2">
@@ -291,7 +295,7 @@ export function PrintPreviewClient() {
         <aside className="hs-no-print border-l border-[#d4d4d0] bg-[#fffdf9] p-6">
           <h1 className="hs-display text-2xl font-bold">{t("Print settings", "打印与下载设置")}</h1>
           <button type="button" className="mt-3 text-sm underline underline-offset-4" onClick={() => window.dispatchEvent(new Event("gridhanzi:feedback-requested"))}>{t("Share feedback", "分享反馈")}</button>
- {canShowAnswers && snapshot.settings.mode !== "quiz" && <RepeatFillControl
+ {!templateSlug && canShowAnswers && snapshot.settings.mode !== "quiz" && <RepeatFillControl
  enabled={!!snapshot.settings.repeatToFill} disabled={!snapshot.entries.some(entry => /\p{Script=Han}/u.test(entry.hanzi))}
  chinese={locale === "zh"} onChange={repeatToFill => {
  const next = { ...snapshot, settings: { ...snapshot.settings, repeatToFill } };
