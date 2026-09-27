@@ -11,22 +11,59 @@ function hsk(system: "2.0" | "3.0", level: "1" | "2" | "3", character: string): 
 
 type GuideInput = Omit<StrokeOrderCharacter, "publicationStatus" | "seo"> & {
   seoDescription: string;
+  seoH1?: string;
 };
 
 function guide(input: GuideInput): StrokeOrderCharacter {
-  const { seoDescription, ...entry } = input;
+  const { seoDescription, seoH1, ...entry } = input;
   return {
     ...entry,
     publicationStatus: "complete",
     seo: {
       title: `${entry.character} Stroke Order, Meaning & Words (${entry.pinyin})`,
-      h1: `How to write ${entry.character} (${entry.pinyin}) in Chinese`,
+      h1: seoH1 ?? `How to write ${entry.character} (${entry.pinyin}) in Chinese`,
       description: seoDescription,
     },
   };
 }
 
 export const expandedStrokeOrderCharacters: StrokeOrderCharacter[] = [
+  guide({
+    character: "汉", pinyin: "hàn", meaning: "Chinese; Han Chinese", strokes: 5, radical: "氵", traditional: "漢", structure: "Left-right", learningTier: "Foundation",
+    seoH1: "How to Write 汉 (hàn): Stroke Order and Examples",
+    hsk: [{ system: "HSK 3.0", level: "Levels 1–2 writing group", evidenceKind: "word-family", note: "汉 appears in the official combined Levels 1–2 writing-character group; this is writing-syllabus evidence, not a standalone vocabulary-level claim." }],
+    importance: "You will see 汉 in 汉语 (Chinese language) and 汉字 (Chinese characters).",
+    components: [{ character: "氵", explanation: "The three water dots form a narrow left radical." }, { character: "又", explanation: "又 forms the right side. Keep it compact so the three water dots remain easy to see." }],
+    readingNotes: "汉 is pronounced hàn, with a falling fourth tone. Common words include 汉语, 汉字, 汉族, and 汉人.",
+    useNotes: "汉语 refers to the Chinese language, while 汉字 refers to Chinese characters. 汉人 and 汉族 refer to Han people.",
+    usageTitle: "Language, writing, and Han people",
+    usage: "The meaning depends on the full word: 汉语 names the language, 汉字 names the writing system, and 汉族 refers to the Han ethnic group.",
+    writingTip: "Write the three water dots first, keep them narrow, then give 又 enough width on the right. Leave a clean vertical gap so the two sides read as a balanced left-right character.",
+    examples: [{ hanzi: "汉语", pinyin: "Hànyǔ", meaning: "Chinese language" }, { hanzi: "汉字", pinyin: "Hànzì", meaning: "Chinese character" }, { hanzi: "汉族", pinyin: "Hànzú", meaning: "Han Chinese ethnic group" }, { hanzi: "汉人", pinyin: "Hànrén", meaning: "Han person" }],
+    exampleSentences: [{ learningLabel: "Starter", hanzi: "我学习汉语。", pinyin: "Wǒ xuéxí Hànyǔ.", meaning: "I study Chinese." }, { learningLabel: "Developing", hanzi: "这个汉字怎么写？", pinyin: "Zhège Hànzì zěnme xiě?", meaning: "How do you write this Chinese character?" }, { learningLabel: "Stretch", hanzi: "学好汉字需要时间和练习。", pinyin: "Xué hǎo Hànzì xūyào shíjiān hé liànxí.", meaning: "Learning Chinese characters well takes time and practice." }],
+    commonMistake: "Do not stretch 氵 across the full width or replace the final crossing movement in 又 with a separate dot; the narrow radical and compact right side create 汉's balance.",
+    confusableCharacter: { character: "汗", guidance: "汉 and 汗 share 氵, but 汉 has 又 on the right and means Chinese or Han, while 汗 has 干 and means sweat." },
+    relatedCharacters: ["字", "学", "年"],
+    seoDescription: "Learn how to write 汉 (hàn), with its five-stroke form, the meanings of 汉语 and 汉字, example sentences, and a printable Chinese writing worksheet.",
+  }),
+  guide({
+    character: "字", pinyin: "zì", meaning: "character; written word", strokes: 6, radical: "子", traditional: "字", structure: "Top-bottom", learningTier: "Foundation",
+    seoH1: "How to Write 字 (zì): Stroke Order and Examples",
+    hsk: [{ system: "HSK 3.0", level: "Levels 1–2 writing group", evidenceKind: "word-family", note: "字 appears in the official combined Levels 1–2 writing-character group; this is writing-syllabus evidence, not a standalone vocabulary-level claim." }],
+    importance: "You will see 字 in 汉字 (Chinese characters), 写字 (to write), 名字 (name), and 字典 (dictionary).",
+    components: [{ character: "宀", explanation: "The roof radical forms a compact cover across the top." }, { character: "子", explanation: "The child component sits below the roof and supplies the lower hook and horizontal." }],
+    readingNotes: "字 is pronounced zì, with a falling fourth tone. Common words include 汉字, 写字, 名字, and 字典.",
+    useNotes: "In 汉字, 字 means a written character. In 写字, it refers to writing; in 名字, it appears in the everyday word for a person's name.",
+    usageTitle: "How 字 is used",
+    usage: "The meaning changes with the word around it: 汉字 means Chinese characters, 写字 means to write, and 字典 means dictionary.",
+    writingTip: "Keep 宀 broad but light, centre 子 underneath it, and leave enough space for 子's final horizontal. The lower component should feel supported by the roof without touching its sides.",
+    examples: [{ hanzi: "汉字", pinyin: "Hànzì", meaning: "Chinese character" }, { hanzi: "写字", pinyin: "xiězì", meaning: "write; writing" }, { hanzi: "名字", pinyin: "míngzi", meaning: "name" }, { hanzi: "字典", pinyin: "zìdiǎn", meaning: "dictionary" }],
+    exampleSentences: [{ learningLabel: "Starter", hanzi: "这个字很难。", pinyin: "Zhège zì hěn nán.", meaning: "This character is difficult." }, { learningLabel: "Developing", hanzi: "请把你的名字写在这里。", pinyin: "Qǐng bǎ nǐ de míngzi xiě zài zhèlǐ.", meaning: "Please write your name here." }, { learningLabel: "Stretch", hanzi: "遇到不会读的字，可以查字典。", pinyin: "Yùdào bú huì dú de zì, kěyǐ chá zìdiǎn.", meaning: "When you meet a character you cannot read, you can check a dictionary." }],
+    commonMistake: "Do not make 宀 too narrow or let 子 float to one side; keep the roof centred over the lower component and finish 子 with a stable horizontal.",
+    confusableCharacter: { character: "学", guidance: "字 has 宀 over 子 and means a written character; 学 has a different upper structure and means study or learn." },
+    relatedCharacters: ["汉", "学", "年"],
+    seoDescription: "Learn how to write 字 (zì). See its six-stroke structure, how it appears in 汉字 and 写字, and practise with examples and a printable worksheet.",
+  }),
   guide({
     character: "好", pinyin: "hǎo", meaning: "good; well", strokes: 6, radical: "女", traditional: "好", structure: "Left-right", learningTier: "High-frequency",
     hsk: [hsk("2.0", "1", "好"), hsk("3.0", "1", "好")],

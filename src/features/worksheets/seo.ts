@@ -33,6 +33,8 @@ export function buildPublicSitemapPaths(): string[] {
     "/stroke-order",
     ...buildStrokeOrderSitemapPaths(),
     "/hsk",
+    "/hsk/3-0-exam-guide",
+    "/hsk/3-0-writing-characters",
     ...hskPublicPages.map(getHskPublicPath),
     "/hsk-level-checker",
     "/compare",
