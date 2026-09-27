@@ -89,6 +89,8 @@ export function HskDirectoryPage({ locale }: { locale: string }) {
             Use the character guides for stroke order, the comparison guides for words learners confuse, or begin with a ready-made HSK worksheet template.
           </p>
           <div className="mt-5 flex flex-wrap gap-3">
+            <Link href="/hsk/3-0-exam-guide" className="hs-secondary-button border-white/30 bg-transparent text-white hover:bg-white/10">Read the HSK 3.0 exam guide</Link>
+            <Link href="/hsk/3-0-writing-characters" className="hs-secondary-button border-white/30 bg-transparent text-white hover:bg-white/10">Browse HSK 3.0 writing characters</Link>
             <Link href="/hsk-level-checker" className="hs-primary-button">Analyze a Chinese text</Link>
             <Link href="/stroke-order" className="hs-secondary-button border-white/30 bg-white text-[#172b49]"><UiText>{"Browse character guides"}</UiText></Link>
             <Link href="/compare" className="hs-secondary-button border-white/30 bg-transparent text-white hover:bg-white/10">Compare similar characters</Link>

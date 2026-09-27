@@ -72,6 +72,9 @@ export function GridPaperIndexPage() {
           <p className="hs-kicker"><UiText>{"Printable Hanzi practice"}</UiText></p>
           <h1 className="hs-display mt-3 text-4xl font-bold sm:text-5xl"><UiText>{"Free Hanzi Grid Paper"}</UiText></h1>
           <p className="mt-4 text-lg leading-8 text-[#566276]"><UiText>{"Download printable Tian Zi Ge, Mi Zi Ge, and blank Chinese writing paper PDFs, or open a template in the worksheet maker to add your own characters and practice settings."}</UiText></p>
+          <Link href="/templates" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#24466e] hover:text-[#b62822]">
+            Browse filled Chinese writing worksheets <ArrowRight className="size-4" />
+          </Link>
         </header>
 
         <section className="mt-8 grid gap-5 md:grid-cols-3">
