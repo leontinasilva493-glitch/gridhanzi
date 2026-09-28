@@ -134,7 +134,7 @@ export function HomePage() {
           </div>
           <p className="mt-5 text-sm leading-6 text-[#5b687a]"><UiText>{"Need a faster start? Browse"}</UiText>{" "}{" "}
             <Link href="/templates" className="font-semibold text-[#b62822]"><UiText>{"Chinese character practice sheet templates"}</UiText></Link>{" "}<UiText>{"and open any topic in the worksheet generator. Need empty practice cells instead? Download"}</UiText>{" "}{" "}
-            <Link href="/grids" className="font-semibold text-[#b62822]"><UiText>{"printable Hanzi grid PDFs"}</UiText></Link>
+            <Link href="/grids" className="font-semibold text-[#b62822]"><UiText>{"Chinese grid paper PDFs"}</UiText></Link>
             .
           </p>
         </section>

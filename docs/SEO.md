@@ -16,6 +16,10 @@ other.
 | `/english-to-chinese-writing-practice` | English to Chinese Writing Practice |
 | `/templates` | Printable Chinese Writing Worksheets |
 | `/templates/[slug]` | `[Topic] Chinese Writing Worksheet` |
+| `/grids` | Free Chinese grid paper PDF directory: Tian Zi Ge, Mi Zi Ge, and blank writing paper |
+| `/grids/tian-zi-ge` | Tian Zi Ge printable practice paper |
+| `/grids/mi-zi-ge` | Mi Zi Ge printable practice paper |
+| `/grids/blank` | Blank Chinese writing practice paper for dictation and independent copying |
 | `/stroke-order` | Chinese stroke order with typed or private handwriting lookup |
 | `/stroke-order/[character]` | Curated character stroke order, meaning, and usage |
 | `/chinese-stroke-order-rules` | Chinese stroke order rules and exceptions |
@@ -75,6 +79,8 @@ Index pages only when they contain differentiated public value.
   editable worksheet workflow for English-input vocabulary searches.
 - Every curated template detail page with its own vocabulary, metadata,
   learning goal, teaching tip, and practice activity.
+- The three printable grid detail pages and their directory, each with a
+  distinct paper or selection intent and a working PDF download.
 - Curated English character guides and the sourced `/chinese-slang/niu-lai`
   explainer, because each has differentiated language-learning value.
 - The HSK text checker, advanced HSK list pages, stroke-order rules guide,

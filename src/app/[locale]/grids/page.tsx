@@ -8,8 +8,8 @@ export async function generateMetadata({ params }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const title = "Hanzi Grid Paper: Tian Zi Ge & Mi Zi Ge";
-  const description = "Free printable Hanzi grid paper for Chinese writing practice. Download Tian Zi Ge, Mi Zi Ge and blank grid PDFs, or make custom Hanzi worksheets.";
+  const title = "Free Chinese Grid Paper PDFs: Tian Zi Ge & Mi Zi Ge";
+  const description = "Print free Chinese grid paper for handwriting practice. Compare Tian Zi Ge, Mi Zi Ge, and blank A4 PDFs, or create a worksheet from your own Hanzi.";
   const pageSeo = buildPageSeoMetadata(envConfigs.app_url, "/grids", locale, {
     title,
     description,

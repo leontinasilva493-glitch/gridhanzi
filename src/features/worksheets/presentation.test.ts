@@ -464,7 +464,8 @@ test("curated stroke-order pages combine practice with useful character content"
   assert.match(pageSource, /entry\.writingTip/);
   assert.match(pageSource, /getRelatedStrokeOrderCharacters\(entry\)/);
   assert.match(pageSource, /\/generator\?words=/);
-  assert.match(pageSource, /Add .* to a worksheet/);
+  assert.match(pageSource, /Make a worksheet with \{entry\.character\}/);
+  assert.ok(pageSource.indexOf("Make a worksheet with") < pageSource.indexOf("Animated stroke order for"));
   assert.doesNotMatch(pageSource, /bg-white px-6 text-\[#172b49\]/);
 
   assert.match(hubSource, /groupedStrokeOrderCharacters\.map/);

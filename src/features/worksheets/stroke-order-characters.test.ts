@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { hskCatalog } from "./hsk";
 
 const approvedFirstBatch = [
   "\u7684", "\u4e00", "\u662f", "\u5728", "\u4e86", "\u6211", "\u4f60", "\u4eba",
@@ -12,6 +13,23 @@ const contentClusterCharacters = [
   "好", "不", "没", "有", "上", "下", "大", "小", "家", "水",
   "书", "吃", "喝", "二", "再", "得", "地", "坏",
 ] as const;
+
+const pilotCharacters = ["中", "国", "天", "他", "她", "们", "日", "月", "个", "和", "多", "这", "那", "谁", "也"] as const;
+
+test("pilot character HSK cards match local standalone entries and readings", () => {
+  for (const character of pilotCharacters) {
+    const guide = getStrokeOrderCharacter(character);
+    assert.ok(guide, character);
+    for (const card of guide.hsk) {
+      assert.ok(hskCatalog.some((record) =>
+        record.hanzi === character &&
+        record.pinyin === guide.pinyin &&
+        `HSK ${record.system}` === card.system &&
+        `Level ${record.level}` === card.level,
+      ), `${character} ${card.system} ${card.level}`);
+    }
+  }
+});
 
 const firstBatchTiers: Record<
   (typeof approvedFirstBatch)[number],
@@ -37,7 +55,7 @@ import {
 test("published character order contains the existing guides plus the approved first batch", () => {
   assert.deepEqual(strokeOrderCharacters.map((entry) => entry.character), [
     "\u7231", "\u5e74", "\u4f5b", ...approvedFirstBatch, trendingCharacter,
-    ...contentClusterCharacters, "汉", "字",
+    ...contentClusterCharacters, "汉", "字", ...pilotCharacters,
   ]);
 });
 
@@ -315,7 +333,7 @@ test("SEO and substantive teaching fields remain unique across published guides"
 test("curated stroke-order pages contain complete learning content", () => {
   assert.deepEqual(
     strokeOrderCharacters.map((entry) => entry.character),
-    ["爱", "年", "佛", ...approvedFirstBatch, trendingCharacter, ...contentClusterCharacters, "汉", "字"],
+    ["爱", "年", "佛", ...approvedFirstBatch, trendingCharacter, ...contentClusterCharacters, "汉", "字", ...pilotCharacters],
   );
 
   for (const entry of strokeOrderCharacters) {
