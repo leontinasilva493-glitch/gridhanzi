@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, Check, Eye, FileText, PencilLine, Sprout, Users } from "lucide-react";
+import { ArrowRight, BookOpen, Check, Download, Eye, FileText, PencilLine, Sprout, Users } from "lucide-react";
 
 import { Link } from "@/core/i18n/navigation";
 import { envConfigs } from "@/config";
@@ -8,11 +8,16 @@ import type { WorksheetTemplate } from "../types";
 import { PublicPageShell } from "./site-shell";
 import { StructuredData } from "./structured-data";
 import { WorksheetMiniature } from "./worksheet-miniature";
+import { TemplatePackDownloadLink } from "./template-pack-download-link";
+import { isReadyToPrintTemplate } from "../template-packs";
 
 export function TemplateDetailPage({ template }: { template: WorksheetTemplate }) {
   const siteUrl = envConfigs.app_url.replace(/\/$/, "");
   const canonicalUrl = `${siteUrl}/templates/${template.slug}`;
   const pageHeading = template.h1 ?? `${template.title} Chinese Writing Worksheet`;
+  const readyToPrintSlug = isReadyToPrintTemplate(template.slug)
+    ? template.slug
+    : null;
   const hskPickerHref = "/generator?hskSystem=2.0&hskLevel=1";
   const related = worksheetTemplates
     .filter((candidate) => candidate.slug !== template.slug)
@@ -90,11 +95,21 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link href={`/generator?template=${template.slug}&profile=${template.recommendedProfile}`} className="hs-primary-button min-w-64">
-                <FileText className="size-5" /> Use this template
+                <FileText className="size-5" /> Edit this template
               </Link>
-              <Link href={`/generator?template=${template.slug}&profile=${template.recommendedProfile}`} className="hs-secondary-button min-w-56">
-                <Eye className="size-5" /> Preview worksheet
+              <Link href={`/worksheet/preview?template=${template.slug}`} className="hs-secondary-button min-w-56">
+                <Eye className="size-5" /> Preview full worksheet
               </Link>
+              {readyToPrintSlug ? (
+                <>
+                  <TemplatePackDownloadLink slug={readyToPrintSlug} paperSize="a4" className="hs-secondary-button min-w-44">
+                    <Download className="size-4" /> Download A4 PDF
+                  </TemplatePackDownloadLink>
+                  <TemplatePackDownloadLink slug={readyToPrintSlug} paperSize="letter" className="hs-secondary-button min-w-44">
+                    <Download className="size-4" /> US Letter PDF
+                  </TemplatePackDownloadLink>
+                </>
+              ) : null}
               {template.category === "hsk" ? (
                 <>
                   <Link href="/hsk" className="hs-secondary-button min-w-56">

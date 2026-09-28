@@ -9,12 +9,6 @@ import { cn } from "@/lib/utils";
 import { LocaleSwitch } from "./locale-switch";
 import { EmailFeedbackLink } from "./email-feedback-link";
 
-const navItems = [
-  { href: "/generator", label: "Worksheet Maker", key: "generator" },
-  { href: "/hsk", label: "HSK Lists", key: "hsk" },
-  { href: "/compare", label: "Compare", key: "compare" },
-] as const;
-
 const templateMenuLinks = [
   ["All Templates", "/templates"],
   ["Quick Start", "/templates#quick-start"],
@@ -40,6 +34,13 @@ const gridPaperMenuLinks = [
   ["Blank Writing Paper", "/grids/blank"],
 ] as const;
 
+const hskMenuLinks = [
+  ["HSK Vocabulary Lists", "/hsk"],
+  ["HSK Level Checker", "/hsk-level-checker"],
+  ["HSK 3.0 Writing Characters", "/hsk/3-0-writing-characters"],
+  ["HSK 3.0 Exam Guide", "/hsk/3-0-exam-guide"],
+] as const;
+
 const navMenus = [
   {
     label: "Templates",
@@ -55,6 +56,11 @@ const navMenus = [
     label: "Printable Grids",
     key: "grids",
     links: gridPaperMenuLinks,
+  },
+  {
+    label: "HSK",
+    key: "hsk",
+    links: hskMenuLinks,
   },
 ] as const;
 
@@ -77,19 +83,6 @@ export function HanziSiteHeader({ active }: { active?: string }) {
         </Link>
 
         <nav className="hidden items-stretch self-stretch xl:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.key}
-              href={item.href}
-              className={cn(
-                "relative flex items-center px-3 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822] xl:px-4",
-                active === item.key &&
-                  "text-[#b62822] after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-[#b62822]",
-              )}
-            >
-              <UiText>{item.label}</UiText>
-            </Link>
-          ))}
           {navMenus.map((menu) => (
             <DesktopNavMenu key={menu.key} menu={menu} active={active} />
           ))}
@@ -114,15 +107,6 @@ export function HanziSiteHeader({ active }: { active?: string }) {
               <span className="sr-only"><UiText>{"Open navigation"}</UiText></span>
             </summary>
             <nav className="hs-card absolute right-0 top-12 grid w-64 overflow-hidden p-2">
-              {navItems.map((item) => (
-                <Link
-                  key={item.key}
-                  href={item.href}
-                  className="rounded px-3 py-2.5 text-sm font-medium hover:bg-[#f7f1e7]"
-                >
-                  <UiText>{item.label}</UiText>
-                </Link>
-              ))}
               {navMenus.map((menu) => (
                 <MobileNavMenu key={menu.key} menu={menu} />
               ))}
@@ -254,7 +238,7 @@ export function HanziSiteFooter() {
             ["For Teachers", "/for-teachers"],
             ["HSK Vocabulary", "/hsk"],
             ["HSK Level Checker", "/hsk-level-checker"],
-            ["Character Comparisons", "/compare"],
+            ["Common Confusions", "/compare"],
             ["Character Components", "/chinese-character-components"],
           ]}
         />

@@ -55,7 +55,7 @@ import {
 test("published character order contains the existing guides plus the approved first batch", () => {
   assert.deepEqual(strokeOrderCharacters.map((entry) => entry.character), [
     "\u7231", "\u5e74", "\u4f5b", ...approvedFirstBatch, trendingCharacter,
-    ...contentClusterCharacters, ...pilotCharacters,
+    ...contentClusterCharacters, "汉", "字", ...pilotCharacters,
   ]);
 });
 
@@ -333,7 +333,7 @@ test("SEO and substantive teaching fields remain unique across published guides"
 test("curated stroke-order pages contain complete learning content", () => {
   assert.deepEqual(
     strokeOrderCharacters.map((entry) => entry.character),
-    ["爱", "年", "佛", ...approvedFirstBatch, trendingCharacter, ...contentClusterCharacters, ...pilotCharacters],
+    ["爱", "年", "佛", ...approvedFirstBatch, trendingCharacter, ...contentClusterCharacters, "汉", "字", ...pilotCharacters],
   );
 
   for (const entry of strokeOrderCharacters) {
@@ -541,6 +541,8 @@ test("published character guides expose the approved character-specific search m
     ["\u5e74", "ni\u00e1n", "ni\u00e1n", "\u5e74 (ni\u00e1n) Stroke Order, Meaning & Examples", "How to Write \u5e74 (ni\u00e1n): Stroke Order, Meaning & Examples", "Learn how to write \u5e74 (ni\u00e1n), meaning \u201cyear.\u201d Follow its 6 strokes and practise calendar words such as \u4eca\u5e74, \u660e\u5e74 and \u53bb\u5e74."],
     ["\u4f5b", "f\u00f3", "f\u00f3/f\u00fa", "\u4f5b (f\u00f3/f\u00fa) Stroke Order, Meaning & Readings", "How to Write \u4f5b (f\u00f3/f\u00fa): Stroke Order and Readings", "Learn how to write \u4f5b and distinguish f\u00f3 in Buddhist vocabulary from f\u00fa in \u4eff\u4f5b. See its 7 strokes, components, example words and sentences."],
     ["\u725b", "ni\u00fa", "ni\u00fa", "\u725b (ni\u00fa) Stroke Order, Meaning & Slang Use", "How to Write \u725b (ni\u00fa): Stroke Order, Meaning & Slang", "Learn how to write \u725b (ni\u00fa), meaning cow or ox, and why it can mean \u201cawesome\u201d in Chinese slang. Follow its 4 strokes, common words and the \u725b\u6765 meme context."],
+    ["\u6c49", "h\u00e0n", "h\u00e0n", "\u6c49 Stroke Order, Meaning & Words (h\u00e0n)", "How to Write \u6c49 (h\u00e0n): Stroke Order and Examples", "Learn how to write \u6c49 (h\u00e0n), with its five-stroke form, the meanings of \u6c49\u8bed and \u6c49\u5b57, example sentences, and a printable Chinese writing worksheet."],
+    ["\u5b57", "z\u00ec", "z\u00ec", "\u5b57 Stroke Order, Meaning & Words (z\u00ec)", "How to Write \u5b57 (z\u00ec): Stroke Order and Examples", "Learn how to write \u5b57 (z\u00ec). See its six-stroke structure, how it appears in \u6c49\u5b57 and \u5199\u5b57, and practise with examples and a printable worksheet."],
   ] as const;
 
   for (const [character, pinyin, displayPinyin, title, h1, description] of approvedSeo) {

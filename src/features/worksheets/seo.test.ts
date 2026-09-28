@@ -652,6 +652,8 @@ test("curated Hanzi pages have static routes and unique sitemap entries", async 
     "/stroke-order/得",
     "/stroke-order/地",
     "/stroke-order/坏",
+    "/stroke-order/汉",
+    "/stroke-order/字",
     "/stroke-order/中",
     "/stroke-order/国",
     "/stroke-order/天",

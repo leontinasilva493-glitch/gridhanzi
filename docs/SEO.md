@@ -27,6 +27,8 @@ other.
 | `/components/[slug]` | One curated component family and writing pattern |
 | `/hsk-level-checker` | HSK level checker for Chinese text |
 | `/hsk/[system]/[level]` | Version-specific HSK vocabulary and writing practice |
+| `/hsk/3-0-exam-guide` | Official HSK 3.0 exam dates, source notes, and version FAQ |
+| `/hsk/3-0-writing-characters` | Official HSK 3.0 writing-character groups and focused practice selection |
 | `/practice` | Continuous on-screen character practice product surface (`noindex`) |
 | `/chinese-slang/niu-lai` | Niu Lai meaning and Chinese movie meme context |
 | `/shenzhen-in-chinese` | Shenzhen in Chinese: 深圳, Mandarin Pinyin, character meanings, examples, and writing practice |
@@ -84,6 +86,9 @@ Index pages only when they contain differentiated public value.
 - The HSK text checker, advanced HSK list pages, stroke-order rules guide,
   component hub, and six reviewed component guides. Their utilities and
   editorial fields provide value beyond a generated dictionary record.
+- The HSK 3.0 exam guide and official writing-character list. The writing list
+  preserves the published combined 1–2 and 7–9 groups and links to the official
+  syllabus PDF.
 - `/zh/generator`, because it has a Chinese interface and an English alternate.
 
 ### Do not index
