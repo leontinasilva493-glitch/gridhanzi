@@ -2,10 +2,12 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  buildComparisonWorksheetHref,
   comparisonPages,
   getComparisonPage,
   getComparisonPagesForCharacter,
 } from "./comparison-pages";
+import { parseVocabularyInput } from "./engine";
 
 const expectedSlugs = [
   "的-得-地", "不-没", "来-去", "在-再", "上-下", "好-坏", "人-入", "牛-午",
@@ -45,4 +47,16 @@ test("comparison lookup and character backlinks are explicit", () => {
     getComparisonPagesForCharacter("来").map((page) => page.slug),
     ["来-去"],
   );
+});
+
+test("comparison worksheet links preserve each practice word as a separate generator row", () => {
+  for (const page of comparisonPages) {
+    const url = new URL(buildComparisonWorksheetHref(page), "https://gridhanzi.org");
+    assert.equal(url.pathname, "/generator");
+    assert.deepEqual(
+      parseVocabularyInput(url.searchParams.get("words") ?? ""),
+      page.worksheetWords,
+      `${page.slug} worksheet rows`,
+    );
+  }
 });

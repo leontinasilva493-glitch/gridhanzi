@@ -191,3 +191,7 @@ export function getComparisonPage(slug: string): ComparisonPage | undefined {
 export function getComparisonPagesForCharacter(character: string): ComparisonPage[] {
   return comparisonPages.filter((page) => page.characters.includes(character));
 }
+
+export function buildComparisonWorksheetHref(page: ComparisonPage): string {
+  return `/generator?words=${encodeURIComponent(page.worksheetWords.join("\n"))}`;
+}

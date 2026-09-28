@@ -4,7 +4,7 @@ import { envConfigs } from "@/config";
 import { Link } from "@/core/i18n/navigation";
 
 import { getStrokeOrderCharacter } from "../stroke-order-characters";
-import { getComparisonPage, type ComparisonPage } from "../comparison-pages";
+import { buildComparisonWorksheetHref, getComparisonPage, type ComparisonPage } from "../comparison-pages";
 import { StructuredData } from "./structured-data";
 import { PublicPageShell } from "./site-shell";
 
@@ -12,7 +12,7 @@ export function ComparisonDetailPage({ page, locale }: { page: ComparisonPage; l
   const localePrefix = locale === "zh" ? "/zh" : "";
   const pathname = `/compare/${page.slug}`;
   const pageUrl = `${envConfigs.app_url.replace(/\/$/, "")}${localePrefix}${pathname}`;
-  const worksheetHref = `/generator?words=${encodeURIComponent(page.worksheetWords.join(","))}`;
+  const worksheetHref = buildComparisonWorksheetHref(page);
   const characterGuides = page.characters.map((character) => getStrokeOrderCharacter(character)).filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
 
   return (

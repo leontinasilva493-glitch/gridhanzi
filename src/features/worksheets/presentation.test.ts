@@ -234,9 +234,9 @@ test("template directory leads with real printable outcomes", async () => {
     "src/features/worksheets/components/templates-page.tsx",
   );
 
-  assert.match(source, /See what you can print/);
+  assert.match(source, /Download a finished Chinese worksheet/);
   assert.match(source, /For first characters/);
-  assert.match(source, /For HSK review/);
+  assert.match(source, /For number practice/);
   assert.match(source, /For everyday vocabulary/);
   assert.match(source, /showcaseTemplates/);
   assert.match(source, /<WorksheetCardPreview/);

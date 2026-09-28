@@ -106,6 +106,13 @@ export default async function StrokeOrderPage({
           <h2 id="popular-guides-title" className="hs-display mt-2 text-3xl font-bold">
             Character guide learning paths
           </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-7 text-[#566276]">
+            Two characters look or sound alike? Read the{" "}
+            <Link href="/compare" className="font-semibold text-[#24466e] underline underline-offset-4 hover:text-[#b62822]">
+              Common Confusions guides
+            </Link>{" "}
+            for examples such as 的, 得, 地 and 人 vs 入.
+          </p>
           <div className="mt-6 space-y-9">
             {groupedStrokeOrderCharacters.map((group) => (
               <section key={group.tier} aria-labelledby={`${group.tier}-guides-title`}>
