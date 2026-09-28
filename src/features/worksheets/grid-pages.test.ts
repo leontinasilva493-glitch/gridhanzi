@@ -32,7 +32,7 @@ test("defines the three printable grid landing pages with keyword PDFs", () => {
     [
       "Free Tian Zi Ge Printable Grid Paper",
       "Free Mi Zi Ge Printable Grid Paper",
-      "Blank Hanzi Grid Paper PDF",
+      "Blank Chinese Writing Practice Paper (Free A4 PDF)",
     ],
   );
 });
@@ -80,7 +80,7 @@ test("blank grid metadata describes the real Tian Zi Ge download", async () => {
     params: Promise.resolve({ locale: "en", slug: "blank" }),
   });
 
-  assert.equal(metadata.title, "Blank Hanzi Grid Paper PDF");
-  assert.match(metadata.description ?? "", /blank Tian Zi Ge/i);
+  assert.equal(metadata.title, "Blank Chinese Writing Practice Paper (Free A4 PDF)");
+  assert.match(metadata.description ?? "", /blank Chinese writing practice paper/i);
   assert.doesNotMatch(metadata.description ?? "", /plain (?:cell|grid)/i);
 });

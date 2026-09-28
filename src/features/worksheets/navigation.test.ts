@@ -196,7 +196,7 @@ test("blank grid acquisition links route users to the printable grid pages", asy
     projectFile("src/features/worksheets/components/generator-client.tsx"),
   ]);
 
-  assert.match(homeSource, /href="\/grids"[\s\S]*?printable Hanzi grid PDFs/i);
+  assert.match(homeSource, /href="\/grids"[\s\S]*?Chinese grid paper PDFs/i);
   assert.match(templatesSource, /href="\/grids"[\s\S]*?Blank grid PDFs/i);
   assert.match(generatorSource, /href="\/grids"[\s\S]*?printable grid PDFs/i);
 });

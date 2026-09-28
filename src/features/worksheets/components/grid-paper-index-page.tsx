@@ -20,7 +20,7 @@ export function GridPaperIndexPage() {
           {
             "@context": "https://schema.org",
             "@type": "ItemList",
-            name: "Hanzi grid paper templates",
+            name: "Printable Chinese grid paper",
             url: `${siteUrl}/grids`,
             itemListElement: gridPaperPages.map((page, index) => ({
               "@type": "ListItem",
@@ -35,10 +35,10 @@ export function GridPaperIndexPage() {
             mainEntity: [
               {
                 "@type": "Question",
-                name: "What is Hanzi grid paper?",
+                name: "What is Chinese grid paper?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Hanzi grid paper gives each Chinese character a square writing area with optional cross and diagonal guide lines for proportion and stroke direction.",
+                  text: "Chinese grid paper gives each Hanzi a square writing area with optional cross and diagonal guide lines for proportion and stroke direction.",
                 },
               },
               {
@@ -70,8 +70,8 @@ export function GridPaperIndexPage() {
         </div>
         <header className="mt-3 max-w-4xl">
           <p className="hs-kicker"><UiText>{"Printable Hanzi practice"}</UiText></p>
-          <h1 className="hs-display mt-3 text-4xl font-bold sm:text-5xl"><UiText>{"Free Hanzi Grid Paper"}</UiText></h1>
-          <p className="mt-4 text-lg leading-8 text-[#566276]"><UiText>{"Download printable Tian Zi Ge, Mi Zi Ge, and blank Chinese writing paper PDFs, or open a template in the worksheet maker to add your own characters and practice settings."}</UiText></p>
+          <h1 className="hs-display mt-3 text-4xl font-bold sm:text-5xl"><UiText>{"Free Chinese Grid Paper for Hanzi Writing"}</UiText></h1>
+          <p className="mt-4 text-lg leading-8 text-[#566276]"><UiText>{"Choose Chinese grid paper for the way you practise: Tian Zi Ge has a centre cross, Mi Zi Ge adds diagonal guides, and blank writing paper leaves every cell ready for your own characters. Download a free A4 PDF, or open the worksheet maker to add your own word list."}</UiText></p>
         </header>
 
         <section className="mt-8 grid gap-5 md:grid-cols-3">
@@ -82,7 +82,7 @@ export function GridPaperIndexPage() {
               </div>
               <div className="p-5">
                 <p className="hs-kicker">{page.eyebrow}</p>
-                <h2 className="hs-display mt-2 text-2xl font-bold">{page.slug === "blank" ? "Blank Writing Grid" : page.eyebrow.split(" /")[0]}</h2>
+                <h2 className="hs-display mt-2 text-2xl font-bold">{page.slug === "blank" ? "Blank Chinese Writing Paper" : page.eyebrow.split(" /")[0]}</h2>
                 <p className="mt-3 text-sm leading-6 text-[#5b687a]">{page.description}</p>
                 <div className="mt-5 grid gap-2">
                   <Link href={`/grids/${page.slug}`} className="hs-primary-button w-full"><UiText>{"View printable page"}</UiText><ArrowRight className="size-4" />
@@ -97,11 +97,16 @@ export function GridPaperIndexPage() {
           ))}
         </section>
 
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded border border-[#d8c49f] bg-[#fff9ed] p-5">
+          <p className="max-w-2xl text-sm leading-6 text-[#4e5d70]"><UiText>{"Need characters, Pinyin, or tracing guidance printed inside the grid? Build a sheet from your own words."}</UiText></p>
+          <Link href="/generator" className="hs-secondary-button"><UiText>{"Make a custom Chinese writing grid"}</UiText> <ArrowRight className="size-4" /></Link>
+        </div>
+
         <section className="hs-card mt-8 p-6 sm:p-8">
           <h2 className="hs-display text-2xl font-bold"><UiText>{"Frequently asked questions"}</UiText></h2>
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             <div>
-              <h3 className="font-bold">What is Hanzi grid paper?</h3>
+              <h3 className="font-bold">What is Chinese grid paper?</h3>
               <p className="mt-2 text-sm leading-6 text-[#5f6d80]">It is writing paper with a square space for each Chinese character and optional guides for centre, proportion, and stroke direction.</p>
             </div>
             <div>

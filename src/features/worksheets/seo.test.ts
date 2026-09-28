@@ -207,8 +207,8 @@ test("core acquisition pages publish focused titles and matching social metadata
     ],
     [
       grids,
-      "Hanzi Grid Paper: Tian Zi Ge & Mi Zi Ge",
-      "Free printable Hanzi grid paper for Chinese writing practice. Download Tian Zi Ge, Mi Zi Ge and blank grid PDFs, or make custom Hanzi worksheets.",
+      "Free Chinese Grid Paper PDFs: Tian Zi Ge & Mi Zi Ge",
+      "Print free Chinese grid paper for handwriting practice. Compare Tian Zi Ge, Mi Zi Ge, and blank A4 PDFs, or create a worksheet from your own Hanzi.",
     ],
     [
       comparisons,
@@ -272,7 +272,7 @@ test("indexable page families align standard, Open Graph, and Twitter metadata",
       params: Promise.resolve({ locale: "en", slug: "blank" }),
     }).then((metadata) => ({
       metadata,
-      title: "Blank Hanzi Grid Paper PDF",
+        title: "Blank Chinese Writing Practice Paper (Free A4 PDF)",
     })),
     generateHskDirectoryMetadata({ params: Promise.resolve({ locale: "en" }) }).then(
       (metadata) => ({
@@ -652,6 +652,21 @@ test("curated Hanzi pages have static routes and unique sitemap entries", async 
     "/stroke-order/得",
     "/stroke-order/地",
     "/stroke-order/坏",
+    "/stroke-order/中",
+    "/stroke-order/国",
+    "/stroke-order/天",
+    "/stroke-order/他",
+    "/stroke-order/她",
+    "/stroke-order/们",
+    "/stroke-order/日",
+    "/stroke-order/月",
+    "/stroke-order/个",
+    "/stroke-order/和",
+    "/stroke-order/多",
+    "/stroke-order/这",
+    "/stroke-order/那",
+    "/stroke-order/谁",
+    "/stroke-order/也",
   ]);
 
   const routeSource = await readFile(

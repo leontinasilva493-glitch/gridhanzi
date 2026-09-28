@@ -128,18 +128,18 @@ export const gridPaperPages: GridPaperPage[] = [
     slug: "blank",
     grid: "tian",
     profile: "kids",
-    title: "Blank Hanzi Grid Paper PDF",
+    title: "Blank Chinese Writing Practice Paper (Free A4 PDF)",
     description:
-      "Download a free blank Tian Zi Ge Hanzi grid PDF with empty guide cells for Chinese writing practice. A4 printable, with no characters and no sign-up.",
-    h1: "Blank Hanzi Grid Paper (Free PDF)",
-    eyebrow: "Blank Hanzi practice paper",
+      "Free blank Chinese writing practice paper with Tian Zi Ge guide cells. Download an A4 PDF with no printed characters for copying, dictation, and handwriting.",
+    h1: "Blank Chinese Writing Practice Paper",
+    eyebrow: "Blank Chinese writing paper",
     previewTitle: "Blank Chinese Writing Paper",
     pdfHref: "/downloads/blank-chinese-writing-practice-paper.pdf",
     pdfFilename: "blank-chinese-writing-practice-paper.pdf",
     generatorHref: "/generator?grid=tian-zi-ge",
     intro: [
-      "This blank Chinese writing practice paper has empty Tian Zi Ge cells: there are no printed characters, but each square keeps the horizontal and vertical guide lines that help learners judge centre and proportion.",
-      "Use the free printable PDF for independent handwriting, copying from a textbook, dictation, or a quick review sheet. If you want printed models, choose Tian Zi Ge or Mi Zi Ge in the generator and add the exact rows, Pinyin, meanings, or tracing steps your learner needs.",
+      "This blank Chinese writing practice paper leaves every Tian Zi Ge cell empty. There are no model characters or vocabulary on the PDF, while the horizontal and vertical guides remain visible for handwriting.",
+      "Print the A4 sheet for dictation, copying a textbook passage, or practising characters your class has already learned. For printed models, Pinyin, or tracing steps, open the generator and add the exact words you need.",
     ],
     sections: [
       {

@@ -92,6 +92,9 @@ export function StrokeOrderCharacterPage({
               where this character appears, and add it to a printable practice
               sheet.
             </p>
+            <Link href={worksheetHref} className="hs-primary-button mt-5 w-fit min-h-11 px-5 text-sm">
+              <FilePlus2 className="size-4" /> Make a worksheet with {entry.character}
+            </Link>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <span className="rounded-full bg-[#e8f2ec] px-3 py-1.5 text-sm font-bold text-[#267254]">
                 {entry.learningTier}
@@ -336,8 +339,8 @@ export function StrokeOrderCharacterPage({
               then choose a grid, cell size, and practice mode.
             </p>
           </div>
-          <Link href={worksheetHref} className="hs-primary-button min-h-12 px-6">
-            <FilePlus2 className="size-5" /> Add {entry.character} to a worksheet
+          <Link href={worksheetHref} className="hs-secondary-button min-h-12 px-6">
+            <FilePlus2 className="size-5" /> Open the worksheet maker
           </Link>
         </section>
 
