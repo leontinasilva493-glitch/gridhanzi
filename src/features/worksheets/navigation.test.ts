@@ -5,6 +5,7 @@ import test from "node:test";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 import { buildPublicSitemapPaths } from "./seo";
+import { translateUi } from "./ui-copy";
 
 const projectPath = (path: string) =>
   fileURLToPath(new URL(`../../../${path}`, import.meta.url));
@@ -15,23 +16,52 @@ test("primary navigation stays task-based and keeps a responsive worksheet CTA",
   const shellSource = await projectFile(
     "src/features/worksheets/components/site-shell.tsx",
   );
-  const navStart = shellSource.indexOf("const navItems");
+  const navStart = shellSource.indexOf("const navMenus");
   const navEnd = shellSource.indexOf("] as const;", navStart);
   const navSource = shellSource.slice(navStart, navEnd);
   const headerSource = shellSource.slice(0, shellSource.indexOf("export function HanziSiteFooter"));
 
-  assert.match(navSource, /label: "Worksheet Maker"/);
-  assert.match(navSource, /label: "HSK Lists"/);
-  assert.match(navSource, /label: "Compare"/);
-  assert.match(headerSource, /label: "Templates"/);
-  assert.match(headerSource, /label: "Stroke Order"/);
-  assert.match(headerSource, /label: "Printable Grids"/);
-  assert.doesNotMatch(navSource, /For Teachers/);
+  const labels = ["Templates", "Stroke Order", "Printable Grids", "HSK"];
+  const positions = labels.map((label) => navSource.indexOf(`label: "${label}"`));
+  assert.ok(positions.every((position) => position >= 0), "all task menus are present");
+  assert.deepEqual(positions, [...positions].sort((a, b) => a - b), "task menus stay in order");
+  assert.doesNotMatch(headerSource, /const navItems|label: "Compare"|label: "Worksheet Maker"/);
+  assert.doesNotMatch(headerSource, /href="\/compare"/);
   assert.doesNotMatch(headerSource, /No sign-up required/);
   assert.ok(
     (headerSource.match(/Create Worksheet/g) ?? []).length >= 2,
     "desktop and mobile navigation should both expose the primary action",
   );
+});
+
+test("HSK navigation opens the list, checker, writing characters, and exam guide", async () => {
+  const shellSource = await projectFile(
+    "src/features/worksheets/components/site-shell.tsx",
+  );
+  const hskStart = shellSource.indexOf("const hskMenuLinks");
+  const hskEnd = shellSource.indexOf("] as const;", hskStart);
+  const hskSource = shellSource.slice(hskStart, hskEnd);
+
+  for (const [label, href] of [
+    ["HSK Vocabulary Lists", "/hsk"],
+    ["HSK Level Checker", "/hsk-level-checker"],
+    ["HSK 3.0 Writing Characters", "/hsk/3-0-writing-characters"],
+    ["HSK 3.0 Exam Guide", "/hsk/3-0-exam-guide"],
+  ]) {
+    assert.match(hskSource, new RegExp(`\\["${label}", "${href}"\\]`));
+  }
+});
+
+test("new learning navigation labels remain readable in Chinese", () => {
+  for (const label of [
+    "HSK Vocabulary Lists",
+    "HSK Level Checker",
+    "HSK 3.0 Writing Characters",
+    "HSK 3.0 Exam Guide",
+    "Common Confusions",
+  ]) {
+    assert.notEqual(translateUi("zh", label), label, `${label} Chinese label`);
+  }
 });
 
 test("template navigation stays second-level and points to the category page anchors", async () => {
@@ -87,6 +117,7 @@ test("HSK and stroke-order hubs expose the new P0 learning paths", async () => {
   assert.match(hskSource, /Thirteen curated lists/);
   assert.match(strokeSource, /href="\/chinese-stroke-order-rules"/);
   assert.match(strokeSource, /href="\/chinese-character-components"/);
+  assert.match(strokeSource, /href="\/compare"/);
 });
 
 test("template category page carries the detailed third-level worksheet links", async () => {
@@ -136,7 +167,7 @@ test("footer topic links open the matching template detail pages", async () => {
   assert.match(shellSource, /\["Numbers", "\/templates\/numbers"\]/);
   assert.match(shellSource, /\["Colors", "\/templates\/colors"\]/);
   assert.match(shellSource, /\["HSK Vocabulary", "\/hsk"\]/);
-  assert.match(shellSource, /\["Character Comparisons", "\/compare"\]/);
+  assert.match(shellSource, /\["Common Confusions", "\/compare"\]/);
 });
 
 test("worksheet preview exists for locale routes and remains excluded from search", async () => {
