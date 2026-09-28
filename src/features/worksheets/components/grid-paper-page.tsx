@@ -88,7 +88,7 @@ export function GridPaperPageView({ page }: { page: GridPaperPage }) {
           <div>
             <GridPaperPreview page={page} />
             <p className="mt-3 text-center text-xs text-[#697487]">
-              Live worksheet preview · <a href={page.pdfHref} className="font-semibold text-[#24466e] underline">open the PDF</a>
+              Preview of the downloadable PDF · <a href={page.pdfHref} className="font-semibold text-[#24466e] underline">open the PDF</a>
             </p>
           </div>
         </section>

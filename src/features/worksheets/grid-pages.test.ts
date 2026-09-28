@@ -63,10 +63,15 @@ test("adds the grid hub and its three child pages to the public sitemap", () => 
 test("publishes a real PDF asset for every grid page", async () => {
   for (const page of gridPaperPages) {
     const assetPath = path.join(projectRoot, "public", page.pdfHref.slice(1));
+    const previewPath = assetPath.replace(/\.pdf$/, ".svg");
     await access(assetPath);
+    await access(previewPath);
     const source = await readFile(assetPath);
+    const preview = await readFile(previewPath, "utf8");
     assert.equal(source.subarray(0, 5).toString("ascii"), "%PDF-", page.slug);
     assert.ok(source.length > 500, page.slug);
+    assert.match(preview, /viewBox="0 0 595\.28 841\.89"/, page.slug);
+    assert.match(preview, new RegExp(page.previewTitle), page.slug);
   }
 });
 
