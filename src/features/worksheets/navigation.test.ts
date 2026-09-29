@@ -117,6 +117,7 @@ test("HSK and stroke-order hubs expose the new P0 learning paths", async () => {
   assert.match(hskSource, /Thirteen curated lists/);
   assert.match(strokeSource, /href="\/chinese-stroke-order-rules"/);
   assert.match(strokeSource, /href="\/chinese-character-components"/);
+  assert.match(strokeSource, /href="\/chinese-stroke-order-dictionary"/);
   assert.match(strokeSource, /href="\/compare"/);
 });
 

@@ -21,6 +21,7 @@ other.
 | `/grids/mi-zi-ge` | Mi Zi Ge printable practice paper |
 | `/grids/blank` | Blank Chinese writing practice paper for dictation and independent copying |
 | `/stroke-order` | Chinese stroke order with typed or private handwriting lookup |
+| `/chinese-stroke-order-dictionary` | Browse curated Hanzi by reading, meaning, radical, and stroke count before opening a writing guide |
 | `/stroke-order/[character]` | Curated character stroke order, meaning, and usage |
 | `/chinese-stroke-order-rules` | Chinese stroke order rules and exceptions |
 | `/chinese-character-components` | Chinese character meaning and sound components |
@@ -83,6 +84,9 @@ Index pages only when they contain differentiated public value.
   distinct paper or selection intent and a working PDF download.
 - Curated English character guides and the sourced `/chinese-slang/niu-lai`
   explainer, because each has differentiated language-learning value.
+- The English stroke-order dictionary, because it offers combined search and
+  browse filters across reviewed character guides rather than another single-
+  character lookup. Keep its stated coverage aligned with the published set.
 - The HSK text checker, advanced HSK list pages, stroke-order rules guide,
   component hub, and six reviewed component guides. Their utilities and
   editorial fields provide value beyond a generated dictionary record.
