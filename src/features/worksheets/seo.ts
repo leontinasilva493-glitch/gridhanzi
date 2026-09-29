@@ -31,6 +31,7 @@ export function buildPublicSitemapPaths(): string[] {
     "/grids",
     ...gridPaperPages.map((page) => `/grids/${page.slug}`),
     "/stroke-order",
+    "/chinese-stroke-order-dictionary",
     ...buildStrokeOrderSitemapPaths(),
     "/hsk",
     "/hsk/3-0-exam-guide",

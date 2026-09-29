@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { trackWorksheetEvent } from "./analytics";
+import { trackDictionaryEvent, trackWorksheetEvent } from "./analytics";
 import { defaultWorksheetSettings } from "./types";
 
 test("business events use aggregate fields and a query-free page URL", () => {
@@ -31,6 +31,26 @@ test("disabled or broken analytics does not interrupt the worksheet", () => {
       location: { hostname: "gridhanzi.org" }, gtag: () => { throw new Error("blocked"); },
     } });
     assert.doesNotThrow(() => trackWorksheetEvent("worksheet_editor_open", defaultWorksheetSettings, 1));
+  } finally {
+    if (original) Object.defineProperty(globalThis, "window", original);
+    else Reflect.deleteProperty(globalThis, "window");
+  }
+});
+
+test("dictionary analytics sends counts without a searched character or query string", () => {
+  const original = Object.getOwnPropertyDescriptor(globalThis, "window");
+  const calls: unknown[][] = [];
+  try {
+    Object.defineProperty(globalThis, "window", { configurable: true, value: {
+      location: { hostname: "gridhanzi.org", origin: "https://gridhanzi.org", pathname: "/chinese-stroke-order-dictionary", search: "?q=private" },
+      gtag: (...args: unknown[]) => calls.push(args),
+    } });
+    trackDictionaryEvent("dictionary_guide_open", 4, 2);
+    assert.deepEqual(calls, [["event", "dictionary_guide_open", {
+      result_count: 4,
+      active_filter_count: 2,
+      page_location: "https://gridhanzi.org/chinese-stroke-order-dictionary",
+    }]]);
   } finally {
     if (original) Object.defineProperty(globalThis, "window", original);
     else Reflect.deleteProperty(globalThis, "window");

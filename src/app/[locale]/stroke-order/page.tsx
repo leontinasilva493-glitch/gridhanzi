@@ -75,6 +75,13 @@ export default async function StrokeOrderPage({
               Explore components
             </Link>
           </div>
+          <p className="mt-5 text-sm leading-6 text-[#566276]">
+            Know a sound, meaning, radical, or stroke count?{" "}
+            <Link href="/chinese-stroke-order-dictionary" className="font-bold text-[#24466e] underline underline-offset-4 hover:text-[#b62822]">
+              Browse the Chinese stroke order dictionary
+            </Link>
+            .
+          </p>
         </header>
         <StrokeOrderLookupClient initialCharacter={initialCharacter} initialMode={query.mode === "draw" ? "draw" : "type"} />
 

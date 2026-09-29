@@ -22,6 +22,7 @@ import sitemap from "./sitemap";
 import robots from "../../app/robots";
 import { generateMetadata as generateStrokeOrderMetadata } from "../../app/[locale]/stroke-order/[character]/page";
 import { generateMetadata as generateStrokeOrderDirectoryMetadata } from "../../app/[locale]/stroke-order/page";
+import { generateMetadata as generateStrokeDictionaryMetadata } from "../../app/[locale]/chinese-stroke-order-dictionary/page";
 import { generateMetadata as generateTemplatesMetadata } from "../../app/[locale]/templates/page";
 import { generateMetadata as generateTemplateDetailMetadata } from "../../app/[locale]/templates/[slug]/page";
 import { generateMetadata as generateHskLevelMetadata } from "../../app/[locale]/hsk/[system]/[level]/page";
@@ -53,6 +54,7 @@ test("buildPublicSitemapPaths includes every differentiated template page", () =
   assert.ok(paths.includes("/grids/mi-zi-ge"));
   assert.ok(paths.includes("/grids/blank"));
   assert.ok(paths.includes("/stroke-order"));
+  assert.ok(paths.includes("/chinese-stroke-order-dictionary"));
   assert.ok(paths.includes("/hsk"));
   assert.ok(paths.includes("/compare"));
   assert.ok(paths.includes("/for-teachers"));
@@ -298,6 +300,12 @@ test("indexable page families align standard, Open Graph, and Twitter metadata",
       metadata,
       title: "Chinese Stroke Order",
     })),
+    generateStrokeDictionaryMetadata({
+      params: Promise.resolve({ locale: "en" }),
+    }).then((metadata) => ({
+      metadata,
+      title: "Chinese Stroke Order Dictionary for Common Hanzi",
+    })),
     generateForTeachersMetadata({ params: Promise.resolve({ locale: "en" }) }).then(
       (metadata) => ({ metadata, title: "Chinese Worksheets for Teachers" }),
     ),
@@ -330,6 +338,18 @@ test("toAbsoluteUrl normalizes base and path slashes", () => {
     toAbsoluteUrl("https://example.com/", "/templates/family"),
     "https://example.com/templates/family",
   );
+});
+
+test("dictionary owns its canonical while untranslated Chinese stays noindex", async () => {
+  const [english, chinese] = await Promise.all([
+    generateStrokeDictionaryMetadata({ params: Promise.resolve({ locale: "en" }) }),
+    generateStrokeDictionaryMetadata({ params: Promise.resolve({ locale: "zh" }) }),
+  ]);
+  assert.equal(english.title, "Chinese Stroke Order Dictionary for Common Hanzi");
+  assert.equal(english.alternates?.canonical, "https://gridhanzi.org/chinese-stroke-order-dictionary");
+  assert.equal(chinese.alternates?.canonical, "https://gridhanzi.org/zh/chinese-stroke-order-dictionary");
+  assert.deepEqual(chinese.robots, { index: false, follow: true });
+  assert.ok(buildPublicSitemapPaths().includes("/chinese-stroke-order-dictionary"));
 });
 
 test("sitemap submits only canonical, indexable language pages", () => {
@@ -589,6 +609,7 @@ test("route metadata owns canonicals instead of inheriting the homepage URL", as
     "src/app/[locale]/grids/page.tsx",
     "src/app/[locale]/grids/[slug]/page.tsx",
     "src/app/[locale]/stroke-order/page.tsx",
+    "src/app/[locale]/chinese-stroke-order-dictionary/page.tsx",
     "src/app/[locale]/for-teachers/page.tsx",
   ];
   for (const route of routes) {

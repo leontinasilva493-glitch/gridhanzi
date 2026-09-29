@@ -36,3 +36,28 @@ export function trackTemplatePackDownloadClick(
     // Optional analytics must never interrupt a download.
   }
 }
+
+type DictionaryEvent =
+  | "dictionary_search"
+  | "dictionary_filter_used"
+  | "dictionary_guide_open"
+  | "dictionary_worksheet_open";
+
+/** Dictionary events contain counts only, never a character, query, or meaning. */
+export function trackDictionaryEvent(
+  event: DictionaryEvent,
+  resultCount: number,
+  activeFilterCount: number,
+) {
+  if (typeof window === "undefined" || !isProductionAnalyticsHost(window.location.hostname)) return;
+  const analyticsWindow = window as Window & { gtag?: (...args: unknown[]) => void };
+  try {
+    analyticsWindow.gtag?.("event", event, {
+      result_count: resultCount,
+      active_filter_count: activeFilterCount,
+      page_location: window.location.origin + window.location.pathname,
+    });
+  } catch {
+    // Optional analytics must never interrupt dictionary browsing.
+  }
+}
