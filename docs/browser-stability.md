@@ -1,5 +1,34 @@
 # Browser stability and Clarity follow-up
 
+## October 2026 local fixes
+
+- Reviewed worksheet teaching senses now provide tone-marked defaults for the
+  single-character template path (`口 kǒu`, `木 mù`, `火 huǒ`, `田 tián`, and
+  `上 shàng`). The HSK catalog remains authoritative where it contains a word;
+  the extra single-character defaults do not claim that every possible sense is
+  represented.
+- Template-only stroke labels and context-clear beginner action labels use a
+  small reviewed Pinyin overlay. It is applied after the source records while
+  preserving their English meanings; ambiguous readings remain subject to
+  manual review rather than being inferred from the first HSK match.
+- The template regression scan now permits only the explicit neutral-tone
+  allowlist (for example `么`, `们`, `的`, `地`, `得`, `着`, and `了`). The
+  previously identified 23 content rows, including number phrases and `决定`
+  / `希望`, now have reviewed tone marks and are covered by the regression test.
+- Worksheet PDF export no longer captures the first page twice. Font and
+  stroke-order readiness, plus each html2canvas capture, have bounded waits;
+  incomplete assets return a retryable message. Pages yield between captures and
+  release temporary canvas buffers after the image is added.
+- The external worksheet font stylesheet is preloaded asynchronously so system
+  fallbacks can render while it is unavailable. Print and PDF still keep the
+  declared Chinese font fallback stack. The browser regression suite should
+  continue to exercise the fallback path when the CDN is blocked.
+- Preview zoom is a real select control, and the preview offers a direct link
+  back to the editor. Review links target the first visible field that is actually
+  missing, including Pinyin or English on mobile. These local changes do not
+  establish a fix for historical Safari `Script error.` sessions, real browser
+  translation, or live Core Web Vitals.
+
 ## September 2026 fixes
 
 - `StructuredData` emits one JSON-LD object per script, including when its caller

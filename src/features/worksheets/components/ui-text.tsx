@@ -3,7 +3,7 @@ import { translateUi } from "../ui-copy";
 
 /** Locale-aware visible copy; learning vocabulary itself is never translated. */
 export function UiText({ children }: { children: string }) {
-  return translateUi(useLocale(), children);
+  return <span data-gridhanzi-ui="true">{translateUi(useLocale(), children)}</span>;
 }
 
 export function PageNumber({ page, total }: { page: number; total: number }) {

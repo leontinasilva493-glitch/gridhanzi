@@ -137,6 +137,7 @@ export function GeneratorClient({
         : t("Words loaded", "已载入词汇"),
   );
   const autoEnrichStarted = useRef(false);
+  const newRowFocusRequested = useRef(false);
 
   const review = useMemo(() => reviewWorksheetEntries(entries, settings), [entries, settings]);
   const completed = review.ready.length;
@@ -187,6 +188,12 @@ export function GeneratorClient({
   async function enrichEntries() {
     setIsEnriching(true);
     setMessage(t("Filling in Hanzi and Pinyin…", "正在补全汉字和拼音…"));
+    const requestEntries = entries.map((entry) => ({
+      id: entry.id,
+      hanzi: entry.hanzi,
+      pinyin: entry.pinyin,
+      english: entry.english,
+    }));
     try {
       const values = entries.map((entry) => entry.hanzi || entry.english);
       const response = await fetch("/api/worksheet/enrich", {
@@ -215,14 +222,35 @@ export function GeneratorClient({
                 t("Could not fill in this list.", "暂时无法补全这个词表。"),
         );
       }
-      setEntries((current) =>
-        payload.entries!.map((entry, index) => ({
-          ...entry,
-          id: current[index]?.id ?? createWorksheetEntryId(),
-        })),
+      const incomingById = new Map(
+        (payload.entries ?? []).map((entry, index) => [requestEntries[index]?.id, entry]),
       );
+      const responseFilledCount = requestEntries.reduce((count, before, index) => {
+        const incoming = payload.entries?.[index];
+        return count + (incoming && (
+          (!before.hanzi && incoming.hanzi) || (!before.pinyin && incoming.pinyin) || (!before.english && incoming.english)
+        ) ? 1 : 0);
+      }, 0);
+      setEntries((current) => current.map((before) => {
+        const request = requestEntries.find((entry) => entry.id === before.id);
+        const incoming = incomingById.get(before.id);
+        if (!request || !incoming) return before;
+        // Preserve Hanzi edits made while the request was in flight. Other
+        // fields are merged only while still empty, so a user's own meaning
+        // or Pinyin always wins.
+        if (before.hanzi !== request.hanzi) return before;
+        const next = {
+          ...before,
+          hanzi: before.hanzi || incoming.hanzi,
+          pinyin: before.pinyin || incoming.pinyin,
+          english: before.english || incoming.english,
+        };
+        return { ...next, status: next.hanzi && next.pinyin && next.english ? "complete" as const : "needs-review" as const };
+      }));
       setMessage(
-        payload.source === "gemini"
+        responseFilledCount === 0
+          ? t("No supported matches were found. Your existing rows were kept; add missing fields manually.", "没有找到可识别的匹配项。已有内容已保留，请手动补填缺失字段。")
+          : payload.source === "gemini"
           ? t(
               "Words filled in. Check the results.",
               "内容已补全，请检查结果。",
@@ -314,6 +342,16 @@ export function GeneratorClient({
 
     return () => window.clearTimeout(timer);
   }, [currentSnapshot, draftReady, pendingDraft, resumeError]);
+
+  useEffect(() => {
+    if (!newRowFocusRequested.current) return;
+    newRowFocusRequested.current = false;
+    const input = Array.from(document.querySelectorAll<HTMLInputElement>(
+      `input[aria-label="Chinese row ${entries.length}"]`,
+    )).find((candidate) => candidate.getClientRects().length > 0);
+    input?.scrollIntoView({ block: "center", behavior: "smooth" });
+    input?.focus({ preventScroll: true });
+  }, [entries.length]);
 
   function restoreDraft() {
     if (!pendingDraft) return;
@@ -540,8 +578,11 @@ export function GeneratorClient({
                   {review.pending.map(({ entry, index, missing }) => (
                     <li key={entry.id}>
                       <button type="button" className="text-left underline underline-offset-2" onClick={() => {
-                        const inputs = document.querySelectorAll<HTMLInputElement>(`input[aria-label="Chinese row ${index + 1}"]`);
-                        Array.from(inputs).find((input) => input.getClientRects().length > 0)?.focus();
+                        const field = missing[0] === "hanzi" ? "Chinese" : missing[0] === "pinyin" ? "Pinyin" : "English";
+                        const inputs = document.querySelectorAll<HTMLInputElement>(`input[aria-label="${field} row ${index + 1}"]`);
+                        const target = Array.from(inputs).find((input) => input.getClientRects().length > 0);
+                        target?.scrollIntoView({ block: "center", behavior: "smooth" });
+                        target?.focus({ preventScroll: true });
                       }}>
                         {index + 1}. {entry.hanzi || entry.english || t("Empty row", "空白行")} — {t("Missing: ", "缺少：")}{missing.map((field) => field === "hanzi" ? t("Hanzi", "汉字") : field === "pinyin" ? t("Pinyin", "拼音") : t("meaning", "英文释义")).join("、")}
                       </button>
@@ -555,7 +596,8 @@ export function GeneratorClient({
               <button
                 type="button"
                 className="hs-secondary-button text-sm"
-                onClick={() =>
+                onClick={() => {
+                  newRowFocusRequested.current = true;
                   setEntries((current) => [
                     ...current,
                     {
@@ -565,8 +607,8 @@ export function GeneratorClient({
                       english: "",
                       status: "needs-review",
                     },
-                  ])
-                }
+                  ]);
+                }}
               >
                 <Plus className="size-4" /> {t("Add row", "添加一行")}
               </button>
@@ -774,6 +816,9 @@ export function GeneratorClient({
                     : t("US Letter · Portrait", "美式信纸 · 纵向")}
               </span>
             </div>
+            <a href="#review-words" className="mb-3 inline-block text-xs font-semibold text-[#24466e] underline underline-offset-4">
+              {t("Edit word list", "编辑词表")}
+            </a>
             {settings.output === "worksheet" && settings.mode !== "quiz" && <RepeatFillControl
  enabled={!!settings.repeatToFill} disabled={!entries.some(entry => /\p{Script=Han}/u.test(entry.hanzi))}
  chinese={locale === "zh"} onChange={repeatToFill => setSettings(current => ({ ...current, repeatToFill }))} />}

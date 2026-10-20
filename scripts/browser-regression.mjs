@@ -211,6 +211,39 @@ try {
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), true);
     await page.screenshot({ path: path.join(output, 'generator-mobile.png'), fullPage: true });
   });
+  await scenario('ux-mobile-review-target-and-add-row', { viewport: { width: 390, height: 844 } }, async page => {
+    await visit(page, '/generator?mode=quiz&words=' + encodeURIComponent('未知词'));
+    await page.getByRole('textbox', { name: 'Chinese row 1', exact: true }).fill('未知词');
+    await page.getByRole('textbox', { name: 'English row 1', exact: true }).fill('');
+    const reviewLink = page.getByText(/Missing: meaning/i).first();
+    await reviewLink.click();
+    assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('aria-label')), 'English row 1');
+    await page.getByRole('button', { name: 'Add row', exact: true }).click();
+    await page.waitForFunction(() => document.activeElement?.getAttribute('aria-label') === 'Chinese row 2');
+  });
+  await scenario('ux-auto-fill-no-match-feedback', {}, async page => {
+    await page.context().route('**/api/worksheet/enrich', route => route.fulfill({ json: {
+      entries: [{ id: 'row-1', hanzi: '', pinyin: '', english: 'unmatched-private-term', status: 'needs-review' }],
+    } }));
+    await visit(page, '/generator?words=' + encodeURIComponent('unmatched-private-term'));
+    await page.getByRole('button', { name: 'Auto-fill missing fields', exact: true }).click();
+    await page.getByRole('status').filter({ hasText: /No supported matches were found/i }).waitFor();
+    assert.equal(await page.getByRole('textbox', { name: 'English row 1', exact: true }).inputValue(), 'unmatched-private-term');
+  });
+  await scenario('ux-auto-fill-preserves-in-flight-edit', {}, async page => {
+    await page.context().route('**/api/worksheet/enrich', async route => {
+      await new Promise(resolve => setTimeout(resolve, 500));
+      await route.fulfill({ json: {
+        entries: [{ id: 'row-1', hanzi: '补全', pinyin: 'bǔquán', english: 'generated', status: 'complete' }],
+      } });
+    });
+    await visit(page, '/generator?words=' + encodeURIComponent('unmatched-private-term'));
+    await page.getByRole('button', { name: 'Auto-fill missing fields', exact: true }).click();
+    await page.getByRole('textbox', { name: 'English row 1', exact: true }).fill('my own meaning');
+    await page.getByRole('textbox', { name: 'Pinyin row 1', exact: true }).waitFor({ state: 'visible' });
+    await page.waitForFunction(() => document.querySelector('input[aria-label="Pinyin row 1"]')?.value === 'bǔquán');
+    assert.equal(await page.getByRole('textbox', { name: 'English row 1', exact: true }).inputValue(), 'my own meaning');
+  });
   await scenario('preview-pdf-download', {}, async (page, context) => {
     await seed(context, 'sessionStorage', 'gridhanzi:worksheet:v1', JSON.stringify(snapshot));
     await visit(page, '/worksheet/preview');
@@ -222,6 +255,74 @@ try {
     assert.match(await page.locator('[data-feedback-invite]').innerText(), /PDF is ready/);
     assert.match(download.suggestedFilename(), /\.pdf$/);
     await download.saveAs(path.join(output, 'worksheet.pdf'));
+  });
+  await scenario('preview-pdf-multi-page-first-context', {}, async (page, context) => {
+    const entries = ['一','二','三','四','五','六','七','八','九','十','口','木','火','田','上','人','水','山'].map((hanzi, index) => ({
+      id: `multi-${index + 1}`, hanzi, pinyin: ['yī','èr','sān','sì','wǔ','liù','qī','bā','jiǔ','shí','kǒu','mù','huǒ','tián','shàng','rén','shuǐ','shān'][index], english: `word ${index + 1}`, status: 'complete',
+    }));
+    await seed(context, 'sessionStorage', 'gridhanzi:worksheet:v1', JSON.stringify({
+      ...snapshot,
+      entries,
+      settings: { ...snapshot.settings, mode: 'trace', showStrokeOrder: true, strokeOrderMode: 'detailed' },
+    }));
+    await visit(page, '/worksheet/preview');
+    assert.equal(await page.locator('.hs-paper').count(), 5);
+    const downloading = page.waitForEvent('download', { timeout: 45_000 });
+    await page.getByRole('button', { name: 'Download PDF', exact: true }).click();
+    const download = await downloading;
+    assert.equal(await download.failure(), null);
+    await download.saveAs(path.join(output, 'multi-page-worksheet.pdf'));
+  });
+  await scenario('preview-controls-and-font-fallback', {}, async (page, context) => {
+    await seed(context, 'sessionStorage', 'gridhanzi:worksheet:v1', JSON.stringify(snapshot));
+    await visit(page, '/worksheet/preview');
+    const zoom = page.getByRole('combobox', { name: 'Preview zoom', exact: true });
+    await zoom.selectOption('105');
+    assert.equal(await zoom.inputValue(), '105');
+    assert.equal(await page.getByRole('link', { name: 'Edit word list', exact: true }).count(), 1);
+    assert.equal(await page.locator('link[data-gridhanzi-font]').count(), 1);
+    assert.equal(await page.locator('link[data-gridhanzi-font]').evaluateAll(links => links.every(link => link.getAttribute('rel') === 'stylesheet')), true);
+  });
+  await scenario('preview-pdf-font-timeout-retry', {}, async (page, context) => {
+    await context.addInitScript(() => {
+      let blocked = sessionStorage.getItem('qa-font-blocked') !== 'released';
+      const originalFonts = Object.getOwnPropertyDescriptor(document, 'fonts');
+      window.__releaseGridHanziFonts = () => {
+        blocked = false;
+        if (originalFonts) Object.defineProperty(document, 'fonts', originalFonts);
+        else delete document.fonts;
+      };
+      Object.defineProperty(document, 'fonts', {
+        configurable: true,
+        get: () => ({ load: async () => [], ready: blocked ? new Promise(() => {}) : Promise.resolve() }),
+      });
+    });
+    await seed(context, 'sessionStorage', 'gridhanzi:worksheet:v1', JSON.stringify(snapshot));
+    await visit(page, '/worksheet/preview');
+    const downloadButton = page.getByRole('button', { name: 'Download PDF', exact: true });
+    await downloadButton.click();
+    await page.getByRole('alert').filter({ hasText: /fonts did not finish loading/i }).waitFor({ timeout: 12_000 });
+    assert.equal(await downloadButton.isEnabled(), true);
+    assert.equal(await page.evaluate(() => sessionStorage.getItem('gridhanzi:worksheet:v1') !== null), true);
+    assert.equal(await page.locator('[data-gridhanzi-pdf-capture="true"]').count(), 0);
+    assert.equal(await page.locator('iframe.html2canvas-container').count(), 0);
+    await page.evaluate(() => sessionStorage.setItem('qa-font-blocked', 'released'));
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.waitForLoadState('networkidle');
+    const retryButton = page.getByRole('button', { name: 'Download PDF', exact: true });
+    const downloading = page.waitForEvent('download', { timeout: 45_000 });
+    await retryButton.click();
+    const download = await downloading;
+    assert.equal(await download.failure(), null);
+    await download.saveAs(path.join(output, 'font-timeout-retry.pdf'));
+  });
+  await scenario('translation-dom-stability', {}, async page => {
+    await visit(page, '/generator?template=family');
+    const uiText = page.locator('[data-gridhanzi-ui="true"]').first();
+    assert.equal(await uiText.count(), 1);
+    await uiText.evaluate((node) => { node.textContent = 'Translated label'; });
+    await page.getByRole('button', { name: 'Add row', exact: true }).click();
+    await page.waitForFunction(() => document.activeElement?.getAttribute('aria-label')?.startsWith('Chinese row'));
   });
   await scenario('practice-completion-storage-denied', {}, async (page, context) => {
     await denyStorage(context, 'localStorage', 'setItem');

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@/components/analytics";
+import { WorksheetFontLoader } from "@/components/worksheet-font-loader";
 import { envConfigs } from "@/config";
 import "./globals.css";
 
@@ -57,6 +58,15 @@ export default async function RootLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        <link
+          rel="preload"
+          as="style"
+          href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@1.522.0/style.css"
+          crossOrigin="anonymous"
+          data-gridhanzi-font="true"
+        />
+        <WorksheetFontLoader />
         <Analytics />
       </head>
       <body className="font-sans antialiased">

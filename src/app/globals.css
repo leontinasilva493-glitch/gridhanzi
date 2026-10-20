@@ -1,4 +1,3 @@
-@import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-gb-web@1.522.0/style.css");
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));

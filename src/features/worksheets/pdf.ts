@@ -92,10 +92,36 @@ export function getPdfHeaderCropHeight(canvasHeight: number) {
   return Math.max(1, Math.round(canvasHeight * 0.115));
 }
 
+export function getPdfHeaderCropHeightForPage(
+  page: {
+    getBoundingClientRect(): { top: number; height: number };
+    querySelector(selector: string): { getBoundingClientRect(): { top: number; bottom: number } } | null;
+  },
+  canvasHeight: number,
+) {
+  const pageRect = page.getBoundingClientRect();
+  const headerRect = page.querySelector("header")?.getBoundingClientRect();
+  if (!headerRect || pageRect.height <= 0) return 0;
+
+  const firstContentRect = page.querySelector(".hs-hanzi-context")?.getBoundingClientRect();
+  const headerRatio = (headerRect.bottom - pageRect.top) / pageRect.height;
+  const contentRatio = firstContentRect
+    ? (firstContentRect.top - pageRect.top) / pageRect.height - 0.002
+    : headerRatio;
+  return Math.max(1, Math.round(canvasHeight * Math.min(headerRatio, contentRatio)));
+}
+
 export function shouldRecomposeWorksheetPdfHeader(
   output: WorksheetOutput = "worksheet",
 ) {
   return output === "worksheet";
+}
+
+export function shouldClearPdfHeader(
+  output: WorksheetOutput = "worksheet",
+  pageIndex = 0,
+) {
+  return shouldRecomposeWorksheetPdfHeader(output) && pageIndex === 0;
 }
 
 export function getPdfHeaderFont(sizePx: number): string {
@@ -111,6 +137,25 @@ export async function loadPdfHeaderFont(
   } catch {
     // Canvas will continue through the declared system-font fallbacks.
   }
+}
+
+const PDF_ASSET_TIMEOUT_MS = 8_000;
+const PDF_CAPTURE_TIMEOUT_MS = 15_000;
+
+function withTimeout<T>(promise: Promise<T>, timeoutMs: number, message: string) {
+  return new Promise<T>((resolve, reject) => {
+    const timer = window.setTimeout(() => reject(new Error(message)), timeoutMs);
+    promise.then(
+      (value) => {
+        window.clearTimeout(timer);
+        resolve(value);
+      },
+      (error: unknown) => {
+        window.clearTimeout(timer);
+        reject(error);
+      },
+    );
+  });
 }
 
 function copyComputedStyleDeclaration(
@@ -188,6 +233,7 @@ function createPdfCapturePage(page: HTMLElement) {
     zIndex: "2147483647",
     background: "#ffffff",
   });
+  host.dataset.gridhanziPdfCapture = "true";
   applyPdfCaptureRootOverrides(clonedPage.style);
 
   host.append(clonedPage);
@@ -247,8 +293,16 @@ function createPdfHeaderCanvas({
 
 async function waitForWorksheetAssets(pages: HTMLElement[], title: string) {
   if (typeof document !== "undefined" && "fonts" in document) {
-    await loadPdfHeaderFont(document.fonts, title);
-    await document.fonts.ready;
+    await withTimeout(
+      loadPdfHeaderFont(document.fonts, title),
+      PDF_ASSET_TIMEOUT_MS,
+      "Worksheet fonts did not finish loading. Try the PDF download again.",
+    );
+    await withTimeout(
+      document.fonts.ready,
+      PDF_ASSET_TIMEOUT_MS,
+      "Worksheet fonts did not finish loading. Try the PDF download again.",
+    );
   }
 
   const deadline = Date.now() + 8_000;
@@ -257,6 +311,9 @@ async function waitForWorksheetAssets(pages: HTMLElement[], title: string) {
     Date.now() < deadline
   ) {
     await new Promise((resolve) => setTimeout(resolve, 120));
+  }
+  if (pages.some((page) => page.querySelector('[data-stroke-loading="true"]'))) {
+    throw new Error("Stroke-order assets are still loading. Try the PDF download again.");
   }
 }
 
@@ -292,9 +349,12 @@ export async function downloadWorksheetPdf({
   let documentHeaderCanvas: HTMLCanvasElement | null = null;
   const capturePage = async (page: HTMLElement) => {
     const { geometry, host } = createPdfCapturePage(page);
+    const existingClones = new Set(
+      Array.from(document.querySelectorAll<HTMLIFrameElement>("iframe.html2canvas-container")),
+    );
 
     try {
-      return await html2canvas(host, {
+      return await withTimeout(html2canvas(host, {
         backgroundColor: "#ffffff",
         scale: Math.min(2, window.devicePixelRatio || 1.5),
         useCORS: true,
@@ -329,9 +389,12 @@ export async function downloadWorksheetPdf({
             }
           }
         },
-      });
+      }), PDF_CAPTURE_TIMEOUT_MS, "This page took too long to prepare. Try the PDF download again.");
     } finally {
       host.remove();
+      for (const clone of document.querySelectorAll<HTMLIFrameElement>("iframe.html2canvas-container")) {
+        if (!existingClones.has(clone)) clone.remove();
+      }
     }
   };
 
@@ -341,8 +404,6 @@ export async function downloadWorksheetPdf({
   });
 
   try {
-    await capturePage(pages[0]);
-
     for (let index = 0; index < pages.length; index += 1) {
       const page = pages[index];
       if (!page) continue;
@@ -362,11 +423,10 @@ export async function downloadWorksheetPdf({
         composedCanvas.width = canvas.width;
         composedCanvas.height = canvas.height;
         composedContext.drawImage(canvas, 0, 0);
-        const headerHeight = getPdfHeaderCropHeight(canvas.height);
-        composedContext.fillStyle = "#ffffff";
-        composedContext.fillRect(0, 0, canvas.width, headerHeight);
-
-        if (index === 0) {
+        if (shouldClearPdfHeader(output, index)) {
+          const headerHeight = getPdfHeaderCropHeightForPage(page, canvas.height);
+          composedContext.fillStyle = "#ffffff";
+          composedContext.fillRect(0, 0, canvas.width, headerHeight);
           documentHeaderCanvas ??= createPdfHeaderCanvas({
             width: canvas.width,
             height: headerHeight,
@@ -394,6 +454,13 @@ export async function downloadWorksheetPdf({
         undefined,
         "FAST",
       );
+      canvas.width = 0;
+      canvas.height = 0;
+      if (exportCanvas !== canvas) {
+        exportCanvas.width = 0;
+        exportCanvas.height = 0;
+      }
+      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
     }
     pdf.deletePage(pages.length + 1);
   } finally {

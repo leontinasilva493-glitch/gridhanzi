@@ -9,8 +9,6 @@ import {
   Download,
   Info,
   LoaderCircle,
-  Minus,
-  Plus,
   Printer,
 } from "lucide-react";
 
@@ -206,25 +204,19 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
               pageCount ? `${pageCount} 页` : "正在计算页数……",
             )}
           />
-          <div className="flex h-10 items-center rounded border border-[#d5d1c9] bg-white">
-            <button
-              type="button"
-              aria-label={t("Zoom out", "缩小")}
-              className="grid h-full w-10 place-items-center"
-              onClick={() => setZoom((value) => Math.max(55, value - 10))}
+          <label className="flex h-10 items-center gap-2 rounded border border-[#d5d1c9] bg-white px-2 text-sm">
+            <span className="sr-only">{t("Preview zoom", "预览缩放")}</span>
+            <select
+              aria-label={t("Preview zoom", "预览缩放")}
+              value={zoom}
+              onChange={(event) => setZoom(Number(event.target.value))}
+              className="h-full bg-transparent outline-none"
             >
-              <Minus className="size-4" />
-            </button>
-            <span className="w-14 text-center text-sm">{zoom}%</span>
-            <button
-              type="button"
-              aria-label={t("Zoom in", "放大")}
-              className="grid h-full w-10 place-items-center"
-              onClick={() => setZoom((value) => Math.min(115, value + 10))}
-            >
-              <Plus className="size-4" />
-            </button>
-          </div>
+              {[55, 65, 75, 85, 95, 105, 115].map((value) => (
+                <option key={value} value={value}>{value}%</option>
+              ))}
+            </select>
+          </label>
         </div>
         <div className="flex gap-2">
           {!isTablet ? (
@@ -294,7 +286,10 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
 
         <aside className="hs-no-print border-l border-[#d4d4d0] bg-[#fffdf9] p-6">
           <h1 className="hs-display text-2xl font-bold">{t("Print settings", "打印与下载设置")}</h1>
-          <button type="button" className="mt-3 text-sm underline underline-offset-4" onClick={() => window.dispatchEvent(new Event("gridhanzi:feedback-requested"))}>{t("Share feedback", "分享反馈")}</button>
+          <Link href={templateSlug ? `/generator?template=${templateSlug}` : "/generator?resume=1"} className="mt-3 block text-sm font-semibold text-[#24466e] underline underline-offset-4">
+            {t("Edit word list", "返回编辑器")}
+          </Link>
+          <button type="button" className="mt-2 block text-sm underline underline-offset-4" onClick={() => window.dispatchEvent(new Event("gridhanzi:feedback-requested"))}>{t("Share feedback", "分享反馈")}</button>
  {!templateSlug && canShowAnswers && snapshot.settings.mode !== "quiz" && <RepeatFillControl
  enabled={!!snapshot.settings.repeatToFill} disabled={!snapshot.entries.some(entry => /\p{Script=Han}/u.test(entry.hanzi))}
  chinese={locale === "zh"} onChange={repeatToFill => {
@@ -397,7 +392,7 @@ function ToolbarSelect({
 
 function ToolbarChip({ label }: { label: string }) {
   return (
-    <span className="inline-flex h-10 items-center rounded border border-[#d5d1c9] bg-white px-3 text-sm">
+    <span role="status" className="inline-flex items-center px-1 text-xs font-medium text-[#657083]">
       {label}
     </span>
   );

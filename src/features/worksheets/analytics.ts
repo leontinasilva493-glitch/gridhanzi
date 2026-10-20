@@ -18,6 +18,12 @@ export function trackWorksheetEvent(event: WorksheetEvent, settings: WorksheetSe
   } catch {
     // Optional analytics must never interrupt editing or exporting.
   }
+  try {
+    const clarityWindow = window as Window & { clarity?: (...args: unknown[]) => void };
+    clarityWindow.clarity?.("event", event);
+  } catch {
+    // Clarity is optional and must never interrupt editing or exporting.
+  }
 }
 
 export function trackTemplatePackDownloadClick(

@@ -1,5 +1,6 @@
 import type { WorksheetEntry, WorksheetTemplate } from "./types";
 import { teachingSenses } from "./teaching-senses";
+import { templatePinyin } from "./template-pinyin";
 import hskVocabulary from "./hsk-vocabulary.json";
 
 type VocabularyRecord = {
@@ -7,6 +8,11 @@ type VocabularyRecord = {
   pinyin: string;
   english: string;
 };
+
+const toneMarks = /[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/u;
+const hskPinyinByHanzi = new Map(
+  (hskVocabulary as VocabularyRecord[]).map((record) => [record.hanzi, record.pinyin]),
+);
 
 type TemplateGuidance = Pick<
   WorksheetTemplate,
@@ -451,8 +457,7 @@ const top200ChineseCharacterWords = [
 ];
 
 const vocabularyRecords: VocabularyRecord[] = Array.from(
-  new Map(
-    [
+  [
       ...(hskVocabulary as VocabularyRecord[]),
       ...curatedVocabularyRecords,
       ...templateVocabularyRecords,
@@ -460,10 +465,24 @@ const vocabularyRecords: VocabularyRecord[] = Array.from(
       ...mvpTemplateVocabularyRecords,
       ...p0ExpansionVocabularyRecords,
       ...Object.entries(teachingSenses).map(([hanzi, sense]) => ({ hanzi, ...sense })),
-    ].map(
-      (record) => [record.hanzi, record],
-    ),
-  ).values(),
+  ].reduce((records, record) => {
+    const prior = records.get(record.hanzi);
+    const reviewedPinyin = templatePinyin[record.hanzi];
+    const sourcePinyin = !teachingSenses[record.hanzi] && !toneMarks.test(record.pinyin)
+      ? hskPinyinByHanzi.get(record.hanzi)
+      : undefined;
+    const next = reviewedPinyin
+      ? { ...record, pinyin: reviewedPinyin }
+      : sourcePinyin && !toneMarks.test(record.pinyin)
+        ? { ...record, pinyin: sourcePinyin }
+        : record;
+    if (prior && toneMarks.test(prior.pinyin) && !reviewedPinyin && !teachingSenses[record.hanzi] && !toneMarks.test(record.pinyin)) {
+      records.set(record.hanzi, { ...record, pinyin: prior.pinyin });
+      return records;
+    }
+    records.set(record.hanzi, next);
+    return records;
+  }, new Map<string, VocabularyRecord>()).values(),
 );
 
 export const localVocabularySize = vocabularyRecords.length;

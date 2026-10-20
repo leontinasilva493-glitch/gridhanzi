@@ -107,13 +107,13 @@ export function FlashcardPaper({
                       </div>
                       <div className="mt-5 flex flex-1 items-center justify-center rounded border border-[#e4ded3] bg-[#fffdfa] px-4 py-4 text-center">
                         <span className="hs-hanzi-context text-[3.2rem] leading-none text-[#15233a] sm:text-[3.8rem]">
-                          {slotEntry.hanzi}
+                          <span translate="no">{slotEntry.hanzi}</span>
                         </span>
                       </div>
                       <div className="mt-4 space-y-2 text-center">
                         {settings.flashcardShowPinyin && slotEntry.pinyin ? (
                           <p className="text-[0.88rem] font-medium text-[#445469]">
-                            {slotEntry.pinyin}
+                            <span translate="no">{slotEntry.pinyin}</span>
                           </p>
                         ) : null}
                         {settings.flashcardShowEnglish && slotEntry.english ? (
