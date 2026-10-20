@@ -552,8 +552,8 @@ function VocabularyContext({
       <strong>
         {itemNumber}. {english}
       </strong>
-      {showPinyin && pinyin ? <span>{pinyin}</span> : null}
-      <span className="hs-hanzi-context ml-auto text-[#6b7480]">{word}</span>
+      {showPinyin && pinyin ? <span translate="no">{pinyin}</span> : null}
+      <span translate="no" className="hs-hanzi-context ml-auto text-[#6b7480]">{word}</span>
     </div>
   );
 }
@@ -799,7 +799,7 @@ function TestWorksheetPage({
             </div>
             {settings.showPinyin && entry.pinyin ? (
               <p className="mt-[1%] text-[0.52rem] text-[#566273]">
-                {entry.pinyin}
+                <span translate="no">{entry.pinyin}</span>
               </p>
             ) : null}
             <div

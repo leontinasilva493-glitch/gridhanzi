@@ -24,7 +24,7 @@ test("GA4 uses the production measurement ID and precedes other analytics in the
       analyticsSource.indexOf("<Clarity"),
     "GA4 should render before other analytics scripts",
   );
-  assert.match(layoutSource, /<head>\s*<Analytics \/>\s*<\/head>/);
+  assert.match(layoutSource, /<head>[\s\S]*<Analytics \/>[\s\S]*<\/head>/);
   assert.match(
     googleAnalyticsSource,
     /https:\/\/www\.googletagmanager\.com\/gtag\/js\?id=/,

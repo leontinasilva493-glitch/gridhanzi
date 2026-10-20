@@ -256,11 +256,9 @@ test("worksheet practice glyphs use the approved Kaiti stack without synthetic b
       projectFile("package.json"),
     ]);
 
-  assert.match(
-    css,
-    /^@import url\("https:\/\/cdn\.jsdelivr\.net\/npm\/lxgw-wenkai-gb-web@1\.522\.0\/style\.css"\);/,
-  );
-  assert.doesNotMatch(layoutSource, /lxgw-wenkai-gb-web/);
+  assert.doesNotMatch(css, /lxgw-wenkai-gb-web/);
+  assert.match(layoutSource, /rel="preload"[\s\S]*lxgw-wenkai-gb-web@1\.522\.0\/style\.css/);
+  assert.match(layoutSource, /WorksheetFontLoader/);
   assert.doesNotMatch(packageSource, /lxgw-wenkai-gb-web/);
   assert.doesNotMatch(
     layoutSource,

@@ -8,8 +8,10 @@ import {
   getPdfCaptureGeometry,
   getPdfCaptureGeometryFromPage,
   getPdfHeaderCropHeight,
+  getPdfHeaderCropHeightForPage,
   getPdfPageSize,
   prepareFlashcardCaptureClone,
+  shouldClearPdfHeader,
   shouldRecomposeWorksheetPdfHeader,
 } from "./pdf";
 
@@ -105,9 +107,26 @@ test("PDF header crop stays above the first worksheet row", () => {
   assert.equal(getPdfHeaderCropHeight(1263), 145);
 });
 
+test("PDF header crop uses measured header and first-content boundaries", () => {
+  const page = {
+    getBoundingClientRect: () => ({ top: 100, height: 1000 }),
+    querySelector: (selector: string) => selector === "header"
+      ? { getBoundingClientRect: () => ({ top: 100, bottom: 190 }) }
+      : { getBoundingClientRect: () => ({ top: 208, bottom: 230 }) },
+  };
+  assert.equal(getPdfHeaderCropHeightForPage(page, 1000), 90);
+});
+
 test("flashcard PDF export skips worksheet header recomposition", () => {
   assert.equal(shouldRecomposeWorksheetPdfHeader("worksheet"), true);
   assert.equal(shouldRecomposeWorksheetPdfHeader("flashcards"), false);
+});
+
+test("only the first worksheet PDF page clears the document header crop", () => {
+  assert.equal(shouldClearPdfHeader("worksheet", 0), true);
+  assert.equal(shouldClearPdfHeader("worksheet", 1), false);
+  assert.equal(shouldClearPdfHeader("worksheet", 4), false);
+  assert.equal(shouldClearPdfHeader("flashcards", 0), false);
 });
 
 test("PDF headers use the loaded Chinese web font with system fallbacks", () => {

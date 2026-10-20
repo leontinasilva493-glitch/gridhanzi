@@ -116,7 +116,7 @@ test("toWorksheetEntries converts HSK rows to Taiwan Traditional", () => {
 test("catalogue chooses modern teaching senses for common beginner words", () => {
   const expected = [
     ["三", "sān", "three"],
-    ["上", "shàng", "(bound form) up; upper; above; previous"],
+    ["上", "shàng", "up; above; previous"],
     ["个", "gè", "(classifier used before a noun that has no specific classifier)"],
     ["书", "shū", "book"],
     ["年", "nián", "year"],
