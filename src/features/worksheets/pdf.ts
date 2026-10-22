@@ -1,8 +1,10 @@
 import type { PaperSize, WorksheetOutput } from "./types";
+import { createPdfExportGuard } from "./pdf-export-guard";
 
 export type PdfExportProgress = {
   current: number;
   total: number;
+  stage?: "preparing" | "pages" | "saving";
 };
 
 export type DownloadWorksheetPdfOptions = {
@@ -14,6 +16,7 @@ export type DownloadWorksheetPdfOptions = {
   date?: string;
   locale?: string;
   onProgress?: (progress: PdfExportProgress) => void;
+  signal?: AbortSignal;
 };
 
 type StylePropertyReader = {
@@ -141,22 +144,6 @@ export async function loadPdfHeaderFont(
 
 const PDF_ASSET_TIMEOUT_MS = 8_000;
 const PDF_CAPTURE_TIMEOUT_MS = 15_000;
-
-function withTimeout<T>(promise: Promise<T>, timeoutMs: number, message: string) {
-  return new Promise<T>((resolve, reject) => {
-    const timer = window.setTimeout(() => reject(new Error(message)), timeoutMs);
-    promise.then(
-      (value) => {
-        window.clearTimeout(timer);
-        resolve(value);
-      },
-      (error: unknown) => {
-        window.clearTimeout(timer);
-        reject(error);
-      },
-    );
-  });
-}
 
 function copyComputedStyleDeclaration(
   sourceStyle: StylePropertyReader,
@@ -291,14 +278,14 @@ function createPdfHeaderCanvas({
   return canvas;
 }
 
-async function waitForWorksheetAssets(pages: HTMLElement[], title: string) {
+async function waitForWorksheetAssets(pages: HTMLElement[], title: string, guard: ReturnType<typeof createPdfExportGuard>) {
   if (typeof document !== "undefined" && "fonts" in document) {
-    await withTimeout(
+    await guard.wait(
       loadPdfHeaderFont(document.fonts, title),
       PDF_ASSET_TIMEOUT_MS,
       "Worksheet fonts did not finish loading. Try the PDF download again.",
     );
-    await withTimeout(
+    await guard.wait(
       document.fonts.ready,
       PDF_ASSET_TIMEOUT_MS,
       "Worksheet fonts did not finish loading. Try the PDF download again.",
@@ -310,7 +297,7 @@ async function waitForWorksheetAssets(pages: HTMLElement[], title: string) {
     pages.some((page) => page.querySelector('[data-stroke-loading="true"]')) &&
     Date.now() < deadline
   ) {
-    await new Promise((resolve) => setTimeout(resolve, 120));
+    await guard.wait(new Promise((resolve) => setTimeout(resolve, 120)));
   }
   if (pages.some((page) => page.querySelector('[data-stroke-loading="true"]'))) {
     throw new Error("Stroke-order assets are still loading. Try the PDF download again.");
@@ -326,17 +313,22 @@ export async function downloadWorksheetPdf({
   date = "",
   locale = "en",
   onProgress,
+  signal,
 }: DownloadWorksheetPdfOptions): Promise<void> {
   if (pages.length === 0) {
     throw new Error("No worksheet pages are ready to export.");
   }
 
-  await waitForWorksheetAssets(pages, title);
+  const guard = createPdfExportGuard(signal);
+  guard.check();
+  onProgress?.({ current: 0, total: pages.length, stage: "preparing" });
+  await waitForWorksheetAssets(pages, title, guard);
 
-  const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
+  const [{ default: html2canvas }, { jsPDF }] = await guard.wait(Promise.all([
     import("html2canvas-pro"),
     import("jspdf"),
-  ]);
+  ]), PDF_CAPTURE_TIMEOUT_MS, "PDF tools could not finish loading. Use Print or try again.");
+  guard.check();
   const size = getPdfPageSize(paperSize);
   const pdf = new jsPDF({
     orientation: "portrait",
@@ -354,7 +346,7 @@ export async function downloadWorksheetPdf({
     );
 
     try {
-      return await withTimeout(html2canvas(host, {
+      return await guard.wait(html2canvas(host, {
         backgroundColor: "#ffffff",
         scale: Math.min(2, window.devicePixelRatio || 1.5),
         useCORS: true,
@@ -368,6 +360,7 @@ export async function downloadWorksheetPdf({
         scrollX: geometry.scrollX,
         scrollY: geometry.scrollY,
         onclone: (clonedDocument, clonedHost) => {
+          guard.check();
           for (const sibling of clonedDocument.body.children) {
             if (sibling !== clonedHost && sibling instanceof HTMLElement) {
               sibling.style.display = "none";
@@ -398,18 +391,18 @@ export async function downloadWorksheetPdf({
     }
   };
 
-  window.scrollTo(0, 0);
-  await new Promise<void>((resolve) => {
-    requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
-  });
-
   try {
+    window.scrollTo(0, 0);
+    // Animation frames stop in background tabs. A task yield also lets layout settle.
+    await guard.wait(new Promise<void>((resolve) => setTimeout(resolve, 0)));
     for (let index = 0; index < pages.length; index += 1) {
+      guard.check();
       const page = pages[index];
       if (!page) continue;
 
-      onProgress?.({ current: index + 1, total: pages.length });
+      onProgress?.({ current: index + 1, total: pages.length, stage: "pages" });
       const canvas = await capturePage(page);
+      guard.check();
 
       let exportCanvas = canvas;
       if (shouldRecomposeWorksheetPdfHeader(output)) {
@@ -460,12 +453,14 @@ export async function downloadWorksheetPdf({
         exportCanvas.width = 0;
         exportCanvas.height = 0;
       }
-      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+      await guard.wait(new Promise<void>((resolve) => setTimeout(resolve, 0)));
     }
     pdf.deletePage(pages.length + 1);
   } finally {
     window.scrollTo(previousScroll.x, previousScroll.y);
   }
 
-  pdf.save(buildWorksheetPdfFilename(title, output));
+  guard.check();
+  onProgress?.({ current: pages.length, total: pages.length, stage: "saving" });
+  await guard.wait(pdf.save(buildWorksheetPdfFilename(title, output), { returnPromise: true }));
 }

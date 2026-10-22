@@ -115,3 +115,28 @@ page completed in about 20 ms. This is separate from the Clarity fixes. Evaluate
 font self-hosting with the original font license and PDF font-consistency checks
 before changing that delivery path. Browser regression success does not establish
 that the external font CDN is reliable.
+
+## October 22 worksheet flow follow-up
+
+The export now shares a 60-second deadline across asset loading, lazy PDF tools,
+page capture and saving. PDF tools have a 15-second loading limit. Task yields
+replace animation-frame waits, which can stop in a background tab. Cancellation
+rejects outstanding waits and checks prevent later results from continuing to
+save. Browser suspension or synchronous canvas work can still delay timer
+delivery; the deadline is checked again when execution resumes.
+
+The preview exposes cancellation and a print fallback near the toolbar, keeps
+the worksheet after failure, and locks output settings during a capture.
+Auto-fill can be stopped and times out after 20 seconds without replacing the
+user's rows. Review-dialog actions focus the missing field. Template goal links
+now navigate to and focus the real filter section.
+
+Local verification on this change: 324 unit tests, TypeScript and the production
+build passed. All 44 Chromium browser scenarios passed across the initial run
+and focused reruns. Two storage-warning assertions were narrowed to their
+specific message because the toolbar also has status elements. Six flow
+scenarios cover keyboard/mobile filter navigation, review focus, auto-fill
+timeout/cancel, PDF cancel/retry, and stalled PDF modules followed by a late load
+and retry with animation frames suspended. Real iOS/macOS Safari was not
+available on the Windows test host. These checks do not establish production
+deployment or resolution of the original user's precise export failure cause.

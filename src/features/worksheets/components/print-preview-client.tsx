@@ -19,7 +19,7 @@ import {
   type WorksheetSnapshot,
 } from "../types";
 import type { PaperSize, PrintMargin } from "../types";
-import { downloadWorksheetPdf } from "../pdf";
+import { downloadWorksheetPdf, type PdfExportProgress } from "../pdf";
 import { localize } from "../i18n";
 import { getWorksheetProfilePreset } from "../profiles";
 import { normalizeWorksheetSnapshot } from "../snapshot";
@@ -57,10 +57,9 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
   const [printMargin, setPrintMargin] = useState<PrintMargin>(
     templateSnapshot?.settings.printMargin ?? fallbackSnapshot.settings.printMargin,
   );
-  const [pdfProgress, setPdfProgress] = useState<{
-    current: number;
-    total: number;
-  } | null>(null);
+  const [pdfProgress, setPdfProgress] = useState<PdfExportProgress | null>(null);
+  const exportController = useRef<AbortController | null>(null);
+  const [pdfNotice, setPdfNotice] = useState("");
   const [pdfError, setPdfError] = useState("");
   const [previewReady, setPreviewReady] = useState(Boolean(templateSnapshot));
   const [loadError, setLoadError] = useState(false);
@@ -68,6 +67,21 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
   const profilePreset = getWorksheetProfilePreset(snapshot.settings.profile);
   const canShowAnswers = snapshot.settings.output === "worksheet";
   const isTablet = paperSize === "tablet";
+
+  useEffect(() => () => {
+    exportController.current?.abort();
+    exportController.current = null;
+  }, []);
+
+  function cancelExport() {
+    exportController.current?.abort();
+  }
+
+  function printWorksheet() {
+    cancelExport();
+    // Allow the cancelled capture's finally block to remove temporary pages first.
+    setTimeout(() => window.print(), 0);
+  }
 
   useEffect(() => {
     if (templateSnapshot) return;
@@ -120,12 +134,16 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
   }, [snapshot, paperSize, printMargin, previewReady, templateSnapshot]);
 
   async function handlePdfDownload() {
+    if (exportController.current) return;
+    const controller = new AbortController();
+    exportController.current = controller;
     const pageElements = Array.from(
       printPagesRef.current?.querySelectorAll<HTMLElement>(".hs-paper") ?? [],
     );
     trackWorksheetEvent("worksheet_download_start", snapshot.settings, snapshot.entries.length);
     setPdfError("");
-    setPdfProgress({ current: 0, total: pageElements.length });
+    setPdfNotice("");
+    setPdfProgress({ current: 0, total: pageElements.length, stage: "preparing" });
 
     try {
       await downloadWorksheetPdf({
@@ -137,18 +155,28 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
         date: snapshot.settings.date,
         locale,
         onProgress: setPdfProgress,
+        signal: controller.signal,
       });
+      if (controller.signal.aborted) return;
       trackWorksheetEvent("worksheet_download_success", snapshot.settings, snapshot.entries.length);
       window.dispatchEvent(new Event("gridhanzi:download-complete"));
     } catch (error) {
+      if (exportController.current !== controller) return;
+      if (controller.signal.aborted) {
+        setPdfNotice(t("PDF creation cancelled. Your worksheet is unchanged. You can print or try again.", "已取消生成 PDF，字帖未更改。可以直接打印或重新下载。"));
+        return;
+      }
       trackWorksheetEvent("worksheet_download_failure", snapshot.settings, snapshot.entries.length);
       setPdfError(
-        error instanceof Error
+        error instanceof Error && !locale.startsWith("zh")
           ? error.message
           : t("The PDF could not be created. Try Print instead.", "无法生成 PDF，请尝试打印。"),
       );
     } finally {
-      setPdfProgress(null);
+      if (exportController.current === controller) {
+        exportController.current = null;
+        setPdfProgress(null);
+      }
     }
   }
 
@@ -177,6 +205,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
         </Link>
         <div className="flex flex-wrap items-center justify-center gap-2">
           <ToolbarSelect
+            disabled={pdfProgress !== null}
             label={t("Paper size", "纸张尺寸")}
             value={paperSize}
             options={(snapshot.settings.output === "flashcards"
@@ -208,6 +237,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
             <span className="sr-only">{t("Preview zoom", "预览缩放")}</span>
             <select
               aria-label={t("Preview zoom", "预览缩放")}
+              disabled={pdfProgress !== null}
               value={zoom}
               onChange={(event) => setZoom(Number(event.target.value))}
               className="h-full bg-transparent outline-none"
@@ -224,7 +254,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
               type="button"
               className="hs-secondary-button"
               disabled={pageCount === 0}
-              onClick={() => window.print()}
+              onClick={printWorksheet}
             >
               <Printer className="size-4" /> {t("Print", "打印")}
             </button>
@@ -241,7 +271,11 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
               <Download className="size-4" />
             )}
             {pdfProgress
-              ? t(
+              ? pdfProgress.stage === "preparing"
+                ? t("Preparing PDF…", "正在准备 PDF……")
+                : pdfProgress.stage === "saving"
+                ? t("Saving PDF…", "正在保存 PDF……")
+                : t(
                   `Creating ${Math.max(1, pdfProgress.current)}/${Math.max(1, pdfProgress.total)}`,
                   `正在生成 ${Math.max(1, pdfProgress.current)}/${Math.max(1, pdfProgress.total)}`,
                 )
@@ -251,6 +285,29 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
           </button>
         </div>
       </header>
+
+      {(pdfProgress || pdfError || pdfNotice) ? (
+        <section className="hs-no-print border-b border-[#d6d6d3] bg-[#fffdf9] px-4 py-3">
+          {pdfProgress ? (
+            <div className="flex flex-wrap items-center gap-3" role="status" aria-live="polite">
+              <p className="text-sm">{t("Creating your PDF. You can cancel or use Print without losing your worksheet.", "正在生成 PDF，可随时取消或改用打印，字帖不会丢失。")}</p>
+              <button type="button" className="hs-secondary-button text-sm" onClick={cancelExport}>
+                {t("Cancel PDF", "取消生成 PDF")}
+              </button>
+            </div>
+          ) : null}
+          {pdfError ? (
+            <div role="alert" className="rounded border border-red-200 bg-red-50 p-3 text-sm text-red-800">
+              <p>{pdfError}</p>
+              <p className="mt-1">{t("Your worksheet is still here. Try downloading again, or use your browser's Print dialog to save as PDF.", "字帖仍保留在当前页面。可以重新下载，或在浏览器打印窗口中选择另存为 PDF。")}</p>
+              <button type="button" className="hs-secondary-button mt-2" onClick={printWorksheet}>
+                {t("Print / Save as PDF instead", "改用打印 / 另存为 PDF")}
+              </button>
+            </div>
+          ) : null}
+          {pdfNotice ? <p role="status" className="text-sm">{pdfNotice}</p> : null}
+        </section>
+      ) : null}
 
       <div className="hs-print-layout grid min-h-[calc(100vh-4rem)] md:grid-cols-[220px_minmax(0,1fr)_310px]">
         <aside className="hs-no-print hidden border-r border-[#d4d4d0] bg-[#f9f8f5] p-5 md:block">
@@ -285,6 +342,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
         </main>
 
         <aside className="hs-no-print border-l border-[#d4d4d0] bg-[#fffdf9] p-6">
+          <fieldset disabled={pdfProgress !== null} className="min-w-0">
           <h1 className="hs-display text-2xl font-bold">{t("Print settings", "打印与下载设置")}</h1>
           <Link href={templateSlug ? `/generator?template=${templateSlug}` : "/generator?resume=1"} className="mt-3 block text-sm font-semibold text-[#24466e] underline underline-offset-4">
             {t("Edit word list", "返回编辑器")}
@@ -349,14 +407,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
               {t("Changes are available on this page but could not be saved. Download or print before leaving.", "修改已在此页面生效，但无法保存。离开前请先下载或打印。")}
             </p>
           ) : null}
-          {pdfError ? (
-            <p
-              role="alert"
-              className="mt-4 rounded border border-red-200 bg-red-50 p-3 text-sm text-red-700"
-            >
-              {pdfError}
-            </p>
-          ) : null}
+          </fieldset>
         </aside>
       </div>
     </div>
@@ -368,15 +419,18 @@ function ToolbarSelect({
   value,
   options,
   onChange,
+  disabled = false,
 }: {
   label: string;
   value: string;
   options: Array<[string, string]>;
   onChange: (value: string) => void;
+  disabled?: boolean;
 }) {
   return (
     <select
       aria-label={label}
+      disabled={disabled}
       value={value}
       onChange={(event) => onChange(event.target.value)}
       className="h-10 rounded border border-[#d5d1c9] bg-white px-3 text-sm"
