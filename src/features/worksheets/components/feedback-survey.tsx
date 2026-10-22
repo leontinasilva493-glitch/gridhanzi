@@ -1,438 +1,130 @@
 "use client";
 
-import type { FormEvent, RefObject } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { useLocale } from "next-intl";
-import { AGE_RANGES, ROLES, type Trigger } from "../feedback";
+import { ROLES, suppressDownloadHelp, type FeedbackContext } from "../feedback";
+import { trackHelpEvent } from "../analytics";
+import { localize } from "../i18n";
 
-type Locale = "en" | "zh";
-type Status = "idle" | "sending" | "invalid" | "failed" | "success";
-type FormState = {
-  currentGoal: string;
-  friction: string;
-  role: string;
-  ageRange: string;
-  suggestion: string;
-  contactEmail: string;
-  mayContact: boolean;
-  website: string;
-};
-type Copy = {
-  inviteTime: string;
-  invitePreview: string;
-  button: string;
-  title: string;
-  close: string;
-  send: string;
-  thanks: string;
-  failed: string;
-  required: string;
-  privacy: string;
-  goal: string;
-  friction: string;
-  frictionHelp: string;
-  detail: string;
-  role: string;
-  age: string;
-  suggestion: string;
-  email: string;
-  contact: string;
-  roles: readonly string[];
-  ages: readonly string[];
-};
-const initialForm: FormState = {
-  currentGoal: "",
-  friction: "",
-  role: "",
-  ageRange: "",
-  suggestion: "",
-  contactEmail: "",
-  mayContact: false,
-  website: "",
-};
-const copy: Record<Locale, Copy> = {
-  en: {
-    inviteTime: "What are you trying to finish, and where are you stuck?",
-    invitePreview:
-      "Your PDF is ready. Is there anything we should improve?",
-    button: "Share feedback",
-    title: "A quick question",
-    close: "Close",
-    send: "Send feedback",
-    thanks: "Thanks — your feedback was sent.",
-    failed: "Could not send yet. Your answers are still here; try again.",
-    required: "Please answer at least one question.",
-    privacy:
-      "Optional answers improve the product and enable approved contact. We never upload worksheet contents.",
-    goal: "What are you trying to make or teach?",
-    friction: "What felt difficult or unclear?",
-    frictionHelp: "Please describe what you wanted to do, where you got stuck, and the result you expected.",
-    detail: "Anything else about that?",
-    role: "Your role",
-    age: "Age range",
-    suggestion: "What should we improve?",
-    email: "Email (optional)",
-    contact: "You may contact me about this feedback",
-    roles: [
-      "Teacher",
-      "Parent",
-      "Student",
-      "Self-learner",
-      "School / training centre",
-      "Other",
-    ],
-    ages: ["Under 18", "18–24", "25–34", "35–44", "45–54", "55+"],
-  },
-  zh: {
-    inviteTime: "你正在尝试完成什么？哪里卡住了？",
-    invitePreview: "PDF 已下载。使用过程中有什么需要改进？",
-    button: "分享反馈",
-    title: "简单问卷",
-    close: "关闭",
-    send: "提交反馈",
-    thanks: "谢谢，反馈已发送。",
-    failed: "暂时发送失败，已保留你的填写内容，可以重试。",
-    required: "请至少填写一项。",
-    privacy: "填写内容仅用于产品改进，以及在你同意后联系你；不会上传字帖内容。",
-    goal: "你想制作或教学什么？",
-    friction: "什么地方用得不顺手？",
-    frictionHelp: "请直接描述：当时想做什么、卡在哪一步、你原本希望得到什么结果。",
-    detail: "还有其他补充吗？",
-    role: "你的身份",
-    age: "年龄段",
-    suggestion: "你希望我们改进什么？",
-    email: "邮箱（可选）",
-    contact: "可以通过邮箱联系我",
-    roles: ["教师", "家长", "学生", "自学者", "学校 / 培训机构", "其他"],
-    ages: ["未满 18 岁", "18–24", "25–34", "35–44", "45–54", "55 岁以上"],
-  },
-};
-const cooldownKey = "gridhanzi-feedback-cooldown";
-function isCooledDown() {
-  try {
-    return Number(localStorage.getItem(cooldownKey) || 0) > Date.now();
-  } catch {
-    return false;
-  }
-}
-function saveCooldown(days: number) {
-  try {
-    localStorage.setItem(cooldownKey, String(Date.now() + days * 86400000));
-  } catch {
-    // The lifecycle ref still prevents repeated invitations in this mount.
-  }
-}
-
-export function FeedbackSurvey({
-  locale: suppliedLocale,
-}: {
-  locale?: string;
+/** Inline, opened only on an explicit click. No automatic invitations. */
+export function FeedbackSurvey({ open, onClose, kind, source, useCase }: FeedbackContext & {
+  open: boolean;
+  onClose: () => void;
 }) {
-  const detectedLocale = useLocale();
-  const locale: Locale =
-    (suppliedLocale || detectedLocale) === "zh" ? "zh" : "en";
-  const t = copy[locale];
-  const [trigger, setTrigger] = useState<Trigger | null>(null);
-  const [open, setOpen] = useState(false);
-  const [status, setStatus] = useState<Status>("idle");
-  const [form, setForm] = useState<FormState>(initialForm);
-  const fired = useRef(false);
-  const lifecycleCooldown = useRef(false);
-  const inviteButton = useRef<HTMLButtonElement>(null);
+  const locale = useLocale();
+  const t = (en: string, zh: string) => localize(locale, en, zh);
+  const id = useId();
   const title = useRef<HTMLHeadingElement>(null);
+  const returnFocus = useRef<HTMLElement | null>(null);
+  const sending = useRef(false);
+  const [description, setDescription] = useState("");
+  const [role, setRole] = useState("");
+  const [email, setEmail] = useState("");
+  const [mayContact, setMayContact] = useState(false);
+  const [website, setWebsite] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "invalid" | "failed" | "success">("idle");
+
   useEffect(() => {
-    const fire = (value: Trigger) => {
-      if (fired.current || lifecycleCooldown.current || isCooledDown()) return;
-      fired.current = true;
-      setTrigger(value);
-    };
-    const onDownloaded = () => fire("download-complete");
-    const onRequested = () => { setTrigger("manual"); setOpen(true); };
-    window.addEventListener("gridhanzi:download-complete", onDownloaded);
-    window.addEventListener("gridhanzi:feedback-requested", onRequested);
-    return () => {
-      window.removeEventListener("gridhanzi:download-complete", onDownloaded);
-      window.removeEventListener("gridhanzi:feedback-requested", onRequested);
-    };
-  }, []);
-  useEffect(() => {
-    if (open) title.current?.focus();
+    if (!open) return;
+    returnFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    title.current?.focus({ preventScroll: true });
   }, [open]);
-  const close = (dismiss: boolean) => {
-    setOpen(false);
-    if (dismiss || status === "success") {
-      lifecycleCooldown.current = true;
-      if (status !== "success") saveCooldown(30);
-      setTrigger(null);
-    }
-    window.setTimeout(() => inviteButton.current?.focus(), 0);
-  };
+
   useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape" && open) close(false);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    if (open || status !== "success") return;
+    setDescription(""); setRole(""); setEmail(""); setMayContact(false); setStatus("idle");
   }, [open, status]);
-  const update = <K extends keyof FormState>(key: K, value: FormState[K]) => {
-    setForm((current) => ({ ...current, [key]: value }));
-  };
-  const hasAnswer = Boolean(
-    form.currentGoal.trim() ||
-      form.friction.trim() ||
-      form.role ||
-      form.ageRange ||
-      form.suggestion.trim() ||
-      form.contactEmail.trim(),
-  );
+
+  function close() {
+    if (sending.current) return;
+    suppressDownloadHelp(30);
+    onClose();
+    returnFocus.current?.focus({ preventScroll: true });
+  }
+
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!hasAnswer) {
-      setStatus("invalid");
-      return;
-    }
+    if (sending.current) return;
+    if (!description.trim()) { setStatus("invalid"); return; }
+    sending.current = true;
     setStatus("sending");
     try {
       const response = await fetch("/api/feedback", {
         method: "POST",
         headers: { "content-type": "application/json" },
+        signal: AbortSignal.timeout(20_000),
         body: JSON.stringify({
-          ...form,
-          locale,
-          trigger,
+          ...(kind === "problem" ? { friction: description } : { suggestion: description }),
+          role, contactEmail: mayContact ? email : "", mayContact, website,
+          locale, trigger: "manual", kind, source, useCase,
           pagePath: window.location.pathname,
         }),
       });
-      if (!response.ok) throw new Error("feedback request failed");
+      const result: unknown = await response.json();
+      if (!response.ok || !result || typeof result !== "object" || !("ok" in result) || result.ok !== true) {
+        throw new Error("Feedback was not accepted");
+      }
       setStatus("success");
-      lifecycleCooldown.current = true;
-      saveCooldown(180);
+      suppressDownloadHelp(180);
+      trackHelpEvent("worksheet_feedback_sent", source, kind, useCase);
     } catch {
       setStatus("failed");
+    } finally {
+      sending.current = false;
     }
   }
-  if (!trigger) return null;
-  const inviteText =
-    trigger === "download-complete" ? t.invitePreview : t.inviteTime;
+
+  if (!open) return null;
+  const roleLabels = [t("Teacher", "教师"), t("Parent", "家长"), t("Student", "学生"), t("Self-learner", "自学者"), t("School / training centre", "学校 / 培训机构"), t("Other", "其他")];
   return (
-    <div
-      data-feedback-invite
-      className="hs-no-print fixed left-1/2 top-1/2 z-[70] w-[calc(100vw-1.5rem)] max-w-sm -translate-x-1/2 -translate-y-1/2"
-    >
-      {!open ? (
-        <InvitationCard
-          buttonRef={inviteButton}
-          copy={t}
-          text={inviteText}
-          onOpen={() => setOpen(true)}
-          onDismiss={() => close(true)}
-        />
-      ) : (
-        <dialog
-          data-feedback-dialog
-          open
-          aria-labelledby="feedback-title"
-          aria-describedby="feedback-description"
-          className={[
-            "relative m-0 max-h-[calc(100vh-1.5rem)] w-full overflow-y-auto",
-            "rounded-xl border border-[#d8d0c2]",
-            "bg-[#fffdf9] p-5 text-[#14253f] shadow-2xl",
-          ].join(" ")}
-        >
-          <div className="flex items-center justify-between">
-            <h2
-              id="feedback-title"
-              ref={title}
-              tabIndex={-1}
-              className="hs-display text-xl font-bold"
-            >
-              {t.title}
-            </h2>
-            <button
-              aria-label={t.close}
-              className="min-h-11 min-w-11 text-2xl"
-              onClick={() => close(false)}
-            >
-              ×
-            </button>
-          </div>
-          <p
-            id="feedback-description"
-            className="mt-2 text-xs leading-5 text-[#56657a]"
-          >
-            {t.privacy}
-          </p>
-          {status === "success" ? (
-            <p data-feedback-success role="status" className="mt-5">
-              {t.thanks}
-            </p>
-          ) : (
-            <SurveyForm
-              t={t}
-              form={form}
-              status={status}
-              update={update}
-              onSubmit={submit}
-            />
-          )}
-        </dialog>
+    <section data-feedback-form data-clarity-mask="true" aria-labelledby={`${id}-title`}
+      className="hs-no-print mt-4 rounded border border-[#d8d0c2] bg-[#fffdf9] p-4 text-sm"
+      onKeyDown={event => { if (event.key === "Escape") { event.stopPropagation(); close(); } }}>
+      <div className="flex items-start justify-between gap-2">
+        <h3 id={`${id}-title`} ref={title} tabIndex={-1} className="font-bold">
+          {t("What would you like your worksheet to do?", "你想做出什么样的练习纸？")}
+        </h3>
+        <button type="button" onClick={close} disabled={status === "sending"} className="min-h-10 shrink-0 px-2 underline disabled:opacity-50">
+          {t("Close form", "关闭表单")}
+        </button>
+      </div>
+      {status === "success" ? <p role="status" className="mt-3">{t("Submitted. You can continue editing or downloading worksheets.", "已提交。你可以继续编辑或下载练习纸。")}</p> : (
+        <form onSubmit={submit} className="mt-3 grid gap-3">
+          <p>{t("Tell us how you want to use it and what is getting in the way. Please leave out student names and other personal details.", "说说你想怎么使用，以及现在还差哪一步。请勿填写学生姓名等个人信息。")}</p>
+          <label htmlFor={`${id}-description`}>
+            {kind === "problem" ? t("Describe the problem", "说明遇到的问题") : t("Describe the worksheet you need", "描述你需要的练习纸")}
+            <textarea id={`${id}-description`} required maxLength={2000} value={description}
+              onChange={event => setDescription(event.target.value)}
+              placeholder={kind === "problem"
+                ? t("For example: Pinyin appears in the preview, but is missing from my downloaded PDF.", "例如：预览里的拼音正常，但下载的 PDF 中没有显示。")
+                : t("For example: My child is practising this week's words. I need more blank writing rows below each word.", "例如：给孩子练本周生字，想让每个字下面多留几行空格。")}
+              className="mt-1 min-h-28 w-full rounded border p-2" />
+          </label>
+          <label htmlFor={`${id}-role`}>{t("Your role (optional)", "你的使用身份（可不填）")}
+            <select id={`${id}-role`} value={role} onChange={event => setRole(event.target.value)} className="mt-1 w-full rounded border p-2">
+              <option value="">{t("Prefer not to say", "暂不填写")}</option>
+              {ROLES.map((value, index) => <option key={value} value={value}>{roleLabels[index]}</option>)}
+            </select>
+          </label>
+          <label className="flex items-start gap-2">
+            <input type="checkbox" checked={mayContact} onChange={event => { setMayContact(event.target.checked); if (!event.target.checked) setEmail(""); }} className="mt-1" />
+            {t("I'm open to follow-up questions about this feedback (optional)", "愿意就这条反馈进一步交流（可选）")}
+          </label>
+          {mayContact && <label htmlFor={`${id}-email`}>{t("Email (optional)", "邮箱（可选）")}
+            <input id={`${id}-email`} type="email" maxLength={254} value={email} onChange={event => setEmail(event.target.value)} className="mt-1 w-full rounded border p-2" />
+            <span className="mt-1 block text-xs text-[#56657a]">{t("Only for contact about this feedback. A reply is not guaranteed.", "仅用于联系这条反馈，不代表一定会回复。")}</span>
+          </label>}
+          <p className="text-xs leading-5 text-[#56657a]">{t("Your answers, selected use and help entry, and current page path are sent to GridHanzi by email to understand requests and problems. Worksheet contents are not attached automatically.", "填写内容、所选用途、帮助入口和当前页面路径会通过邮件发送给 GridHanzi，用于了解需求和问题。不会自动附带练习纸内容。")}</p>
+          <input name="website" tabIndex={-1} aria-hidden="true" autoComplete="off" value={website} onChange={event => setWebsite(event.target.value)} className="absolute -left-[10000px]" />
+          <button disabled={status === "sending"} className="hs-primary-button disabled:opacity-60">
+            {status === "sending" ? t("Sending…", "正在提交……") : kind === "problem" ? t("Report issue", "提交问题") : t("Send request", "提交需求")}
+          </button>
+          {status === "invalid" && <p role="alert">{t("Please describe what you need or what went wrong.", "请描述你的需求或遇到的问题。")}</p>}
+          {status === "failed" && <p role="alert">{t("Could not submit yet. Your text is still here. Try again, or ", "暂时未能提交，填写内容仍保留在这里。请重试，或")}
+            <a href="mailto:support@gridhanzi.org" className="underline">{t("contact us by email", "通过邮件联系")}</a>{t(".", "。")}
+          </p>}
+        </form>
       )}
-    </div>
-  );
-}
-
-function InvitationCard({
-  buttonRef,
-  copy: t,
-  text,
-  onOpen,
-  onDismiss,
-}: {
-  buttonRef: RefObject<HTMLButtonElement | null>;
-  copy: Copy;
-  text: string;
-  onOpen: () => void;
-  onDismiss: () => void;
-}) {
-  return (
-    <div className="w-full rounded-xl border border-[#d8d0c2] bg-[#fffdf9] p-4 text-[#14253f] shadow-2xl">
-      <p className="font-semibold">{text}</p>
-      <button
-        ref={buttonRef}
-        className="hs-primary-button mt-3"
-        onClick={onOpen}
-      >
-        {t.button}
-      </button>
-      <button
-        className="ml-3 min-h-11 px-2 text-sm underline"
-        onClick={onDismiss}
-      >
-        {t.close}
-      </button>
-    </div>
-  );
-}
-
-function SurveyForm({
-  t,
-  form,
-  status,
-  update,
-  onSubmit,
-}: {
-  t: Copy;
-  form: FormState;
-  status: Status;
-  update: <K extends keyof FormState>(key: K, value: FormState[K]) => void;
-  onSubmit: (event: FormEvent<HTMLFormElement>) => void;
-}) {
-  return (
-    <form onSubmit={onSubmit} className="mt-4 grid gap-3 text-sm">
-      <label htmlFor="feedback-goal">
-        {t.goal}
-        <textarea
-          id="feedback-goal"
-          value={form.currentGoal}
-          onChange={(event) => update("currentGoal", event.target.value)}
-          maxLength={2000}
-          className="mt-1 min-h-20 w-full rounded border p-2"
-        />
-      </label>
-      <label htmlFor="feedback-friction">
-        {t.friction}
-        <span className="mt-1 block text-xs text-[#687487]">
-          {t.frictionHelp}
-        </span>
-        <textarea
-          id="feedback-friction"
-          value={form.friction}
-          onChange={(event) => update("friction", event.target.value)}
-          maxLength={2000}
-          className="mt-1 min-h-20 w-full rounded border p-2"
-        />
-      </label>
-      <label htmlFor="feedback-role">
-        {t.role}
-        <select
-          id="feedback-role"
-          value={form.role}
-          onChange={(event) => update("role", event.target.value)}
-          className="mt-1 w-full rounded border p-2"
-        >
-          <option value="">—</option>
-          {t.roles.map((label, index) => (
-            <option key={label} value={ROLES[index]}>
-              {label}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label htmlFor="feedback-age">
-        {t.age}
-        <select
-          id="feedback-age"
-          value={form.ageRange}
-          onChange={(event) => update("ageRange", event.target.value)}
-          className="mt-1 w-full rounded border p-2"
-        >
-          <option value="">—</option>
-          {t.ages.map((label, index) => (
-            <option key={label} value={AGE_RANGES[index]}>
-              {label}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label htmlFor="feedback-suggestion">
-        {t.suggestion}
-        <textarea
-          id="feedback-suggestion"
-          value={form.suggestion}
-          onChange={(event) => update("suggestion", event.target.value)}
-          maxLength={2000}
-          className="mt-1 min-h-20 w-full rounded border p-2"
-        />
-      </label>
-      <label htmlFor="feedback-email">
-        {t.email}
-        <input
-          id="feedback-email"
-          type="email"
-          value={form.contactEmail}
-          onChange={(event) => update("contactEmail", event.target.value)}
-          maxLength={254}
-          className="mt-1 w-full rounded border p-2"
-        />
-      </label>
-      <label className="flex gap-2">
-        <input
-          type="checkbox"
-          checked={form.mayContact}
-          onChange={(event) => update("mayContact", event.target.checked)}
-        />
-        {t.contact}
-      </label>
-      <input
-        name="website"
-        tabIndex={-1}
-        aria-hidden="true"
-        autoComplete="off"
-        value={form.website}
-        onChange={(event) => update("website", event.target.value)}
-        className="absolute -left-[10000px]"
-      />
-      <button
-        disabled={status === "sending"}
-        className="hs-primary-button disabled:opacity-60"
-      >
-        {status === "sending" ? "…" : t.send}
-      </button>
-      {status === "invalid" ? (
-        <p role="alert">{t.required}</p>
-      ) : status === "failed" ? (
-        <p role="alert">{t.failed}</p>
-      ) : null}
-    </form>
+    </section>
   );
 }

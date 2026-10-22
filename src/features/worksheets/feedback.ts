@@ -18,6 +18,22 @@ export const TRIGGERS = ["time-60s", "preview-ready", "download-complete", "manu
 export const LOCALES = ["en", "zh"] as const;
 export type Trigger = (typeof TRIGGERS)[number];
 export type Locale = (typeof LOCALES)[number];
+export const HELP_USES = ["class", "child", "self", "hsk"] as const;
+export const HELP_SOURCES = ["download", "preview", "pdf-error", "templates"] as const;
+export type FeedbackContext = {
+  kind: "request" | "problem";
+  source: (typeof HELP_SOURCES)[number];
+  useCase?: (typeof HELP_USES)[number];
+};
+export const FEEDBACK_COOLDOWN_KEY = "gridhanzi-feedback-cooldown";
+export function suppressDownloadHelp(days: number) {
+  try {
+    const until = Math.max(Number(localStorage.getItem(FEEDBACK_COOLDOWN_KEY)) || 0, Date.now() + days * 86400000);
+    localStorage.setItem(FEEDBACK_COOLDOWN_KEY, String(until));
+  } catch {
+    // Help and feedback remain usable when browser storage is blocked.
+  }
+}
 export type FeedbackInput = Record<string, unknown>;
 export type FeedbackValues = {
   currentGoal: string;
@@ -33,7 +49,7 @@ export type FeedbackMeta = {
   locale: Locale;
   trigger: Trigger;
   submittedAt: string;
-};
+} & Partial<FeedbackContext>;
 export const LIMITS = {
   currentGoal: 2000,
   friction: 2000,
@@ -52,7 +68,7 @@ export function normalizeMetadata(input: unknown): {
   locale: Locale;
   trigger: Trigger;
   pagePath: string;
-} {
+} & Partial<FeedbackContext> {
   const value =
     input && typeof input === "object"
       ? (input as Record<string, unknown>)
@@ -61,11 +77,14 @@ export function normalizeMetadata(input: unknown): {
   const trigger = text(value.trigger);
   const pagePath = text(value.pagePath);
   return {
+    ...(value.kind === "request" || value.kind === "problem" ? { kind: value.kind } : {}),
+    ...(includes(HELP_SOURCES, text(value.source)) ? { source: text(value.source) as FeedbackContext["source"] } : {}),
+    ...(includes(HELP_USES, text(value.useCase)) ? { useCase: text(value.useCase) as FeedbackContext["useCase"] } : {}),
     locale: includes(LOCALES, locale) ? locale : "en",
     trigger: includes(TRIGGERS, trigger) ? trigger : "time-60s",
     pagePath:
       pagePath.startsWith("/") && !pagePath.startsWith("/api/")
-        ? pagePath.slice(0, 300)
+        ? pagePath.split(/[?#]/)[0].slice(0, 300)
         : "/",
   };
 }
@@ -137,6 +156,9 @@ export function buildFeedbackEmail(values: FeedbackValues, meta: FeedbackMeta) {
     `Path: ${meta.pagePath}`,
     `Locale: ${meta.locale}`,
     `Trigger: ${meta.trigger}`,
+    `Feedback kind: ${meta.kind || "unspecified"}`,
+    `Help entry: ${meta.source || "unspecified"}`,
+    `Selected use (not a verified role): ${meta.useCase || "unspecified"}`,
     `Submitted: ${meta.submittedAt}`,
     "",
     `Current goal: ${values.currentGoal || "(empty)"}`,

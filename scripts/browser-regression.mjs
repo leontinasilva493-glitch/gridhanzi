@@ -79,6 +79,108 @@ async function seed(context, storage, key, value) {
 }
 
 try {
+  for (const zh of [false, true]) {
+    await scenario(`help-template-${zh ? 'zh-mobile' : 'en-desktop'}`, zh ? { viewport: { width: 390, height: 844 } } : {}, async (page, context) => {
+      let accepted = false;
+      let payload;
+      await context.route('**/api/feedback', route => {
+        payload = route.request().postDataJSON();
+        return route.fulfill({ status: accepted ? 200 : 503, json: accepted ? { ok: true } : { error: 'Test unavailable' } });
+      });
+      await visit(page, zh ? '/zh/templates' : '/templates');
+      const picker = page.locator('[data-template-purpose]');
+      assert.equal(await page.locator('[data-feedback-form]').count(), 0);
+      await picker.getByRole('button', { name: zh ? '课堂练习' : 'For a class', exact: true }).click();
+      const ownWords = picker.getByRole('link', { name: zh ? '输入本课词表' : 'Enter lesson words', exact: true });
+      assert.equal(await ownWords.getAttribute('href'), zh ? '/zh#hero-vocabulary' : '/#hero-vocabulary');
+      await picker.getByRole('link', { name: zh ? '浏览主题模板' : 'Browse topic templates', exact: true }).click();
+      assert.match(page.url(), /#everyday-words$/);
+      await picker.getByRole('button', { name: zh ? '孩子练字' : 'For a child', exact: true }).click();
+      assert.equal(await picker.getByRole('link', { name: zh ? '数字' : 'Numbers', exact: true }).getAttribute('href'), zh ? '/zh/templates/numbers' : '/templates/numbers');
+      await picker.getByRole('button', { name: zh ? 'HSK 练习' : 'HSK practice', exact: true }).click();
+      assert.match(await picker.getByRole('link', { name: zh ? '选择版本与级别' : 'Choose version and level', exact: true }).getAttribute('href'), /generator\?hskSystem=2.0&hskLevel=1$/);
+      await picker.getByRole('button', { name: zh ? '课堂练习' : 'For a class', exact: true }).click();
+      const invite = picker.getByRole('button', { name: zh ? '没找到你要的练习？描述一下你想做的练习纸。' : "Can't find what you need? Describe the worksheet you have in mind.", exact: true });
+      await invite.click();
+      const form = picker.locator('[data-feedback-form]');
+      assert.equal(await form.getAttribute('data-clarity-mask'), 'true');
+      assert.equal(await form.locator('textarea').count(), 1);
+      assert.equal(await form.locator('input[type=email]').count(), 0);
+      assert.equal(await form.locator('select').count(), 1);
+      await form.screenshot({ path: path.join(output, `help-form-${zh ? 'zh' : 'en'}.png`) });
+      await form.locator('textarea').fill('More blank rows for a lesson.');
+      await form.getByRole('checkbox').check();
+      await form.locator('input[type=email]').fill('private@example.com');
+      await form.getByRole('checkbox').uncheck();
+      await form.getByRole('button', { name: zh ? '提交需求' : 'Send request', exact: true }).click();
+      await form.getByRole('alert').waitFor();
+      assert.equal(payload.contactEmail, '');
+      assert.equal(payload.role, '');
+      assert.equal(payload.useCase, 'class');
+      assert.equal(payload.pagePath, zh ? '/zh/templates' : '/templates');
+      assert.equal(payload.ageRange, undefined);
+      await form.getByRole('button', { name: zh ? '关闭表单' : 'Close form', exact: true }).click();
+      assert.equal(await page.locator('[data-feedback-form]').count(), 0);
+      await invite.click();
+      assert.equal(await form.locator('textarea').inputValue(), 'More blank rows for a lesson.');
+      accepted = true;
+      await form.getByRole('button', { name: zh ? '提交需求' : 'Send request', exact: true }).click();
+      await form.getByRole('status').waitFor();
+      assert.match(await form.getByRole('status').innerText(), zh ? /已提交/ : /Submitted/);
+      const cooldown = await page.evaluate(() => Number(localStorage.getItem('gridhanzi-feedback-cooldown')));
+      assert.ok(cooldown > Date.now() + 179 * 86400000);
+      await form.getByRole('button', { name: zh ? '关闭表单' : 'Close form', exact: true }).click();
+      assert.equal(await page.evaluate(() => Number(localStorage.getItem('gridhanzi-feedback-cooldown'))), cooldown);
+      await invite.click();
+      assert.equal(await form.locator('textarea').inputValue(), '');
+      await form.locator('textarea').fill('A different request.');
+      await form.getByRole('button', { name: zh ? '提交需求' : 'Send request', exact: true }).click();
+      await form.getByRole('status').waitFor();
+      await picker.getByRole('button', { name: zh ? '自己练习' : 'For myself', exact: true }).click();
+      await invite.click();
+      assert.equal(await form.locator('textarea').inputValue(), '');
+      await form.getByRole('button', { name: zh ? '关闭表单' : 'Close form', exact: true }).click();
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+      await picker.screenshot({ path: path.join(output, `help-template-${zh ? 'zh' : 'en'}.png`) });
+    });
+  }
+  await scenario('help-adjust-resumes-all-rows-and-requires-mode-choice', {}, async (page, context) => {
+    const editing = { ...snapshot, entries: [...snapshot.entries, { id: 'pending', hanzi: '', pinyin: '', english: 'unfinished', status: 'needs-review' }], settings: { ...snapshot.settings, mode: 'write', cellSize: 22 } };
+    await seed(context, 'sessionStorage', 'gridhanzi:worksheet:v1', JSON.stringify({ ...snapshot, settings: editing.settings }));
+    await seed(context, 'sessionStorage', 'gridhanzi:worksheet:editor-session:v1', JSON.stringify(editing));
+    await visit(page, '/worksheet/preview');
+    const downloading = page.waitForEvent('download', { timeout: 45_000 });
+    await page.getByRole('button', { name: 'Download PDF', exact: true }).click();
+    assert.equal(await (await downloading).failure(), null);
+    await page.getByRole('button', { name: 'Adjust worksheet', exact: true }).click();
+    await page.getByRole('link', { name: 'Add stroke-order guides', exact: true }).click();
+    await page.getByRole('button', { name: 'Switch to Learn mode', exact: true }).waitFor();
+    assert.equal(await page.getByRole('textbox', { name: 'English row 2', exact: true }).inputValue(), 'unfinished');
+    assert.equal(await page.getByRole('button', { name: 'Practice', exact: true }).getAttribute('aria-pressed'), 'true');
+    assert.equal(await page.evaluate(() => document.activeElement.id), 'worksheet-strokes');
+    await page.getByRole('button', { name: 'Switch to Learn mode', exact: true }).click();
+    assert.equal(await page.getByRole('button', { name: 'Learn', exact: true }).getAttribute('aria-pressed'), 'true');
+    assert.equal(await page.getByRole('button', { name: 'Detailed', exact: true }).getAttribute('aria-pressed'), 'true');
+    assert.equal(await page.getByRole('textbox', { name: 'English row 2', exact: true }).inputValue(), 'unfinished');
+  });
+  await scenario('help-storage-blocked-manual-and-print', { viewport: { width: 390, height: 844 } }, async (page, context) => {
+    await denyStorage(context, 'localStorage', 'getter');
+    await context.addInitScript(() => { window.print = () => { document.body.dataset.printOpened = 'true'; }; });
+    await visit(page, '/zh/worksheet/preview?template=numbers');
+    await page.getByRole('button', { name: '遇到问题？', exact: true }).click();
+    await page.getByRole('button', { name: 'PDF 下载失败', exact: true }).click();
+    await page.getByRole('button', { name: '打开打印窗口', exact: true }).click();
+    await page.waitForFunction(() => document.body.dataset.printOpened === 'true');
+    assert.equal(await page.locator('[data-feedback-form]').count(), 0);
+    await page.getByRole('button', { name: '内容或排版不对', exact: true }).click();
+    assert.equal(await page.getByRole('link', { name: '修改汉字、拼音或释义', exact: true }).getAttribute('href'), '/zh/generator?template=numbers#review-words');
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    await page.locator('[data-worksheet-help]').screenshot({ path: path.join(output, 'help-preview-zh.png') });
+    await page.getByRole('button', { name: '关闭帮助', exact: true }).click();
+    assert.equal(await page.locator('[data-worksheet-help]').isVisible(), false);
+    await page.getByRole('button', { name: '遇到问题？', exact: true }).click();
+    await page.locator('[data-worksheet-help]').waitFor();
+  });
   await scenario('flow-auto-fill-timeout', {}, async (page, context) => {
     let release;
     const blocked = new Promise(resolve => { release = resolve; });
@@ -358,8 +460,12 @@ try {
     await page.getByRole('button', { name: 'Download PDF', exact: true }).click();
     const download = await downloading;
     assert.equal(await download.failure(), null);
-    await page.locator('[data-feedback-invite]').waitFor();
-    assert.match(await page.locator('[data-feedback-invite]').innerText(), /PDF is ready/);
+    await page.locator('[data-worksheet-help]').waitFor();
+    assert.match(await page.locator('[data-worksheet-help]').innerText(), /Want to adjust this worksheet/);
+    assert.equal(await page.locator('[data-feedback-invite], [data-feedback-dialog], [data-feedback-form]').count(), 0);
+    await page.getByRole('button', { name: 'Close help', exact: true }).click();
+    assert.equal(await page.locator('[data-worksheet-help]').isVisible(), false);
+    assert.ok(await page.evaluate(() => Number(localStorage.getItem('gridhanzi-feedback-cooldown')) > Date.now()));
     assert.match(download.suggestedFilename(), /\.pdf$/);
     await download.saveAs(path.join(output, 'worksheet.pdf'));
   });
@@ -582,15 +688,23 @@ try {
     assert.equal(await page.evaluate(() => typeof window.gtag), 'undefined');
     assert.equal(await page.evaluate(() => typeof window.clarity), 'undefined');
   });
-  await scenario('ux-feedback-only-after-download', {}, async (page, context) => {
+  await scenario('help-no-automatic-form', {}, async (page, context) => {
     await seed(context, 'sessionStorage', 'gridhanzi:worksheet:v1', JSON.stringify(snapshot));
     await visit(page, '/worksheet/preview');
     await page.clock.install();
     await page.clock.fastForward(61_000);
     assert.equal(await page.locator('[data-feedback-invite]').count(), 0);
-    await page.getByRole('button', { name: 'Share feedback', exact: true }).click();
-    await page.locator('[data-feedback-dialog]').waitFor();
-    // No form is submitted during testing.
+    assert.equal(await page.locator('[data-feedback-form]').count(), 0);
+    assert.equal(await page.locator('[data-worksheet-help]').isVisible(), false);
+    await page.getByRole('button', { name: 'Having trouble?', exact: true }).click();
+    await page.getByRole('button', { name: 'PDF download failed', exact: true }).click();
+    await page.getByRole('button', { name: 'Open print dialog', exact: true }).waitFor();
+    assert.equal(await page.locator('[data-feedback-form]').count(), 0);
+    await page.getByRole('button', { name: 'Still stuck? Describe the problem', exact: true }).click();
+    await page.locator('[data-feedback-form]').waitFor();
+    await page.getByRole('button', { name: 'Close form', exact: true }).click();
+    assert.equal(await page.locator('[data-feedback-form], [data-feedback-invite], [data-feedback-dialog]').count(), 0);
+    assert.equal(await page.locator('[data-worksheet-help]').isVisible(), false);
   });
 } finally {
   await browser.close();

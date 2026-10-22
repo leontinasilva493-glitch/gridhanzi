@@ -4,9 +4,44 @@ import {
   buildFeedbackEmail,
   normalizeMetadata,
   parseFeedbackInput,
+  suppressDownloadHelp,
+  FEEDBACK_COOLDOWN_KEY,
 } from "./feedback";
 
 describe("feedback parsing", () => {
+  it("never shortens a successful cooldown and tolerates blocked storage", () => {
+    const original = Object.getOwnPropertyDescriptor(globalThis, "localStorage");
+    const values = new Map<string, string>();
+    try {
+      Object.defineProperty(globalThis, "localStorage", { configurable: true, value: {
+        getItem: (key: string) => values.get(key) ?? null,
+        setItem: (key: string, value: string) => values.set(key, value),
+      } });
+      suppressDownloadHelp(180);
+      const until = values.get(FEEDBACK_COOLDOWN_KEY);
+      suppressDownloadHelp(30);
+      assert.equal(values.get(FEEDBACK_COOLDOWN_KEY), until);
+      Object.defineProperty(globalThis, "localStorage", { configurable: true, get() { throw new Error("blocked"); } });
+      assert.doesNotThrow(() => suppressDownloadHelp(30));
+    } finally {
+      if (original) Object.defineProperty(globalThis, "localStorage", original);
+      else Reflect.deleteProperty(globalThis, "localStorage");
+    }
+  });
+  it("keeps help context separate from identity and strips private URL values", () => {
+    const meta = normalizeMetadata({ locale: "zh", trigger: "manual", source: "templates", kind: "request", useCase: "class", pagePath: "/zh/templates?words=private#private" });
+    assert.deepEqual(meta, { locale: "zh", trigger: "manual", source: "templates", kind: "request", useCase: "class", pagePath: "/zh/templates" });
+    const parsed = parseFeedbackInput({ suggestion: "需要更多空白行" });
+    assert.ok(parsed.ok);
+    assert.equal(parsed.value.role, "");
+    const mail = buildFeedbackEmail(parsed.value, { ...meta, submittedAt: "now" });
+    assert.match(mail.text, /Selected use \(not a verified role\): class/);
+    assert.doesNotMatch(mail.text, /private/);
+    const invalid = normalizeMetadata({ kind: "private", source: "private", useCase: "private" });
+    assert.equal(invalid.source, undefined);
+    assert.equal(invalid.useCase, undefined);
+    assert.equal(invalid.kind, undefined);
+  });
   it("requires one answer and validates email", () => {
     assert.equal(parseFeedbackInput({}).ok, false);
     assert.equal(parseFeedbackInput({ contactEmail: "bad" }).ok, false);

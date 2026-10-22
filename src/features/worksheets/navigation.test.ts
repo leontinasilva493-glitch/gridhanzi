@@ -224,7 +224,7 @@ test("homepage task entries link to the three core destinations", async () => {
 test("blank grid acquisition links route users to the printable grid pages", async () => {
   const [homeSource, templatesSource, generatorSource] = await Promise.all([
     projectFile("src/features/worksheets/components/home-page.tsx"),
-    projectFile("src/features/worksheets/components/templates-page.tsx"),
+    projectFile("src/features/worksheets/components/template-purpose-picker.tsx"),
     projectFile("src/features/worksheets/components/generator-client.tsx"),
   ]);
 

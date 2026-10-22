@@ -169,6 +169,20 @@ export function GeneratorClient({
   const isDigitalPdf =
     settings.output === "worksheet" && settings.paperSize === "tablet";
 
+  useEffect(() => {
+    if (!draftReady || pendingDraft || resumeError) return;
+    const focusHelpTarget = () => {
+      const id = window.location.hash.slice(1);
+      if (!["review-words", "worksheet-settings", "worksheet-cell-size", "worksheet-pinyin", "worksheet-strokes"].includes(id)) return;
+      const target = document.getElementById(id);
+      target?.scrollIntoView({ block: "center" });
+      target?.focus({ preventScroll: true });
+    };
+    focusHelpTarget();
+    window.addEventListener("hashchange", focusHelpTarget);
+    return () => window.removeEventListener("hashchange", focusHelpTarget);
+  }, [draftReady, pendingDraft, resumeError]);
+
   function updateEntry(id: string, field: keyof WorksheetEntry, value: string) {
     setEntries((current) =>
       current.map((entry) =>
@@ -594,7 +608,7 @@ export function GeneratorClient({
         ) : null}
 
         <div className="mt-7 grid gap-4 xl:grid-cols-[275px_minmax(500px,1fr)_minmax(390px,0.78fr)]">
-          <section id="review-words" className="hs-card order-1 min-w-0 p-4 sm:p-5 xl:order-2">
+          <section id="review-words" tabIndex={-1} className="hs-card order-1 min-w-0 scroll-mt-24 p-4 sm:p-5 xl:order-2">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="hs-display text-2xl font-bold">{t("Review your list", "检查词汇表")}</h2>
               <span className="flex items-center gap-1 text-sm font-medium text-[#237553]">
@@ -1113,7 +1127,7 @@ function SettingsPanel({ settings, setSettings, onCharacterStandardChange, conve
     patch({ profile, cellSize: next.size.default, grid: next.defaultGrid, paperSize: getCompatiblePaperSize(profile, settings.paperSize) });
   }
   return (
-    <aside id="worksheet-settings" className="hs-card order-2 self-start p-4 xl:order-1 xl:sticky xl:top-20 xl:max-h-[calc(100vh-10rem)] xl:overflow-y-auto">
+    <aside id="worksheet-settings" tabIndex={-1} className="hs-card order-2 self-start scroll-mt-24 p-4 xl:order-1 xl:sticky xl:top-20 xl:max-h-[calc(100vh-10rem)] xl:overflow-y-auto">
       <h2 className="hs-display mb-4 text-xl font-bold">{t("Choose practice settings", "选择练习方式")}</h2>
       {!isFlashcards && <>
         <SettingSection title={t("Worksheet type", "练习类型")}>
@@ -1134,13 +1148,18 @@ function SettingsPanel({ settings, setSettings, onCharacterStandardChange, conve
           </SettingSection>
           {isFlashcards ? <>
             <SettingSection title={t("Cards per page", "每页卡片数")}><Segmented value={String(settings.flashcardsPerPage)} options={[["6", "6"], ["9", "9"]]} onChange={(value) => patch({ flashcardsPerPage: value === "9" ? 9 : 6 })} /></SettingSection>
-            <ToggleRow label={t("Show Pinyin", "显示拼音")} checked={settings.flashcardShowPinyin} onChange={(flashcardShowPinyin) => patch({ flashcardShowPinyin })} />
+            <div id="worksheet-pinyin" tabIndex={-1} className="scroll-mt-24"><ToggleRow label={t("Show Pinyin", "显示拼音")} checked={settings.flashcardShowPinyin} onChange={(flashcardShowPinyin) => patch({ flashcardShowPinyin })} /></div>
             <ToggleRow label={t("Show English", "显示英文")} checked={settings.flashcardShowEnglish} onChange={(flashcardShowEnglish) => patch({ flashcardShowEnglish })} />
           </> : <>
-            <SettingSection title={t(`Cell size · ${settings.cellSize}${preset.size.unit}`, `格子尺寸 · ${settings.cellSize}${preset.size.unit}`)}><input type="range" aria-label={t("Cell size", "格子尺寸")} min={preset.size.min} max={preset.size.max} step={preset.size.step} value={settings.cellSize} onChange={(event) => patch({ cellSize: Number(event.target.value) })} className="w-full accent-[#bd2923]" /></SettingSection>
+            <SettingSection id="worksheet-cell-size" title={t(`Cell size · ${settings.cellSize}${preset.size.unit}`, `格子尺寸 · ${settings.cellSize}${preset.size.unit}`)}><input type="range" aria-label={t("Cell size", "格子尺寸")} min={preset.size.min} max={preset.size.max} step={preset.size.step} value={settings.cellSize} onChange={(event) => patch({ cellSize: Number(event.target.value) })} className="w-full accent-[#bd2923]" /></SettingSection>
             <SettingSection title={t("Grid", "格子")}><Segmented value={settings.grid} options={[["tian", t("Tian Zi Ge", "田字格")], ["mi", t("Mi Zi Ge", "米字格")]]} onChange={(grid) => patch({ grid: grid as GridStyle })} /></SettingSection>
-            <ToggleRow label={t("Pinyin", "拼音")} checked={settings.showPinyin} onChange={(showPinyin) => patch({ showPinyin })} />
-            {settings.mode === "trace" && <SettingSection title={t("Stroke order", "笔顺")}><Segmented value={settings.strokeOrderMode} options={[["detailed", t("Detailed", "详细")], ["compact", t("Compact", "精简")], ["off", t("Off", "关闭")]]} onChange={(value) => patch({ strokeOrderMode: value as StrokeOrderMode, showStrokeOrder: value !== "off" })} /></SettingSection>}
+            <div id="worksheet-pinyin" tabIndex={-1} className="scroll-mt-24"><ToggleRow label={t("Pinyin", "拼音")} checked={settings.showPinyin} onChange={(showPinyin) => patch({ showPinyin })} /></div>
+            <SettingSection id="worksheet-strokes" title={t("Stroke order", "笔顺")}>
+              {settings.mode === "trace" ? <Segmented value={settings.strokeOrderMode} options={[["detailed", t("Detailed", "详细")], ["compact", t("Compact", "精简")], ["off", t("Off", "关闭")]]} onChange={(value) => patch({ strokeOrderMode: value as StrokeOrderMode, showStrokeOrder: value !== "off" })} /> : <>
+                <p className="text-xs leading-5 text-[#657083]">{t("Stroke-order guides are available in Learn mode. Switching changes the practice layout and keeps your word list.", "笔顺提示用于新字精学模式。切换会改变练习排版，并保留当前词表。")}</p>
+                <button type="button" onClick={() => patch({ mode: "trace", strokeOrderMode: "detailed", showStrokeOrder: true })} className="hs-secondary-button mt-2 text-sm">{t("Switch to Learn mode", "切换到新字精学")}</button>
+              </>}
+            </SettingSection>
           </>}
       </div>
       <details className="rounded border border-[#ded7ca] p-3">
@@ -1165,14 +1184,16 @@ function SettingsPanel({ settings, setSettings, onCharacterStandardChange, conve
 }
 
 function SettingSection({
+  id,
   title,
   children,
 }: {
+  id?: string;
   title: string;
   children: React.ReactNode;
 }) {
   return (
-    <section className="mb-5">
+    <section id={id} tabIndex={id ? -1 : undefined} className="mb-5 scroll-mt-24">
       <h2 className="hs-display mb-2 font-bold">{title}</h2>
       {children}
     </section>
