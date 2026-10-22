@@ -79,6 +79,113 @@ async function seed(context, storage, key, value) {
 }
 
 try {
+  await scenario('flow-auto-fill-timeout', {}, async (page, context) => {
+    let release;
+    const blocked = new Promise(resolve => { release = resolve; });
+    await context.route('**/api/worksheet/enrich', async route => {
+      await blocked;
+      await route.fulfill({ status: 503, json: {} }).catch(() => {});
+    });
+    await visit(page, '/generator?words=' + encodeURIComponent('你好'));
+    await page.clock.install();
+    await page.getByRole('button', { name: 'Auto-fill missing fields', exact: true }).click();
+    await page.clock.fastForward(20_001);
+    await page.getByText(/Auto-fill took too long/).waitFor();
+    assert.equal(await page.getByRole('button', { name: 'Preview full page', exact: true }).isEnabled(), true);
+    assert.equal(await page.getByRole('textbox', { name: 'Chinese row 1', exact: true }).inputValue(), '你好');
+    release();
+  });
+  await scenario('flow-pdf-tools-timeout-retry', {}, async (page, context) => {
+    let release;
+    const blocked = new Promise(resolve => { release = resolve; });
+    await context.route(/\/jspdf\.es\.min-[^/]+\.js/, async route => { await blocked; await route.continue().catch(() => {}); });
+    await seed(context, 'sessionStorage', 'gridhanzi:worksheet:v1', JSON.stringify(snapshot));
+    await visit(page, '/worksheet/preview');
+    const downloads = [];
+    page.on('download', download => downloads.push(download));
+    await page.getByRole('button', { name: 'Download PDF', exact: true }).click();
+    await page.getByRole('alert').filter({ hasText: /PDF tools could not finish loading/ }).waitFor({ timeout: 20_000 });
+    assert.equal(await page.getByRole('button', { name: 'Print / Save as PDF instead', exact: true }).isVisible(), true);
+    release();
+    await page.waitForLoadState('networkidle');
+    assert.equal(downloads.length, 0, 'Late modules must not trigger the failed export');
+    // Simulate a browser that no longer delivers animation frames to this tab.
+    await page.evaluate(() => { window.requestAnimationFrame = () => 0; });
+    const downloading = page.waitForEvent('download', { timeout: 45_000 });
+    await page.getByRole('button', { name: 'Download PDF', exact: true }).click();
+    const download = await downloading;
+    assert.equal(await download.failure(), null);
+    assert.equal(downloads.length, 1);
+    await download.saveAs(path.join(output, 'flow-tools-retry-without-raf.pdf'));
+  });
+  await scenario('flow-template-filter-links', { viewport: { width: 390, height: 844 } }, async page => {
+    await visit(page, '/templates');
+    const links = page.getByRole('link', { name: 'Use the filters above', exact: true });
+    assert.equal(await links.count(), 3);
+    await links.first().focus();
+    await page.keyboard.press('Enter');
+    await page.waitForURL('**/templates#template-filters');
+    const filters = page.getByRole('region', { name: 'Template filters', exact: true });
+    const bounds = await filters.boundingBox();
+    assert.ok(bounds && bounds.y >= 0 && bounds.y < 400);
+    assert.equal(await page.evaluate(() => document.activeElement?.id), 'template-filters');
+    await page.screenshot({ path: path.join(output, 'flow-template-filters-mobile.png') });
+  });
+  await scenario('flow-review-focus', { viewport: { width: 390, height: 844 } }, async page => {
+    await visit(page, '/generator?words=' + encodeURIComponent('apple\nunmatched-private-term'));
+    await page.getByRole('button', { name: 'Preview full page', exact: true }).click();
+    const dialog = page.getByRole('dialog', { name: 'Review before exporting' });
+    await dialog.getByRole('button', { name: 'Back to complete the list' }).click();
+    assert.equal(await page.evaluate(() => document.activeElement?.getAttribute('aria-label')), 'Chinese row 2');
+    await page.keyboard.type('人');
+    await page.getByRole('button', { name: 'Preview full page', exact: true }).click();
+    await page.waitForURL('**/worksheet/preview');
+    const saved = await page.evaluate(() => JSON.parse(sessionStorage.getItem('gridhanzi:worksheet:v1')));
+    assert.equal(saved.entries.length, 2);
+    assert.equal(saved.entries[1].hanzi, '人');
+  });
+  await scenario('flow-auto-fill-cancel', {}, async (page, context) => {
+    let release;
+    const blocked = new Promise(resolve => { release = resolve; });
+    await context.route('**/api/worksheet/enrich', async route => {
+      await blocked;
+      await route.fulfill({ json: { entries: [{ hanzi: '错', pinyin: 'cuò', english: 'wrong' }] } }).catch(() => {});
+    });
+    await visit(page, '/generator?words=' + encodeURIComponent('你好'));
+    await page.getByRole('button', { name: 'Auto-fill missing fields', exact: true }).click();
+    await page.getByRole('button', { name: 'Stop auto-fill', exact: true }).click();
+    await page.getByText(/Auto-fill stopped/).waitFor();
+    release();
+    await page.getByRole('button', { name: 'Preview full page', exact: true }).click();
+    await page.waitForURL('**/worksheet/preview');
+    const saved = await page.evaluate(() => JSON.parse(sessionStorage.getItem('gridhanzi:worksheet:v1')));
+    assert.equal(saved.entries[0].hanzi, '你好');
+  });
+  await scenario('flow-pdf-cancel-retry', { viewport: { width: 390, height: 844 } }, async (page, context) => {
+    await seed(context, 'sessionStorage', 'gridhanzi:worksheet:v1', JSON.stringify(snapshot));
+    await visit(page, '/worksheet/preview');
+    await page.evaluate(() => {
+      const fonts = document.fonts;
+      Object.defineProperty(document, 'fonts', { configurable: true, value: { load: () => new Promise(() => {}), ready: Promise.resolve() } });
+      window.__restorePdfFonts = () => Object.defineProperty(document, 'fonts', { configurable: true, value: fonts });
+    });
+    const downloads = [];
+    page.on('download', download => downloads.push(download));
+    await page.getByRole('button', { name: 'Download PDF', exact: true }).click();
+    assert.equal(await page.getByRole('combobox', { name: 'Paper size', exact: true }).isEnabled(), false);
+    await page.getByRole('button', { name: 'Cancel PDF', exact: true }).click();
+    await page.getByText(/PDF creation cancelled/).waitFor();
+    assert.equal(downloads.length, 0);
+    assert.equal(await page.locator('[data-gridhanzi-pdf-capture]').count(), 0);
+    await page.evaluate(() => window.__restorePdfFonts());
+    const downloading = page.waitForEvent('download', { timeout: 45_000 });
+    await page.getByRole('button', { name: 'Download PDF', exact: true }).click();
+    const download = await downloading;
+    assert.equal(await download.failure(), null);
+    await download.saveAs(path.join(output, 'flow-cancel-retry.pdf'));
+    assert.equal(downloads.length, 1);
+    await page.screenshot({ path: path.join(output, 'flow-pdf-mobile.png') });
+  });
   await scenario('schema-objects', {}, async page => {
     for (const route of ['/', '/generator', '/templates/family', '/chinese-character-components']) {
       await visit(page, route);
@@ -192,7 +299,7 @@ try {
       await denyStorage(context, 'sessionStorage', operation);
       await visit(page, '/worksheet/preview');
       assert.ok(await page.locator('.hs-paper').count());
-      assert.match(await page.getByRole('status').innerText(), /could not be saved/i);
+      await page.getByRole('status').filter({ hasText: /could not be saved/i }).waitFor();
       await page.getByRole('button', { name: 'Repeat to fill page' }).click();
       assert.match(await page.locator('.hs-paper').first().innerText(), /Regression worksheet/);
     });

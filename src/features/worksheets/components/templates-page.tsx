@@ -358,7 +358,7 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
           </div>
         </section>
 
-        <section className="hs-card mt-6 p-4 sm:p-5" aria-label="Template filters">
+        <section id="template-filters" tabIndex={-1} className="hs-card mt-6 scroll-mt-24 p-4 sm:p-5" aria-label="Template filters">
           <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto_auto]">
             <label className="relative min-w-0">
               <span className="sr-only"><UiText>{"Search templates"}</UiText></span>
@@ -512,8 +512,8 @@ function GoalCard({ icon: Icon, title, children }: {
       <div>
         <h3 className="hs-display text-lg font-bold">{title}</h3>
         <p className="mt-1 text-sm leading-6 text-[#5f6c7f]">{children}</p>
-        <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[#b62822]"><UiText>{"Use the filters above"}</UiText><ArrowRight className="size-4" />
-        </span>
+        <a href="#template-filters" className="mt-3 inline-flex min-h-10 items-center gap-1 text-sm font-semibold text-[#b62822] underline underline-offset-4"><UiText>{"Use the filters above"}</UiText><ArrowRight className="size-4" />
+        </a>
       </div>
     </article>
   );

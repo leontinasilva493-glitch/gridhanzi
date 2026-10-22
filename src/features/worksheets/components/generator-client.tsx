@@ -123,6 +123,7 @@ export function GeneratorClient({
   const [previewPageCount, setPreviewPageCount] = useState(0);
   const [resumeError, setResumeError] = useState(false);
   const [isEnriching, setIsEnriching] = useState(false);
+  const enrichmentController = useRef<AbortController | null>(null);
   const [isConverting, setIsConverting] = useState(false);
   const conversionPending = useRef(false);
   const [pendingDraft, setPendingDraft] =
@@ -138,6 +139,20 @@ export function GeneratorClient({
   );
   const autoEnrichStarted = useRef(false);
   const newRowFocusRequested = useRef(false);
+
+  useEffect(() => () => {
+    enrichmentController.current?.abort();
+    enrichmentController.current = null;
+  }, []);
+
+  function focusMissingField(index: number, missing: string[]) {
+    exportDialog.current?.close();
+    const field = missing[0] === "hanzi" ? "Chinese" : missing[0] === "pinyin" ? "Pinyin" : "English";
+    const target = Array.from(document.querySelectorAll<HTMLInputElement>(`input[aria-label="${field} row ${index + 1}"]`))
+      .find((input) => input.getClientRects().length > 0);
+    target?.scrollIntoView({ block: "center", behavior: "smooth" });
+    target?.focus({ preventScroll: true });
+  }
 
   const review = useMemo(() => reviewWorksheetEntries(entries, settings), [entries, settings]);
   const completed = review.ready.length;
@@ -186,6 +201,10 @@ export function GeneratorClient({
   }
 
   async function enrichEntries() {
+    if (enrichmentController.current) return;
+    const controller = new AbortController();
+    enrichmentController.current = controller;
+    const timer = setTimeout(() => controller.abort("timeout"), 20_000);
     setIsEnriching(true);
     setMessage(t("Filling in Hanzi and Pinyin…", "正在补全汉字和拼音…"));
     const requestEntries = entries.map((entry) => ({
@@ -198,6 +217,7 @@ export function GeneratorClient({
       const values = entries.map((entry) => entry.hanzi || entry.english);
       const response = await fetch("/api/worksheet/enrich", {
         method: "POST",
+        signal: controller.signal,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           values,
@@ -211,6 +231,7 @@ export function GeneratorClient({
         fallbackReason?: string;
         error?: string;
       };
+      if (controller.signal.aborted) throw new Error("Auto-fill cancelled.");
       if (!response.ok || !payload.entries) {
         throw new Error(
           response.status === 429
@@ -261,13 +282,22 @@ export function GeneratorClient({
             ),
       );
     } catch (error) {
+      if (enrichmentController.current !== controller) return;
       setMessage(
-        error instanceof Error
+        controller.signal.aborted
+          ? controller.signal.reason === "timeout"
+            ? t("Auto-fill took too long. Your words were kept. Edit missing fields yourself or retry; ready rows can still be previewed.", "自动补全等待过久，词表已保留。可手动补填或重试，也可继续预览已完成的词条。")
+            : t("Auto-fill stopped. Your words were kept. You can edit them or continue to preview.", "已停止自动补全，词表已保留。可继续编辑或打开预览。")
+          : error instanceof Error
           ? error.message
           : t("Could not fill in this list.", "暂时无法补全这个词表。"),
       );
     } finally {
-      setIsEnriching(false);
+      clearTimeout(timer);
+      if (enrichmentController.current === controller) {
+        enrichmentController.current = null;
+        setIsEnriching(false);
+      }
     }
   }
 
@@ -577,13 +607,7 @@ export function GeneratorClient({
                 <ul className="mt-2 space-y-1">
                   {review.pending.map(({ entry, index, missing }) => (
                     <li key={entry.id}>
-                      <button type="button" className="text-left underline underline-offset-2" onClick={() => {
-                        const field = missing[0] === "hanzi" ? "Chinese" : missing[0] === "pinyin" ? "Pinyin" : "English";
-                        const inputs = document.querySelectorAll<HTMLInputElement>(`input[aria-label="${field} row ${index + 1}"]`);
-                        const target = Array.from(inputs).find((input) => input.getClientRects().length > 0);
-                        target?.scrollIntoView({ block: "center", behavior: "smooth" });
-                        target?.focus({ preventScroll: true });
-                      }}>
+                      <button type="button" className="text-left underline underline-offset-2" onClick={() => focusMissingField(index, missing)}>
                         {index + 1}. {entry.hanzi || entry.english || t("Empty row", "空白行")} — {t("Missing: ", "缺少：")}{missing.map((field) => field === "hanzi" ? t("Hanzi", "汉字") : field === "pinyin" ? t("Pinyin", "拼音") : t("meaning", "英文释义")).join("、")}
                       </button>
                     </li>
@@ -628,6 +652,11 @@ export function GeneratorClient({
                 )}
                 {t("Auto-fill missing fields", "自动补全缺失内容")}
               </button>
+              {isEnriching ? (
+                <button type="button" className="hs-secondary-button text-sm" onClick={() => enrichmentController.current?.abort("cancelled")}>
+                  {t("Stop auto-fill", "停止自动补全")}
+                </button>
+              ) : null}
             </div>
 
             <div className="mt-4 hidden overflow-x-auto rounded border border-[#ded7ca] md:block">
@@ -853,11 +882,15 @@ export function GeneratorClient({
       <dialog ref={exportDialog} aria-labelledby="export-review-title" className="m-auto max-h-[85vh] w-[min(92vw,560px)] overflow-auto rounded-xl border border-[#d8d0c2] bg-[#fffdf9] p-6 text-[#172942] shadow-xl backdrop:bg-black/40">
         <h2 id="export-review-title" className="text-xl font-bold">{t("Review before exporting", "导出前确认词条")}</h2>
         <p className="mt-3">{t(`${review.pending.length} rows cannot be used in this output and would be excluded:`, `以下 ${review.pending.length} 项无法用于当前输出，将不会出现在成品中：`)}</p>
-        <ul className="my-4 list-inside list-disc space-y-1">{review.pending.map(({ entry, index }) => <li key={entry.id}>{index + 1}. {entry.hanzi || entry.english || t("Empty row", "空白行")}</li>)}</ul>
+        <ul className="my-4 list-inside list-disc space-y-1">{review.pending.map(({ entry, index, missing }) => <li key={entry.id}><button type="button" className="text-left underline underline-offset-2" onClick={() => focusMissingField(index, missing)}>{index + 1}. {entry.hanzi || entry.english || t("Empty row", "空白行")} — {missing[0] === "hanzi" ? t("Add Hanzi", "补填汉字") : t("Add a quiz clue", "补填测试提示")}</button></li>)}</ul>
         <p className="mb-3 text-sm">{t("Each row needs Hanzi. Tests also need an English clue or visible Pinyin. Missing optional fields never exclude a word.", "每项需要有效汉字；测试模式还需要英文提示或显示的拼音。缺少可选字段不会排除汉字。")}</p>
         <p className="text-sm">{t("Your original list will remain in the editor.", "原始词表仍保留在编辑器中，不会删除。")}</p>
         <div className="mt-5 flex flex-wrap gap-3">
-          <button type="button" autoFocus className="hs-primary-button" onClick={() => exportDialog.current?.close()}>{t("Back to complete the list", "返回补全")}</button>
+          <button type="button" autoFocus className="hs-primary-button" onClick={() => {
+            const first = review.pending[0];
+            if (first) focusMissingField(first.index, first.missing);
+            else exportDialog.current?.close();
+          }}>{t("Back to complete the list", "返回补全")}</button>
           <button type="button" className="hs-secondary-button" disabled={!review.ready.length} onClick={() => openPreview(true)}>{t(`Export only ${review.ready.length} ready rows`, `仅导出已完成的 ${review.ready.length} 项`)}</button>
         </div>
       </dialog>
