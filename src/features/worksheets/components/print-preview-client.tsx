@@ -1,6 +1,7 @@
 "use client";
 import { trackWorksheetEvent } from "../analytics";
 import { RepeatFillControl } from "./repeat-fill-control";
+import { WorksheetHelp, type HelpPanel } from "./worksheet-help";
 
 import { useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
@@ -61,6 +62,8 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
   const exportController = useRef<AbortController | null>(null);
   const [pdfNotice, setPdfNotice] = useState("");
   const [pdfError, setPdfError] = useState("");
+  const [downloads, setDownloads] = useState(0);
+  const [helpPanel, setHelpPanel] = useState<HelpPanel>(null);
   const [previewReady, setPreviewReady] = useState(Boolean(templateSnapshot));
   const [loadError, setLoadError] = useState(false);
   const [storageWarning, setStorageWarning] = useState(false);
@@ -159,7 +162,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
       });
       if (controller.signal.aborted) return;
       trackWorksheetEvent("worksheet_download_success", snapshot.settings, snapshot.entries.length);
-      window.dispatchEvent(new Event("gridhanzi:download-complete"));
+      setDownloads(value => value + 1);
     } catch (error) {
       if (exportController.current !== controller) return;
       if (controller.signal.aborted) {
@@ -303,11 +306,16 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
               <button type="button" className="hs-secondary-button mt-2" onClick={printWorksheet}>
                 {t("Print / Save as PDF instead", "改用打印 / 另存为 PDF")}
               </button>
+              <button type="button" className="ml-3 mt-2 min-h-11 underline" onClick={() => setHelpPanel("pdf-error")}>
+                {t("Still stuck? Get help", "仍然无法完成？查看帮助")}
+              </button>
             </div>
           ) : null}
           {pdfNotice ? <p role="status" className="text-sm">{pdfNotice}</p> : null}
         </section>
       ) : null}
+
+      <WorksheetHelp panel={helpPanel} onPanelChange={setHelpPanel} downloads={downloads} templateSlug={templateSlug} isWorksheet={canShowAnswers} onPrint={printWorksheet} busy={pdfProgress !== null} failed={Boolean(pdfError)} />
 
       <div className="hs-print-layout grid min-h-[calc(100vh-4rem)] md:grid-cols-[220px_minmax(0,1fr)_310px]">
         <aside className="hs-no-print hidden border-r border-[#d4d4d0] bg-[#f9f8f5] p-5 md:block">
@@ -347,7 +355,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
           <Link href={templateSlug ? `/generator?template=${templateSlug}` : "/generator?resume=1"} className="mt-3 block text-sm font-semibold text-[#24466e] underline underline-offset-4">
             {t("Edit word list", "返回编辑器")}
           </Link>
-          <button type="button" className="mt-2 block text-sm underline underline-offset-4" onClick={() => window.dispatchEvent(new Event("gridhanzi:feedback-requested"))}>{t("Share feedback", "分享反馈")}</button>
+          <button id="worksheet-help-trigger" type="button" className="mt-2 block min-h-11 text-sm underline underline-offset-4" onClick={() => setHelpPanel("help")}>{t("Having trouble?", "遇到问题？")}</button>
  {!templateSlug && canShowAnswers && snapshot.settings.mode !== "quiz" && <RepeatFillControl
  enabled={!!snapshot.settings.repeatToFill} disabled={!snapshot.entries.some(entry => /\p{Script=Han}/u.test(entry.hanzi))}
  chinese={locale === "zh"} onChange={repeatToFill => {

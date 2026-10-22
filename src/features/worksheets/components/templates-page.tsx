@@ -1,6 +1,7 @@
 "use client";
 
 import { UiText } from "./ui-text";
+import { TemplatePurposePicker } from "./template-purpose-picker";
 
 import type { ReactNode } from "react";
 import { useMemo, useState } from "react";
@@ -170,33 +171,7 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
           <p className="mt-3 max-w-3xl text-lg text-[#566276]"><UiText>{"Choose a ready-made topic, Pinyin, or HSK worksheet, then edit the Hanzi, grid, and paper size before saving a PDF."}</UiText></p>
         </header>
 
-        <section className="mt-6 rounded border border-[#ded7ca] bg-[#fffefa] p-5 sm:p-7" aria-labelledby="practice-sheet-templates-title">
-          <p className="hs-kicker"><UiText>{"Choose your starting point"}</UiText></p>
-          <h2 id="practice-sheet-templates-title" className="hs-display mt-2 text-3xl font-bold"><UiText>{"Chinese Character Practice Sheet Templates"}</UiText></h2>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-[#5b687a]"><UiText>{"Download a finished writing sheet, choose an editable topic or HSK list, or build one from your own vocabulary. Every route leads to printable practice."}</UiText></p>
-          <div className="mt-5 grid gap-3 md:grid-cols-3">
-            <a href="#ready-to-print" className="rounded border border-[#d4c6aa] bg-[#fff7e8] p-5 hover:border-[#b62822] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b62822]">
-              <span className="hs-display block text-xl font-bold">Download a ready-made PDF</span>
-              <span className="mt-2 block text-sm leading-6 text-[#5b687a]">Start with first characters, numbers, or family words.</span>
-              <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#24466e]">See printable packs <ArrowRight className="size-4" /></span>
-            </a>
-            <a href="#template-directory-title" className="rounded border border-[#d7d0c4] bg-white p-5 hover:border-[#b62822] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b62822]">
-              <span className="hs-display block text-xl font-bold">Choose a topic or HSK sheet</span>
-              <span className="mt-2 block text-sm leading-6 text-[#5b687a]">Browse editable word lists for a specific lesson.</span>
-              <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#24466e]">Browse worksheets <ArrowRight className="size-4" /></span>
-            </a>
-            <Link href="/generator" className="rounded border border-[#d7d0c4] bg-white p-5 hover:border-[#b62822] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#b62822]">
-              <span className="hs-display block text-xl font-bold">Make your own worksheet</span>
-              <span className="mt-2 block text-sm leading-6 text-[#5b687a]">Paste English or Chinese words, then edit and print.</span>
-              <span className="mt-3 inline-flex items-center gap-1 text-sm font-bold text-[#24466e]">Open worksheet maker <ArrowRight className="size-4" /></span>
-            </Link>
-          </div>
-          <div className="mt-5 flex flex-wrap gap-4 text-sm font-semibold text-[#24466e]">
-            <Link href="/grids" className="hover:text-[#b62822]">Blank grid PDFs</Link>
-            <Link href={hskPickerHref} className="hover:text-[#b62822]">Choose HSK 2.0 or 3.0</Link>
-            <Link href="/for-teachers" className="hover:text-[#b62822]">Teacher workflow</Link>
-          </div>
-        </section>
+        <TemplatePurposePicker />
 
         <section
           className="mt-8 scroll-mt-24"

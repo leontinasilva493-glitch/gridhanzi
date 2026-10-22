@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { trackDictionaryEvent, trackWorksheetEvent } from "./analytics";
+import { trackDictionaryEvent, trackHelpEvent, trackWorksheetEvent } from "./analytics";
 import { defaultWorksheetSettings } from "./types";
 
 test("business events use aggregate fields and a query-free page URL", () => {
@@ -15,6 +15,11 @@ test("business events use aggregate fields and a query-free page URL", () => {
     assert.deepEqual(calls, [["event", "worksheet_download_success", {
       worksheet_mode: "trace", worksheet_output: "worksheet", row_count: 2, page_location: "https://gridhanzi.org/generator",
     }]]);
+    calls.length = 0;
+    trackHelpEvent("worksheet_use_selected", "templates", "recommendation", "child");
+    assert.deepEqual(calls, [["event", "worksheet_use_selected", {
+      help_source: "templates", help_action: "recommendation", worksheet_use: "child", page_location: "https://gridhanzi.org/generator",
+    }]]);
   } finally {
     if (original) Object.defineProperty(globalThis, "window", original);
     else Reflect.deleteProperty(globalThis, "window");
@@ -27,6 +32,7 @@ test("disabled or broken analytics does not interrupt the worksheet", () => {
       location: { hostname: "localhost" }, gtag: () => { throw new Error("must not send"); },
     } });
     assert.doesNotThrow(() => trackWorksheetEvent("worksheet_editor_open", defaultWorksheetSettings, 1));
+    assert.doesNotThrow(() => trackHelpEvent("worksheet_help_open", "preview", "help"));
     Object.defineProperty(globalThis, "window", { configurable: true, value: {
       location: { hostname: "gridhanzi.org" }, gtag: () => { throw new Error("blocked"); },
     } });

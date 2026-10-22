@@ -1,5 +1,24 @@
 import { isProductionAnalyticsHost } from "../../components/analytics/host";
 import type { WorksheetSettings } from "./types";
+import type { FeedbackContext } from "./feedback";
+
+/** Allowlisted action categories only. No free text, roles, emails or worksheet data. */
+export function trackHelpEvent(
+  event: "worksheet_help_open" | "worksheet_help_action" | "worksheet_feedback_sent" | "worksheet_use_selected",
+  source: FeedbackContext["source"],
+  action: "adjust" | "help" | "size" | "words" | "pinyin" | "strokes" | "layout" | "print" | "request" | "problem" | "recommendation",
+  useCase?: FeedbackContext["useCase"],
+) {
+  if (typeof window === "undefined" || !isProductionAnalyticsHost(window.location.hostname)) return;
+  try {
+    (window as Window & { gtag?: (...args: unknown[]) => void }).gtag?.("event", event, {
+      help_source: source, help_action: action, ...(useCase ? { worksheet_use: useCase } : {}),
+      page_location: window.location.origin + window.location.pathname,
+    });
+  } catch {
+    // Optional analytics must never prevent help or submission.
+  }
+}
 
 type WorksheetEvent = "worksheet_editor_open" | "worksheet_preview_open" | "worksheet_review_blocked" |
   "worksheet_download_start" | "worksheet_download_success" | "worksheet_download_failure";
