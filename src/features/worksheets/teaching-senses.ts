@@ -3,6 +3,11 @@
  * These are defaults for worksheets, not a claim that other senses are invalid.
  */
 export const teachingSenses: Readonly<Record<string, { pinyin: string; english: string }>> = {
+  "万": { pinyin: "wàn", english: "ten thousand; 10,000" },
+  "几": { pinyin: "jǐ", english: "how many; a few" },
+  "吗": { pinyin: "ma", english: "yes/no question particle" },
+  "个": { pinyin: "gè", english: "general classifier for people and things" },
+  "在": { pinyin: "zài", english: "at; in; to be located at" },
   "口": { pinyin: "kǒu", english: "mouth; opening" },
   "木": { pinyin: "mù", english: "wood; tree" },
   "火": { pinyin: "huǒ", english: "fire" },

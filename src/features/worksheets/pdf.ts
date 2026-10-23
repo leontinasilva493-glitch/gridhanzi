@@ -1,5 +1,5 @@
 import type { PaperSize, WorksheetOutput } from "./types";
-import { createPdfExportGuard } from "./pdf-export-guard";
+import { createPdfExportGuard, getPdfExportTimeoutMs } from "./pdf-export-guard";
 
 export type PdfExportProgress = {
   current: number;
@@ -319,7 +319,7 @@ export async function downloadWorksheetPdf({
     throw new Error("No worksheet pages are ready to export.");
   }
 
-  const guard = createPdfExportGuard(signal);
+  const guard = createPdfExportGuard(signal, getPdfExportTimeoutMs(pages.length));
   guard.check();
   onProgress?.({ current: 0, total: pages.length, stage: "preparing" });
   await waitForWorksheetAssets(pages, title, guard);

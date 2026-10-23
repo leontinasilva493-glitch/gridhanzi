@@ -5,6 +5,39 @@ import { filterHskCatalog, toWorksheetEntries } from "./hsk";
 import { enrichVocabularyLocally } from "./engine";
 import { templatePinyin } from "./template-pinyin";
 import { worksheetTemplates } from "./data";
+import { createTemplatePreviewSnapshot } from "./template-packs";
+import { normalizeWorksheetSnapshot } from "./snapshot";
+
+test("quantity questions and beginner classifiers use the intended readings", () => {
+  const entries = enrichVocabularyLocally(["万", "几", "吗", "个"]);
+  assert.deepEqual(entries.map(({ pinyin, english }) => ({ pinyin, english })), [
+    { pinyin: "wàn", english: "ten thousand; 10,000" },
+    { pinyin: "jǐ", english: "how many; a few" },
+    { pinyin: "ma", english: "yes/no question particle" },
+    { pinyin: "gè", english: "general classifier for people and things" },
+  ]);
+});
+
+test("beginner template snapshots preserve corrected senses and explicit teacher edits", () => {
+  for (const slug of ["numbers", "family", "chinese-first-characters"]) {
+    const template = worksheetTemplates.find((item) => item.slug === slug)!;
+    for (const paper of ["a4", "letter"] as const) {
+      const snapshot = createTemplatePreviewSnapshot(template, paper);
+      assert.deepEqual(snapshot.entries, template.entries);
+      for (const entry of snapshot.entries) {
+        const sense = teachingSenses[entry.hanzi];
+        if (sense) {
+          assert.equal(entry.pinyin, sense.pinyin);
+          assert.equal(entry.english, sense.english);
+        }
+      }
+      snapshot.entries[0] = { ...snapshot.entries[0], hanzi: "几", pinyin: "jī", english: "small table (teacher-selected context)" };
+      const restored = normalizeWorksheetSnapshot(JSON.parse(JSON.stringify(snapshot)));
+      assert.deepEqual(restored.entries, snapshot.entries);
+      assert.equal(restored.settings.paperSize, paper);
+    }
+  }
+});
 
 test("reviewed teaching senses agree across HSK versions, editor imports and local lookup", () => {
   const worksheetOnlySenses = new Set(["口", "木", "火", "田", "上"]);
@@ -38,7 +71,7 @@ test("template-only stroke and beginner action labels keep reviewed tone marks",
 });
 
 test("template entries do not regress to untoned Pinyin outside the neutral-tone allowlist", () => {
-  const neutralToneWords = new Set(["的", "了", "们", "地", "着", "么"]);
+  const neutralToneWords = new Set(["的", "了", "们", "地", "着", "么", "吗"]);
   const tone = /[āáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/u;
   const untoned = worksheetTemplates.flatMap((template) =>
     template.entries

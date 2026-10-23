@@ -381,7 +381,7 @@ try {
     await denyStorage(context, 'localStorage', 'removeItem');
     await visit(page, '/generator');
     await page.getByRole('button', { name: 'Discard', exact: true }).click();
-    assert.match(await page.getByRole('status').innerText(), /could not remove/i);
+    assert.match(await page.getByRole('status').filter({ hasText: /could not remove/i }).innerText(), /could not remove/i);
     assert.ok(await page.evaluate(() => localStorage.getItem('gridhanzi:worksheet:draft:v1')));
   });
   await scenario('malformed-storage', {}, async (page, context) => {

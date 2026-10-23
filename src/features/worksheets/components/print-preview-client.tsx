@@ -143,7 +143,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
     const pageElements = Array.from(
       printPagesRef.current?.querySelectorAll<HTMLElement>(".hs-paper") ?? [],
     );
-    trackWorksheetEvent("worksheet_download_start", snapshot.settings, snapshot.entries.length);
+    trackWorksheetEvent("worksheet_download_start", printSettings, snapshot.entries.length);
     setPdfError("");
     setPdfNotice("");
     setPdfProgress({ current: 0, total: pageElements.length, stage: "preparing" });
@@ -161,7 +161,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
         signal: controller.signal,
       });
       if (controller.signal.aborted) return;
-      trackWorksheetEvent("worksheet_download_success", snapshot.settings, snapshot.entries.length);
+      trackWorksheetEvent("worksheet_download_success", printSettings, snapshot.entries.length);
       setDownloads(value => value + 1);
     } catch (error) {
       if (exportController.current !== controller) return;
@@ -169,7 +169,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
         setPdfNotice(t("PDF creation cancelled. Your worksheet is unchanged. You can print or try again.", "已取消生成 PDF，字帖未更改。可以直接打印或重新下载。"));
         return;
       }
-      trackWorksheetEvent("worksheet_download_failure", snapshot.settings, snapshot.entries.length);
+      trackWorksheetEvent("worksheet_download_failure", printSettings, snapshot.entries.length);
       setPdfError(
         error instanceof Error && !locale.startsWith("zh")
           ? error.message
