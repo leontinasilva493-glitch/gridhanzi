@@ -285,3 +285,7 @@ impressions and low CTR, or pages whose useful content is not being indexed.
 
 References: [Google sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
 and [Google AI optimization guidance](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide).
+
+## Sources and review scope
+
+/sources owns vocabulary provenance, review scope, stroke/character boundaries and input-processing explanations. It is linked from the public footer and included in the sitemap.

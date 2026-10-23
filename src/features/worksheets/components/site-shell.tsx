@@ -235,6 +235,7 @@ export function HanziSiteFooter() {
         <FooterColumn
           title="Resources"
           links={[
+            ["Sources & Review", "/sources"],
             ["For Teachers", "/for-teachers"],
             ["HSK Vocabulary", "/hsk"],
             ["HSK Level Checker", "/hsk-level-checker"],

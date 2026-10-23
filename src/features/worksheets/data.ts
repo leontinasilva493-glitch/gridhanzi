@@ -1,5 +1,6 @@
 import type { WorksheetEntry, WorksheetTemplate } from "./types";
 import { teachingSenses } from "./teaching-senses";
+import { templateSenses } from "./template-senses";
 import { templatePinyin } from "./template-pinyin";
 import hskVocabulary from "./hsk-vocabulary.json";
 
@@ -1325,7 +1326,14 @@ function addTemplateGuidance(
   if (!guidance) {
     throw new Error(`Missing template guidance for ${template.slug}`);
   }
-  return { ...template, ...guidance };
+  return {
+    ...template,
+    ...guidance,
+    entries: template.entries.map((entry) => ({
+      ...entry,
+      ...templateSenses[template.slug]?.[entry.hanzi],
+    })),
+  };
 }
 
 function buildTemplate(draft: TemplateDraft): WorksheetTemplate {

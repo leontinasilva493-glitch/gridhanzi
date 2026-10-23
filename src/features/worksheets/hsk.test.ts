@@ -115,6 +115,8 @@ test("toWorksheetEntries converts HSK rows to Taiwan Traditional", () => {
 
 test("catalogue chooses modern teaching senses for common beginner words", () => {
   const expected = [
+    ["看", "kàn", "to look at; to watch; to read"],
+    ["读", "dú", "to read; to study"],
     ["三", "sān", "three"],
     ["上", "shàng", "up; above; previous"],
     ["个", "gè", "general classifier for people and things"],
