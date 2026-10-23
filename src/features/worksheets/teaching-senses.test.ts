@@ -8,6 +8,22 @@ import { worksheetTemplates } from "./data";
 import { createTemplatePreviewSnapshot } from "./template-packs";
 import { normalizeWorksheetSnapshot } from "./snapshot";
 
+test("course-specific senses survive preview without replacing dictionary defaults", () => {
+  for (const [slug, hanzi, pinyin, english] of [
+    ["school-classroom", "听", "tīng", "to listen; to hear"],
+    ["school-classroom", "本子", "běnzi", "notebook; exercise book"],
+    ["greetings", "早", "zǎo", "Good morning! (informal greeting)"],
+    ["basic-strokes", "点", "diǎn", "dot stroke"],
+  ]) {
+    const template = worksheetTemplates.find((item) => item.slug === slug)!;
+    const snapshot = normalizeWorksheetSnapshot(createTemplatePreviewSnapshot(template));
+    const entry = snapshot.entries.find((item) => item.hanzi === hanzi);
+    assert.equal(entry?.pinyin, pinyin);
+    assert.equal(entry?.english, english);
+  }
+  assert.notEqual(enrichVocabularyLocally(["早"])[0].english, "Good morning! (informal greeting)");
+});
+
 test("quantity questions and beginner classifiers use the intended readings", () => {
   const entries = enrichVocabularyLocally(["万", "几", "吗", "个"]);
   assert.deepEqual(entries.map(({ pinyin, english }) => ({ pinyin, english })), [

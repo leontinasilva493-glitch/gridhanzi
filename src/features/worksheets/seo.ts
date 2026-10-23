@@ -47,6 +47,7 @@ export function buildPublicSitemapPaths(): string[] {
     "/chinese-character-components",
     ...characterComponentPages.map((page) => `/components/${page.slug}`),
     "/for-teachers",
+    "/sources",
     ...worksheetTemplates.map((template) => `/templates/${template.slug}`),
   ];
 }

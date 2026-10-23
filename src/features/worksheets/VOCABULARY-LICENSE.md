@@ -101,3 +101,28 @@ Reference: Ministry of Education, 萬 (ten times one thousand):
 https://dict.revised.moe.edu.tw/dictView.jsp?ID=11519&la=1&powerMode=0
 Alternative readings remain available in the upstream dictionary. Neutral-tone
 吗 is intentional; 个 may be neutral in phrases, but its standalone default is gè.
+
+## Follow-up pass (2026-10-23, local)
+
+Read-through scope: all 150 displayed HSK 2.0 Level 1 entries, 18 School
+entries, and 15 Greetings entries. This is a software-assisted context pass,
+not independent teacher certification or a claim that every gloss was checked
+against an external dictionary.
+
+Additional default corrections: 看 kàn, 读 dú, 听 tīng; 同学 classmate,
+哪 which, 叫 to be called, 回 return, 太 too/very, 字 written character,
+热 hot, 本 book classifier, 月 month/moon, 点 o'clock/point/a little.
+Course-specific choices are kept separately: 早 as a greeting, 本子 as
+notebook, 考试 as exam, and 点 as dot stroke in stroke lessons.
+
+Dictionary comparison references:
+- https://www.mdbg.net/chinese/dictionary?wdqb=同学
+- https://www.mdbg.net/chinese/dictionary?wdqb=哪
+- https://www.mdbg.net/chinese/dictionary?wdqb=听
+- https://www.mdbg.net/chinese/dictionary?wdqb=早
+
+Remaining semantic cautions: a short gloss is not a complete definition;
+classifier usage, kinship distinctions and neutral-tone conventions need
+context. No changes to the three ready-made pack word lists were required
+by this follow-up. Public /sources notes disclose review limits and server-side
+auto-completion instead of claiming browser-only processing.

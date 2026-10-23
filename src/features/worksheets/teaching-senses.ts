@@ -1,8 +1,21 @@
 /** Curated everyday teaching senses, separate from the upstream dictionary order.
- * Reviewed 2026-09-23. See VOCABULARY-LICENSE.md for scope and sources.
+ * Targeted updates through 2026-10-23. See VOCABULARY-LICENSE.md for scope and sources.
  * These are defaults for worksheets, not a claim that other senses are invalid.
  */
 export const teachingSenses: Readonly<Record<string, { pinyin: string; english: string }>> = {
+  "听": { pinyin: "tīng", english: "to listen; to hear" },
+  "同学": { pinyin: "tóngxué", english: "classmate; fellow student" },
+  "哪": { pinyin: "nǎ", english: "which" },
+  "叫": { pinyin: "jiào", english: "to be called; to call" },
+  "回": { pinyin: "huí", english: "to return; to go back" },
+  "太": { pinyin: "tài", english: "too; very" },
+  "字": { pinyin: "zì", english: "written character" },
+  "热": { pinyin: "rè", english: "hot" },
+  "本": { pinyin: "běn", english: "classifier for books; origin" },
+  "月": { pinyin: "yuè", english: "month; moon" },
+  "点": { pinyin: "diǎn", english: "o'clock; point; a little" },
+  "看": { pinyin: "kàn", english: "to look at; to watch; to read" },
+  "读": { pinyin: "dú", english: "to read; to study" },
   "万": { pinyin: "wàn", english: "ten thousand; 10,000" },
   "几": { pinyin: "jǐ", english: "how many; a few" },
   "吗": { pinyin: "ma", english: "yes/no question particle" },
