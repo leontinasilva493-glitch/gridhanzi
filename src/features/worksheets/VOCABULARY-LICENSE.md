@@ -82,3 +82,22 @@ References for the distinction between dictionary senses:
 
 Pinyin uses standard Mandarin worksheet readings, including neutral syllables;
 selecting Taiwan character forms does not imply a regional pronunciation conversion.
+
+## Targeted beginner corrections (2026-10-23)
+
+The shared default overlay now selects 万 wàn (ten thousand), 几 jǐ
+(how many / a few), 吗 ma (yes/no question particle), 个 gè (general
+classifier), and 在 zài (at / in / located at). These apply to exact standalone
+entries, not substring replacements inside compound words. They do not erase
+alternative dictionary readings or override explicit worksheet edits.
+
+Scope: targeted software-assisted correction of beginner defaults, not teacher
+certification or a complete HSK review. Numbers, Family and First Characters
+were inspected as a first batch; a full sourced item-by-item review of HSK 1,
+School and Greetings remains pending. Family relationship glosses are concise
+labels, not exhaustive definitions of Chinese kinship distinctions.
+
+Reference: Ministry of Education, 萬 (ten times one thousand):
+https://dict.revised.moe.edu.tw/dictView.jsp?ID=11519&la=1&powerMode=0
+Alternative readings remain available in the upstream dictionary. Neutral-tone
+吗 is intentional; 个 may be neutral in phrases, but its standalone default is gè.

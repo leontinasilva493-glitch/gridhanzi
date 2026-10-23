@@ -1,6 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { createPdfExportGuard } from "./pdf-export-guard";
+import { createPdfExportGuard, getPdfExportTimeoutMs } from "./pdf-export-guard";
+
+test("large worksheets have a bounded page-aware export deadline", () => {
+  assert.equal(getPdfExportTimeoutMs(1), 60_000);
+  assert.equal(getPdfExportTimeoutMs(16), 128_000);
+  assert.equal(getPdfExportTimeoutMs(100), 180_000);
+});
 
 test("cancellation releases a stalled export and prevents subsequent work", async () => {
   const controller = new AbortController();

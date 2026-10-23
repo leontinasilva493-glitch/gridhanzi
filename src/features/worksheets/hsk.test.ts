@@ -117,7 +117,7 @@ test("catalogue chooses modern teaching senses for common beginner words", () =>
   const expected = [
     ["三", "sān", "three"],
     ["上", "shàng", "up; above; previous"],
-    ["个", "gè", "(classifier used before a noun that has no specific classifier)"],
+    ["个", "gè", "general classifier for people and things"],
     ["书", "shū", "book"],
     ["年", "nián", "year"],
     ["那", "nà", "that; then"],
