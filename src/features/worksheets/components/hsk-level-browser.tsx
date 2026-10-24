@@ -31,7 +31,9 @@ export function HskLevelBrowser({
 }) {
   const [query, setQuery] = useState("");
   const [selectedIds, setSelectedIds] = useState<Set<string>>(() => new Set());
-  const [visibleCount, setVisibleCount] = useState(publicHskPageSize);
+  // Small beginner lists are useful in full even before JavaScript loads.
+  const initialVisibleCount = entries.length <= 150 ? entries.length : publicHskPageSize;
+  const [visibleCount, setVisibleCount] = useState(initialVisibleCount);
   const filteredEntries = useMemo(
     () => filterPublicHskEntries(entries, query),
     [entries, query],
@@ -75,7 +77,7 @@ export function HskLevelBrowser({
                 value={query}
                 onChange={(event) => {
                   setQuery(event.target.value);
-                  setVisibleCount(publicHskPageSize);
+                  setVisibleCount(initialVisibleCount);
                 }}
                 placeholder="Try 爱, xue sheng, or teacher"
                 className="min-w-0 flex-1 bg-transparent py-3 text-base outline-none"
@@ -85,7 +87,7 @@ export function HskLevelBrowser({
                   type="button"
                   onClick={() => {
                     setQuery("");
-                    setVisibleCount(publicHskPageSize);
+                    setVisibleCount(initialVisibleCount);
                   }}
                   className="grid size-8 place-items-center rounded hover:bg-[#f1ece3]"
                   aria-label="Clear search"
