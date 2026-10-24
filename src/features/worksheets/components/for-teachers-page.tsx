@@ -57,6 +57,14 @@ export function ForTeachersPage() {
         }}
       />
       <main>
+        <section className="hs-container pt-6" aria-label="Beginner lesson resources">
+          <p className="text-sm leading-7 text-[#4f5d71]">
+            Planning a first lesson? Use the <Link href="/templates/greetings" className="underline">Greetings worksheet</Link>
+            {" "}for hello, thanks and polite questions, or choose a review set from the
+            {" "}<Link href="/hsk/2-0/level-1" className="underline">150-word HSK 2.0 Level 1 list</Link>.
+            {" "}The HSK list is a vocabulary reference; the Greetings template is a focused conversation activity.
+          </p>
+        </section>
         <section className="hs-container pb-12 pt-6 sm:pt-10">
           <div className="text-sm text-[#617084]">
             Home &nbsp;/&nbsp; For Teachers
