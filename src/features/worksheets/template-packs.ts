@@ -11,6 +11,13 @@ export const readyToPrintTemplateSlugs = [
 export type ReadyToPrintTemplateSlug =
   (typeof readyToPrintTemplateSlugs)[number];
 
+/** Verified static packs, 2026-10-23. Recheck after regenerating these files. */
+export const readyToPrintPageCounts: Record<ReadyToPrintTemplateSlug, number> = {
+  "chinese-first-characters": 7,
+  numbers: 5,
+  family: 16,
+};
+
 export function isReadyToPrintTemplate(
   slug: string,
 ): slug is ReadyToPrintTemplateSlug {

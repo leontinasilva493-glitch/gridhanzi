@@ -31,6 +31,7 @@ export function trackWorksheetEvent(event: WorksheetEvent, settings: WorksheetSe
     analyticsWindow.gtag?.("event", event, {
       worksheet_mode: settings.mode,
       worksheet_output: settings.output,
+      paper_size: settings.paperSize,
       row_count: rowCount,
       page_location: window.location.origin + window.location.pathname,
     });

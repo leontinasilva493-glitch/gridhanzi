@@ -13,7 +13,7 @@ test("business events use aggregate fields and a query-free page URL", () => {
     } });
     trackWorksheetEvent("worksheet_download_success", { ...defaultWorksheetSettings, title: "PRIVATE TITLE", studentName: "PRIVATE NAME" }, 2);
     assert.deepEqual(calls, [["event", "worksheet_download_success", {
-      worksheet_mode: "trace", worksheet_output: "worksheet", row_count: 2, page_location: "https://gridhanzi.org/generator",
+      worksheet_mode: "trace", worksheet_output: "worksheet", paper_size: "a4", row_count: 2, page_location: "https://gridhanzi.org/generator",
     }]]);
     calls.length = 0;
     trackHelpEvent("worksheet_use_selected", "templates", "recommendation", "child");

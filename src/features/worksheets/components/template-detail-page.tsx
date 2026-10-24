@@ -9,7 +9,7 @@ import { PublicPageShell } from "./site-shell";
 import { StructuredData } from "./structured-data";
 import { WorksheetMiniature } from "./worksheet-miniature";
 import { TemplatePackDownloadLink } from "./template-pack-download-link";
-import { isReadyToPrintTemplate } from "../template-packs";
+import { isReadyToPrintTemplate, readyToPrintPageCounts } from "../template-packs";
 
 export function TemplateDetailPage({ template }: { template: WorksheetTemplate }) {
   const siteUrl = envConfigs.app_url.replace(/\/$/, "");
@@ -121,6 +121,16 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
                 </>
               ) : null}
             </div>
+            {readyToPrintSlug ? (
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-[#5b687a]">
+                Ready-made files: {readyToPrintPageCounts[readyToPrintSlug]} pages each in A4 and US Letter.
+                Verified October 23, 2026: 22 mm Tian Zi Ge cells, tracing practice,
+                Pinyin and full stroke guides. The small picture is a sample, not the complete file.
+                Changing settings or missing stroke data can change the online preview&apos;s page count.{" "}
+                <Link href={`/worksheet/preview?template=${template.slug}&paper=letter`} className="underline">Preview US Letter</Link>
+                {" · "}<Link href="/sources" className="underline">Sources and review scope</Link>
+              </p>
+            ) : null}
             {template.category === "hsk" ? (
               <p className="mt-3 max-w-2xl text-sm leading-6 text-[#5b687a]">
                 This worksheet stays editable. If you need an explicit exam version,
