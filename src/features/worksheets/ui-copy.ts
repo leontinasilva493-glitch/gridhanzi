@@ -1,6 +1,13 @@
 import { isChineseLocale } from "./i18n";
 
 const chinese: Readonly<Record<string, string>> = {
+  "Create printable Chinese worksheets with your own word list. Choose a Hanzi grid layout—Tian Zi Ge, Mi Zi Ge, or blank squares—then add Pinyin and tracing practice. Download an A4 or US Letter PDF for free, with no sign-up.": "用自己的词表制作汉字字帖。选择田字格、米字格或空白方格，添加拼音和描红练习，即可免费下载 A4 或美式信纸 PDF，无需注册。",
+  "Download blank Hanzi grid paper": "下载空白汉字格纸",
+  "Printable Hanzi Grid Paper": "可打印汉字格纸",
+  "Choose Tian Zi Ge for cross-guided practice, Mi Zi Ge for diagonal guides, or blank squares for independent writing.": "田字格提供十字辅助线，米字格增加对角辅助线，空白方格适合独立书写。",
+  "Blank squares": "空白方格",
+  "Tian Zi Ge": "田字格",
+  "Mi Zi Ge": "米字格",
   "Worksheet Maker": "字帖生成器", "HSK Lists": "HSK 词表", "Compare": "易混字对比",
   "Templates": "字帖模板", "Stroke Order": "笔顺", "Printable Grids": "空白格纸",
   "Create Worksheet": "制作字帖", "Create": "制作", "Open navigation": "打开导航",

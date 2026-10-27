@@ -20,11 +20,11 @@ test("homepage distributes worksheet search terms across useful copy", async () 
   );
   assert.match(
     homeSource,
-    /Use this free Chinese character worksheet generator to turn your own\s*English or Chinese word list into printable practice sheets\. Edit the\s*Hanzi and Pinyin, choose tracing, Tian Zi Ge, Mi Zi Ge, or blank\s*writing grids/,
+    /Create printable Chinese worksheets with your own word list\. Choose a Hanzi grid layout—Tian Zi Ge, Mi Zi Ge, or blank squares/,
   );
   assert.match(
     homePageSource,
-    /Use this free Chinese character worksheet generator to turn English or Chinese word lists into editable Hanzi, Pinyin, tracing, and writing-grid PDFs\./,
+    /Create free Chinese worksheets with Hanzi grid layouts, Pinyin and tracing\./,
   );
   assert.match(
     homeSource,
