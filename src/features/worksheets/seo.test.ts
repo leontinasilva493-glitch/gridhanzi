@@ -200,7 +200,7 @@ test("core acquisition pages publish focused titles and matching social metadata
     [
       home,
       "Chinese Character Worksheet Generator",
-      "Use this free Chinese character worksheet generator to turn English or Chinese word lists into editable Hanzi, Pinyin, tracing, and writing-grid PDFs.",
+      "Create free Chinese worksheets with Hanzi grid layouts, Pinyin and tracing. Download A4 or US Letter PDFs, or print blank grid paper. No sign-up required.",
     ],
     [
       generator,

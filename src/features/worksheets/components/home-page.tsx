@@ -18,6 +18,7 @@ import {
 import { Link } from "@/core/i18n/navigation";
 
 import { worksheetTemplates } from "../data";
+import { gridPaperPages } from "../grid-pages";
 import { defaultWorksheetSettings } from "../types";
 import { HomeWorkbench } from "./home-workbench";
 import { PublicPageShell } from "./site-shell";
@@ -35,7 +36,10 @@ export function HomePage() {
         <section className="hs-container grid items-start gap-8 pb-12 pt-6 sm:pt-10 lg:grid-cols-[1.02fr_0.9fr] lg:pt-12">
           <div>
             <h1 className="hs-display max-w-3xl text-3xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.55rem]"><UiText>{"Free Chinese Character Worksheet Generator"}</UiText></h1>
-            <p className="mt-3 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8 text-[#435166]"><UiText>{"Use this free Chinese character worksheet generator to turn your own English or Chinese word list into printable practice sheets. Edit the Hanzi and Pinyin, choose tracing, Tian Zi Ge, Mi Zi Ge, or blank writing grids, then download an A4 or US Letter PDF—no sign-up required."}</UiText></p>
+            <p className="mt-3 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8 text-[#435166]"><UiText>{"Create printable Chinese worksheets with your own word list. Choose a Hanzi grid layout—Tian Zi Ge, Mi Zi Ge, or blank squares—then add Pinyin and tracing practice. Download an A4 or US Letter PDF for free, with no sign-up."}</UiText></p>
+            <Link href="/grids" className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-[#24466e] underline underline-offset-4 hover:text-[#b62822]">
+              <UiText>{"Download blank Hanzi grid paper"}</UiText><ArrowRight className="size-4 shrink-0" />
+            </Link>
             <div className="mt-5 sm:mt-8">
               <HomeWorkbench />
             </div>
@@ -95,11 +99,20 @@ export function HomePage() {
               icon={BookOpen}
               title="Printable Chinese writing worksheets"
             ><UiText>{"Choose an editable topic, classroom, or HSK word list."}</UiText></ToolLink>
-            <ToolLink
-              href="/grids"
-              icon={FileText}
-              title="Tian Zi Ge and Mi Zi Ge PDFs"
-            ><UiText>{"Download blank Hanzi grid paper for immediate handwriting practice."}</UiText></ToolLink>
+            <div className="hs-card p-5">
+              <Link href="/grids" className="font-bold text-[#24466e] hover:text-[#b62822]">
+                <UiText>{"Printable Hanzi Grid Paper"}</UiText>
+              </Link>
+              <p className="mt-2 text-sm leading-6 text-[#566276]"><UiText>{"Choose Tian Zi Ge for cross-guided practice, Mi Zi Ge for diagonal guides, or blank squares for independent writing."}</UiText></p>
+              <div className="mt-3 grid grid-cols-3 gap-2">
+                {gridPaperPages.map((page) => (
+                  <Link key={page.slug} href={`/grids/${page.slug}`} className="rounded border border-[#ded7ca] p-2 text-center text-xs font-semibold text-[#24466e] hover:border-[#b62822] hover:text-[#b62822]">
+                    <img src={page.pdfHref.replace(/\.pdf$/, ".svg")} alt="" loading="lazy" width={210} height={297} className="mb-2 h-24 w-full bg-white object-cover object-top" />
+                    <UiText>{page.slug === "blank" ? "Blank squares" : page.slug === "mi-zi-ge" ? "Mi Zi Ge" : "Tian Zi Ge"}</UiText>
+                  </Link>
+                ))}
+              </div>
+            </div>
             <ToolLink
               href="/hsk"
               icon={GraduationCap}
