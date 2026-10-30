@@ -1,6 +1,7 @@
 import { GoogleAnalytics } from "./google-analytics";
 import { Clarity } from "./clarity";
 import { Plausible } from "./plausible";
+import { Pvuv } from "./pvuv";
 
 const DEFAULT_CLARITY_PROJECT_ID = "xqa6y21mp0";
 const DEFAULT_GOOGLE_ANALYTICS_ID = "G-GQR6DKVGGN";
@@ -15,12 +16,11 @@ export function Analytics() {
   const plausibleDomain = process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN?.trim();
   const plausibleSrc = process.env.NEXT_PUBLIC_PLAUSIBLE_SRC?.trim();
 
-  if (!gaId && !plausibleDomain && !clarityProjectId) return null;
-
   return (
     <>
       {gaId ? <GoogleAnalytics measurementId={gaId} /> : null}
       {clarityProjectId ? <Clarity projectId={clarityProjectId} /> : null}
+      <Pvuv />
       {plausibleDomain ? (
         <Plausible
           domain={plausibleDomain}
