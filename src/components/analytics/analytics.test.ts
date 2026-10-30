@@ -5,6 +5,7 @@ import vm from "node:vm";
 import { GoogleAnalytics } from "./google-analytics";
 import { Clarity } from "./clarity";
 import { Plausible } from "./plausible";
+import { Pvuv } from "./pvuv";
 import { fileURLToPath } from "node:url";
 
 const componentFile = (path: string) =>
@@ -33,17 +34,18 @@ test("GA4 uses the production measurement ID and precedes other analytics in the
 });
 
 test("analytics makes no external requests on localhost or preview hosts; production loads once", () => {
-  const scripts = [GoogleAnalytics({ measurementId: "G-TEST" }), Clarity({ projectId: "test" }), Plausible({ domain: "gridhanzi.org" })];
+  const scripts = [GoogleAnalytics({ measurementId: "G-TEST" }), Clarity({ projectId: "test" }), Plausible({ domain: "gridhanzi.org" }), Pvuv()];
   for (const hostname of ["localhost", "127.0.0.1", "preview.workers.dev", "gridhanzi.org.evil.test", "gridhanzi.org", "www.gridhanzi.org"]) {
     const inserted: unknown[] = [];
     const sandbox = vm.createContext({ window: { location: { hostname } }, document: {
       createElement: () => ({ setAttribute() {} }),
+      getElementById: (id: string) => inserted.find((script) => (script as { id?: string }).id === id),
       head: { appendChild: (script: unknown) => inserted.push(script) },
       getElementsByTagName: () => [{ parentNode: { insertBefore: (script: unknown) => inserted.push(script) } }],
     } });
     for (let pass = 0; pass < 2; pass++) for (const script of scripts) {
       vm.runInContext(script!.props.dangerouslySetInnerHTML.__html, sandbox);
     }
-    assert.equal(inserted.length, ["gridhanzi.org", "www.gridhanzi.org"].includes(hostname) ? 3 : 0, hostname);
+    assert.equal(inserted.length, ["gridhanzi.org", "www.gridhanzi.org"].includes(hostname) ? 4 : 0, hostname);
   }
 });
