@@ -111,6 +111,3 @@ try {
   await writeFile(`${output}/results.json`, JSON.stringify(results, null, 2));
 }
 console.log(`PASS ${results.length} P1 page and handoff checks`);
-
-
-

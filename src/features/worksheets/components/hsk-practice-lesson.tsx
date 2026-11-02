@@ -57,4 +57,3 @@ export function HskPracticeLesson({ level, setId, editor, zh }: { level: 1 | 2; 
     <Link className="hs-primary-button mt-4" href={`${editor}&mode=quiz`}>{t(["Make a recall sheet for this group", "制作本组默写纸"])}</Link>
   </section>;
 }
-
