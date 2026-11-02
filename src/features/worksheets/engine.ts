@@ -4,6 +4,7 @@ import {
   worksheetTemplates,
 } from "./data";
 import { convertChineseText, convertWorksheetEntries } from "./traditional";
+import { getHskPracticeEntries } from "./hsk-practice-sets";
 import type { CharacterStandard, WorksheetEntry, WorksheetTemplate } from "./types";
 
 const HANZI_PATTERN = /\p{Script=Han}/u;
@@ -150,10 +151,11 @@ export function getTemplateBySlug(
 export function cloneTemplateEntries(
   slug: string,
   characterStandard: CharacterStandard = "simplified",
+  practiceSet?: string,
 ): WorksheetEntry[] {
   const template = getTemplateBySlug(slug);
   return convertWorksheetEntries(
-    template?.entries.map((entry, index) => ({
+    (getHskPracticeEntries(slug, practiceSet) ?? template?.entries)?.map((entry, index) => ({
       ...entry,
       id: `row-${index + 1}`,
     })) ?? [],

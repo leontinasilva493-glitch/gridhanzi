@@ -1,3 +1,4 @@
+import { p1BilingualPaths } from "./p1-learning-pages";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
@@ -359,6 +360,7 @@ test("sitemap submits only canonical, indexable language pages", () => {
       new URL(toAbsoluteUrl("https://gridhanzi.org", pathname)).href,
     ),
     "https://gridhanzi.org/zh/generator",
+    ...p1BilingualPaths.map(path => new URL(toAbsoluteUrl("https://gridhanzi.org", `/zh${path}`)).href),
   ];
 
   assert.deepEqual(
@@ -388,7 +390,7 @@ test("sitemap submits only canonical, indexable language pages", () => {
     false,
   );
   assert.equal(
-    entries.some((entry) => entry.url.includes("/zh/templates")),
+    entries.some((entry) => entry.url === "https://gridhanzi.org/zh/templates/family"),
     false,
   );
 });

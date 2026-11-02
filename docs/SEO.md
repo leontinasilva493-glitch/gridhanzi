@@ -289,3 +289,13 @@ and [Google AI optimization guidance](https://developers.google.com/search/docs/
 ## Sources and review scope
 
 /sources owns vocabulary provenance, review scope, stroke/character boundaries and input-processing explanations. It is linked from the public footer and included in the sitemap.
+
+
+## P1 stroke and HSK learning pages (2026-11-02)
+
+- `/chinese-basic-strokes` owns stroke direction and common stroke families; `/chinese-stroke-order-mistakes` owns specific correction cases. General sequencing rules remain at `/chinese-stroke-order-rules`; character queries use `/stroke-order?character=...`.
+- `/hsk/3-0-vs-2-0` owns edition selection and vocabulary counts; `/hsk/3-0-handwriting-requirements` owns the distinction between vocabulary, reading and writing lists. The existing official character browser remains `/hsk/3-0-writing-characters`.
+- `/templates/hsk-3-0-level-1-writing` and `/templates/hsk-3-0-level-2-writing` each own a 30-word teaching selection from the November 2025 exam syllabus, divided into three editable ten-word sets. They do not claim full syllabus coverage or official mock questions.
+- These six pages have fully translated English and Chinese main content, self canonicals, reciprocal en/zh/x-default alternates and both language URLs in the sitemap. Other untranslated Chinese routes keep their existing noindex policy.
+- Editor query parameters and preview snapshots remain private workflow state; no new generator query URL or preview URL is submitted to the sitemap.
+- The existing community vocabulary catalogue is retained and explicitly separated from the 2025 exam syllabus. Do not infer official exam counts from its 506 Level 1 rows.

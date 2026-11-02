@@ -3,6 +3,7 @@ import { teachingSenses } from "./teaching-senses";
 import { templateSenses } from "./template-senses";
 import { templatePinyin } from "./template-pinyin";
 import hskVocabulary from "./hsk-vocabulary.json";
+import { hskPracticeTemplates } from "./hsk-practice-sets";
 
 type VocabularyRecord = {
   hanzi: string;
@@ -1365,4 +1366,5 @@ export const worksheetTemplates: WorksheetTemplate[] = [
   ...additionalTemplateDrafts.map(buildTemplate),
   ...p0TemplateDrafts.map(buildTemplate),
   ...mvpTemplateDrafts.map(buildTemplate),
+  ...hskPracticeTemplates,
 ];

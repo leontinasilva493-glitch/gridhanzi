@@ -1,3 +1,4 @@
+import { P1LearningLinks } from "./p1-learning-links";
 import { ArrowRight } from "lucide-react";
 
 import { envConfigs } from "@/config";
@@ -47,6 +48,7 @@ export function Hsk3ExamGuidePage({ locale }: { locale: string }) {
       />
 
       <main className="hs-container pb-16 pt-6">
+        <P1LearningLinks topic="hsk" />
         <nav aria-label="Breadcrumb" className="text-sm text-[#617084]">
           <Link href="/">Home</Link>
           <span aria-hidden="true"> / </span>
@@ -87,7 +89,7 @@ export function Hsk3ExamGuidePage({ locale }: { locale: string }) {
             </h2>
             <p className="mt-3 leading-7 text-[#5a5f65]">
               Chinese Testing International lists this as the worldwide launch
-              date for HSK 3.0. For registration details, check the Chinese Test
+              date for HSK 3.0. Registration closes at 24:00 Beijing Time on November 16 for paper-based tests and December 3 for computer-based tests. For local arrangements, check the Chinese Test
               Service website or contact your test center.
             </p>
           </article>

@@ -1,3 +1,4 @@
+import { P1LearningLinks } from "./p1-learning-links";
 "use client";
 
 import { UiText } from "./ui-text";
@@ -165,6 +166,7 @@ export function TemplatesPage({ templates }: { templates: WorksheetTemplateSumma
   return (
     <PublicPageShell active="templates">
       <main className="hs-container pt-6">
+        <P1LearningLinks topic="hsk" />
         <div className="text-sm text-[#617084]">Home &nbsp;/&nbsp; Templates</div>
         <header className="mt-3">
           <h1 className="hs-display text-4xl font-bold sm:text-5xl"><UiText>{"Printable Chinese Writing Worksheets"}</UiText></h1>

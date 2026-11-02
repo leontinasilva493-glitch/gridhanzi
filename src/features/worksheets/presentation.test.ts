@@ -195,7 +195,7 @@ test("generator exposes a lazy-loaded HSK picker with version-aware copy", async
   assert.match(generatorSource, /<HskPicker/);
   assert.match(pickerSource, /Choose from HSK/);
   assert.match(pickerSource, /dynamic import\("\.\.\/hsk"\)|import\("\.\.\/hsk"\)/);
-  assert.match(pickerSource, /HSK 3\.0.*2026.*global trials/);
+  assert.match(pickerSource, /community catalogue, not the November 2025 exam syllabus/);
   assert.match(pickerSource, /Select filtered/);
   assert.match(pickerSource, /Add selected to worksheet/);
   assert.match(pickerStateSource, /gridhanzi:hsk-picker:v1/);

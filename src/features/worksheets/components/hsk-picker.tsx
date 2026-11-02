@@ -325,8 +325,8 @@ export function HskPicker({
             </p>
             <p className="mt-1 leading-6">
               {t(
-                "HSK 3.0 still runs in 2026 global trials. This picker labels the worksheet list by version, but it does not claim that HSK 3.0 has fully replaced HSK 2.0 everywhere.",
-                "截至 2026 年，HSK 3.0 仍处于全球试行阶段。这里会按版本标注词表，但不表示 HSK 3.0 已在所有场景全面取代 HSK 2.0。",
+                "This picker uses a community catalogue, not the November 2025 exam syllabus. Confirm the required vocabulary version with your course or test centre.",
+                "此选词器采用社区整理词库，不是 2025 年 11 月考试大纲。请向课程或考点确认所需的词表版本。",
               )}
             </p>
             <p className="mt-1 leading-6">
