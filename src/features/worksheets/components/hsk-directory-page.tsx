@@ -1,3 +1,4 @@
+import { P1LearningLinks } from "./p1-learning-links";
 
 import { UiText } from "./ui-text";
 import { ArrowRight, BookOpen, ListChecks, Search } from "lucide-react";
@@ -35,6 +36,7 @@ export function HskDirectoryPage({ locale }: { locale: string }) {
         },
       ]} />
       <main className="hs-container pb-16 pt-6">
+        <P1LearningLinks topic="hsk" />
         <nav aria-label="Breadcrumb" className="text-sm text-[#617084]">
           <Link href="/"><UiText>{"Home"}</UiText></Link> <span aria-hidden="true"> / </span> <span aria-current="page">HSK Vocabulary Lists</span>
         </nav>

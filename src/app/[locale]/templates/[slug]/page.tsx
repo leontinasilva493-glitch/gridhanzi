@@ -7,6 +7,8 @@ import { getTemplateBySlug } from "@/features/worksheets/engine";
 import { TemplateDetailPage } from "@/features/worksheets/components/template-detail-page";
 import { buildPageSeoMetadata } from "@/features/worksheets/seo";
 import { buildTemplateSeoCopy } from "@/features/worksheets/templates";
+import { getHskPracticePack } from "@/features/worksheets/hsk-practice-sets";
+import { HskPracticePage } from "@/features/worksheets/components/hsk-practice-page";
 
 export const dynamicParams = false;
 
@@ -21,13 +23,16 @@ export async function generateMetadata({ params }: {
   const template = getTemplateBySlug(slug);
   if (!template) return {};
 
-  const { title, description } = buildTemplateSeoCopy(template);
+  const pack = getHskPracticePack(slug);
+  const copy = buildTemplateSeoCopy(template);
+  const title = pack ? pack.title[locale === "zh" ? 1 : 0] : copy.title;
+  const description = pack ? pack.description[locale === "zh" ? 1 : 0] : copy.description;
 
   const pageSeo = buildPageSeoMetadata(
     envConfigs.app_url,
     `/templates/${template.slug}`,
     locale,
-    { title, description },
+    { title, description, chineseIndexable: Boolean(pack) },
   );
 
   return {
@@ -51,5 +56,7 @@ export default async function Page({ params }: {
   const { slug } = await params;
   const template = getTemplateBySlug(slug);
   if (!template) notFound();
+  const pack = getHskPracticePack(slug);
+  if (pack) return <HskPracticePage pack={pack} />;
   return <TemplateDetailPage template={template} />;
 }

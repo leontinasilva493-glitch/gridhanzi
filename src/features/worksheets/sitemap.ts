@@ -1,3 +1,4 @@
+import { p1BilingualPaths } from "./p1-learning-pages";
 import type { MetadataRoute } from "next";
 
 import { envConfigs } from "../../config";
@@ -39,5 +40,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   });
 
+  for (const pathname of p1BilingualPaths) {
+    const languages = {
+      en: toAbsoluteUrl(envConfigs.app_url, pathname),
+      zh: toAbsoluteUrl(envConfigs.app_url, `/zh${pathname}`),
+      "x-default": toAbsoluteUrl(envConfigs.app_url, pathname),
+    };
+    const english = entries.find(entry => entry.url === new URL(languages.en).href);
+    if (english) english.alternates = { languages };
+    entries.push({ url: new URL(languages.zh).href, priority: sitemapPriority(pathname), alternates: { languages } });
+  }
   return entries;
 }

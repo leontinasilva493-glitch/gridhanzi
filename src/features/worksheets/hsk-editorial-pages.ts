@@ -2,7 +2,7 @@ export const hskExamGuide = {
   title: "HSK 3.0 Exam Guide: Dates and Syllabus",
   description: "Check the official HSK 3.0 dates for 2026, including the September trial and December global launch. Review the syllabus and source notices.",
   heading: "HSK 3.0 Exam Guide for 2026",
-  updatedAt: "2026-09-27",
+  updatedAt: "2026-11-02",
   officialSources: [
     { label: "Official notice: HSK 3.0 second-round global trial", href: "https://admin.chinesetest.cn/gonewcontent.do?id=51236758" },
     { label: "Official notice: HSK 3.0 global launch on December 13, 2026", href: "https://old.chinesetest.cn/gonewcontent.do?flag=kdnew&id=51336883" },

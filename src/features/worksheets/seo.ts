@@ -1,3 +1,4 @@
+import { p1GuidePaths } from "./p1-learning-pages";
 import type { Metadata } from "next";
 
 import { worksheetTemplates } from "./data";
@@ -33,6 +34,7 @@ export function buildPublicSitemapPaths(): string[] {
     "/stroke-order",
     "/chinese-stroke-order-dictionary",
     ...buildStrokeOrderSitemapPaths(),
+    ...p1GuidePaths,
     "/hsk",
     "/hsk/3-0-exam-guide",
     "/hsk/3-0-writing-characters",

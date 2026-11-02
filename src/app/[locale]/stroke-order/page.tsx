@@ -1,3 +1,4 @@
+import { P1LearningLinks } from "@/features/worksheets/components/p1-learning-links";
 import type { Metadata } from "next";
 import { ArrowRight } from "lucide-react";
 
@@ -83,6 +84,7 @@ export default async function StrokeOrderPage({
             .
           </p>
         </header>
+        <P1LearningLinks topic="stroke" />
         <StrokeOrderLookupClient initialCharacter={initialCharacter} initialMode={query.mode === "draw" ? "draw" : "type"} />
 
         <section className="mt-10 border-t border-[#ded7ca] pt-8" aria-labelledby="hsk-paths-title">

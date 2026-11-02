@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { getHskPracticePack } from "@/features/worksheets/hsk-practice-sets";
 
 import { GeneratorClient } from "@/features/worksheets/components/generator-client";
 import { StructuredData } from "@/features/worksheets/components/structured-data";
@@ -147,6 +149,7 @@ export default async function GeneratorPage({
   searchParams: Promise<{
     words?: string;
     template?: string;
+    practiceSet?: string;
     mode?: "trace" | "write" | "quiz";
     profile?: string;
     difficulty?: WorksheetDifficulty;
@@ -164,8 +167,9 @@ export default async function GeneratorPage({
   const characterStandard = parseCharacterStandard(query.script);
   const initialGrid = parseGeneratorGridQuery(query);
   const template = getTemplateBySlug(query.template);
+  if (query.practiceSet && !getHskPracticePack(query.template)?.sets.some(set => set.id === query.practiceSet)) notFound();
   const templateEntries = query.template
-    ? cloneTemplateEntries(query.template, characterStandard)
+    ? cloneTemplateEntries(query.template, characterStandard, query.practiceSet)
     : [];
   const wordEntries = query.words
     ? enrichVocabularyLocally(parseVocabularyInput(query.words), characterStandard)

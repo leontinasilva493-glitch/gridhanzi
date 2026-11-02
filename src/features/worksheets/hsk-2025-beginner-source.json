@@ -1,0 +1,3509 @@
+{
+  "edition": "2025-11 examination syllabus",
+  "verifiedAt": "2026-11-02",
+  "sourceUrl": "https://hsk.cn-bj.ufileos.com/3.0/%E6%96%B0%E7%89%88HSK%E8%80%83%E8%AF%95%E5%A4%A7%E7%BA%B21219.pdf",
+  "sha256": "d8b6646599bc9a0c9616a4cb06d4b37461f8792f70a3171016d00fcd8eda09ad",
+  "note": "Vocabulary entries, not writing-character requirements. Homographs retain their row numbers; terminal sense numbers are removed from display Hanzi.",
+  "entries": [
+    {
+      "number": 1,
+      "level": 1,
+      "hanzi": "爱",
+      "pinyin": "ài",
+      "pdfPage": 80
+    },
+    {
+      "number": 2,
+      "level": 1,
+      "hanzi": "八",
+      "pinyin": "bā",
+      "pdfPage": 80
+    },
+    {
+      "number": 3,
+      "level": 1,
+      "hanzi": "爸爸",
+      "pinyin": "bàba",
+      "pdfPage": 80
+    },
+    {
+      "number": 4,
+      "level": 1,
+      "hanzi": "吧",
+      "pinyin": "ba",
+      "pdfPage": 80
+    },
+    {
+      "number": 5,
+      "level": 1,
+      "hanzi": "白天",
+      "pinyin": "báitiān",
+      "pdfPage": 80
+    },
+    {
+      "number": 6,
+      "level": 1,
+      "hanzi": "百",
+      "pinyin": "bǎi",
+      "pdfPage": 80
+    },
+    {
+      "number": 7,
+      "level": 1,
+      "hanzi": "半",
+      "pinyin": "bàn",
+      "pdfPage": 80
+    },
+    {
+      "number": 8,
+      "level": 1,
+      "hanzi": "包子",
+      "pinyin": "bāozi",
+      "pdfPage": 80
+    },
+    {
+      "number": 9,
+      "level": 1,
+      "hanzi": "杯子",
+      "pinyin": "bēizi",
+      "pdfPage": 80
+    },
+    {
+      "number": 10,
+      "level": 1,
+      "hanzi": "本",
+      "pinyin": "běn",
+      "pdfPage": 80
+    },
+    {
+      "number": 11,
+      "level": 1,
+      "hanzi": "边",
+      "pinyin": "biān",
+      "pdfPage": 80
+    },
+    {
+      "number": 12,
+      "level": 1,
+      "hanzi": "病",
+      "pinyin": "bìng",
+      "pdfPage": 80
+    },
+    {
+      "number": 13,
+      "level": 1,
+      "hanzi": "不",
+      "pinyin": "bù",
+      "pdfPage": 80
+    },
+    {
+      "number": 14,
+      "level": 1,
+      "hanzi": "不客气",
+      "pinyin": "bú kèqi",
+      "pdfPage": 80
+    },
+    {
+      "number": 15,
+      "level": 1,
+      "hanzi": "不要",
+      "pinyin": "búyào",
+      "pdfPage": 80
+    },
+    {
+      "number": 16,
+      "level": 1,
+      "hanzi": "菜",
+      "pinyin": "cài",
+      "pdfPage": 80
+    },
+    {
+      "number": 17,
+      "level": 1,
+      "hanzi": "茶",
+      "pinyin": "chá",
+      "pdfPage": 80
+    },
+    {
+      "number": 18,
+      "level": 1,
+      "hanzi": "唱",
+      "pinyin": "chàng",
+      "pdfPage": 80
+    },
+    {
+      "number": 19,
+      "level": 1,
+      "hanzi": "超市",
+      "pinyin": "chāoshì",
+      "pdfPage": 80
+    },
+    {
+      "number": 20,
+      "level": 1,
+      "hanzi": "车",
+      "pinyin": "chē",
+      "pdfPage": 80
+    },
+    {
+      "number": 21,
+      "level": 1,
+      "hanzi": "吃",
+      "pinyin": "chī",
+      "pdfPage": 80
+    },
+    {
+      "number": 22,
+      "level": 1,
+      "hanzi": "出租车",
+      "pinyin": "chūzūchē",
+      "pdfPage": 80
+    },
+    {
+      "number": 23,
+      "level": 1,
+      "hanzi": "穿",
+      "pinyin": "chuān",
+      "pdfPage": 80
+    },
+    {
+      "number": 24,
+      "level": 1,
+      "hanzi": "打电话",
+      "pinyin": "dǎ diànhuà",
+      "pdfPage": 80
+    },
+    {
+      "number": 25,
+      "level": 1,
+      "hanzi": "大",
+      "pinyin": "dà",
+      "pdfPage": 80
+    },
+    {
+      "number": 26,
+      "level": 1,
+      "hanzi": "大家",
+      "pinyin": "dàjiā",
+      "pdfPage": 80
+    },
+    {
+      "number": 27,
+      "level": 1,
+      "hanzi": "大学",
+      "pinyin": "dàxué",
+      "pdfPage": 80
+    },
+    {
+      "number": 28,
+      "level": 1,
+      "hanzi": "大学生",
+      "pinyin": "dàxuéshēng",
+      "pdfPage": 80
+    },
+    {
+      "number": 29,
+      "level": 1,
+      "hanzi": "到",
+      "pinyin": "dào",
+      "pdfPage": 80
+    },
+    {
+      "number": 30,
+      "level": 1,
+      "hanzi": "的",
+      "pinyin": "de",
+      "pdfPage": 80
+    },
+    {
+      "number": 31,
+      "level": 1,
+      "hanzi": "弟弟",
+      "pinyin": "dìdi",
+      "pdfPage": 80
+    },
+    {
+      "number": 32,
+      "level": 1,
+      "hanzi": "第",
+      "pinyin": "dì",
+      "pdfPage": 80
+    },
+    {
+      "number": 33,
+      "level": 1,
+      "hanzi": "点",
+      "pinyin": "diǎn",
+      "pdfPage": 80
+    },
+    {
+      "number": 34,
+      "level": 1,
+      "hanzi": "电话",
+      "pinyin": "diànhuà",
+      "pdfPage": 80
+    },
+    {
+      "number": 35,
+      "level": 1,
+      "hanzi": "电脑",
+      "pinyin": "diànnǎo",
+      "pdfPage": 80
+    },
+    {
+      "number": 36,
+      "level": 1,
+      "hanzi": "电视",
+      "pinyin": "diànshì",
+      "pdfPage": 80
+    },
+    {
+      "number": 37,
+      "level": 1,
+      "hanzi": "电影",
+      "pinyin": "diànyǐng",
+      "pdfPage": 80
+    },
+    {
+      "number": 38,
+      "level": 1,
+      "hanzi": "电影院",
+      "pinyin": "diànyǐngyuàn",
+      "pdfPage": 80
+    },
+    {
+      "number": 39,
+      "level": 1,
+      "hanzi": "店",
+      "pinyin": "diàn",
+      "pdfPage": 80
+    },
+    {
+      "number": 40,
+      "level": 1,
+      "hanzi": "东西",
+      "pinyin": "dōngxi",
+      "pdfPage": 80
+    },
+    {
+      "number": 41,
+      "level": 1,
+      "hanzi": "都",
+      "pinyin": "dōu",
+      "pdfPage": 81
+    },
+    {
+      "number": 42,
+      "level": 1,
+      "hanzi": "读",
+      "pinyin": "dú",
+      "pdfPage": 81
+    },
+    {
+      "number": 43,
+      "level": 1,
+      "hanzi": "读书",
+      "pinyin": "dúshū",
+      "pdfPage": 81
+    },
+    {
+      "number": 44,
+      "level": 1,
+      "hanzi": "对",
+      "pinyin": "duì",
+      "pdfPage": 81
+    },
+    {
+      "number": 45,
+      "level": 1,
+      "hanzi": "对不起",
+      "pinyin": "duìbuqǐ",
+      "pdfPage": 81
+    },
+    {
+      "number": 46,
+      "level": 1,
+      "hanzi": "多",
+      "pinyin": "duō",
+      "pdfPage": 81
+    },
+    {
+      "number": 47,
+      "level": 1,
+      "hanzi": "多少",
+      "pinyin": "duōshao",
+      "pdfPage": 81
+    },
+    {
+      "number": 48,
+      "level": 1,
+      "hanzi": "儿子",
+      "pinyin": "érzi",
+      "pdfPage": 81
+    },
+    {
+      "number": 49,
+      "level": 1,
+      "hanzi": "二",
+      "pinyin": "èr",
+      "pdfPage": 81
+    },
+    {
+      "number": 50,
+      "level": 1,
+      "hanzi": "饭",
+      "pinyin": "fàn",
+      "pdfPage": 81
+    },
+    {
+      "number": 51,
+      "level": 1,
+      "hanzi": "饭店",
+      "pinyin": "fàndiàn",
+      "pdfPage": 81
+    },
+    {
+      "number": 52,
+      "level": 1,
+      "hanzi": "房间",
+      "pinyin": "fángjiān",
+      "pdfPage": 81
+    },
+    {
+      "number": 53,
+      "level": 1,
+      "hanzi": "飞机",
+      "pinyin": "fēijī",
+      "pdfPage": 81
+    },
+    {
+      "number": 54,
+      "level": 1,
+      "hanzi": "非常",
+      "pinyin": "fēicháng",
+      "pdfPage": 81
+    },
+    {
+      "number": 55,
+      "level": 1,
+      "hanzi": "分",
+      "pinyin": "fēn",
+      "pdfPage": 81
+    },
+    {
+      "number": 56,
+      "level": 1,
+      "hanzi": "分钟",
+      "pinyin": "fēnzhōng",
+      "pdfPage": 81
+    },
+    {
+      "number": 57,
+      "level": 1,
+      "hanzi": "高兴",
+      "pinyin": "gāoxìng",
+      "pdfPage": 81
+    },
+    {
+      "number": 58,
+      "level": 1,
+      "hanzi": "哥哥",
+      "pinyin": "gēge",
+      "pdfPage": 81
+    },
+    {
+      "number": 59,
+      "level": 1,
+      "hanzi": "歌",
+      "pinyin": "gē",
+      "pdfPage": 81
+    },
+    {
+      "number": 60,
+      "level": 1,
+      "hanzi": "个",
+      "pinyin": "gè",
+      "pdfPage": 81
+    },
+    {
+      "number": 61,
+      "level": 1,
+      "hanzi": "给",
+      "pinyin": "gěi",
+      "pdfPage": 81
+    },
+    {
+      "number": 62,
+      "level": 1,
+      "hanzi": "工作",
+      "pinyin": "gōngzuò",
+      "pdfPage": 81
+    },
+    {
+      "number": 63,
+      "level": 1,
+      "hanzi": "公司",
+      "pinyin": "gōngsī",
+      "pdfPage": 81
+    },
+    {
+      "number": 64,
+      "level": 1,
+      "hanzi": "狗",
+      "pinyin": "gǒu",
+      "pdfPage": 81
+    },
+    {
+      "number": 65,
+      "level": 1,
+      "hanzi": "贵",
+      "pinyin": "guì",
+      "pdfPage": 81
+    },
+    {
+      "number": 66,
+      "level": 1,
+      "hanzi": "国",
+      "pinyin": "guó",
+      "pdfPage": 81
+    },
+    {
+      "number": 67,
+      "level": 1,
+      "hanzi": "还",
+      "pinyin": "hái",
+      "pdfPage": 81
+    },
+    {
+      "number": 68,
+      "level": 1,
+      "hanzi": "孩子",
+      "pinyin": "háizi",
+      "pdfPage": 81
+    },
+    {
+      "number": 69,
+      "level": 1,
+      "hanzi": "汉语",
+      "pinyin": "Hànyǔ",
+      "pdfPage": 81
+    },
+    {
+      "number": 70,
+      "level": 1,
+      "hanzi": "汉字",
+      "pinyin": "Hànzì",
+      "pdfPage": 81
+    },
+    {
+      "number": 71,
+      "level": 1,
+      "hanzi": "好",
+      "pinyin": "hǎo",
+      "pdfPage": 81
+    },
+    {
+      "number": 72,
+      "level": 1,
+      "hanzi": "好吃",
+      "pinyin": "hǎochī",
+      "pdfPage": 81
+    },
+    {
+      "number": 73,
+      "level": 1,
+      "hanzi": "好看",
+      "pinyin": "hǎokàn",
+      "pdfPage": 81
+    },
+    {
+      "number": 74,
+      "level": 1,
+      "hanzi": "好听",
+      "pinyin": "hǎotīng",
+      "pdfPage": 81
+    },
+    {
+      "number": 75,
+      "level": 1,
+      "hanzi": "好玩儿",
+      "pinyin": "hǎowánr",
+      "pdfPage": 81
+    },
+    {
+      "number": 76,
+      "level": 1,
+      "hanzi": "号",
+      "pinyin": "hào",
+      "pdfPage": 81
+    },
+    {
+      "number": 77,
+      "level": 1,
+      "hanzi": "喝",
+      "pinyin": "hē",
+      "pdfPage": 81
+    },
+    {
+      "number": 78,
+      "level": 1,
+      "hanzi": "和",
+      "pinyin": "hé",
+      "pdfPage": 81
+    },
+    {
+      "number": 79,
+      "level": 1,
+      "hanzi": "很",
+      "pinyin": "hěn",
+      "pdfPage": 81
+    },
+    {
+      "number": 80,
+      "level": 1,
+      "hanzi": "后",
+      "pinyin": "hòu",
+      "pdfPage": 81
+    },
+    {
+      "number": 81,
+      "level": 1,
+      "hanzi": "回",
+      "pinyin": "huí",
+      "pdfPage": 82
+    },
+    {
+      "number": 82,
+      "level": 1,
+      "hanzi": "会",
+      "pinyin": "huì",
+      "pdfPage": 82
+    },
+    {
+      "number": 83,
+      "level": 1,
+      "hanzi": "火车",
+      "pinyin": "huǒchē",
+      "pdfPage": 82
+    },
+    {
+      "number": 84,
+      "level": 1,
+      "hanzi": "鸡蛋",
+      "pinyin": "jīdàn",
+      "pdfPage": 82
+    },
+    {
+      "number": 85,
+      "level": 1,
+      "hanzi": "几",
+      "pinyin": "jǐ",
+      "pdfPage": 82
+    },
+    {
+      "number": 86,
+      "level": 1,
+      "hanzi": "家",
+      "pinyin": "jiā",
+      "pdfPage": 82
+    },
+    {
+      "number": 87,
+      "level": 1,
+      "hanzi": "家人",
+      "pinyin": "jiārén",
+      "pdfPage": 82
+    },
+    {
+      "number": 88,
+      "level": 1,
+      "hanzi": "见",
+      "pinyin": "jiàn",
+      "pdfPage": 82
+    },
+    {
+      "number": 89,
+      "level": 1,
+      "hanzi": "件",
+      "pinyin": "jiàn",
+      "pdfPage": 82
+    },
+    {
+      "number": 90,
+      "level": 1,
+      "hanzi": "饺子",
+      "pinyin": "jiǎozi",
+      "pdfPage": 82
+    },
+    {
+      "number": 91,
+      "level": 1,
+      "hanzi": "叫",
+      "pinyin": "jiào",
+      "pdfPage": 82
+    },
+    {
+      "number": 92,
+      "level": 1,
+      "hanzi": "姐姐",
+      "pinyin": "jiějie",
+      "pdfPage": 82
+    },
+    {
+      "number": 93,
+      "level": 1,
+      "hanzi": "今年",
+      "pinyin": "jīnnián",
+      "pdfPage": 82
+    },
+    {
+      "number": 94,
+      "level": 1,
+      "hanzi": "今天",
+      "pinyin": "jīntiān",
+      "pdfPage": 82
+    },
+    {
+      "number": 95,
+      "level": 1,
+      "hanzi": "九",
+      "pinyin": "jiǔ",
+      "pdfPage": 82
+    },
+    {
+      "number": 96,
+      "level": 1,
+      "hanzi": "觉得",
+      "pinyin": "juéde",
+      "pdfPage": 82
+    },
+    {
+      "number": 97,
+      "level": 1,
+      "hanzi": "开",
+      "pinyin": "kāi",
+      "pdfPage": 82
+    },
+    {
+      "number": 98,
+      "level": 1,
+      "hanzi": "开车",
+      "pinyin": "kāichē",
+      "pdfPage": 82
+    },
+    {
+      "number": 99,
+      "level": 1,
+      "hanzi": "看",
+      "pinyin": "kàn",
+      "pdfPage": 82
+    },
+    {
+      "number": 100,
+      "level": 1,
+      "hanzi": "看病",
+      "pinyin": "kànbìng",
+      "pdfPage": 82
+    },
+    {
+      "number": 101,
+      "level": 1,
+      "hanzi": "看见",
+      "pinyin": "kànjiàn",
+      "pdfPage": 82
+    },
+    {
+      "number": 102,
+      "level": 1,
+      "hanzi": "可以",
+      "pinyin": "kěyǐ",
+      "pdfPage": 82
+    },
+    {
+      "number": 103,
+      "level": 1,
+      "hanzi": "课",
+      "pinyin": "kè",
+      "pdfPage": 82
+    },
+    {
+      "number": 104,
+      "level": 1,
+      "hanzi": "口",
+      "pinyin": "kǒu",
+      "pdfPage": 82
+    },
+    {
+      "number": 105,
+      "level": 1,
+      "hanzi": "块",
+      "pinyin": "kuài",
+      "pdfPage": 82
+    },
+    {
+      "number": 106,
+      "level": 1,
+      "hanzi": "来",
+      "pinyin": "lái",
+      "pdfPage": 82
+    },
+    {
+      "number": 107,
+      "level": 1,
+      "hanzi": "老师",
+      "pinyin": "lǎoshī",
+      "pdfPage": 82
+    },
+    {
+      "number": 108,
+      "level": 1,
+      "hanzi": "了",
+      "pinyin": "le",
+      "pdfPage": 82
+    },
+    {
+      "number": 109,
+      "level": 1,
+      "hanzi": "冷",
+      "pinyin": "lěng",
+      "pdfPage": 82
+    },
+    {
+      "number": 110,
+      "level": 1,
+      "hanzi": "里",
+      "pinyin": "lǐ",
+      "pdfPage": 82
+    },
+    {
+      "number": 111,
+      "level": 1,
+      "hanzi": "两",
+      "pinyin": "liǎng",
+      "pdfPage": 82
+    },
+    {
+      "number": 112,
+      "level": 1,
+      "hanzi": "零",
+      "pinyin": "líng",
+      "pdfPage": 82
+    },
+    {
+      "number": 113,
+      "level": 1,
+      "hanzi": "六",
+      "pinyin": "liù",
+      "pdfPage": 82
+    },
+    {
+      "number": 114,
+      "level": 1,
+      "hanzi": "妈妈",
+      "pinyin": "māma",
+      "pdfPage": 82
+    },
+    {
+      "number": 115,
+      "level": 1,
+      "hanzi": "吗",
+      "pinyin": "ma",
+      "pdfPage": 82
+    },
+    {
+      "number": 116,
+      "level": 1,
+      "hanzi": "买",
+      "pinyin": "mǎi",
+      "pdfPage": 82
+    },
+    {
+      "number": 117,
+      "level": 1,
+      "hanzi": "卖",
+      "pinyin": "mài",
+      "pdfPage": 82
+    },
+    {
+      "number": 118,
+      "level": 1,
+      "hanzi": "忙",
+      "pinyin": "máng",
+      "pdfPage": 82
+    },
+    {
+      "number": 119,
+      "level": 1,
+      "hanzi": "猫",
+      "pinyin": "māo",
+      "pdfPage": 82
+    },
+    {
+      "number": 120,
+      "level": 1,
+      "hanzi": "没关系",
+      "pinyin": "méi guānxi",
+      "pdfPage": 82
+    },
+    {
+      "number": 121,
+      "level": 1,
+      "hanzi": "没事",
+      "pinyin": "méishì",
+      "pdfPage": 83
+    },
+    {
+      "number": 122,
+      "level": 1,
+      "hanzi": "没有",
+      "pinyin": "méiyǒu",
+      "pdfPage": 83
+    },
+    {
+      "number": 123,
+      "level": 1,
+      "hanzi": "妹妹",
+      "pinyin": "mèimei",
+      "pdfPage": 83
+    },
+    {
+      "number": 124,
+      "level": 1,
+      "hanzi": "们",
+      "pinyin": "men",
+      "pdfPage": 83
+    },
+    {
+      "number": 125,
+      "level": 1,
+      "hanzi": "米饭",
+      "pinyin": "mǐfàn",
+      "pdfPage": 83
+    },
+    {
+      "number": 126,
+      "level": 1,
+      "hanzi": "面包",
+      "pinyin": "miànbāo",
+      "pdfPage": 83
+    },
+    {
+      "number": 127,
+      "level": 1,
+      "hanzi": "面条儿",
+      "pinyin": "miàntiáor",
+      "pdfPage": 83
+    },
+    {
+      "number": 128,
+      "level": 1,
+      "hanzi": "名字",
+      "pinyin": "míngzi",
+      "pdfPage": 83
+    },
+    {
+      "number": 129,
+      "level": 1,
+      "hanzi": "明年",
+      "pinyin": "míngnián",
+      "pdfPage": 83
+    },
+    {
+      "number": 130,
+      "level": 1,
+      "hanzi": "明天",
+      "pinyin": "míngtiān",
+      "pdfPage": 83
+    },
+    {
+      "number": 131,
+      "level": 1,
+      "hanzi": "哪",
+      "pinyin": "nǎ",
+      "pdfPage": 83
+    },
+    {
+      "number": 132,
+      "level": 1,
+      "hanzi": "哪个",
+      "pinyin": "nǎge",
+      "pdfPage": 83
+    },
+    {
+      "number": 133,
+      "level": 1,
+      "hanzi": "哪里",
+      "pinyin": "nǎlǐ",
+      "pdfPage": 83
+    },
+    {
+      "number": 134,
+      "level": 1,
+      "hanzi": "哪儿",
+      "pinyin": "nǎr",
+      "pdfPage": 83
+    },
+    {
+      "number": 135,
+      "level": 1,
+      "hanzi": "哪些",
+      "pinyin": "nǎxiē",
+      "pdfPage": 83
+    },
+    {
+      "number": 136,
+      "level": 1,
+      "hanzi": "那",
+      "pinyin": "nà",
+      "pdfPage": 83
+    },
+    {
+      "number": 137,
+      "level": 1,
+      "hanzi": "那边",
+      "pinyin": "nàbiān",
+      "pdfPage": 83
+    },
+    {
+      "number": 138,
+      "level": 1,
+      "hanzi": "那个",
+      "pinyin": "nàge",
+      "pdfPage": 83
+    },
+    {
+      "number": 139,
+      "level": 1,
+      "hanzi": "那里",
+      "pinyin": "nàlǐ",
+      "pdfPage": 83
+    },
+    {
+      "number": 140,
+      "level": 1,
+      "hanzi": "那儿",
+      "pinyin": "nàr",
+      "pdfPage": 83
+    },
+    {
+      "number": 141,
+      "level": 1,
+      "hanzi": "那些",
+      "pinyin": "nàxiē",
+      "pdfPage": 83
+    },
+    {
+      "number": 142,
+      "level": 1,
+      "hanzi": "男",
+      "pinyin": "nán",
+      "pdfPage": 83
+    },
+    {
+      "number": 143,
+      "level": 1,
+      "hanzi": "男朋友",
+      "pinyin": "nánpéngyou",
+      "pdfPage": 83
+    },
+    {
+      "number": 144,
+      "level": 1,
+      "hanzi": "呢",
+      "pinyin": "ne",
+      "pdfPage": 83
+    },
+    {
+      "number": 145,
+      "level": 1,
+      "hanzi": "能",
+      "pinyin": "néng",
+      "pdfPage": 83
+    },
+    {
+      "number": 146,
+      "level": 1,
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "pdfPage": 83
+    },
+    {
+      "number": 147,
+      "level": 1,
+      "hanzi": "你好",
+      "pinyin": "nǐ hǎo",
+      "pdfPage": 83
+    },
+    {
+      "number": 148,
+      "level": 1,
+      "hanzi": "你们",
+      "pinyin": "nǐmen",
+      "pdfPage": 83
+    },
+    {
+      "number": 149,
+      "level": 1,
+      "hanzi": "年",
+      "pinyin": "nián",
+      "pdfPage": 83
+    },
+    {
+      "number": 150,
+      "level": 1,
+      "hanzi": "您",
+      "pinyin": "nín",
+      "pdfPage": 83
+    },
+    {
+      "number": 151,
+      "level": 1,
+      "hanzi": "牛奶",
+      "pinyin": "niúnǎi",
+      "pdfPage": 83
+    },
+    {
+      "number": 152,
+      "level": 1,
+      "hanzi": "女",
+      "pinyin": "nǚ",
+      "pdfPage": 83
+    },
+    {
+      "number": 153,
+      "level": 1,
+      "hanzi": "女儿",
+      "pinyin": "nǚ’ér",
+      "pdfPage": 83
+    },
+    {
+      "number": 154,
+      "level": 1,
+      "hanzi": "女朋友",
+      "pinyin": "nǚpéngyou",
+      "pdfPage": 83
+    },
+    {
+      "number": 155,
+      "level": 1,
+      "hanzi": "女士",
+      "pinyin": "nǚshì",
+      "pdfPage": 83
+    },
+    {
+      "number": 156,
+      "level": 1,
+      "hanzi": "朋友",
+      "pinyin": "péngyou",
+      "pdfPage": 83
+    },
+    {
+      "number": 157,
+      "level": 1,
+      "hanzi": "便宜",
+      "pinyin": "piányi",
+      "pdfPage": 83
+    },
+    {
+      "number": 158,
+      "level": 1,
+      "hanzi": "漂亮",
+      "pinyin": "piàoliang",
+      "pdfPage": 83
+    },
+    {
+      "number": 159,
+      "level": 1,
+      "hanzi": "苹果",
+      "pinyin": "píngguǒ",
+      "pdfPage": 83
+    },
+    {
+      "number": 160,
+      "level": 1,
+      "hanzi": "七",
+      "pinyin": "qī",
+      "pdfPage": 83
+    },
+    {
+      "number": 161,
+      "level": 1,
+      "hanzi": "起床",
+      "pinyin": "qǐchuáng",
+      "pdfPage": 84
+    },
+    {
+      "number": 162,
+      "level": 1,
+      "hanzi": "千",
+      "pinyin": "qiān",
+      "pdfPage": 84
+    },
+    {
+      "number": 163,
+      "level": 1,
+      "hanzi": "前",
+      "pinyin": "qián",
+      "pdfPage": 84
+    },
+    {
+      "number": 164,
+      "level": 1,
+      "hanzi": "钱",
+      "pinyin": "qián",
+      "pdfPage": 84
+    },
+    {
+      "number": 165,
+      "level": 1,
+      "hanzi": "请",
+      "pinyin": "qǐng",
+      "pdfPage": 84
+    },
+    {
+      "number": 166,
+      "level": 1,
+      "hanzi": "请问",
+      "pinyin": "qǐngwèn",
+      "pdfPage": 84
+    },
+    {
+      "number": 167,
+      "level": 1,
+      "hanzi": "去",
+      "pinyin": "qù",
+      "pdfPage": 84
+    },
+    {
+      "number": 168,
+      "level": 1,
+      "hanzi": "去年",
+      "pinyin": "qùnián",
+      "pdfPage": 84
+    },
+    {
+      "number": 169,
+      "level": 1,
+      "hanzi": "热",
+      "pinyin": "rè",
+      "pdfPage": 84
+    },
+    {
+      "number": 170,
+      "level": 1,
+      "hanzi": "人",
+      "pinyin": "rén",
+      "pdfPage": 84
+    },
+    {
+      "number": 171,
+      "level": 1,
+      "hanzi": "认识",
+      "pinyin": "rènshi",
+      "pdfPage": 84
+    },
+    {
+      "number": 172,
+      "level": 1,
+      "hanzi": "日",
+      "pinyin": "rì",
+      "pdfPage": 84
+    },
+    {
+      "number": 173,
+      "level": 1,
+      "hanzi": "三",
+      "pinyin": "sān",
+      "pdfPage": 84
+    },
+    {
+      "number": 174,
+      "level": 1,
+      "hanzi": "商店",
+      "pinyin": "shāngdiàn",
+      "pdfPage": 84
+    },
+    {
+      "number": 175,
+      "level": 1,
+      "hanzi": "上",
+      "pinyin": "shàng",
+      "pdfPage": 84
+    },
+    {
+      "number": 176,
+      "level": 1,
+      "hanzi": "上班",
+      "pinyin": "shàngbān",
+      "pdfPage": 84
+    },
+    {
+      "number": 177,
+      "level": 1,
+      "hanzi": "上课",
+      "pinyin": "shàngkè",
+      "pdfPage": 84
+    },
+    {
+      "number": 178,
+      "level": 1,
+      "hanzi": "上午",
+      "pinyin": "shàngwǔ",
+      "pdfPage": 84
+    },
+    {
+      "number": 179,
+      "level": 1,
+      "hanzi": "上学",
+      "pinyin": "shàngxué",
+      "pdfPage": 84
+    },
+    {
+      "number": 180,
+      "level": 1,
+      "hanzi": "少",
+      "pinyin": "shǎo",
+      "pdfPage": 84
+    },
+    {
+      "number": 181,
+      "level": 1,
+      "hanzi": "谁",
+      "pinyin": "shéi",
+      "pdfPage": 84
+    },
+    {
+      "number": 182,
+      "level": 1,
+      "hanzi": "什么",
+      "pinyin": "shénme",
+      "pdfPage": 84
+    },
+    {
+      "number": 183,
+      "level": 1,
+      "hanzi": "生病",
+      "pinyin": "shēngbìng",
+      "pdfPage": 84
+    },
+    {
+      "number": 184,
+      "level": 1,
+      "hanzi": "十",
+      "pinyin": "shí",
+      "pdfPage": 84
+    },
+    {
+      "number": 185,
+      "level": 1,
+      "hanzi": "时候",
+      "pinyin": "shíhou",
+      "pdfPage": 84
+    },
+    {
+      "number": 186,
+      "level": 1,
+      "hanzi": "时间",
+      "pinyin": "shíjiān",
+      "pdfPage": 84
+    },
+    {
+      "number": 187,
+      "level": 1,
+      "hanzi": "事",
+      "pinyin": "shì",
+      "pdfPage": 84
+    },
+    {
+      "number": 188,
+      "level": 1,
+      "hanzi": "是",
+      "pinyin": "shì",
+      "pdfPage": 84
+    },
+    {
+      "number": 189,
+      "level": 1,
+      "hanzi": "手机",
+      "pinyin": "shǒujī",
+      "pdfPage": 84
+    },
+    {
+      "number": 190,
+      "level": 1,
+      "hanzi": "书",
+      "pinyin": "shū",
+      "pdfPage": 84
+    },
+    {
+      "number": 191,
+      "level": 1,
+      "hanzi": "书店",
+      "pinyin": "shūdiàn",
+      "pdfPage": 84
+    },
+    {
+      "number": 192,
+      "level": 1,
+      "hanzi": "水",
+      "pinyin": "shuǐ",
+      "pdfPage": 84
+    },
+    {
+      "number": 193,
+      "level": 1,
+      "hanzi": "水果",
+      "pinyin": "shuǐguǒ",
+      "pdfPage": 84
+    },
+    {
+      "number": 194,
+      "level": 1,
+      "hanzi": "睡",
+      "pinyin": "shuì",
+      "pdfPage": 84
+    },
+    {
+      "number": 195,
+      "level": 1,
+      "hanzi": "睡觉",
+      "pinyin": "shuìjiào",
+      "pdfPage": 84
+    },
+    {
+      "number": 196,
+      "level": 1,
+      "hanzi": "说",
+      "pinyin": "shuō",
+      "pdfPage": 84
+    },
+    {
+      "number": 197,
+      "level": 1,
+      "hanzi": "说话",
+      "pinyin": "shuōhuà",
+      "pdfPage": 84
+    },
+    {
+      "number": 198,
+      "level": 1,
+      "hanzi": "四",
+      "pinyin": "sì",
+      "pdfPage": 84
+    },
+    {
+      "number": 199,
+      "level": 1,
+      "hanzi": "岁",
+      "pinyin": "suì",
+      "pdfPage": 84
+    },
+    {
+      "number": 200,
+      "level": 1,
+      "hanzi": "他",
+      "pinyin": "tā",
+      "pdfPage": 84
+    },
+    {
+      "number": 201,
+      "level": 1,
+      "hanzi": "他们",
+      "pinyin": "tāmen",
+      "pdfPage": 85
+    },
+    {
+      "number": 202,
+      "level": 1,
+      "hanzi": "它",
+      "pinyin": "tā",
+      "pdfPage": 85
+    },
+    {
+      "number": 203,
+      "level": 1,
+      "hanzi": "它们",
+      "pinyin": "tāmen",
+      "pdfPage": 85
+    },
+    {
+      "number": 204,
+      "level": 1,
+      "hanzi": "她",
+      "pinyin": "tā",
+      "pdfPage": 85
+    },
+    {
+      "number": 205,
+      "level": 1,
+      "hanzi": "她们",
+      "pinyin": "tāmen",
+      "pdfPage": 85
+    },
+    {
+      "number": 206,
+      "level": 1,
+      "hanzi": "太",
+      "pinyin": "tài",
+      "pdfPage": 85
+    },
+    {
+      "number": 207,
+      "level": 1,
+      "hanzi": "天",
+      "pinyin": "tiān",
+      "pdfPage": 85
+    },
+    {
+      "number": 208,
+      "level": 1,
+      "hanzi": "天气",
+      "pinyin": "tiānqì",
+      "pdfPage": 85
+    },
+    {
+      "number": 209,
+      "level": 1,
+      "hanzi": "听",
+      "pinyin": "tīng",
+      "pdfPage": 85
+    },
+    {
+      "number": 210,
+      "level": 1,
+      "hanzi": "听见",
+      "pinyin": "tīngjiàn",
+      "pdfPage": 85
+    },
+    {
+      "number": 211,
+      "level": 1,
+      "hanzi": "同学",
+      "pinyin": "tóngxué",
+      "pdfPage": 85
+    },
+    {
+      "number": 212,
+      "level": 1,
+      "hanzi": "外",
+      "pinyin": "wài",
+      "pdfPage": 85
+    },
+    {
+      "number": 213,
+      "level": 1,
+      "hanzi": "外边",
+      "pinyin": "wàibian",
+      "pdfPage": 85
+    },
+    {
+      "number": 214,
+      "level": 1,
+      "hanzi": "玩",
+      "pinyin": "wán",
+      "pdfPage": 85
+    },
+    {
+      "number": 215,
+      "level": 1,
+      "hanzi": "晚",
+      "pinyin": "wǎn",
+      "pdfPage": 85
+    },
+    {
+      "number": 216,
+      "level": 1,
+      "hanzi": "晚饭",
+      "pinyin": "wǎnfàn",
+      "pdfPage": 85
+    },
+    {
+      "number": 217,
+      "level": 1,
+      "hanzi": "晚上",
+      "pinyin": "wǎnshang",
+      "pdfPage": 85
+    },
+    {
+      "number": 218,
+      "level": 1,
+      "hanzi": "喂",
+      "pinyin": "wèi",
+      "pdfPage": 85
+    },
+    {
+      "number": 219,
+      "level": 1,
+      "hanzi": "问",
+      "pinyin": "wèn",
+      "pdfPage": 85
+    },
+    {
+      "number": 220,
+      "level": 1,
+      "hanzi": "问题",
+      "pinyin": "wèntí",
+      "pdfPage": 85
+    },
+    {
+      "number": 221,
+      "level": 1,
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "pdfPage": 85
+    },
+    {
+      "number": 222,
+      "level": 1,
+      "hanzi": "我们",
+      "pinyin": "wǒmen",
+      "pdfPage": 85
+    },
+    {
+      "number": 223,
+      "level": 1,
+      "hanzi": "五",
+      "pinyin": "wǔ",
+      "pdfPage": 85
+    },
+    {
+      "number": 224,
+      "level": 1,
+      "hanzi": "午饭",
+      "pinyin": "wǔfàn",
+      "pdfPage": 85
+    },
+    {
+      "number": 225,
+      "level": 1,
+      "hanzi": "喜欢",
+      "pinyin": "xǐhuan",
+      "pdfPage": 85
+    },
+    {
+      "number": 226,
+      "level": 1,
+      "hanzi": "下",
+      "pinyin": "xià",
+      "pdfPage": 85
+    },
+    {
+      "number": 227,
+      "level": 1,
+      "hanzi": "下班",
+      "pinyin": "xiàbān",
+      "pdfPage": 85
+    },
+    {
+      "number": 228,
+      "level": 1,
+      "hanzi": "下课",
+      "pinyin": "xiàkè",
+      "pdfPage": 85
+    },
+    {
+      "number": 229,
+      "level": 1,
+      "hanzi": "下午",
+      "pinyin": "xiàwǔ",
+      "pdfPage": 85
+    },
+    {
+      "number": 230,
+      "level": 1,
+      "hanzi": "下雨",
+      "pinyin": "xià yǔ",
+      "pdfPage": 85
+    },
+    {
+      "number": 231,
+      "level": 1,
+      "hanzi": "先生",
+      "pinyin": "xiānsheng",
+      "pdfPage": 85
+    },
+    {
+      "number": 232,
+      "level": 1,
+      "hanzi": "现在",
+      "pinyin": "xiànzài",
+      "pdfPage": 85
+    },
+    {
+      "number": 233,
+      "level": 1,
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "pdfPage": 85
+    },
+    {
+      "number": 234,
+      "level": 1,
+      "hanzi": "小",
+      "pinyin": "xiǎo",
+      "pdfPage": 85
+    },
+    {
+      "number": 235,
+      "level": 1,
+      "hanzi": "小朋友",
+      "pinyin": "xiǎopéngyǒu",
+      "pdfPage": 85
+    },
+    {
+      "number": 236,
+      "level": 1,
+      "hanzi": "小时",
+      "pinyin": "xiǎoshí",
+      "pdfPage": 85
+    },
+    {
+      "number": 237,
+      "level": 1,
+      "hanzi": "小学",
+      "pinyin": "xiǎoxué",
+      "pdfPage": 85
+    },
+    {
+      "number": 238,
+      "level": 1,
+      "hanzi": "小学生",
+      "pinyin": "xiǎoxuéshēng",
+      "pdfPage": 85
+    },
+    {
+      "number": 239,
+      "level": 1,
+      "hanzi": "些",
+      "pinyin": "xiē",
+      "pdfPage": 85
+    },
+    {
+      "number": 240,
+      "level": 1,
+      "hanzi": "写",
+      "pinyin": "xiě",
+      "pdfPage": 85
+    },
+    {
+      "number": 241,
+      "level": 1,
+      "hanzi": "谢谢",
+      "pinyin": "xièxie",
+      "pdfPage": 86
+    },
+    {
+      "number": 242,
+      "level": 1,
+      "hanzi": "新",
+      "pinyin": "xīn",
+      "pdfPage": 86
+    },
+    {
+      "number": 243,
+      "level": 1,
+      "hanzi": "星期",
+      "pinyin": "xīngqī",
+      "pdfPage": 86
+    },
+    {
+      "number": 244,
+      "level": 1,
+      "hanzi": "星期日",
+      "pinyin": "xīngqīrì",
+      "pdfPage": 86
+    },
+    {
+      "number": 245,
+      "level": 1,
+      "hanzi": "星期天",
+      "pinyin": "xīngqītiān",
+      "pdfPage": 86
+    },
+    {
+      "number": 246,
+      "level": 1,
+      "hanzi": "休息",
+      "pinyin": "xiūxi",
+      "pdfPage": 86
+    },
+    {
+      "number": 247,
+      "level": 1,
+      "hanzi": "学",
+      "pinyin": "xué",
+      "pdfPage": 86
+    },
+    {
+      "number": 248,
+      "level": 1,
+      "hanzi": "学生",
+      "pinyin": "xuéshēng",
+      "pdfPage": 86
+    },
+    {
+      "number": 249,
+      "level": 1,
+      "hanzi": "学习",
+      "pinyin": "xuéxí",
+      "pdfPage": 86
+    },
+    {
+      "number": 250,
+      "level": 1,
+      "hanzi": "学校",
+      "pinyin": "xuéxiào",
+      "pdfPage": 86
+    },
+    {
+      "number": 251,
+      "level": 1,
+      "hanzi": "雪",
+      "pinyin": "xuě",
+      "pdfPage": 86
+    },
+    {
+      "number": 252,
+      "level": 1,
+      "hanzi": "要",
+      "pinyin": "yào",
+      "pdfPage": 86
+    },
+    {
+      "number": 253,
+      "level": 1,
+      "hanzi": "也",
+      "pinyin": "yě",
+      "pdfPage": 86
+    },
+    {
+      "number": 254,
+      "level": 1,
+      "hanzi": "一",
+      "pinyin": "yī",
+      "pdfPage": 86
+    },
+    {
+      "number": 255,
+      "level": 1,
+      "hanzi": "一半",
+      "pinyin": "yíbàn",
+      "pdfPage": 86
+    },
+    {
+      "number": 256,
+      "level": 1,
+      "hanzi": "一点儿",
+      "pinyin": "yìdiǎnr",
+      "pdfPage": 86
+    },
+    {
+      "number": 257,
+      "level": 1,
+      "hanzi": "一下",
+      "pinyin": "yíxià",
+      "pdfPage": 86
+    },
+    {
+      "number": 258,
+      "level": 1,
+      "hanzi": "一些",
+      "pinyin": "yìxiē",
+      "pdfPage": 86
+    },
+    {
+      "number": 259,
+      "level": 1,
+      "hanzi": "衣服",
+      "pinyin": "yīfu",
+      "pdfPage": 86
+    },
+    {
+      "number": 260,
+      "level": 1,
+      "hanzi": "医生",
+      "pinyin": "yīshēng",
+      "pdfPage": 86
+    },
+    {
+      "number": 261,
+      "level": 1,
+      "hanzi": "医院",
+      "pinyin": "yīyuàn",
+      "pdfPage": 86
+    },
+    {
+      "number": 262,
+      "level": 1,
+      "hanzi": "椅子",
+      "pinyin": "yǐzi",
+      "pdfPage": 86
+    },
+    {
+      "number": 263,
+      "level": 1,
+      "hanzi": "有",
+      "pinyin": "yǒu",
+      "pdfPage": 86
+    },
+    {
+      "number": 264,
+      "level": 1,
+      "hanzi": "有的",
+      "pinyin": "yǒude",
+      "pdfPage": 86
+    },
+    {
+      "number": 265,
+      "level": 1,
+      "hanzi": "有点儿",
+      "pinyin": "yǒudiǎnr",
+      "pdfPage": 86
+    },
+    {
+      "number": 266,
+      "level": 1,
+      "hanzi": "有些",
+      "pinyin": "yǒuxiē",
+      "pdfPage": 86
+    },
+    {
+      "number": 267,
+      "level": 1,
+      "hanzi": "雨",
+      "pinyin": "yǔ",
+      "pdfPage": 86
+    },
+    {
+      "number": 268,
+      "level": 1,
+      "hanzi": "元",
+      "pinyin": "yuán",
+      "pdfPage": 86
+    },
+    {
+      "number": 269,
+      "level": 1,
+      "hanzi": "月",
+      "pinyin": "yuè",
+      "pdfPage": 86
+    },
+    {
+      "number": 270,
+      "level": 1,
+      "hanzi": "再",
+      "pinyin": "zài",
+      "pdfPage": 86
+    },
+    {
+      "number": 271,
+      "level": 1,
+      "hanzi": "再见",
+      "pinyin": "zàijiàn",
+      "pdfPage": 86
+    },
+    {
+      "number": 272,
+      "level": 1,
+      "hanzi": "在",
+      "pinyin": "zài",
+      "pdfPage": 86
+    },
+    {
+      "number": 273,
+      "level": 1,
+      "hanzi": "早",
+      "pinyin": "zǎo",
+      "pdfPage": 86
+    },
+    {
+      "number": 274,
+      "level": 1,
+      "hanzi": "早饭",
+      "pinyin": "zǎofàn",
+      "pdfPage": 86
+    },
+    {
+      "number": 275,
+      "level": 1,
+      "hanzi": "早上",
+      "pinyin": "zǎoshang",
+      "pdfPage": 86
+    },
+    {
+      "number": 276,
+      "level": 1,
+      "hanzi": "怎么",
+      "pinyin": "zěnme",
+      "pdfPage": 86
+    },
+    {
+      "number": 277,
+      "level": 1,
+      "hanzi": "怎么样",
+      "pinyin": "zěnmeyàng",
+      "pdfPage": 86
+    },
+    {
+      "number": 278,
+      "level": 1,
+      "hanzi": "找",
+      "pinyin": "zhǎo",
+      "pdfPage": 86
+    },
+    {
+      "number": 279,
+      "level": 1,
+      "hanzi": "这",
+      "pinyin": "zhè",
+      "pdfPage": 86
+    },
+    {
+      "number": 280,
+      "level": 1,
+      "hanzi": "这边",
+      "pinyin": "zhèbiān",
+      "pdfPage": 86
+    },
+    {
+      "number": 281,
+      "level": 1,
+      "hanzi": "这个",
+      "pinyin": "zhège",
+      "pdfPage": 87
+    },
+    {
+      "number": 282,
+      "level": 1,
+      "hanzi": "这里",
+      "pinyin": "zhèlǐ",
+      "pdfPage": 87
+    },
+    {
+      "number": 283,
+      "level": 1,
+      "hanzi": "这儿",
+      "pinyin": "zhèr",
+      "pdfPage": 87
+    },
+    {
+      "number": 284,
+      "level": 1,
+      "hanzi": "这些",
+      "pinyin": "zhèxiē",
+      "pdfPage": 87
+    },
+    {
+      "number": 285,
+      "level": 1,
+      "hanzi": "真",
+      "pinyin": "zhēn",
+      "pdfPage": 87
+    },
+    {
+      "number": 286,
+      "level": 1,
+      "hanzi": "正在",
+      "pinyin": "zhèngzài",
+      "pdfPage": 87
+    },
+    {
+      "number": 287,
+      "level": 1,
+      "hanzi": "只",
+      "pinyin": "zhī",
+      "pdfPage": 87
+    },
+    {
+      "number": 288,
+      "level": 1,
+      "hanzi": "知道",
+      "pinyin": "zhīdào",
+      "pdfPage": 87
+    },
+    {
+      "number": 289,
+      "level": 1,
+      "hanzi": "中国",
+      "pinyin": "Zhōngguó",
+      "pdfPage": 87
+    },
+    {
+      "number": 290,
+      "level": 1,
+      "hanzi": "中文",
+      "pinyin": "Zhōngwén",
+      "pdfPage": 87
+    },
+    {
+      "number": 291,
+      "level": 1,
+      "hanzi": "中午",
+      "pinyin": "zhōngwǔ",
+      "pdfPage": 87
+    },
+    {
+      "number": 292,
+      "level": 1,
+      "hanzi": "中学",
+      "pinyin": "zhōngxué",
+      "pdfPage": 87
+    },
+    {
+      "number": 293,
+      "level": 1,
+      "hanzi": "中学生",
+      "pinyin": "zhōngxuéshēng",
+      "pdfPage": 87
+    },
+    {
+      "number": 294,
+      "level": 1,
+      "hanzi": "住",
+      "pinyin": "zhù",
+      "pdfPage": 87
+    },
+    {
+      "number": 295,
+      "level": 1,
+      "hanzi": "桌子",
+      "pinyin": "zhuōzi",
+      "pdfPage": 87
+    },
+    {
+      "number": 296,
+      "level": 1,
+      "hanzi": "字",
+      "pinyin": "zì",
+      "pdfPage": 87
+    },
+    {
+      "number": 297,
+      "level": 1,
+      "hanzi": "昨天",
+      "pinyin": "zuótiān",
+      "pdfPage": 87
+    },
+    {
+      "number": 298,
+      "level": 1,
+      "hanzi": "坐",
+      "pinyin": "zuò",
+      "pdfPage": 87
+    },
+    {
+      "number": 299,
+      "level": 1,
+      "hanzi": "做",
+      "pinyin": "zuò",
+      "pdfPage": 87
+    },
+    {
+      "number": 300,
+      "level": 1,
+      "hanzi": "做饭",
+      "pinyin": "zuò fàn",
+      "pdfPage": 87
+    },
+    {
+      "number": 301,
+      "level": 2,
+      "hanzi": "啊",
+      "pinyin": "a",
+      "pdfPage": 87
+    },
+    {
+      "number": 302,
+      "level": 2,
+      "hanzi": "爱好",
+      "pinyin": "àihào",
+      "pdfPage": 87
+    },
+    {
+      "number": 303,
+      "level": 2,
+      "hanzi": "白色",
+      "pinyin": "báisè",
+      "pdfPage": 87
+    },
+    {
+      "number": 304,
+      "level": 2,
+      "hanzi": "班",
+      "pinyin": "bān",
+      "pdfPage": 87
+    },
+    {
+      "number": 305,
+      "level": 2,
+      "hanzi": "帮",
+      "pinyin": "bāng",
+      "pdfPage": 87
+    },
+    {
+      "number": 306,
+      "level": 2,
+      "hanzi": "帮忙",
+      "pinyin": "bāngmáng",
+      "pdfPage": 87
+    },
+    {
+      "number": 307,
+      "level": 2,
+      "hanzi": "包",
+      "pinyin": "bāo",
+      "pdfPage": 87
+    },
+    {
+      "number": 308,
+      "level": 2,
+      "hanzi": "本子",
+      "pinyin": "běnzi",
+      "pdfPage": 87
+    },
+    {
+      "number": 309,
+      "level": 2,
+      "hanzi": "比",
+      "pinyin": "bǐ",
+      "pdfPage": 87
+    },
+    {
+      "number": 310,
+      "level": 2,
+      "hanzi": "笔",
+      "pinyin": "bǐ",
+      "pdfPage": 87
+    },
+    {
+      "number": 311,
+      "level": 2,
+      "hanzi": "别",
+      "pinyin": "bié",
+      "pdfPage": 87
+    },
+    {
+      "number": 312,
+      "level": 2,
+      "hanzi": "不错",
+      "pinyin": "búcuò",
+      "pdfPage": 87
+    },
+    {
+      "number": 313,
+      "level": 2,
+      "hanzi": "不好意思",
+      "pinyin": "bù hǎoyìsi",
+      "pdfPage": 87
+    },
+    {
+      "number": 314,
+      "level": 2,
+      "hanzi": "长",
+      "pinyin": "cháng",
+      "pdfPage": 87
+    },
+    {
+      "number": 315,
+      "level": 2,
+      "hanzi": "车站",
+      "pinyin": "chēzhàn",
+      "pdfPage": 87
+    },
+    {
+      "number": 316,
+      "level": 2,
+      "hanzi": "出",
+      "pinyin": "chū",
+      "pdfPage": 87
+    },
+    {
+      "number": 317,
+      "level": 2,
+      "hanzi": "出国",
+      "pinyin": "chūguó",
+      "pdfPage": 87
+    },
+    {
+      "number": 318,
+      "level": 2,
+      "hanzi": "出来",
+      "pinyin": "chūlái",
+      "pdfPage": 87
+    },
+    {
+      "number": 319,
+      "level": 2,
+      "hanzi": "出门",
+      "pinyin": "chūmén",
+      "pdfPage": 87
+    },
+    {
+      "number": 320,
+      "level": 2,
+      "hanzi": "出去",
+      "pinyin": "chūqù",
+      "pdfPage": 87
+    },
+    {
+      "number": 321,
+      "level": 2,
+      "hanzi": "床",
+      "pinyin": "chuáng",
+      "pdfPage": 88
+    },
+    {
+      "number": 322,
+      "level": 2,
+      "hanzi": "词",
+      "pinyin": "cí",
+      "pdfPage": 88
+    },
+    {
+      "number": 323,
+      "level": 2,
+      "hanzi": "次",
+      "pinyin": "cì",
+      "pdfPage": 88
+    },
+    {
+      "number": 324,
+      "level": 2,
+      "hanzi": "从",
+      "pinyin": "cóng",
+      "pdfPage": 88
+    },
+    {
+      "number": 325,
+      "level": 2,
+      "hanzi": "从小",
+      "pinyin": "cóngxiǎo",
+      "pdfPage": 88
+    },
+    {
+      "number": 326,
+      "level": 2,
+      "hanzi": "错",
+      "pinyin": "cuò",
+      "pdfPage": 88
+    },
+    {
+      "number": 327,
+      "level": 2,
+      "hanzi": "打",
+      "pinyin": "dǎ",
+      "pdfPage": 88
+    },
+    {
+      "number": 328,
+      "level": 2,
+      "hanzi": "打车",
+      "pinyin": "dǎchē",
+      "pdfPage": 88
+    },
+    {
+      "number": 329,
+      "level": 2,
+      "hanzi": "打开",
+      "pinyin": "dǎkāi",
+      "pdfPage": 88
+    },
+    {
+      "number": 330,
+      "level": 2,
+      "hanzi": "但",
+      "pinyin": "dàn",
+      "pdfPage": 88
+    },
+    {
+      "number": 331,
+      "level": 2,
+      "hanzi": "但是",
+      "pinyin": "dànshì",
+      "pdfPage": 88
+    },
+    {
+      "number": 332,
+      "level": 2,
+      "hanzi": "地",
+      "pinyin": "de",
+      "pdfPage": 88
+    },
+    {
+      "number": 333,
+      "level": 2,
+      "hanzi": "得",
+      "pinyin": "de",
+      "pdfPage": 88
+    },
+    {
+      "number": 334,
+      "level": 2,
+      "hanzi": "等",
+      "pinyin": "děng",
+      "pdfPage": 88
+    },
+    {
+      "number": 335,
+      "level": 2,
+      "hanzi": "地铁",
+      "pinyin": "dìtiě",
+      "pdfPage": 88
+    },
+    {
+      "number": 336,
+      "level": 2,
+      "hanzi": "点",
+      "pinyin": "diǎn",
+      "pdfPage": 88
+    },
+    {
+      "number": 337,
+      "level": 2,
+      "hanzi": "懂",
+      "pinyin": "dǒng",
+      "pdfPage": 88
+    },
+    {
+      "number": 338,
+      "level": 2,
+      "hanzi": "动",
+      "pinyin": "dòng",
+      "pdfPage": 88
+    },
+    {
+      "number": 339,
+      "level": 2,
+      "hanzi": "饭馆",
+      "pinyin": "fànguǎn",
+      "pdfPage": 88
+    },
+    {
+      "number": 340,
+      "level": 2,
+      "hanzi": "飞",
+      "pinyin": "fēi",
+      "pdfPage": 88
+    },
+    {
+      "number": 341,
+      "level": 2,
+      "hanzi": "高",
+      "pinyin": "gāo",
+      "pdfPage": 88
+    },
+    {
+      "number": 342,
+      "level": 2,
+      "hanzi": "高中",
+      "pinyin": "gāozhōng",
+      "pdfPage": 88
+    },
+    {
+      "number": 343,
+      "level": 2,
+      "hanzi": "告诉",
+      "pinyin": "gàosu",
+      "pdfPage": 88
+    },
+    {
+      "number": 344,
+      "level": 2,
+      "hanzi": "个子",
+      "pinyin": "gèzi",
+      "pdfPage": 88
+    },
+    {
+      "number": 345,
+      "level": 2,
+      "hanzi": "跟",
+      "pinyin": "gēn",
+      "pdfPage": 88
+    },
+    {
+      "number": 346,
+      "level": 2,
+      "hanzi": "公交车",
+      "pinyin": "gōngjiāochē",
+      "pdfPage": 88
+    },
+    {
+      "number": 347,
+      "level": 2,
+      "hanzi": "过",
+      "pinyin": "guò",
+      "pdfPage": 88
+    },
+    {
+      "number": 348,
+      "level": 2,
+      "hanzi": "过来",
+      "pinyin": "guòlái",
+      "pdfPage": 88
+    },
+    {
+      "number": 349,
+      "level": 2,
+      "hanzi": "过年",
+      "pinyin": "guònián",
+      "pdfPage": 88
+    },
+    {
+      "number": 350,
+      "level": 2,
+      "hanzi": "过去",
+      "pinyin": "guòqù",
+      "pdfPage": 88
+    },
+    {
+      "number": 351,
+      "level": 2,
+      "hanzi": "过",
+      "pinyin": "guo",
+      "pdfPage": 88
+    },
+    {
+      "number": 352,
+      "level": 2,
+      "hanzi": "还是",
+      "pinyin": "háishi",
+      "pdfPage": 88
+    },
+    {
+      "number": 353,
+      "level": 2,
+      "hanzi": "黑色",
+      "pinyin": "hēisè",
+      "pdfPage": 88
+    },
+    {
+      "number": 354,
+      "level": 2,
+      "hanzi": "红茶",
+      "pinyin": "hóngchá",
+      "pdfPage": 88
+    },
+    {
+      "number": 355,
+      "level": 2,
+      "hanzi": "红色",
+      "pinyin": "hóngsè",
+      "pdfPage": 88
+    },
+    {
+      "number": 356,
+      "level": 2,
+      "hanzi": "后面",
+      "pinyin": "hòumiàn",
+      "pdfPage": 88
+    },
+    {
+      "number": 357,
+      "level": 2,
+      "hanzi": "花",
+      "pinyin": "huā",
+      "pdfPage": 88
+    },
+    {
+      "number": 358,
+      "level": 2,
+      "hanzi": "花",
+      "pinyin": "huā",
+      "pdfPage": 88
+    },
+    {
+      "number": 359,
+      "level": 2,
+      "hanzi": "画",
+      "pinyin": "huà",
+      "pdfPage": 88
+    },
+    {
+      "number": 360,
+      "level": 2,
+      "hanzi": "坏",
+      "pinyin": "huài",
+      "pdfPage": 88
+    },
+    {
+      "number": 361,
+      "level": 2,
+      "hanzi": "回来",
+      "pinyin": "huílái",
+      "pdfPage": 89
+    },
+    {
+      "number": 362,
+      "level": 2,
+      "hanzi": "回去",
+      "pinyin": "huíqù",
+      "pdfPage": 89
+    },
+    {
+      "number": 363,
+      "level": 2,
+      "hanzi": "机场",
+      "pinyin": "jīchǎng",
+      "pdfPage": 89
+    },
+    {
+      "number": 364,
+      "level": 2,
+      "hanzi": "机票",
+      "pinyin": "jīpiào",
+      "pdfPage": 89
+    },
+    {
+      "number": 365,
+      "level": 2,
+      "hanzi": "记得",
+      "pinyin": "jìde",
+      "pdfPage": 89
+    },
+    {
+      "number": 366,
+      "level": 2,
+      "hanzi": "间",
+      "pinyin": "jiān",
+      "pdfPage": 89
+    },
+    {
+      "number": 367,
+      "level": 2,
+      "hanzi": "教",
+      "pinyin": "jiāo",
+      "pdfPage": 89
+    },
+    {
+      "number": 368,
+      "level": 2,
+      "hanzi": "教室",
+      "pinyin": "jiàoshì",
+      "pdfPage": 89
+    },
+    {
+      "number": 369,
+      "level": 2,
+      "hanzi": "介绍",
+      "pinyin": "jièshào",
+      "pdfPage": 89
+    },
+    {
+      "number": 370,
+      "level": 2,
+      "hanzi": "进",
+      "pinyin": "jìn",
+      "pdfPage": 89
+    },
+    {
+      "number": 371,
+      "level": 2,
+      "hanzi": "进来",
+      "pinyin": "jìnlái",
+      "pdfPage": 89
+    },
+    {
+      "number": 372,
+      "level": 2,
+      "hanzi": "进去",
+      "pinyin": "jìnqù",
+      "pdfPage": 89
+    },
+    {
+      "number": 373,
+      "level": 2,
+      "hanzi": "近",
+      "pinyin": "jìn",
+      "pdfPage": 89
+    },
+    {
+      "number": 374,
+      "level": 2,
+      "hanzi": "经常",
+      "pinyin": "jīngcháng",
+      "pdfPage": 89
+    },
+    {
+      "number": 375,
+      "level": 2,
+      "hanzi": "酒店",
+      "pinyin": "jiǔdiàn",
+      "pdfPage": 89
+    },
+    {
+      "number": 376,
+      "level": 2,
+      "hanzi": "就",
+      "pinyin": "jiù",
+      "pdfPage": 89
+    },
+    {
+      "number": 377,
+      "level": 2,
+      "hanzi": "咖啡",
+      "pinyin": "kāfēi",
+      "pdfPage": 89
+    },
+    {
+      "number": 378,
+      "level": 2,
+      "hanzi": "开始",
+      "pinyin": "kāishǐ",
+      "pdfPage": 89
+    },
+    {
+      "number": 379,
+      "level": 2,
+      "hanzi": "开学",
+      "pinyin": "kāixué",
+      "pdfPage": 89
+    },
+    {
+      "number": 380,
+      "level": 2,
+      "hanzi": "考",
+      "pinyin": "kǎo",
+      "pdfPage": 89
+    },
+    {
+      "number": 381,
+      "level": 2,
+      "hanzi": "考试",
+      "pinyin": "kǎoshì",
+      "pdfPage": 89
+    },
+    {
+      "number": 382,
+      "level": 2,
+      "hanzi": "可能",
+      "pinyin": "kěnéng",
+      "pdfPage": 89
+    },
+    {
+      "number": 383,
+      "level": 2,
+      "hanzi": "裤子",
+      "pinyin": "kùzi",
+      "pdfPage": 89
+    },
+    {
+      "number": 384,
+      "level": 2,
+      "hanzi": "快",
+      "pinyin": "kuài",
+      "pdfPage": 89
+    },
+    {
+      "number": 385,
+      "level": 2,
+      "hanzi": "快乐",
+      "pinyin": "kuàilè",
+      "pdfPage": 89
+    },
+    {
+      "number": 386,
+      "level": 2,
+      "hanzi": "快要",
+      "pinyin": "kuàiyào",
+      "pdfPage": 89
+    },
+    {
+      "number": 387,
+      "level": 2,
+      "hanzi": "篮球",
+      "pinyin": "lánqiú",
+      "pdfPage": 89
+    },
+    {
+      "number": 388,
+      "level": 2,
+      "hanzi": "累",
+      "pinyin": "lèi",
+      "pdfPage": 89
+    },
+    {
+      "number": 389,
+      "level": 2,
+      "hanzi": "离",
+      "pinyin": "lí",
+      "pdfPage": 89
+    },
+    {
+      "number": 390,
+      "level": 2,
+      "hanzi": "里面",
+      "pinyin": "lǐmiàn",
+      "pdfPage": 89
+    },
+    {
+      "number": 391,
+      "level": 2,
+      "hanzi": "楼",
+      "pinyin": "lóu",
+      "pdfPage": 89
+    },
+    {
+      "number": 392,
+      "level": 2,
+      "hanzi": "路",
+      "pinyin": "lù",
+      "pdfPage": 89
+    },
+    {
+      "number": 393,
+      "level": 2,
+      "hanzi": "路上",
+      "pinyin": "lùshang",
+      "pdfPage": 89
+    },
+    {
+      "number": 394,
+      "level": 2,
+      "hanzi": "旅游",
+      "pinyin": "lǚyóu",
+      "pdfPage": 89
+    },
+    {
+      "number": 395,
+      "level": 2,
+      "hanzi": "绿茶",
+      "pinyin": "lǜchá",
+      "pdfPage": 89
+    },
+    {
+      "number": 396,
+      "level": 2,
+      "hanzi": "绿色",
+      "pinyin": "lǜsè",
+      "pdfPage": 89
+    },
+    {
+      "number": 397,
+      "level": 2,
+      "hanzi": "慢",
+      "pinyin": "màn",
+      "pdfPage": 89
+    },
+    {
+      "number": 398,
+      "level": 2,
+      "hanzi": "没意思",
+      "pinyin": "méi yìsi",
+      "pdfPage": 89
+    },
+    {
+      "number": 399,
+      "level": 2,
+      "hanzi": "每",
+      "pinyin": "měi",
+      "pdfPage": 89
+    },
+    {
+      "number": 400,
+      "level": 2,
+      "hanzi": "门",
+      "pinyin": "mén",
+      "pdfPage": 89
+    },
+    {
+      "number": 401,
+      "level": 2,
+      "hanzi": "门口",
+      "pinyin": "ménkǒu",
+      "pdfPage": 90
+    },
+    {
+      "number": 402,
+      "level": 2,
+      "hanzi": "门票",
+      "pinyin": "ménpiào",
+      "pdfPage": 90
+    },
+    {
+      "number": 403,
+      "level": 2,
+      "hanzi": "面",
+      "pinyin": "miàn",
+      "pdfPage": 90
+    },
+    {
+      "number": 404,
+      "level": 2,
+      "hanzi": "名",
+      "pinyin": "míng",
+      "pdfPage": 90
+    },
+    {
+      "number": 405,
+      "level": 2,
+      "hanzi": "拿",
+      "pinyin": "ná",
+      "pdfPage": 90
+    },
+    {
+      "number": 406,
+      "level": 2,
+      "hanzi": "那么",
+      "pinyin": "nàme",
+      "pdfPage": 90
+    },
+    {
+      "number": 407,
+      "level": 2,
+      "hanzi": "那样",
+      "pinyin": "nàyàng",
+      "pdfPage": 90
+    },
+    {
+      "number": 408,
+      "level": 2,
+      "hanzi": "奶茶",
+      "pinyin": "nǎichá",
+      "pdfPage": 90
+    },
+    {
+      "number": 409,
+      "level": 2,
+      "hanzi": "奶奶",
+      "pinyin": "nǎinai",
+      "pdfPage": 90
+    },
+    {
+      "number": 410,
+      "level": 2,
+      "hanzi": "男孩儿",
+      "pinyin": "nánháir",
+      "pdfPage": 90
+    },
+    {
+      "number": 411,
+      "level": 2,
+      "hanzi": "鸟",
+      "pinyin": "niǎo",
+      "pdfPage": 90
+    },
+    {
+      "number": 412,
+      "level": 2,
+      "hanzi": "女孩儿",
+      "pinyin": "nǚháir",
+      "pdfPage": 90
+    },
+    {
+      "number": 413,
+      "level": 2,
+      "hanzi": "旁边",
+      "pinyin": "pángbiān",
+      "pdfPage": 90
+    },
+    {
+      "number": 414,
+      "level": 2,
+      "hanzi": "跑",
+      "pinyin": "pǎo",
+      "pdfPage": 90
+    },
+    {
+      "number": 415,
+      "level": 2,
+      "hanzi": "跑步",
+      "pinyin": "pǎobù",
+      "pdfPage": 90
+    },
+    {
+      "number": 416,
+      "level": 2,
+      "hanzi": "票",
+      "pinyin": "piào",
+      "pdfPage": 90
+    },
+    {
+      "number": 417,
+      "level": 2,
+      "hanzi": "妻子",
+      "pinyin": "qīzi",
+      "pdfPage": 90
+    },
+    {
+      "number": 418,
+      "level": 2,
+      "hanzi": "起来",
+      "pinyin": "qǐlái",
+      "pdfPage": 90
+    },
+    {
+      "number": 419,
+      "level": 2,
+      "hanzi": "前面",
+      "pinyin": "qiánmiàn",
+      "pdfPage": 90
+    },
+    {
+      "number": 420,
+      "level": 2,
+      "hanzi": "晴",
+      "pinyin": "qíng",
+      "pdfPage": 90
+    },
+    {
+      "number": 421,
+      "level": 2,
+      "hanzi": "球",
+      "pinyin": "qiú",
+      "pdfPage": 90
+    },
+    {
+      "number": 422,
+      "level": 2,
+      "hanzi": "让",
+      "pinyin": "ràng",
+      "pdfPage": 90
+    },
+    {
+      "number": 423,
+      "level": 2,
+      "hanzi": "肉",
+      "pinyin": "ròu",
+      "pdfPage": 90
+    },
+    {
+      "number": 424,
+      "level": 2,
+      "hanzi": "商场",
+      "pinyin": "shāngchǎng",
+      "pdfPage": 90
+    },
+    {
+      "number": 425,
+      "level": 2,
+      "hanzi": "上来",
+      "pinyin": "shànglái",
+      "pdfPage": 90
+    },
+    {
+      "number": 426,
+      "level": 2,
+      "hanzi": "上面",
+      "pinyin": "shàngmiàn",
+      "pdfPage": 90
+    },
+    {
+      "number": 427,
+      "level": 2,
+      "hanzi": "上去",
+      "pinyin": "shàngqù",
+      "pdfPage": 90
+    },
+    {
+      "number": 428,
+      "level": 2,
+      "hanzi": "上网",
+      "pinyin": "shàngwǎng",
+      "pdfPage": 90
+    },
+    {
+      "number": 429,
+      "level": 2,
+      "hanzi": "身体",
+      "pinyin": "shēntǐ",
+      "pdfPage": 90
+    },
+    {
+      "number": 430,
+      "level": 2,
+      "hanzi": "生日",
+      "pinyin": "shēngrì",
+      "pdfPage": 90
+    },
+    {
+      "number": 431,
+      "level": 2,
+      "hanzi": "时",
+      "pinyin": "shí",
+      "pdfPage": 90
+    },
+    {
+      "number": 432,
+      "level": 2,
+      "hanzi": "事情",
+      "pinyin": "shìqing",
+      "pdfPage": 90
+    },
+    {
+      "number": 433,
+      "level": 2,
+      "hanzi": "手",
+      "pinyin": "shǒu",
+      "pdfPage": 90
+    },
+    {
+      "number": 434,
+      "level": 2,
+      "hanzi": "手表",
+      "pinyin": "shǒubiǎo",
+      "pdfPage": 90
+    },
+    {
+      "number": 435,
+      "level": 2,
+      "hanzi": "书包",
+      "pinyin": "shūbāo",
+      "pdfPage": 90
+    },
+    {
+      "number": 436,
+      "level": 2,
+      "hanzi": "舒服",
+      "pinyin": "shūfu",
+      "pdfPage": 90
+    },
+    {
+      "number": 437,
+      "level": 2,
+      "hanzi": "送",
+      "pinyin": "sòng",
+      "pdfPage": 90
+    },
+    {
+      "number": 438,
+      "level": 2,
+      "hanzi": "虽然",
+      "pinyin": "suīrán",
+      "pdfPage": 90
+    },
+    {
+      "number": 439,
+      "level": 2,
+      "hanzi": "所以",
+      "pinyin": "suǒyǐ",
+      "pdfPage": 90
+    },
+    {
+      "number": 440,
+      "level": 2,
+      "hanzi": "疼",
+      "pinyin": "téng",
+      "pdfPage": 90
+    },
+    {
+      "number": 441,
+      "level": 2,
+      "hanzi": "踢",
+      "pinyin": "tī",
+      "pdfPage": 91
+    },
+    {
+      "number": 442,
+      "level": 2,
+      "hanzi": "题",
+      "pinyin": "tí",
+      "pdfPage": 91
+    },
+    {
+      "number": 443,
+      "level": 2,
+      "hanzi": "条",
+      "pinyin": "tiáo",
+      "pdfPage": 91
+    },
+    {
+      "number": 444,
+      "level": 2,
+      "hanzi": "跳舞",
+      "pinyin": "tiàowǔ",
+      "pdfPage": 91
+    },
+    {
+      "number": 445,
+      "level": 2,
+      "hanzi": "头",
+      "pinyin": "tóu",
+      "pdfPage": 91
+    },
+    {
+      "number": 446,
+      "level": 2,
+      "hanzi": "外国",
+      "pinyin": "wàiguó",
+      "pdfPage": 91
+    },
+    {
+      "number": 447,
+      "level": 2,
+      "hanzi": "外面",
+      "pinyin": "wàimiàn",
+      "pdfPage": 91
+    },
+    {
+      "number": 448,
+      "level": 2,
+      "hanzi": "完",
+      "pinyin": "wán",
+      "pdfPage": 91
+    },
+    {
+      "number": 449,
+      "level": 2,
+      "hanzi": "万",
+      "pinyin": "wàn",
+      "pdfPage": 91
+    },
+    {
+      "number": 450,
+      "level": 2,
+      "hanzi": "网上",
+      "pinyin": "wǎngshang",
+      "pdfPage": 91
+    },
+    {
+      "number": 451,
+      "level": 2,
+      "hanzi": "往",
+      "pinyin": "wǎng",
+      "pdfPage": 91
+    },
+    {
+      "number": 452,
+      "level": 2,
+      "hanzi": "忘",
+      "pinyin": "wàng",
+      "pdfPage": 91
+    },
+    {
+      "number": 453,
+      "level": 2,
+      "hanzi": "为什么",
+      "pinyin": "wèi shénme",
+      "pdfPage": 91
+    },
+    {
+      "number": 454,
+      "level": 2,
+      "hanzi": "位",
+      "pinyin": "wèi",
+      "pdfPage": 91
+    },
+    {
+      "number": 455,
+      "level": 2,
+      "hanzi": "希望",
+      "pinyin": "xīwàng",
+      "pdfPage": 91
+    },
+    {
+      "number": 456,
+      "level": 2,
+      "hanzi": "洗",
+      "pinyin": "xǐ",
+      "pdfPage": 91
+    },
+    {
+      "number": 457,
+      "level": 2,
+      "hanzi": "洗手间",
+      "pinyin": "xǐshǒujiān",
+      "pdfPage": 91
+    },
+    {
+      "number": 458,
+      "level": 2,
+      "hanzi": "下来",
+      "pinyin": "xiàlái",
+      "pdfPage": 91
+    },
+    {
+      "number": 459,
+      "level": 2,
+      "hanzi": "下面",
+      "pinyin": "xiàmiàn",
+      "pdfPage": 91
+    },
+    {
+      "number": 460,
+      "level": 2,
+      "hanzi": "下去",
+      "pinyin": "xiàqù",
+      "pdfPage": 91
+    },
+    {
+      "number": 461,
+      "level": 2,
+      "hanzi": "小孩儿",
+      "pinyin": "xiǎoháir",
+      "pdfPage": 91
+    },
+    {
+      "number": 462,
+      "level": 2,
+      "hanzi": "小时候",
+      "pinyin": "xiǎoshíhou",
+      "pdfPage": 91
+    },
+    {
+      "number": 463,
+      "level": 2,
+      "hanzi": "笑",
+      "pinyin": "xiào",
+      "pdfPage": 91
+    },
+    {
+      "number": 464,
+      "level": 2,
+      "hanzi": "姓",
+      "pinyin": "xìng",
+      "pdfPage": 91
+    },
+    {
+      "number": 465,
+      "level": 2,
+      "hanzi": "姓名",
+      "pinyin": "xìngmíng",
+      "pdfPage": 91
+    },
+    {
+      "number": 466,
+      "level": 2,
+      "hanzi": "颜色",
+      "pinyin": "yánsè",
+      "pdfPage": 91
+    },
+    {
+      "number": 467,
+      "level": 2,
+      "hanzi": "眼睛",
+      "pinyin": "yǎnjing",
+      "pdfPage": 91
+    },
+    {
+      "number": 468,
+      "level": 2,
+      "hanzi": "药",
+      "pinyin": "yào",
+      "pdfPage": 91
+    },
+    {
+      "number": 469,
+      "level": 2,
+      "hanzi": "药店",
+      "pinyin": "yàodiàn",
+      "pdfPage": 91
+    },
+    {
+      "number": 470,
+      "level": 2,
+      "hanzi": "爷爷",
+      "pinyin": "yéye",
+      "pdfPage": 91
+    },
+    {
+      "number": 471,
+      "level": 2,
+      "hanzi": "一会儿",
+      "pinyin": "yíhuìr",
+      "pdfPage": 91
+    },
+    {
+      "number": 472,
+      "level": 2,
+      "hanzi": "一起",
+      "pinyin": "yìqǐ",
+      "pdfPage": 91
+    },
+    {
+      "number": 473,
+      "level": 2,
+      "hanzi": "已经",
+      "pinyin": "yǐjīng",
+      "pdfPage": 91
+    },
+    {
+      "number": 474,
+      "level": 2,
+      "hanzi": "意思",
+      "pinyin": "yìsi",
+      "pdfPage": 91
+    },
+    {
+      "number": 475,
+      "level": 2,
+      "hanzi": "因为",
+      "pinyin": "yīnwèi",
+      "pdfPage": 91
+    },
+    {
+      "number": 476,
+      "level": 2,
+      "hanzi": "阴",
+      "pinyin": "yīn",
+      "pdfPage": 91
+    },
+    {
+      "number": 477,
+      "level": 2,
+      "hanzi": "游",
+      "pinyin": "yóu",
+      "pdfPage": 91
+    },
+    {
+      "number": 478,
+      "level": 2,
+      "hanzi": "游泳",
+      "pinyin": "yóuyǒng",
+      "pdfPage": 91
+    },
+    {
+      "number": 479,
+      "level": 2,
+      "hanzi": "有时",
+      "pinyin": "yǒushí",
+      "pdfPage": 91
+    },
+    {
+      "number": 480,
+      "level": 2,
+      "hanzi": "有意思",
+      "pinyin": "yǒu yìsi",
+      "pdfPage": 91
+    },
+    {
+      "number": 481,
+      "level": 2,
+      "hanzi": "右",
+      "pinyin": "yòu",
+      "pdfPage": 92
+    },
+    {
+      "number": 482,
+      "level": 2,
+      "hanzi": "右边",
+      "pinyin": "yòubian",
+      "pdfPage": 92
+    },
+    {
+      "number": 483,
+      "level": 2,
+      "hanzi": "鱼",
+      "pinyin": "yú",
+      "pdfPage": 92
+    },
+    {
+      "number": 484,
+      "level": 2,
+      "hanzi": "远",
+      "pinyin": "yuǎn",
+      "pdfPage": 92
+    },
+    {
+      "number": 485,
+      "level": 2,
+      "hanzi": "运动",
+      "pinyin": "yùndòng",
+      "pdfPage": 92
+    },
+    {
+      "number": 486,
+      "level": 2,
+      "hanzi": "站",
+      "pinyin": "zhàn",
+      "pdfPage": 92
+    },
+    {
+      "number": 487,
+      "level": 2,
+      "hanzi": "丈夫",
+      "pinyin": "zhàngfu",
+      "pdfPage": 92
+    },
+    {
+      "number": 488,
+      "level": 2,
+      "hanzi": "这么",
+      "pinyin": "zhème",
+      "pdfPage": 92
+    },
+    {
+      "number": 489,
+      "level": 2,
+      "hanzi": "这样",
+      "pinyin": "zhèyàng",
+      "pdfPage": 92
+    },
+    {
+      "number": 490,
+      "level": 2,
+      "hanzi": "着",
+      "pinyin": "zhe",
+      "pdfPage": 92
+    },
+    {
+      "number": 491,
+      "level": 2,
+      "hanzi": "正",
+      "pinyin": "zhèng",
+      "pdfPage": 92
+    },
+    {
+      "number": 492,
+      "level": 2,
+      "hanzi": "周",
+      "pinyin": "zhōu",
+      "pdfPage": 92
+    },
+    {
+      "number": 493,
+      "level": 2,
+      "hanzi": "准备",
+      "pinyin": "zhǔnbèi",
+      "pdfPage": 92
+    },
+    {
+      "number": 494,
+      "level": 2,
+      "hanzi": "自己",
+      "pinyin": "zìjǐ",
+      "pdfPage": 92
+    },
+    {
+      "number": 495,
+      "level": 2,
+      "hanzi": "走",
+      "pinyin": "zǒu",
+      "pdfPage": 92
+    },
+    {
+      "number": 496,
+      "level": 2,
+      "hanzi": "走路",
+      "pinyin": "zǒulù",
+      "pdfPage": 92
+    },
+    {
+      "number": 497,
+      "level": 2,
+      "hanzi": "足球",
+      "pinyin": "zúqiú",
+      "pdfPage": 92
+    },
+    {
+      "number": 498,
+      "level": 2,
+      "hanzi": "最",
+      "pinyin": "zuì",
+      "pdfPage": 92
+    },
+    {
+      "number": 499,
+      "level": 2,
+      "hanzi": "左",
+      "pinyin": "zuǒ",
+      "pdfPage": 92
+    },
+    {
+      "number": 500,
+      "level": 2,
+      "hanzi": "左边",
+      "pinyin": "zuǒbian",
+      "pdfPage": 92
+    }
+  ]
+}

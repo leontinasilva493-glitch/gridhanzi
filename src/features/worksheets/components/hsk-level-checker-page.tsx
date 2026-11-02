@@ -1,3 +1,4 @@
+import { P1LearningLinks } from "./p1-learning-links";
 
 import { UiText } from "./ui-text";
 import { ArrowRight, BookOpen, GraduationCap, ShieldCheck } from "lucide-react";
@@ -38,6 +39,7 @@ export function HskLevelCheckerPage({ locale }: { locale: string }) {
         },
       ]} />
       <main className="hs-container pb-16 pt-6">
+        <P1LearningLinks topic="hsk" />
         <nav aria-label="Breadcrumb" className="text-sm text-[#617084]">
           <Link href="/"><UiText>{"Home"}</UiText></Link> <span aria-hidden="true"> / </span>
           <Link href="/hsk">HSK Vocabulary Lists</Link> <span aria-hidden="true"> / </span>
