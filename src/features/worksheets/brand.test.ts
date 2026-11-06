@@ -68,20 +68,22 @@ test("header uses the official responsive red-gold horizontal lockup", async () 
   assert.doesNotMatch(header, /gridhanzi-wordmark|gridhanzi-icon-128/);
 });
 
-test("brand assets match the approved red-gold logo package", async () => {
+test("brand assets match the refreshed red-gold icon exports and existing wordmarks", async () => {
   const assets = [
-    ["public/gridhanzi-icon-128.png", 128, 128, "53382bd65b19a0c77da0f6e0f49224bbb1975cecd488f9f1eb27c887cd3e8321"],
-    ["public/gridhanzi-icon-256.png", 256, 256, "22c8276ce479dd5863bd0f787438ae8907a38f33a8809cf1025b6e82590b386c"],
-    ["public/gridhanzi-icon-512.png", 512, 512, "704e0c7f2c38d5e3beac3aa09b7292140da6c600d60d6692194c5aea5720c5ee"],
+    ["public/gridhanzi-icon-128.png", 128, 128, "1db11d1af1709a98d797932472be2609175d7ed9faab9d2a499bec696be7f3b9"],
+    ["public/gridhanzi-icon-256.png", 256, 256, "7706b594d067107273fc251418e55cb74a4e583d18ac76d268768238147e630a"],
+    ["public/gridhanzi-icon-512.png", 512, 512, "67fe4b9f3a9a1bbca7d2debb7a5710f4a2e25f5a50e3121fd0424349370ee5ca"],
     ["public/gridhanzi-wordmark.webp", null, null, "70c2cf298fa7437aed48f49e55b298a501b3296884b60eae50ad59f0d0a61856"],
     ["public/gridhanzi-horizontal.webp", null, null, "8fec65f902f1f514f95b7c34e672e827d124c15e13583157d8da9728bba071c8"],
     ["public/og-gridhanzi.png", 1200, 630, "cfca286e71f7eb5855e7364fc99a2c957dc3388686e7d3c3b81645ace58cf5a2"],
-    ["public/favicon.ico", null, null, "714e992de6c1da995367ace12c818c0c4aa908f34f8fa802f163974e2d4f37aa"],
-    ["public/favicon-16x16.png", 16, 16, "7ffcecc3a525926d7077bbacfd2e2fe6defd771c76f03a23f5c35758e48fd239"],
-    ["public/favicon-32x32.png", 32, 32, "f0bb904b846f44939c573e0b20ae22e25a49ae4dbd688e4b5ddb57a5d918781e"],
-    ["public/apple-touch-icon.png", 180, 180, "7ba62550d2de45bd32c1d17b13f34fbc1e0e52d7b3946d5d47caacb913688182"],
-    ["public/android-chrome-192x192.png", 192, 192, "3460d70dfa3644a405f47c8b8a023be146c8721c7c2be93ed10f4c2c84f0a423"],
-    ["public/android-chrome-512x512.png", 512, 512, "704e0c7f2c38d5e3beac3aa09b7292140da6c600d60d6692194c5aea5720c5ee"],
+    ["public/favicon.ico", null, null, "2940bbe7fdec8d21672c42a3e255430df4800fd5cacde38e7e00eebbbfb9477d"],
+    ["public/favicon-16x16.png", 16, 16, "1d5d30eeaf54f67c9e9384cb3ecbcfc0b2977050079369f1df9578ca432eb10d"],
+    ["public/favicon-32x32.png", 32, 32, "2332c192620ccdca747436426ff39d463ca108b8368bc0c779979aae4da508bc"],
+    ["public/favicon-48x48.png", 48, 48, "00125baf5df009eef6f4c864edf1d78ac2f2697712473a244052bd73b497970b"],
+    ["public/favicon-96x96.png", 96, 96, "b8e7fd9331fdb2a48be5c81c96791e209e148d3bccb071b114e63cb7bdc0f7c3"],
+    ["public/apple-touch-icon.png", 180, 180, "d36b7ad51197a8da58782d3f4a3931239d2feac35a0871d69c5cba7d0b567d41"],
+    ["public/android-chrome-192x192.png", 192, 192, "616441a2a565fa1abb18e7eb6893be1b0ce8f3afc6954a2de3fd22a344c19606"],
+    ["public/android-chrome-512x512.png", 512, 512, "67fe4b9f3a9a1bbca7d2debb7a5710f4a2e25f5a50e3121fd0424349370ee5ca"],
   ] as const;
 
   for (const [path, width, height, expectedHash] of assets) {
