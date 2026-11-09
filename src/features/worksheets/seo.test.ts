@@ -261,7 +261,7 @@ test("core acquisition pages publish focused titles and matching social metadata
     ],
     [
       grids,
-      "Free Chinese Grid Paper PDFs: Tian Zi Ge & Mi Zi Ge",
+      "Chinese Grid Paper - Free Tian Zi Ge & Mi Zi Ge PDFs",
       "Print free Chinese grid paper for handwriting practice. Compare Tian Zi Ge, Mi Zi Ge, and blank A4 PDFs, or create a worksheet from your own Hanzi.",
     ],
     [
@@ -326,7 +326,7 @@ test("indexable page families align standard, Open Graph, and Twitter metadata",
       params: Promise.resolve({ locale: "en", slug: "blank" }),
     }).then((metadata) => ({
       metadata,
-        title: "Blank Chinese Writing Practice Paper (Free A4 PDF)",
+        title: "Chinese Writing Paper - Free Printable Blank Grids (PDF)",
     })),
     generateHskDirectoryMetadata({ params: Promise.resolve({ locale: "en" }) }).then(
       (metadata) => ({

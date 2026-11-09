@@ -1,0 +1,702 @@
+[
+  {
+    "slug": "ai",
+    "examples": [
+      {
+        "character": "爱",
+        "pinyin": "ài",
+        "meaning": "love"
+      },
+      {
+        "character": "矮",
+        "pinyin": "ǎi",
+        "meaning": "short"
+      },
+      {
+        "character": "挨",
+        "pinyin": "āi",
+        "meaning": "close-to"
+      }
+    ],
+    "sound": "Start with an open a and glide toward i within one syllable. There is no consonant initial, and the tone mark belongs on a, not i.",
+    "contrast": "爱 and 矮 differ in tone, not in the written letters ai. 挨 has an additional ái reading in words about enduring; āi here is the close-to sense.",
+    "practice": "Contrast 爱 (love) with 矮 (short). Copy both, then cover the pinyin and recall which one has the falling fourth tone."
+  },
+  {
+    "slug": "ba",
+    "examples": [
+      {
+        "character": "八",
+        "pinyin": "bā",
+        "meaning": "eight"
+      },
+      {
+        "character": "拔",
+        "pinyin": "bá",
+        "meaning": "pull-out"
+      },
+      {
+        "character": "爸",
+        "pinyin": "bà",
+        "meaning": "father"
+      }
+    ],
+    "sound": "Close the lips and release b without the strong puff used for p. Pinyin b is not the same voiced sound as English b in every context; keep the final a open.",
+    "contrast": "八, 拔, and 爸 give first-, second-, and fourth-tone examples. Sentence-final 吧 is usually neutral ba and is not the same word as 爸.",
+    "practice": "Write 八 and 爸 in alternating rows, then add 拔. Say the tone before tracing rather than attaching the same pitch to every ba."
+  },
+  {
+    "slug": "ben",
+    "examples": [
+      {
+        "character": "本",
+        "pinyin": "běn",
+        "meaning": "root"
+      },
+      {
+        "character": "笨",
+        "pinyin": "bèn",
+        "meaning": "clumsy"
+      },
+      {
+        "character": "奔",
+        "pinyin": "bēn",
+        "meaning": "run"
+      }
+    ],
+    "sound": "Release the lips for b, then finish en with the tongue touching behind the upper teeth for n. Do not add a g-like ending.",
+    "contrast": "本 and 笨 contrast third and fourth tone. 奔 is bēn for running, but bèn occurs for heading toward a destination; learn the whole word.",
+    "practice": "Practise 一本书 and the character 本 first. Compare its sound with 笨, noticing that a matching base spelling does not make the meanings similar."
+  },
+  {
+    "slug": "bu",
+    "examples": [
+      {
+        "character": "不",
+        "pinyin": "bù",
+        "meaning": "not"
+      },
+      {
+        "character": "布",
+        "pinyin": "bù",
+        "meaning": "cloth"
+      },
+      {
+        "character": "步",
+        "pinyin": "bù",
+        "meaning": "step"
+      }
+    ],
+    "sound": "Keep the lips rounded for u after the short unaspirated b release. This u is different from the front rounded ü in 女 nǚ.",
+    "contrast": "These examples all have lexical fourth tone. 不 changes to bú before another fourth-tone syllable, as in 不是 bú shì; the character's dictionary reading remains bù.",
+    "practice": "Make three rows for 不, 布, and 步. Read 不好 and 不是 aloud before writing to separate the dictionary tone from the phrase-level change."
+  },
+  {
+    "slug": "chi",
+    "examples": [
+      {
+        "character": "吃",
+        "pinyin": "chī",
+        "meaning": "eat"
+      },
+      {
+        "character": "迟",
+        "pinyin": "chí",
+        "meaning": "late"
+      },
+      {
+        "character": "尺",
+        "pinyin": "chǐ",
+        "meaning": "ruler"
+      }
+    ],
+    "sound": "The ch initial is retroflex and aspirated. The written i after ch is not the ee-like vowel of ji; keep the tongue in the retroflex position.",
+    "contrast": "吃, 迟, and 尺 provide three different tones. 尺 here names a ruler or length unit and is chǐ; special musical uses can have another reading.",
+    "practice": "Practise 吃 and 迟 as a listening contrast, then copy 尺. Keep the same consonant and change pitch, rather than changing chi into qi."
+  },
+  {
+    "slug": "da",
+    "examples": [
+      {
+        "character": "大",
+        "pinyin": "dà",
+        "meaning": "big"
+      },
+      {
+        "character": "打",
+        "pinyin": "dǎ",
+        "meaning": "hit"
+      },
+      {
+        "character": "答",
+        "pinyin": "dá",
+        "meaning": "answer"
+      }
+    ],
+    "sound": "Start d with the tongue near the upper teeth and little released air. It contrasts with aspirated t; a stays open and carries the tone mark.",
+    "contrast": "大, 打, and 答 contrast fourth, third, and second tone. 答 is dá in 回答, but dā appears in some other words such as 答应.",
+    "practice": "Read 大 and 打 as a pair, then practise 回答. Use the worksheet to connect each tone to a different character instead of one generic da symbol."
+  },
+  {
+    "slug": "de",
+    "examples": [
+      {
+        "character": "的",
+        "pinyin": "de",
+        "meaning": "possessive-marker"
+      },
+      {
+        "character": "得",
+        "pinyin": "dé",
+        "meaning": "obtain"
+      },
+      {
+        "character": "德",
+        "pinyin": "dé",
+        "meaning": "virtue"
+      }
+    ],
+    "sound": "The final e is a back unrounded vowel, not English dee. Neutral de is short and light; it does not need a written tone mark.",
+    "contrast": "的 is neutral in ordinary possessive phrases. 得 is dé for obtaining but de in some complements and děi for must; that last reading belongs to dei, a different syllable.",
+    "practice": "Write 我的 and 得到 as separate examples. Keep de and dé distinct and do not assume every character written 得 has the same pronunciation."
+  },
+  {
+    "slug": "di",
+    "examples": [
+      {
+        "character": "地",
+        "pinyin": "dì",
+        "meaning": "ground"
+      },
+      {
+        "character": "第",
+        "pinyin": "dì",
+        "meaning": "ordinal-prefix"
+      },
+      {
+        "character": "弟",
+        "pinyin": "dì",
+        "meaning": "younger-brother"
+      }
+    ],
+    "sound": "Use the unaspirated d initial followed by an ee-like i. The fourth-tone mark replaces the dot above i in dì.",
+    "contrast": "地 is dì for ground or place, but de as an adverbial particle. 第 and 弟 are also dì, showing that one syllable and tone can match several characters.",
+    "practice": "Practise 地, 第, and 弟 together. Say a word such as 地图, 第一, or 弟弟 so the context tells you which homophone to write."
+  },
+  {
+    "slug": "du",
+    "examples": [
+      {
+        "character": "读",
+        "pinyin": "dú",
+        "meaning": "read"
+      },
+      {
+        "character": "都",
+        "pinyin": "dū",
+        "meaning": "capital"
+      },
+      {
+        "character": "度",
+        "pinyin": "dù",
+        "meaning": "degree"
+      }
+    ],
+    "sound": "Start with d and keep u rounded through the syllable. A rising tone makes dú; a falling tone makes dù without changing the vowel.",
+    "contrast": "读 is dú for reading. 都 is dū for a capital city, but dōu for all; do not use the dū example to pronounce 都 in 我们都去.",
+    "practice": "Read 读书 and 首都 before writing 读 and 都. Add 度 as a fourth-tone contrast and keep the two readings of 都 tied to their words."
+  },
+  {
+    "slug": "ge",
+    "examples": [
+      {
+        "character": "个",
+        "pinyin": "gè",
+        "meaning": "classifier"
+      },
+      {
+        "character": "哥",
+        "pinyin": "gē",
+        "meaning": "older-brother"
+      },
+      {
+        "character": "歌",
+        "pinyin": "gē",
+        "meaning": "song"
+      }
+    ],
+    "sound": "The g initial is unaspirated and made at the back of the mouth. The final e is not English gee and should not acquire a final y sound.",
+    "contrast": "哥 and 歌 share gē but differ in meaning and shape. 个 is usually gè in careful counting, can be unstressed in phrases, and has a special gě reading in 自个儿.",
+    "practice": "Practise 一个 and 哥哥, then write 歌. Use the examples to distinguish tone changes from separate characters with the same first-tone syllable."
+  },
+  {
+    "slug": "guo",
+    "examples": [
+      {
+        "character": "国",
+        "pinyin": "guó",
+        "meaning": "country"
+      },
+      {
+        "character": "果",
+        "pinyin": "guǒ",
+        "meaning": "fruit"
+      },
+      {
+        "character": "过",
+        "pinyin": "guò",
+        "meaning": "pass"
+      }
+    ],
+    "sound": "After g, glide through a rounded u into o without making two syllables. The tone mark is placed on o in guó, guǒ, and guò.",
+    "contrast": "国, 果, and 过 form a useful second-, third-, and fourth-tone set. Aspect-marker 过 is often unstressed guo in speech, unlike the full verb guò.",
+    "practice": "Make a three-row worksheet for 国, 果, and 过. Recall country, fruit, and pass while reading the different tone marks."
+  },
+  {
+    "slug": "hao",
+    "examples": [
+      {
+        "character": "好",
+        "pinyin": "hǎo",
+        "meaning": "good"
+      },
+      {
+        "character": "号",
+        "pinyin": "hào",
+        "meaning": "number"
+      },
+      {
+        "character": "毫",
+        "pinyin": "háo",
+        "meaning": "fine-hair"
+      }
+    ],
+    "sound": "Begin with h and glide from a toward o within one syllable. The tone mark goes on a, the main vowel of ao.",
+    "contrast": "好 is hǎo for good and hào for liking something in words such as 爱好. 号 is hào for a number, while háo can occur for shouting.",
+    "practice": "Compare 你好 with 爱好 before copying 好. Add 号 and 毫 to show why the full word matters even when the base spelling is hao."
+  },
+  {
+    "slug": "he",
+    "examples": [
+      {
+        "character": "喝",
+        "pinyin": "hē",
+        "meaning": "drink"
+      },
+      {
+        "character": "和",
+        "pinyin": "hé",
+        "meaning": "and"
+      },
+      {
+        "character": "河",
+        "pinyin": "hé",
+        "meaning": "river"
+      }
+    ],
+    "sound": "Use a gentle h sound followed by the back unrounded vowel e. Do not turn he into the English word he with an ee vowel.",
+    "contrast": "喝 is hē for drinking, with other readings in special words. 和 is hé for and or harmony but has several contextual readings; 河 is the river homophone.",
+    "practice": "Practise 喝水, 我和你, and 河. Sort the examples into hē and hé before printing, then check the left radical of each character."
+  },
+  {
+    "slug": "hua",
+    "examples": [
+      {
+        "character": "花",
+        "pinyin": "huā",
+        "meaning": "flower"
+      },
+      {
+        "character": "话",
+        "pinyin": "huà",
+        "meaning": "speech"
+      },
+      {
+        "character": "画",
+        "pinyin": "huà",
+        "meaning": "draw"
+      }
+    ],
+    "sound": "Round the lips briefly for u, then open into a after h. The glide stays inside one syllable and the tone mark belongs on a.",
+    "contrast": "花 contrasts in tone with 话 and 画. The latter two share huà, so pronunciation alone cannot decide whether you mean speech or drawing.",
+    "practice": "Print 花, 话, and 画. Say 花草, 说话, and 画画 to give each written form enough word context."
+  },
+  {
+    "slug": "hui",
+    "examples": [
+      {
+        "character": "会",
+        "pinyin": "huì",
+        "meaning": "can"
+      },
+      {
+        "character": "回",
+        "pinyin": "huí",
+        "meaning": "return"
+      },
+      {
+        "character": "灰",
+        "pinyin": "huī",
+        "meaning": "ash"
+      }
+    ],
+    "sound": "The spelling ui abbreviates the final uei after an initial. In huì, the tone mark is on i even though the fuller sound sequence includes e.",
+    "contrast": "会, 回, and 灰 contrast fourth, second, and first tone. 会 also has the kuài reading in 会计; that is a separate syllable rather than another hui tone.",
+    "practice": "Read 会写, 回家, and 灰色 before copying the characters. Keep hui distinct from huai, which has a different vowel sequence."
+  },
+  {
+    "slug": "ji",
+    "examples": [
+      {
+        "character": "几",
+        "pinyin": "jǐ",
+        "meaning": "how-many"
+      },
+      {
+        "character": "鸡",
+        "pinyin": "jī",
+        "meaning": "chicken"
+      },
+      {
+        "character": "记",
+        "pinyin": "jì",
+        "meaning": "remember"
+      }
+    ],
+    "sound": "The j initial is made toward the front of the tongue and is unaspirated. Follow it with an ee-like i; do not substitute English j or retroflex zh.",
+    "contrast": "几 is jǐ for how many, but jī for a small table and in certain other words. 鸡 is first tone and 记 is fourth tone; use context to pick the character.",
+    "practice": "Practise 几个, 鸡, and 记住. Keep jǐ as the question reading and do not transfer a radical's small-table reading into a counting question."
+  },
+  {
+    "slug": "jia",
+    "examples": [
+      {
+        "character": "家",
+        "pinyin": "jiā",
+        "meaning": "home"
+      },
+      {
+        "character": "加",
+        "pinyin": "jiā",
+        "meaning": "add"
+      },
+      {
+        "character": "假",
+        "pinyin": "jiǎ",
+        "meaning": "false"
+      }
+    ],
+    "sound": "Move from j through a short i glide into a. The syllable has one beat, and the tone mark is written on a rather than i.",
+    "contrast": "家 and 加 are homophones in first tone. 假 is jiǎ for false, but jià in holiday or leave words such as 放假.",
+    "practice": "Write 家 and 加 together, then contrast 假 with the word 放假. The worksheet should help recall both character choice and contextual tone."
+  },
+  {
+    "slug": "jin",
+    "examples": [
+      {
+        "character": "今",
+        "pinyin": "jīn",
+        "meaning": "now"
+      },
+      {
+        "character": "进",
+        "pinyin": "jìn",
+        "meaning": "enter"
+      },
+      {
+        "character": "金",
+        "pinyin": "jīn",
+        "meaning": "gold"
+      }
+    ],
+    "sound": "Begin with j and end with a clear n closure. Do not turn jin into jing by adding a back-of-mouth nasal ending.",
+    "contrast": "今 and 金 share first-tone jīn, while 进 is fourth-tone jìn. Their different shapes and meanings show why pinyin is a reading aid rather than a unique character identifier.",
+    "practice": "Practise 今天, 金, and 进来. Cover the character column and reconstruct the correct form from each word, not from jin alone."
+  },
+  {
+    "slug": "kan",
+    "examples": [
+      {
+        "character": "看",
+        "pinyin": "kàn",
+        "meaning": "look"
+      },
+      {
+        "character": "刊",
+        "pinyin": "kān",
+        "meaning": "publish"
+      },
+      {
+        "character": "砍",
+        "pinyin": "kǎn",
+        "meaning": "chop"
+      }
+    ],
+    "sound": "The k initial is aspirated, with a noticeable puff of air. Finish an with n at the front of the mouth rather than the ng ending of kang.",
+    "contrast": "看 is kàn for looking or reading and kān for guarding or looking after. 刊 and 砍 add first- and third-tone examples with different written forms.",
+    "practice": "Read 看书 and 看门 before writing 看. Add 刊 and 砍, and practise the final n without changing the syllable to kang."
+  },
+  {
+    "slug": "lai",
+    "examples": [
+      {
+        "character": "来",
+        "pinyin": "lái",
+        "meaning": "come"
+      },
+      {
+        "character": "赖",
+        "pinyin": "lài",
+        "meaning": "rely-on"
+      },
+      {
+        "character": "莱",
+        "pinyin": "lái",
+        "meaning": "goosefoot"
+      }
+    ],
+    "sound": "Start with the tongue touching near the upper teeth for l, then glide from a toward i. The tone mark belongs on a.",
+    "contrast": "来 and 莱 share lái, while 赖 has a falling fourth tone. 莱 is a plant character often seen in names; it is included as a sound example, not a beginner frequency claim.",
+    "practice": "Practise 来 first in 来学校, then compare 赖. Use 莱 to notice that different written forms can share exactly the same syllable and tone."
+  },
+  {
+    "slug": "ma",
+    "examples": [
+      {
+        "character": "妈",
+        "pinyin": "mā",
+        "meaning": "mother"
+      },
+      {
+        "character": "马",
+        "pinyin": "mǎ",
+        "meaning": "horse"
+      },
+      {
+        "character": "骂",
+        "pinyin": "mà",
+        "meaning": "scold"
+      },
+      {
+        "character": "吗",
+        "pinyin": "ma",
+        "meaning": "question-particle"
+      }
+    ],
+    "sound": "Close the lips for m and open directly into a. Keep the initial and vowel constant while changing pitch or making the syllable neutral.",
+    "contrast": "妈, 马, 骂, and 吗 distinguish first, third, fourth, and neutral tone. The ordinary yes-no question particle is neutral ma, not má.",
+    "practice": "Print all four characters. Say 妈妈, 马, 骂人, and 好吗 to hear why the neutral question ending must not receive the horse's third tone."
+  },
+  {
+    "slug": "mai",
+    "examples": [
+      {
+        "character": "买",
+        "pinyin": "mǎi",
+        "meaning": "buy"
+      },
+      {
+        "character": "卖",
+        "pinyin": "mài",
+        "meaning": "sell"
+      },
+      {
+        "character": "埋",
+        "pinyin": "mái",
+        "meaning": "bury"
+      }
+    ],
+    "sound": "Begin with m and glide from a to i. Put the tone mark on a; mai is one syllable, not separate ma and yi.",
+    "contrast": "买 and 卖 contrast third and fourth tone and have opposite transaction meanings. 埋 is mái for burying, but mán in 埋怨.",
+    "practice": "Practise 买书 and 卖书 in alternating rows, then add 埋. Check the extra 十 in 卖 as well as its falling tone."
+  },
+  {
+    "slug": "ming",
+    "examples": [
+      {
+        "character": "明",
+        "pinyin": "míng",
+        "meaning": "bright"
+      },
+      {
+        "character": "名",
+        "pinyin": "míng",
+        "meaning": "name"
+      },
+      {
+        "character": "命",
+        "pinyin": "mìng",
+        "meaning": "life"
+      }
+    ],
+    "sound": "Start with m and finish ing with a back nasal ng. Keep it distinct from min, whose final n closes near the front of the mouth.",
+    "contrast": "明 and 名 are second-tone homophones, while 命 is fourth tone. 明天 and 名字 supply useful contexts for choosing the correct written form.",
+    "practice": "Print 明, 名, and 命. Read 明天 and 名字 aloud and identify the shared míng without treating the characters as interchangeable."
+  },
+  {
+    "slug": "ni",
+    "examples": [
+      {
+        "character": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "character": "尼",
+        "pinyin": "ní",
+        "meaning": "Buddhist-nun"
+      },
+      {
+        "character": "逆",
+        "pinyin": "nì",
+        "meaning": "against"
+      }
+    ],
+    "sound": "Use an n initial with the tongue near the upper teeth, followed by an ee-like i. The third-tone mark replaces the dot in nǐ.",
+    "contrast": "你, 尼, and 逆 provide third-, second-, and fourth-tone examples. In 你好, the first third tone normally rises before the following third tone, though the written pinyin stays nǐ hǎo.",
+    "practice": "Start with 你 and 你好, then compare 尼 and 逆. Practise saying the greeting naturally without rewriting its dictionary tone marks."
+  },
+  {
+    "slug": "ren",
+    "examples": [
+      {
+        "character": "人",
+        "pinyin": "rén",
+        "meaning": "person"
+      },
+      {
+        "character": "认",
+        "pinyin": "rèn",
+        "meaning": "recognise"
+      },
+      {
+        "character": "忍",
+        "pinyin": "rěn",
+        "meaning": "endure"
+      }
+    ],
+    "sound": "The Mandarin r initial is not an English r imitation; hold the tongue farther back and finish en with a front n closure.",
+    "contrast": "人, 认, and 忍 contrast second, fourth, and third tone. 认识 often has a light second syllable, but the rèn reading of 认 remains identifiable.",
+    "practice": "Practise 人 and 认识 before copying 认. Add 忍 and focus on changing pitch while preserving the same ren syllable."
+  },
+  {
+    "slug": "shi",
+    "examples": [
+      {
+        "character": "师",
+        "pinyin": "shī",
+        "meaning": "teacher"
+      },
+      {
+        "character": "时",
+        "pinyin": "shí",
+        "meaning": "time"
+      },
+      {
+        "character": "是",
+        "pinyin": "shì",
+        "meaning": "be"
+      }
+    ],
+    "sound": "The sh initial is retroflex. Its following written i is not the ee-like vowel in xi; keep the tongue back rather than turning shi into shee.",
+    "contrast": "师, 时, and 是 form a first-, second-, and fourth-tone set. 十 is another shí character, so tone alone does not uniquely choose between time and ten.",
+    "practice": "Read 老师, 时间, and 是 before tracing. Add 十 from its guide if you want a same-tone character-choice exercise."
+  },
+  {
+    "slug": "shui",
+    "examples": [
+      {
+        "character": "水",
+        "pinyin": "shuǐ",
+        "meaning": "water"
+      },
+      {
+        "character": "谁",
+        "pinyin": "shuí",
+        "meaning": "who"
+      },
+      {
+        "character": "睡",
+        "pinyin": "shuì",
+        "meaning": "sleep"
+      }
+    ],
+    "sound": "Use retroflex sh followed by the contracted ui final. The tone mark falls on i, as in shuǐ, rather than on u.",
+    "contrast": "水 and 睡 contrast third and fourth tone. 谁 can be shuí or shéi; the shéi pronunciation belongs to a different base spelling and is common in speech.",
+    "practice": "Practise 水 and 睡觉 first, then read 谁 with both accepted pronunciations. Do not invent a first-tone example simply to fill a four-tone chart."
+  },
+  {
+    "slug": "wo",
+    "examples": [
+      {
+        "character": "我",
+        "pinyin": "wǒ",
+        "meaning": "I"
+      },
+      {
+        "character": "窝",
+        "pinyin": "wō",
+        "meaning": "nest"
+      },
+      {
+        "character": "握",
+        "pinyin": "wò",
+        "meaning": "hold"
+      }
+    ],
+    "sound": "The spelling w introduces a u-like glide into o; it is not treated as one of the 21 consonant initials here. Keep wo in one syllable.",
+    "contrast": "我, 窝, and 握 give third-, first-, and fourth-tone examples. An empty second-tone example slot is not permission to invent a word.",
+    "practice": "Print 我, 窝, and 握. Use 我 as the familiar anchor, then change pitch while keeping the rounded opening glide."
+  },
+  {
+    "slug": "xie",
+    "examples": [
+      {
+        "character": "谢",
+        "pinyin": "xiè",
+        "meaning": "thank"
+      },
+      {
+        "character": "写",
+        "pinyin": "xiě",
+        "meaning": "write"
+      },
+      {
+        "character": "鞋",
+        "pinyin": "xié",
+        "meaning": "shoe"
+      }
+    ],
+    "sound": "Begin with the front-tongue x sound, then glide through i into e. Mark the tone on e, not on i, in xiè and xiě.",
+    "contrast": "谢, 写, and 鞋 contrast fourth, third, and second tone. 谢谢 commonly has a neutral second syllable, xièxie, even though isolated 谢 is xiè.",
+    "practice": "Practise 谢谢 and 写字 before copying 谢 and 写. Add 鞋 as a second-tone contrast and keep the x sound separate from retroflex sh."
+  },
+  {
+    "slug": "zhong",
+    "examples": [
+      {
+        "character": "中",
+        "pinyin": "zhōng",
+        "meaning": "middle"
+      },
+      {
+        "character": "钟",
+        "pinyin": "zhōng",
+        "meaning": "clock"
+      },
+      {
+        "character": "种",
+        "pinyin": "zhǒng",
+        "meaning": "kind"
+      },
+      {
+        "character": "重",
+        "pinyin": "zhòng",
+        "meaning": "heavy"
+      }
+    ],
+    "sound": "Use the unaspirated retroflex zh initial and finish ong with a back nasal ng. It differs from zong at the beginning and zhong does not end in n.",
+    "contrast": "中 is zhōng for middle but zhòng for hitting a target. 种 is zhǒng for kind or seed and zhòng for planting; 重 can also be chóng for again.",
+    "practice": "Print 中, 钟, 种, and 重. Read 中国, 时钟, 一种, and 很重 so every tone choice has a meaningful word context."
+  }
+]
