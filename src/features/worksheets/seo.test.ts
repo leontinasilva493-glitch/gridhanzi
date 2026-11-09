@@ -692,6 +692,7 @@ test("curated Hanzi pages have static routes and unique sitemap entries", async 
     "/stroke-order/那",
     "/stroke-order/谁",
     "/stroke-order/也",
+    ...Array.from("三四五六七八九十百千口手足目耳心火山土木田力女子父母王玉白红蓝绿金雨云风电车马鸟鱼米茶花草猫狗早").map((character) => `/stroke-order/${character}`),
   ]);
 
   const routeSource = await readFile(

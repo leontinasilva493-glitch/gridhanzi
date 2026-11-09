@@ -218,6 +218,19 @@ export function TemplateDetailPage({ template }: { template: WorksheetTemplate }
           </article>
         </section>
 
+        {(template.slug === "greetings" || template.slug === "travel") && (
+          <section className="hs-card mt-5 p-6">
+            <h2 className="hs-display text-2xl font-bold">Related reading</h2>
+            <p className="mt-3 leading-7 text-[#58677a]">
+              {template.slug === "greetings" ? (
+                <>Use the words in a real conversation: <Link href="/thank-you-in-chinese" className="font-semibold text-[#24466e] underline">learn how to say thank you in Chinese</Link>, then practise 谢谢 on your worksheet.</>
+              ) : (
+                <>Practise a real destination alongside travel vocabulary: <Link href="/shenzhen-in-chinese" className="font-semibold text-[#24466e] underline">learn how to write Shenzhen in Chinese</Link> and recognise 深圳 on a map.</>
+              )}
+            </p>
+          </section>
+        )}
+
         <section className="mt-5">
           <article className="hs-card p-6">
             <h2 className="hs-display text-2xl font-bold">Related templates</h2>
