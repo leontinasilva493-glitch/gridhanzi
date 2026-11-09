@@ -80,6 +80,42 @@ async function seed(context, storage, key, value) {
 
 try {
   for (const zh of [false, true]) {
+    await scenario(`flow-editor-pdf-capture-styles-${zh ? 'zh-mobile' : 'en'}`, zh ? { viewport: { width: 390, height: 844 } } : {}, async page => {
+      await visit(page, `${zh ? '/zh' : ''}/generator?words=${encodeURIComponent('一\n二')}`);
+      await page.getByRole('textbox', { name: 'Chinese row 1', exact: true }).filter({ visible: true }).fill('去');
+      await page.getByRole('button', { name: zh ? '完整预览' : 'Preview full page', exact: true }).click();
+      await page.waitForURL('**/worksheet/preview');
+      await page.locator('.hs-paper-stack .hs-grid-cell').first().waitFor();
+      await page.evaluate(() => {
+        window.__pdfCaptureChecks = { removed: 0 };
+        // Reproduce the live failure: the preview has CSS, but its temporary
+        // html2canvas document loses stylesheet links after client navigation.
+        const cloneLink = HTMLLinkElement.prototype.cloneNode;
+        HTMLLinkElement.prototype.cloneNode = function(deep) {
+          const clone = cloneLink.call(this, deep);
+          if (this.rel === 'stylesheet') {
+            clone.rel = 'alternate';
+            window.__pdfCaptureChecks.removed += 1;
+            window.__pdfStylesheetClone = clone;
+          }
+          return clone;
+        };
+      });
+      const downloading = page.waitForEvent('download', { timeout: 60_000 });
+      await page.getByRole('button', { name: zh ? '下载 PDF' : 'Download PDF', exact: true }).click();
+      const download = await downloading;
+      assert.equal(await download.failure(), null);
+      await download.saveAs(path.join(output, `editor-capture-styles-${zh ? 'zh' : 'en'}.pdf`));
+      const checks = await page.evaluate(() => ({
+        ...window.__pdfCaptureChecks,
+        styled: window.__pdfStylesheetClone?.ownerDocument
+          .querySelector('[data-gridhanzi-pdf-capture] .hs-grid-cell')?.style.display === 'grid',
+      }));
+      assert.ok(checks.removed > 0, 'Missing-stylesheet fault was exercised');
+      assert.equal(checks.styled, true, 'Capture retains the visible grid layout without stylesheet links');
+    });
+  }
+  for (const zh of [false, true]) {
     await scenario(`generator-server-budget-${zh ? 'zh' : 'en'}`, {}, async page => {
       const response = await visit(page, `${zh ? '/zh' : ''}/generator?template=pinyin-practice`);
       const html = await response.text();

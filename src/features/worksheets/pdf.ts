@@ -195,7 +195,7 @@ function copyComputedStylesRecursive(
   }
 }
 
-export function prepareFlashcardCaptureClone<T extends StyleCopyNode>(
+export function preparePdfCaptureClone<T extends StyleCopyNode>(
   sourceNode: T,
   targetNode: T,
   getComputedStyleForNode: (node: StyleCopyNode) => StylePropertyReader,
@@ -369,17 +369,17 @@ export async function downloadWorksheetPdf({
           clonedDocument.body.style.margin = "0";
           clonedHost.style.top = "0";
           clonedHost.style.left = "0";
-          if (output === "flashcards") {
-            const clonedPage = clonedHost.firstElementChild;
-            if (clonedPage instanceof HTMLElement) {
-              prepareFlashcardCaptureClone(
-                page as unknown as StyleCopyNode,
-                clonedPage as unknown as StyleCopyNode,
-                (node) =>
-                  window.getComputedStyle(node as unknown as Element),
-              );
-              applyPdfCaptureRootOverrides(clonedPage.style);
-            }
+          const clonedPage = clonedHost.firstElementChild;
+          if (clonedPage instanceof HTMLElement) {
+            // Client navigation can leave styles in the source CSSOM without
+            // stylesheet links in html2canvas's document. Freeze the visible
+            // layout for worksheets as well as flashcards before capture.
+            preparePdfCaptureClone(
+              page as unknown as StyleCopyNode,
+              clonedPage as unknown as StyleCopyNode,
+              (node) =>
+                window.getComputedStyle(node as unknown as Element),
+            );
           }
         },
       }), PDF_CAPTURE_TIMEOUT_MS, "This page took too long to prepare. Try the PDF download again.");
