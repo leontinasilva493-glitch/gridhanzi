@@ -78,27 +78,81 @@ async function seed(context, storage, key, value) {
   await context.addInitScript(({ storage, key, value }) => window[storage].setItem(key, value), { storage, key, value });
 }
 
+async function assertBookmarkPromptPlacement(page) {
+  const box = await page.getByRole('status').evaluate(element => {
+    const rect = element.getBoundingClientRect();
+    return {
+      left: rect.left,
+      right: rect.right,
+      top: rect.top,
+      bottom: rect.bottom,
+      centerY: rect.top + rect.height / 2,
+      viewportWidth: window.innerWidth,
+      viewportHeight: window.innerHeight,
+    };
+  });
+  assert.ok(box.left >= 0, `Prompt stays inside the left viewport edge: ${JSON.stringify(box)}`);
+  assert.ok(box.right <= box.viewportWidth, `Prompt stays inside the right viewport edge: ${JSON.stringify(box)}`);
+  assert.ok(box.top >= 0, `Prompt stays below the top viewport edge: ${JSON.stringify(box)}`);
+  assert.ok(box.bottom <= box.viewportHeight, `Prompt stays above the bottom viewport edge: ${JSON.stringify(box)}`);
+  const rightGap = box.viewportWidth - box.right;
+  const targetRightGap = box.viewportWidth >= 640 ? 24 : 12;
+  assert.ok(Math.abs(rightGap - targetRightGap) < 2, `Prompt stays anchored to the right edge: ${JSON.stringify(box)}`);
+  const targetCenter = Math.min(box.viewportHeight * 0.75, box.viewportHeight - 96);
+  assert.ok(Math.abs(box.centerY - targetCenter) < 2, `Prompt center follows the three-quarter screen anchor: ${JSON.stringify(box)}`);
+}
+
+async function assertBookmarkPromptRemainsHidden(page) {
+  await page.waitForTimeout(13_500);
+  assert.equal(await page.getByRole('status').count(), 0, 'Mobile and tablet contexts never display the prompt');
+  assert.equal(await page.evaluate(() => localStorage.getItem('gridhanzi-bookmark-prompt-dismissed-v1')), null, 'Hidden contexts do not write a dismissal marker');
+}
+
 try {
-  for (const zh of [false, true]) {
-    await scenario(`bookmark-prompt-${zh ? 'zh-mobile' : 'en-desktop'}`, zh ? { viewport: { width: 390, height: 844 }, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1' } : {}, async (page, context) => {
-      await visit(page, zh ? '/zh/templates' : '/templates');
-      const prompt = page.getByRole('status', { name: zh ? '收藏 GridHanzi' : 'Bookmark GridHanzi' });
-      await prompt.waitFor({ timeout: 20_000 });
-      if (zh) {
-        assert.match(await prompt.innerText(), /使用浏览器菜单将本页加入书签/);
-        await prompt.getByRole('button', { name: '关闭书签提醒' }).click();
-      } else {
-        assert.match(await prompt.innerText(), /Ctrl \+ D/);
-        await prompt.getByRole('button', { name: 'Got it', exact: true }).click();
-      }
-      await prompt.waitFor({ state: 'detached' });
-      assert.equal(await page.evaluate(() => localStorage.getItem('gridhanzi-bookmark-prompt-dismissed-v1')), '1');
-      await page.reload({ waitUntil: 'domcontentloaded' });
-      await page.waitForTimeout(12_500);
-      assert.equal(await prompt.count(), 0, 'Dismissal persists after revisit');
-      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  await scenario('bookmark-prompt-homepage-en-desktop', {}, async page => {
+    await visit(page, '/');
+    assert.equal(await page.evaluate(() => localStorage.getItem('gridhanzi-bookmark-prompt-dismissed-v1')), null, 'Fresh context starts without a dismissal marker');
+    const prompt = page.getByRole('status', { name: 'Bookmark GridHanzi' });
+    await prompt.waitFor({ timeout: 20_000 });
+    assert.match(await prompt.innerText(), /Ctrl \+ D/);
+    await assertBookmarkPromptPlacement(page);
+    await prompt.getByRole('button', { name: 'Dismiss bookmark reminder' }).click();
+    await prompt.waitFor({ state: 'detached' });
+    assert.equal(await page.evaluate(() => localStorage.getItem('gridhanzi-bookmark-prompt-dismissed-v1')), '1');
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(12_500);
+    assert.equal(await prompt.count(), 0, 'Homepage dismissal persists after revisit');
+  });
+  await scenario('bookmark-prompt-windows-touch-desktop-zh', { viewport: { width: 1280, height: 900 }, hasTouch: true, userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36' }, async page => {
+    await visit(page, '/zh/templates');
+    const prompt = page.getByRole('status', { name: '收藏 GridHanzi' });
+    await prompt.waitFor({ timeout: 20_000 });
+    assert.match(await prompt.innerText(), /按 Ctrl \+ D 收藏，下次直达/);
+    await assertBookmarkPromptPlacement(page);
+    await prompt.getByRole('button', { name: '关闭书签提醒' }).click();
+    await prompt.waitFor({ state: 'detached' });
+    assert.equal(await page.evaluate(() => localStorage.getItem('gridhanzi-bookmark-prompt-dismissed-v1')), '1');
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(12_500);
+    assert.equal(await prompt.count(), 0, 'Touch desktop dismissal persists after revisit');
+  });
+  await scenario('bookmark-prompt-mobile-hidden-iphone', { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1' }, async page => {
+    await visit(page, '/');
+    await assertBookmarkPromptRemainsHidden(page);
+  });
+  await scenario('bookmark-prompt-tablet-hidden-ipados', { viewport: { width: 1024, height: 1366 }, isMobile: true, hasTouch: true, userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15' }, async (page, context) => {
+    await context.addInitScript(() => {
+      Object.defineProperty(window.navigator, 'platform', { configurable: true, get: () => 'MacIntel' });
+      Object.defineProperty(window.navigator, 'maxTouchPoints', { configurable: true, get: () => 5 });
     });
-  }
+    await visit(page, '/templates');
+    const device = await page.evaluate(() => ({ userAgent: navigator.userAgent, platform: navigator.platform, maxTouchPoints: navigator.maxTouchPoints }));
+    assert.match(device.userAgent, /Macintosh/);
+    assert.doesNotMatch(device.userAgent, /Mobile|Tablet|iPad/);
+    assert.equal(device.platform, 'MacIntel');
+    assert.ok(device.maxTouchPoints > 1);
+    await assertBookmarkPromptRemainsHidden(page);
+  });
   for (const zh of [false, true]) {
     await scenario(`parameter-index-boundaries-${zh ? 'zh' : 'en'}`, {}, async (page, context) => {
       const prefix = zh ? '/zh' : '';
