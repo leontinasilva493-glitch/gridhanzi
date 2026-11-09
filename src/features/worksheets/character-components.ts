@@ -36,9 +36,9 @@ export const characterComponentPages: readonly CharacterComponentPage[] = [
     description: "Learn how the 氵 water component works in 河, 海, 洗, 没, 酒 and 清, with meaning clues, position tips, stroke order and worksheet practice.",
     heading: "氵: the water meaning component",
     intro: "Three small strokes can connect a river, the sea, washing, liquid, and clarity. 氵 is the left-side form of 水, compressed so another component can carry sound or add a more specific meaning on the right.",
-    formation: "The full character 水 becomes 氵 when it occupies the narrow left column. Its dot, rising stroke, and lower falling stroke form a vertical rhythm; they are not three identical dots.",
+    formation: "The full character 水 becomes 氵 when it occupies the narrow left column. Its two dots and final rising stroke form a vertical rhythm; they are not three identical dots.",
     reliability: "氵 is a useful semantic clue, not a complete definition. It often points toward water, liquid, washing, flow, or a quality once described through water, but words such as 没 have developed grammatical meanings that the component alone cannot predict.",
-    writingTips: ["Keep all three strokes inside a narrow left column.", "Let the middle rising stroke aim toward the right component without touching it.", "Place the lowest stroke far enough down to support, not crowd, the character."],
+    writingTips: ["Keep all three strokes inside a narrow left column.", "Let the final rising stroke aim toward the right component without touching it.", "Start the final rising stroke low enough to support, not crowd, the character."],
     examples: [
       { character: "河", pinyin: "hé", meaning: "river", clue: "Water category plus 可 as a sound clue." },
       { character: "海", pinyin: "hǎi", meaning: "sea", clue: "A large body of water; 每 contributes sound history." },
