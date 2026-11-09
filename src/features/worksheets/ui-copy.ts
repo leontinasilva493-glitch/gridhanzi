@@ -1,6 +1,15 @@
 import { isChineseLocale } from "./i18n";
 
 const chinese: Readonly<Record<string, string>> = {
+  "Stroke Order Dictionary": "笔顺字典",
+  "Chinese Learning Guides": "中文学习指南",
+  "Explore everyday expressions, place names, and language in context before practising the characters.": "了解日常表达、地名和具体语境，再练习相关汉字。",
+  "How to Say Thank You in Chinese": "如何用中文表达感谢",
+  "Shenzhen in Chinese": "深圳的中文写法",
+  "Niu Lai Meaning": "牛来的含义",
+  "Learn when to use 谢谢 and practise writing it.": "了解什么时候说谢谢，并练习书写。",
+  "Read 深圳, understand the name, and practise its characters.": "学习深圳的读音、地名含义和汉字写法。",
+  "Understand 牛来 in its film and meme context.": "结合电影和网络梗语境了解牛来。",
   "Create printable Chinese worksheets with your own word list. Choose a Hanzi grid layout—Tian Zi Ge, Mi Zi Ge, or blank squares—then add Pinyin and tracing practice. Download an A4 or US Letter PDF for free, with no sign-up.": "用自己的词表制作汉字字帖。选择田字格、米字格或空白方格，添加拼音和描红练习，即可免费下载 A4 或美式信纸 PDF，无需注册。",
   "Download blank Hanzi grid paper": "下载空白汉字格纸",
   "Printable Hanzi Grid Paper": "可打印汉字格纸",

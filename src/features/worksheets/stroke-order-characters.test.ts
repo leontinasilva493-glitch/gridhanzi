@@ -1,6 +1,40 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { hskCatalog } from "./hsk";
+import { foundationStrokeOrderCharacters } from "./stroke-order-character-foundation";
+
+const foundationCharacters = foundationStrokeOrderCharacters.map((entry) => entry.character);
+
+test("foundation guides keep distinct explanatory sections and relevant published neighbours", () => {
+  for (const entry of foundationStrokeOrderCharacters) {
+    const paragraphs = [entry.readingNotes, entry.usage, entry.writingTip,
+      ...entry.components.map((component) => component.explanation),
+      entry.confusableCharacter.guidance];
+    assert.equal(new Set(paragraphs).size, paragraphs.length, entry.character);
+    assert.equal(entry.useNotes, undefined, `${entry.character} has one usage explanation`);
+    assert.equal(entry.commonMistake, undefined, `${entry.character} has one comparison`);
+    assert.equal(entry.relatedCharacters.length, 3, entry.character);
+    assert.equal(new Set(entry.relatedCharacters).size, 3, entry.character);
+    assert.ok(!entry.relatedCharacters.includes(entry.character));
+    assert.ok(!entry.relatedCharacters.includes("字") && !entry.relatedCharacters.includes("学"));
+    assert.equal(entry.seo.title, `${entry.character} (${entry.pinyin}) Stroke Order, Meaning & Examples`);
+    assert.equal(entry.seo.h1, `How to Write ${entry.character} (${entry.pinyin}): Stroke Order, Meaning & Examples`);
+  }
+});
+
+test("foundation batch publishes 48 unique guides with traceable HSK evidence", () => {
+  assert.equal(foundationCharacters.length, 48);
+  assert.equal(new Set(foundationCharacters).size, 48);
+  assert.equal(indexableStrokeOrderCharacters.length, 102);
+  for (const entry of foundationStrokeOrderCharacters) {
+    assert.ok(entry.hsk.every((card) => hskCatalog.some((record) =>
+      `HSK ${record.system}` === card.system && `Level ${record.level}` === card.level &&
+      (card.evidenceKind === "standalone"
+        ? record.hanzi === entry.character && record.pinyin === entry.pinyin
+        : record.hanzi.includes(entry.character) && card.note.includes(record.hanzi))
+    )), entry.character);
+  }
+});
 
 const approvedFirstBatch = [
   "\u7684", "\u4e00", "\u662f", "\u5728", "\u4e86", "\u6211", "\u4f60", "\u4eba",
@@ -55,7 +89,7 @@ import {
 test("published character order contains the existing guides plus the approved first batch", () => {
   assert.deepEqual(strokeOrderCharacters.map((entry) => entry.character), [
     "\u7231", "\u5e74", "\u4f5b", ...approvedFirstBatch, trendingCharacter,
-    ...contentClusterCharacters, "汉", "字", ...pilotCharacters,
+    ...contentClusterCharacters, "汉", "字", ...pilotCharacters, ...foundationCharacters,
   ]);
 });
 
@@ -233,8 +267,8 @@ test("complete guides meet the full content contract and link to complete relate
     assert.ok(entry.importance.trim().length > 30, `${entry.character} importance`);
     assert.ok(entry.components.length > 0, `${entry.character} components`);
     assert.ok(entry.readingNotes.trim().length > 30, `${entry.character} reading notes`);
-    assert.ok(entry.useNotes.trim().length > 30, `${entry.character} use notes`);
-    assert.ok(entry.commonMistake.trim().length > 30, `${entry.character} common mistake`);
+    if (entry.useNotes) assert.ok(entry.useNotes.trim().length > 30, `${entry.character} use notes`);
+    if (entry.commonMistake) assert.ok(entry.commonMistake.trim().length > 30, `${entry.character} common mistake`);
     assert.ok(entry.confusableCharacter.guidance.trim().length > 30, `${entry.character} confusable guidance`);
     assert.ok(entry.relatedCharacters.length > 0, `${entry.character} related guides`);
     for (const related of entry.relatedCharacters) assert.ok(getStrokeOrderCharacter(related), `${entry.character} links to ${related}`);
@@ -320,7 +354,7 @@ test("SEO and substantive teaching fields remain unique across published guides"
   const normalize = (value: string) => value.replace(/\s+/g, " ").trim().toLowerCase();
   const fields = ["importance", "readingNotes", "useNotes", "usage", "writingTip", "commonMistake"] as const;
   for (const field of fields) {
-    const values = strokeOrderCharacters.map((entry) => normalize(entry[field]));
+    const values = strokeOrderCharacters.map((entry) => normalize(entry[field] ?? "")).filter(Boolean);
     assert.equal(new Set(values).size, values.length, `${field} is not duplicated`);
   }
   for (const values of [
@@ -333,7 +367,7 @@ test("SEO and substantive teaching fields remain unique across published guides"
 test("curated stroke-order pages contain complete learning content", () => {
   assert.deepEqual(
     strokeOrderCharacters.map((entry) => entry.character),
-    ["爱", "年", "佛", ...approvedFirstBatch, trendingCharacter, ...contentClusterCharacters, "汉", "字", ...pilotCharacters],
+    ["爱", "年", "佛", ...approvedFirstBatch, trendingCharacter, ...contentClusterCharacters, "汉", "字", ...pilotCharacters, ...foundationCharacters],
   );
 
   for (const entry of strokeOrderCharacters) {
@@ -394,7 +428,7 @@ test("complete guides expose the publishing and learning-content contract", () =
       `${entry.character} component explanations`,
     );
     assert.ok(entry.readingNotes.length > 0, `${entry.character} reading notes`);
-    assert.ok(entry.useNotes.length > 0, `${entry.character} use notes`);
+    if (entry.useNotes !== undefined) assert.ok(entry.useNotes.length > 0, `${entry.character} use notes`);
     assert.ok(entry.exampleSentences.length >= 3, `${entry.character} sentences`);
     assert.ok(
       entry.exampleSentences.every(
@@ -405,7 +439,7 @@ test("complete guides expose the publishing and learning-content contract", () =
       ),
       `${entry.character} sentence details`,
     );
-    assert.ok(entry.commonMistake.length > 0, `${entry.character} common mistake`);
+    if (entry.commonMistake !== undefined) assert.ok(entry.commonMistake.length > 0, `${entry.character} common mistake`);
     assert.ok(
       entry.confusableCharacter.character.length > 0 &&
         entry.confusableCharacter.guidance.length > 0,

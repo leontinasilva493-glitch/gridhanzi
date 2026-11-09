@@ -1,0 +1,4130 @@
+[
+  {
+    "character": "三",
+    "pinyin": "sān",
+    "meaning": "three",
+    "strokes": 3,
+    "radical": "一",
+    "traditional": "三",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 1 vocabulary includes 三 (sān)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "三 helps learners read and write three. Start with 三个 (three items) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "三",
+        "explanation": "Three separate horizontal strokes create three levels. The middle line is shorter than the other two, and the bottom line forms the broadest level."
+      }
+    ],
+    "readingNotes": "Read 三 as sān in this guide. Compare 三个 (sān ge) and 三月 (sānyuè) to practise the sound in complete words.",
+    "usageTitle": "Using 三 in words and sentences",
+    "usage": "三 counts things and appears in dates. 三月 means March, while 三个月 is a duration of three months.",
+    "writingTip": "Write the horizontals from top to bottom; make the middle line shortest and the bottom line longest.",
+    "examples": [
+      {
+        "hanzi": "三个",
+        "pinyin": "sān ge",
+        "meaning": "three items"
+      },
+      {
+        "hanzi": "三月",
+        "pinyin": "sānyuè",
+        "meaning": "March"
+      },
+      {
+        "hanzi": "三天",
+        "pinyin": "sān tiān",
+        "meaning": "three days"
+      },
+      {
+        "hanzi": "三十",
+        "pinyin": "sānshí",
+        "meaning": "thirty"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我有三本书。",
+        "pinyin": "Wǒ yǒu sān běn shū.",
+        "meaning": "I have three books."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我们三点见。",
+        "pinyin": "Wǒmen sān diǎn jiàn.",
+        "meaning": "We will meet at three."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "她在这里住了三个月。",
+        "pinyin": "Tā zài zhèlǐ zhù le sān ge yuè.",
+        "meaning": "She lived here for three months."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "二",
+      "guidance": "三 has three horizontal lines, while 二 has only two."
+    },
+    "relatedCharacters": [
+      "二",
+      "五",
+      "十"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "三 (sān) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 三 (sān): Stroke Order, Meaning & Examples",
+      "description": "Write 三 (sān) in three strokes. Compare its line lengths with 二, learn 三月 versus 三个月, and practise counting and dates."
+    }
+  },
+  {
+    "character": "四",
+    "pinyin": "sì",
+    "meaning": "four",
+    "strokes": 5,
+    "radical": "囗",
+    "traditional": "四",
+    "structure": "Enclosure",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 1 vocabulary includes 四 (sì)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "四 helps learners read and write four. Start with 四个 (four items) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "四",
+        "explanation": "A large outer enclosure contains two short strokes. The interior is not a cross, and the enclosure is wider than the tall form of 目."
+      }
+    ],
+    "readingNotes": "Read 四 as sì in this guide. Compare 四个 (sì ge) and 四月 (sìyuè) to practise the sound in complete words.",
+    "usageTitle": "Using 四 in words and sentences",
+    "usage": "四 counts four things. 星期四 means Thursday and 四月 is April; 四个月 instead expresses a four-month duration.",
+    "writingTip": "Leave space for the two inner strokes, and close the outer box at the bottom after writing the inside.",
+    "examples": [
+      {
+        "hanzi": "四个",
+        "pinyin": "sì ge",
+        "meaning": "four items"
+      },
+      {
+        "hanzi": "四月",
+        "pinyin": "sìyuè",
+        "meaning": "April"
+      },
+      {
+        "hanzi": "四十",
+        "pinyin": "sìshí",
+        "meaning": "forty"
+      },
+      {
+        "hanzi": "星期四",
+        "pinyin": "xīngqīsì",
+        "meaning": "Thursday"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这里有四个人。",
+        "pinyin": "Zhèlǐ yǒu sì ge rén.",
+        "meaning": "There are four people here."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "今天是星期四。",
+        "pinyin": "Jīntiān shì xīngqīsì.",
+        "meaning": "Today is Thursday."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我们四月去中国旅行。",
+        "pinyin": "Wǒmen sìyuè qù Zhōngguó lǚxíng.",
+        "meaning": "We are travelling to China in April."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "西",
+      "guidance": "四 has two separate inner strokes; 西 has a different interior and an extra top horizontal."
+    },
+    "relatedCharacters": [
+      "三",
+      "五",
+      "田"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "四 (sì) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 四 (sì): Stroke Order, Meaning & Examples",
+      "description": "Learn 四 (sì), the five-stroke number four. See how its enclosure differs from 西 and use it in 星期四, 四月, and counting phrases."
+    }
+  },
+  {
+    "character": "五",
+    "pinyin": "wǔ",
+    "meaning": "five",
+    "strokes": 4,
+    "radical": "二",
+    "traditional": "五",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 1 vocabulary includes 五 (wǔ)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "五 helps learners read and write five. Start with 五个 (five items) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "五",
+        "explanation": "The short top horizontal, central crossing and turning stroke, and longer bottom horizontal form a compact connected shape."
+      }
+    ],
+    "readingNotes": "Read 五 as wǔ in this guide. Compare 五个 (wǔ ge) and 五月 (wǔyuè) to practise the sound in complete words.",
+    "usageTitle": "Using 五 in words and sentences",
+    "usage": "五 appears in numbers, dates and times. 五点 is five o'clock and 五分钟 is a duration of five minutes.",
+    "writingTip": "Keep the central turn within the width of the bottom horizontal, then finish with a broad and level base.",
+    "examples": [
+      {
+        "hanzi": "五个",
+        "pinyin": "wǔ ge",
+        "meaning": "five items"
+      },
+      {
+        "hanzi": "五月",
+        "pinyin": "wǔyuè",
+        "meaning": "May"
+      },
+      {
+        "hanzi": "五十",
+        "pinyin": "wǔshí",
+        "meaning": "fifty"
+      },
+      {
+        "hanzi": "五分钟",
+        "pinyin": "wǔ fēnzhōng",
+        "meaning": "five minutes"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我有五支笔。",
+        "pinyin": "Wǒ yǒu wǔ zhī bǐ.",
+        "meaning": "I have five pens."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "现在五点了。",
+        "pinyin": "Xiànzài wǔ diǎn le.",
+        "meaning": "It is five o'clock now."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "请再等五分钟。",
+        "pinyin": "Qǐng zài děng wǔ fēnzhōng.",
+        "meaning": "Please wait another five minutes."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "互",
+      "guidance": "五 and 互 have different middle turns; compare the central strokes rather than only the top and base."
+    },
+    "relatedCharacters": [
+      "四",
+      "六",
+      "十"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "五 (wǔ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 五 (wǔ): Stroke Order, Meaning & Examples",
+      "description": "Practise 五 (wǔ) stroke order and its central turn. Learn the difference between 五点 and 五分钟 with number words and example sentences."
+    }
+  },
+  {
+    "character": "六",
+    "pinyin": "liù",
+    "meaning": "six",
+    "strokes": 4,
+    "radical": "八",
+    "traditional": "六",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 1 vocabulary includes 六 (liù)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "六 helps learners read and write six. Start with 六个 (six items) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "六",
+        "explanation": "A dot above a horizontal forms 亠. Two separate lower strokes spread out beneath this cover without crossing each other."
+      }
+    ],
+    "readingNotes": "Read 六 as liù in this guide. Compare 六个 (liù ge) and 六月 (liùyuè) to practise the sound in complete words.",
+    "usageTitle": "Using 六 in words and sentences",
+    "usage": "六 counts objects and names dates. 星期六 is Saturday and 六月 is June; the following word tells what is counted.",
+    "writingTip": "Centre the top dot above the horizontal and leave a gap before the two lower strokes spread apart.",
+    "examples": [
+      {
+        "hanzi": "六个",
+        "pinyin": "liù ge",
+        "meaning": "six items"
+      },
+      {
+        "hanzi": "六月",
+        "pinyin": "liùyuè",
+        "meaning": "June"
+      },
+      {
+        "hanzi": "六十",
+        "pinyin": "liùshí",
+        "meaning": "sixty"
+      },
+      {
+        "hanzi": "星期六",
+        "pinyin": "xīngqīliù",
+        "meaning": "Saturday"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "六个人来了。",
+        "pinyin": "Liù ge rén lái le.",
+        "meaning": "Six people came."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "星期六我不上课。",
+        "pinyin": "Xīngqīliù wǒ bù shàng kè.",
+        "meaning": "I do not have class on Saturday."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我们六月开始学习汉语。",
+        "pinyin": "Wǒmen liùyuè kāishǐ xuéxí Hànyǔ.",
+        "meaning": "We start learning Chinese in June."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "交",
+      "guidance": "六 stops after its lower spreading strokes; 交 has additional crossing strokes below."
+    },
+    "relatedCharacters": [
+      "五",
+      "七",
+      "八"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "六 (liù) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 六 (liù): Stroke Order, Meaning & Examples",
+      "description": "Write 六 (liù) with a centred top dot and separated lower strokes. Practise 六月, 星期六, and everyday counting in four strokes."
+    }
+  },
+  {
+    "character": "七",
+    "pinyin": "qī",
+    "meaning": "seven",
+    "strokes": 2,
+    "radical": "一",
+    "traditional": "七",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 1 vocabulary includes 七 (qī)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "七 helps learners read and write seven. Start with 七个 (seven items) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "七",
+        "explanation": "One horizontal crosses a second stroke that bends at the bottom and ends with a hook. That bend distinguishes the outline from a straight cross."
+      }
+    ],
+    "readingNotes": "Read 七 as qī in this guide. Compare 七个 (qī ge) and 七月 (qīyuè) to practise the sound in complete words.",
+    "usageTitle": "Using 七 in words and sentences",
+    "usage": "七点 gives a time, 七天 gives a duration, and 七月 names July. Use a measure word when counting most objects.",
+    "writingTip": "Place the crossing above the middle and keep a visible bend and hook at the bottom of the second stroke.",
+    "examples": [
+      {
+        "hanzi": "七个",
+        "pinyin": "qī ge",
+        "meaning": "seven items"
+      },
+      {
+        "hanzi": "七月",
+        "pinyin": "qīyuè",
+        "meaning": "July"
+      },
+      {
+        "hanzi": "七天",
+        "pinyin": "qī tiān",
+        "meaning": "seven days"
+      },
+      {
+        "hanzi": "七点",
+        "pinyin": "qī diǎn",
+        "meaning": "seven o'clock"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "现在七点。",
+        "pinyin": "Xiànzài qī diǎn.",
+        "meaning": "It is seven o'clock."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我七月去北京。",
+        "pinyin": "Wǒ qīyuè qù Běijīng.",
+        "meaning": "I am going to Beijing in July."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "这本书我看了七天。",
+        "pinyin": "Zhè běn shū wǒ kàn le qī tiān.",
+        "meaning": "I read this book over seven days."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "十",
+      "guidance": "七 has a bent hooked stroke, while 十 is a straight cross."
+    },
+    "relatedCharacters": [
+      "六",
+      "八",
+      "十"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "七 (qī) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 七 (qī): Stroke Order, Meaning & Examples",
+      "description": "See the two strokes of 七 (qī), including its lower bend and hook. Compare 七 with 十 and practise times, dates, and seven-day durations."
+    }
+  },
+  {
+    "character": "八",
+    "pinyin": "bā",
+    "meaning": "eight",
+    "strokes": 2,
+    "radical": "八",
+    "traditional": "八",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 1 vocabulary includes 八 (bā)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "八 helps learners read and write eight. Start with 八个 (eight items) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "八",
+        "explanation": "Two falling strokes diverge toward the lower corners. Their upper ends remain separated rather than meeting as they do in 人."
+      }
+    ],
+    "readingNotes": "Read 八 as bā in this guide. Compare 八个 (bā ge) and 八月 (bāyuè) to practise the sound in complete words.",
+    "usageTitle": "Using 八 in words and sentences",
+    "usage": "八 builds larger numbers as well as counting eight things. 八十 means eighty, while 十八 means eighteen.",
+    "writingTip": "Write the left fall before the right fall, keeping the two upper ends apart and the lower ends spread wide.",
+    "examples": [
+      {
+        "hanzi": "八个",
+        "pinyin": "bā ge",
+        "meaning": "eight items"
+      },
+      {
+        "hanzi": "八月",
+        "pinyin": "bāyuè",
+        "meaning": "August"
+      },
+      {
+        "hanzi": "八十",
+        "pinyin": "bāshí",
+        "meaning": "eighty"
+      },
+      {
+        "hanzi": "十八",
+        "pinyin": "shíbā",
+        "meaning": "eighteen"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这里有八本书。",
+        "pinyin": "Zhèlǐ yǒu bā běn shū.",
+        "meaning": "There are eight books here."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "他今年十八岁。",
+        "pinyin": "Tā jīnnián shíbā suì.",
+        "meaning": "He is eighteen this year."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我们每天八点开始工作。",
+        "pinyin": "Wǒmen měitiān bā diǎn kāishǐ gōngzuò.",
+        "meaning": "We start work at eight every day."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "人",
+      "guidance": "八 has separated upper ends, whereas the strokes of 人 meet near the top."
+    },
+    "relatedCharacters": [
+      "七",
+      "九",
+      "人"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "八 (bā) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 八 (bā): Stroke Order, Meaning & Examples",
+      "description": "Learn 八 (bā) in two strokes, keeping its upper ends apart. Compare 八 with 人 and distinguish 八十 from 十八 in number practice."
+    }
+  },
+  {
+    "character": "九",
+    "pinyin": "jiǔ",
+    "meaning": "nine",
+    "strokes": 2,
+    "radical": "乙",
+    "traditional": "九",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 1 vocabulary includes 九 (jiǔ)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "九 helps learners read and write nine. Start with 九个 (nine items) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "九",
+        "explanation": "A left-falling stroke crosses a turning stroke with a hooked finish. There is no separate dot within the outline."
+      }
+    ],
+    "readingNotes": "Read 九 as jiǔ in this guide. Compare 九个 (jiǔ ge) and 九月 (jiǔyuè) to practise the sound in complete words.",
+    "usageTitle": "Using 九 in words and sentences",
+    "usage": "九 is useful for dates and ages. 九月 is September and 九十九 is ninety-nine; 岁 follows an age in years.",
+    "writingTip": "Write the left fall first; keep the turning stroke open and preserve the small finishing hook on its right.",
+    "examples": [
+      {
+        "hanzi": "九个",
+        "pinyin": "jiǔ ge",
+        "meaning": "nine items"
+      },
+      {
+        "hanzi": "九月",
+        "pinyin": "jiǔyuè",
+        "meaning": "September"
+      },
+      {
+        "hanzi": "九十",
+        "pinyin": "jiǔshí",
+        "meaning": "ninety"
+      },
+      {
+        "hanzi": "十九",
+        "pinyin": "shíjiǔ",
+        "meaning": "nineteen"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "她九岁。",
+        "pinyin": "Tā jiǔ suì.",
+        "meaning": "She is nine years old."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "九月我们开学。",
+        "pinyin": "Jiǔyuè wǒmen kāixué.",
+        "meaning": "Our school term starts in September."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "请在九点以前到学校。",
+        "pinyin": "Qǐng zài jiǔ diǎn yǐqián dào xuéxiào.",
+        "meaning": "Please arrive at school before nine."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "丸",
+      "guidance": "九 has no separate dot; adding one produces 丸, a different character."
+    },
+    "relatedCharacters": [
+      "八",
+      "十",
+      "三"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "九 (jiǔ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 九 (jiǔ): Stroke Order, Meaning & Examples",
+      "description": "Write 九 (jiǔ), preserve its final hook, and compare it with 丸. Practise 九月, ages, and numbers such as 十九 and 九十."
+    }
+  },
+  {
+    "character": "十",
+    "pinyin": "shí",
+    "meaning": "ten",
+    "strokes": 2,
+    "radical": "十",
+    "traditional": "十",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 1 vocabulary includes 十 (shí)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "十 helps learners read and write ten. Start with 十个 (ten items) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "十",
+        "explanation": "A horizontal and a vertical intersect to form a cross. The vertical extends above and below the horizontal; there is no bottom base line."
+      }
+    ],
+    "readingNotes": "Read 十 as shí in this guide. Compare 十个 (shí ge) and 十月 (shíyuè) to practise the sound in complete words.",
+    "usageTitle": "Using 十 in words and sentences",
+    "usage": "十 builds teens and multiples of ten. 十五 is fifteen, 五十 is fifty, and 十月 is October; character order matters.",
+    "writingTip": "Write the horizontal before the vertical and keep their crossing near the centre, with the vertical extending below.",
+    "examples": [
+      {
+        "hanzi": "十个",
+        "pinyin": "shí ge",
+        "meaning": "ten items"
+      },
+      {
+        "hanzi": "十月",
+        "pinyin": "shíyuè",
+        "meaning": "October"
+      },
+      {
+        "hanzi": "十五",
+        "pinyin": "shíwǔ",
+        "meaning": "fifteen"
+      },
+      {
+        "hanzi": "十年",
+        "pinyin": "shí nián",
+        "meaning": "ten years"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我有十块钱。",
+        "pinyin": "Wǒ yǒu shí kuài qián.",
+        "meaning": "I have ten yuan."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "现在十点半。",
+        "pinyin": "Xiànzài shí diǎn bàn.",
+        "meaning": "It is half past ten."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "他在这里工作了十年。",
+        "pinyin": "Tā zài zhèlǐ gōngzuò le shí nián.",
+        "meaning": "He worked here for ten years."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "土",
+      "guidance": "十 has no bottom horizontal; adding that line changes it into 土."
+    },
+    "relatedCharacters": [
+      "七",
+      "百",
+      "千"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "十 (shí) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 十 (shí): Stroke Order, Meaning & Examples",
+      "description": "Learn 十 (shí) stroke order and how it differs from 土. Use the ten character to build 十五, 五十, dates, and time expressions."
+    }
+  },
+  {
+    "character": "百",
+    "pinyin": "bǎi",
+    "meaning": "hundred",
+    "strokes": 6,
+    "radical": "白",
+    "traditional": "百",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 2",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 2 vocabulary includes 百 (bǎi)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "百 helps learners read and write hundred. Start with 一百 (one hundred) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "百",
+        "explanation": "A horizontal cap sits above a compact lower form resembling 白. The short stroke beneath the cap and the line inside the box remain distinct."
+      }
+    ],
+    "readingNotes": "Read 百 as bǎi in this guide. Compare 一百 (yì bǎi) and 三百 (sān bǎi) to practise the sound in complete words.",
+    "usageTitle": "Using 百 in words and sentences",
+    "usage": "百 usually follows another number: 一百 is one hundred and 三百 is three hundred. 百分之 introduces a percentage.",
+    "writingTip": "Leave a small gap beneath the top horizontal, and keep the short inner line inside the lower box clearly visible.",
+    "examples": [
+      {
+        "hanzi": "一百",
+        "pinyin": "yì bǎi",
+        "meaning": "one hundred"
+      },
+      {
+        "hanzi": "三百",
+        "pinyin": "sān bǎi",
+        "meaning": "three hundred"
+      },
+      {
+        "hanzi": "百年",
+        "pinyin": "bǎi nián",
+        "meaning": "a hundred years"
+      },
+      {
+        "hanzi": "百分之",
+        "pinyin": "bǎifēnzhī",
+        "meaning": "percent"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这本书一百页。",
+        "pinyin": "Zhè běn shū yì bǎi yè.",
+        "meaning": "This book has one hundred pages."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "这件衣服三百元。",
+        "pinyin": "Zhè jiàn yīfu sān bǎi yuán.",
+        "meaning": "This item of clothing costs three hundred yuan."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "这所学校有一百年的历史。",
+        "pinyin": "Zhè suǒ xuéxiào yǒu yì bǎi nián de lìshǐ.",
+        "meaning": "This school has a hundred years of history."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "白",
+      "guidance": "百 has a horizontal cap above its lower form; 白 starts with a short slant."
+    },
+    "relatedCharacters": [
+      "白",
+      "十",
+      "千"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "百 (bǎi) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 百 (bǎi): Stroke Order, Meaning & Examples",
+      "description": "Write 百 (bǎi) in six strokes and compare 百 with 白. Learn hundreds, prices, and the expression 百分之 through words and sentences."
+    }
+  },
+  {
+    "character": "千",
+    "pinyin": "qiān",
+    "meaning": "thousand",
+    "strokes": 3,
+    "radical": "十",
+    "traditional": "千",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 2",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 2 vocabulary includes 千 (qiān)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "千 helps learners read and write thousand. Start with 一千 (one thousand) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "千",
+        "explanation": "A short slant sits above a horizontal crossed by a vertical. The slanted first stroke distinguishes this character from 干."
+      }
+    ],
+    "readingNotes": "Read 千 as qiān in this guide. Compare 一千 (yì qiān) and 三千 (sān qiān) to practise the sound in complete words.",
+    "usageTitle": "Using 千 in words and sentences",
+    "usage": "千 counts thousands. 一千 means one thousand, while 千米 is the unit kilometre; the compound can name a unit.",
+    "writingTip": "Keep the initial short slant distinct from the horizontal below, then draw the vertical through the crossbar.",
+    "examples": [
+      {
+        "hanzi": "一千",
+        "pinyin": "yì qiān",
+        "meaning": "one thousand"
+      },
+      {
+        "hanzi": "三千",
+        "pinyin": "sān qiān",
+        "meaning": "three thousand"
+      },
+      {
+        "hanzi": "千米",
+        "pinyin": "qiānmǐ",
+        "meaning": "kilometre"
+      },
+      {
+        "hanzi": "千万",
+        "pinyin": "qiānwàn",
+        "meaning": "ten million; by all means"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这条路长一千米。",
+        "pinyin": "Zhè tiáo lù cháng yì qiānmǐ.",
+        "meaning": "This road is one kilometre long."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "学校有三千个学生。",
+        "pinyin": "Xuéxiào yǒu sān qiān ge xuésheng.",
+        "meaning": "The school has three thousand students."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "这里离北京有一千多千米。",
+        "pinyin": "Zhèlǐ lí Běijīng yǒu yì qiān duō qiānmǐ.",
+        "meaning": "It is over a thousand kilometres from here to Beijing."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "干",
+      "guidance": "千 starts with a short slant, whereas 干 starts with a horizontal."
+    },
+    "relatedCharacters": [
+      "十",
+      "百",
+      "三"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "千 (qiān) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 千 (qiān): Stroke Order, Meaning & Examples",
+      "description": "Learn 千 (qiān), its slanted first stroke, and its contrast with 干. Practise thousands and the measurement word 千米 with examples."
+    }
+  },
+  {
+    "character": "口",
+    "pinyin": "kǒu",
+    "meaning": "mouth; opening",
+    "strokes": 3,
+    "radical": "口",
+    "traditional": "口",
+    "structure": "Enclosure",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 3 vocabulary includes 口 (kǒu)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "口 helps learners read and write mouth; opening. Start with 门口 (doorway) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "口",
+        "explanation": "Three connected strokes enclose an empty square. The top and right edge are one turning stroke rather than two separate lines."
+      }
+    ],
+    "readingNotes": "Read 口 as kǒu in this guide. Compare 门口 (ménkǒu) and 人口 (rénkǒu) to practise the sound in complete words.",
+    "usageTitle": "Using 口 in words and sentences",
+    "usage": "口 can mean mouth or opening and can count family members. 门口 is a doorway; 三口人 describes a family of three.",
+    "writingTip": "Write the left side, the top-right turn, and then the bottom; keep the enclosure small and upright rather than round.",
+    "examples": [
+      {
+        "hanzi": "门口",
+        "pinyin": "ménkǒu",
+        "meaning": "doorway"
+      },
+      {
+        "hanzi": "人口",
+        "pinyin": "rénkǒu",
+        "meaning": "population"
+      },
+      {
+        "hanzi": "口语",
+        "pinyin": "kǒuyǔ",
+        "meaning": "spoken language"
+      },
+      {
+        "hanzi": "出口",
+        "pinyin": "chūkǒu",
+        "meaning": "exit"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "请在门口等我。",
+        "pinyin": "Qǐng zài ménkǒu děng wǒ.",
+        "meaning": "Please wait for me at the doorway."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我家有三口人。",
+        "pinyin": "Wǒ jiā yǒu sān kǒu rén.",
+        "meaning": "There are three people in my family."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我想提高自己的汉语口语。",
+        "pinyin": "Wǒ xiǎng tígāo zìjǐ de Hànyǔ kǒuyǔ.",
+        "meaning": "I want to improve my spoken Chinese."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "日",
+      "guidance": "口 has an empty interior, while 日 contains an extra horizontal."
+    },
+    "relatedCharacters": [
+      "日",
+      "目",
+      "四"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "口 (kǒu) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 口 (kǒu): Stroke Order, Meaning & Examples",
+      "description": "Write 口 (kǒu) in three strokes. Learn its mouth and opening senses, family counting with 三口人, and words such as 门口 and 口语."
+    }
+  },
+  {
+    "character": "手",
+    "pinyin": "shǒu",
+    "meaning": "hand",
+    "strokes": 4,
+    "radical": "手",
+    "traditional": "手",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 1 vocabulary includes 手 (shǒu)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "手 helps learners read and write hand. Start with 手机 (mobile phone) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "手",
+        "explanation": "A short slant and two horizontals are crossed by a central stroke ending in a hook. The hook points differently from the lower turn of 毛."
+      }
+    ],
+    "readingNotes": "Read 手 as shǒu in this guide. Compare 手机 (shǒujī) and 洗手 (xǐshǒu) to practise the sound in complete words.",
+    "usageTitle": "Using 手 in words and sentences",
+    "usage": "手 names a hand and appears in actions and devices. 手机 is a mobile phone, while 洗手 means wash one's hands.",
+    "writingTip": "Keep the upper slant short, space the horizontals evenly, and centre the final hooked stroke through the middle.",
+    "examples": [
+      {
+        "hanzi": "手机",
+        "pinyin": "shǒujī",
+        "meaning": "mobile phone"
+      },
+      {
+        "hanzi": "洗手",
+        "pinyin": "xǐshǒu",
+        "meaning": "wash hands"
+      },
+      {
+        "hanzi": "左手",
+        "pinyin": "zuǒshǒu",
+        "meaning": "left hand"
+      },
+      {
+        "hanzi": "右手",
+        "pinyin": "yòushǒu",
+        "meaning": "right hand"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "请先洗手。",
+        "pinyin": "Qǐng xiān xǐshǒu.",
+        "meaning": "Please wash your hands first."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我的手机在桌子上。",
+        "pinyin": "Wǒ de shǒujī zài zhuōzi shàng.",
+        "meaning": "My phone is on the table."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "吃饭以前，我们都要洗手。",
+        "pinyin": "Chī fàn yǐqián, wǒmen dōu yào xǐshǒu.",
+        "meaning": "Before eating, we all need to wash our hands."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "毛",
+      "guidance": "手 finishes with a central vertical hook, whereas 毛 has a hook turning toward the right."
+    },
+    "relatedCharacters": [
+      "足",
+      "耳",
+      "心"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "手 (shǒu) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 手 (shǒu): Stroke Order, Meaning & Examples",
+      "description": "Learn 手 (shǒu) stroke order, its central hook, and the difference from 毛. Practise 手机, 洗手, 左手, and 右手 in useful sentences."
+    }
+  },
+  {
+    "character": "足",
+    "pinyin": "zú",
+    "meaning": "foot; sufficient",
+    "strokes": 7,
+    "radical": "足",
+    "traditional": "足",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 6",
+        "evidenceKind": "word-family",
+        "note": "Local HSK 3.0 Level 6 vocabulary includes 足 (jù). This is word-family evidence, not a standalone level assignment for this character."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "足 helps learners read and write foot; sufficient. Start with 足球 (football) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "足",
+        "explanation": "A small 口 sits above a spreading lower form. The right-falling finish belongs to the lower part, not to the upper box."
+      }
+    ],
+    "readingNotes": "Read 足 as zú in this guide. Compare 足球 (zúqiú) and 足够 (zúgòu) to practise the sound in complete words.",
+    "usageTitle": "Using 足 in words and sentences",
+    "usage": "足 means foot in 足球 and sufficient in 足够. The compound distinguishes the body-part sense from the meaning enough.",
+    "writingTip": "Keep the upper box small and leave room for the lower strokes; finish with a broad right fall supporting the character.",
+    "examples": [
+      {
+        "hanzi": "足球",
+        "pinyin": "zúqiú",
+        "meaning": "football"
+      },
+      {
+        "hanzi": "足够",
+        "pinyin": "zúgòu",
+        "meaning": "enough"
+      },
+      {
+        "hanzi": "满足",
+        "pinyin": "mǎnzú",
+        "meaning": "satisfy"
+      },
+      {
+        "hanzi": "不足",
+        "pinyin": "bùzú",
+        "meaning": "insufficient"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我喜欢足球。",
+        "pinyin": "Wǒ xǐhuan zúqiú.",
+        "meaning": "I like football."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "这些钱足够了。",
+        "pinyin": "Zhèxiē qián zúgòu le.",
+        "meaning": "This money is enough."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "放学以后，他们一起去踢足球。",
+        "pinyin": "Fàngxué yǐhòu, tāmen yìqǐ qù tī zúqiú.",
+        "meaning": "After school, they go to play football together."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "走",
+      "guidance": "足 begins with 口, while 走 begins with 土 above a similar spreading lower form."
+    },
+    "relatedCharacters": [
+      "口",
+      "手",
+      "土"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "足 (zú) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 足 (zú): Stroke Order, Meaning & Examples",
+      "description": "Write 足 (zú) in seven strokes. Compare its upper 口 with 走 and distinguish the foot sense in 足球 from enough in 足够."
+    }
+  },
+  {
+    "character": "目",
+    "pinyin": "mù",
+    "meaning": "eye; item",
+    "strokes": 5,
+    "radical": "目",
+    "traditional": "目",
+    "structure": "Enclosure",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 3",
+        "evidenceKind": "word-family",
+        "note": "Local HSK 2.0 Level 3 vocabulary includes 节目 (jié mù). This is word-family evidence, not a standalone level assignment for this character."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "目 helps learners read and write eye; item. Start with 目的 (purpose) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "目",
+        "explanation": "A tall enclosure contains two horizontal lines, creating three stacked spaces. It has one more inner horizontal than 日."
+      }
+    ],
+    "readingNotes": "Read 目 as mù in this guide. Compare 目的 (mùdì) and 目录 (mùlù) to practise the sound in complete words.",
+    "usageTitle": "Using 目 in words and sentences",
+    "usage": "目 is the eye character, but everyday speech normally uses 眼睛 for eyes. It also appears in 目的, 目录 and 题目.",
+    "writingTip": "Make the enclosure tall and narrow, space its two inner horizontals evenly, and close the bottom after writing them.",
+    "examples": [
+      {
+        "hanzi": "目的",
+        "pinyin": "mùdì",
+        "meaning": "purpose"
+      },
+      {
+        "hanzi": "目录",
+        "pinyin": "mùlù",
+        "meaning": "contents"
+      },
+      {
+        "hanzi": "题目",
+        "pinyin": "tímù",
+        "meaning": "question; title"
+      },
+      {
+        "hanzi": "目光",
+        "pinyin": "mùguāng",
+        "meaning": "gaze"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这个题目很难。",
+        "pinyin": "Zhège tímù hěn nán.",
+        "meaning": "This question is difficult."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "请先看目录。",
+        "pinyin": "Qǐng xiān kàn mùlù.",
+        "meaning": "Please look at the contents first."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "你这次旅行的目的是什么？",
+        "pinyin": "Nǐ zhè cì lǚxíng de mùdì shì shénme?",
+        "meaning": "What is the purpose of your trip?"
+      }
+    ],
+    "confusableCharacter": {
+      "character": "日",
+      "guidance": "目 contains two inner horizontals, whereas 日 contains one."
+    },
+    "relatedCharacters": [
+      "日",
+      "口",
+      "耳"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "目 (mù) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 目 (mù): Stroke Order, Meaning & Examples",
+      "description": "Learn 目 (mù), the eye character, and compare its two inner lines with 日. Practise 目的, 目录, 题目, and 目光 with examples."
+    }
+  },
+  {
+    "character": "耳",
+    "pinyin": "ěr",
+    "meaning": "ear",
+    "strokes": 6,
+    "radical": "耳",
+    "traditional": "耳",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 3",
+        "evidenceKind": "word-family",
+        "note": "Local HSK 2.0 Level 3 vocabulary includes 耳朵 (ěr duo). This is word-family evidence, not a standalone level assignment for this character."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "耳 helps learners read and write ear. Start with 耳朵 (ear) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "耳",
+        "explanation": "A top horizontal covers two uprights and short inner lines. The right upright extends below the lower crossing line, so the outline is not a closed box."
+      }
+    ],
+    "readingNotes": "Read 耳 as ěr in this guide. Compare 耳朵 (ěrduo) and 耳机 (ěrjī) to practise the sound in complete words.",
+    "usageTitle": "Using 耳 in words and sentences",
+    "usage": "耳 appears in 耳朵 for ear and 耳机 for headphones. Use the complete word 耳朵 in ordinary conversation about ears.",
+    "writingTip": "Keep the inner horizontals short and let the right vertical extend below the lower crossing line, leaving clear interior spaces.",
+    "examples": [
+      {
+        "hanzi": "耳朵",
+        "pinyin": "ěrduo",
+        "meaning": "ear"
+      },
+      {
+        "hanzi": "耳机",
+        "pinyin": "ěrjī",
+        "meaning": "headphones"
+      },
+      {
+        "hanzi": "耳环",
+        "pinyin": "ěrhuán",
+        "meaning": "earring"
+      },
+      {
+        "hanzi": "木耳",
+        "pinyin": "mù'ěr",
+        "meaning": "wood ear mushroom"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我的耳朵很冷。",
+        "pinyin": "Wǒ de ěrduo hěn lěng.",
+        "meaning": "My ears are cold."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "她戴着耳机。",
+        "pinyin": "Tā dài zhe ěrjī.",
+        "meaning": "She is wearing headphones."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "请不要把耳机声音开得太大。",
+        "pinyin": "Qǐng bú yào bǎ ěrjī shēngyīn kāi de tài dà.",
+        "meaning": "Please do not turn the headphones up too loud."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "目",
+      "guidance": "耳 has an extended right vertical and does not form the closed box of 目."
+    },
+    "relatedCharacters": [
+      "目",
+      "手",
+      "口"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "耳 (ěr) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 耳 (ěr): Stroke Order, Meaning & Examples",
+      "description": "Write 耳 (ěr) in six strokes, keeping its extended right vertical clear. Learn 耳朵, 耳机, and related words without confusing 耳 with 目."
+    }
+  },
+  {
+    "character": "心",
+    "pinyin": "xīn",
+    "meaning": "heart; mind",
+    "strokes": 4,
+    "radical": "心",
+    "traditional": "心",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 3 vocabulary includes 心 (xīn)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "心 helps learners read and write heart; mind. Start with 开心 (happy) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "心",
+        "explanation": "A shallow curved hook is surrounded by three dots at different heights. The dots are separate marks, not a continuous upper line."
+      }
+    ],
+    "readingNotes": "Read 心 as xīn in this guide. Compare 开心 (kāixīn) and 小心 (xiǎoxīn) to practise the sound in complete words.",
+    "usageTitle": "Using 心 in words and sentences",
+    "usage": "心 builds words for feelings and attention. 开心 means happy, 小心 means be careful, and 关心 means care about.",
+    "writingTip": "Give the curved hook enough width and keep the three dots separate, placing them at different heights around the curve.",
+    "examples": [
+      {
+        "hanzi": "开心",
+        "pinyin": "kāixīn",
+        "meaning": "happy"
+      },
+      {
+        "hanzi": "小心",
+        "pinyin": "xiǎoxīn",
+        "meaning": "be careful"
+      },
+      {
+        "hanzi": "关心",
+        "pinyin": "guānxīn",
+        "meaning": "care about"
+      },
+      {
+        "hanzi": "中心",
+        "pinyin": "zhōngxīn",
+        "meaning": "centre"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我很开心。",
+        "pinyin": "Wǒ hěn kāixīn.",
+        "meaning": "I am happy."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "下雨了，小心路滑。",
+        "pinyin": "Xià yǔ le, xiǎoxīn lù huá.",
+        "meaning": "It is raining; be careful of the slippery road."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "老师关心每个学生的学习。",
+        "pinyin": "Lǎoshī guānxīn měi ge xuésheng de xuéxí.",
+        "meaning": "The teacher cares about every student's learning."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "必",
+      "guidance": "心 has separate dots; 必 adds a long crossing slant through the centre."
+    },
+    "relatedCharacters": [
+      "手",
+      "人",
+      "火"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "心 (xīn) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 心 (xīn): Stroke Order, Meaning & Examples",
+      "description": "Learn 心 (xīn) stroke order and its three separate dots. Practise 开心, 小心, 关心, and 中心, and compare the form with 必."
+    }
+  },
+  {
+    "character": "火",
+    "pinyin": "huǒ",
+    "meaning": "fire",
+    "strokes": 4,
+    "radical": "火",
+    "traditional": "火",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 4",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 4 vocabulary includes 火 (huǒ)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "火 helps learners read and write fire. Start with 火车 (train) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "火",
+        "explanation": "Two short upper side strokes flank a central pair of falling strokes. The lower strokes spread into a wider base than the upper marks."
+      }
+    ],
+    "readingNotes": "Read 火 as huǒ in this guide. Compare 火车 (huǒchē) and 火山 (huǒshān) to practise the sound in complete words.",
+    "usageTitle": "Using 火 in words and sentences",
+    "usage": "火 means fire and appears in 火车, 火山 and 火锅. These compounds name a train, volcano and hotpot rather than fire alone.",
+    "writingTip": "Keep the short upper strokes apart from the central falling pair, and let the lower part spread without adding a horizontal.",
+    "examples": [
+      {
+        "hanzi": "火车",
+        "pinyin": "huǒchē",
+        "meaning": "train"
+      },
+      {
+        "hanzi": "火山",
+        "pinyin": "huǒshān",
+        "meaning": "volcano"
+      },
+      {
+        "hanzi": "火锅",
+        "pinyin": "huǒguō",
+        "meaning": "hotpot"
+      },
+      {
+        "hanzi": "大火",
+        "pinyin": "dàhuǒ",
+        "meaning": "large fire"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我坐火车去北京。",
+        "pinyin": "Wǒ zuò huǒchē qù Běijīng.",
+        "meaning": "I am going to Beijing by train."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我们晚上吃火锅。",
+        "pinyin": "Wǒmen wǎnshang chī huǒguō.",
+        "meaning": "We are having hotpot tonight."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "这座火山附近有很多游客。",
+        "pinyin": "Zhè zuò huǒshān fùjìn yǒu hěn duō yóukè.",
+        "meaning": "There are many visitors near this volcano."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "人",
+      "guidance": "火 adds two short upper strokes, whereas 人 consists of only two falling strokes."
+    },
+    "relatedCharacters": [
+      "人",
+      "水",
+      "山"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "火 (huǒ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 火 (huǒ): Stroke Order, Meaning & Examples",
+      "description": "Write 火 (huǒ), keeping its upper marks distinct from 人. Explore the meanings of 火车, 火山, 火锅, and 大火 with stroke diagrams."
+    }
+  },
+  {
+    "character": "山",
+    "pinyin": "shān",
+    "meaning": "mountain",
+    "strokes": 3,
+    "radical": "山",
+    "traditional": "山",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 1 vocabulary includes 山 (shān)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "山 helps learners read and write mountain. Start with 爬山 (climb a mountain) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "山",
+        "explanation": "A tall central upright rises above two side peaks joined along the bottom. The outline has one level of peaks, unlike the stacked form of 出."
+      }
+    ],
+    "readingNotes": "Read 山 as shān in this guide. Compare 爬山 (páshān) and 山上 (shānshang) to practise the sound in complete words.",
+    "usageTitle": "Using 山 in words and sentences",
+    "usage": "山 names mountains and appears in activities and scenery. 爬山 means climb a mountain and 山水 refers to landscape.",
+    "writingTip": "Start with the central vertical, then form the lower-left turn and right side; keep the central peak taller than both sides.",
+    "examples": [
+      {
+        "hanzi": "爬山",
+        "pinyin": "páshān",
+        "meaning": "climb a mountain"
+      },
+      {
+        "hanzi": "山上",
+        "pinyin": "shānshang",
+        "meaning": "on the mountain"
+      },
+      {
+        "hanzi": "火山",
+        "pinyin": "huǒshān",
+        "meaning": "volcano"
+      },
+      {
+        "hanzi": "山水",
+        "pinyin": "shānshuǐ",
+        "meaning": "landscape"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "山上有树。",
+        "pinyin": "Shānshang yǒu shù.",
+        "meaning": "There are trees on the mountain."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "周末我们去爬山。",
+        "pinyin": "Zhōumò wǒmen qù páshān.",
+        "meaning": "We are going mountain climbing this weekend."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "从山上可以看见整个城市。",
+        "pinyin": "Cóng shānshang kěyǐ kànjiàn zhěng ge chéngshì.",
+        "meaning": "You can see the whole city from the mountain."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "出",
+      "guidance": "山 has one set of peaks, while 出 stacks two connected peak-like shapes."
+    },
+    "relatedCharacters": [
+      "火",
+      "水",
+      "田"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "山 (shān) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 山 (shān): Stroke Order, Meaning & Examples",
+      "description": "Learn 山 (shān) in three strokes and compare it with 出. Practise 爬山, 山上, 火山, and 山水 using mountain-related sentences."
+    }
+  },
+  {
+    "character": "土",
+    "pinyin": "tǔ",
+    "meaning": "soil; earth",
+    "strokes": 3,
+    "radical": "土",
+    "traditional": "土",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 3 vocabulary includes 土 (tǔ)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "土 helps learners read and write soil; earth. Start with 土地 (land) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "土",
+        "explanation": "A short upper horizontal crosses a vertical that meets a longer bottom horizontal. The relative line lengths distinguish 土 from 士."
+      }
+    ],
+    "readingNotes": "Read 土 as tǔ in this guide. Compare 土地 (tǔdì) and 泥土 (nítǔ) to practise the sound in complete words.",
+    "usageTitle": "Using 土 in words and sentences",
+    "usage": "土 refers to soil or earth in 土地 and 泥土. 土豆 means potato, so learn the whole compound rather than translating soil literally.",
+    "writingTip": "Draw the short upper horizontal first; make the bottom line longer and stop the vertical at the base instead of extending below it.",
+    "examples": [
+      {
+        "hanzi": "土地",
+        "pinyin": "tǔdì",
+        "meaning": "land"
+      },
+      {
+        "hanzi": "泥土",
+        "pinyin": "nítǔ",
+        "meaning": "soil"
+      },
+      {
+        "hanzi": "土豆",
+        "pinyin": "tǔdòu",
+        "meaning": "potato"
+      },
+      {
+        "hanzi": "本土",
+        "pinyin": "běntǔ",
+        "meaning": "local; native"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我喜欢吃土豆。",
+        "pinyin": "Wǒ xǐhuan chī tǔdòu.",
+        "meaning": "I like eating potatoes."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "花需要水和土。",
+        "pinyin": "Huā xūyào shuǐ hé tǔ.",
+        "meaning": "Flowers need water and soil."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "雨后，花园里的泥土很湿。",
+        "pinyin": "Yǔ hòu, huāyuán lǐ de nítǔ hěn shī.",
+        "meaning": "After the rain, the garden soil is wet."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "士",
+      "guidance": "土 has a longer bottom line, whereas 士 has a longer top line."
+    },
+    "relatedCharacters": [
+      "十",
+      "田",
+      "木"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "土 (tǔ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 土 (tǔ): Stroke Order, Meaning & Examples",
+      "description": "Write 土 (tǔ) with a longer bottom line than 士. Learn soil and land vocabulary, including 泥土 and 土地, plus the compound 土豆."
+    }
+  },
+  {
+    "character": "木",
+    "pinyin": "mù",
+    "meaning": "wood; tree component",
+    "strokes": 4,
+    "radical": "木",
+    "traditional": "木",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 5",
+        "evidenceKind": "word-family",
+        "note": "Local HSK 2.0 Level 5 vocabulary includes 木头 (mù tou). This is word-family evidence, not a standalone level assignment for this character."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "木 helps learners read and write wood; tree component. Start with 木头 (wood) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "木",
+        "explanation": "A central cross is accompanied by left- and right-falling strokes below it. There is no extra short horizontal near the base as in 本."
+      }
+    ],
+    "readingNotes": "Read 木 as mù in this guide. Compare 木头 (mùtou) and 木门 (mùmén) to practise the sound in complete words.",
+    "usageTitle": "Using 木 in words and sentences",
+    "usage": "木 commonly means wood in compounds. 木头 is wood, 木门 is a wooden door, and 树木 means trees rather than timber alone.",
+    "writingTip": "Place the crossbar above the centre and keep the vertical straight while the two lower strokes spread out to either side.",
+    "examples": [
+      {
+        "hanzi": "木头",
+        "pinyin": "mùtou",
+        "meaning": "wood"
+      },
+      {
+        "hanzi": "木门",
+        "pinyin": "mùmén",
+        "meaning": "wooden door"
+      },
+      {
+        "hanzi": "树木",
+        "pinyin": "shùmù",
+        "meaning": "trees"
+      },
+      {
+        "hanzi": "木耳",
+        "pinyin": "mù'ěr",
+        "meaning": "wood ear mushroom"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这是一扇木门。",
+        "pinyin": "Zhè shì yí shàn mùmén.",
+        "meaning": "This is a wooden door."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "桌子是木头做的。",
+        "pinyin": "Zhuōzi shì mùtou zuò de.",
+        "meaning": "The table is made of wood."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我们应该保护森林里的树木。",
+        "pinyin": "Wǒmen yīnggāi bǎohù sēnlín lǐ de shùmù.",
+        "meaning": "We should protect forest trees."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "本",
+      "guidance": "木 has no extra short line near its base; 本 includes that line."
+    },
+    "relatedCharacters": [
+      "米",
+      "土",
+      "山"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "木 (mù) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 木 (mù): Stroke Order, Meaning & Examples",
+      "description": "Learn 木 (mù) stroke order and compare 木 with 本. Practise words for wood, wooden objects, and trees, including 木头 and 树木."
+    }
+  },
+  {
+    "character": "田",
+    "pinyin": "tián",
+    "meaning": "field; farmland",
+    "strokes": 5,
+    "radical": "田",
+    "traditional": "田",
+    "structure": "Enclosure",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 6",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 6 vocabulary includes 田 (tián)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "田 helps learners read and write field; farmland. Start with 田地 (fields) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "田",
+        "explanation": "An outer square encloses a horizontal and vertical cross. The centre line stays inside the square rather than projecting above it as in 由."
+      }
+    ],
+    "readingNotes": "Read 田 as tián in this guide. Compare 田地 (tiándì) and 农田 (nóngtián) to practise the sound in complete words.",
+    "usageTitle": "Using 田 in words and sentences",
+    "usage": "田 refers to cultivated fields in 农田 and 田地. 田字格 names a handwriting layout divided into four spaces like 田.",
+    "writingTip": "Leave room inside the outer square for a centred cross, keep all four spaces balanced, and close the bottom border last.",
+    "examples": [
+      {
+        "hanzi": "田地",
+        "pinyin": "tiándì",
+        "meaning": "fields"
+      },
+      {
+        "hanzi": "农田",
+        "pinyin": "nóngtián",
+        "meaning": "farmland"
+      },
+      {
+        "hanzi": "水田",
+        "pinyin": "shuǐtián",
+        "meaning": "paddy field"
+      },
+      {
+        "hanzi": "田字格",
+        "pinyin": "tiánzìgé",
+        "meaning": "cross-guided writing grid"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "农田里有水。",
+        "pinyin": "Nóngtián lǐ yǒu shuǐ.",
+        "meaning": "There is water in the farmland."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我们用田字格写汉字。",
+        "pinyin": "Wǒmen yòng tiánzìgé xiě Hànzì.",
+        "meaning": "We use cross-guided grids to write Chinese characters."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "这片田地每年都种水稻。",
+        "pinyin": "Zhè piàn tiándì měi nián dōu zhòng shuǐdào.",
+        "meaning": "Rice is grown in this field every year."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "由",
+      "guidance": "田 keeps its central vertical inside the box, while 由 extends it above the top."
+    },
+    "relatedCharacters": [
+      "日",
+      "口",
+      "电"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "田 (tián) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 田 (tián): Stroke Order, Meaning & Examples",
+      "description": "Write 田 (tián), balance its four inner spaces, and compare it with 由. Learn field vocabulary and why handwriting grids are called 田字格."
+    }
+  },
+  {
+    "character": "力",
+    "pinyin": "lì",
+    "meaning": "strength; effort",
+    "strokes": 2,
+    "radical": "力",
+    "traditional": "力",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 3 vocabulary includes 力 (lì)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "力 helps learners read and write strength; effort. Start with 力气 (physical strength) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "力",
+        "explanation": "A turning hooked stroke is crossed by a left-falling stroke whose upper end rises above the horizontal. That crossing differs from 刀."
+      }
+    ],
+    "readingNotes": "Read 力 as lì in this guide. Compare 力气 (lìqi) and 努力 (nǔlì) to practise the sound in complete words.",
+    "usageTitle": "Using 力 in words and sentences",
+    "usage": "力 describes strength or effort in compounds. 努力 means work hard, 能力 means ability, and 力气 is physical strength.",
+    "writingTip": "Form the turn and hook first, then start the falling stroke above the horizontal so that its crossing remains clear.",
+    "examples": [
+      {
+        "hanzi": "力气",
+        "pinyin": "lìqi",
+        "meaning": "physical strength"
+      },
+      {
+        "hanzi": "努力",
+        "pinyin": "nǔlì",
+        "meaning": "work hard"
+      },
+      {
+        "hanzi": "能力",
+        "pinyin": "nénglì",
+        "meaning": "ability"
+      },
+      {
+        "hanzi": "电力",
+        "pinyin": "diànlì",
+        "meaning": "electric power"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "他很有力气。",
+        "pinyin": "Tā hěn yǒu lìqi.",
+        "meaning": "He is strong."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我要努力学习。",
+        "pinyin": "Wǒ yào nǔlì xuéxí.",
+        "meaning": "I want to study hard."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "练习可以提高你的表达能力。",
+        "pinyin": "Liànxí kěyǐ tígāo nǐ de biǎodá nénglì.",
+        "meaning": "Practice can improve your ability to express yourself."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "刀",
+      "guidance": "力 has a falling stroke starting above the horizontal, whereas 刀 keeps its inner fall below the top."
+    },
+    "relatedCharacters": [
+      "手",
+      "人",
+      "土"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "力 (lì) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 力 (lì): Stroke Order, Meaning & Examples",
+      "description": "Learn 力 (lì) in two strokes and compare its crossing with 刀. Distinguish strength in 力气 from effort in 努力 and ability in 能力."
+    }
+  },
+  {
+    "character": "女",
+    "pinyin": "nǚ",
+    "meaning": "female; woman",
+    "strokes": 3,
+    "radical": "女",
+    "traditional": "女",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 1 vocabulary includes 女 (nǚ)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "女 helps learners read and write female; woman. Start with 女人 (woman) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "女",
+        "explanation": "Three crossing strokes form an open lower shape. A final horizontal balances the curved strokes; there is no enclosed pair of dots as in 母."
+      }
+    ],
+    "readingNotes": "Read 女 as nǚ in this guide. Compare 女人 (nǚrén) and 女儿 (nǚ'ér) to practise the sound in complete words.",
+    "usageTitle": "Using 女 in words and sentences",
+    "usage": "女 appears in words for women, girls and daughters. 女儿 means daughter and 女生 means a female student; the second character changes the role.",
+    "writingTip": "Keep the crossing strokes open and finish with a horizontal that balances the lower part, avoiding a closed upper loop.",
+    "examples": [
+      {
+        "hanzi": "女人",
+        "pinyin": "nǚrén",
+        "meaning": "woman"
+      },
+      {
+        "hanzi": "女儿",
+        "pinyin": "nǚ'ér",
+        "meaning": "daughter"
+      },
+      {
+        "hanzi": "女生",
+        "pinyin": "nǚshēng",
+        "meaning": "female student"
+      },
+      {
+        "hanzi": "女孩",
+        "pinyin": "nǚhái",
+        "meaning": "girl"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "她是我的女儿。",
+        "pinyin": "Tā shì wǒ de nǚ'ér.",
+        "meaning": "She is my daughter."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "那个女孩在看书。",
+        "pinyin": "Nàge nǚhái zài kàn shū.",
+        "meaning": "That girl is reading."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我们班有十五个女生。",
+        "pinyin": "Wǒmen bān yǒu shíwǔ ge nǚshēng.",
+        "meaning": "There are fifteen female students in our class."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "母",
+      "guidance": "女 has neither the enclosing shape nor the two inner dots of 母."
+    },
+    "relatedCharacters": [
+      "母",
+      "子",
+      "她"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "女 (nǚ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 女 (nǚ): Stroke Order, Meaning & Examples",
+      "description": "Write 女 (nǚ) in three strokes. Compare 女 with 母 and learn the different roles expressed by 女儿, 女生, 女孩, and 女人."
+    }
+  },
+  {
+    "character": "子",
+    "pinyin": "zǐ",
+    "meaning": "child; noun suffix",
+    "strokes": 3,
+    "radical": "子",
+    "traditional": "子",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 1 vocabulary includes 子 (zǐ)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "子 helps learners read and write child; noun suffix. Start with 儿子 (son) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "子",
+        "explanation": "An upper turn leads into a central hooked stroke crossed by the last horizontal. The final horizontal is absent in the similar character 了."
+      }
+    ],
+    "readingNotes": "子 is zǐ as an independent character and in 子女 (zǐnǚ). In 儿子 (érzi), 孩子 (háizi), and 桌子 (zhuōzi), the noun suffix is normally unstressed neutral zi.",
+    "usageTitle": "Using 子 in words and sentences",
+    "usage": "子 is zǐ in 子女 but neutral zi in noun suffixes such as 儿子, 桌子 and 孩子. The suffix does not always mean child.",
+    "writingTip": "Keep the hook centred under the upper turn, then extend the final horizontal on both sides without adding an inner dot.",
+    "examples": [
+      {
+        "hanzi": "儿子",
+        "pinyin": "érzi",
+        "meaning": "son"
+      },
+      {
+        "hanzi": "孩子",
+        "pinyin": "háizi",
+        "meaning": "child"
+      },
+      {
+        "hanzi": "桌子",
+        "pinyin": "zhuōzi",
+        "meaning": "table"
+      },
+      {
+        "hanzi": "子女",
+        "pinyin": "zǐnǚ",
+        "meaning": "children"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这是我的儿子。",
+        "pinyin": "Zhè shì wǒ de érzi.",
+        "meaning": "This is my son."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "孩子们在学校。",
+        "pinyin": "Háizimen zài xuéxiào.",
+        "meaning": "The children are at school."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "请把书放在桌子上。",
+        "pinyin": "Qǐng bǎ shū fàng zài zhuōzi shàng.",
+        "meaning": "Please put the book on the table."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "了",
+      "guidance": "子 has a final horizontal across the lower part; 了 does not."
+    },
+    "relatedCharacters": [
+      "了",
+      "女",
+      "母"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "子 (zǐ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 子 (zǐ): Stroke Order, Meaning & Examples",
+      "description": "Learn 子 stroke order and when to read it zǐ or neutral zi. Compare 子 with 了 and practise 子女, 孩子, 儿子, and 桌子."
+    }
+  },
+  {
+    "character": "父",
+    "pinyin": "fù",
+    "meaning": "father",
+    "strokes": 4,
+    "radical": "父",
+    "traditional": "父",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 4",
+        "evidenceKind": "word-family",
+        "note": "Local HSK 2.0 Level 4 vocabulary includes 父亲 (fù qīn). This is word-family evidence, not a standalone level assignment for this character."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "父 helps learners read and write father. Start with 父亲 (father) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "父",
+        "explanation": "Two short upper strokes sit above a crossing lower pair. The upper pair is separate, unlike the dot-and-horizontal top of 文."
+      }
+    ],
+    "readingNotes": "Read 父 as fù in this guide. Compare 父亲 (fùqīn) and 父母 (fùmǔ) to practise the sound in complete words.",
+    "usageTitle": "Using 父 in words and sentences",
+    "usage": "父 is used in formal family words such as 父亲 and 父母. Everyday conversation often uses 爸爸 for dad; 父母 means both parents.",
+    "writingTip": "Keep the two upper strokes short and apart, then broaden the lower crossing strokes without joining the top into a roof.",
+    "examples": [
+      {
+        "hanzi": "父亲",
+        "pinyin": "fùqīn",
+        "meaning": "father"
+      },
+      {
+        "hanzi": "父母",
+        "pinyin": "fùmǔ",
+        "meaning": "parents"
+      },
+      {
+        "hanzi": "祖父",
+        "pinyin": "zǔfù",
+        "meaning": "paternal grandfather"
+      },
+      {
+        "hanzi": "父子",
+        "pinyin": "fùzǐ",
+        "meaning": "father and son"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这是我的父亲。",
+        "pinyin": "Zhè shì wǒ de fùqīn.",
+        "meaning": "This is my father."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我和父母住在一起。",
+        "pinyin": "Wǒ hé fùmǔ zhù zài yìqǐ.",
+        "meaning": "I live with my parents."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "周末，我常常给父亲打电话。",
+        "pinyin": "Zhōumò, wǒ chángcháng gěi fùqīn dǎ diànhuà.",
+        "meaning": "I often call my father on weekends."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "文",
+      "guidance": "父 has two separate upper strokes, while 文 has a dot and horizontal above its lower crossing."
+    },
+    "relatedCharacters": [
+      "母",
+      "子",
+      "人"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "父 (fù) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 父 (fù): Stroke Order, Meaning & Examples",
+      "description": "Write 父 (fù) in four strokes and compare its upper marks with 文. Learn 父亲, 父母, 祖父, and 父子 in family contexts."
+    }
+  },
+  {
+    "character": "母",
+    "pinyin": "mǔ",
+    "meaning": "mother",
+    "strokes": 5,
+    "radical": "母",
+    "traditional": "母",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 6",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 6 vocabulary includes 母 (mǔ)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "母 helps learners read and write mother. Start with 母亲 (mother) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "母",
+        "explanation": "An enclosing form is crossed by a horizontal and contains two dots. Its interior and outline differ from the open crossing strokes of 女."
+      }
+    ],
+    "readingNotes": "Read 母 as mǔ in this guide. Compare 母亲 (mǔqīn) and 父母 (fùmǔ) to practise the sound in complete words.",
+    "usageTitle": "Using 母 in words and sentences",
+    "usage": "母 occurs in 母亲, 父母 and 母语. 母亲 means mother and 母语 means native language, not a language spoken only by mothers.",
+    "writingTip": "Leave enough space within the outer turns for both dots, and draw the central horizontal clearly across the enclosing form.",
+    "examples": [
+      {
+        "hanzi": "母亲",
+        "pinyin": "mǔqīn",
+        "meaning": "mother"
+      },
+      {
+        "hanzi": "父母",
+        "pinyin": "fùmǔ",
+        "meaning": "parents"
+      },
+      {
+        "hanzi": "母语",
+        "pinyin": "mǔyǔ",
+        "meaning": "native language"
+      },
+      {
+        "hanzi": "祖母",
+        "pinyin": "zǔmǔ",
+        "meaning": "paternal grandmother"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "她是我的母亲。",
+        "pinyin": "Tā shì wǒ de mǔqīn.",
+        "meaning": "She is my mother."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "汉语是他的母语。",
+        "pinyin": "Hànyǔ shì tā de mǔyǔ.",
+        "meaning": "Chinese is his native language."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我希望父母每天都健康快乐。",
+        "pinyin": "Wǒ xīwàng fùmǔ měitiān dōu jiànkāng kuàilè.",
+        "meaning": "I hope my parents are healthy and happy every day."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "每",
+      "guidance": "母 is the lower component of 每, but has no additional strokes above it."
+    },
+    "relatedCharacters": [
+      "父",
+      "女",
+      "子"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "母 (mǔ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 母 (mǔ): Stroke Order, Meaning & Examples",
+      "description": "Learn 母 (mǔ) stroke order, preserving both inner dots. Practise 母亲, 父母, 祖母, and the extended meaning in 母语."
+    }
+  },
+  {
+    "character": "王",
+    "pinyin": "wáng",
+    "meaning": "king; surname Wang",
+    "strokes": 4,
+    "radical": "王",
+    "traditional": "王",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 4",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 4 vocabulary includes 王 (wáng)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "王 helps learners read and write king; surname Wang. Start with 国王 (king) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "王",
+        "explanation": "Three horizontals are joined by a central vertical. The bottom horizontal is broad, and there is no separate lower-right dot."
+      }
+    ],
+    "readingNotes": "Use wáng for king and the surname Wang. Capitalise the surname as Wáng in Pinyin, as in Wáng lǎoshī; keep the rising second tone in both uses.",
+    "usageTitle": "Using 王 in words and sentences",
+    "usage": "王 means king in 国王 and is also a surname. Capitalise Wáng for a person's name; 王老师 is Teacher Wang.",
+    "writingTip": "Space the three horizontals evenly, join them with a straight central vertical, and finish with a broad base without a dot.",
+    "examples": [
+      {
+        "hanzi": "国王",
+        "pinyin": "guówáng",
+        "meaning": "king"
+      },
+      {
+        "hanzi": "王子",
+        "pinyin": "wángzǐ",
+        "meaning": "prince"
+      },
+      {
+        "hanzi": "王后",
+        "pinyin": "wánghòu",
+        "meaning": "queen"
+      },
+      {
+        "hanzi": "王老师",
+        "pinyin": "Wáng lǎoshī",
+        "meaning": "Teacher Wang"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "他姓王。",
+        "pinyin": "Tā xìng Wáng.",
+        "meaning": "His surname is Wang."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "王老师教我们汉语。",
+        "pinyin": "Wáng lǎoshī jiāo wǒmen Hànyǔ.",
+        "meaning": "Teacher Wang teaches us Chinese."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "这个故事里的国王很善良。",
+        "pinyin": "Zhège gùshi lǐ de guówáng hěn shànliáng.",
+        "meaning": "The king in this story is kind."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "玉",
+      "guidance": "王 has no lower-right dot; 玉 adds one and means jade."
+    },
+    "relatedCharacters": [
+      "玉",
+      "国",
+      "金"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "王 (wáng) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 王 (wáng): Stroke Order, Meaning & Examples",
+      "description": "Write 王 (wáng) and distinguish it from 玉. Learn the king sense in 国王 and how the surname Wáng is used in 王老师."
+    }
+  },
+  {
+    "character": "玉",
+    "pinyin": "yù",
+    "meaning": "jade",
+    "strokes": 5,
+    "radical": "玉",
+    "traditional": "玉",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 4",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 4 vocabulary includes 玉 (yù)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "玉 helps learners read and write jade. Start with 玉米 (corn) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "玉",
+        "explanation": "The main body resembles 王, with a separate dot beside its lower-right part. The dot is outside the central vertical, not an inner crossbar."
+      }
+    ],
+    "readingNotes": "Read 玉 as yù in this guide. Compare 玉米 (yùmǐ) and 玉石 (yùshí) to practise the sound in complete words.",
+    "usageTitle": "Using 玉 in words and sentences",
+    "usage": "玉 names jade and appears in jewellery vocabulary. 玉米 means corn, a food word whose meaning is not simply jade.",
+    "writingTip": "Build the three horizontals and the central vertical, then place the lower-right dot separately from the bottom line.",
+    "examples": [
+      {
+        "hanzi": "玉米",
+        "pinyin": "yùmǐ",
+        "meaning": "corn"
+      },
+      {
+        "hanzi": "玉石",
+        "pinyin": "yùshí",
+        "meaning": "jade stone"
+      },
+      {
+        "hanzi": "玉器",
+        "pinyin": "yùqì",
+        "meaning": "jade object"
+      },
+      {
+        "hanzi": "白玉",
+        "pinyin": "báiyù",
+        "meaning": "white jade"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我喜欢吃玉米。",
+        "pinyin": "Wǒ xǐhuan chī yùmǐ.",
+        "meaning": "I like eating corn."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "这块玉石很漂亮。",
+        "pinyin": "Zhè kuài yùshí hěn piàoliang.",
+        "meaning": "This piece of jade is beautiful."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "博物馆里有很多古代玉器。",
+        "pinyin": "Bówùguǎn lǐ yǒu hěn duō gǔdài yùqì.",
+        "meaning": "There are many ancient jade objects in the museum."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "王",
+      "guidance": "玉 has a lower-right dot, whereas 王 does not; that dot distinguishes jade from king."
+    },
+    "relatedCharacters": [
+      "王",
+      "白",
+      "米"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "玉 (yù) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 玉 (yù): Stroke Order, Meaning & Examples",
+      "description": "Learn 玉 (yù) in five strokes and distinguish jade from 王 by its dot. Practise 玉石, 玉器, 白玉, and the food word 玉米."
+    }
+  },
+  {
+    "character": "白",
+    "pinyin": "bái",
+    "meaning": "white; clear",
+    "strokes": 5,
+    "radical": "白",
+    "traditional": "白",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 2",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 2 vocabulary includes 白 (bái)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "白 helps learners read and write white; clear. Start with 白色 (white) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "白",
+        "explanation": "A short slant rises above a box containing one inner horizontal. Unlike 百, there is no separate horizontal cap above that slant."
+      }
+    ],
+    "readingNotes": "Read 白 as bái in this guide. Compare 白色 (báisè) and 白天 (báitiān) to practise the sound in complete words.",
+    "usageTitle": "Using 白 in words and sentences",
+    "usage": "白 describes white in 白色 and 白纸. 白天 means daytime, while 明白 means understand; whole words carry different senses.",
+    "writingTip": "Keep the short upper slant visible and the inner horizontal separate from the box edges, leaving open space above and below it.",
+    "examples": [
+      {
+        "hanzi": "白色",
+        "pinyin": "báisè",
+        "meaning": "white"
+      },
+      {
+        "hanzi": "白天",
+        "pinyin": "báitiān",
+        "meaning": "daytime"
+      },
+      {
+        "hanzi": "明白",
+        "pinyin": "míngbai",
+        "meaning": "understand"
+      },
+      {
+        "hanzi": "白纸",
+        "pinyin": "báizhǐ",
+        "meaning": "white paper"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这张纸是白色的。",
+        "pinyin": "Zhè zhāng zhǐ shì báisè de.",
+        "meaning": "This paper is white."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我明白了。",
+        "pinyin": "Wǒ míngbai le.",
+        "meaning": "I understand now."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "他白天工作，晚上学习。",
+        "pinyin": "Tā báitiān gōngzuò, wǎnshang xuéxí.",
+        "meaning": "He works during the day and studies at night."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "百",
+      "guidance": "白 starts with a short slant; 百 has an additional horizontal cap above a similar lower box."
+    },
+    "relatedCharacters": [
+      "百",
+      "日",
+      "红"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "白 (bái) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 白 (bái): Stroke Order, Meaning & Examples",
+      "description": "Write 白 (bái) and compare it with 百. Learn white in 白色 and 白纸, daytime in 白天, and understanding in 明白."
+    }
+  },
+  {
+    "character": "红",
+    "pinyin": "hóng",
+    "meaning": "red",
+    "strokes": 6,
+    "radical": "纟",
+    "traditional": "紅",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 2",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 2 vocabulary includes 红 (hóng)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "红 helps learners read and write red. Start with 红色 (red) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "红",
+        "explanation": "The narrow silk radical 纟 stands to the left of 工. The two parts remain separated, and 工 keeps its two horizontals and central vertical."
+      }
+    ],
+    "readingNotes": "Read 红 as hóng in this guide. Compare 红色 (hóngsè) and 红灯 (hóngdēng) to practise the sound in complete words.",
+    "usageTitle": "Using 红 in words and sentences",
+    "usage": "红 describes red objects and signals. 红灯 is a red light, but 红茶 is called black tea in English rather than red tea.",
+    "writingTip": "Keep the silk radical narrow on the left and give 工 a clear upright centre, leaving a small gap between the two components.",
+    "examples": [
+      {
+        "hanzi": "红色",
+        "pinyin": "hóngsè",
+        "meaning": "red"
+      },
+      {
+        "hanzi": "红灯",
+        "pinyin": "hóngdēng",
+        "meaning": "red light"
+      },
+      {
+        "hanzi": "红花",
+        "pinyin": "hónghuā",
+        "meaning": "red flower"
+      },
+      {
+        "hanzi": "红茶",
+        "pinyin": "hóngchá",
+        "meaning": "black tea"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这朵花是红色的。",
+        "pinyin": "Zhè duǒ huā shì hóngsè de.",
+        "meaning": "This flower is red."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "红灯亮了，请停下。",
+        "pinyin": "Hóngdēng liàng le, qǐng tíng xià.",
+        "meaning": "The red light is on; please stop."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我想喝一杯不加糖的红茶。",
+        "pinyin": "Wǒ xiǎng hē yì bēi bù jiā táng de hóngchá.",
+        "meaning": "I would like black tea without sugar."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "江",
+      "guidance": "红 has 纟 on the left, whereas 江 has 氵; both have 工 on the right."
+    },
+    "relatedCharacters": [
+      "绿",
+      "蓝",
+      "白"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "红 (hóng) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 红 (hóng): Stroke Order, Meaning & Examples",
+      "description": "Learn 红 (hóng) with 纟 beside 工. Practise red objects and traffic lights, and understand why 红茶 is called black tea in English."
+    }
+  },
+  {
+    "character": "蓝",
+    "pinyin": "lán",
+    "meaning": "blue",
+    "strokes": 13,
+    "radical": "艹",
+    "traditional": "藍",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 3 vocabulary includes 蓝 (lán)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "蓝 helps learners read and write blue. Start with 蓝色 (blue) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "蓝",
+        "explanation": "The grass radical 艹 spans the top of 监. The lower component ends in a broad 皿 base with several small spaces above it."
+      }
+    ],
+    "readingNotes": "Read 蓝 as lán in this guide. Compare 蓝色 (lánsè) and 蓝天 (lántiān) to practise the sound in complete words.",
+    "usageTitle": "Using 蓝 in words and sentences",
+    "usage": "蓝 is the modern colour word in 蓝色 and 蓝天. 蓝图 can mean blueprint or plan; 篮球 uses a different character.",
+    "writingTip": "Keep 艹 shallow, leave enough height for 监, and separate the short strokes above the broad 皿 base.",
+    "examples": [
+      {
+        "hanzi": "蓝色",
+        "pinyin": "lánsè",
+        "meaning": "blue"
+      },
+      {
+        "hanzi": "蓝天",
+        "pinyin": "lántiān",
+        "meaning": "blue sky"
+      },
+      {
+        "hanzi": "蓝海",
+        "pinyin": "lánhǎi",
+        "meaning": "blue sea"
+      },
+      {
+        "hanzi": "蓝图",
+        "pinyin": "lántú",
+        "meaning": "blueprint"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "天空是蓝色的。",
+        "pinyin": "Tiānkōng shì lánsè de.",
+        "meaning": "The sky is blue."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "今天可以看见蓝天。",
+        "pinyin": "Jīntiān kěyǐ kànjiàn lántiān.",
+        "meaning": "We can see blue sky today."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "她穿着蓝色的衣服去学校。",
+        "pinyin": "Tā chuān zhe lánsè de yīfu qù xuéxiào.",
+        "meaning": "She is wearing blue clothes to school."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "篮",
+      "guidance": "蓝 has the grass radical 艹, while 篮 has the bamboo radical ⺮ above a similar lower part."
+    },
+    "relatedCharacters": [
+      "绿",
+      "红",
+      "草"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "蓝 (lán) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 蓝 (lán): Stroke Order, Meaning & Examples",
+      "description": "Write 蓝 (lán), with 艹 above 监, and distinguish it from 篮. Practise blue in 蓝色 and 蓝天, plus the extended meaning of 蓝图."
+    }
+  },
+  {
+    "character": "绿",
+    "pinyin": "lǜ",
+    "meaning": "green",
+    "strokes": 11,
+    "radical": "纟",
+    "traditional": "綠",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 3 vocabulary includes 绿 (lǜ)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "绿 helps learners read and write green. Start with 绿色 (green) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "绿",
+        "explanation": "The narrow left radical 纟 sits beside 录. The right component has a compact upper form and several separated lower strokes."
+      }
+    ],
+    "readingNotes": "The common colour reading is lǜ, with ü and a falling fourth tone, as in 绿色 (lǜsè). The less common lù reading occurs in fixed words such as 绿林 (lùlín).",
+    "usageTitle": "Using 绿 in words and sentences",
+    "usage": "绿 is lǜ in everyday colour words such as 绿色 and 绿茶. A less common lù reading occurs in fixed expressions; this guide teaches the colour sense.",
+    "writingTip": "Keep 纟 narrow and separate it from 录; leave the lower strokes on the right apart rather than compressing them into a block.",
+    "examples": [
+      {
+        "hanzi": "绿色",
+        "pinyin": "lǜsè",
+        "meaning": "green"
+      },
+      {
+        "hanzi": "绿茶",
+        "pinyin": "lǜchá",
+        "meaning": "green tea"
+      },
+      {
+        "hanzi": "绿灯",
+        "pinyin": "lǜdēng",
+        "meaning": "green light"
+      },
+      {
+        "hanzi": "绿叶",
+        "pinyin": "lǜyè",
+        "meaning": "green leaves"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "叶子是绿色的。",
+        "pinyin": "Yèzi shì lǜsè de.",
+        "meaning": "The leaves are green."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我喜欢喝绿茶。",
+        "pinyin": "Wǒ xǐhuan hē lǜchá.",
+        "meaning": "I like drinking green tea."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "等绿灯亮了，我们再过马路。",
+        "pinyin": "Děng lǜdēng liàng le, wǒmen zài guò mǎlù.",
+        "meaning": "We will cross when the green light comes on."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "录",
+      "guidance": "绿 adds 纟 to the left of 录; the radical distinguishes green from the bare component."
+    },
+    "relatedCharacters": [
+      "红",
+      "蓝",
+      "茶"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "绿 (lǜ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 绿 (lǜ): Stroke Order, Meaning & Examples",
+      "description": "Learn 绿 (lǜ) stroke order and its common colour reading. Practise 绿色, 绿茶, 绿灯, and 绿叶 while comparing 绿 with 录."
+    }
+  },
+  {
+    "character": "金",
+    "pinyin": "jīn",
+    "meaning": "gold; metal",
+    "strokes": 8,
+    "radical": "金",
+    "traditional": "金",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 3 vocabulary includes 金 (jīn)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "金 helps learners read and write gold; metal. Start with 黄金 (gold) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "金",
+        "explanation": "A broad 人-shaped cover sits above a central upright, horizontals, and two lower dots. Those dots distinguish the lower form from 全."
+      }
+    ],
+    "readingNotes": "Read 金 as jīn in this guide. Compare 黄金 (huángjīn) and 金色 (jīnsè) to practise the sound in complete words.",
+    "usageTitle": "Using 金 in words and sentences",
+    "usage": "金 can mean gold or metal. 黄金 names gold, 金色 describes a golden colour, and 奖金 means a cash bonus.",
+    "writingTip": "Spread the top cover over the lower part, keep the two lower dots distinct, and finish with a level bottom horizontal.",
+    "examples": [
+      {
+        "hanzi": "黄金",
+        "pinyin": "huángjīn",
+        "meaning": "gold"
+      },
+      {
+        "hanzi": "金色",
+        "pinyin": "jīnsè",
+        "meaning": "golden"
+      },
+      {
+        "hanzi": "金属",
+        "pinyin": "jīnshǔ",
+        "meaning": "metal"
+      },
+      {
+        "hanzi": "奖金",
+        "pinyin": "jiǎngjīn",
+        "meaning": "bonus"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这条鱼是金色的。",
+        "pinyin": "Zhè tiáo yú shì jīnsè de.",
+        "meaning": "This fish is golden."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "铁是一种金属。",
+        "pinyin": "Tiě shì yì zhǒng jīnshǔ.",
+        "meaning": "Iron is a kind of metal."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "她把获得的奖金存了起来。",
+        "pinyin": "Tā bǎ huòdé de jiǎngjīn cún le qǐlái.",
+        "meaning": "She saved the bonus she received."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "全",
+      "guidance": "金 includes two lower dots, whereas 全 has a simpler 王-like lower part."
+    },
+    "relatedCharacters": [
+      "玉",
+      "王",
+      "白"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "金 (jīn) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 金 (jīn): Stroke Order, Meaning & Examples",
+      "description": "Write 金 (jīn) in eight strokes and compare it with 全. Learn gold, metal, golden colour, and the cash-bonus meaning of 奖金."
+    }
+  },
+  {
+    "character": "雨",
+    "pinyin": "yǔ",
+    "meaning": "rain",
+    "strokes": 8,
+    "radical": "雨",
+    "traditional": "雨",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 1 vocabulary includes 雨 (yǔ)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "雨 helps learners read and write rain. Start with 下雨 (rain) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "雨",
+        "explanation": "A top line covers a frame divided by a central vertical. Four dots occupy the interior, two on each side of the centre."
+      }
+    ],
+    "readingNotes": "Read 雨 as yǔ, a third tone, in 下雨 (xiàyǔ) and 雨水 (yǔshuǐ). The literary verb reading yù is not the everyday weather reading used in these examples.",
+    "usageTitle": "Using 雨 in words and sentences",
+    "usage": "雨 is yǔ for rain in 下雨 and 雨水. 下雨 is the everyday verb phrase for raining; the literary verb reading yù is not the sense taught here.",
+    "writingTip": "Leave space inside the frame for four separate dots, two on each side of the central vertical, without turning them into crossbars.",
+    "examples": [
+      {
+        "hanzi": "下雨",
+        "pinyin": "xiàyǔ",
+        "meaning": "rain"
+      },
+      {
+        "hanzi": "雨水",
+        "pinyin": "yǔshuǐ",
+        "meaning": "rainwater"
+      },
+      {
+        "hanzi": "雨衣",
+        "pinyin": "yǔyī",
+        "meaning": "raincoat"
+      },
+      {
+        "hanzi": "雨天",
+        "pinyin": "yǔtiān",
+        "meaning": "rainy day"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "今天下雨。",
+        "pinyin": "Jīntiān xià yǔ.",
+        "meaning": "It is raining today."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "请带上雨衣。",
+        "pinyin": "Qǐng dài shàng yǔyī.",
+        "meaning": "Please take a raincoat."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "如果明天下雨，我们就在家看书。",
+        "pinyin": "Rúguǒ míngtiān xià yǔ, wǒmen jiù zài jiā kàn shū.",
+        "meaning": "If it rains tomorrow, we will read at home."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "两",
+      "guidance": "雨 has four inner dots and a central vertical; 两 has a different interior."
+    },
+    "relatedCharacters": [
+      "云",
+      "风",
+      "水"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "雨 (yǔ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 雨 (yǔ): Stroke Order, Meaning & Examples",
+      "description": "Learn 雨 (yǔ), including its four inner dots. Use 下雨, 雨水, 雨衣, and 雨天 in weather sentences and compare 雨 with 两."
+    }
+  },
+  {
+    "character": "云",
+    "pinyin": "yún",
+    "meaning": "cloud",
+    "strokes": 4,
+    "radical": "二",
+    "traditional": "雲",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 3 vocabulary includes 云 (yún)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "云 helps learners read and write cloud. Start with 白云 (white clouds) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "云",
+        "explanation": "Two horizontals sit above an open 厶 form. The upper part has no crossing vertical, unlike the 土 at the top of 去."
+      }
+    ],
+    "readingNotes": "Read 云 as yún in this guide. Compare 白云 (báiyún) and 多云 (duōyún) to practise the sound in complete words.",
+    "usageTitle": "Using 云 in words and sentences",
+    "usage": "云 names clouds in 白云 and 乌云. 多云 describes cloudy weather; modern words such as 云计算 extend the image to computing.",
+    "writingTip": "Keep the two upper horizontals parallel, make the lower one longer, and leave the lower 厶 open instead of closing a triangle.",
+    "examples": [
+      {
+        "hanzi": "白云",
+        "pinyin": "báiyún",
+        "meaning": "white clouds"
+      },
+      {
+        "hanzi": "多云",
+        "pinyin": "duōyún",
+        "meaning": "cloudy"
+      },
+      {
+        "hanzi": "乌云",
+        "pinyin": "wūyún",
+        "meaning": "dark clouds"
+      },
+      {
+        "hanzi": "云海",
+        "pinyin": "yúnhǎi",
+        "meaning": "sea of clouds"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "天上有白云。",
+        "pinyin": "Tiānshang yǒu báiyún.",
+        "meaning": "There are white clouds in the sky."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "今天多云，不下雨。",
+        "pinyin": "Jīntiān duōyún, bù xià yǔ.",
+        "meaning": "It is cloudy today but not raining."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "山顶上的云海非常漂亮。",
+        "pinyin": "Shāndǐng shàng de yúnhǎi fēicháng piàoliang.",
+        "meaning": "The sea of clouds at the mountaintop is beautiful."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "去",
+      "guidance": "云 has two top horizontals, whereas 去 has 土 above the lower 厶."
+    },
+    "relatedCharacters": [
+      "雨",
+      "风",
+      "天"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "云 (yún) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 云 (yún): Stroke Order, Meaning & Examples",
+      "description": "Write 云 (yún) in four strokes and compare it with 去. Learn 白云, 乌云, 多云, and 云海 through weather and landscape examples."
+    }
+  },
+  {
+    "character": "风",
+    "pinyin": "fēng",
+    "meaning": "wind",
+    "strokes": 4,
+    "radical": "风",
+    "traditional": "風",
+    "structure": "Enclosure",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 1 vocabulary includes 风 (fēng)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "风 helps learners read and write wind. Start with 大风 (strong wind) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "风",
+        "explanation": "A loose outer cover surrounds two crossed strokes and stays open at the bottom. The inner cross differs from 又 inside 凤."
+      }
+    ],
+    "readingNotes": "Read 风 as fēng in this guide. Compare 大风 (dàfēng) and 风景 (fēngjǐng) to practise the sound in complete words.",
+    "usageTitle": "Using 风 in words and sentences",
+    "usage": "风 names wind and also appears in words for scenery and style. 风景 means scenery and 风格 means style, not weather.",
+    "writingTip": "Keep the outer cover open at the bottom, place the inner crossing within it, and leave room for the hook on the right.",
+    "examples": [
+      {
+        "hanzi": "大风",
+        "pinyin": "dàfēng",
+        "meaning": "strong wind"
+      },
+      {
+        "hanzi": "风景",
+        "pinyin": "fēngjǐng",
+        "meaning": "scenery"
+      },
+      {
+        "hanzi": "风格",
+        "pinyin": "fēnggé",
+        "meaning": "style"
+      },
+      {
+        "hanzi": "刮风",
+        "pinyin": "guāfēng",
+        "meaning": "be windy"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "今天风很大。",
+        "pinyin": "Jīntiān fēng hěn dà.",
+        "meaning": "It is very windy today."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "这里的风景很好。",
+        "pinyin": "Zhèlǐ de fēngjǐng hěn hǎo.",
+        "meaning": "The scenery here is lovely."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "外面正在刮风，请把窗户关上。",
+        "pinyin": "Wàimian zhèngzài guā fēng, qǐng bǎ chuānghu guān shàng.",
+        "meaning": "It is windy outside; please close the window."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "凤",
+      "guidance": "风 contains crossed strokes, while 凤 contains 又 inside a similar outer frame."
+    },
+    "relatedCharacters": [
+      "雨",
+      "云",
+      "天"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "风 (fēng) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 风 (fēng): Stroke Order, Meaning & Examples",
+      "description": "Learn 风 (fēng) stroke order and distinguish it from 凤. Practise wind in 刮风 and 大风, scenery in 风景, and style in 风格."
+    }
+  },
+  {
+    "character": "电",
+    "pinyin": "diàn",
+    "meaning": "electricity",
+    "strokes": 5,
+    "radical": "田",
+    "traditional": "電",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 1 vocabulary includes 电 (diàn)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "电 helps learners read and write electricity. Start with 电话 (telephone) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "电",
+        "explanation": "The upper box-like form is crossed by a central stroke that extends below it and turns into a hook. That extended hook is absent in 田."
+      }
+    ],
+    "readingNotes": "Read 电 as diàn in this guide. Compare 电话 (diànhuà) and 电脑 (diànnǎo) to practise the sound in complete words.",
+    "usageTitle": "Using 电 in words and sentences",
+    "usage": "电 names electricity and forms words for powered devices. 电话 is telephone, 电脑 is computer, and 电影 means film.",
+    "writingTip": "Carry the central stroke through the upper box and turn it into a hook below, extending clearly beyond the enclosure.",
+    "examples": [
+      {
+        "hanzi": "电话",
+        "pinyin": "diànhuà",
+        "meaning": "telephone"
+      },
+      {
+        "hanzi": "电脑",
+        "pinyin": "diànnǎo",
+        "meaning": "computer"
+      },
+      {
+        "hanzi": "电影",
+        "pinyin": "diànyǐng",
+        "meaning": "film"
+      },
+      {
+        "hanzi": "电视",
+        "pinyin": "diànshì",
+        "meaning": "television"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我给妈妈打电话。",
+        "pinyin": "Wǒ gěi māma dǎ diànhuà.",
+        "meaning": "I am calling my mother."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "这台电脑是新的。",
+        "pinyin": "Zhè tái diànnǎo shì xīn de.",
+        "meaning": "This computer is new."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "今天晚上我们一起去看电影。",
+        "pinyin": "Jīntiān wǎnshang wǒmen yìqǐ qù kàn diànyǐng.",
+        "meaning": "We are going to see a film tonight."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "田",
+      "guidance": "电 extends its central stroke below the box into a hook, while 田 keeps the cross inside."
+    },
+    "relatedCharacters": [
+      "田",
+      "车",
+      "金"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "电 (diàn) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 电 (diàn): Stroke Order, Meaning & Examples",
+      "description": "Write 电 (diàn), keeping its lower hook distinct from 田. Learn everyday electricity words: 电话, 电脑, 电影, and 电视."
+    }
+  },
+  {
+    "character": "车",
+    "pinyin": "chē",
+    "meaning": "vehicle; car",
+    "strokes": 4,
+    "radical": "车",
+    "traditional": "車",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 1 vocabulary includes 车 (chē)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "车 helps learners read and write vehicle; car. Start with 汽车 (car) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "车",
+        "explanation": "Horizontals and a turning stroke are joined by a central vertical. The lower part has a crossing line rather than the side strokes found in 东."
+      }
+    ],
+    "readingNotes": "Use chē, a level first tone, in 汽车 (qìchē), 火车 (huǒchē), and 车站 (chēzhàn). In Chinese chess the rook is also called 车, pronounced jū.",
+    "usageTitle": "Using 车 in words and sentences",
+    "usage": "车 is chē in transport words such as 汽车 and 火车. In Chinese chess it can be jū for the rook; this guide uses the vehicle reading.",
+    "writingTip": "Keep the turning stroke distinct from the lower horizontal, then finish the central vertical through the crossings.",
+    "examples": [
+      {
+        "hanzi": "汽车",
+        "pinyin": "qìchē",
+        "meaning": "car"
+      },
+      {
+        "hanzi": "火车",
+        "pinyin": "huǒchē",
+        "meaning": "train"
+      },
+      {
+        "hanzi": "自行车",
+        "pinyin": "zìxíngchē",
+        "meaning": "bicycle"
+      },
+      {
+        "hanzi": "车站",
+        "pinyin": "chēzhàn",
+        "meaning": "station"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "车站在哪里？",
+        "pinyin": "Chēzhàn zài nǎlǐ?",
+        "meaning": "Where is the station?"
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我骑自行车上学。",
+        "pinyin": "Wǒ qí zìxíngchē shàng xué.",
+        "meaning": "I ride a bicycle to school."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "这辆汽车可以坐五个人。",
+        "pinyin": "Zhè liàng qìchē kěyǐ zuò wǔ ge rén.",
+        "meaning": "This car can seat five people."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "东",
+      "guidance": "车 has a central vertical crossing horizontals, whereas 东 has separate lower side strokes."
+    },
+    "relatedCharacters": [
+      "马",
+      "火",
+      "电"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "车 (chē) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 车 (chē): Stroke Order, Meaning & Examples",
+      "description": "Learn 车 (chē) stroke order for transport vocabulary. Practise 汽车, 火车, 自行车, and 车站, with a note on the chess reading jū."
+    }
+  },
+  {
+    "character": "马",
+    "pinyin": "mǎ",
+    "meaning": "horse",
+    "strokes": 3,
+    "radical": "马",
+    "traditional": "馬",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 3 vocabulary includes 马 (mǎ)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "马 helps learners read and write horse. Start with 马上 (immediately) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "马",
+        "explanation": "The simplified form has a compact upper turn, an outer hooked turn, and a separate lower horizontal. There is no dot inside the upper part."
+      }
+    ],
+    "readingNotes": "Read 马 as mǎ in this guide. Compare 马上 (mǎshàng) and 马路 (mǎlù) to practise the sound in complete words.",
+    "usageTitle": "Using 马 in words and sentences",
+    "usage": "马 names a horse, but compounds can have other meanings. 马上 means immediately and 马路 means road, not riding a horse.",
+    "writingTip": "Follow the turns as continuous strokes and keep the lower horizontal separate from the hook; do not add the inner dot of 鸟.",
+    "examples": [
+      {
+        "hanzi": "马上",
+        "pinyin": "mǎshàng",
+        "meaning": "immediately"
+      },
+      {
+        "hanzi": "马路",
+        "pinyin": "mǎlù",
+        "meaning": "road"
+      },
+      {
+        "hanzi": "骑马",
+        "pinyin": "qímǎ",
+        "meaning": "ride a horse"
+      },
+      {
+        "hanzi": "马车",
+        "pinyin": "mǎchē",
+        "meaning": "horse-drawn carriage"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我想骑马。",
+        "pinyin": "Wǒ xiǎng qí mǎ.",
+        "meaning": "I want to ride a horse."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我马上回来。",
+        "pinyin": "Wǒ mǎshàng huílái.",
+        "meaning": "I will be right back."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "过马路的时候，要先看两边。",
+        "pinyin": "Guò mǎlù de shíhou, yào xiān kàn liǎng biān.",
+        "meaning": "Look both ways before crossing the road."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "鸟",
+      "guidance": "马 lacks the inner dot and extra upper slant found in 鸟."
+    },
+    "relatedCharacters": [
+      "鸟",
+      "车",
+      "牛"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "马 (mǎ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 马 (mǎ): Stroke Order, Meaning & Examples",
+      "description": "Write 马 (mǎ) in three strokes and compare its simplified form with 鸟. Learn riding a horse, 马路 for road, and 马上 for immediately."
+    }
+  },
+  {
+    "character": "鸟",
+    "pinyin": "niǎo",
+    "meaning": "bird",
+    "strokes": 5,
+    "radical": "鸟",
+    "traditional": "鳥",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 3 vocabulary includes 鸟 (niǎo)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "鸟 helps learners read and write bird. Start with 小鸟 (small bird) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "鸟",
+        "explanation": "A short upper slant and enclosed dot sit above the lower body and final horizontal. The inner dot is missing in the similar character 乌."
+      }
+    ],
+    "readingNotes": "Read 鸟 as niǎo in this guide. Compare 小鸟 (xiǎoniǎo) and 鸟类 (niǎolèi) to practise the sound in complete words.",
+    "usageTitle": "Using 鸟 in words and sentences",
+    "usage": "鸟 is the general character for bird. 小鸟 means a small bird and 鸟类 means birds as a class; 只 is a common measure word.",
+    "writingTip": "Keep the dot inside the upper part visible, then leave room below for the turning stroke and separate final horizontal.",
+    "examples": [
+      {
+        "hanzi": "小鸟",
+        "pinyin": "xiǎoniǎo",
+        "meaning": "small bird"
+      },
+      {
+        "hanzi": "鸟类",
+        "pinyin": "niǎolèi",
+        "meaning": "birds"
+      },
+      {
+        "hanzi": "鸟巢",
+        "pinyin": "niǎocháo",
+        "meaning": "bird's nest"
+      },
+      {
+        "hanzi": "飞鸟",
+        "pinyin": "fēiniǎo",
+        "meaning": "flying bird"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "树上有一只鸟。",
+        "pinyin": "Shù shàng yǒu yì zhī niǎo.",
+        "meaning": "There is a bird in the tree."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "小鸟正在唱歌。",
+        "pinyin": "Xiǎoniǎo zhèngzài chàng gē.",
+        "meaning": "The little bird is singing."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我们不要打扰树上的鸟巢。",
+        "pinyin": "Wǒmen bú yào dǎrǎo shù shàng de niǎocháo.",
+        "meaning": "We should not disturb the nest in the tree."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "乌",
+      "guidance": "鸟 has an inner dot, whereas 乌 does not; preserve that small mark."
+    },
+    "relatedCharacters": [
+      "马",
+      "鱼",
+      "猫"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "鸟 (niǎo) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 鸟 (niǎo): Stroke Order, Meaning & Examples",
+      "description": "Learn 鸟 (niǎo) stroke order and the dot that distinguishes it from 乌. Practise bird words such as 鸟巢, 鸟类, and 小鸟."
+    }
+  },
+  {
+    "character": "鱼",
+    "pinyin": "yú",
+    "meaning": "fish",
+    "strokes": 8,
+    "radical": "鱼",
+    "traditional": "魚",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 2",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 2 vocabulary includes 鱼 (yú)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "鱼 helps learners read and write fish. Start with 金鱼 (goldfish) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "鱼",
+        "explanation": "A compact head sits above a field-like middle and a broad final horizontal. The simplified form has a line at the bottom, not the dots of 魚."
+      }
+    ],
+    "readingNotes": "Read 鱼 as yú in this guide. Compare 金鱼 (jīnyú) and 钓鱼 (diàoyú) to practise the sound in complete words.",
+    "usageTitle": "Using 鱼 in words and sentences",
+    "usage": "鱼 names fish as animals and food. 金鱼 is goldfish and 钓鱼 means fish with a rod; 条 commonly counts fish.",
+    "writingTip": "Keep the upper head compact, leave space for the middle cross, and draw a broad final horizontal beneath the body.",
+    "examples": [
+      {
+        "hanzi": "金鱼",
+        "pinyin": "jīnyú",
+        "meaning": "goldfish"
+      },
+      {
+        "hanzi": "钓鱼",
+        "pinyin": "diàoyú",
+        "meaning": "fish with a rod"
+      },
+      {
+        "hanzi": "鱼肉",
+        "pinyin": "yúròu",
+        "meaning": "fish meat"
+      },
+      {
+        "hanzi": "小鱼",
+        "pinyin": "xiǎoyú",
+        "meaning": "small fish"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "水里有鱼。",
+        "pinyin": "Shuǐ lǐ yǒu yú.",
+        "meaning": "There are fish in the water."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "爷爷喜欢钓鱼。",
+        "pinyin": "Yéye xǐhuan diào yú.",
+        "meaning": "Grandpa likes fishing."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "这条金鱼在水里游来游去。",
+        "pinyin": "Zhè tiáo jīnyú zài shuǐ lǐ yóu lái yóu qù.",
+        "meaning": "This goldfish swims back and forth in the water."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "角",
+      "guidance": "鱼 has a field-like middle and broad base; 角 has a different open lower structure."
+    },
+    "relatedCharacters": [
+      "鸟",
+      "水",
+      "猫"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "鱼 (yú) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 鱼 (yú): Stroke Order, Meaning & Examples",
+      "description": "Write 鱼 (yú) in eight strokes and compare its form with 角. Practise 金鱼, 钓鱼, 鱼肉, and counting fish with 条."
+    }
+  },
+  {
+    "character": "米",
+    "pinyin": "mǐ",
+    "meaning": "rice; metre",
+    "strokes": 6,
+    "radical": "米",
+    "traditional": "米",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 3 vocabulary includes 米 (mǐ)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "米 helps learners read and write rice; metre. Start with 大米 (rice) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "米",
+        "explanation": "Two upper short strokes flank a central cross above two lower falling strokes. Compared with 木, the upper pair adds two extra marks."
+      }
+    ],
+    "readingNotes": "Read 米 as mǐ in this guide. Compare 大米 (dàmǐ) and 米饭 (mǐfàn) to practise the sound in complete words.",
+    "usageTitle": "Using 米 in words and sentences",
+    "usage": "米 can mean uncooked rice or the unit metre. 大米 and 米饭 are food words, while 一米 and 千米 express length.",
+    "writingTip": "Separate the two upper short strokes, keep the centre upright, and balance the lower falling strokes around the crossing.",
+    "examples": [
+      {
+        "hanzi": "大米",
+        "pinyin": "dàmǐ",
+        "meaning": "rice"
+      },
+      {
+        "hanzi": "米饭",
+        "pinyin": "mǐfàn",
+        "meaning": "cooked rice"
+      },
+      {
+        "hanzi": "玉米",
+        "pinyin": "yùmǐ",
+        "meaning": "corn"
+      },
+      {
+        "hanzi": "一米",
+        "pinyin": "yì mǐ",
+        "meaning": "one metre"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我想吃米饭。",
+        "pinyin": "Wǒ xiǎng chī mǐfàn.",
+        "meaning": "I want to eat rice."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "这张桌子长一米。",
+        "pinyin": "Zhè zhāng zhuōzi cháng yì mǐ.",
+        "meaning": "This table is one metre long."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "妈妈买了一袋大米和一些蔬菜。",
+        "pinyin": "Māma mǎi le yí dài dàmǐ hé yìxiē shūcài.",
+        "meaning": "Mum bought rice and some vegetables."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "木",
+      "guidance": "米 adds two short upper strokes to a wood-like central form; 木 has no such pair."
+    },
+    "relatedCharacters": [
+      "木",
+      "玉",
+      "茶"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "米 (mǐ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 米 (mǐ): Stroke Order, Meaning & Examples",
+      "description": "Learn 米 (mǐ) stroke order and compare it with 木. Distinguish rice in 大米 and 米饭 from the length unit in 一米."
+    }
+  },
+  {
+    "character": "茶",
+    "pinyin": "chá",
+    "meaning": "tea",
+    "strokes": 9,
+    "radical": "艹",
+    "traditional": "茶",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 1 vocabulary includes 茶 (chá)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "茶 helps learners read and write tea. Start with 喝茶 (drink tea) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "茶",
+        "explanation": "The grass radical forms the top cover, a 人-shaped pair sits beneath it, and the lower strokes spread around a central upright."
+      }
+    ],
+    "readingNotes": "Read 茶 as chá in this guide. Compare 喝茶 (hēchá) and 红茶 (hóngchá) to practise the sound in complete words.",
+    "usageTitle": "Using 茶 in words and sentences",
+    "usage": "茶 names tea, varieties of tea and tea utensils. 红茶 is black tea in English, 绿茶 is green tea, and 茶杯 is a teacup.",
+    "writingTip": "Keep the grass radical shallow, centre the middle cover, and allow enough room for the lower strokes instead of squeezing the three levels.",
+    "examples": [
+      {
+        "hanzi": "喝茶",
+        "pinyin": "hēchá",
+        "meaning": "drink tea"
+      },
+      {
+        "hanzi": "红茶",
+        "pinyin": "hóngchá",
+        "meaning": "black tea"
+      },
+      {
+        "hanzi": "绿茶",
+        "pinyin": "lǜchá",
+        "meaning": "green tea"
+      },
+      {
+        "hanzi": "茶杯",
+        "pinyin": "chábēi",
+        "meaning": "teacup"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我喜欢喝茶。",
+        "pinyin": "Wǒ xǐhuan hē chá.",
+        "meaning": "I like drinking tea."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "请给我一杯绿茶。",
+        "pinyin": "Qǐng gěi wǒ yì bēi lǜchá.",
+        "meaning": "Please give me a cup of green tea."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "吃完饭以后，我们坐下来喝茶。",
+        "pinyin": "Chī wán fàn yǐhòu, wǒmen zuò xià lái hē chá.",
+        "meaning": "After the meal, we sit down to drink tea."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "荼",
+      "guidance": "茶 and 荼 have similar outlines, but 荼 includes an additional horizontal in its lower part."
+    },
+    "relatedCharacters": [
+      "草",
+      "花",
+      "绿"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "茶 (chá) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 茶 (chá): Stroke Order, Meaning & Examples",
+      "description": "Write 茶 (chá) and compare it with 荼. Learn tea varieties and utensils, including 红茶, 绿茶, 茶杯, and the phrase 喝茶."
+    }
+  },
+  {
+    "character": "花",
+    "pinyin": "huā",
+    "meaning": "flower; spend",
+    "strokes": 7,
+    "radical": "艹",
+    "traditional": "花",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 3 vocabulary includes 花 (huā)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "花 helps learners read and write flower; spend. Start with 花园 (garden) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "花",
+        "explanation": "The grass radical 艹 covers 化. Within 化, a narrow person component stands beside a separate turning shape."
+      }
+    ],
+    "readingNotes": "Read 花 as huā in this guide. Compare 花园 (huāyuán) and 花钱 (huāqián) to practise the sound in complete words.",
+    "usageTitle": "Using 花 in words and sentences",
+    "usage": "花 can name flowers or mean spend time or money. 一朵花 is a flower, 花钱 means spend money, and 花时间 means spend time.",
+    "writingTip": "Make 艹 broad but shallow above 化, keeping the two lower components distinct and leaving a small vertical gap.",
+    "examples": [
+      {
+        "hanzi": "花园",
+        "pinyin": "huāyuán",
+        "meaning": "garden"
+      },
+      {
+        "hanzi": "花钱",
+        "pinyin": "huāqián",
+        "meaning": "spend money"
+      },
+      {
+        "hanzi": "鲜花",
+        "pinyin": "xiānhuā",
+        "meaning": "fresh flowers"
+      },
+      {
+        "hanzi": "花茶",
+        "pinyin": "huāchá",
+        "meaning": "scented tea"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这朵花很漂亮。",
+        "pinyin": "Zhè duǒ huā hěn piàoliang.",
+        "meaning": "This flower is beautiful."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我们在花园里散步。",
+        "pinyin": "Wǒmen zài huāyuán lǐ sànbù.",
+        "meaning": "We are walking in the garden."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "学习汉字需要花时间练习。",
+        "pinyin": "Xuéxí Hànzì xūyào huā shíjiān liànxí.",
+        "meaning": "Learning Chinese characters takes time and practice."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "化",
+      "guidance": "花 adds 艹 above 化; removing the grass radical changes the word."
+    },
+    "relatedCharacters": [
+      "草",
+      "茶",
+      "红"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "花 (huā) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 花 (huā): Stroke Order, Meaning & Examples",
+      "description": "Learn 花 (huā), with 艹 above 化. Distinguish flowers from spending money or time using 花园, 鲜花, 花钱, and example sentences."
+    }
+  },
+  {
+    "character": "草",
+    "pinyin": "cǎo",
+    "meaning": "grass",
+    "strokes": 9,
+    "radical": "艹",
+    "traditional": "草",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 3 vocabulary includes 草 (cǎo)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "草 helps learners read and write grass. Start with 草地 (grassland; lawn) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "草",
+        "explanation": "The shallow grass radical 艹 sits above 早, whose 日 box is supported by 十. Each of the three levels needs visible space."
+      }
+    ],
+    "readingNotes": "Read 草 as cǎo in this guide. Compare 草地 (cǎodì) and 草原 (cǎoyuán) to practise the sound in complete words.",
+    "usageTitle": "Using 草 in words and sentences",
+    "usage": "草 names grass in 草地 and 草原. 草书 is cursive script and 草莓 is strawberry; the full word determines the sense.",
+    "writingTip": "Keep 艹 shallow, centre the 日 box beneath it, and leave room for 十 at the bottom with a vertical extending below its crossbar.",
+    "examples": [
+      {
+        "hanzi": "草地",
+        "pinyin": "cǎodì",
+        "meaning": "grassland; lawn"
+      },
+      {
+        "hanzi": "草原",
+        "pinyin": "cǎoyuán",
+        "meaning": "steppe"
+      },
+      {
+        "hanzi": "草莓",
+        "pinyin": "cǎoméi",
+        "meaning": "strawberry"
+      },
+      {
+        "hanzi": "草书",
+        "pinyin": "cǎoshū",
+        "meaning": "cursive script"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "草地是绿色的。",
+        "pinyin": "Cǎodì shì lǜsè de.",
+        "meaning": "The lawn is green."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我喜欢吃草莓。",
+        "pinyin": "Wǒ xǐhuan chī cǎoméi.",
+        "meaning": "I like eating strawberries."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "请不要在刚种好的草地上走。",
+        "pinyin": "Qǐng bú yào zài gāng zhòng hǎo de cǎodì shàng zǒu.",
+        "meaning": "Please do not walk on the newly planted grass."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "早",
+      "guidance": "草 adds 艹 above 早; without the grass radical the character means early."
+    },
+    "relatedCharacters": [
+      "花",
+      "茶",
+      "早"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "草 (cǎo) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 草 (cǎo): Stroke Order, Meaning & Examples",
+      "description": "Write 草 (cǎo), combining 艹 and 早. Practise grass and lawns, learn 草莓 for strawberry, and compare 草 with 早."
+    }
+  },
+  {
+    "character": "猫",
+    "pinyin": "māo",
+    "meaning": "cat",
+    "strokes": 11,
+    "radical": "犭",
+    "traditional": "貓",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 1 vocabulary includes 猫 (māo)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "猫 helps learners read and write cat. Start with 小猫 (kitten) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "猫",
+        "explanation": "The narrow animal radical 犭 sits beside 苗. On the right, 艹 covers a small 田 with an internal cross."
+      }
+    ],
+    "readingNotes": "Read 猫 as māo in this guide. Compare 小猫 (xiǎomāo) and 猫咪 (māomī) to practise the sound in complete words.",
+    "usageTitle": "Using 猫 in words and sentences",
+    "usage": "猫 names a cat and forms animal compounds. 熊猫 means panda rather than domestic cat; 只 is normally used when counting cats.",
+    "writingTip": "Keep the animal radical slim and leave enough width for 苗; the little 田 on the right needs a clear internal cross.",
+    "examples": [
+      {
+        "hanzi": "小猫",
+        "pinyin": "xiǎomāo",
+        "meaning": "kitten"
+      },
+      {
+        "hanzi": "猫咪",
+        "pinyin": "māomī",
+        "meaning": "kitty"
+      },
+      {
+        "hanzi": "熊猫",
+        "pinyin": "xióngmāo",
+        "meaning": "panda"
+      },
+      {
+        "hanzi": "猫头鹰",
+        "pinyin": "māotóuyīng",
+        "meaning": "owl"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我家有一只猫。",
+        "pinyin": "Wǒ jiā yǒu yì zhī māo.",
+        "meaning": "My family has a cat."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "小猫在椅子下面。",
+        "pinyin": "Xiǎomāo zài yǐzi xiàmian.",
+        "meaning": "The kitten is under the chair."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我们在动物园里看到了大熊猫。",
+        "pinyin": "Wǒmen zài dòngwùyuán lǐ kàn dào le dàxióngmāo.",
+        "meaning": "We saw giant pandas at the zoo."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "描",
+      "guidance": "猫 has 犭 on the left, whereas 描 has 扌 beside the same 苗."
+    },
+    "relatedCharacters": [
+      "狗",
+      "鸟",
+      "鱼"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "猫 (māo) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 猫 (māo): Stroke Order, Meaning & Examples",
+      "description": "Learn 猫 (māo), with 犭 beside 苗, and distinguish it from 描. Practise cat words, 熊猫 for panda, and counting cats with 只."
+    }
+  },
+  {
+    "character": "狗",
+    "pinyin": "gǒu",
+    "meaning": "dog",
+    "strokes": 8,
+    "radical": "犭",
+    "traditional": "狗",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 2.0 Level 1 vocabulary includes 狗 (gǒu)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "狗 helps learners read and write dog. Start with 小狗 (puppy) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "狗",
+        "explanation": "The narrow animal radical 犭 stands beside 句. The right-hand outer hook surrounds a small 口 without touching its inner box."
+      }
+    ],
+    "readingNotes": "Read 狗 as gǒu in this guide. Compare 小狗 (xiǎogǒu) and 狗粮 (gǒuliáng) to practise the sound in complete words.",
+    "usageTitle": "Using 狗 in words and sentences",
+    "usage": "狗 is the common character for dog. 小狗 is a puppy or small dog, while 热狗 is the borrowed food name hot dog.",
+    "writingTip": "Keep 犭 narrow and the right-hand hook open enough to contain 口, leaving the small box clear of the surrounding stroke.",
+    "examples": [
+      {
+        "hanzi": "小狗",
+        "pinyin": "xiǎogǒu",
+        "meaning": "puppy"
+      },
+      {
+        "hanzi": "狗粮",
+        "pinyin": "gǒuliáng",
+        "meaning": "dog food"
+      },
+      {
+        "hanzi": "热狗",
+        "pinyin": "règǒu",
+        "meaning": "hot dog"
+      },
+      {
+        "hanzi": "猎狗",
+        "pinyin": "liègǒu",
+        "meaning": "hunting dog"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "那只狗很大。",
+        "pinyin": "Nà zhī gǒu hěn dà.",
+        "meaning": "That dog is big."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "小狗在门口等我。",
+        "pinyin": "Xiǎogǒu zài ménkǒu děng wǒ.",
+        "meaning": "The puppy is waiting at the door."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "每天早上，他都带狗出去散步。",
+        "pinyin": "Měitiān zǎoshang, tā dōu dài gǒu chūqù sànbù.",
+        "meaning": "Every morning he takes the dog for a walk."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "句",
+      "guidance": "狗 adds 犭 beside 句; omitting the animal radical produces a different character."
+    },
+    "relatedCharacters": [
+      "猫",
+      "马",
+      "口"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "狗 (gǒu) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 狗 (gǒu): Stroke Order, Meaning & Examples",
+      "description": "Write 狗 (gǒu), keeping 犭 separate from 句. Learn 小狗, 狗粮, 猎狗, and the food word 热狗 through everyday sentences."
+    }
+  },
+  {
+    "character": "早",
+    "pinyin": "zǎo",
+    "meaning": "early; morning greeting",
+    "strokes": 6,
+    "radical": "日",
+    "traditional": "早",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 3.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "Local HSK 3.0 Level 1 vocabulary includes 早 (zǎo)."
+      }
+    ],
+    "learningTier": "Foundation",
+    "importance": "早 helps learners read and write early; morning greeting. Start with 早上 (morning) and compare the other everyday uses below.",
+    "components": [
+      {
+        "character": "早",
+        "explanation": "A compact 日 sits above 十. The lower vertical crosses its horizontal and extends downward; there is no grass radical above 日."
+      }
+    ],
+    "readingNotes": "Read 早 as zǎo in this guide. Compare 早上 (zǎoshang) and 早餐 (zǎocān) to practise the sound in complete words.",
+    "usageTitle": "Using 早 in words and sentences",
+    "usage": "早 means early and can serve as a short morning greeting. 早上 is morning, 早餐 is breakfast, and 来早了 means arrived early.",
+    "writingTip": "Centre 日 over 十, leave a gap before the lower crossbar, and let the final vertical extend down beyond the horizontal.",
+    "examples": [
+      {
+        "hanzi": "早上",
+        "pinyin": "zǎoshang",
+        "meaning": "morning"
+      },
+      {
+        "hanzi": "早餐",
+        "pinyin": "zǎocān",
+        "meaning": "breakfast"
+      },
+      {
+        "hanzi": "早饭",
+        "pinyin": "zǎofàn",
+        "meaning": "breakfast"
+      },
+      {
+        "hanzi": "早安",
+        "pinyin": "zǎo'ān",
+        "meaning": "good morning"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "早上好！",
+        "pinyin": "Zǎoshang hǎo!",
+        "meaning": "Good morning!"
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我每天吃早饭。",
+        "pinyin": "Wǒ měitiān chī zǎofàn.",
+        "meaning": "I eat breakfast every day."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "为了赶上火车，我们今天起得很早。",
+        "pinyin": "Wèile gǎn shàng huǒchē, wǒmen jīntiān qǐ de hěn zǎo.",
+        "meaning": "We got up early today to catch the train."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "草",
+      "guidance": "早 has no grass radical above 日; adding 艹 changes it into 草."
+    },
+    "relatedCharacters": [
+      "日",
+      "草",
+      "天"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "早 (zǎo) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 早 (zǎo): Stroke Order, Meaning & Examples",
+      "description": "Learn 早 (zǎo), with 日 above 十. Practise morning greetings, breakfast words, and arriving early, and compare 早 with 草."
+    }
+  }
+]

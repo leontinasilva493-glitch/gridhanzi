@@ -84,6 +84,16 @@ export function HomePage() {
           ><UiText>{"Look up the strokes before adding a character to your worksheet."}</UiText></TaskLink>
         </section>
 
+        <section className="hs-container hs-content-visibility py-14" aria-labelledby="learning-guides-title">
+          <h2 id="learning-guides-title" className="hs-display text-3xl font-bold"><UiText>{"Chinese Learning Guides"}</UiText></h2>
+          <p className="mt-3 max-w-3xl leading-7 text-[#566276]"><UiText>{"Explore everyday expressions, place names, and language in context before practising the characters."}</UiText></p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-3">
+            <ToolLink href="/thank-you-in-chinese" icon={BookOpen} title="How to Say Thank You in Chinese"><UiText>{"Learn when to use 谢谢 and practise writing it."}</UiText></ToolLink>
+            <ToolLink href="/shenzhen-in-chinese" icon={BookOpen} title="Shenzhen in Chinese"><UiText>{"Read 深圳, understand the name, and practise its characters."}</UiText></ToolLink>
+            <ToolLink href="/chinese-slang/niu-lai" icon={BookOpen} title="Niu Lai Meaning"><UiText>{"Understand 牛来 in its film and meme context."}</UiText></ToolLink>
+          </div>
+        </section>
+
         <section className="hs-container hs-content-visibility py-14">
           <p className="hs-kicker"><UiText>{"One site, clear starting points"}</UiText></p>
           <h2 className="hs-display mt-2 text-3xl font-bold"><UiText>{"Choose the Right Chinese Writing Tool"}</UiText></h2>

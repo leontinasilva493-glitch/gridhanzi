@@ -69,7 +69,7 @@ export const expandedStrokeOrderCharacters: StrokeOrderCharacter[] = [
     hsk: [hsk("2.0", "1", "好"), hsk("3.0", "1", "好")],
     importance: "好 anchors greetings, evaluations, agreement, and result complements, so it appears from a learner's first conversation onward.",
     components: [{ character: "女", explanation: "The left-side woman component narrows and its final horizontal becomes a rising stroke." }, { character: "子", explanation: "The child component sits slightly wider on the right and supplies the finishing horizontal." }],
-    readingNotes: "好 is usually hǎo, a third tone. In the verb 好奇 it is also hǎo, while the less common hào reading appears in 好学 and 爱好.",
+    readingNotes: "好 is hǎo, a third tone, for good or well. Read it hào in 好奇 (curious), 好学 (eager to learn), and 爱好 (hobby; interest).",
     useNotes: "Use 很好 for an evaluation, 你好 as a greeting, and 好了 to signal that something is ready or settled. 好 can also introduce a proposed action: 好，我们走吧。",
     usageTitle: "Greeting, quality, and readiness",
     usage: "好 moves between adjective, result, and conversational signal. It can describe quality, confirm that a task is finished, soften agreement, or combine with another character to express a preference. Read the sentence role before translating it as only ‘good’.",

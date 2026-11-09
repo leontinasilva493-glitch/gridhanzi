@@ -122,7 +122,9 @@ export function StrokeOrderCharacterPage({
         <section className="mt-8" aria-labelledby="components-title">
           <p className="hs-kicker">Character anatomy</p>
           <h2 id="components-title" className="hs-display mt-2 text-3xl font-bold">
-            Components to notice in {entry.character}
+            {entry.components.length === 1 && entry.components[0].character === entry.character
+              ? `Shape and structure of ${entry.character}`
+              : `Components to notice in ${entry.character}`}
           </h2>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {entry.components.map((component) => (
@@ -179,9 +181,9 @@ export function StrokeOrderCharacterPage({
             <h2 className="hs-display mt-3 text-2xl font-bold">
               {entry.usageTitle}
             </h2>
-            <p className="mt-3 text-sm leading-7 text-[#5a5f65]">
+            {entry.useNotes && entry.useNotes !== entry.usage && <p className="mt-3 text-sm leading-7 text-[#5a5f65]">
               {entry.useNotes}
-            </p>
+            </p>}
             <p className="mt-3 text-sm leading-7 text-[#5a5f65]">
               {entry.usage}
             </p>
@@ -293,7 +295,7 @@ export function StrokeOrderCharacterPage({
         </section>
 
         <section className="mt-8 grid gap-4 lg:grid-cols-2" aria-label="Mistake and confusable character guidance">
-          <article className="hs-card border-[#d8c49f] bg-[#fff9ed] p-6">
+          {entry.commonMistake && <article className="hs-card border-[#d8c49f] bg-[#fff9ed] p-6">
             <p className="hs-kicker">Common mistake</p>
             <h2 className="hs-display mt-2 text-2xl font-bold">
               Common writing mistakes with {entry.character}
@@ -301,7 +303,7 @@ export function StrokeOrderCharacterPage({
             <p className="mt-3 text-sm leading-7 text-[#5a5f65]">
               {entry.commonMistake}
             </p>
-          </article>
+          </article>}
           <article className="hs-card border-[#cbd7e5] bg-[#f5f8fb] p-6">
             <p className="hs-kicker">Do not mix these up</p>
             <h2 className="hs-display mt-2 text-2xl font-bold">
