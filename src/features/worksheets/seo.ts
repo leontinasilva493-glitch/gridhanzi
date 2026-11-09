@@ -58,6 +58,26 @@ export function toAbsoluteUrl(baseUrl: string, pathname: string): string {
   return `${baseUrl.replace(/\/+$/, "")}/${pathname.replace(/^\/+/, "")}`;
 }
 
+export type WorksheetSearchParams = Readonly<Record<string, string | string[] | undefined>>;
+
+const worksheetStateParameters: Readonly<Record<string, ReadonlySet<string>>> = {
+  "/generator": new Set([
+    "words", "template", "practiceset", "mode", "profile", "difficulty",
+    "auto", "hsksystem", "hsklevel", "script", "grid", "resume",
+  ]),
+  "/stroke-order": new Set(["character", "mode"]),
+};
+
+export function hasWorksheetStateQuery(
+  pathname: string,
+  searchParams: WorksheetSearchParams = {},
+): boolean {
+  const keys = worksheetStateParameters[pathname];
+  // Presence is intentional: empty/repeated business parameters are still
+  // state URLs. Tracking parameters alone do not change public indexability.
+  return Boolean(keys && Object.keys(searchParams).some((key) => keys.has(key.toLowerCase())));
+}
+
 export function buildPageSeoMetadata(
   baseUrl: string,
   pathname: string,
@@ -66,6 +86,7 @@ export function buildPageSeoMetadata(
     chineseIndexable?: boolean;
     title?: string;
     description?: string;
+    searchParams?: WorksheetSearchParams;
   } = {},
 ): Metadata {
   const englishPath = pathname === "/" ? "/" : `/${pathname.replace(/^\/+/, "")}`;
@@ -94,7 +115,7 @@ export function buildPageSeoMetadata(
           }
         : {}),
     },
-    ...(locale === "zh" && !chineseIndexable
+    ...((locale === "zh" && !chineseIndexable) || hasWorksheetStateQuery(englishPath, options.searchParams)
       ? { robots: { index: false, follow: true } }
       : {}),
     openGraph: {

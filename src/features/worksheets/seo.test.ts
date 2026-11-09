@@ -43,6 +43,57 @@ import { generateMetadata as generateThankYouMetadata } from "../../app/[locale]
 
 const projectRoot = process.cwd();
 
+test("generator business-state URLs are noindex in both languages without leaking query values into metadata", async () => {
+  const parameters = ["words", "template", "practiceSet", "mode", "profile", "difficulty", "auto", "hskSystem", "hskLevel", "script", "grid", "resume"];
+  for (const locale of ["en", "zh"]) {
+    for (const key of parameters) {
+      const metadata = await generateGeneratorMetadata({
+        params: Promise.resolve({ locale }),
+        searchParams: Promise.resolve({ [key]: "private-worksheet-fixture", utm_source: "test" }),
+      });
+      assert.deepEqual(metadata.robots, { index: false, follow: true }, `${locale}/${key}`);
+      assert.equal(metadata.alternates?.canonical, `https://gridhanzi.org${locale === "zh" ? "/zh" : ""}/generator`);
+      assert.doesNotMatch(JSON.stringify(metadata), /private-worksheet-fixture/);
+      assert.ok(metadata.alternates?.languages?.en);
+      assert.ok(metadata.alternates?.languages?.zh);
+    }
+  }
+});
+
+test("base generators and tracking-only URLs retain indexability", async () => {
+  for (const locale of ["en", "zh"]) {
+    for (const query of [{}, { utm_source: "test", gclid: "test", fbclid: "test", ref: "test" }]) {
+      const metadata = await generateGeneratorMetadata({ params: Promise.resolve({ locale }), searchParams: Promise.resolve(query) });
+      assert.equal(metadata.robots, undefined);
+    }
+  }
+});
+
+test("empty, repeated and historical case variants of state keys are still noindex", async () => {
+  for (const query of [{ words: "" }, { template: ["family", "numbers"] }, { hsksystem: "3.0" }, { WORDS: "去" }]) {
+    const metadata = await generateGeneratorMetadata({ params: Promise.resolve({ locale: "en" }), searchParams: Promise.resolve(query) });
+    assert.deepEqual(metadata.robots, { index: false, follow: true });
+  }
+});
+
+test("stroke lookup state is noindex while the English hub remains indexable", async () => {
+  for (const query of [{ character: "去" }, { mode: "draw" }, { character: ["去", "来"], utm_source: "test" }]) {
+    const metadata = await generateStrokeOrderDirectoryMetadata({ params: Promise.resolve({ locale: "en" }), searchParams: Promise.resolve(query) });
+    assert.deepEqual(metadata.robots, { index: false, follow: true });
+    assert.equal(metadata.alternates?.canonical, "https://gridhanzi.org/stroke-order");
+  }
+  const base = await generateStrokeOrderDirectoryMetadata({ params: Promise.resolve({ locale: "en" }), searchParams: Promise.resolve({ utm_source: "test" }) });
+  assert.equal(base.robots, undefined);
+  const chinese = await generateStrokeOrderDirectoryMetadata({ params: Promise.resolve({ locale: "zh" }) });
+  assert.deepEqual(chinese.robots, { index: false, follow: true }, "Existing untranslated Chinese policy stays intact");
+});
+
+test("state-key rules are route-specific and do not noindex unrelated public content", () => {
+  const metadata = worksheetSeo.buildPageSeoMetadata("https://gridhanzi.org", "/templates/family", "en", { searchParams: { words: "ignored", mode: "ignored" } });
+  assert.equal(metadata.robots, undefined);
+  assert.equal(metadata.alternates?.canonical, "https://gridhanzi.org/templates/family");
+});
+
 test("buildPublicSitemapPaths includes every differentiated template page", () => {
   const paths = buildPublicSitemapPaths();
 

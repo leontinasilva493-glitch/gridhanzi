@@ -17,7 +17,7 @@ import { parseCharacterStandard } from "@/features/worksheets/traditional";
 import type { GridStyle, WorksheetDifficulty } from "@/features/worksheets/types";
 import { isChineseLocale } from "@/features/worksheets/i18n";
 import { envConfigs } from "@/config";
-import { buildPageSeoMetadata, toAbsoluteUrl } from "@/features/worksheets/seo";
+import { buildPageSeoMetadata, toAbsoluteUrl, type WorksheetSearchParams } from "@/features/worksheets/seo";
 
 const DEFAULT_HSK_SELECTION = {
   system: "2.0",
@@ -107,10 +107,11 @@ export function parseGeneratorGridQuery(query: {
   return parseGridQuery(query.grid);
 }
 
-export async function generateMetadata({ params }: {
+export async function generateMetadata({ params, searchParams }: {
   params: Promise<{ locale: string }>;
+  searchParams?: Promise<WorksheetSearchParams>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const [{ locale }, query] = await Promise.all([params, searchParams ?? Promise.resolve({})]);
   const copy = getGeneratorCopy(locale);
   const pageSeo = buildPageSeoMetadata(
     envConfigs.app_url,
@@ -120,6 +121,7 @@ export async function generateMetadata({ params }: {
       chineseIndexable: true,
       title: copy.title,
       description: copy.description,
+      searchParams: query,
     },
   );
 

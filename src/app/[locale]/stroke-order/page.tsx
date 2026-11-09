@@ -11,13 +11,14 @@ import {
 } from "@/features/worksheets/stroke-order-characters";
 import { envConfigs } from "@/config";
 import { Link } from "@/core/i18n/navigation";
-import { buildPageSeoMetadata } from "@/features/worksheets/seo";
+import { buildPageSeoMetadata, type WorksheetSearchParams } from "@/features/worksheets/seo";
 import { resolveStrokeOrderLookupCharacter } from "@/features/worksheets/handwriting-input";
 
-export async function generateMetadata({ params }: {
+export async function generateMetadata({ params, searchParams }: {
   params: Promise<{ locale: string }>;
+  searchParams?: Promise<WorksheetSearchParams>;
 }): Promise<Metadata> {
-  const { locale } = await params;
+  const [{ locale }, query] = await Promise.all([params, searchParams ?? Promise.resolve({})]);
   const title = "Chinese Stroke Order";
   const description =
     "Type or draw a Chinese character to identify it, see its stroke order, practise on screen, and add the Hanzi to a printable worksheet.";
@@ -27,6 +28,7 @@ export async function generateMetadata({ params }: {
     ...buildPageSeoMetadata(envConfigs.app_url, "/stroke-order", locale, {
       title,
       description,
+      searchParams: query,
     }),
   };
 }
