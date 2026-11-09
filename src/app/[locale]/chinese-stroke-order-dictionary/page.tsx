@@ -82,6 +82,25 @@ export default async function Page({ params }: {
 
         <StrokeOrderDictionaryClient entries={entries} />
 
+        <details className="hs-card mt-8 p-6">
+          <summary className="cursor-pointer text-lg font-bold text-[#172b49]">
+            Browse all {entries.length} character guides
+          </summary>
+          <p className="mt-3 text-sm leading-7 text-[#566276]">
+            Prefer scanning the full collection? Open any character below for its writing sequence, reading, and examples.
+          </p>
+          <ul className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-6 lg:grid-cols-10">
+            {indexableStrokeOrderCharacters.map((entry) => (
+              <li key={entry.character}>
+                <Link href={`/stroke-order/${entry.character}`} className="flex min-h-11 flex-col items-center rounded-lg border border-[#ded7ca] px-2 py-2 hover:bg-[#f4eee2]">
+                  <span className="text-xl">{entry.character}</span>
+                  <span className="text-xs text-[#566276]">{entry.pinyin}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </details>
+
         <section aria-labelledby="dictionary-how-title" className="hs-card mt-12 p-6 sm:p-8">
           <p className="hs-kicker">Three ways to start</p>
           <h2 id="dictionary-how-title" className="hs-display mt-2 text-3xl font-bold">Find a character, then practise it</h2>
