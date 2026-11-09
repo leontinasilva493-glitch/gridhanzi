@@ -299,3 +299,26 @@ and [Google AI optimization guidance](https://developers.google.com/search/docs/
 - These six pages have fully translated English and Chinese main content, self canonicals, reciprocal en/zh/x-default alternates and both language URLs in the sitemap. Other untranslated Chinese routes keep their existing noindex policy.
 - Editor query parameters and preview snapshots remain private workflow state; no new generator query URL or preview URL is submitted to the sitemap.
 - The existing community vocabulary catalogue is retained and explicitly separated from the 2025 exam syllabus. Do not infer official exam counts from its 506 Level 1 rows.
+
+
+## Automatic IndexNow notifications
+
+Each push/merge to `main` starts `.github/workflows/indexnow.yml`. It waits for the successful `Workers Builds: gridhanzi` check on that exact commit, verifies the production ownership file, reads the live sitemap and submits its public URLs to Bing's IndexNow endpoint. The initial site has 160 sitemap URLs; each successful release submits the full current list, covering new and updated pages without maintaining a fragile changed-page cache. This does not detect deleted URLs or replace sitemap crawling.
+
+- Ownership verification: root `public/indexnow-key.txt`, served unchanged as UTF-8 text at `/indexnow-key.txt`; no Cloudflare credential or private application key is reused. Keep this dedicated verification value stable.
+- Submission runs in GitHub Actions after deployment, never in a visitor's browser. Only this repository's `main` can submit automatically. Forks and superseded commits skip.
+- Sitemap URLs are deduplicated and restricted to `https://gridhanzi.org`; API, preview, practice-session, query and fragment URLs are excluded. Generator landing pages and the published Chinese learning pages remain eligible. Sitemap indexes are not supported by this initial script and fail explicitly if introduced later.
+- Maximum 10,000 URLs per API batch. Network errors, HTTP 429 and server failures have bounded retries; invalid ownership or rejected payloads fail visibly.
+- HTTP 200 means received; HTTP 202 means received with key validation pending. Neither confirms indexing or ranking. Other statuses are errors.
+- The Actions summary and `indexnow-receipts-*` artifact retain results for 30 days. A failed IndexNow job does not roll back an otherwise successful website deployment.
+
+Local commands from the repository root:
+
+```powershell
+pnpm.cmd test:indexnow
+pnpm.cmd indexnow:check
+```
+
+The second command is read-only preflight against production. It checks the deployed key and sitemap and does not submit. Manual submission uses `pnpm.cmd indexnow:submit`; recovery can instead use GitHub → Actions → Submit production pages to IndexNow → Run workflow → main. Do not rerun a received submission just because the search index has not refreshed.
+
+Protocol reference: https://www.indexnow.org/documentation
