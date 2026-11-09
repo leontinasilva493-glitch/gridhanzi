@@ -80,6 +80,41 @@ async function seed(context, storage, key, value) {
 
 try {
   for (const zh of [false, true]) {
+    await scenario(`parameter-index-boundaries-${zh ? 'zh' : 'en'}`, {}, async (page, context) => {
+      const prefix = zh ? '/zh' : '';
+      // Alternating state and base requests also guards against sharing a
+      // cached noindex decision between different queries on the same route.
+      const cases = [
+        [`${prefix}/generator?words=${encodeURIComponent('一\n二')}`, true],
+        [`${prefix}/generator`, false],
+        [`${prefix}/generator?template=family&utm_source=test`, true],
+        [`${prefix}/generator?utm_source=test&gclid=test`, false],
+        [`${prefix}/generator?words=`, true],
+        [`${prefix}/generator?resume=1`, true],
+        [`${prefix}/generator?template=family&template=numbers`, true],
+        [`${prefix}/generator?hskSystem=3.0&hskLevel=2`, true],
+        [`${prefix}/generator`, false],
+        [`${prefix}/stroke-order?character=${encodeURIComponent('去')}`, true],
+        [`${prefix}/stroke-order?mode=draw`, true],
+        [`${prefix}/stroke-order?utm_source=test`, zh],
+        [`${prefix}/templates/hsk-3-0-level-1-writing?utm_source=test`, false],
+        [`${prefix}/practice`, true],
+        [`${prefix}/worksheet/preview`, true],
+      ];
+      for (const [route, noindex] of cases) {
+        const response = await context.request.get(route);
+        assert.equal(response.status(), 200, route);
+        const html = await response.text();
+        const robots = html.match(/<meta\s+name="robots"\s+content="([^"]*)"/g) ?? [];
+        assert.equal(robots.some(tag => tag.includes('noindex')), noindex, route);
+        assert.ok(robots.length <= 1, `One consistent robots decision: ${route}`);
+        if (route.includes('/generator')) {
+          assert.ok(html.includes(`rel="canonical" href="https://gridhanzi.org${prefix}/generator"`));
+        }
+      }
+    });
+  }
+  for (const zh of [false, true]) {
     await scenario(`flow-editor-pdf-capture-styles-${zh ? 'zh-mobile' : 'en'}`, zh ? { viewport: { width: 390, height: 844 } } : {}, async page => {
       await visit(page, `${zh ? '/zh' : ''}/generator?words=${encodeURIComponent('一\n二')}`);
       await page.getByRole('textbox', { name: 'Chinese row 1', exact: true }).filter({ visible: true }).fill('去');
@@ -721,6 +756,7 @@ try {
     // networkidle would never occur: this test intentionally keeps a request pending.
     await page.goto('/worksheet/preview', { waitUntil: 'domcontentloaded' });
     await page.getByText('Some stroke guides could not load.', { exact: false }).waitFor({ timeout: 15_000 });
+    await page.getByRole('button', { name: 'Download PDF', exact: true }).click({ trial: true });
     assert.equal(await page.getByRole('button', { name: 'Download PDF', exact: true }).isEnabled(), true);
     const downloading = page.waitForEvent('download', { timeout: 45_000 });
     await page.getByRole('button', { name: 'Download PDF', exact: true }).click();
@@ -731,6 +767,7 @@ try {
     retrySucceeds = true;
     await page.getByRole('button', { name: 'Retry stroke guides', exact: true }).click();
     await page.getByRole('button', { name: 'Retry stroke guides', exact: true }).waitFor({ state: 'hidden', timeout: 15_000 });
+    await page.getByRole('button', { name: 'Download PDF', exact: true }).click({ trial: true });
     assert.equal(await page.getByRole('button', { name: 'Download PDF', exact: true }).isEnabled(), true);
   });
   await scenario('bounce-local-analytics-isolation', {}, async page => {

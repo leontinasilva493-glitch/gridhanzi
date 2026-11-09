@@ -107,7 +107,18 @@ Index pages only when they contain differentiated public value.
   from the sitemap until the visible content is translated and differentiated.
 - `/api/*`: block in `robots.txt`.
 - Query-string combinations such as `?words=`, `?template=`, `?mode=`, and
-  `?profile=`: never add them to the sitemap.
+  `?profile=`: never add them to the sitemap or IndexNow submissions.
+  Generator state keys (`words`, `template`, `practiceSet`, `mode`, `profile`,
+  `difficulty`, `auto`, `hskSystem`, `hskLevel`, `script`, `grid`, `resume`)
+  explicitly emit `noindex, follow` on both `/generator` and `/zh/generator`.
+  Stroke lookup state (`character`, `mode`) also emits `noindex, follow`.
+  Key presence includes empty/repeated values and historical case variants.
+  Canonicals continue to point to the query-free page; query values stay out
+  of metadata. The query is preserved for editing rather than redirected away.
+- Tracking-only parameters such as `utm_source`, `gclid`, `fbclid`, and `ref`
+  do not disable indexing. Base generators and differentiated public content
+  retain their existing indexing decisions. State-key rules are route-specific,
+  not a global ban on every URL with a query string.
 - Account, dashboard, checkout, admin, or other private routes if they are
   introduced later.
 
