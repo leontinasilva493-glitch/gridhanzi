@@ -13,6 +13,7 @@ other.
 | --- | --- |
 | `/` | Chinese Character Worksheet Generator |
 | `/generator` | Chinese Worksheet Generator from Your Word List |
+| `/huong-dan-tao-giay-luyen-viet-tieng-trung` | Vietnamese guide to creating Chinese handwriting worksheets |
 | `/english-to-chinese-writing-practice` | English to Chinese Writing Practice |
 | `/templates` | Printable Chinese Writing Worksheets |
 | `/templates/[slug]` | `[Topic] Chinese Writing Worksheet` |
@@ -94,6 +95,7 @@ Index pages only when they contain differentiated public value.
   preserves the published combined 1–2 and 7–9 groups and links to the official
   syllabus PDF.
 - `/zh/generator`, because it has a Chinese interface and an English alternate.
+- The Vietnamese worksheet guide, because it provides a localized explanation of the existing generator. Its `/zh/` duplicate remains noindex and outside the sitemap.
 
 ### Do not index
 

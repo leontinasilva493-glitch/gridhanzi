@@ -312,6 +312,9 @@ export function HomePage() {
             ))}
           </div>
         </section>
+        <div className="hs-container pb-10 text-sm">
+          <a lang="vi" href="/huong-dan-tao-giay-luyen-viet-tieng-trung" className="font-semibold text-[#24466e] underline underline-offset-4">Hướng dẫn tạo giấy luyện viết tiếng Trung bằng tiếng Việt</a>
+        </div>
       </main>
     </PublicPageShell>
   );
