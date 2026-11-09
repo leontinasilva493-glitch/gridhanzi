@@ -69,7 +69,7 @@ Homepage keyword ownership stays Chinese Character Worksheet Generator; /grids o
 
 ## Verification
 
-- 344 unit tests passed; TypeScript and production build passed before integration of the latest main.
+- 344 unit tests, TypeScript and production build passed again after merging main at a49ff86 (the existing bookmark reminder release). All 150 HTTP checks and the focused browser workflow also passed against a fresh build of that integrated version.
 - HTTP checks on all 150 local production guides: unique Title, Description, H1 and canonical, exactly one H1, and each new explanatory paragraph rendered once.
 - Sitemap: 150 character guides. Hub links include all additions; sampled Chinese variants retain noindex.
 - Browser: full 150-link index expands, 买 search returns one actual result, guide opens, 390px layout has no horizontal overflow, dictionary return link exists, worksheet CTA carries 买 into the generator, and 后's traditional-form boundary is visible. No page errors or failed local JS assets observed.
