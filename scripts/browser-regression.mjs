@@ -79,6 +79,19 @@ async function seed(context, storage, key, value) {
 }
 
 try {
+  await scenario('bookmark-prompt-homepage-en-desktop', {}, async page => {
+    await visit(page, '/');
+    assert.equal(await page.evaluate(() => localStorage.getItem('gridhanzi-bookmark-prompt-dismissed-v1')), null, 'Fresh context starts without a dismissal marker');
+    const prompt = page.getByRole('status', { name: 'Bookmark GridHanzi' });
+    await prompt.waitFor({ timeout: 20_000 });
+    assert.match(await prompt.innerText(), /Ctrl \+ D/);
+    await prompt.getByRole('button', { name: 'Got it', exact: true }).click();
+    await prompt.waitFor({ state: 'detached' });
+    assert.equal(await page.evaluate(() => localStorage.getItem('gridhanzi-bookmark-prompt-dismissed-v1')), '1');
+    await page.reload({ waitUntil: 'domcontentloaded' });
+    await page.waitForTimeout(12_500);
+    assert.equal(await prompt.count(), 0, 'Homepage dismissal persists after revisit');
+  });
   for (const zh of [false, true]) {
     await scenario(`bookmark-prompt-${zh ? 'zh-mobile' : 'en-desktop'}`, zh ? { viewport: { width: 390, height: 844 }, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1' } : {}, async (page, context) => {
       await visit(page, zh ? '/zh/templates' : '/templates');
