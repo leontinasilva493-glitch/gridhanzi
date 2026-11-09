@@ -19,6 +19,7 @@ const templateMenuLinks = [
 
 const strokeOrderMenuLinks = [
   ["Stroke Order Tool", "/stroke-order"],
+  ["Stroke Order Dictionary", "/chinese-stroke-order-dictionary"],
   ["Stroke Order Rules", "/chinese-stroke-order-rules"],
   ["Character Components", "/chinese-character-components"],
   ["Continuous Practice", "/practice"],
