@@ -64,7 +64,45 @@ import { WorksheetRenderer } from "./worksheet-renderer";
 export const WORKSHEET_STORAGE_KEY = "gridhanzi:worksheet:v1";
 export const LEGACY_WORKSHEET_STORAGE_KEY = "hanzisheets:worksheet:v1";
 
-export function GeneratorClient({
+export function GeneratorClient(props: Parameters<typeof GeneratorEditor>[0]) {
+  const locale = useLocale();
+  const t = (english: string, chinese: string) => localize(locale, english, chinese);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (mounted) return <GeneratorEditor {...props} />;
+
+  // Keep the public introduction and useful links in the HTML. The stateful
+  // editor (including two responsive row layouts and SVG preview) runs once,
+  // in the browser, rather than also consuming the Worker's request CPU budget.
+  return (
+    <PublicPageShell>
+      <main className="hs-container pb-28 pt-6">
+        <div className="flex items-center gap-2 text-sm text-[#617084]">
+          <Link href="/" className="hover:text-[#b62822]">{t("Home", "首页")}</Link>
+          <span>/</span>
+          <span>{props.breadcrumbLabel ?? t("Generator", "字帖生成器")}</span>
+        </div>
+        <h1 className="hs-display mt-4 text-4xl font-bold sm:text-5xl">
+          {props.pageTitle ?? t("Chinese Worksheet Generator", "中文汉字字帖生成器")}
+        </h1>
+        <p className="mt-2 text-[#566276]">
+          {props.pageDescription ?? t("Review your vocabulary, choose a practice style, and print.", "检查词汇，选择练习方式，然后下载或打印。")}
+        </p>
+        <div className="hs-card mt-6 min-h-96 p-6" role="status" aria-busy="true" data-editor-placeholder>
+          {t("Preparing your worksheet editor…", "正在准备字帖编辑器…")}
+          <noscript>{t("Enable JavaScript to edit, preview, and download your worksheet.", "请启用 JavaScript，以编辑、预览和下载字帖。")}</noscript>
+        </div>
+        <GeneratorSupportSections showEnglishPracticeLink={props.showEnglishPracticeLink !== false} />
+      </main>
+    </PublicPageShell>
+  );
+}
+
+function GeneratorEditor({
   initialEntries,
   initialMode,
   initialProfile = "kids",

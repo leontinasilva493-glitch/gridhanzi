@@ -80,6 +80,23 @@ async function seed(context, storage, key, value) {
 
 try {
   for (const zh of [false, true]) {
+    await scenario(`generator-server-budget-${zh ? 'zh' : 'en'}`, {}, async page => {
+      const response = await visit(page, `${zh ? '/zh' : ''}/generator?template=pinyin-practice`);
+      const html = await response.text();
+      assert.ok(Buffer.byteLength(html) < 80_000, 'Server HTML stays below 80 KB for a full template');
+      assert.ok((html.match(/<svg/g) || []).length <= 24, 'Worker does not render editor row icons and worksheet SVGs');
+      assert.ok(html.includes('generator-faq'), 'Useful public content remains server rendered');
+      assert.ok(!html.includes('hs-paper-stack'), 'Paper pagination and SVG rendering belong to the browser');
+      assert.equal(await page.locator('[data-editor-placeholder]').count(), 0, 'Browser replaces the initial shell');
+      const chinese = page.getByRole('textbox', { name: 'Chinese row 1', exact: true }).first();
+      assert.equal(await chinese.inputValue(), '爱');
+      await chinese.fill('去');
+      await page.locator('#worksheet-live-preview .hs-paper-stack').waitFor();
+      await page.waitForFunction(() => document.querySelector('#worksheet-live-preview')?.textContent.includes('去'));
+      assert.equal(await chinese.inputValue(), '去', 'Editing survives preview rendering');
+    });
+  }
+  for (const zh of [false, true]) {
     await scenario(`help-template-${zh ? 'zh-mobile' : 'en-desktop'}`, zh ? { viewport: { width: 390, height: 844 } } : {}, async (page, context) => {
       let accepted = false;
       let payload;
