@@ -26,7 +26,9 @@ const strokeOrderMenuLinks = [
   ["Continuous Practice", "/practice"],
   ["Practice Sheets", "/templates/stroke-order-practice"],
   ["Basic Strokes", "/templates/basic-strokes"],
-  ["Radicals", "/templates/radicals"],
+  ["Chinese Radicals", "/radicals"],
+  ["Chinese Pinyin Chart", "/pinyin"],
+  ["Radical Worksheets", "/templates/radicals"],
 ] as const;
 
 const gridPaperMenuLinks = [

@@ -28,6 +28,12 @@ export default function Page() {
         <p>If stroke data cannot load, the preview warns you and may contain fewer pages. Retry the guides before comparing page counts with a ready-made PDF. Changing paper, cell size or practice mode can also change pagination.</p>
       </section>
       <section className="mt-8 space-y-3">
+        <h2 className="text-2xl font-semibold">Radical and pinyin directories</h2>
+        <p>The radical reference follows Unicode 17.0 Kangxi numbering and traditional heading stroke counts. Make Me a Hanzi supplies reference readings and the 9,574-character lookup classification; modern dictionaries can group characters differently. Thirty radical lessons have selected example readings and original teaching notes, rather than automatic first-reading defaults.</p>
+        <p>The pinyin chart cross-checks spelling combinations against Pinyin.info. Thirty syllable lessons explain contextual tones, homophones and selected writing examples. The reference chart includes uncommon spellings and does not claim that every spelling has a common character in all four tones. Pronunciation guidance is written text, not recorded audio.</p>
+        <p><Link className="underline" href="/radicals">Browse radicals</Link> · <Link className="underline" href="/pinyin">Browse pinyin</Link> · <a className="underline" href="/data/README.txt">Dataset sources and licences</a>. Lesson worksheet links preserve the selected pinyin and meanings; review those entries in the editor before printing.</p>
+      </section>
+      <section className="mt-8 space-y-3">
         <h2 className="text-2xl font-semibold">Free use and input processing</h2>
         <p>Creating, printing and downloading worksheets does not require an account or payment. Automatic completion has request limits and may be unavailable. You can continue editing manually. This page does not grant additional rights to third-party vocabulary, fonts or stroke datasets; their original licenses still apply.</p>
         <p>PDF rendering happens in your browser. The editor uses browser storage for drafts and preview handoff when storage is available. Automatic completion sends the entered words and selected difficulty and character standard to our server. When Gemini is configured, those words are also sent to Google for completion. Do not enter sensitive student information in that request.</p>

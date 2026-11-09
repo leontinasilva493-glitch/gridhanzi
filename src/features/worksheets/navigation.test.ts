@@ -102,7 +102,7 @@ test("stroke order navigation stays compact and links to the tool plus basics", 
     /\["Practice Sheets", "\/templates\/stroke-order-practice"\]/,
   );
   assert.match(strokeSource, /\["Basic Strokes", "\/templates\/basic-strokes"\]/);
-  assert.match(strokeSource, /\["Radicals", "\/templates\/radicals"\]/);
+  assert.match(strokeSource, /\["Radical Worksheets", "\/templates\/radicals"\]/);
   assert.match(strokeSource, /\["Stroke Order Rules", "\/chinese-stroke-order-rules"\]/);
   assert.match(strokeSource, /\["Character Components", "\/chinese-character-components"\]/);
 });

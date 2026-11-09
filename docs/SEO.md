@@ -23,6 +23,10 @@ other.
 | `/stroke-order` | Chinese stroke order with typed or private handwriting lookup |
 | `/chinese-stroke-order-dictionary` | Browse curated Hanzi by reading, meaning, radical, and stroke count before opening a writing guide |
 | `/stroke-order/[character]` | Curated character stroke order, meaning, and usage |
+| `/radicals` | All 214 Kangxi radical headings, character-to-radical lookup and 30 starter families |
+| `/radicals/[slug]` | One reviewed radical family: indexing forms, three examples and worksheet practice |
+| `/pinyin` | Mandarin syllable chart, initials, finals, tones and 30 guided syllables |
+| `/pinyin/[slug]` | One base syllable's contextual readings, tone contrasts and character practice |
 | `/chinese-stroke-order-rules` | Chinese stroke order rules and exceptions |
 | `/chinese-character-components` | Chinese character meaning and sound components |
 | `/components/[slug]` | One curated component family and writing pattern |
@@ -39,6 +43,14 @@ other.
 
 Keep the homepage canonical at `/`. Do not create a duplicate keyword path
 such as `/chinese-character-practice-sheet-generator`.
+
+The radical family pages describe dictionary indexing and practice; existing
+`/components/*` pages explain character formation and meaning/sound contributions.
+Cross-link these roles instead of copying the same explanation. The radical hub
+lists all 214 headings, but only 30 have detailed lessons. The pinyin chart has 409
+reference spellings and 30 detailed lessons, without inventing a character in every
+tone or claiming recorded audio. `/generator?learning=...` preserves selected
+readings and meanings, is noindex, and is excluded from the sitemap.
 
 ## 2026-07-30 MVP template validation set
 

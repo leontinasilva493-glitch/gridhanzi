@@ -1,0 +1,2047 @@
+[
+  {
+    "syllable": "ba",
+    "initial": "b",
+    "final": "a"
+  },
+  {
+    "syllable": "pa",
+    "initial": "p",
+    "final": "a"
+  },
+  {
+    "syllable": "ma",
+    "initial": "m",
+    "final": "a"
+  },
+  {
+    "syllable": "fa",
+    "initial": "f",
+    "final": "a"
+  },
+  {
+    "syllable": "da",
+    "initial": "d",
+    "final": "a"
+  },
+  {
+    "syllable": "ta",
+    "initial": "t",
+    "final": "a"
+  },
+  {
+    "syllable": "na",
+    "initial": "n",
+    "final": "a"
+  },
+  {
+    "syllable": "la",
+    "initial": "l",
+    "final": "a"
+  },
+  {
+    "syllable": "ga",
+    "initial": "g",
+    "final": "a"
+  },
+  {
+    "syllable": "ka",
+    "initial": "k",
+    "final": "a"
+  },
+  {
+    "syllable": "ha",
+    "initial": "h",
+    "final": "a"
+  },
+  {
+    "syllable": "za",
+    "initial": "z",
+    "final": "a"
+  },
+  {
+    "syllable": "ca",
+    "initial": "c",
+    "final": "a"
+  },
+  {
+    "syllable": "sa",
+    "initial": "s",
+    "final": "a"
+  },
+  {
+    "syllable": "zha",
+    "initial": "zh",
+    "final": "a"
+  },
+  {
+    "syllable": "cha",
+    "initial": "ch",
+    "final": "a"
+  },
+  {
+    "syllable": "sha",
+    "initial": "sh",
+    "final": "a"
+  },
+  {
+    "syllable": "a",
+    "initial": "",
+    "final": "a"
+  },
+  {
+    "syllable": "bo",
+    "initial": "b",
+    "final": "o"
+  },
+  {
+    "syllable": "po",
+    "initial": "p",
+    "final": "o"
+  },
+  {
+    "syllable": "mo",
+    "initial": "m",
+    "final": "o"
+  },
+  {
+    "syllable": "fo",
+    "initial": "f",
+    "final": "o"
+  },
+  {
+    "syllable": "o",
+    "initial": "",
+    "final": "o"
+  },
+  {
+    "syllable": "me",
+    "initial": "m",
+    "final": "e"
+  },
+  {
+    "syllable": "de",
+    "initial": "d",
+    "final": "e"
+  },
+  {
+    "syllable": "te",
+    "initial": "t",
+    "final": "e"
+  },
+  {
+    "syllable": "ne",
+    "initial": "n",
+    "final": "e"
+  },
+  {
+    "syllable": "le",
+    "initial": "l",
+    "final": "e"
+  },
+  {
+    "syllable": "ge",
+    "initial": "g",
+    "final": "e"
+  },
+  {
+    "syllable": "ke",
+    "initial": "k",
+    "final": "e"
+  },
+  {
+    "syllable": "he",
+    "initial": "h",
+    "final": "e"
+  },
+  {
+    "syllable": "ze",
+    "initial": "z",
+    "final": "e"
+  },
+  {
+    "syllable": "ce",
+    "initial": "c",
+    "final": "e"
+  },
+  {
+    "syllable": "se",
+    "initial": "s",
+    "final": "e"
+  },
+  {
+    "syllable": "zhe",
+    "initial": "zh",
+    "final": "e"
+  },
+  {
+    "syllable": "che",
+    "initial": "ch",
+    "final": "e"
+  },
+  {
+    "syllable": "she",
+    "initial": "sh",
+    "final": "e"
+  },
+  {
+    "syllable": "re",
+    "initial": "r",
+    "final": "e"
+  },
+  {
+    "syllable": "e",
+    "initial": "",
+    "final": "e"
+  },
+  {
+    "syllable": "bai",
+    "initial": "b",
+    "final": "ai"
+  },
+  {
+    "syllable": "pai",
+    "initial": "p",
+    "final": "ai"
+  },
+  {
+    "syllable": "mai",
+    "initial": "m",
+    "final": "ai"
+  },
+  {
+    "syllable": "dai",
+    "initial": "d",
+    "final": "ai"
+  },
+  {
+    "syllable": "tai",
+    "initial": "t",
+    "final": "ai"
+  },
+  {
+    "syllable": "nai",
+    "initial": "n",
+    "final": "ai"
+  },
+  {
+    "syllable": "lai",
+    "initial": "l",
+    "final": "ai"
+  },
+  {
+    "syllable": "gai",
+    "initial": "g",
+    "final": "ai"
+  },
+  {
+    "syllable": "kai",
+    "initial": "k",
+    "final": "ai"
+  },
+  {
+    "syllable": "hai",
+    "initial": "h",
+    "final": "ai"
+  },
+  {
+    "syllable": "zai",
+    "initial": "z",
+    "final": "ai"
+  },
+  {
+    "syllable": "cai",
+    "initial": "c",
+    "final": "ai"
+  },
+  {
+    "syllable": "sai",
+    "initial": "s",
+    "final": "ai"
+  },
+  {
+    "syllable": "zhai",
+    "initial": "zh",
+    "final": "ai"
+  },
+  {
+    "syllable": "chai",
+    "initial": "ch",
+    "final": "ai"
+  },
+  {
+    "syllable": "shai",
+    "initial": "sh",
+    "final": "ai"
+  },
+  {
+    "syllable": "ai",
+    "initial": "",
+    "final": "ai"
+  },
+  {
+    "syllable": "bei",
+    "initial": "b",
+    "final": "ei"
+  },
+  {
+    "syllable": "pei",
+    "initial": "p",
+    "final": "ei"
+  },
+  {
+    "syllable": "mei",
+    "initial": "m",
+    "final": "ei"
+  },
+  {
+    "syllable": "fei",
+    "initial": "f",
+    "final": "ei"
+  },
+  {
+    "syllable": "dei",
+    "initial": "d",
+    "final": "ei"
+  },
+  {
+    "syllable": "tei",
+    "initial": "t",
+    "final": "ei"
+  },
+  {
+    "syllable": "nei",
+    "initial": "n",
+    "final": "ei"
+  },
+  {
+    "syllable": "lei",
+    "initial": "l",
+    "final": "ei"
+  },
+  {
+    "syllable": "gei",
+    "initial": "g",
+    "final": "ei"
+  },
+  {
+    "syllable": "kei",
+    "initial": "k",
+    "final": "ei"
+  },
+  {
+    "syllable": "hei",
+    "initial": "h",
+    "final": "ei"
+  },
+  {
+    "syllable": "zei",
+    "initial": "z",
+    "final": "ei"
+  },
+  {
+    "syllable": "zhei",
+    "initial": "zh",
+    "final": "ei"
+  },
+  {
+    "syllable": "shei",
+    "initial": "sh",
+    "final": "ei"
+  },
+  {
+    "syllable": "ei",
+    "initial": "",
+    "final": "ei"
+  },
+  {
+    "syllable": "bao",
+    "initial": "b",
+    "final": "ao"
+  },
+  {
+    "syllable": "pao",
+    "initial": "p",
+    "final": "ao"
+  },
+  {
+    "syllable": "mao",
+    "initial": "m",
+    "final": "ao"
+  },
+  {
+    "syllable": "dao",
+    "initial": "d",
+    "final": "ao"
+  },
+  {
+    "syllable": "tao",
+    "initial": "t",
+    "final": "ao"
+  },
+  {
+    "syllable": "nao",
+    "initial": "n",
+    "final": "ao"
+  },
+  {
+    "syllable": "lao",
+    "initial": "l",
+    "final": "ao"
+  },
+  {
+    "syllable": "gao",
+    "initial": "g",
+    "final": "ao"
+  },
+  {
+    "syllable": "kao",
+    "initial": "k",
+    "final": "ao"
+  },
+  {
+    "syllable": "hao",
+    "initial": "h",
+    "final": "ao"
+  },
+  {
+    "syllable": "zao",
+    "initial": "z",
+    "final": "ao"
+  },
+  {
+    "syllable": "cao",
+    "initial": "c",
+    "final": "ao"
+  },
+  {
+    "syllable": "sao",
+    "initial": "s",
+    "final": "ao"
+  },
+  {
+    "syllable": "zhao",
+    "initial": "zh",
+    "final": "ao"
+  },
+  {
+    "syllable": "chao",
+    "initial": "ch",
+    "final": "ao"
+  },
+  {
+    "syllable": "shao",
+    "initial": "sh",
+    "final": "ao"
+  },
+  {
+    "syllable": "rao",
+    "initial": "r",
+    "final": "ao"
+  },
+  {
+    "syllable": "ao",
+    "initial": "",
+    "final": "ao"
+  },
+  {
+    "syllable": "pou",
+    "initial": "p",
+    "final": "ou"
+  },
+  {
+    "syllable": "mou",
+    "initial": "m",
+    "final": "ou"
+  },
+  {
+    "syllable": "fou",
+    "initial": "f",
+    "final": "ou"
+  },
+  {
+    "syllable": "dou",
+    "initial": "d",
+    "final": "ou"
+  },
+  {
+    "syllable": "tou",
+    "initial": "t",
+    "final": "ou"
+  },
+  {
+    "syllable": "nou",
+    "initial": "n",
+    "final": "ou"
+  },
+  {
+    "syllable": "lou",
+    "initial": "l",
+    "final": "ou"
+  },
+  {
+    "syllable": "gou",
+    "initial": "g",
+    "final": "ou"
+  },
+  {
+    "syllable": "kou",
+    "initial": "k",
+    "final": "ou"
+  },
+  {
+    "syllable": "hou",
+    "initial": "h",
+    "final": "ou"
+  },
+  {
+    "syllable": "zou",
+    "initial": "z",
+    "final": "ou"
+  },
+  {
+    "syllable": "cou",
+    "initial": "c",
+    "final": "ou"
+  },
+  {
+    "syllable": "sou",
+    "initial": "s",
+    "final": "ou"
+  },
+  {
+    "syllable": "zhou",
+    "initial": "zh",
+    "final": "ou"
+  },
+  {
+    "syllable": "chou",
+    "initial": "ch",
+    "final": "ou"
+  },
+  {
+    "syllable": "shou",
+    "initial": "sh",
+    "final": "ou"
+  },
+  {
+    "syllable": "rou",
+    "initial": "r",
+    "final": "ou"
+  },
+  {
+    "syllable": "ou",
+    "initial": "",
+    "final": "ou"
+  },
+  {
+    "syllable": "ban",
+    "initial": "b",
+    "final": "an"
+  },
+  {
+    "syllable": "pan",
+    "initial": "p",
+    "final": "an"
+  },
+  {
+    "syllable": "man",
+    "initial": "m",
+    "final": "an"
+  },
+  {
+    "syllable": "fan",
+    "initial": "f",
+    "final": "an"
+  },
+  {
+    "syllable": "dan",
+    "initial": "d",
+    "final": "an"
+  },
+  {
+    "syllable": "tan",
+    "initial": "t",
+    "final": "an"
+  },
+  {
+    "syllable": "nan",
+    "initial": "n",
+    "final": "an"
+  },
+  {
+    "syllable": "lan",
+    "initial": "l",
+    "final": "an"
+  },
+  {
+    "syllable": "gan",
+    "initial": "g",
+    "final": "an"
+  },
+  {
+    "syllable": "kan",
+    "initial": "k",
+    "final": "an"
+  },
+  {
+    "syllable": "han",
+    "initial": "h",
+    "final": "an"
+  },
+  {
+    "syllable": "zan",
+    "initial": "z",
+    "final": "an"
+  },
+  {
+    "syllable": "can",
+    "initial": "c",
+    "final": "an"
+  },
+  {
+    "syllable": "san",
+    "initial": "s",
+    "final": "an"
+  },
+  {
+    "syllable": "zhan",
+    "initial": "zh",
+    "final": "an"
+  },
+  {
+    "syllable": "chan",
+    "initial": "ch",
+    "final": "an"
+  },
+  {
+    "syllable": "shan",
+    "initial": "sh",
+    "final": "an"
+  },
+  {
+    "syllable": "ran",
+    "initial": "r",
+    "final": "an"
+  },
+  {
+    "syllable": "an",
+    "initial": "",
+    "final": "an"
+  },
+  {
+    "syllable": "bang",
+    "initial": "b",
+    "final": "ang"
+  },
+  {
+    "syllable": "pang",
+    "initial": "p",
+    "final": "ang"
+  },
+  {
+    "syllable": "mang",
+    "initial": "m",
+    "final": "ang"
+  },
+  {
+    "syllable": "fang",
+    "initial": "f",
+    "final": "ang"
+  },
+  {
+    "syllable": "dang",
+    "initial": "d",
+    "final": "ang"
+  },
+  {
+    "syllable": "tang",
+    "initial": "t",
+    "final": "ang"
+  },
+  {
+    "syllable": "nang",
+    "initial": "n",
+    "final": "ang"
+  },
+  {
+    "syllable": "lang",
+    "initial": "l",
+    "final": "ang"
+  },
+  {
+    "syllable": "gang",
+    "initial": "g",
+    "final": "ang"
+  },
+  {
+    "syllable": "kang",
+    "initial": "k",
+    "final": "ang"
+  },
+  {
+    "syllable": "hang",
+    "initial": "h",
+    "final": "ang"
+  },
+  {
+    "syllable": "zang",
+    "initial": "z",
+    "final": "ang"
+  },
+  {
+    "syllable": "cang",
+    "initial": "c",
+    "final": "ang"
+  },
+  {
+    "syllable": "sang",
+    "initial": "s",
+    "final": "ang"
+  },
+  {
+    "syllable": "zhang",
+    "initial": "zh",
+    "final": "ang"
+  },
+  {
+    "syllable": "chang",
+    "initial": "ch",
+    "final": "ang"
+  },
+  {
+    "syllable": "shang",
+    "initial": "sh",
+    "final": "ang"
+  },
+  {
+    "syllable": "rang",
+    "initial": "r",
+    "final": "ang"
+  },
+  {
+    "syllable": "ang",
+    "initial": "",
+    "final": "ang"
+  },
+  {
+    "syllable": "ben",
+    "initial": "b",
+    "final": "en"
+  },
+  {
+    "syllable": "pen",
+    "initial": "p",
+    "final": "en"
+  },
+  {
+    "syllable": "men",
+    "initial": "m",
+    "final": "en"
+  },
+  {
+    "syllable": "fen",
+    "initial": "f",
+    "final": "en"
+  },
+  {
+    "syllable": "den",
+    "initial": "d",
+    "final": "en"
+  },
+  {
+    "syllable": "nen",
+    "initial": "n",
+    "final": "en"
+  },
+  {
+    "syllable": "gen",
+    "initial": "g",
+    "final": "en"
+  },
+  {
+    "syllable": "ken",
+    "initial": "k",
+    "final": "en"
+  },
+  {
+    "syllable": "hen",
+    "initial": "h",
+    "final": "en"
+  },
+  {
+    "syllable": "zen",
+    "initial": "z",
+    "final": "en"
+  },
+  {
+    "syllable": "cen",
+    "initial": "c",
+    "final": "en"
+  },
+  {
+    "syllable": "sen",
+    "initial": "s",
+    "final": "en"
+  },
+  {
+    "syllable": "zhen",
+    "initial": "zh",
+    "final": "en"
+  },
+  {
+    "syllable": "chen",
+    "initial": "ch",
+    "final": "en"
+  },
+  {
+    "syllable": "shen",
+    "initial": "sh",
+    "final": "en"
+  },
+  {
+    "syllable": "ren",
+    "initial": "r",
+    "final": "en"
+  },
+  {
+    "syllable": "en",
+    "initial": "",
+    "final": "en"
+  },
+  {
+    "syllable": "beng",
+    "initial": "b",
+    "final": "eng"
+  },
+  {
+    "syllable": "peng",
+    "initial": "p",
+    "final": "eng"
+  },
+  {
+    "syllable": "meng",
+    "initial": "m",
+    "final": "eng"
+  },
+  {
+    "syllable": "feng",
+    "initial": "f",
+    "final": "eng"
+  },
+  {
+    "syllable": "deng",
+    "initial": "d",
+    "final": "eng"
+  },
+  {
+    "syllable": "teng",
+    "initial": "t",
+    "final": "eng"
+  },
+  {
+    "syllable": "neng",
+    "initial": "n",
+    "final": "eng"
+  },
+  {
+    "syllable": "leng",
+    "initial": "l",
+    "final": "eng"
+  },
+  {
+    "syllable": "geng",
+    "initial": "g",
+    "final": "eng"
+  },
+  {
+    "syllable": "keng",
+    "initial": "k",
+    "final": "eng"
+  },
+  {
+    "syllable": "heng",
+    "initial": "h",
+    "final": "eng"
+  },
+  {
+    "syllable": "zeng",
+    "initial": "z",
+    "final": "eng"
+  },
+  {
+    "syllable": "ceng",
+    "initial": "c",
+    "final": "eng"
+  },
+  {
+    "syllable": "seng",
+    "initial": "s",
+    "final": "eng"
+  },
+  {
+    "syllable": "zheng",
+    "initial": "zh",
+    "final": "eng"
+  },
+  {
+    "syllable": "cheng",
+    "initial": "ch",
+    "final": "eng"
+  },
+  {
+    "syllable": "sheng",
+    "initial": "sh",
+    "final": "eng"
+  },
+  {
+    "syllable": "reng",
+    "initial": "r",
+    "final": "eng"
+  },
+  {
+    "syllable": "eng",
+    "initial": "",
+    "final": "eng"
+  },
+  {
+    "syllable": "dong",
+    "initial": "d",
+    "final": "ong"
+  },
+  {
+    "syllable": "tong",
+    "initial": "t",
+    "final": "ong"
+  },
+  {
+    "syllable": "nong",
+    "initial": "n",
+    "final": "ong"
+  },
+  {
+    "syllable": "long",
+    "initial": "l",
+    "final": "ong"
+  },
+  {
+    "syllable": "gong",
+    "initial": "g",
+    "final": "ong"
+  },
+  {
+    "syllable": "kong",
+    "initial": "k",
+    "final": "ong"
+  },
+  {
+    "syllable": "hong",
+    "initial": "h",
+    "final": "ong"
+  },
+  {
+    "syllable": "zong",
+    "initial": "z",
+    "final": "ong"
+  },
+  {
+    "syllable": "cong",
+    "initial": "c",
+    "final": "ong"
+  },
+  {
+    "syllable": "song",
+    "initial": "s",
+    "final": "ong"
+  },
+  {
+    "syllable": "zhong",
+    "initial": "zh",
+    "final": "ong"
+  },
+  {
+    "syllable": "chong",
+    "initial": "ch",
+    "final": "ong"
+  },
+  {
+    "syllable": "rong",
+    "initial": "r",
+    "final": "ong"
+  },
+  {
+    "syllable": "bu",
+    "initial": "b",
+    "final": "u"
+  },
+  {
+    "syllable": "pu",
+    "initial": "p",
+    "final": "u"
+  },
+  {
+    "syllable": "mu",
+    "initial": "m",
+    "final": "u"
+  },
+  {
+    "syllable": "fu",
+    "initial": "f",
+    "final": "u"
+  },
+  {
+    "syllable": "du",
+    "initial": "d",
+    "final": "u"
+  },
+  {
+    "syllable": "tu",
+    "initial": "t",
+    "final": "u"
+  },
+  {
+    "syllable": "nu",
+    "initial": "n",
+    "final": "u"
+  },
+  {
+    "syllable": "lu",
+    "initial": "l",
+    "final": "u"
+  },
+  {
+    "syllable": "gu",
+    "initial": "g",
+    "final": "u"
+  },
+  {
+    "syllable": "ku",
+    "initial": "k",
+    "final": "u"
+  },
+  {
+    "syllable": "hu",
+    "initial": "h",
+    "final": "u"
+  },
+  {
+    "syllable": "zu",
+    "initial": "z",
+    "final": "u"
+  },
+  {
+    "syllable": "cu",
+    "initial": "c",
+    "final": "u"
+  },
+  {
+    "syllable": "su",
+    "initial": "s",
+    "final": "u"
+  },
+  {
+    "syllable": "zhu",
+    "initial": "zh",
+    "final": "u"
+  },
+  {
+    "syllable": "chu",
+    "initial": "ch",
+    "final": "u"
+  },
+  {
+    "syllable": "shu",
+    "initial": "sh",
+    "final": "u"
+  },
+  {
+    "syllable": "ru",
+    "initial": "r",
+    "final": "u"
+  },
+  {
+    "syllable": "wu",
+    "initial": "",
+    "final": "u"
+  },
+  {
+    "syllable": "gua",
+    "initial": "g",
+    "final": "ua"
+  },
+  {
+    "syllable": "kua",
+    "initial": "k",
+    "final": "ua"
+  },
+  {
+    "syllable": "hua",
+    "initial": "h",
+    "final": "ua"
+  },
+  {
+    "syllable": "zhua",
+    "initial": "zh",
+    "final": "ua"
+  },
+  {
+    "syllable": "chua",
+    "initial": "ch",
+    "final": "ua"
+  },
+  {
+    "syllable": "shua",
+    "initial": "sh",
+    "final": "ua"
+  },
+  {
+    "syllable": "rua",
+    "initial": "r",
+    "final": "ua"
+  },
+  {
+    "syllable": "wa",
+    "initial": "",
+    "final": "ua"
+  },
+  {
+    "syllable": "duo",
+    "initial": "d",
+    "final": "uo"
+  },
+  {
+    "syllable": "tuo",
+    "initial": "t",
+    "final": "uo"
+  },
+  {
+    "syllable": "nuo",
+    "initial": "n",
+    "final": "uo"
+  },
+  {
+    "syllable": "luo",
+    "initial": "l",
+    "final": "uo"
+  },
+  {
+    "syllable": "guo",
+    "initial": "g",
+    "final": "uo"
+  },
+  {
+    "syllable": "kuo",
+    "initial": "k",
+    "final": "uo"
+  },
+  {
+    "syllable": "huo",
+    "initial": "h",
+    "final": "uo"
+  },
+  {
+    "syllable": "zuo",
+    "initial": "z",
+    "final": "uo"
+  },
+  {
+    "syllable": "cuo",
+    "initial": "c",
+    "final": "uo"
+  },
+  {
+    "syllable": "suo",
+    "initial": "s",
+    "final": "uo"
+  },
+  {
+    "syllable": "zhuo",
+    "initial": "zh",
+    "final": "uo"
+  },
+  {
+    "syllable": "chuo",
+    "initial": "ch",
+    "final": "uo"
+  },
+  {
+    "syllable": "shuo",
+    "initial": "sh",
+    "final": "uo"
+  },
+  {
+    "syllable": "ruo",
+    "initial": "r",
+    "final": "uo"
+  },
+  {
+    "syllable": "wo",
+    "initial": "",
+    "final": "uo"
+  },
+  {
+    "syllable": "guai",
+    "initial": "g",
+    "final": "uai"
+  },
+  {
+    "syllable": "kuai",
+    "initial": "k",
+    "final": "uai"
+  },
+  {
+    "syllable": "huai",
+    "initial": "h",
+    "final": "uai"
+  },
+  {
+    "syllable": "zhuai",
+    "initial": "zh",
+    "final": "uai"
+  },
+  {
+    "syllable": "chuai",
+    "initial": "ch",
+    "final": "uai"
+  },
+  {
+    "syllable": "shuai",
+    "initial": "sh",
+    "final": "uai"
+  },
+  {
+    "syllable": "wai",
+    "initial": "",
+    "final": "uai"
+  },
+  {
+    "syllable": "dui",
+    "initial": "d",
+    "final": "ui"
+  },
+  {
+    "syllable": "tui",
+    "initial": "t",
+    "final": "ui"
+  },
+  {
+    "syllable": "gui",
+    "initial": "g",
+    "final": "ui"
+  },
+  {
+    "syllable": "kui",
+    "initial": "k",
+    "final": "ui"
+  },
+  {
+    "syllable": "hui",
+    "initial": "h",
+    "final": "ui"
+  },
+  {
+    "syllable": "zui",
+    "initial": "z",
+    "final": "ui"
+  },
+  {
+    "syllable": "cui",
+    "initial": "c",
+    "final": "ui"
+  },
+  {
+    "syllable": "sui",
+    "initial": "s",
+    "final": "ui"
+  },
+  {
+    "syllable": "zhui",
+    "initial": "zh",
+    "final": "ui"
+  },
+  {
+    "syllable": "chui",
+    "initial": "ch",
+    "final": "ui"
+  },
+  {
+    "syllable": "shui",
+    "initial": "sh",
+    "final": "ui"
+  },
+  {
+    "syllable": "rui",
+    "initial": "r",
+    "final": "ui"
+  },
+  {
+    "syllable": "wei",
+    "initial": "",
+    "final": "ui"
+  },
+  {
+    "syllable": "duan",
+    "initial": "d",
+    "final": "uan"
+  },
+  {
+    "syllable": "tuan",
+    "initial": "t",
+    "final": "uan"
+  },
+  {
+    "syllable": "nuan",
+    "initial": "n",
+    "final": "uan"
+  },
+  {
+    "syllable": "luan",
+    "initial": "l",
+    "final": "uan"
+  },
+  {
+    "syllable": "guan",
+    "initial": "g",
+    "final": "uan"
+  },
+  {
+    "syllable": "kuan",
+    "initial": "k",
+    "final": "uan"
+  },
+  {
+    "syllable": "huan",
+    "initial": "h",
+    "final": "uan"
+  },
+  {
+    "syllable": "zuan",
+    "initial": "z",
+    "final": "uan"
+  },
+  {
+    "syllable": "cuan",
+    "initial": "c",
+    "final": "uan"
+  },
+  {
+    "syllable": "suan",
+    "initial": "s",
+    "final": "uan"
+  },
+  {
+    "syllable": "zhuan",
+    "initial": "zh",
+    "final": "uan"
+  },
+  {
+    "syllable": "chuan",
+    "initial": "ch",
+    "final": "uan"
+  },
+  {
+    "syllable": "shuan",
+    "initial": "sh",
+    "final": "uan"
+  },
+  {
+    "syllable": "ruan",
+    "initial": "r",
+    "final": "uan"
+  },
+  {
+    "syllable": "wan",
+    "initial": "",
+    "final": "uan"
+  },
+  {
+    "syllable": "guang",
+    "initial": "g",
+    "final": "uang"
+  },
+  {
+    "syllable": "kuang",
+    "initial": "k",
+    "final": "uang"
+  },
+  {
+    "syllable": "huang",
+    "initial": "h",
+    "final": "uang"
+  },
+  {
+    "syllable": "zhuang",
+    "initial": "zh",
+    "final": "uang"
+  },
+  {
+    "syllable": "chuang",
+    "initial": "ch",
+    "final": "uang"
+  },
+  {
+    "syllable": "shuang",
+    "initial": "sh",
+    "final": "uang"
+  },
+  {
+    "syllable": "wang",
+    "initial": "",
+    "final": "uang"
+  },
+  {
+    "syllable": "dun",
+    "initial": "d",
+    "final": "un"
+  },
+  {
+    "syllable": "tun",
+    "initial": "t",
+    "final": "un"
+  },
+  {
+    "syllable": "nun",
+    "initial": "n",
+    "final": "un"
+  },
+  {
+    "syllable": "lun",
+    "initial": "l",
+    "final": "un"
+  },
+  {
+    "syllable": "gun",
+    "initial": "g",
+    "final": "un"
+  },
+  {
+    "syllable": "kun",
+    "initial": "k",
+    "final": "un"
+  },
+  {
+    "syllable": "hun",
+    "initial": "h",
+    "final": "un"
+  },
+  {
+    "syllable": "zun",
+    "initial": "z",
+    "final": "un"
+  },
+  {
+    "syllable": "cun",
+    "initial": "c",
+    "final": "un"
+  },
+  {
+    "syllable": "sun",
+    "initial": "s",
+    "final": "un"
+  },
+  {
+    "syllable": "zhun",
+    "initial": "zh",
+    "final": "un"
+  },
+  {
+    "syllable": "chun",
+    "initial": "ch",
+    "final": "un"
+  },
+  {
+    "syllable": "shun",
+    "initial": "sh",
+    "final": "un"
+  },
+  {
+    "syllable": "run",
+    "initial": "r",
+    "final": "un"
+  },
+  {
+    "syllable": "wen",
+    "initial": "",
+    "final": "un"
+  },
+  {
+    "syllable": "weng",
+    "initial": "",
+    "final": "ueng"
+  },
+  {
+    "syllable": "bi",
+    "initial": "b",
+    "final": "i"
+  },
+  {
+    "syllable": "pi",
+    "initial": "p",
+    "final": "i"
+  },
+  {
+    "syllable": "mi",
+    "initial": "m",
+    "final": "i"
+  },
+  {
+    "syllable": "di",
+    "initial": "d",
+    "final": "i"
+  },
+  {
+    "syllable": "ti",
+    "initial": "t",
+    "final": "i"
+  },
+  {
+    "syllable": "ni",
+    "initial": "n",
+    "final": "i"
+  },
+  {
+    "syllable": "li",
+    "initial": "l",
+    "final": "i"
+  },
+  {
+    "syllable": "zi",
+    "initial": "z",
+    "final": "i"
+  },
+  {
+    "syllable": "ci",
+    "initial": "c",
+    "final": "i"
+  },
+  {
+    "syllable": "si",
+    "initial": "s",
+    "final": "i"
+  },
+  {
+    "syllable": "zhi",
+    "initial": "zh",
+    "final": "i"
+  },
+  {
+    "syllable": "chi",
+    "initial": "ch",
+    "final": "i"
+  },
+  {
+    "syllable": "shi",
+    "initial": "sh",
+    "final": "i"
+  },
+  {
+    "syllable": "ri",
+    "initial": "r",
+    "final": "i"
+  },
+  {
+    "syllable": "ji",
+    "initial": "j",
+    "final": "i"
+  },
+  {
+    "syllable": "qi",
+    "initial": "q",
+    "final": "i"
+  },
+  {
+    "syllable": "xi",
+    "initial": "x",
+    "final": "i"
+  },
+  {
+    "syllable": "yi",
+    "initial": "",
+    "final": "i"
+  },
+  {
+    "syllable": "dia",
+    "initial": "d",
+    "final": "ia"
+  },
+  {
+    "syllable": "lia",
+    "initial": "l",
+    "final": "ia"
+  },
+  {
+    "syllable": "jia",
+    "initial": "j",
+    "final": "ia"
+  },
+  {
+    "syllable": "qia",
+    "initial": "q",
+    "final": "ia"
+  },
+  {
+    "syllable": "xia",
+    "initial": "x",
+    "final": "ia"
+  },
+  {
+    "syllable": "ya",
+    "initial": "",
+    "final": "ia"
+  },
+  {
+    "syllable": "bie",
+    "initial": "b",
+    "final": "ie"
+  },
+  {
+    "syllable": "pie",
+    "initial": "p",
+    "final": "ie"
+  },
+  {
+    "syllable": "mie",
+    "initial": "m",
+    "final": "ie"
+  },
+  {
+    "syllable": "die",
+    "initial": "d",
+    "final": "ie"
+  },
+  {
+    "syllable": "tie",
+    "initial": "t",
+    "final": "ie"
+  },
+  {
+    "syllable": "nie",
+    "initial": "n",
+    "final": "ie"
+  },
+  {
+    "syllable": "lie",
+    "initial": "l",
+    "final": "ie"
+  },
+  {
+    "syllable": "jie",
+    "initial": "j",
+    "final": "ie"
+  },
+  {
+    "syllable": "qie",
+    "initial": "q",
+    "final": "ie"
+  },
+  {
+    "syllable": "xie",
+    "initial": "x",
+    "final": "ie"
+  },
+  {
+    "syllable": "ye",
+    "initial": "",
+    "final": "ie"
+  },
+  {
+    "syllable": "biao",
+    "initial": "b",
+    "final": "iao"
+  },
+  {
+    "syllable": "piao",
+    "initial": "p",
+    "final": "iao"
+  },
+  {
+    "syllable": "miao",
+    "initial": "m",
+    "final": "iao"
+  },
+  {
+    "syllable": "diao",
+    "initial": "d",
+    "final": "iao"
+  },
+  {
+    "syllable": "tiao",
+    "initial": "t",
+    "final": "iao"
+  },
+  {
+    "syllable": "niao",
+    "initial": "n",
+    "final": "iao"
+  },
+  {
+    "syllable": "liao",
+    "initial": "l",
+    "final": "iao"
+  },
+  {
+    "syllable": "jiao",
+    "initial": "j",
+    "final": "iao"
+  },
+  {
+    "syllable": "qiao",
+    "initial": "q",
+    "final": "iao"
+  },
+  {
+    "syllable": "xiao",
+    "initial": "x",
+    "final": "iao"
+  },
+  {
+    "syllable": "yao",
+    "initial": "",
+    "final": "iao"
+  },
+  {
+    "syllable": "miu",
+    "initial": "m",
+    "final": "iu"
+  },
+  {
+    "syllable": "diu",
+    "initial": "d",
+    "final": "iu"
+  },
+  {
+    "syllable": "niu",
+    "initial": "n",
+    "final": "iu"
+  },
+  {
+    "syllable": "liu",
+    "initial": "l",
+    "final": "iu"
+  },
+  {
+    "syllable": "jiu",
+    "initial": "j",
+    "final": "iu"
+  },
+  {
+    "syllable": "qiu",
+    "initial": "q",
+    "final": "iu"
+  },
+  {
+    "syllable": "xiu",
+    "initial": "x",
+    "final": "iu"
+  },
+  {
+    "syllable": "you",
+    "initial": "",
+    "final": "iu"
+  },
+  {
+    "syllable": "bian",
+    "initial": "b",
+    "final": "ian"
+  },
+  {
+    "syllable": "pian",
+    "initial": "p",
+    "final": "ian"
+  },
+  {
+    "syllable": "mian",
+    "initial": "m",
+    "final": "ian"
+  },
+  {
+    "syllable": "dian",
+    "initial": "d",
+    "final": "ian"
+  },
+  {
+    "syllable": "tian",
+    "initial": "t",
+    "final": "ian"
+  },
+  {
+    "syllable": "nian",
+    "initial": "n",
+    "final": "ian"
+  },
+  {
+    "syllable": "lian",
+    "initial": "l",
+    "final": "ian"
+  },
+  {
+    "syllable": "jian",
+    "initial": "j",
+    "final": "ian"
+  },
+  {
+    "syllable": "qian",
+    "initial": "q",
+    "final": "ian"
+  },
+  {
+    "syllable": "xian",
+    "initial": "x",
+    "final": "ian"
+  },
+  {
+    "syllable": "yan",
+    "initial": "",
+    "final": "ian"
+  },
+  {
+    "syllable": "niang",
+    "initial": "n",
+    "final": "iang"
+  },
+  {
+    "syllable": "liang",
+    "initial": "l",
+    "final": "iang"
+  },
+  {
+    "syllable": "jiang",
+    "initial": "j",
+    "final": "iang"
+  },
+  {
+    "syllable": "qiang",
+    "initial": "q",
+    "final": "iang"
+  },
+  {
+    "syllable": "xiang",
+    "initial": "x",
+    "final": "iang"
+  },
+  {
+    "syllable": "yang",
+    "initial": "",
+    "final": "iang"
+  },
+  {
+    "syllable": "bin",
+    "initial": "b",
+    "final": "in"
+  },
+  {
+    "syllable": "pin",
+    "initial": "p",
+    "final": "in"
+  },
+  {
+    "syllable": "min",
+    "initial": "m",
+    "final": "in"
+  },
+  {
+    "syllable": "nin",
+    "initial": "n",
+    "final": "in"
+  },
+  {
+    "syllable": "lin",
+    "initial": "l",
+    "final": "in"
+  },
+  {
+    "syllable": "jin",
+    "initial": "j",
+    "final": "in"
+  },
+  {
+    "syllable": "qin",
+    "initial": "q",
+    "final": "in"
+  },
+  {
+    "syllable": "xin",
+    "initial": "x",
+    "final": "in"
+  },
+  {
+    "syllable": "yin",
+    "initial": "",
+    "final": "in"
+  },
+  {
+    "syllable": "bing",
+    "initial": "b",
+    "final": "ing"
+  },
+  {
+    "syllable": "ping",
+    "initial": "p",
+    "final": "ing"
+  },
+  {
+    "syllable": "ming",
+    "initial": "m",
+    "final": "ing"
+  },
+  {
+    "syllable": "ding",
+    "initial": "d",
+    "final": "ing"
+  },
+  {
+    "syllable": "ting",
+    "initial": "t",
+    "final": "ing"
+  },
+  {
+    "syllable": "ning",
+    "initial": "n",
+    "final": "ing"
+  },
+  {
+    "syllable": "ling",
+    "initial": "l",
+    "final": "ing"
+  },
+  {
+    "syllable": "jing",
+    "initial": "j",
+    "final": "ing"
+  },
+  {
+    "syllable": "qing",
+    "initial": "q",
+    "final": "ing"
+  },
+  {
+    "syllable": "xing",
+    "initial": "x",
+    "final": "ing"
+  },
+  {
+    "syllable": "ying",
+    "initial": "",
+    "final": "ing"
+  },
+  {
+    "syllable": "jiong",
+    "initial": "j",
+    "final": "iong"
+  },
+  {
+    "syllable": "qiong",
+    "initial": "q",
+    "final": "iong"
+  },
+  {
+    "syllable": "xiong",
+    "initial": "x",
+    "final": "iong"
+  },
+  {
+    "syllable": "yong",
+    "initial": "",
+    "final": "iong"
+  },
+  {
+    "syllable": "nü",
+    "initial": "n",
+    "final": "ü"
+  },
+  {
+    "syllable": "lü",
+    "initial": "l",
+    "final": "ü"
+  },
+  {
+    "syllable": "ju",
+    "initial": "j",
+    "final": "ü"
+  },
+  {
+    "syllable": "qu",
+    "initial": "q",
+    "final": "ü"
+  },
+  {
+    "syllable": "xu",
+    "initial": "x",
+    "final": "ü"
+  },
+  {
+    "syllable": "yu",
+    "initial": "",
+    "final": "ü"
+  },
+  {
+    "syllable": "nüe",
+    "initial": "n",
+    "final": "üe"
+  },
+  {
+    "syllable": "lüe",
+    "initial": "l",
+    "final": "üe"
+  },
+  {
+    "syllable": "jue",
+    "initial": "j",
+    "final": "üe"
+  },
+  {
+    "syllable": "que",
+    "initial": "q",
+    "final": "üe"
+  },
+  {
+    "syllable": "xue",
+    "initial": "x",
+    "final": "üe"
+  },
+  {
+    "syllable": "yue",
+    "initial": "",
+    "final": "üe"
+  },
+  {
+    "syllable": "juan",
+    "initial": "j",
+    "final": "üan"
+  },
+  {
+    "syllable": "quan",
+    "initial": "q",
+    "final": "üan"
+  },
+  {
+    "syllable": "xuan",
+    "initial": "x",
+    "final": "üan"
+  },
+  {
+    "syllable": "yuan",
+    "initial": "",
+    "final": "üan"
+  },
+  {
+    "syllable": "jun",
+    "initial": "j",
+    "final": "ün"
+  },
+  {
+    "syllable": "qun",
+    "initial": "q",
+    "final": "ün"
+  },
+  {
+    "syllable": "xun",
+    "initial": "x",
+    "final": "ün"
+  },
+  {
+    "syllable": "yun",
+    "initial": "",
+    "final": "ün"
+  }
+]
