@@ -10,7 +10,7 @@ import {
   getPdfHeaderCropHeight,
   getPdfHeaderCropHeightForPage,
   getPdfPageSize,
-  prepareFlashcardCaptureClone,
+  preparePdfCaptureClone,
   shouldClearPdfHeader,
   shouldRecomposeWorksheetPdfHeader,
 } from "./pdf";
@@ -191,7 +191,7 @@ test("PDF export keeps system fallbacks when the web font cannot load", async ()
   );
 });
 
-test("prepareFlashcardCaptureClone recursively copies computed styles and preserves capture root overrides", () => {
+test("preparePdfCaptureClone recursively copies computed styles and preserves capture root overrides", () => {
   type PropertyTuple = [name: string, value: string, priority?: string];
   type FakeNode = {
     style: {
@@ -267,7 +267,7 @@ test("prepareFlashcardCaptureClone recursively copies computed styles and preser
     };
   };
 
-  prepareFlashcardCaptureClone(
+  preparePdfCaptureClone(
     rootSource,
     rootTarget,
     getComputedStyleForNode,

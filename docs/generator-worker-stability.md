@@ -61,3 +61,18 @@ parameters. Record each status and Error 1102 occurrence. Verify a production
 browser editing -> full preview -> downloaded PDF flow as well. A finite successful
 check establishes the observed release state, not a guarantee against every future
 resource event.
+
+## PDF visual acceptance follow-up
+
+Live editor -> preview -> PDF acceptance exposed a separate capture-layout failure:
+the visible source grid had `display:grid`, while html2canvas's temporary document
+had no external stylesheets and resolved the same cell to `inline` and its row to
+`block`. Downloads were valid PDF files but their page layout was wrong. A direct
+preview test with cached styles did not expose this, which is why file-download
+success alone is insufficient.
+
+The existing computed-style freezing used for flashcards now applies to worksheet
+capture clones too. Screen preview and pagination stay unchanged. English desktop
+and Chinese mobile regression cases deliberately disable cloned stylesheet links,
+then assert that the capture grid retains copied inline styles and a PDF downloads.
+Retain visual checks of the downloaded pages after production rollout.
