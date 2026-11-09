@@ -2,6 +2,9 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { hskCatalog } from "./hsk";
 import { foundationStrokeOrderCharacters } from "./stroke-order-character-foundation";
+import { classroomStrokeOrderCharacters } from "./stroke-order-character-classroom";
+
+const classroomCharacters = classroomStrokeOrderCharacters.map((entry) => entry.character);
 
 const foundationCharacters = foundationStrokeOrderCharacters.map((entry) => entry.character);
 
@@ -25,7 +28,7 @@ test("foundation guides keep distinct explanatory sections and relevant publishe
 test("foundation batch publishes 48 unique guides with traceable HSK evidence", () => {
   assert.equal(foundationCharacters.length, 48);
   assert.equal(new Set(foundationCharacters).size, 48);
-  assert.equal(indexableStrokeOrderCharacters.length, 102);
+  assert.equal(indexableStrokeOrderCharacters.length, 126);
   for (const entry of foundationStrokeOrderCharacters) {
     assert.ok(entry.hsk.every((card) => hskCatalog.some((record) =>
       `HSK ${record.system}` === card.system && `Level ${record.level}` === card.level &&
@@ -89,7 +92,7 @@ import {
 test("published character order contains the existing guides plus the approved first batch", () => {
   assert.deepEqual(strokeOrderCharacters.map((entry) => entry.character), [
     "\u7231", "\u5e74", "\u4f5b", ...approvedFirstBatch, trendingCharacter,
-    ...contentClusterCharacters, "汉", "字", ...pilotCharacters, ...foundationCharacters,
+    ...contentClusterCharacters, "汉", "字", ...pilotCharacters, ...foundationCharacters, ...classroomCharacters,
   ]);
 });
 
@@ -367,7 +370,7 @@ test("SEO and substantive teaching fields remain unique across published guides"
 test("curated stroke-order pages contain complete learning content", () => {
   assert.deepEqual(
     strokeOrderCharacters.map((entry) => entry.character),
-    ["爱", "年", "佛", ...approvedFirstBatch, trendingCharacter, ...contentClusterCharacters, "汉", "字", ...pilotCharacters, ...foundationCharacters],
+    ["爱", "年", "佛", ...approvedFirstBatch, trendingCharacter, ...contentClusterCharacters, "汉", "字", ...pilotCharacters, ...foundationCharacters, ...classroomCharacters],
   );
 
   for (const entry of strokeOrderCharacters) {

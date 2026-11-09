@@ -81,6 +81,7 @@ export interface StrokeOrderCharacter {
 import { expandedStrokeOrderCharacters } from "./stroke-order-character-expansion";
 import { pilotStrokeOrderCharacters } from "./stroke-order-character-pilot";
 import { foundationStrokeOrderCharacters } from "./stroke-order-character-foundation";
+import { classroomStrokeOrderCharacters } from "./stroke-order-character-classroom";
 
 type StrokeOrderPublicationCandidate = Pick<
   StrokeOrderCharacter,
@@ -598,6 +599,7 @@ strokeOrderCharacterEntries.push(
 strokeOrderCharacterEntries.push(...expandedStrokeOrderCharacters);
 strokeOrderCharacterEntries.push(...pilotStrokeOrderCharacters);
 strokeOrderCharacterEntries.push(...foundationStrokeOrderCharacters);
+strokeOrderCharacterEntries.push(...classroomStrokeOrderCharacters);
 
 const publishedCharacterOrder = [
   "\u7231", "\u5e74", "\u4f5b", "\u7684", "\u4e00", "\u662f", "\u5728", "\u4e86", "\u6211",
@@ -605,6 +607,7 @@ const publishedCharacterOrder = [
   "好", "不", "没", "有", "上", "下", "大", "小", "家", "水", "书", "吃", "喝", "二", "再", "得", "地", "坏", "汉", "字",
   "中", "国", "天", "他", "她", "们", "日", "月", "个", "和", "多", "这", "那", "谁", "也",
   ...foundationStrokeOrderCharacters.map((entry) => entry.character),
+  ...classroomStrokeOrderCharacters.map((entry) => entry.character),
 ] as const;
 
 export const indexableStrokeOrderCharacters = filterIndexableStrokeOrderCharacters(

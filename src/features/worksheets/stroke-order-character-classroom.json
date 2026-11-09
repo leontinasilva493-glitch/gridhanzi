@@ -1,0 +1,2066 @@
+[
+  {
+    "character": "生",
+    "pinyin": "shēng",
+    "meaning": "life; be born; student suffix",
+    "strokes": 5,
+    "radical": "生",
+    "traditional": "生",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 学生; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Student introductions and birthday conversations both use 生. Its five-stroke shape is also a useful comparison with the simpler 牛.",
+    "components": [
+      {
+        "character": "生",
+        "explanation": "A short upper slant leads into three horizontals joined by a central vertical. The lowest horizontal supports the whole form."
+      }
+    ],
+    "readingNotes": "Read 生 as shēng with a level first tone in 生日 (shēngrì) and 生活 (shēnghuó). In 学生, the final syllable is often unstressed neutral sheng in conversation; the careful dictionary form is xuéshēng.",
+    "usageTitle": "Using 生 in everyday Chinese",
+    "usage": "生 appears in 学生 for student, 生日 for birthday, and 生活 for life. These compounds express different ideas; 生 alone is not the usual word for a student.",
+    "writingTip": "Keep the upper slant short, space the horizontal levels evenly, and let the bottom horizontal be wider than the middle one.",
+    "examples": [
+      {
+        "hanzi": "学生",
+        "pinyin": "xuésheng",
+        "meaning": "student"
+      },
+      {
+        "hanzi": "生日",
+        "pinyin": "shēngrì",
+        "meaning": "birthday"
+      },
+      {
+        "hanzi": "生活",
+        "pinyin": "shēnghuó",
+        "meaning": "life"
+      },
+      {
+        "hanzi": "出生",
+        "pinyin": "chūshēng",
+        "meaning": "be born"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我是学生。",
+        "pinyin": "Wǒ shì xuésheng.",
+        "meaning": "I am a student."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "今天是我的生日。",
+        "pinyin": "Jīntiān shì wǒ de shēngrì.",
+        "meaning": "Today is my birthday."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "他出生在中国，现在住在英国。",
+        "pinyin": "Tā chūshēng zài Zhōngguó, xiànzài zhù zài Yīngguó.",
+        "meaning": "He was born in China and now lives in Britain."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "牛",
+      "guidance": "生 has an extra bottom horizontal compared with 牛; omitting it changes the character."
+    },
+    "relatedCharacters": [
+      "学",
+      "日",
+      "年"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "生 (shēng) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 生 (shēng): Stroke Order, Meaning & Examples",
+      "description": "Learn 生 (shēng), its five-stroke form, and its contrast with 牛. Practise student, birthday, and everyday-life words with useful sentences."
+    }
+  },
+  {
+    "character": "老",
+    "pinyin": "lǎo",
+    "meaning": "old; familiar prefix",
+    "strokes": 6,
+    "radical": "老",
+    "traditional": "老",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 老师; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "老师 is one of the first words learners need in a classroom. Practise 老 as part of that respectful title before using it to describe age.",
+    "components": [
+      {
+        "character": "老",
+        "explanation": "The upper part has a crossing horizontal and vertical with a falling stroke. A compact 匕-shaped form occupies the lower part."
+      }
+    ],
+    "readingNotes": "老 is lǎo, a third-tone syllable. In 老师 (lǎoshī) it precedes a first tone; in 老虎 (lǎohǔ), ordinary speech changes the first of the two third tones to a rising tone.",
+    "usageTitle": "Using 老 in everyday Chinese",
+    "usage": "老 can describe age, but 老师 is the respectful everyday word for teacher, not an old teacher. 老朋友 describes a longtime friend and need not refer to an elderly person.",
+    "writingTip": "Keep the upper crossing compact and leave room beneath the long falling stroke for the lower hooked form.",
+    "examples": [
+      {
+        "hanzi": "老师",
+        "pinyin": "lǎoshī",
+        "meaning": "teacher"
+      },
+      {
+        "hanzi": "老人",
+        "pinyin": "lǎorén",
+        "meaning": "elderly person"
+      },
+      {
+        "hanzi": "老朋友",
+        "pinyin": "lǎo péngyou",
+        "meaning": "longtime friend"
+      },
+      {
+        "hanzi": "老虎",
+        "pinyin": "lǎohǔ",
+        "meaning": "tiger"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "老师来了。",
+        "pinyin": "Lǎoshī lái le.",
+        "meaning": "The teacher has arrived."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "那位老人很友好。",
+        "pinyin": "Nà wèi lǎorén hěn yǒuhǎo.",
+        "meaning": "That elderly person is friendly."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我们虽然住得很远，但一直是老朋友。",
+        "pinyin": "Wǒmen suīrán zhù de hěn yuǎn, dàn yìzhí shì lǎo péngyou.",
+        "meaning": "Although we live far apart, we have remained longtime friends."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "考",
+      "guidance": "老 has 匕 at the bottom, while 考 has a different lower hook; compare the lower parts before copying."
+    },
+    "relatedCharacters": [
+      "师",
+      "父",
+      "母"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "老 (lǎo) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 老 (lǎo): Stroke Order, Meaning & Examples",
+      "description": "Write 老 (lǎo), distinguish it from 考, and learn why 老师 and 老朋友 do not simply mean old people. Includes tone and writing guidance."
+    }
+  },
+  {
+    "character": "师",
+    "pinyin": "shī",
+    "meaning": "teacher; specialist",
+    "strokes": 6,
+    "radical": "巾",
+    "traditional": "師",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 老师; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Writing a teacher's title or describing an occupation often requires 师. Its small top-right horizontal is easy to miss when copying quickly.",
+    "components": [
+      {
+        "character": "师",
+        "explanation": "Two narrow strokes stand on the left. On the right, a top horizontal covers a 巾-shaped form with a central vertical."
+      }
+    ],
+    "readingNotes": "师 is pronounced shī with a level first tone. Keep it distinct from 四 sì: shī has the retroflex sh initial rather than the plain s initial.",
+    "usageTitle": "Using 师 in everyday Chinese",
+    "usage": "师 occurs in roles such as 老师, 教师, 医师 and 律师. It is normally part of a complete occupation word; 老师 is the usual way to address a teacher.",
+    "writingTip": "Leave a gap between the narrow left strokes and the right component, and keep the long right vertical centred under its top horizontal.",
+    "examples": [
+      {
+        "hanzi": "老师",
+        "pinyin": "lǎoshī",
+        "meaning": "teacher"
+      },
+      {
+        "hanzi": "教师",
+        "pinyin": "jiàoshī",
+        "meaning": "teacher"
+      },
+      {
+        "hanzi": "医师",
+        "pinyin": "yīshī",
+        "meaning": "physician"
+      },
+      {
+        "hanzi": "律师",
+        "pinyin": "lǜshī",
+        "meaning": "lawyer"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "她是老师。",
+        "pinyin": "Tā shì lǎoshī.",
+        "meaning": "She is a teacher."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "王老师教我们汉语。",
+        "pinyin": "Wáng lǎoshī jiāo wǒmen Hànyǔ.",
+        "meaning": "Teacher Wang teaches us Chinese."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我想成为一名汉语教师。",
+        "pinyin": "Wǒ xiǎng chéngwéi yì míng Hànyǔ jiàoshī.",
+        "meaning": "I want to become a Chinese language teacher."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "帅",
+      "guidance": "师 includes a top horizontal on the right that 帅 does not have."
+    },
+    "relatedCharacters": [
+      "老",
+      "学",
+      "生"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "师 (shī) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 师 (shī): Stroke Order, Meaning & Examples",
+      "description": "Learn 师 (shī) stroke order and its distinction from 帅. Practise 老师, 教师, and other occupation words with a clear sh pronunciation."
+    }
+  },
+  {
+    "character": "同",
+    "pinyin": "tóng",
+    "meaning": "same; together",
+    "strokes": 6,
+    "radical": "口",
+    "traditional": "同",
+    "structure": "Enclosure",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 同学; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Use 同 to recognise shared connections between classmates and colleagues. The open outer frame makes it useful enclosure practice.",
+    "components": [
+      {
+        "character": "同",
+        "explanation": "A broad 冂 surrounds a short horizontal and a small 口. The outer frame remains open at the bottom."
+      }
+    ],
+    "readingNotes": "同 has the rising second tone tóng. It keeps that reading in 同学 (tóngxué), 同事 (tóngshì), and 同意 (tóngyì).",
+    "usageTitle": "Using 同 in everyday Chinese",
+    "usage": "同 contributes the idea of sharing or sameness. 同学 is a schoolmate, 同事 is a colleague, and 同意 means agree; these are not interchangeable person words.",
+    "writingTip": "Make the outer frame tall enough to contain the short horizontal and small box without letting them touch its sides.",
+    "examples": [
+      {
+        "hanzi": "同学",
+        "pinyin": "tóngxué",
+        "meaning": "schoolmate"
+      },
+      {
+        "hanzi": "同事",
+        "pinyin": "tóngshì",
+        "meaning": "colleague"
+      },
+      {
+        "hanzi": "同意",
+        "pinyin": "tóngyì",
+        "meaning": "agree"
+      },
+      {
+        "hanzi": "相同",
+        "pinyin": "xiāngtóng",
+        "meaning": "the same"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "他是我的同学。",
+        "pinyin": "Tā shì wǒ de tóngxué.",
+        "meaning": "He is my schoolmate."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我同意你的想法。",
+        "pinyin": "Wǒ tóngyì nǐ de xiǎngfǎ.",
+        "meaning": "I agree with your idea."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我们来自不同的国家，却在同一个班学习。",
+        "pinyin": "Wǒmen láizì bù tóng de guójiā, què zài tóng yí ge bān xuéxí.",
+        "meaning": "We come from different countries but study in the same class."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "周",
+      "guidance": "同 has one short horizontal above its inner 口, while 周 has a more complex upper interior."
+    },
+    "relatedCharacters": [
+      "学",
+      "朋",
+      "友"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "同 (tóng) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 同 (tóng): Stroke Order, Meaning & Examples",
+      "description": "Write 同 (tóng) with an open outer frame. Learn the differences between 同学, 同事, 同意, and 相同 through examples."
+    }
+  },
+  {
+    "character": "朋",
+    "pinyin": "péng",
+    "meaning": "friend in compounds",
+    "strokes": 8,
+    "radical": "月",
+    "traditional": "朋",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 朋友; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "朋友 belongs in early introductions and social conversations. Writing 朋 helps learners notice two repeated shapes without merging their strokes.",
+    "components": [
+      {
+        "character": "朋",
+        "explanation": "Two 月-shaped components sit side by side, each with its own pair of inner horizontal lines."
+      }
+    ],
+    "readingNotes": "朋 is péng with a rising second tone. In 朋友, 友 is usually unstressed: péngyou. Avoid reading the second syllable as a strongly accented yǒu in ordinary conversation.",
+    "usageTitle": "Using 朋 in everyday Chinese",
+    "usage": "朋 is most useful to beginners inside 朋友. It does not usually stand alone as the everyday noun friend; 男朋友 and 女朋友 can mean boyfriend and girlfriend.",
+    "writingTip": "Keep both 月 forms readable and leave a narrow gap between them; do not merge their middle horizontals into continuous lines.",
+    "examples": [
+      {
+        "hanzi": "朋友",
+        "pinyin": "péngyou",
+        "meaning": "friend"
+      },
+      {
+        "hanzi": "小朋友",
+        "pinyin": "xiǎopéngyou",
+        "meaning": "child"
+      },
+      {
+        "hanzi": "男朋友",
+        "pinyin": "nánpéngyou",
+        "meaning": "boyfriend"
+      },
+      {
+        "hanzi": "女朋友",
+        "pinyin": "nǚpéngyou",
+        "meaning": "girlfriend"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "他是我的朋友。",
+        "pinyin": "Tā shì wǒ de péngyou.",
+        "meaning": "He is my friend."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "小朋友们在看书。",
+        "pinyin": "Xiǎopéngyoumen zài kàn shū.",
+        "meaning": "The children are reading."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "周末我想和朋友一起去爬山。",
+        "pinyin": "Zhōumò wǒ xiǎng hé péngyou yìqǐ qù páshān.",
+        "meaning": "I want to go mountain climbing with friends this weekend."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "明",
+      "guidance": "朋 has two 月-shaped parts, while 明 has 日 on the left and 月 on the right."
+    },
+    "relatedCharacters": [
+      "友",
+      "同",
+      "月"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "朋 (péng) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 朋 (péng): Stroke Order, Meaning & Examples",
+      "description": "Learn 朋 (péng), its paired 月 shapes, and the pronunciation of 朋友. Practise friend and relationship words without confusing 朋 with 明."
+    }
+  },
+  {
+    "character": "友",
+    "pinyin": "yǒu",
+    "meaning": "friend; friendly",
+    "strokes": 4,
+    "radical": "又",
+    "traditional": "友",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 朋友; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Friendship vocabulary links 友 to people and shared activities. Compare its lower form with 右 while practising words you can use with classmates.",
+    "components": [
+      {
+        "character": "友",
+        "explanation": "A horizontal and long falling stroke sit above a 又-shaped lower part whose final strokes spread apart."
+      }
+    ],
+    "readingNotes": "Use yǒu, a third tone, in 友好 (yǒuhǎo) and 友谊 (yǒuyì). In the common word 朋友, 友 usually becomes neutral you.",
+    "usageTitle": "Using 友 in everyday Chinese",
+    "usage": "友 appears in words for friendship and shared activities. 友好 means friendly, 友谊 means friendship, and 队友 is a teammate rather than just any friend.",
+    "writingTip": "Keep the upper falling stroke long enough to cover the lower 又, then let the final right fall balance the left side.",
+    "examples": [
+      {
+        "hanzi": "朋友",
+        "pinyin": "péngyou",
+        "meaning": "friend"
+      },
+      {
+        "hanzi": "友好",
+        "pinyin": "yǒuhǎo",
+        "meaning": "friendly"
+      },
+      {
+        "hanzi": "友谊",
+        "pinyin": "yǒuyì",
+        "meaning": "friendship"
+      },
+      {
+        "hanzi": "队友",
+        "pinyin": "duìyǒu",
+        "meaning": "teammate"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "她对我很友好。",
+        "pinyin": "Tā duì wǒ hěn yǒuhǎo.",
+        "meaning": "She is friendly to me."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "他和队友一起练习。",
+        "pinyin": "Tā hé duìyǒu yìqǐ liànxí.",
+        "meaning": "He practises with his teammates."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我们毕业以后仍然保持着友谊。",
+        "pinyin": "Wǒmen bìyè yǐhòu réngrán bǎochí zhe yǒuyì.",
+        "meaning": "We maintained our friendship after graduation."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "右",
+      "guidance": "友 has 又 below its upper strokes, whereas 右 has 口 at the bottom."
+    },
+    "relatedCharacters": [
+      "朋",
+      "同",
+      "人"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "友 (yǒu) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 友 (yǒu): Stroke Order, Meaning & Examples",
+      "description": "Write 友 (yǒu) and distinguish it from 右. Learn neutral you in 朋友 and compare friendship, friendliness, and teammate vocabulary."
+    }
+  },
+  {
+    "character": "名",
+    "pinyin": "míng",
+    "meaning": "name; reputation; person classifier",
+    "strokes": 6,
+    "radical": "口",
+    "traditional": "名",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 名字; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Names are needed on worksheets, forms, and introductions. 名 also introduces a useful distinction between a name and a measure word for a person.",
+    "components": [
+      {
+        "character": "名",
+        "explanation": "夕 occupies the upper part and 口 sits below it. The box belongs below the falling shape rather than beside it."
+      }
+    ],
+    "readingNotes": "名 is míng with a rising second tone. It sounds the same as 明 in standard Mandarin, but 名字 and 明天 use different characters and meanings.",
+    "usageTitle": "Using 名 in everyday Chinese",
+    "usage": "名字 is the everyday word for a name. 名 also appears in 有名 for famous and as a measure word for people in 一名学生; do not use 名字 for every occurrence of 名.",
+    "writingTip": "Keep 夕 compact and centre the lower 口 beneath it, leaving a clear gap between the two parts.",
+    "examples": [
+      {
+        "hanzi": "名字",
+        "pinyin": "míngzi",
+        "meaning": "name"
+      },
+      {
+        "hanzi": "有名",
+        "pinyin": "yǒumíng",
+        "meaning": "famous"
+      },
+      {
+        "hanzi": "名单",
+        "pinyin": "míngdān",
+        "meaning": "list of names"
+      },
+      {
+        "hanzi": "一名学生",
+        "pinyin": "yì míng xuésheng",
+        "meaning": "one student"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "你叫什么名字？",
+        "pinyin": "Nǐ jiào shénme míngzi?",
+        "meaning": "What is your name?"
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "请把名字写在这里。",
+        "pinyin": "Qǐng bǎ míngzi xiě zài zhèlǐ.",
+        "meaning": "Please write your name here."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "这位老师在我们学校很有名。",
+        "pinyin": "Zhè wèi lǎoshī zài wǒmen xuéxiào hěn yǒumíng.",
+        "meaning": "This teacher is well known at our school."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "各",
+      "guidance": "名 has 夕 above 口, while 各 has 夂; inspect the upper strokes rather than only the lower box."
+    },
+    "relatedCharacters": [
+      "叫",
+      "字",
+      "口"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "名 (míng) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 名 (míng): Stroke Order, Meaning & Examples",
+      "description": "Learn 名 (míng), with 夕 above 口. Practise 名字, 有名, 名单, and 一名学生, including the person-classifier use."
+    }
+  },
+  {
+    "character": "叫",
+    "pinyin": "jiào",
+    "meaning": "be called; call out",
+    "strokes": 5,
+    "radical": "口",
+    "traditional": "叫",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 叫; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "我叫… is a practical first sentence for meeting someone. Learn to write 叫 and connect its falling tone with that introduction.",
+    "components": [
+      {
+        "character": "叫",
+        "explanation": "A small 口 stands beside 丩, a narrow turning form crossed by a longer vertical on the right."
+      }
+    ],
+    "readingNotes": "叫 is jiào with a falling fourth tone. Keep it distinct from 教 jiāo in 教汉语: the initial sounds are similar, but the tones differ.",
+    "usageTitle": "Using 叫 in everyday Chinese",
+    "usage": "叫 introduces a name in 我叫李明 and can also mean call out. 叫人 can mean call someone over; the words following 叫 determine the intended action.",
+    "writingTip": "Keep 口 small and slightly high, and leave space before the long vertical of the right component.",
+    "examples": [
+      {
+        "hanzi": "叫声",
+        "pinyin": "jiàoshēng",
+        "meaning": "call; cry"
+      },
+      {
+        "hanzi": "叫好",
+        "pinyin": "jiàohǎo",
+        "meaning": "applaud"
+      },
+      {
+        "hanzi": "叫人",
+        "pinyin": "jiàorén",
+        "meaning": "call someone over"
+      },
+      {
+        "hanzi": "大叫",
+        "pinyin": "dàjiào",
+        "meaning": "shout"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我叫李明。",
+        "pinyin": "Wǒ jiào Lǐ Míng.",
+        "meaning": "My name is Li Ming."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "请不要在这里大叫。",
+        "pinyin": "Qǐng bú yào zài zhèlǐ dàjiào.",
+        "meaning": "Please do not shout here."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "你听见外面小鸟的叫声了吗？",
+        "pinyin": "Nǐ tīngjiàn wàimian xiǎoniǎo de jiàoshēng le ma?",
+        "meaning": "Did you hear the birds calling outside?"
+      }
+    ],
+    "confusableCharacter": {
+      "character": "收",
+      "guidance": "叫 has 口 on the left, while 收 has a different left shape and 攵 on the right."
+    },
+    "relatedCharacters": [
+      "名",
+      "口",
+      "语"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "叫 (jiào) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 叫 (jiào): Stroke Order, Meaning & Examples",
+      "description": "Write 叫 (jiào) in five strokes. Learn how to introduce a name, call someone over, and distinguish jiào from the teaching verb jiāo."
+    }
+  },
+  {
+    "character": "什",
+    "pinyin": "shén",
+    "meaning": "what in 什么",
+    "strokes": 4,
+    "radical": "亻",
+    "traditional": "什",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 什么; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "什么 lets beginners ask about unfamiliar objects and words. Learning 什 alongside 么 turns a four-stroke character into a useful question.",
+    "components": [
+      {
+        "character": "什",
+        "explanation": "The person radical 亻 is narrow on the left and 十 forms a clear cross on the right."
+      }
+    ],
+    "readingNotes": "Use shén in 什么 (shénme). The separate reading shí occurs in words such as 什锦 (shíjǐn, assorted); this guide's main reading is the question-word use.",
+    "usageTitle": "Using 什 in everyday Chinese",
+    "usage": "什 normally occurs with 么 when asking what. 什么书 asks what book, 为什么 asks why, and 没什么 means nothing much; do not use 什 alone as the question word.",
+    "writingTip": "Keep the person radical slim and the cross on the right lower than the top of the left falling stroke.",
+    "examples": [
+      {
+        "hanzi": "什么",
+        "pinyin": "shénme",
+        "meaning": "what"
+      },
+      {
+        "hanzi": "为什么",
+        "pinyin": "wèishénme",
+        "meaning": "why"
+      },
+      {
+        "hanzi": "没什么",
+        "pinyin": "méi shénme",
+        "meaning": "nothing much"
+      },
+      {
+        "hanzi": "什么书",
+        "pinyin": "shénme shū",
+        "meaning": "what book"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这是什么？",
+        "pinyin": "Zhè shì shénme?",
+        "meaning": "What is this?"
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "你想读什么书？",
+        "pinyin": "Nǐ xiǎng dú shénme shū?",
+        "meaning": "What book would you like to read?"
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "你为什么想学习汉语？",
+        "pinyin": "Nǐ wèishénme xiǎng xuéxí Hànyǔ?",
+        "meaning": "Why do you want to study Chinese?"
+      }
+    ],
+    "confusableCharacter": {
+      "character": "十",
+      "guidance": "什 includes 亻 to the left of 十; dropping the radical changes the reading and meaning."
+    },
+    "relatedCharacters": [
+      "么",
+      "谁",
+      "吗"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "什 (shén) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 什 (shén): Stroke Order, Meaning & Examples",
+      "description": "Learn 什 (shén), the first character of 什么. Compare shén with shí in 什锦 and practise what and why questions."
+    }
+  },
+  {
+    "character": "么",
+    "pinyin": "me",
+    "meaning": "suffix in question words",
+    "strokes": 3,
+    "radical": "丿",
+    "traditional": "麼",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 什么; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "么 appears at the end of several everyday questions. Its short written form and neutral pronunciation are both worth practising early.",
+    "components": [
+      {
+        "character": "么",
+        "explanation": "A short falling stroke sits above a small open 厶-like lower turn and dot. The outline should not become a closed triangle."
+      }
+    ],
+    "readingNotes": "么 is normally neutral me in 什么 (shénme), 怎么 (zěnme), 这么 (zhème), and 那么 (nàme). Do not add a full lexical tone to the final syllable in these words.",
+    "usageTitle": "Using 么 in everyday Chinese",
+    "usage": "么 completes several common question and degree words. 什么 asks what, 怎么 asks how, and 这么 or 那么 indicates a degree or manner; 么 is not normally used alone here.",
+    "writingTip": "Keep the upper slant separate from the lower turn, and place the final dot so the lower shape remains open.",
+    "examples": [
+      {
+        "hanzi": "什么",
+        "pinyin": "shénme",
+        "meaning": "what"
+      },
+      {
+        "hanzi": "怎么",
+        "pinyin": "zěnme",
+        "meaning": "how"
+      },
+      {
+        "hanzi": "这么",
+        "pinyin": "zhème",
+        "meaning": "so; this way"
+      },
+      {
+        "hanzi": "那么",
+        "pinyin": "nàme",
+        "meaning": "so; that way"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "你怎么去学校？",
+        "pinyin": "Nǐ zěnme qù xuéxiào?",
+        "meaning": "How do you go to school?"
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "今天怎么这么冷？",
+        "pinyin": "Jīntiān zěnme zhème lěng?",
+        "meaning": "Why is it so cold today?"
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我不知道他为什么那么高兴。",
+        "pinyin": "Wǒ bù zhīdào tā wèishénme nàme gāoxìng.",
+        "meaning": "I do not know why he is so happy."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "公",
+      "guidance": "么 has one upper slant, while 公 has two spreading upper strokes above 厶."
+    },
+    "relatedCharacters": [
+      "什",
+      "这",
+      "那"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "么 (me) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 么 (me): Stroke Order, Meaning & Examples",
+      "description": "Write 么 (me) in three strokes and keep its neutral tone. Distinguish 什么, 怎么, 这么, and 那么 with beginner questions."
+    }
+  },
+  {
+    "character": "吗",
+    "pinyin": "ma",
+    "meaning": "yes-no question particle",
+    "strokes": 6,
+    "radical": "口",
+    "traditional": "嗎",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 吗; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "A single 吗 can turn a statement into a yes-no question. Practise its written form while learning when the particle is unnecessary.",
+    "components": [
+      {
+        "character": "吗",
+        "explanation": "口 forms the small left component, and 马 occupies the larger right side. The mouth radical is separate from the horse-shaped part."
+      }
+    ],
+    "readingNotes": "Use neutral ma at the end of ordinary yes-no questions. The character has other dictionary readings, but the questions on this page use the unstressed particle.",
+    "usageTitle": "Using 吗 in everyday Chinese",
+    "usage": "吗 turns a statement into a yes-no question, as in 你是学生吗？ It is not normally added to a basic question that already uses 什么 or 谁 to request information.",
+    "writingTip": "Keep 口 narrow and slightly high, and leave enough width for 马 on the right without joining their strokes.",
+    "examples": [
+      {
+        "hanzi": "好吗",
+        "pinyin": "hǎo ma",
+        "meaning": "is that okay?"
+      },
+      {
+        "hanzi": "是吗",
+        "pinyin": "shì ma",
+        "meaning": "is that so?"
+      },
+      {
+        "hanzi": "对吗",
+        "pinyin": "duì ma",
+        "meaning": "is that correct?"
+      },
+      {
+        "hanzi": "可以吗",
+        "pinyin": "kěyǐ ma",
+        "meaning": "may I?; is it okay?"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "你是学生吗？",
+        "pinyin": "Nǐ shì xuésheng ma?",
+        "meaning": "Are you a student?"
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我们明天见，好吗？",
+        "pinyin": "Wǒmen míngtiān jiàn, hǎo ma?",
+        "meaning": "Shall we meet tomorrow?"
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "你现在可以和我一起去图书馆吗？",
+        "pinyin": "Nǐ xiànzài kěyǐ hé wǒ yìqǐ qù túshūguǎn ma?",
+        "meaning": "Can you go to the library with me now?"
+      }
+    ],
+    "confusableCharacter": {
+      "character": "妈",
+      "guidance": "吗 has 口 on the left; 妈 has 女. Both contain 马 but serve different words."
+    },
+    "relatedCharacters": [
+      "呢",
+      "什",
+      "口"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "吗 (ma) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 吗 (ma): Stroke Order, Meaning & Examples",
+      "description": "Learn 吗 (ma), the neutral-tone yes-no question particle. Compare 吗 with 妈 and practise questions without adding 吗 to ordinary what questions."
+    }
+  },
+  {
+    "character": "呢",
+    "pinyin": "ne",
+    "meaning": "follow-up question or ongoing-state particle",
+    "strokes": 8,
+    "radical": "口",
+    "traditional": "呢",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 呢; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "呢 helps learners keep a conversation going with short follow-up questions. Its role becomes clearer in a dialogue than in an isolated translation.",
+    "components": [
+      {
+        "character": "呢",
+        "explanation": "A small 口 stands beside 尼. The right component has a 尸-shaped cover above a compact lower hooked form."
+      }
+    ],
+    "readingNotes": "Use neutral ne in 你呢？ and 在看书呢. The reading ní occurs in fabric words such as 呢子 (nízi); that is a separate use from the particle taught here.",
+    "usageTitle": "Using 呢 in everyday Chinese",
+    "usage": "呢 can ask a follow-up question when the topic is understood, as in 我很好，你呢？ It also adds emphasis to an ongoing state; it does not simply replace 吗 in every question.",
+    "writingTip": "Keep 口 compact, give the upper 尸 on the right room to stretch downward, and keep the lower strokes inside its cover.",
+    "examples": [
+      {
+        "hanzi": "你呢",
+        "pinyin": "nǐ ne",
+        "meaning": "and you?"
+      },
+      {
+        "hanzi": "我呢",
+        "pinyin": "wǒ ne",
+        "meaning": "what about me?"
+      },
+      {
+        "hanzi": "在哪儿呢",
+        "pinyin": "zài nǎr ne",
+        "meaning": "where is it?"
+      },
+      {
+        "hanzi": "还早呢",
+        "pinyin": "hái zǎo ne",
+        "meaning": "it is still early"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我很好，你呢？",
+        "pinyin": "Wǒ hěn hǎo, nǐ ne?",
+        "meaning": "I am well; and you?"
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "他正在看书呢。",
+        "pinyin": "Tā zhèngzài kàn shū ne.",
+        "meaning": "He is reading right now."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我的书刚才还在这里，现在在哪儿呢？",
+        "pinyin": "Wǒ de shū gāngcái hái zài zhèlǐ, xiànzài zài nǎr ne?",
+        "meaning": "My book was here just now; where is it now?"
+      }
+    ],
+    "confusableCharacter": {
+      "character": "泥",
+      "guidance": "呢 has 口 on the left, whereas 泥 has 氵; both share 尼 on the right."
+    },
+    "relatedCharacters": [
+      "吗",
+      "在",
+      "么"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "呢 (ne) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 呢 (ne): Stroke Order, Meaning & Examples",
+      "description": "Write 呢 (ne) and learn follow-up questions such as 你呢？ Compare its neutral-tone particle use with 吗 and the separate fabric reading ní."
+    }
+  },
+  {
+    "character": "很",
+    "pinyin": "hěn",
+    "meaning": "very; degree adverb",
+    "strokes": 9,
+    "radical": "彳",
+    "traditional": "很",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 很; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "很 often appears before adjectives in beginner sentences. Pair its writing practice with tone practice rather than treating it only as the English word very.",
+    "components": [
+      {
+        "character": "很",
+        "explanation": "彳 occupies the narrow left side, while 艮 forms the taller right part with a compact upper box and spreading lower finish."
+      }
+    ],
+    "readingNotes": "很 is hěn with a third tone. Before another third tone, as in 很好, the first syllable is pronounced with a rising tone in normal speech; written Pinyin usually retains hěn hǎo.",
+    "usageTitle": "Using 很 in everyday Chinese",
+    "usage": "很 commonly precedes adjectives. In a simple sentence such as 我很好 it can provide a neutral link rather than strongly stressing very; the context and emphasis affect the translation.",
+    "writingTip": "Keep 彳 narrow, leave the right box clear, and avoid crowding the lower strokes of 艮 into the left radical.",
+    "examples": [
+      {
+        "hanzi": "很好",
+        "pinyin": "hěn hǎo",
+        "meaning": "good; very good"
+      },
+      {
+        "hanzi": "很大",
+        "pinyin": "hěn dà",
+        "meaning": "big"
+      },
+      {
+        "hanzi": "很小",
+        "pinyin": "hěn xiǎo",
+        "meaning": "small"
+      },
+      {
+        "hanzi": "很多",
+        "pinyin": "hěn duō",
+        "meaning": "many"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我很好。",
+        "pinyin": "Wǒ hěn hǎo.",
+        "meaning": "I am well."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "这本书很有意思。",
+        "pinyin": "Zhè běn shū hěn yǒu yìsi.",
+        "meaning": "This book is interesting."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "虽然这道题很难，我还是想试一试。",
+        "pinyin": "Suīrán zhè dào tí hěn nán, wǒ háishi xiǎng shì yi shì.",
+        "meaning": "Although this question is difficult, I still want to try."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "狠",
+      "guidance": "很 has 彳 on the left, while 狠 has 犭; the right component is the same."
+    },
+    "relatedCharacters": [
+      "好",
+      "大",
+      "小"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "很 (hěn) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 很 (hěn): Stroke Order, Meaning & Examples",
+      "description": "Learn 很 (hěn), its contrast with 狠, and third-tone change in 很好. Practise degree expressions without translating every 很 as strongly stressed very."
+    }
+  },
+  {
+    "character": "都",
+    "pinyin": "dōu",
+    "meaning": "all; both",
+    "strokes": 10,
+    "radical": "阝",
+    "traditional": "都",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 都; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "都 helps describe what classmates or family members have in common. Its position beside 不 can change whether a sentence means none or not all.",
+    "components": [
+      {
+        "character": "都",
+        "explanation": "者 forms the larger left component and 阝 forms a narrow right-side ear-like component. The two lower parts remain separated."
+      }
+    ],
+    "readingNotes": "Use dōu, a first tone, for all or both. Use dū in 首都 (shǒudū, capital city) and 都市 (dūshì, city); these are different word senses.",
+    "usageTitle": "Using 都 in everyday Chinese",
+    "usage": "都 normally comes after the subject and before the verb or adjective: 我们都去. 我们不都去 means not all of us go, while 我们都不去 means none of us go.",
+    "writingTip": "Keep 者 wider than 阝 and avoid stretching the right radical to the full width of the left component.",
+    "examples": [
+      {
+        "hanzi": "都是",
+        "pinyin": "dōu shì",
+        "meaning": "all are"
+      },
+      {
+        "hanzi": "都去",
+        "pinyin": "dōu qù",
+        "meaning": "all go"
+      },
+      {
+        "hanzi": "都不",
+        "pinyin": "dōu bù",
+        "meaning": "none"
+      },
+      {
+        "hanzi": "不都",
+        "pinyin": "bù dōu",
+        "meaning": "not all"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我们都是学生。",
+        "pinyin": "Wǒmen dōu shì xuésheng.",
+        "meaning": "We are all students."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "他们两个都喜欢喝茶。",
+        "pinyin": "Tāmen liǎng ge dōu xǐhuan hē chá.",
+        "meaning": "Both of them like drinking tea."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "这些书我不都喜欢，但每本都看过。",
+        "pinyin": "Zhèxiē shū wǒ bù dōu xǐhuan, dàn měi běn dōu kàn guo.",
+        "meaning": "I do not like all these books, but I have read each one."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "者",
+      "guidance": "都 adds 阝 on the right of 者; omitting that radical leaves a different character."
+    },
+    "relatedCharacters": [
+      "们",
+      "也",
+      "同"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "都 (dōu) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 都 (dōu): Stroke Order, Meaning & Examples",
+      "description": "Write 都 (dōu), distinguish it from dū in 首都, and compare 都不 with 不都. Includes examples for all, both, and partial negation."
+    }
+  },
+  {
+    "character": "要",
+    "pinyin": "yào",
+    "meaning": "want; need; will",
+    "strokes": 9,
+    "radical": "覀",
+    "traditional": "要",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 2",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 2 vocabulary PDF includes 要; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "要 is useful for requests, needs, and plans. Learning its contexts helps learners choose between a direct request and a softer expression with 想.",
+    "components": [
+      {
+        "character": "要",
+        "explanation": "覀 forms a compact upper cover above 女. The lower crossing strokes spread more widely than the interior of the upper component."
+      }
+    ],
+    "readingNotes": "Read 要 as yào in 我要, 需要, and 重要. The reading yāo appears in words such as 要求 (yāoqiú, request or requirement); the common want/need use is fourth tone.",
+    "usageTitle": "Using 要 in everyday Chinese",
+    "usage": "要 can express wanting, needing, or an approaching event. 我要水 is a direct request, while 我想喝水 is softer; 快要下雨了 means it is about to rain.",
+    "writingTip": "Keep the upper cover shallow enough to leave room for 女 and its final horizontal, without letting the lower part lean to one side.",
+    "examples": [
+      {
+        "hanzi": "需要",
+        "pinyin": "xūyào",
+        "meaning": "need"
+      },
+      {
+        "hanzi": "重要",
+        "pinyin": "zhòngyào",
+        "meaning": "important"
+      },
+      {
+        "hanzi": "不要",
+        "pinyin": "bú yào",
+        "meaning": "do not; do not want"
+      },
+      {
+        "hanzi": "快要",
+        "pinyin": "kuàiyào",
+        "meaning": "be about to"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我要一杯水。",
+        "pinyin": "Wǒ yào yì bēi shuǐ.",
+        "meaning": "I would like a glass of water."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "这件事很重要。",
+        "pinyin": "Zhè jiàn shì hěn zhòngyào.",
+        "meaning": "This matter is important."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "快要下雨了，我们需要带伞。",
+        "pinyin": "Kuàiyào xià yǔ le, wǒmen xūyào dài sǎn.",
+        "meaning": "It is about to rain; we need to take an umbrella."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "耍",
+      "guidance": "要 has 覀 above 女, while 耍 has 而 above 女; compare the upper component."
+    },
+    "relatedCharacters": [
+      "想",
+      "会",
+      "能"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "要 (yào) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 要 (yào): Stroke Order, Meaning & Examples",
+      "description": "Learn 要 (yào) stroke order and its want, need, and approaching-event uses. Compare yào with yāo in 要求 and practise polite alternatives."
+    }
+  },
+  {
+    "character": "会",
+    "pinyin": "huì",
+    "meaning": "know how; will; meeting",
+    "strokes": 6,
+    "radical": "人",
+    "traditional": "會",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 会; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "会 helps learners describe a new skill, such as writing a character. It also appears in predictions and meeting vocabulary, so context matters.",
+    "components": [
+      {
+        "character": "会",
+        "explanation": "人 forms a broad upper cover above 云. The lower part contains two horizontals and an open turn with a dot."
+      }
+    ],
+    "readingNotes": "Read 会 as huì in 会写, 开会, and 会议. In 会计 (kuàijì, accounting or accountant), the same character is kuài; do not carry huì into that word.",
+    "usageTitle": "Using 会 in everyday Chinese",
+    "usage": "会 can express a learned skill or an expected event. 我会写汉字 describes a skill, while 明天会下雨 predicts rain. Compare 能 for ability or possibility under current conditions.",
+    "writingTip": "Make the 人 cover broad and leave a gap above 云; keep the lower turn open rather than drawing a closed triangle.",
+    "examples": [
+      {
+        "hanzi": "开会",
+        "pinyin": "kāihuì",
+        "meaning": "hold a meeting"
+      },
+      {
+        "hanzi": "会议",
+        "pinyin": "huìyì",
+        "meaning": "meeting"
+      },
+      {
+        "hanzi": "会写",
+        "pinyin": "huì xiě",
+        "meaning": "know how to write"
+      },
+      {
+        "hanzi": "会说",
+        "pinyin": "huì shuō",
+        "meaning": "know how to speak"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我会写汉字。",
+        "pinyin": "Wǒ huì xiě Hànzì.",
+        "meaning": "I can write Chinese characters."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "老师下午要开会。",
+        "pinyin": "Lǎoshī xiàwǔ yào kāihuì.",
+        "meaning": "The teacher has a meeting this afternoon."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "多练习以后，你会说得更自然。",
+        "pinyin": "Duō liànxí yǐhòu, nǐ huì shuō de gèng zìrán.",
+        "meaning": "With more practice, you will speak more naturally."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "云",
+      "guidance": "会 adds a 人-shaped cover above 云; the top component must not disappear."
+    },
+    "relatedCharacters": [
+      "能",
+      "要",
+      "云"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "会 (huì) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 会 (huì): Stroke Order, Meaning & Examples",
+      "description": "Write 会 (huì), learn skills versus predictions, and compare 会 with 能. Includes the separate kuài reading in 会计 and meeting vocabulary."
+    }
+  },
+  {
+    "character": "能",
+    "pinyin": "néng",
+    "meaning": "can; be able; ability",
+    "strokes": 10,
+    "radical": "⺼",
+    "traditional": "能",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 能; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "能 is useful when asking for help or explaining what is possible today. Its form and meaning make a useful next step after learning 会.",
+    "components": [
+      {
+        "character": "能",
+        "explanation": "The left part has 厶 above a 月-shaped form, while two 匕-shaped forms are stacked on the right."
+      }
+    ],
+    "readingNotes": "能 is néng with a rising second tone in 能力, 可能, and 能够. Keep the final ng sound; it differs from the n ending in words such as 您 nín.",
+    "usageTitle": "Using 能 in everyday Chinese",
+    "usage": "能 expresses ability or possibility in the circumstances. 今天我不能去 can mean circumstances prevent going; 会 often describes a learned skill. Permission questions can also use 能.",
+    "writingTip": "Keep the two right-hand hooked forms distinct, and avoid squeezing the left lower box until its inner lines touch.",
+    "examples": [
+      {
+        "hanzi": "能力",
+        "pinyin": "nénglì",
+        "meaning": "ability"
+      },
+      {
+        "hanzi": "可能",
+        "pinyin": "kěnéng",
+        "meaning": "possible"
+      },
+      {
+        "hanzi": "能够",
+        "pinyin": "nénggòu",
+        "meaning": "be able to"
+      },
+      {
+        "hanzi": "不能",
+        "pinyin": "bù néng",
+        "meaning": "cannot"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "今天我不能去。",
+        "pinyin": "Jīntiān wǒ bù néng qù.",
+        "meaning": "I cannot go today."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "你能帮我吗？",
+        "pinyin": "Nǐ néng bāng wǒ ma?",
+        "meaning": "Can you help me?"
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "如果每天练习，你就能写得更好。",
+        "pinyin": "Rúguǒ měitiān liànxí, nǐ jiù néng xiě de gèng hǎo.",
+        "meaning": "If you practise every day, you can write better."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "熊",
+      "guidance": "能 appears above four dots in 熊; 能 alone has no bottom row of dots."
+    },
+    "relatedCharacters": [
+      "会",
+      "力",
+      "想"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "能 (néng) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 能 (néng): Stroke Order, Meaning & Examples",
+      "description": "Learn 能 (néng), its stacked right-hand forms, and the difference from 熊. Compare 能 with 会 using ability and possibility examples."
+    }
+  },
+  {
+    "character": "想",
+    "pinyin": "xiǎng",
+    "meaning": "think; want; miss",
+    "strokes": 13,
+    "radical": "心",
+    "traditional": "想",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 想; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "想 connects personal wishes, ideas, and feelings about other people. The visible 心 component gives beginners a memorable shape to practise.",
+    "components": [
+      {
+        "character": "想",
+        "explanation": "相 sits above 心. Within 相, 木 is on the left and 目 on the right; the lower heart form supports both."
+      }
+    ],
+    "readingNotes": "想 is xiǎng with a third tone. In 想你 (xiǎng nǐ), the first third tone changes to a rising tone in normal speech, while dictionary Pinyin retains the third-tone mark.",
+    "usageTitle": "Using 想 in everyday Chinese",
+    "usage": "想 means want before an action, think when considering an idea, and miss before a person. 我想喝茶 and 我想你 therefore use the same character with different senses.",
+    "writingTip": "Keep 相 compact enough to leave space for 心 and its separated dots, and centre the lower hook beneath the upper pair.",
+    "examples": [
+      {
+        "hanzi": "想法",
+        "pinyin": "xiǎngfǎ",
+        "meaning": "idea"
+      },
+      {
+        "hanzi": "想念",
+        "pinyin": "xiǎngniàn",
+        "meaning": "miss someone"
+      },
+      {
+        "hanzi": "想到",
+        "pinyin": "xiǎngdào",
+        "meaning": "think of"
+      },
+      {
+        "hanzi": "想要",
+        "pinyin": "xiǎngyào",
+        "meaning": "want"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我想喝茶。",
+        "pinyin": "Wǒ xiǎng hē chá.",
+        "meaning": "I would like to drink tea."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "你有什么想法？",
+        "pinyin": "Nǐ yǒu shénme xiǎngfǎ?",
+        "meaning": "What ideas do you have?"
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我住在国外的时候，很想念家人。",
+        "pinyin": "Wǒ zhù zài guówài de shíhou, hěn xiǎngniàn jiārén.",
+        "meaning": "I missed my family when I lived abroad."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "相",
+      "guidance": "想 adds 心 beneath 相; without the heart component the character and its reading change."
+    },
+    "relatedCharacters": [
+      "心",
+      "目",
+      "木"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "想 (xiǎng) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 想 (xiǎng): Stroke Order, Meaning & Examples",
+      "description": "Write 想 (xiǎng), with 相 above 心. Distinguish wanting to do something, thinking, and missing someone through practical sentences."
+    }
+  },
+  {
+    "character": "看",
+    "pinyin": "kàn",
+    "meaning": "look; watch; read",
+    "strokes": 9,
+    "radical": "目",
+    "traditional": "看",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 看; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "看 is useful for reading instructions, watching films, and looking for something. Practise the eye-shaped lower part before comparing its different word senses.",
+    "components": [
+      {
+        "character": "看",
+        "explanation": "A hand-like upper part extends over 目. The lower eye-shaped box contains two inner horizontals."
+      }
+    ],
+    "readingNotes": "Use kàn for looking, watching, or reading in 看书 and 看见. The first-tone reading kān appears in 看守 (kānshǒu, guard) and 看门 (kānmén, watch a door).",
+    "usageTitle": "Using 看 in everyday Chinese",
+    "usage": "看 can mean read a book, watch a film, or look at something. 看见 emphasises seeing a result, while 看病 means consult a doctor or treat a patient depending on the subject.",
+    "writingTip": "Leave enough height for 目 beneath the sloping upper part, and keep both inner horizontals visible inside the lower box.",
+    "examples": [
+      {
+        "hanzi": "看书",
+        "pinyin": "kànshū",
+        "meaning": "read a book"
+      },
+      {
+        "hanzi": "看见",
+        "pinyin": "kànjiàn",
+        "meaning": "see"
+      },
+      {
+        "hanzi": "看病",
+        "pinyin": "kànbìng",
+        "meaning": "see a doctor"
+      },
+      {
+        "hanzi": "看电影",
+        "pinyin": "kàn diànyǐng",
+        "meaning": "watch a film"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我在看书。",
+        "pinyin": "Wǒ zài kàn shū.",
+        "meaning": "I am reading."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "你看见我的手机了吗？",
+        "pinyin": "Nǐ kànjiàn wǒ de shǒujī le ma?",
+        "meaning": "Have you seen my phone?"
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "周末我们想一起去看电影。",
+        "pinyin": "Zhōumò wǒmen xiǎng yìqǐ qù kàn diànyǐng.",
+        "meaning": "We would like to see a film together this weekend."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "着",
+      "guidance": "看 has a hand-like top above 目, while 着 has a different upper set of strokes."
+    },
+    "relatedCharacters": [
+      "目",
+      "读",
+      "听"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "看 (kàn) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 看 (kàn): Stroke Order, Meaning & Examples",
+      "description": "Learn 看 (kàn) stroke order and its read, watch, and look meanings. Compare 看 with 看见 and note kān in guarding-related words."
+    }
+  },
+  {
+    "character": "听",
+    "pinyin": "tīng",
+    "meaning": "listen; hear",
+    "strokes": 7,
+    "radical": "口",
+    "traditional": "聽",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 听; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Listening is central to a first Chinese lesson. 听 connects that classroom action with useful distinctions between listening and actually hearing a sound.",
+    "components": [
+      {
+        "character": "听",
+        "explanation": "A small 口 stands beside 斤. The right component has two slanting strokes, a horizontal, and a descending vertical."
+      }
+    ],
+    "readingNotes": "听 is tīng with a level first tone. It remains first tone in 听说 and 听见; the second character carries the changing tone in these compounds.",
+    "usageTitle": "Using 听 in everyday Chinese",
+    "usage": "听 focuses on listening, while 听见 says that a sound was heard. 听说 can mean hear that something is true, not only listen and speak as two separate actions.",
+    "writingTip": "Keep 口 narrow and the top slants of 斤 clear, then leave room for the right vertical to descend below its horizontal.",
+    "examples": [
+      {
+        "hanzi": "听见",
+        "pinyin": "tīngjiàn",
+        "meaning": "hear"
+      },
+      {
+        "hanzi": "听说",
+        "pinyin": "tīngshuō",
+        "meaning": "hear that"
+      },
+      {
+        "hanzi": "听力",
+        "pinyin": "tīnglì",
+        "meaning": "listening ability"
+      },
+      {
+        "hanzi": "听课",
+        "pinyin": "tīngkè",
+        "meaning": "attend a lesson"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "请听老师说。",
+        "pinyin": "Qǐng tīng lǎoshī shuō.",
+        "meaning": "Please listen to the teacher."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我听见有人叫我。",
+        "pinyin": "Wǒ tīngjiàn yǒu rén jiào wǒ.",
+        "meaning": "I heard someone calling me."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "每天听一点汉语可以帮助你练习听力。",
+        "pinyin": "Měitiān tīng yìdiǎn Hànyǔ kěyǐ bāngzhù nǐ liànxí tīnglì.",
+        "meaning": "Listening to a little Chinese every day can help you practise listening skills."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "近",
+      "guidance": "听 has 口 on the left of 斤; 近 combines 斤 with the walking radical 辶."
+    },
+    "relatedCharacters": [
+      "耳",
+      "看",
+      "说"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "听 (tīng) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 听 (tīng): Stroke Order, Meaning & Examples",
+      "description": "Write 听 (tīng), with 口 beside 斤. Learn listening versus hearing a result in 听见 and the reported-information use of 听说."
+    }
+  },
+  {
+    "character": "读",
+    "pinyin": "dú",
+    "meaning": "read; study",
+    "strokes": 10,
+    "radical": "讠",
+    "traditional": "讀",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 读; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "读 links character recognition with reading aloud. Practise it alongside 看 and 写 to describe different learning activities accurately.",
+    "components": [
+      {
+        "character": "读",
+        "explanation": "The speech radical 讠 is narrow on the left, while 卖 forms the larger right component with a spreading lower finish."
+      }
+    ],
+    "readingNotes": "Read 读 as dú in 读书, 阅读, and 读音. A specialist dòu reading occurs in 句读, referring to traditional punctuation or phrasing; it is not used in the beginner examples.",
+    "usageTitle": "Using 读 in everyday Chinese",
+    "usage": "读 means read and can refer to reading aloud or studying. 看书 often describes reading silently, while 朗读 explicitly means read aloud; 读音 means pronunciation.",
+    "writingTip": "Keep 讠 narrow and align the levels of 卖 on the right, leaving room for its final spreading strokes.",
+    "examples": [
+      {
+        "hanzi": "读书",
+        "pinyin": "dúshū",
+        "meaning": "read; study"
+      },
+      {
+        "hanzi": "阅读",
+        "pinyin": "yuèdú",
+        "meaning": "read"
+      },
+      {
+        "hanzi": "读音",
+        "pinyin": "dúyīn",
+        "meaning": "pronunciation"
+      },
+      {
+        "hanzi": "朗读",
+        "pinyin": "lǎngdú",
+        "meaning": "read aloud"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我喜欢读书。",
+        "pinyin": "Wǒ xǐhuan dú shū.",
+        "meaning": "I like reading."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "这个字的读音是什么？",
+        "pinyin": "Zhège zì de dúyīn shì shénme?",
+        "meaning": "What is this character's pronunciation?"
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "老师请我们大声朗读这篇课文。",
+        "pinyin": "Lǎoshī qǐng wǒmen dàshēng lǎngdú zhè piān kèwén.",
+        "meaning": "The teacher asked us to read this text aloud."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "话",
+      "guidance": "读 and 话 share 讠, but 读 has 卖 on the right while 话 has 舌."
+    },
+    "relatedCharacters": [
+      "书",
+      "看",
+      "写"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "读 (dú) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 读 (dú): Stroke Order, Meaning & Examples",
+      "description": "Learn 读 (dú), with 讠 beside 卖. Distinguish 读书, 看书, and 朗读, and practise words for pronunciation and reading."
+    }
+  },
+  {
+    "character": "写",
+    "pinyin": "xiě",
+    "meaning": "write",
+    "strokes": 5,
+    "radical": "冖",
+    "traditional": "寫",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 写; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "写 is the action this tool helps you practise. Learning the cover and lower turns gives beginners a useful word for handwriting and written work.",
+    "components": [
+      {
+        "character": "写",
+        "explanation": "冖 forms a shallow cover above a 与-shaped lower part. The cover is distinct from the lower turn and horizontal."
+      }
+    ],
+    "readingNotes": "写 is xiě with a third tone in 写字 and 写作. Before another third tone, such as 写好, the first syllable changes tone in connected speech while the written citation tone stays xiě.",
+    "usageTitle": "Using 写 in everyday Chinese",
+    "usage": "写 is the action of writing. 写字 focuses on forming written characters, 写作 on composition, and 听写 on writing what is heard; these are related but different tasks.",
+    "writingTip": "Keep 冖 broad and shallow, then leave enough room under the cover for the lower turn, hook, and separate horizontal.",
+    "examples": [
+      {
+        "hanzi": "写字",
+        "pinyin": "xiězì",
+        "meaning": "write characters"
+      },
+      {
+        "hanzi": "写作",
+        "pinyin": "xiězuò",
+        "meaning": "write compositions"
+      },
+      {
+        "hanzi": "听写",
+        "pinyin": "tīngxiě",
+        "meaning": "dictation"
+      },
+      {
+        "hanzi": "书写",
+        "pinyin": "shūxiě",
+        "meaning": "write"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我会写汉字。",
+        "pinyin": "Wǒ huì xiě Hànzì.",
+        "meaning": "I can write Chinese characters."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "请写下你的名字。",
+        "pinyin": "Qǐng xiě xià nǐ de míngzi.",
+        "meaning": "Please write down your name."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "每天认真书写几个字，比一次写很多更容易坚持。",
+        "pinyin": "Měitiān rènzhēn shūxiě jǐ ge zì, bǐ yí cì xiě hěn duō gèng róngyì jiānchí.",
+        "meaning": "Writing a few characters carefully each day is easier to sustain than writing many at once."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "与",
+      "guidance": "写 adds 冖 over a 与-shaped lower form; omitting the cover changes the character."
+    },
+    "relatedCharacters": [
+      "字",
+      "读",
+      "书"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "写 (xiě) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 写 (xiě): Stroke Order, Meaning & Examples",
+      "description": "Write 写 (xiě) in five strokes. Learn the difference between 写字, 写作, and 听写, with form guidance and printable character practice."
+    }
+  },
+  {
+    "character": "谢",
+    "pinyin": "xiè",
+    "meaning": "thank; decline",
+    "strokes": 12,
+    "radical": "讠",
+    "traditional": "謝",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 谢谢; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "谢谢 is useful from a learner's first conversation. The more detailed shape of 谢 offers a progression from simple speech-radical characters.",
+    "components": [
+      {
+        "character": "谢",
+        "explanation": "The speech radical 讠 stands beside 射. Within 射, 身 is on the left and 寸 on the right, creating a compact three-part arrangement."
+      }
+    ],
+    "readingNotes": "谢 is xiè with a fourth tone. In the common word 谢谢, the second syllable is usually neutral xie in ordinary speech; the careful citation form can retain xièxiè.",
+    "usageTitle": "Using 谢 in everyday Chinese",
+    "usage": "谢谢 is the everyday expression of thanks, while 感谢 is useful in more formal thanks. 谢绝 means politely decline, so 谢 does not express gratitude in every compound.",
+    "writingTip": "Keep 讠 slim and divide the remaining width between 身 and 寸, ensuring that the small dot in 寸 stays visible.",
+    "examples": [
+      {
+        "hanzi": "谢谢",
+        "pinyin": "xièxie",
+        "meaning": "thank you"
+      },
+      {
+        "hanzi": "感谢",
+        "pinyin": "gǎnxiè",
+        "meaning": "thank"
+      },
+      {
+        "hanzi": "谢谢你",
+        "pinyin": "xièxie nǐ",
+        "meaning": "thank you"
+      },
+      {
+        "hanzi": "谢绝",
+        "pinyin": "xièjué",
+        "meaning": "politely decline"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "谢谢你！",
+        "pinyin": "Xièxie nǐ!",
+        "meaning": "Thank you!"
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "非常感谢你的帮助。",
+        "pinyin": "Fēicháng gǎnxiè nǐ de bāngzhù.",
+        "meaning": "Thank you very much for your help."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "老师耐心地回答了问题，我们都向她道谢。",
+        "pinyin": "Lǎoshī nàixīn de huídá le wèntí, wǒmen dōu xiàng tā dàoxiè.",
+        "meaning": "The teacher answered patiently, and we all thanked her."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "射",
+      "guidance": "谢 includes 讠 on the left of 射; dropping it removes the speech radical and changes the word."
+    },
+    "relatedCharacters": [
+      "语",
+      "说",
+      "你"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "谢 (xiè) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 谢 (xiè): Stroke Order, Meaning & Examples",
+      "description": "Learn 谢 (xiè) stroke order and neutral xie in 谢谢. Practise everyday thanks, formal 感谢, and the distinct refusal meaning of 谢绝."
+    }
+  },
+  {
+    "character": "语",
+    "pinyin": "yǔ",
+    "meaning": "language; speech",
+    "strokes": 9,
+    "radical": "讠",
+    "traditional": "語",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 汉语; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "汉语 names the language learners are practising. 语 connects language names with speaking and grammar vocabulary while reinforcing the speech radical.",
+    "components": [
+      {
+        "character": "语",
+        "explanation": "The speech radical 讠 occupies the left side and 吾 sits on the right, with 五 above a compact 口."
+      }
+    ],
+    "readingNotes": "Use yǔ with a third tone in 汉语, 英语, and 口语. A literary yù reading means tell or inform in certain classical contexts; modern language names here use yǔ.",
+    "usageTitle": "Using 语 in everyday Chinese",
+    "usage": "语 appears in language names and forms of speech. 汉语 is Chinese, 英语 is English, and 口语 refers to spoken language; 语法 means grammar rather than a particular language.",
+    "writingTip": "Keep 讠 narrow, centre 五 above the right-hand 口, and avoid stretching that small box into the left radical.",
+    "examples": [
+      {
+        "hanzi": "汉语",
+        "pinyin": "Hànyǔ",
+        "meaning": "Chinese language"
+      },
+      {
+        "hanzi": "英语",
+        "pinyin": "Yīngyǔ",
+        "meaning": "English language"
+      },
+      {
+        "hanzi": "口语",
+        "pinyin": "kǒuyǔ",
+        "meaning": "spoken language"
+      },
+      {
+        "hanzi": "语法",
+        "pinyin": "yǔfǎ",
+        "meaning": "grammar"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我学习汉语。",
+        "pinyin": "Wǒ xuéxí Hànyǔ.",
+        "meaning": "I study Chinese."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "她的英语很好。",
+        "pinyin": "Tā de Yīngyǔ hěn hǎo.",
+        "meaning": "Her English is good."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "和朋友用汉语聊天能帮助你提高口语。",
+        "pinyin": "Hé péngyou yòng Hànyǔ liáotiān néng bāngzhù nǐ tígāo kǒuyǔ.",
+        "meaning": "Chatting with friends in Chinese can help improve your speaking."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "说",
+      "guidance": "语 and 说 share 讠, but their right components differ: 吾 in 语 and 兑 in 说."
+    },
+    "relatedCharacters": [
+      "汉",
+      "说",
+      "读"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "语 (yǔ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 语 (yǔ): Stroke Order, Meaning & Examples",
+      "description": "Write 语 (yǔ), with 讠 beside 吾. Learn language names, spoken-language vocabulary, and 语法, while distinguishing 语 from 说."
+    }
+  }
+]
