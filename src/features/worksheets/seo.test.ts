@@ -40,8 +40,19 @@ import { generateMetadata as generateComponentDirectoryMetadata } from "../../ap
 import { generateMetadata as generateComponentDetailMetadata } from "../../app/[locale]/components/[slug]/page";
 import { generateMetadata as generateShenzhenMetadata } from "../../app/[locale]/shenzhen-in-chinese/page";
 import { generateMetadata as generateThankYouMetadata } from "../../app/[locale]/thank-you-in-chinese/page";
+import { generateMetadata as generateVietnameseGuideMetadata } from "../../app/[locale]/huong-dan-tao-giay-luyen-viet-tieng-trung/page";
 
 const projectRoot = process.cwd();
+
+test("Vietnamese worksheet guide has one indexable sitemap URL", async () => {
+  const pathname = "/huong-dan-tao-giay-luyen-viet-tieng-trung";
+  const english = await generateVietnameseGuideMetadata({ params: Promise.resolve({ locale: "en" }) });
+  const chinese = await generateVietnameseGuideMetadata({ params: Promise.resolve({ locale: "zh" }) });
+  assert.equal(english.alternates?.canonical, `https://gridhanzi.org${pathname}`);
+  assert.deepEqual(chinese.robots, { index: false, follow: true });
+  assert.equal(sitemap().filter((entry) => entry.url === `https://gridhanzi.org${pathname}`).length, 1);
+  assert.ok(!sitemap().some((entry) => entry.url === `https://gridhanzi.org/zh${pathname}`));
+});
 
 test("generator business-state URLs are noindex in both languages without leaking query values into metadata", async () => {
   const parameters = ["words", "template", "practiceSet", "mode", "profile", "difficulty", "auto", "hskSystem", "hskLevel", "script", "grid", "resume"];

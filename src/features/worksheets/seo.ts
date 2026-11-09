@@ -28,6 +28,7 @@ export function buildPublicSitemapPaths(): string[] {
   return [
     "/",
     "/generator",
+    "/huong-dan-tao-giay-luyen-viet-tieng-trung",
     "/english-to-chinese-writing-practice",
     "/templates",
     "/grids",
