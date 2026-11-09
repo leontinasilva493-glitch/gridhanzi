@@ -128,7 +128,7 @@ export const gridPaperPages: GridPaperPage[] = [
     slug: "blank",
     grid: "tian",
     profile: "kids",
-    title: "Blank Chinese Writing Practice Paper (Free A4 PDF)",
+    title: "Chinese Writing Paper - Free Printable Blank Grids (PDF)",
     description:
       "Free blank Chinese writing practice paper with Tian Zi Ge guide cells. Download an A4 PDF with no printed characters for copying, dictation, and handwriting.",
     h1: "Blank Chinese Writing Practice Paper",

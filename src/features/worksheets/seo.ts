@@ -1,3 +1,4 @@
+import { learningDirectoryPaths } from "./learning-directories";
 import { p1GuidePaths } from "./p1-learning-pages";
 import type { Metadata } from "next";
 
@@ -34,6 +35,7 @@ export function buildPublicSitemapPaths(): string[] {
     ...gridPaperPages.map((page) => `/grids/${page.slug}`),
     "/stroke-order",
     "/chinese-stroke-order-dictionary",
+    ...learningDirectoryPaths,
     ...buildStrokeOrderSitemapPaths(),
     ...p1GuidePaths,
     "/hsk",
@@ -63,7 +65,7 @@ export type WorksheetSearchParams = Readonly<Record<string, string | string[] | 
 
 const worksheetStateParameters: Readonly<Record<string, ReadonlySet<string>>> = {
   "/generator": new Set([
-    "words", "template", "practiceset", "mode", "profile", "difficulty",
+    "learning", "words", "template", "practiceset", "mode", "profile", "difficulty",
     "auto", "hsksystem", "hsklevel", "script", "grid", "resume",
   ]),
   "/stroke-order": new Set(["character", "mode"]),

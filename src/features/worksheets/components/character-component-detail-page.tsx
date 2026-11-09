@@ -4,12 +4,14 @@ import { envConfigs } from "@/config";
 import { Link } from "@/core/i18n/navigation";
 
 import { characterComponentPages, type CharacterComponentPage } from "../character-components";
+import { findRadical } from "../learning-directories";
 import { PublicPageShell } from "./site-shell";
 import { StructuredData } from "./structured-data";
 
 export function CharacterComponentDetailPage({ page, locale }: { page: CharacterComponentPage; locale: string }) {
   const localePrefix = locale === "zh" ? "/zh" : "";
   const pathname = `/components/${page.slug}`;
+  const radicalFamily = findRadical(page.glyph);
   const pageUrl = `${envConfigs.app_url.replace(/\/$/, "")}${localePrefix}${pathname}`;
   const worksheetHref = `/generator?words=${encodeURIComponent(page.examples.map((example) => example.character).join(","))}`;
   const related = characterComponentPages.filter((candidate) => candidate.slug !== page.slug).sort((left, right) => Number(right.kind === page.kind) - Number(left.kind === page.kind)).slice(0, 3);
@@ -42,6 +44,7 @@ export function CharacterComponentDetailPage({ page, locale }: { page: Character
         <section className="mt-11 border-t border-[#ded7ca] pt-9" aria-labelledby="related-components-title"><div className="flex flex-wrap items-end justify-between gap-3"><div><p className="hs-kicker">Continue the pattern</p><h2 id="related-components-title" className="hs-display mt-2 text-3xl font-bold">Related component guides</h2></div><Link href="/chinese-character-components" className="hs-secondary-button">All components</Link></div><div className="mt-5 grid gap-4 md:grid-cols-3">{related.map((candidate) => <Link key={candidate.slug} href={`/components/${candidate.slug}`} className="hs-card group flex items-center gap-4 p-5"><span className="hs-hanzi-context text-4xl text-[#172b49]">{candidate.glyph}</span><span><strong className="block text-[#172b49]">{candidate.name}</strong><span className="mt-1 block text-sm text-[#617084]">{candidate.kind === "meaning" ? "Meaning clue" : "Sound family"}</span></span><ArrowRight className="ml-auto size-4 text-[#b62822]" /></Link>)}</div></section>
 
         <section className="mt-10 flex flex-wrap gap-3 rounded border border-[#d8c49f] bg-[#fff9ed] p-6"><CheckCircle2 className="mt-2 size-5 text-[#267254]" /><div className="min-w-0 flex-1"><h2 className="hs-display text-xl font-bold">Connect components to the whole writing system</h2><p className="mt-2 text-sm leading-7 text-[#566276]">Review the order rules that govern complete characters, compare common radicals on paper, or build your own mixed list.</p><div className="mt-4 flex flex-wrap gap-3"><Link href="/chinese-stroke-order-rules" className="font-bold text-[#24466e] hover:text-[#b62822]">Stroke-order rules</Link><Link href="/templates/radicals" className="font-bold text-[#24466e] hover:text-[#b62822]">Radicals worksheet</Link><Link href="/generator" className="font-bold text-[#24466e] hover:text-[#b62822]">Custom worksheet</Link></div></div></section>
+        {radicalFamily?.slug && <p className="mt-6 text-sm leading-7">For dictionary indexing and a shorter example set, <Link className="font-semibold text-[#24466e] underline" href={`/radicals/${radicalFamily.slug}`}>open the {radicalFamily.meaning} radical family</Link>. Components explain construction; radicals organise dictionary entries.</p>}
       </main>
     </PublicPageShell>
   );

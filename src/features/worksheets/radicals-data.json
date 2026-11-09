@@ -1,0 +1,2558 @@
+[
+  {
+    "id": 1,
+    "glyph": "一",
+    "pinyin": "yī",
+    "meaning": "one",
+    "strokes": 1,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 2,
+    "glyph": "丨",
+    "pinyin": "shù",
+    "meaning": "line",
+    "strokes": 1,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 3,
+    "glyph": "丶",
+    "pinyin": "diǎn",
+    "meaning": "dot",
+    "strokes": 1,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 4,
+    "glyph": "丿",
+    "pinyin": "piě",
+    "meaning": "slash",
+    "strokes": 1,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 5,
+    "glyph": "乙",
+    "pinyin": "yǐ",
+    "meaning": "second",
+    "strokes": 1,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 6,
+    "glyph": "亅",
+    "pinyin": "jué",
+    "meaning": "hook",
+    "strokes": 1,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 7,
+    "glyph": "二",
+    "pinyin": "èr",
+    "meaning": "two",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 8,
+    "glyph": "亠",
+    "pinyin": "tóu",
+    "meaning": "lid",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 9,
+    "glyph": "人",
+    "pinyin": "rén",
+    "meaning": "person",
+    "strokes": 2,
+    "variants": "亻",
+    "examples": [
+      {
+        "character": "你",
+        "pinyin": "nǐ",
+        "meaning": "you"
+      },
+      {
+        "character": "他",
+        "pinyin": "tā",
+        "meaning": "he"
+      },
+      {
+        "character": "们",
+        "pinyin": "men",
+        "meaning": "plural-marker"
+      }
+    ],
+    "slug": "person",
+    "shape": "人 spreads across a full square, while 亻 narrows into a left-side column. In 你 and 他, leave the larger right component enough room instead of shrinking the whole character.",
+    "usage": "This family often concerns people, roles, or human activity. The radical does not tell you which person a pronoun refers to; the rest of the character and the word still matter.",
+    "practice": "Compare the pronouns 你 and 他, then add 们 to form 你们 and 他们. Print the three example characters and keep the left column equally narrow.",
+    "componentSlug": "person-ren"
+  },
+  {
+    "id": 10,
+    "glyph": "儿",
+    "pinyin": "ér",
+    "meaning": "legs",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 11,
+    "glyph": "入",
+    "pinyin": "rù",
+    "meaning": "enter",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 12,
+    "glyph": "八",
+    "pinyin": "bā",
+    "meaning": "eight",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 13,
+    "glyph": "冂",
+    "pinyin": "jiōng",
+    "meaning": "down box",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 14,
+    "glyph": "冖",
+    "pinyin": "mì",
+    "meaning": "cover",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 15,
+    "glyph": "冫",
+    "pinyin": "bīng",
+    "meaning": "ice",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 16,
+    "glyph": "几",
+    "pinyin": "jī",
+    "meaning": "table",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 17,
+    "glyph": "凵",
+    "pinyin": "qiǎn",
+    "meaning": "open box",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 18,
+    "glyph": "刀",
+    "pinyin": "dāo",
+    "meaning": "knife",
+    "strokes": 2,
+    "variants": "刂",
+    "examples": [
+      {
+        "character": "分",
+        "pinyin": "fēn",
+        "meaning": "divide"
+      },
+      {
+        "character": "切",
+        "pinyin": "qiē",
+        "meaning": "cut"
+      },
+      {
+        "character": "刻",
+        "pinyin": "kè",
+        "meaning": "carve"
+      }
+    ],
+    "slug": "knife",
+    "shape": "刀 has a bent hook and a falling stroke as a whole character. At the right of 刻 it becomes 刂, two vertical strokes with a hook on the longer one.",
+    "usage": "Cutting is a helpful clue in 切, but 分 can refer to minutes or scores. In 切, the qiē reading belongs to cutting; qiè occurs in words such as 一切.",
+    "practice": "Print 分, 切, and 刻. Circle the knife form in each and compare its position before following the whole character's stroke sequence.",
+    "componentSlug": ""
+  },
+  {
+    "id": 19,
+    "glyph": "力",
+    "pinyin": "lì",
+    "meaning": "strength",
+    "strokes": 2,
+    "variants": "",
+    "examples": [
+      {
+        "character": "功",
+        "pinyin": "gōng",
+        "meaning": "achievement"
+      },
+      {
+        "character": "加",
+        "pinyin": "jiā",
+        "meaning": "add"
+      },
+      {
+        "character": "动",
+        "pinyin": "dòng",
+        "meaning": "move"
+      }
+    ],
+    "slug": "strength",
+    "shape": "力 contains a turning hook crossed by a left-falling stroke. It may sit at the right, as in 功, or to the left of another component, as in 加.",
+    "usage": "Effort and force help connect some members of this family, but adding in 加 is not a literal picture of strength. Dictionary grouping is a lookup aid, not a complete definition.",
+    "practice": "Write 功 and 动 in adjoining rows to compare right-side 力, then move to 加 and leave room for 口 on the right.",
+    "componentSlug": ""
+  },
+  {
+    "id": 20,
+    "glyph": "勹",
+    "pinyin": "bāo",
+    "meaning": "wrap",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 21,
+    "glyph": "匕",
+    "pinyin": "bǐ",
+    "meaning": "spoon",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 22,
+    "glyph": "匚",
+    "pinyin": "fāng",
+    "meaning": "right open box",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 23,
+    "glyph": "匸",
+    "pinyin": "xì",
+    "meaning": "hiding enclosure",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 24,
+    "glyph": "十",
+    "pinyin": "shí",
+    "meaning": "ten",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 25,
+    "glyph": "卜",
+    "pinyin": "bo",
+    "meaning": "divination",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 26,
+    "glyph": "卩",
+    "pinyin": "jié",
+    "meaning": "seal",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 27,
+    "glyph": "厂",
+    "pinyin": "chǎng",
+    "meaning": "cliff",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 28,
+    "glyph": "厶",
+    "pinyin": "sī",
+    "meaning": "private",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 29,
+    "glyph": "又",
+    "pinyin": "yòu",
+    "meaning": "again",
+    "strokes": 2,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 30,
+    "glyph": "口",
+    "pinyin": "kǒu",
+    "meaning": "mouth",
+    "strokes": 3,
+    "variants": "",
+    "examples": [
+      {
+        "character": "吃",
+        "pinyin": "chī",
+        "meaning": "eat"
+      },
+      {
+        "character": "喝",
+        "pinyin": "hē",
+        "meaning": "drink"
+      },
+      {
+        "character": "叫",
+        "pinyin": "jiào",
+        "meaning": "call"
+      }
+    ],
+    "slug": "mouth",
+    "shape": "口 is a small box made with three strokes, not four separate sides. Its width and height shrink when it stands beside a larger right-hand component.",
+    "usage": "Eating, drinking, and calling give three direct mouth-related examples. Other 口 characters are sound transcriptions or particles, so do not assume every member describes a mouth action.",
+    "practice": "Say 吃, 喝, and 叫 before writing them. Keep 口 consistent across all three rows while changing the right component.",
+    "componentSlug": "mouth-kou"
+  },
+  {
+    "id": 31,
+    "glyph": "囗",
+    "pinyin": "wéi",
+    "meaning": "enclosure",
+    "strokes": 3,
+    "variants": "",
+    "examples": [
+      {
+        "character": "国",
+        "pinyin": "guó",
+        "meaning": "country"
+      },
+      {
+        "character": "回",
+        "pinyin": "huí",
+        "meaning": "return"
+      },
+      {
+        "character": "园",
+        "pinyin": "yuán",
+        "meaning": "garden"
+      }
+    ],
+    "slug": "enclosure",
+    "shape": "囗 surrounds the contents of a character and is larger than the separate mouth radical 口. Write the inside before closing the enclosure's bottom line.",
+    "usage": "国 and 园 suggest bounded spaces, whereas 回 has developed the meaning return. The enclosure distinguishes this dictionary family from characters with a small mouth component.",
+    "practice": "Print 国, 回, and 园. Check that the inner components have breathing room and that the outer bottom is written after the contents.",
+    "componentSlug": ""
+  },
+  {
+    "id": 32,
+    "glyph": "土",
+    "pinyin": "tǔ",
+    "meaning": "earth",
+    "strokes": 3,
+    "variants": "",
+    "examples": [
+      {
+        "character": "地",
+        "pinyin": "dì",
+        "meaning": "ground"
+      },
+      {
+        "character": "坏",
+        "pinyin": "huài",
+        "meaning": "bad"
+      },
+      {
+        "character": "城",
+        "pinyin": "chéng",
+        "meaning": "city"
+      }
+    ],
+    "slug": "earth",
+    "shape": "土 has a vertical crossing two horizontals, with the lower horizontal longer as a standalone form. On the left, that lower stroke is often written as a rising stroke.",
+    "usage": "Ground and built places connect 地 and 城. 坏 shows why a radical clue cannot replace learning a word's modern meaning. 地 is dì for ground, but de as a grammatical particle.",
+    "practice": "Practise 地, 坏, and 城 side by side. Keep the earth component narrow and identify which example has a meaning that is no longer transparently earth-related.",
+    "componentSlug": ""
+  },
+  {
+    "id": 33,
+    "glyph": "士",
+    "pinyin": "shì",
+    "meaning": "scholar",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 34,
+    "glyph": "夂",
+    "pinyin": "zhǐ",
+    "meaning": "go",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 35,
+    "glyph": "夊",
+    "pinyin": "suī",
+    "meaning": "go slowly",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 36,
+    "glyph": "夕",
+    "pinyin": "xī",
+    "meaning": "evening",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 37,
+    "glyph": "大",
+    "pinyin": "dà",
+    "meaning": "big",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 38,
+    "glyph": "女",
+    "pinyin": "nǚ",
+    "meaning": "woman",
+    "strokes": 3,
+    "variants": "",
+    "examples": [
+      {
+        "character": "好",
+        "pinyin": "hǎo",
+        "meaning": "good"
+      },
+      {
+        "character": "妈",
+        "pinyin": "mā",
+        "meaning": "mother"
+      },
+      {
+        "character": "姐",
+        "pinyin": "jiě",
+        "meaning": "older-sister"
+      }
+    ],
+    "slug": "woman",
+    "shape": "女 changes proportion on the left of 好, 妈, and 姐. Its crossing strokes must fit inside a narrow column while the right component occupies the rest of the square.",
+    "usage": "Kinship words make the family easy to recognise, but historical character categories are not rules about modern gender roles. 好 means good and should be learned as a complete word.",
+    "practice": "Use 妈妈 and 姐姐 to recall the family words, then write 好. Compare the compressed left 女 with standalone 女 before printing another row.",
+    "componentSlug": ""
+  },
+  {
+    "id": 39,
+    "glyph": "子",
+    "pinyin": "zi",
+    "meaning": "child",
+    "strokes": 3,
+    "variants": "",
+    "examples": [
+      {
+        "character": "字",
+        "pinyin": "zì",
+        "meaning": "character"
+      },
+      {
+        "character": "孩",
+        "pinyin": "hái",
+        "meaning": "child"
+      },
+      {
+        "character": "孙",
+        "pinyin": "sūn",
+        "meaning": "grandchild"
+      }
+    ],
+    "slug": "child",
+    "shape": "子 has a curved hook, a crossing horizontal, and an upper turning stroke. Its lower horizontal may rise when the component sits on the left, as in 孩 and 孙.",
+    "usage": "Child-related meanings are visible in 孩 and 孙. 字 means a written character, so grouping it under 子 does not make its modern meaning child.",
+    "practice": "Compare 子 at the bottom of 字 with its left-side form in 孩 and 孙. Print the three examples and mark the change in the crossing stroke.",
+    "componentSlug": ""
+  },
+  {
+    "id": 40,
+    "glyph": "宀",
+    "pinyin": "gài / mián",
+    "meaning": "roof",
+    "strokes": 3,
+    "variants": "",
+    "examples": [
+      {
+        "character": "家",
+        "pinyin": "jiā",
+        "meaning": "home"
+      },
+      {
+        "character": "安",
+        "pinyin": "ān",
+        "meaning": "peaceful"
+      },
+      {
+        "character": "室",
+        "pinyin": "shì",
+        "meaning": "room"
+      }
+    ],
+    "slug": "roof",
+    "shape": "宀 is a three-stroke roof: a top dot, a short left dot, and a horizontal hook. It must shelter the lower components without flattening them.",
+    "usage": "Homes and rooms give a useful connection for 家 and 室. 安 has a historical construction, but its modern meaning should not be reduced to a literal claim about the components underneath a roof.",
+    "practice": "Place 家, 安, and 室 on one worksheet. Align the roof heights, then compare how much vertical space each lower part needs.",
+    "componentSlug": ""
+  },
+  {
+    "id": 41,
+    "glyph": "寸",
+    "pinyin": "cùn",
+    "meaning": "inch",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 42,
+    "glyph": "小",
+    "pinyin": "xiǎo",
+    "meaning": "small",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 43,
+    "glyph": "尢",
+    "pinyin": "yóu",
+    "meaning": "lame",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 44,
+    "glyph": "尸",
+    "pinyin": "shī",
+    "meaning": "corpse",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 45,
+    "glyph": "屮",
+    "pinyin": "chè",
+    "meaning": "sprout",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 46,
+    "glyph": "山",
+    "pinyin": "shān",
+    "meaning": "mountain",
+    "strokes": 3,
+    "variants": "",
+    "examples": [
+      {
+        "character": "山",
+        "pinyin": "shān",
+        "meaning": "mountain"
+      },
+      {
+        "character": "岩",
+        "pinyin": "yán",
+        "meaning": "rock"
+      },
+      {
+        "character": "峰",
+        "pinyin": "fēng",
+        "meaning": "peak"
+      }
+    ],
+    "slug": "mountain",
+    "shape": "山 has one tall middle vertical and shorter sides. In 岩 it sits at the top; in 峰 it is compressed on the left rather than stretched across the square.",
+    "usage": "Mountain and landscape meanings connect these examples. A similar silhouette is not enough for dictionary classification: 出 is not assigned to the 山 radical here.",
+    "practice": "Write standalone 山 first, then compare its top position in 岩 with its narrow left position in 峰. Keep the middle stroke tallest in each form.",
+    "componentSlug": ""
+  },
+  {
+    "id": 47,
+    "glyph": "巛",
+    "pinyin": "chuān",
+    "meaning": "river",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 48,
+    "glyph": "工",
+    "pinyin": "gōng",
+    "meaning": "work",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 49,
+    "glyph": "己",
+    "pinyin": "jǐ",
+    "meaning": "oneself",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 50,
+    "glyph": "巾",
+    "pinyin": "jīn",
+    "meaning": "turban",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 51,
+    "glyph": "干",
+    "pinyin": "gàn",
+    "meaning": "dry",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 52,
+    "glyph": "幺",
+    "pinyin": "yāo",
+    "meaning": "short thread",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 53,
+    "glyph": "广",
+    "pinyin": "guǎng",
+    "meaning": "dotted cliff",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 54,
+    "glyph": "廴",
+    "pinyin": "yǐn",
+    "meaning": "long stride",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 55,
+    "glyph": "廾",
+    "pinyin": "gǒng",
+    "meaning": "two hands",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 56,
+    "glyph": "弋",
+    "pinyin": "yì",
+    "meaning": "shoot",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 57,
+    "glyph": "弓",
+    "pinyin": "gōng",
+    "meaning": "bow",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 58,
+    "glyph": "彐",
+    "pinyin": "jì",
+    "meaning": "snout",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 59,
+    "glyph": "彡",
+    "pinyin": "shān",
+    "meaning": "bristle",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 60,
+    "glyph": "彳",
+    "pinyin": "chì",
+    "meaning": "step",
+    "strokes": 3,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 61,
+    "glyph": "心",
+    "pinyin": "xīn",
+    "meaning": "heart",
+    "strokes": 4,
+    "variants": "忄 ⺗",
+    "examples": [
+      {
+        "character": "想",
+        "pinyin": "xiǎng",
+        "meaning": "think"
+      },
+      {
+        "character": "忘",
+        "pinyin": "wàng",
+        "meaning": "forget"
+      },
+      {
+        "character": "忙",
+        "pinyin": "máng",
+        "meaning": "busy"
+      }
+    ],
+    "slug": "heart",
+    "shape": "心 often sits beneath a character, as in 想 and 忘. On the left it becomes 忄, with two dots around a vertical; those side strokes are not copied from the full bottom form.",
+    "usage": "Thought, memory, and feelings often belong here. 忙 means busy, and its heart component offers a broad mental-state clue rather than a literal anatomical definition.",
+    "practice": "Print 想, 忘, and 忙. Separate bottom-form practice from left-form practice, then check the dots against each character's animation.",
+    "componentSlug": ""
+  },
+  {
+    "id": 62,
+    "glyph": "戈",
+    "pinyin": "gē",
+    "meaning": "halberd",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 63,
+    "glyph": "戶",
+    "pinyin": "hù",
+    "meaning": "door",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 64,
+    "glyph": "手",
+    "pinyin": "shǒu",
+    "meaning": "hand",
+    "strokes": 4,
+    "variants": "扌",
+    "examples": [
+      {
+        "character": "打",
+        "pinyin": "dǎ",
+        "meaning": "hit"
+      },
+      {
+        "character": "找",
+        "pinyin": "zhǎo",
+        "meaning": "look-for"
+      },
+      {
+        "character": "提",
+        "pinyin": "tí",
+        "meaning": "lift"
+      }
+    ],
+    "slug": "hand",
+    "shape": "手 becomes 扌 at the left: a short horizontal, a vertical hook, and a rising stroke. Keep this three-stroke form distinct from the fuller standalone 手.",
+    "usage": "Physical action is clear in 打 and 提, but 找 means look for and cannot be decoded by a hand picture alone. 提 also has other readings in particular words; tí is the lift or mention reading here.",
+    "practice": "Make a worksheet with 打, 找, and 提. Keep the same left-column width in every row, then say a useful action phrase for each.",
+    "componentSlug": "hand-shou"
+  },
+  {
+    "id": 65,
+    "glyph": "支",
+    "pinyin": "zhī",
+    "meaning": "branch",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 66,
+    "glyph": "攴",
+    "pinyin": "pū",
+    "meaning": "rap",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 67,
+    "glyph": "文",
+    "pinyin": "wén",
+    "meaning": "script",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 68,
+    "glyph": "斗",
+    "pinyin": "dòu",
+    "meaning": "dipper",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 69,
+    "glyph": "斤",
+    "pinyin": "jīn",
+    "meaning": "axe",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 70,
+    "glyph": "方",
+    "pinyin": "fāng",
+    "meaning": "square",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 71,
+    "glyph": "无",
+    "pinyin": "wú",
+    "meaning": "not",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 72,
+    "glyph": "日",
+    "pinyin": "rì",
+    "meaning": "sun or day",
+    "strokes": 4,
+    "variants": "",
+    "examples": [
+      {
+        "character": "明",
+        "pinyin": "míng",
+        "meaning": "bright"
+      },
+      {
+        "character": "时",
+        "pinyin": "shí",
+        "meaning": "time"
+      },
+      {
+        "character": "昨",
+        "pinyin": "zuó",
+        "meaning": "previous-day"
+      }
+    ],
+    "slug": "sun",
+    "shape": "日 encloses one interior horizontal. In these examples it stands on the left, so the box is narrower than a standalone 日 and must leave room for the right component.",
+    "usage": "Brightness connects 明 to the sun; time words connect 时 and 昨 to days and moments. 明天 and 昨天 are useful opposites, not interchangeable readings of the same character.",
+    "practice": "Print 明, 时, and 昨 together. Practise a narrow 日 first, then add each distinct right-hand shape while keeping the boxes level.",
+    "componentSlug": ""
+  },
+  {
+    "id": 73,
+    "glyph": "曰",
+    "pinyin": "yuē",
+    "meaning": "say",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 74,
+    "glyph": "月",
+    "pinyin": "yuè",
+    "meaning": "moon",
+    "strokes": 4,
+    "variants": "",
+    "examples": [
+      {
+        "character": "月",
+        "pinyin": "yuè",
+        "meaning": "moon"
+      },
+      {
+        "character": "朋",
+        "pinyin": "péng",
+        "meaning": "friend"
+      },
+      {
+        "character": "服",
+        "pinyin": "fú",
+        "meaning": "clothing"
+      }
+    ],
+    "slug": "moon",
+    "shape": "月 is a narrow form with two short inner horizontals. 朋 repeats it side by side, while 服 places a different component on the right.",
+    "usage": "The visible 月 form can also represent the meat radical in body-part characters. Do not classify every moon-shaped component as radical 74; this set follows the stated dictionary data.",
+    "practice": "Compare 月 and 朋 before writing 服. Use the lookup on a body-part character such as 肚 to see why shape and dictionary radical are separate questions.",
+    "componentSlug": ""
+  },
+  {
+    "id": 75,
+    "glyph": "木",
+    "pinyin": "mù",
+    "meaning": "tree or wood",
+    "strokes": 4,
+    "variants": "",
+    "examples": [
+      {
+        "character": "本",
+        "pinyin": "běn",
+        "meaning": "root"
+      },
+      {
+        "character": "林",
+        "pinyin": "lín",
+        "meaning": "woods"
+      },
+      {
+        "character": "校",
+        "pinyin": "xiào",
+        "meaning": "school"
+      }
+    ],
+    "slug": "tree",
+    "shape": "木 has a central vertical crossed by a horizontal and two spreading strokes. On the left of 校, the right-falling stroke is shortened so it does not collide with 交.",
+    "usage": "Trees are clear in 林, while 本 adds a mark near the root. 校 commonly means school and is xiào in 学校; jiào is a different reading in words about checking or comparing.",
+    "practice": "Print 本, 林, and 校. Compare the added line in 本, repeated trees in 林, and compressed left tree in 校 before practising from memory.",
+    "componentSlug": ""
+  },
+  {
+    "id": 76,
+    "glyph": "欠",
+    "pinyin": "qiàn",
+    "meaning": "lack",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 77,
+    "glyph": "止",
+    "pinyin": "zhǐ",
+    "meaning": "stop",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 78,
+    "glyph": "歹",
+    "pinyin": "dǎi",
+    "meaning": "death",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 79,
+    "glyph": "殳",
+    "pinyin": "shū",
+    "meaning": "weapon",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 80,
+    "glyph": "毋",
+    "pinyin": "wú",
+    "meaning": "do not",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 81,
+    "glyph": "比",
+    "pinyin": "bǐ",
+    "meaning": "compare",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 82,
+    "glyph": "毛",
+    "pinyin": "máo",
+    "meaning": "fur",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 83,
+    "glyph": "氏",
+    "pinyin": "shì",
+    "meaning": "clan",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 84,
+    "glyph": "气",
+    "pinyin": "qì",
+    "meaning": "steam",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 85,
+    "glyph": "水",
+    "pinyin": "shuǐ",
+    "meaning": "water",
+    "strokes": 4,
+    "variants": "氵 氺",
+    "examples": [
+      {
+        "character": "河",
+        "pinyin": "hé",
+        "meaning": "river"
+      },
+      {
+        "character": "海",
+        "pinyin": "hǎi",
+        "meaning": "sea"
+      },
+      {
+        "character": "洗",
+        "pinyin": "xǐ",
+        "meaning": "wash"
+      }
+    ],
+    "slug": "water",
+    "shape": "水 often changes to the three-stroke left form 氵. The strokes are individually shaped and spaced; the lowest one rises toward the right component.",
+    "usage": "River, sea, and washing give direct water connections. The radical alone cannot predict pronunciation: 河, 海, and 洗 have different initials and tones.",
+    "practice": "Use 河, 海, and 洗 as a short water worksheet. Keep 氵 equally narrow and compare the right components rather than repeating three identical dots.",
+    "componentSlug": "water-shui"
+  },
+  {
+    "id": 86,
+    "glyph": "火",
+    "pinyin": "huǒ",
+    "meaning": "fire",
+    "strokes": 4,
+    "variants": "灬",
+    "examples": [
+      {
+        "character": "灯",
+        "pinyin": "dēng",
+        "meaning": "lamp"
+      },
+      {
+        "character": "烧",
+        "pinyin": "shāo",
+        "meaning": "burn"
+      },
+      {
+        "character": "热",
+        "pinyin": "rè",
+        "meaning": "hot"
+      }
+    ],
+    "slug": "fire",
+    "shape": "火 stands on the left of 灯 and 烧. At the bottom of 热 it appears as four separate dots, 灬, spread beneath the upper structure.",
+    "usage": "Light and heat connect these examples, but not every occurrence of four bottom dots has an obvious modern fire meaning. Check the whole character before making a semantic claim.",
+    "practice": "Compare 灯 and 烧 first, then write 热 with four distinct bottom dots. Keep those dots low enough to support the upper strokes.",
+    "componentSlug": ""
+  },
+  {
+    "id": 87,
+    "glyph": "爪",
+    "pinyin": "zhǎo",
+    "meaning": "claw",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 88,
+    "glyph": "父",
+    "pinyin": "fù",
+    "meaning": "father",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 89,
+    "glyph": "爻",
+    "pinyin": "yáo",
+    "meaning": "double x",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 90,
+    "glyph": "爿",
+    "pinyin": "qiáng",
+    "meaning": "half tree trunk",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 91,
+    "glyph": "片",
+    "pinyin": "piàn",
+    "meaning": "slice",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 92,
+    "glyph": "牙",
+    "pinyin": "yá",
+    "meaning": "fang",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 93,
+    "glyph": "牛",
+    "pinyin": "niú",
+    "meaning": "cow",
+    "strokes": 4,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 94,
+    "glyph": "犬",
+    "pinyin": "quǎn",
+    "meaning": "dog",
+    "strokes": 4,
+    "variants": "犭",
+    "examples": [
+      {
+        "character": "狗",
+        "pinyin": "gǒu",
+        "meaning": "dog"
+      },
+      {
+        "character": "猫",
+        "pinyin": "māo",
+        "meaning": "cat"
+      },
+      {
+        "character": "狼",
+        "pinyin": "láng",
+        "meaning": "wolf"
+      }
+    ],
+    "slug": "dog",
+    "shape": "犬 becomes 犭 on the left: a slant, a curved hook, and another slant. It is not the two-stroke person form 亻.",
+    "usage": "This animal family includes more than dogs: 猫 is a cat and 狼 is a wolf. The radical supplies a broad animal association, while the whole word names the species.",
+    "practice": "Print 狗, 猫, and 狼 in adjacent rows. Trace 犭 carefully before adding each right part, and contrast it with 亻 in 你.",
+    "componentSlug": ""
+  },
+  {
+    "id": 95,
+    "glyph": "玄",
+    "pinyin": "xuán",
+    "meaning": "profound",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 96,
+    "glyph": "玉",
+    "pinyin": "yù",
+    "meaning": "jade",
+    "strokes": 5,
+    "variants": "王 ⺩",
+    "examples": [
+      {
+        "character": "玩",
+        "pinyin": "wán",
+        "meaning": "play"
+      },
+      {
+        "character": "理",
+        "pinyin": "lǐ",
+        "meaning": "reason"
+      },
+      {
+        "character": "球",
+        "pinyin": "qiú",
+        "meaning": "ball"
+      }
+    ],
+    "slug": "jade",
+    "shape": "The jade component usually appears as 王 on the left of these characters. Its final horizontal is compressed into a rising stroke; the standalone 玉 has an additional dot.",
+    "usage": "Objects and qualities historically associated with jade extend into modern words such as 玩 and 理. The common left form looks like 王, but its radical family is 玉.",
+    "practice": "Compare 玉 and 王 first, then write 玩, 理, and 球. Notice that the left-side form does not keep the standalone jade dot.",
+    "componentSlug": ""
+  },
+  {
+    "id": 97,
+    "glyph": "瓜",
+    "pinyin": "guā",
+    "meaning": "melon",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 98,
+    "glyph": "瓦",
+    "pinyin": "wǎ",
+    "meaning": "tile",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 99,
+    "glyph": "甘",
+    "pinyin": "gān",
+    "meaning": "sweet",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 100,
+    "glyph": "生",
+    "pinyin": "shēng",
+    "meaning": "life",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 101,
+    "glyph": "用",
+    "pinyin": "yòng",
+    "meaning": "use",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 102,
+    "glyph": "田",
+    "pinyin": "tián",
+    "meaning": "field",
+    "strokes": 5,
+    "variants": "",
+    "examples": [
+      {
+        "character": "男",
+        "pinyin": "nán",
+        "meaning": "male"
+      },
+      {
+        "character": "界",
+        "pinyin": "jiè",
+        "meaning": "boundary"
+      },
+      {
+        "character": "畔",
+        "pinyin": "pàn",
+        "meaning": "field-edge"
+      }
+    ],
+    "slug": "field",
+    "shape": "田 is a box divided by a vertical and a horizontal. It can sit at the top, as in 男 and 界, or at the left, as in 畔.",
+    "usage": "Field and boundary associations are more transparent in 畔 and 界 than in 男. Treat these as historical dictionary groupings, not rules for translating every character.",
+    "practice": "Use 男, 界, and 畔 to practise moving 田 from the top to the left. Keep all four inner spaces open and reasonably balanced.",
+    "componentSlug": ""
+  },
+  {
+    "id": 103,
+    "glyph": "疋",
+    "pinyin": "pǐ",
+    "meaning": "bolt of cloth",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 104,
+    "glyph": "疒",
+    "pinyin": "nè",
+    "meaning": "sickness",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 105,
+    "glyph": "癶",
+    "pinyin": "bō",
+    "meaning": "dotted tent",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 106,
+    "glyph": "白",
+    "pinyin": "bái",
+    "meaning": "white",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 107,
+    "glyph": "皮",
+    "pinyin": "pí",
+    "meaning": "skin",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 108,
+    "glyph": "皿",
+    "pinyin": "mǐn",
+    "meaning": "dish",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 109,
+    "glyph": "目",
+    "pinyin": "mù",
+    "meaning": "eye",
+    "strokes": 5,
+    "variants": "",
+    "examples": [
+      {
+        "character": "眼",
+        "pinyin": "yǎn",
+        "meaning": "eye"
+      },
+      {
+        "character": "睛",
+        "pinyin": "jīng",
+        "meaning": "eyeball"
+      },
+      {
+        "character": "看",
+        "pinyin": "kàn",
+        "meaning": "look"
+      }
+    ],
+    "slug": "eye",
+    "shape": "目 is a tall box with two inner horizontals. It stands on the left in 眼 and 睛, but beneath the upper strokes in 看.",
+    "usage": "Seeing and eyes connect this family directly. 看 is kàn for looking or reading, while kān is used for looking after or guarding in other words.",
+    "practice": "Print 眼, 睛, and 看. Compare the two interior lines of 目 with the single line inside 日 before writing the complete characters.",
+    "componentSlug": ""
+  },
+  {
+    "id": 110,
+    "glyph": "矛",
+    "pinyin": "máo",
+    "meaning": "spear",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 111,
+    "glyph": "矢",
+    "pinyin": "shǐ",
+    "meaning": "arrow",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 112,
+    "glyph": "石",
+    "pinyin": "shí",
+    "meaning": "stone",
+    "strokes": 5,
+    "variants": "",
+    "examples": [
+      {
+        "character": "码",
+        "pinyin": "mǎ",
+        "meaning": "code"
+      },
+      {
+        "character": "破",
+        "pinyin": "pò",
+        "meaning": "broken"
+      },
+      {
+        "character": "硬",
+        "pinyin": "yìng",
+        "meaning": "hard"
+      }
+    ],
+    "slug": "stone",
+    "shape": "石 has an upper horizontal and falling stroke above a small 口. At the left, keep the lower box tucked below the upper stroke rather than stretched wide.",
+    "usage": "Hard material connects 石 and 硬, but 码 often means code or a unit and is not literally stone. 破 can describe breaking many kinds of objects.",
+    "practice": "Write 码, 破, and 硬 with a consistent narrow 石. Say the full word 电话号码 for 码 so the practice connects shape to a real use.",
+    "componentSlug": ""
+  },
+  {
+    "id": 113,
+    "glyph": "示",
+    "pinyin": "shì",
+    "meaning": "spirit",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 114,
+    "glyph": "禸",
+    "pinyin": "róu",
+    "meaning": "track",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 115,
+    "glyph": "禾",
+    "pinyin": "hé",
+    "meaning": "grain",
+    "strokes": 5,
+    "variants": "",
+    "examples": [
+      {
+        "character": "秋",
+        "pinyin": "qiū",
+        "meaning": "autumn"
+      },
+      {
+        "character": "种",
+        "pinyin": "zhǒng",
+        "meaning": "seed"
+      },
+      {
+        "character": "科",
+        "pinyin": "kē",
+        "meaning": "subject"
+      }
+    ],
+    "slug": "grain",
+    "shape": "禾 resembles 木 with an additional short upper slant. When it is a left component, shorten the right-falling stroke to leave space beside it.",
+    "usage": "Crops and seasons connect 禾 with 秋 and 种. 科 has extended uses such as a school subject. 种 is zhǒng for a seed or kind, but zhòng for planting.",
+    "practice": "Print 秋, 种, and 科. Check the short slant that distinguishes 禾 from 木, then practise the two readings of 种 in separate words.",
+    "componentSlug": ""
+  },
+  {
+    "id": 116,
+    "glyph": "穴",
+    "pinyin": "xué",
+    "meaning": "cave",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 117,
+    "glyph": "立",
+    "pinyin": "lì",
+    "meaning": "stand",
+    "strokes": 5,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 118,
+    "glyph": "竹",
+    "pinyin": "zhú",
+    "meaning": "bamboo",
+    "strokes": 6,
+    "variants": "⺮",
+    "examples": [
+      {
+        "character": "笔",
+        "pinyin": "bǐ",
+        "meaning": "pen"
+      },
+      {
+        "character": "笑",
+        "pinyin": "xiào",
+        "meaning": "laugh"
+      },
+      {
+        "character": "等",
+        "pinyin": "děng",
+        "meaning": "wait"
+      }
+    ],
+    "slug": "bamboo",
+    "shape": "竹 becomes a compact six-stroke top form, ⺮, above each example. Its two groups need equal height but should not be squeezed into one solid horizontal bar.",
+    "usage": "Writing tools connect naturally to bamboo in 笔. 笑 and 等 show that a radical may preserve historical grouping without explaining a modern everyday meaning.",
+    "practice": "Print 笔, 笑, and 等. Leave room under ⺮ for three different lower structures and keep the six top strokes separated.",
+    "componentSlug": ""
+  },
+  {
+    "id": 119,
+    "glyph": "米",
+    "pinyin": "mǐ",
+    "meaning": "rice",
+    "strokes": 6,
+    "variants": "",
+    "examples": [
+      {
+        "character": "粉",
+        "pinyin": "fěn",
+        "meaning": "powder"
+      },
+      {
+        "character": "粒",
+        "pinyin": "lì",
+        "meaning": "grain"
+      },
+      {
+        "character": "精",
+        "pinyin": "jīng",
+        "meaning": "refined"
+      }
+    ],
+    "slug": "rice",
+    "shape": "米 places two short upper strokes around a central 木-like framework. At the left of a character, narrow its spreading lower strokes.",
+    "usage": "Powder, grains, and refining form a useful material-related group. 精 also appears in abstract words, so its meaning cannot be reduced to rice alone.",
+    "practice": "Write 粉, 粒, and 精. Keep the central line clear and compare the lower right stroke of left-side 米 with standalone 米.",
+    "componentSlug": ""
+  },
+  {
+    "id": 120,
+    "glyph": "糸",
+    "pinyin": "mì",
+    "meaning": "silk",
+    "strokes": 6,
+    "variants": "糹 纟",
+    "examples": [
+      {
+        "character": "红",
+        "pinyin": "hóng",
+        "meaning": "red"
+      },
+      {
+        "character": "绿",
+        "pinyin": "lǜ",
+        "meaning": "green"
+      },
+      {
+        "character": "纸",
+        "pinyin": "zhǐ",
+        "meaning": "paper"
+      }
+    ],
+    "slug": "silk",
+    "shape": "Traditional left-side 糹 becomes simplified 纟. The examples here use the simplified three-stroke form; the historical head radical 糸 has six strokes.",
+    "usage": "Thread and textile associations underlie many members, but colours and paper are learned as full words. A simplified character's radical shape need not have the same stroke count as its Kangxi heading.",
+    "practice": "Print 红, 绿, and 纸. Practise the three-stroke 纟 separately and compare it with 糸 in the reference grid without mixing their sequences.",
+    "componentSlug": ""
+  },
+  {
+    "id": 121,
+    "glyph": "缶",
+    "pinyin": "fǒu",
+    "meaning": "jar",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 122,
+    "glyph": "网",
+    "pinyin": "wǎng",
+    "meaning": "net",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 123,
+    "glyph": "羊",
+    "pinyin": "yáng",
+    "meaning": "sheep",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 124,
+    "glyph": "羽",
+    "pinyin": "yǔ",
+    "meaning": "feather",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 125,
+    "glyph": "老",
+    "pinyin": "lǎo",
+    "meaning": "old",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 126,
+    "glyph": "而",
+    "pinyin": "ér",
+    "meaning": "and",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 127,
+    "glyph": "耒",
+    "pinyin": "lěi",
+    "meaning": "plow",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 128,
+    "glyph": "耳",
+    "pinyin": "ěr",
+    "meaning": "ear",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 129,
+    "glyph": "聿",
+    "pinyin": "yù",
+    "meaning": "brush",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 130,
+    "glyph": "肉",
+    "pinyin": "ròu",
+    "meaning": "meat",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 131,
+    "glyph": "臣",
+    "pinyin": "chén",
+    "meaning": "minister",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 132,
+    "glyph": "自",
+    "pinyin": "zì",
+    "meaning": "self",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 133,
+    "glyph": "至",
+    "pinyin": "zhì",
+    "meaning": "arrive",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 134,
+    "glyph": "臼",
+    "pinyin": "jiù",
+    "meaning": "mortar",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 135,
+    "glyph": "舌",
+    "pinyin": "shé",
+    "meaning": "tongue",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 136,
+    "glyph": "舛",
+    "pinyin": "chuǎn",
+    "meaning": "oppose",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 137,
+    "glyph": "舟",
+    "pinyin": "zhōu",
+    "meaning": "boat",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 138,
+    "glyph": "艮",
+    "pinyin": "gěn",
+    "meaning": "stopping",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 139,
+    "glyph": "色",
+    "pinyin": "sè",
+    "meaning": "color",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 140,
+    "glyph": "艸",
+    "pinyin": "cǎo",
+    "meaning": "grass",
+    "strokes": 6,
+    "variants": "艹",
+    "examples": [
+      {
+        "character": "花",
+        "pinyin": "huā",
+        "meaning": "flower"
+      },
+      {
+        "character": "草",
+        "pinyin": "cǎo",
+        "meaning": "grass"
+      },
+      {
+        "character": "茶",
+        "pinyin": "chá",
+        "meaning": "tea"
+      }
+    ],
+    "slug": "grass",
+    "shape": "The historical six-stroke heading 艸 commonly appears as 艹 on top. Regional writing standards can count or shape this top form differently; follow the displayed character animation.",
+    "usage": "Flowers, grass, and tea provide clear plant-related examples. The six-stroke classification of 艸 is not a claim that every modern 艹 top uses six strokes.",
+    "practice": "Print 花, 草, and 茶, then compare the lower shapes under the shared top. Keep the grass component wide enough to cover each body.",
+    "componentSlug": ""
+  },
+  {
+    "id": 141,
+    "glyph": "虍",
+    "pinyin": "hū",
+    "meaning": "tiger",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 142,
+    "glyph": "虫",
+    "pinyin": "chóng",
+    "meaning": "insect",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 143,
+    "glyph": "血",
+    "pinyin": "xuè",
+    "meaning": "blood",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 144,
+    "glyph": "行",
+    "pinyin": "xíng",
+    "meaning": "walk enclosure",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 145,
+    "glyph": "衣",
+    "pinyin": "yī",
+    "meaning": "clothes",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 146,
+    "glyph": "襾",
+    "pinyin": "yà",
+    "meaning": "west",
+    "strokes": 6,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 147,
+    "glyph": "見",
+    "pinyin": "jiàn",
+    "meaning": "see",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 148,
+    "glyph": "角",
+    "pinyin": "jiǎo",
+    "meaning": "horn",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 149,
+    "glyph": "言",
+    "pinyin": "yán",
+    "meaning": "speech",
+    "strokes": 7,
+    "variants": "訁 讠",
+    "examples": [
+      {
+        "character": "说",
+        "pinyin": "shuō",
+        "meaning": "speak"
+      },
+      {
+        "character": "话",
+        "pinyin": "huà",
+        "meaning": "speech"
+      },
+      {
+        "character": "语",
+        "pinyin": "yǔ",
+        "meaning": "language"
+      }
+    ],
+    "slug": "speech",
+    "shape": "言 becomes 訁 as a traditional left component and 讠 in simplified writing. These examples use 讠, whose dot is separate from the lower turning stroke.",
+    "usage": "Speaking, speech, and language give direct clues in 说, 话, and 语. 说 has other readings in certain words; shuō is the ordinary speak reading used here.",
+    "practice": "Build a worksheet with 说, 话, and 语. Keep 讠 narrow and name a spoken-language phrase before writing each row.",
+    "componentSlug": ""
+  },
+  {
+    "id": 150,
+    "glyph": "谷",
+    "pinyin": "gǔ",
+    "meaning": "valley",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 151,
+    "glyph": "豆",
+    "pinyin": "dòu",
+    "meaning": "bean",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 152,
+    "glyph": "豕",
+    "pinyin": "shǐ",
+    "meaning": "pig",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 153,
+    "glyph": "豸",
+    "pinyin": "zhì",
+    "meaning": "badger",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 154,
+    "glyph": "貝",
+    "pinyin": "bèi",
+    "meaning": "shell",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 155,
+    "glyph": "赤",
+    "pinyin": "chì",
+    "meaning": "red",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 156,
+    "glyph": "走",
+    "pinyin": "zǒu",
+    "meaning": "run",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 157,
+    "glyph": "足",
+    "pinyin": "zú",
+    "meaning": "foot",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 158,
+    "glyph": "身",
+    "pinyin": "shēn",
+    "meaning": "body",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 159,
+    "glyph": "車",
+    "pinyin": "chē",
+    "meaning": "cart",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 160,
+    "glyph": "辛",
+    "pinyin": "xīn",
+    "meaning": "bitter",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 161,
+    "glyph": "辰",
+    "pinyin": "chén",
+    "meaning": "morning",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 162,
+    "glyph": "辵",
+    "pinyin": "chuò",
+    "meaning": "walk",
+    "strokes": 7,
+    "variants": "辶",
+    "examples": [
+      {
+        "character": "进",
+        "pinyin": "jìn",
+        "meaning": "enter"
+      },
+      {
+        "character": "近",
+        "pinyin": "jìn",
+        "meaning": "near"
+      },
+      {
+        "character": "这",
+        "pinyin": "zhè",
+        "meaning": "this"
+      }
+    ],
+    "slug": "walk",
+    "shape": "辵 is the historical heading; 辶 is the common surrounding form. In these examples, write the inner component before the long lower sweep of 辶.",
+    "usage": "Movement is visible in 进, while 近 means near and 这 means this. A walking radical does not turn every member into a motion verb.",
+    "practice": "Practise 进 and 近 together, noting 井 versus 斤 inside, then add 这. Let the final sweep support the inside instead of cutting across it.",
+    "componentSlug": ""
+  },
+  {
+    "id": 163,
+    "glyph": "邑",
+    "pinyin": "yì",
+    "meaning": "city",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 164,
+    "glyph": "酉",
+    "pinyin": "yǒu",
+    "meaning": "wine",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 165,
+    "glyph": "釆",
+    "pinyin": "biàn",
+    "meaning": "distinguish",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 166,
+    "glyph": "里",
+    "pinyin": "lǐ",
+    "meaning": "village",
+    "strokes": 7,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 167,
+    "glyph": "金",
+    "pinyin": "jīn",
+    "meaning": "metal",
+    "strokes": 8,
+    "variants": "釒 钅",
+    "examples": [
+      {
+        "character": "钱",
+        "pinyin": "qián",
+        "meaning": "money"
+      },
+      {
+        "character": "铁",
+        "pinyin": "tiě",
+        "meaning": "iron"
+      },
+      {
+        "character": "银",
+        "pinyin": "yín",
+        "meaning": "silver"
+      }
+    ],
+    "slug": "metal",
+    "shape": "The full 金 heading has eight strokes. Traditional left-side 釒 simplifies to the five-stroke 钅 seen in these examples.",
+    "usage": "Iron and silver are metals, and money historically connects to metal coins. The modern use of 钱 includes money that is not physically made of metal.",
+    "practice": "Print 钱, 铁, and 银. Learn the left-side 钅 sequence once, then compare the distinct right components and spoken tones.",
+    "componentSlug": ""
+  },
+  {
+    "id": 168,
+    "glyph": "長",
+    "pinyin": "zhǎng",
+    "meaning": "long",
+    "strokes": 8,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 169,
+    "glyph": "門",
+    "pinyin": "mén",
+    "meaning": "gate",
+    "strokes": 8,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 170,
+    "glyph": "阜",
+    "pinyin": "fù",
+    "meaning": "mound",
+    "strokes": 8,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 171,
+    "glyph": "隶",
+    "pinyin": "lì",
+    "meaning": "slave",
+    "strokes": 8,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 172,
+    "glyph": "隹",
+    "pinyin": "zhuī",
+    "meaning": "short tailed bird",
+    "strokes": 8,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 173,
+    "glyph": "雨",
+    "pinyin": "yǔ",
+    "meaning": "rain",
+    "strokes": 8,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 174,
+    "glyph": "靑",
+    "pinyin": "qīng",
+    "meaning": "blue",
+    "strokes": 8,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 175,
+    "glyph": "非",
+    "pinyin": "fēi",
+    "meaning": "wrong",
+    "strokes": 8,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 176,
+    "glyph": "面",
+    "pinyin": "miàn",
+    "meaning": "face",
+    "strokes": 9,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 177,
+    "glyph": "革",
+    "pinyin": "gé",
+    "meaning": "leather",
+    "strokes": 9,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 178,
+    "glyph": "韋",
+    "pinyin": "wéi",
+    "meaning": "tanned leather",
+    "strokes": 9,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 179,
+    "glyph": "韭",
+    "pinyin": "jiǔ",
+    "meaning": "leek",
+    "strokes": 9,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 180,
+    "glyph": "音",
+    "pinyin": "yīn",
+    "meaning": "sound",
+    "strokes": 9,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 181,
+    "glyph": "頁",
+    "pinyin": "yè",
+    "meaning": "leaf",
+    "strokes": 9,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 182,
+    "glyph": "風",
+    "pinyin": "fēng",
+    "meaning": "wind",
+    "strokes": 9,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 183,
+    "glyph": "飛",
+    "pinyin": "fēi",
+    "meaning": "fly",
+    "strokes": 9,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 184,
+    "glyph": "食",
+    "pinyin": "shí",
+    "meaning": "eat",
+    "strokes": 9,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 185,
+    "glyph": "首",
+    "pinyin": "shǒu",
+    "meaning": "head",
+    "strokes": 9,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 186,
+    "glyph": "香",
+    "pinyin": "xiāng",
+    "meaning": "fragrant",
+    "strokes": 9,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 187,
+    "glyph": "馬",
+    "pinyin": "mǎ",
+    "meaning": "horse",
+    "strokes": 10,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 188,
+    "glyph": "骨",
+    "pinyin": "gǔ",
+    "meaning": "bone",
+    "strokes": 10,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 189,
+    "glyph": "高",
+    "pinyin": "gāo",
+    "meaning": "tall",
+    "strokes": 10,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 190,
+    "glyph": "髟",
+    "pinyin": "biāo",
+    "meaning": "hair",
+    "strokes": 10,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 191,
+    "glyph": "鬥",
+    "pinyin": "dòu",
+    "meaning": "fight",
+    "strokes": 10,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 192,
+    "glyph": "鬯",
+    "pinyin": "chàng",
+    "meaning": "sacrificial wine",
+    "strokes": 10,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 193,
+    "glyph": "鬲",
+    "pinyin": "gé",
+    "meaning": "cauldron",
+    "strokes": 10,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 194,
+    "glyph": "鬼",
+    "pinyin": "guǐ",
+    "meaning": "ghost",
+    "strokes": 10,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 195,
+    "glyph": "魚",
+    "pinyin": "yú",
+    "meaning": "fish",
+    "strokes": 11,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 196,
+    "glyph": "鳥",
+    "pinyin": "niǎo",
+    "meaning": "bird",
+    "strokes": 11,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 197,
+    "glyph": "鹵",
+    "pinyin": "lǔ",
+    "meaning": "salt",
+    "strokes": 11,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 198,
+    "glyph": "鹿",
+    "pinyin": "lù",
+    "meaning": "deer",
+    "strokes": 11,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 199,
+    "glyph": "麥",
+    "pinyin": "mài",
+    "meaning": "wheat",
+    "strokes": 11,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 200,
+    "glyph": "麻",
+    "pinyin": "má",
+    "meaning": "hemp",
+    "strokes": 11,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 201,
+    "glyph": "黃",
+    "pinyin": "huáng",
+    "meaning": "yellow",
+    "strokes": 12,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 202,
+    "glyph": "黍",
+    "pinyin": "shǔ",
+    "meaning": "millet",
+    "strokes": 12,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 203,
+    "glyph": "黑",
+    "pinyin": "hēi",
+    "meaning": "black",
+    "strokes": 12,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 204,
+    "glyph": "黹",
+    "pinyin": "zhǐ",
+    "meaning": "embroidery",
+    "strokes": 12,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 205,
+    "glyph": "黽",
+    "pinyin": "miǎn",
+    "meaning": "frog",
+    "strokes": 13,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 206,
+    "glyph": "鼎",
+    "pinyin": "dǐng",
+    "meaning": "tripod",
+    "strokes": 13,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 207,
+    "glyph": "鼓",
+    "pinyin": "gǔ",
+    "meaning": "drum",
+    "strokes": 13,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 208,
+    "glyph": "鼠",
+    "pinyin": "shǔ",
+    "meaning": "rat",
+    "strokes": 13,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 209,
+    "glyph": "鼻",
+    "pinyin": "bí",
+    "meaning": "nose",
+    "strokes": 14,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 210,
+    "glyph": "齊",
+    "pinyin": "qí",
+    "meaning": "even",
+    "strokes": 14,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 211,
+    "glyph": "齒",
+    "pinyin": "chǐ",
+    "meaning": "tooth",
+    "strokes": 15,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 212,
+    "glyph": "龍",
+    "pinyin": "lóng",
+    "meaning": "dragon",
+    "strokes": 16,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 213,
+    "glyph": "龜",
+    "pinyin": "guī",
+    "meaning": "turtle",
+    "strokes": 16,
+    "variants": "",
+    "examples": []
+  },
+  {
+    "id": 214,
+    "glyph": "龠",
+    "pinyin": "yuè",
+    "meaning": "flute",
+    "strokes": 17,
+    "variants": "",
+    "examples": []
+  }
+]

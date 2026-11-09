@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { learningWorksheetEntries } from "@/features/worksheets/learning-directories";
+import { convertWorksheetEntries } from "@/features/worksheets/traditional";
 import { getHskPracticePack } from "@/features/worksheets/hsk-practice-sets";
 
 import { GeneratorClient } from "@/features/worksheets/components/generator-client";
@@ -149,6 +151,7 @@ export default async function GeneratorPage({
 }: {
   params: Promise<{ locale: string }>;
   searchParams: Promise<{
+    learning?: string;
     words?: string;
     template?: string;
     practiceSet?: string;
@@ -168,6 +171,8 @@ export default async function GeneratorPage({
   const initialHskQuery = parseGeneratorHskQuery(query);
   const characterStandard = parseCharacterStandard(query.script);
   const initialGrid = parseGeneratorGridQuery(query);
+  const lessonEntries = query.learning ? learningWorksheetEntries(query.learning) : undefined;
+  if (query.learning !== undefined && !lessonEntries) notFound();
   const template = getTemplateBySlug(query.template);
   if (query.practiceSet && !getHskPracticePack(query.template)?.sets.some(set => set.id === query.practiceSet)) notFound();
   const templateEntries = query.template
@@ -238,7 +243,7 @@ export default async function GeneratorPage({
       />
       <GeneratorClient
         initialEntries={
-          templateEntries.length > 0
+          lessonEntries ? convertWorksheetEntries(lessonEntries, "simplified", characterStandard) : templateEntries.length > 0
             ? templateEntries
             : wordEntries.length > 0
               ? wordEntries
@@ -252,7 +257,7 @@ export default async function GeneratorPage({
         initialDifficulty={
           query.difficulty === "advanced" ? "advanced" : "beginner"
         }
-        autoEnrich={query.auto === "1" && wordEntries.length > 0}
+        autoEnrich={!lessonEntries && query.auto === "1" && wordEntries.length > 0}
         templateTitle={template?.title}
         templateChineseTitle={template?.chineseTitle}
         initialHskSystem={

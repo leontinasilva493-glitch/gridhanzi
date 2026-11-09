@@ -134,6 +134,12 @@ export function HomePage() {
               title="Chinese stroke order guides"
             ><UiText>{"Check one character’s strokes, meaning, and practice options."}</UiText></ToolLink>
             <ToolLink
+              href="/radicals"
+              icon={PencilLine}
+              title="Chinese radicals and example worksheets"
+            >Browse 214 radicals, look up a character’s family, and practise selected examples.</ToolLink>
+            <ToolLink href="/pinyin" icon={Languages} title="Chinese pinyin chart and tone practice">Connect syllable sounds to character guides and printable worksheets.</ToolLink>
+            <ToolLink
               href="/english-to-chinese-writing-practice"
               icon={Languages}
               title="English to Chinese writing practice"

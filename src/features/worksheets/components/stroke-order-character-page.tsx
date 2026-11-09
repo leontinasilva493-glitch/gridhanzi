@@ -1,3 +1,4 @@
+import { findRadical, pinyinGuides, normalizePinyin } from "../learning-directories";
 import { ArrowRight, FilePlus2, Lightbulb } from "lucide-react";
 
 import { envConfigs } from "@/config";
@@ -27,6 +28,8 @@ export function StrokeOrderCharacterPage({
   const worksheetHref = `/generator?words=${encodeURIComponent(entry.character)}`;
   const hskPickerHref = "/generator?hskSystem=2.0&hskLevel=1";
   const relatedCharacters = getRelatedStrokeOrderCharacters(entry);
+  const radicalFamily = findRadical(entry.radical);
+  const pinyinFamily = pinyinGuides.find(p => p.slug === normalizePinyin(entry.pinyin));
   const comparisonGuides = getComparisonPagesForCharacter(entry.character);
   const h1CharacterIndex = entry.seo.h1.indexOf(entry.character);
   const h1Lead = entry.seo.h1.slice(0, h1CharacterIndex);
@@ -381,6 +384,10 @@ export function StrokeOrderCharacterPage({
               Browse the Chinese stroke order dictionary
             </Link>.
           </p>
+          <div className="mt-3 flex flex-wrap gap-4 text-sm font-semibold text-[#24466e]">
+            {radicalFamily?.slug && <Link className="underline" href={`/radicals/${radicalFamily.slug}`}>Explore the {radicalFamily.meaning} radical family</Link>}
+            {pinyinFamily && <Link className="underline" href={`/pinyin/${pinyinFamily.slug}`}>Compare {pinyinFamily.slug} pinyin readings</Link>}
+          </div>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {relatedCharacters.map((related) => (
               <Link
