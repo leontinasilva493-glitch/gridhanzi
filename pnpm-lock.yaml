@@ -71,6 +71,9 @@ importers:
       '@vitejs/plugin-rsc':
         specifier: ^0.5.26
         version: 0.5.26(react-dom@19.2.6(react@19.2.6))(react-server-dom-webpack@19.2.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(webpack@5.107.1(esbuild@0.27.7)))(react@19.2.6)(vite@8.0.14(@types/node@22.19.17)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.48.0)(tsx@4.21.0))
+      playwright:
+        specifier: ^1.65.0
+        version: 1.65.0
       react-server-dom-webpack:
         specifier: ^19.2.6
         version: 19.2.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(webpack@5.107.1(esbuild@0.27.7))
@@ -1757,6 +1760,16 @@ packages:
   picomatch@4.0.4:
     resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
     engines: {node: '>=12'}
+
+  playwright-core@1.65.0:
+    resolution: {integrity: sha512-vNSKgH6YqtN7cdT/L334zo0a+YwkrpicyrHJlWWPIm/Q+Nn2SWInil01oT0mbu96U4GgoRtCYQD9CzJQgju+lA==}
+    engines: {node: '>=20'}
+    hasBin: true
+
+  playwright@1.65.0:
+    resolution: {integrity: sha512-F3AMWcR44qMBt4kq+6Kb6mX7bjGXshktKFOPULd7reED6ZJWevjbNRqysP7q+AATE9kdPEZBibex1BYsvpVoeA==}
+    engines: {node: '>=20'}
+    hasBin: true
 
   po-parser@2.1.1:
     resolution: {integrity: sha512-ECF4zHLbUItpUgE3OTtLKlPjeBN+fKEczj2zYjDfCGOzicNs0GK3Vg2IoAYwx7LH/XYw43fZQP6xnZ4TkNxSLQ==}
@@ -3504,6 +3517,12 @@ snapshots:
   picomatch@2.3.2: {}
 
   picomatch@4.0.4: {}
+
+  playwright-core@1.65.0: {}
+
+  playwright@1.65.0:
+    dependencies:
+      playwright-core: 1.65.0
 
   po-parser@2.1.1: {}
 

@@ -36,6 +36,7 @@
     "@types/react-dom": "^19.1.0",
     "@vitejs/plugin-react": "^6.0.2",
     "@vitejs/plugin-rsc": "^0.5.26",
+    "playwright": "^1.65.0",
     "react-server-dom-webpack": "^19.2.6",
     "tailwindcss": "^4.1.0",
     "tsx": "^4.21.0",
