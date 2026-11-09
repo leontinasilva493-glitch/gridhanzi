@@ -81,6 +81,7 @@ export interface StrokeOrderCharacter {
 import { expandedStrokeOrderCharacters } from "./stroke-order-character-expansion";
 import { pilotStrokeOrderCharacters } from "./stroke-order-character-pilot";
 import { foundationStrokeOrderCharacters } from "./stroke-order-character-foundation";
+import { dailyStrokeOrderCharacters } from "./stroke-order-character-daily";
 import { classroomStrokeOrderCharacters } from "./stroke-order-character-classroom";
 
 type StrokeOrderPublicationCandidate = Pick<
@@ -600,6 +601,7 @@ strokeOrderCharacterEntries.push(...expandedStrokeOrderCharacters);
 strokeOrderCharacterEntries.push(...pilotStrokeOrderCharacters);
 strokeOrderCharacterEntries.push(...foundationStrokeOrderCharacters);
 strokeOrderCharacterEntries.push(...classroomStrokeOrderCharacters);
+strokeOrderCharacterEntries.push(...dailyStrokeOrderCharacters);
 
 const publishedCharacterOrder = [
   "\u7231", "\u5e74", "\u4f5b", "\u7684", "\u4e00", "\u662f", "\u5728", "\u4e86", "\u6211",
@@ -608,6 +610,7 @@ const publishedCharacterOrder = [
   "中", "国", "天", "他", "她", "们", "日", "月", "个", "和", "多", "这", "那", "谁", "也",
   ...foundationStrokeOrderCharacters.map((entry) => entry.character),
   ...classroomStrokeOrderCharacters.map((entry) => entry.character),
+  ...dailyStrokeOrderCharacters.map((entry) => entry.character),
 ] as const;
 
 export const indexableStrokeOrderCharacters = filterIndexableStrokeOrderCharacters(
@@ -645,10 +648,24 @@ export function groupStrokeOrderCharactersByTier(
   }));
 }
 
+// Bidirectional links connect existing guides to new contrasts and useful word families.
+const relatedTeachingPairs = [
+  ["今", "年"], ["明", "月"], ["昨", "日"], ["时", "日"],
+  ["分", "八"], ["点", "火"], ["前", "上"], ["后", "下"],
+  ["里", "家"], ["外", "国"], ["左", "手"], ["右", "手"],
+  ["开", "车"], ["关", "天"], ["回", "来"], ["出", "去"],
+  ["进", "来"], ["走", "足"], ["坐", "人"], ["站", "车"],
+  ["买", "书"], ["卖", "书"], ["钱", "金"], ["本", "木"],
+] as const;
+
 export function getRelatedStrokeOrderCharacters(
-  entry: Pick<StrokeOrderCharacter, "relatedCharacters">,
+  entry: Pick<StrokeOrderCharacter, "relatedCharacters"> & { character?: string },
 ): StrokeOrderCharacter[] {
-  return entry.relatedCharacters
+  const paired = relatedTeachingPairs.flatMap(([left, right]) =>
+    entry.character === left ? [right] : entry.character === right ? [left] : [],
+  );
+  return [...new Set([...entry.relatedCharacters, ...paired])]
+    .filter((character) => character !== entry.character)
     .map((character) => strokeOrderCharacterByHanzi.get(character))
     .filter((candidate): candidate is StrokeOrderCharacter => candidate !== undefined);
 }

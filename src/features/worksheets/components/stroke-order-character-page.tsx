@@ -375,6 +375,12 @@ export function StrokeOrderCharacterPage({
               Search another character <ArrowRight className="size-4" />
             </Link>
           </div>
+          <p className="mt-3 text-sm leading-7 text-[#566276]">
+            Looking for a different reading or meaning?{" "}
+            <Link href="/chinese-stroke-order-dictionary" className="font-semibold text-[#24466e] underline underline-offset-4">
+              Browse the Chinese stroke order dictionary
+            </Link>.
+          </p>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             {relatedCharacters.map((related) => (
               <Link

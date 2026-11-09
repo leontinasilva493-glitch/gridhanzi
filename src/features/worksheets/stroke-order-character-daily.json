@@ -1,0 +1,2066 @@
+[
+  {
+    "character": "今",
+    "pinyin": "jīn",
+    "meaning": "now; this day or year",
+    "strokes": 4,
+    "radical": "人",
+    "traditional": "今",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 今天; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Today and this year are useful anchors for a first classroom diary. 今 connects these time phrases without requiring a new character for every date.",
+    "components": [
+      {
+        "character": "今",
+        "explanation": "The 人-shaped roof covers a short dot and a hooked lower stroke. There is no extra dot beneath that hook."
+      }
+    ],
+    "readingNotes": "今 is jīn with a first tone in 今天 and 今年. Do not confuse its level tone with the fourth tone of 进 (jìn).",
+    "usageTitle": "Using 今 in everyday Chinese",
+    "usage": "今 usually needs a following time word: 今天 means today and 今年 means this year. It is not normally used alone as a complete answer to 'when'.",
+    "writingTip": "Spread the two roof strokes enough to shelter the centre, then leave clear space between the inner dot and the lower hook.",
+    "examples": [
+      {
+        "hanzi": "今天",
+        "pinyin": "jīntiān",
+        "meaning": "today"
+      },
+      {
+        "hanzi": "今年",
+        "pinyin": "jīnnián",
+        "meaning": "this year"
+      },
+      {
+        "hanzi": "今早",
+        "pinyin": "jīnzǎo",
+        "meaning": "this morning"
+      },
+      {
+        "hanzi": "如今",
+        "pinyin": "rújīn",
+        "meaning": "nowadays"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "今天我在家。",
+        "pinyin": "Jīntiān wǒ zài jiā.",
+        "meaning": "I am at home today."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "今年我学汉语。",
+        "pinyin": "Jīnnián wǒ xué Hànyǔ.",
+        "meaning": "I am studying Chinese this year."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "今天我们先写字，再读书。",
+        "pinyin": "Jīntiān wǒmen xiān xiě zì, zài dú shū.",
+        "meaning": "Today we will write characters first, then read."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "令",
+      "guidance": "令 has an additional lower dot; adding that mark to 今 creates a different character."
+    },
+    "relatedCharacters": [
+      "明",
+      "昨",
+      "年"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "今 (jīn) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 今 (jīn): Stroke Order, Meaning & Examples",
+      "description": "Write 今 (jīn) for today and this year. Compare its lower hook with 令, watch the stroke sequence, and practise useful time expressions."
+    }
+  },
+  {
+    "character": "明",
+    "pinyin": "míng",
+    "meaning": "bright; next in time words",
+    "strokes": 8,
+    "radical": "日",
+    "traditional": "明",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 明天; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Learners use 明天 to arrange the next lesson and 明白 to check understanding. The visible 日 and 月 also make 明 a useful two-component writing exercise.",
+    "components": [
+      {
+        "character": "明",
+        "explanation": "日 stands on the left and 月 on the right. Keep the enclosed 日 compact beside the taller, narrower 月."
+      }
+    ],
+    "readingNotes": "明 is míng with a rising second tone. 明白 is commonly míngbai, with a neutral final syllable; the reading of 明 stays unchanged.",
+    "usageTitle": "Using 明 in everyday Chinese",
+    "usage": "明天 means tomorrow, while 明年 means next year. In 明白, the same character contributes to understanding or clarity rather than naming a future date.",
+    "writingTip": "Keep the two boxes of 日 even; start 月 high enough that its upper edge aligns with the top of the left component.",
+    "examples": [
+      {
+        "hanzi": "明天",
+        "pinyin": "míngtiān",
+        "meaning": "tomorrow"
+      },
+      {
+        "hanzi": "明年",
+        "pinyin": "míngnián",
+        "meaning": "next year"
+      },
+      {
+        "hanzi": "明白",
+        "pinyin": "míngbai",
+        "meaning": "understand"
+      },
+      {
+        "hanzi": "明亮",
+        "pinyin": "míngliàng",
+        "meaning": "bright"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "明天见！",
+        "pinyin": "Míngtiān jiàn!",
+        "meaning": "See you tomorrow!"
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "你明白我的意思吗？",
+        "pinyin": "Nǐ míngbai wǒ de yìsi ma?",
+        "meaning": "Do you understand what I mean?"
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "明年我想和朋友去中国。",
+        "pinyin": "Míngnián wǒ xiǎng hé péngyou qù Zhōngguó.",
+        "meaning": "Next year I would like to go to China with friends."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "朋",
+      "guidance": "朋 repeats 月 on both sides, whereas 明 starts with 日. Check the left component before adding the inner horizontals."
+    },
+    "relatedCharacters": [
+      "今",
+      "昨",
+      "月"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "明 (míng) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 明 (míng): Stroke Order, Meaning & Examples",
+      "description": "Learn 明 (míng) with 日 and 月, tomorrow and next-year examples, and a comparison with 朋. Follow the animation to balance both sides."
+    }
+  },
+  {
+    "character": "昨",
+    "pinyin": "zuó",
+    "meaning": "previous day",
+    "strokes": 9,
+    "radical": "日",
+    "traditional": "昨",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 昨天; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "A short account of yesterday introduces past events without changing a verb ending. 昨 helps learners recognise 昨天 and compare it with 今天 and 明天.",
+    "components": [
+      {
+        "character": "昨",
+        "explanation": "A narrow 日 sits beside 乍. On the right, a short upper slant leads into a vertical crossed by short horizontal strokes."
+      }
+    ],
+    "readingNotes": "昨 is zuó with a second tone. Keep the initial z distinct from the zh in 桌 (zhuō); yesterday is zuótiān.",
+    "usageTitle": "Using 昨 in everyday Chinese",
+    "usage": "昨 occurs most often in 昨天, yesterday. 昨晚 and 昨夜 both refer to last night; 昨日 is a more written alternative to 昨天.",
+    "writingTip": "Give 日 less than half the width, and keep the short bars of 乍 separated so the right side does not become a dark block.",
+    "examples": [
+      {
+        "hanzi": "昨天",
+        "pinyin": "zuótiān",
+        "meaning": "yesterday"
+      },
+      {
+        "hanzi": "昨晚",
+        "pinyin": "zuówǎn",
+        "meaning": "last night"
+      },
+      {
+        "hanzi": "昨日",
+        "pinyin": "zuórì",
+        "meaning": "yesterday, written"
+      },
+      {
+        "hanzi": "昨夜",
+        "pinyin": "zuóyè",
+        "meaning": "last night"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "昨天很冷。",
+        "pinyin": "Zuótiān hěn lěng.",
+        "meaning": "It was cold yesterday."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我昨晚读了这本书。",
+        "pinyin": "Wǒ zuówǎn dú le zhè běn shū.",
+        "meaning": "I read this book last night."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "昨天老师教我们写了三个新字。",
+        "pinyin": "Zuótiān lǎoshī jiāo wǒmen xiě le sān gè xīn zì.",
+        "meaning": "Yesterday the teacher taught us to write three new characters."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "作",
+      "guidance": "作 uses 亻 on the left, while 昨 uses 日. The shared 乍 does not make these words interchangeable."
+    },
+    "relatedCharacters": [
+      "今",
+      "日",
+      "明"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "昨 (zuó) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 昨 (zuó): Stroke Order, Meaning & Examples",
+      "description": "Practise 昨 (zuó) in yesterday and last-night expressions. See how its 日 side differs from 作 and follow the complete writing sequence."
+    }
+  },
+  {
+    "character": "时",
+    "pinyin": "shí",
+    "meaning": "time; hour",
+    "strokes": 7,
+    "radical": "日",
+    "traditional": "時",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 时候; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Asking when a lesson starts and saying how long it lasts need different time expressions. 时 connects 时候, 时间, and 小时 while keeping those uses distinct.",
+    "components": [
+      {
+        "character": "时",
+        "explanation": "The simplified form places 日 on the left and 寸 on the right. The small dot belongs inside the open space beside the right vertical hook."
+      }
+    ],
+    "readingNotes": "时 is shí, a second-tone retroflex syllable. In 时候 (shíhou), 候 is usually neutral, but 时 keeps its rising tone.",
+    "usageTitle": "Using 时 in everyday Chinese",
+    "usage": "时间 names time in general, 小时 is an hour of duration, and 时候 is used when asking or describing when something happens. Use 点, rather than 时 alone, for ordinary spoken clock times.",
+    "writingTip": "Write a slim 日 first, then leave enough space around the dot in 寸 that it does not touch the hook or horizontal.",
+    "examples": [
+      {
+        "hanzi": "时间",
+        "pinyin": "shíjiān",
+        "meaning": "time"
+      },
+      {
+        "hanzi": "小时",
+        "pinyin": "xiǎoshí",
+        "meaning": "hour"
+      },
+      {
+        "hanzi": "时候",
+        "pinyin": "shíhou",
+        "meaning": "time or moment"
+      },
+      {
+        "hanzi": "有时",
+        "pinyin": "yǒushí",
+        "meaning": "sometimes"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我有时间。",
+        "pinyin": "Wǒ yǒu shíjiān.",
+        "meaning": "I have time."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "你什么时候回家？",
+        "pinyin": "Nǐ shénme shíhou huí jiā?",
+        "meaning": "When will you go home?"
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我每天用一个小时读书和写字。",
+        "pinyin": "Wǒ měitiān yòng yí gè xiǎoshí dú shū hé xiě zì.",
+        "meaning": "I spend an hour reading and writing every day."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "日",
+      "guidance": "日 is only the left component of 时. Omitting 寸 changes the word from time to day or sun."
+    },
+    "relatedCharacters": [
+      "日",
+      "点",
+      "分"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "时 (shí) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 时 (shí): Stroke Order, Meaning & Examples",
+      "description": "Write 时 (shí), the simplified counterpart of 時. Distinguish 时间, 小时, and 时候, with stroke animation and practical time sentences."
+    }
+  },
+  {
+    "character": "分",
+    "pinyin": "fēn",
+    "meaning": "divide; minute; point",
+    "strokes": 4,
+    "radical": "刀",
+    "traditional": "分",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 分钟; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Reading a clock and understanding a test score both require 分. Its alternative reading also makes it a useful early example of choosing pronunciation by word.",
+    "components": [
+      {
+        "character": "分",
+        "explanation": "八 opens out above 刀. The lower knife-shaped component contains a turning hook and a left-falling stroke."
+      }
+    ],
+    "readingNotes": "Use fēn for 分钟, dividing, and scores. The same character is fèn in 部分 (bùfen, often neutral in speech) and 分外 (fènwài); choose the reading from the word.",
+    "usageTitle": "Using 分 in everyday Chinese",
+    "usage": "分 measures minutes after an hour, as in 三点十分, and also appears in scores such as 九十分. 分开 means to separate; these uses share fēn but do not share one English translation.",
+    "writingTip": "Keep the two upper strokes apart, leave a gap above 刀, and avoid extending the lower slant into the upper left stroke.",
+    "examples": [
+      {
+        "hanzi": "分钟",
+        "pinyin": "fēnzhōng",
+        "meaning": "minute"
+      },
+      {
+        "hanzi": "分开",
+        "pinyin": "fēnkāi",
+        "meaning": "separate"
+      },
+      {
+        "hanzi": "十分",
+        "pinyin": "shífēn",
+        "meaning": "very"
+      },
+      {
+        "hanzi": "分数",
+        "pinyin": "fēnshù",
+        "meaning": "score or fraction"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "请等五分钟。",
+        "pinyin": "Qǐng děng wǔ fēnzhōng.",
+        "meaning": "Please wait five minutes."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "现在是三点十分。",
+        "pinyin": "Xiànzài shì sān diǎn shí fēn.",
+        "meaning": "It is ten past three now."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "老师把这些书分给了学生。",
+        "pinyin": "Lǎoshī bǎ zhèxiē shū fēn gěi le xuésheng.",
+        "meaning": "The teacher distributed these books to the students."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "八",
+      "guidance": "八 is the upper part of 分; the lower 刀 is essential for 分 and must not be dropped."
+    },
+    "relatedCharacters": [
+      "时",
+      "点",
+      "八"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "分 (fēn) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 分 (fēn): Stroke Order, Meaning & Examples",
+      "description": "Learn 分 (fēn) for minutes, scores, and dividing. Compare its 八-over-刀 form and understand when the alternative reading fèn applies."
+    }
+  },
+  {
+    "character": "点",
+    "pinyin": "diǎn",
+    "meaning": "dot; o'clock; a little",
+    "strokes": 9,
+    "radical": "灬",
+    "traditional": "點",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 点; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "点 connects telling the time with small quantities and restaurant orders. These everyday meanings give learners several reasons to recognise the same written form.",
+    "components": [
+      {
+        "character": "点",
+        "explanation": "占 occupies the top, with a small 口 beneath its upright stroke. Four separate dots form 灬 along the bottom."
+      }
+    ],
+    "readingNotes": "点 is diǎn with a third tone. In 一点儿, 儿 adds an r ending in accents that use erhua; it is not a separate full syllable.",
+    "usageTitle": "Using 点 in everyday Chinese",
+    "usage": "点 names clock hours in 三点 and a small amount in 一点儿. 点菜 means to order food, while a written dot is also a 点; learn the whole phrase to identify the sense.",
+    "writingTip": "Centre the upper 占 above all four bottom dots and keep those dots separate, spreading the outer pair slightly outward.",
+    "examples": [
+      {
+        "hanzi": "几点",
+        "pinyin": "jǐ diǎn",
+        "meaning": "what time"
+      },
+      {
+        "hanzi": "一点儿",
+        "pinyin": "yìdiǎnr",
+        "meaning": "a little"
+      },
+      {
+        "hanzi": "点菜",
+        "pinyin": "diǎn cài",
+        "meaning": "order food"
+      },
+      {
+        "hanzi": "点头",
+        "pinyin": "diǎn tóu",
+        "meaning": "nod"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "现在几点？",
+        "pinyin": "Xiànzài jǐ diǎn?",
+        "meaning": "What time is it now?"
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我会说一点儿汉语。",
+        "pinyin": "Wǒ huì shuō yìdiǎnr Hànyǔ.",
+        "meaning": "I can speak a little Chinese."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我们六点到饭店以后再点菜。",
+        "pinyin": "Wǒmen liù diǎn dào fàndiàn yǐhòu zài diǎn cài.",
+        "meaning": "We will order after we reach the restaurant at six."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "占",
+      "guidance": "占 lacks the four bottom dots of 点. Those marks are part of the character, not optional punctuation."
+    },
+    "relatedCharacters": [
+      "时",
+      "分",
+      "火"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "点 (diǎn) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 点 (diǎn): Stroke Order, Meaning & Examples",
+      "description": "See 点 (diǎn) stroke order, its four bottom dots, and uses for clock time, small amounts, and ordering food. Compare simplified 点 with 點."
+    }
+  },
+  {
+    "character": "前",
+    "pinyin": "qián",
+    "meaning": "front; before",
+    "strokes": 9,
+    "radical": "刂",
+    "traditional": "前",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 前面; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Directions and schedules both use 前. Comparing 前面 with 三天前 shows how position in a phrase distinguishes a place from an earlier time.",
+    "components": [
+      {
+        "character": "前",
+        "explanation": "The top has two short strokes above a horizontal. Beneath it sit a 月-shaped section on the left and 刂 on the right."
+      }
+    ],
+    "readingNotes": "前 is qián with a rising tone. Its q initial is the same as in 钱 (qián), money, but the two characters have different meanings.",
+    "usageTitle": "Using 前 in everyday Chinese",
+    "usage": "前面 describes the space in front, while 以前 means before a reference time. In 三天前, 前 follows the duration and means three days ago.",
+    "writingTip": "Leave room under the top horizontal for both lower sections; keep the right vertical hook taller than the short vertical beside it.",
+    "examples": [
+      {
+        "hanzi": "前面",
+        "pinyin": "qiánmiàn",
+        "meaning": "in front"
+      },
+      {
+        "hanzi": "以前",
+        "pinyin": "yǐqián",
+        "meaning": "before"
+      },
+      {
+        "hanzi": "前天",
+        "pinyin": "qiántiān",
+        "meaning": "the day before yesterday"
+      },
+      {
+        "hanzi": "向前",
+        "pinyin": "xiàng qián",
+        "meaning": "forward"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "他在前面。",
+        "pinyin": "Tā zài qiánmiàn.",
+        "meaning": "He is in front."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "前天我买了一本书。",
+        "pinyin": "Qiántiān wǒ mǎi le yì běn shū.",
+        "meaning": "I bought a book the day before yesterday."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "上课以前，请把名字写在纸上。",
+        "pinyin": "Shàng kè yǐqián, qǐng bǎ míngzi xiě zài zhǐ shàng.",
+        "meaning": "Before class, please write your name on the paper."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "后",
+      "guidance": "前 and 后 are opposite directions or times, but their shapes are unrelated. Learn 前面 and 后面 as a pair without copying one form into the other."
+    },
+    "relatedCharacters": [
+      "后",
+      "上",
+      "昨"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "前 (qián) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 前 (qián): Stroke Order, Meaning & Examples",
+      "description": "Write 前 (qián) for in front, before, and ago. Follow its lower 月-shaped section and 刂, then practise spatial and time expressions."
+    }
+  },
+  {
+    "character": "后",
+    "pinyin": "hòu",
+    "meaning": "behind; after; queen",
+    "strokes": 6,
+    "radical": "口",
+    "traditional": "後 / 后",
+    "structure": "Semi-enclosed",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 后面; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "后 helps describe where someone stands and what happens next. Its meaning-dependent traditional forms are worth learning before relying on automatic conversion.",
+    "components": [
+      {
+        "character": "后",
+        "explanation": "Two upper left-falling strokes frame a horizontal and a small 口 below. The simplified shape is open on its lower-right side."
+      }
+    ],
+    "readingNotes": "后 is hòu with a fourth tone. Traditional writing uses 後 for after or behind, but 后 remains 后 in 皇后, queen; conversion depends on meaning.",
+    "usageTitle": "Using 后 in everyday Chinese",
+    "usage": "后面 means behind and 以后 means after or later. Place 后 after a duration for a later time, as in 三天后. 皇后 uses a separate queen sense and a different traditional-form rule.",
+    "writingTip": "Keep the upper slants above and to the left of 口; the small box should sit beneath the horizontal rather than extend beyond it.",
+    "examples": [
+      {
+        "hanzi": "后面",
+        "pinyin": "hòumiàn",
+        "meaning": "behind"
+      },
+      {
+        "hanzi": "以后",
+        "pinyin": "yǐhòu",
+        "meaning": "after or later"
+      },
+      {
+        "hanzi": "后天",
+        "pinyin": "hòutiān",
+        "meaning": "the day after tomorrow"
+      },
+      {
+        "hanzi": "皇后",
+        "pinyin": "huánghòu",
+        "meaning": "queen or empress"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "他在我后面。",
+        "pinyin": "Tā zài wǒ hòumiàn.",
+        "meaning": "He is behind me."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "后天我们去学校。",
+        "pinyin": "Hòutiān wǒmen qù xuéxiào.",
+        "meaning": "We will go to school the day after tomorrow."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "吃饭以后，我想和你一起看书。",
+        "pinyin": "Chī fàn yǐhòu, wǒ xiǎng hé nǐ yìqǐ kàn shū.",
+        "meaning": "After eating, I would like to read with you."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "右",
+      "guidance": "右 begins with a horizontal crossed by a slant; 后 has an extra upper slant. Count the upper strokes before writing the box."
+    },
+    "relatedCharacters": [
+      "前",
+      "明",
+      "下"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "后 (hòu) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 后 (hòu): Stroke Order, Meaning & Examples",
+      "description": "Learn 后 (hòu) for behind and after. See why traditional 後 applies to these senses but not 皇后, with animation and sentence examples."
+    }
+  },
+  {
+    "character": "里",
+    "pinyin": "lǐ",
+    "meaning": "inside; Chinese distance unit",
+    "strokes": 7,
+    "radical": "里",
+    "traditional": "裡 / 裏 / 里",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 里; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "里 lets a learner put familiar objects inside familiar places. It also appears in distance units, where the traditional spelling follows a different rule.",
+    "components": [
+      {
+        "character": "里",
+        "explanation": "A 田-shaped upper section continues into 土 below. The central vertical runs through the upper box and joins the lower horizontals."
+      }
+    ],
+    "readingNotes": "里 is lǐ as an independent syllable; in 这里 (zhèli) and 那里 (nàli) it is often neutral. Inside is 裡 or 裏 in traditional writing; the distance unit stays 里.",
+    "usageTitle": "Using 里 in everyday Chinese",
+    "usage": "Use 里 after a place or container, as in 家里 and 书包里. 公里 means kilometre, a distance word rather than an inside location; its 里 does not become 裡.",
+    "writingTip": "Keep the central vertical straight through the middle, and make the final horizontal broad enough to support the enclosed upper section.",
+    "examples": [
+      {
+        "hanzi": "里面",
+        "pinyin": "lǐmiàn",
+        "meaning": "inside"
+      },
+      {
+        "hanzi": "家里",
+        "pinyin": "jiālǐ",
+        "meaning": "at home"
+      },
+      {
+        "hanzi": "这里",
+        "pinyin": "zhèli",
+        "meaning": "here"
+      },
+      {
+        "hanzi": "公里",
+        "pinyin": "gōnglǐ",
+        "meaning": "kilometre"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "书在包里。",
+        "pinyin": "Shū zài bāo lǐ.",
+        "meaning": "The book is in the bag."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "这里有很多人。",
+        "pinyin": "Zhèli yǒu hěn duō rén.",
+        "meaning": "There are many people here."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "从我家到学校有三公里。",
+        "pinyin": "Cóng wǒ jiā dào xuéxiào yǒu sān gōnglǐ.",
+        "meaning": "It is three kilometres from my home to school."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "田",
+      "guidance": "田 has no extra horizontal base beneath the box; 里 extends the central vertical downward into a 土-shaped base."
+    },
+    "relatedCharacters": [
+      "外",
+      "田",
+      "家"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "里 (lǐ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 里 (lǐ): Stroke Order, Meaning & Examples",
+      "description": "Practise 里 (lǐ) for inside and distance words. Compare 里 with 田 and learn when traditional writing uses 裡, 裏, or unchanged 里."
+    }
+  },
+  {
+    "character": "外",
+    "pinyin": "wài",
+    "meaning": "outside; foreign",
+    "strokes": 5,
+    "radical": "夕",
+    "traditional": "外",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 2",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 2 vocabulary PDF includes 外; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "外 makes useful pairs with 里 and connects location words to foreign-language study. Learners can reuse it in school, travel, and outdoor activities.",
+    "components": [
+      {
+        "character": "外",
+        "explanation": "夕 appears on the left and 卜 on the right. The right vertical is upright, with a short dot extending away from it."
+      }
+    ],
+    "readingNotes": "外 is wài with a falling fourth tone. Say the entire wai syllable together rather than separating it into two syllables.",
+    "usageTitle": "Using 外 in everyday Chinese",
+    "usage": "外面 means outside, while 外国 means a foreign country and 外语 means a foreign language. The place after 外 is not always physical: 课外 refers to activities outside class.",
+    "writingTip": "Leave a narrow channel between 夕 and the right vertical, then keep the final dot short so it does not compete with the left slant.",
+    "examples": [
+      {
+        "hanzi": "外面",
+        "pinyin": "wàimiàn",
+        "meaning": "outside"
+      },
+      {
+        "hanzi": "外国",
+        "pinyin": "wàiguó",
+        "meaning": "foreign country"
+      },
+      {
+        "hanzi": "外语",
+        "pinyin": "wàiyǔ",
+        "meaning": "foreign language"
+      },
+      {
+        "hanzi": "课外",
+        "pinyin": "kèwài",
+        "meaning": "outside class"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "外面很冷。",
+        "pinyin": "Wàimiàn hěn lěng.",
+        "meaning": "It is cold outside."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我想学一门外语。",
+        "pinyin": "Wǒ xiǎng xué yì mén wàiyǔ.",
+        "meaning": "I would like to learn a foreign language."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "下课以后，我们到外面走一走。",
+        "pinyin": "Xià kè yǐhòu, wǒmen dào wàimiàn zǒu yi zǒu.",
+        "meaning": "After class, we will go outside for a short walk."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "多",
+      "guidance": "多 stacks two 夕 shapes; 外 has one 夕 beside 卜. The right side should not become another curved 夕."
+    },
+    "relatedCharacters": [
+      "里",
+      "国",
+      "语"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "外 (wài) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 外 (wài): Stroke Order, Meaning & Examples",
+      "description": "Learn 外 (wài), its 夕 and 卜 shape, and words for outside, foreign countries, and languages. Follow the strokes and compare it with 多."
+    }
+  },
+  {
+    "character": "左",
+    "pinyin": "zuǒ",
+    "meaning": "left",
+    "strokes": 5,
+    "radical": "工",
+    "traditional": "左",
+    "structure": "Semi-enclosed",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 2",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 2 vocabulary PDF includes 左边; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Left-hand and left-turn instructions are easy to demonstrate in class. 左 is also a useful contrast with 右 because their inner components and opening strokes differ.",
+    "components": [
+      {
+        "character": "左",
+        "explanation": "The upper horizontal and left-falling stroke shelter 工. Inside 工, a vertical connects two separate horizontal strokes."
+      }
+    ],
+    "readingNotes": "左 is zuǒ with a third tone. Its initial z is unaspirated; avoid changing it to the c of 错 (cuò).",
+    "usageTitle": "Using 左 in everyday Chinese",
+    "usage": "左边 identifies the left side, and 向左 or 往左 tells someone to move left. 左右 can mean left and right, but after a quantity it can also mean approximately.",
+    "writingTip": "Write the top horizontal before the slant, and leave enough space for 工 beneath it without closing its open sides.",
+    "examples": [
+      {
+        "hanzi": "左边",
+        "pinyin": "zuǒbiān",
+        "meaning": "left side"
+      },
+      {
+        "hanzi": "左手",
+        "pinyin": "zuǒshǒu",
+        "meaning": "left hand"
+      },
+      {
+        "hanzi": "向左",
+        "pinyin": "xiàng zuǒ",
+        "meaning": "to the left"
+      },
+      {
+        "hanzi": "左右",
+        "pinyin": "zuǒyòu",
+        "meaning": "left and right or approximately"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "请向左走。",
+        "pinyin": "Qǐng xiàng zuǒ zǒu.",
+        "meaning": "Please go left."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "书在你的左边。",
+        "pinyin": "Shū zài nǐ de zuǒbiān.",
+        "meaning": "The book is on your left."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我们下午三点左右到学校。",
+        "pinyin": "Wǒmen xiàwǔ sān diǎn zuǒyòu dào xuéxiào.",
+        "meaning": "We will reach school at about three in the afternoon."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "右",
+      "guidance": "左 contains 工 and begins with a horizontal; 右 contains 口 and begins with a slant. Their similar outlines do not share every stroke step."
+    },
+    "relatedCharacters": [
+      "右",
+      "上",
+      "下"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "左 (zuǒ) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 左 (zuǒ): Stroke Order, Meaning & Examples",
+      "description": "Write 左 (zuǒ) and compare its 工 with 右's 口. Learn left-side directions and the approximate-quantity use of 左右 through examples."
+    }
+  },
+  {
+    "character": "右",
+    "pinyin": "yòu",
+    "meaning": "right side",
+    "strokes": 5,
+    "radical": "口",
+    "traditional": "右",
+    "structure": "Semi-enclosed",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 2",
+        "evidenceKind": "word-family",
+        "note": "The University of Manchester Confucius Institute's HSK 2 vocabulary PDF includes 右边; this also matches the local HSK 2.0 catalogue. This supports the word family, not a standalone character-level assignment."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "右 helps learners follow directions and identify the right hand. It also exposes an English translation trap: the side meaning is separate from being correct.",
+    "components": [
+      {
+        "character": "右",
+        "explanation": "A left-falling stroke crosses the upper horizontal, with 口 fitted beneath them. The box is closed, unlike the open 工 in 左."
+      }
+    ],
+    "readingNotes": "右 is yòu with a fourth tone. It sounds like 又, also yòu, but the two characters have different forms and uses.",
+    "usageTitle": "Using 右 in everyday Chinese",
+    "usage": "右边 names the right side and 右手 means right hand. Use 向右 or 往右 for a direction; English 'right' meaning correct is usually 对, not 右.",
+    "writingTip": "Begin with the slant before the upper horizontal, then keep 口 below the crossing point with a clear interior.",
+    "examples": [
+      {
+        "hanzi": "右边",
+        "pinyin": "yòubiān",
+        "meaning": "right side"
+      },
+      {
+        "hanzi": "右手",
+        "pinyin": "yòushǒu",
+        "meaning": "right hand"
+      },
+      {
+        "hanzi": "向右",
+        "pinyin": "xiàng yòu",
+        "meaning": "to the right"
+      },
+      {
+        "hanzi": "右转",
+        "pinyin": "yòu zhuǎn",
+        "meaning": "turn right"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "请向右走。",
+        "pinyin": "Qǐng xiàng yòu zǒu.",
+        "meaning": "Please go right."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我的右手很冷。",
+        "pinyin": "Wǒ de yòushǒu hěn lěng.",
+        "meaning": "My right hand is cold."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "到了学校门口以后向右转。",
+        "pinyin": "Dào le xuéxiào ménkǒu yǐhòu xiàng yòu zhuǎn.",
+        "meaning": "Turn right after reaching the school gate."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "左",
+      "guidance": "右 encloses a small 口 rather than 工. Its opening slant also comes before the horizontal, unlike 左."
+    },
+    "relatedCharacters": [
+      "左",
+      "后",
+      "手"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "右 (yòu) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 右 (yòu): Stroke Order, Meaning & Examples",
+      "description": "Practise 右 (yòu), its slant-first opening, and its contrast with 左. Use right-hand and direction phrases without confusing right with correct."
+    }
+  },
+  {
+    "character": "开",
+    "pinyin": "kāi",
+    "meaning": "open; start; drive",
+    "strokes": 4,
+    "radical": "廾",
+    "traditional": "開",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 开; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Opening a door, starting a lesson, and driving a car all use 开. A compact four-stroke character therefore supports several useful classroom and travel verbs.",
+    "components": [
+      {
+        "character": "开",
+        "explanation": "Two horizontals sit above and across a lower left-falling stroke and a vertical. The simplified form has no surrounding 門 enclosure."
+      }
+    ],
+    "readingNotes": "开 is kāi with a level first tone. The same reading appears in 开门, 开始, and 开车 even though the verbs have different English meanings.",
+    "usageTitle": "Using 开 in everyday Chinese",
+    "usage": "开门 means to open a door, 开始 means to begin, and 开车 means to drive. Pair 开 with 关 when describing opening and closing or switching something on and off.",
+    "writingTip": "Keep the top horizontal shorter than the second; let both lower strokes extend below the long crossing horizontal.",
+    "examples": [
+      {
+        "hanzi": "开门",
+        "pinyin": "kāi mén",
+        "meaning": "open the door"
+      },
+      {
+        "hanzi": "开始",
+        "pinyin": "kāishǐ",
+        "meaning": "begin"
+      },
+      {
+        "hanzi": "开车",
+        "pinyin": "kāi chē",
+        "meaning": "drive"
+      },
+      {
+        "hanzi": "开水",
+        "pinyin": "kāishuǐ",
+        "meaning": "boiled water"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "请开门。",
+        "pinyin": "Qǐng kāi mén.",
+        "meaning": "Please open the door."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我们现在开始写字。",
+        "pinyin": "Wǒmen xiànzài kāishǐ xiě zì.",
+        "meaning": "We will start writing characters now."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "爸爸每天开车去学校接我。",
+        "pinyin": "Bàba měitiān kāi chē qù xuéxiào jiē wǒ.",
+        "meaning": "Dad drives to school to pick me up every day."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "井",
+      "guidance": "井 has four crossing strokes arranged like a well frame; 开 starts with two horizontals and then a lower slant and vertical. Watch the animation rather than treating them as identical grids."
+    },
+    "relatedCharacters": [
+      "关",
+      "车",
+      "出"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "开 (kāi) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 开 (kāi): Stroke Order, Meaning & Examples",
+      "description": "Learn 开 (kāi) for opening, starting, and driving. Follow its simplified four-stroke form and compare it with traditional 開 and similar 井."
+    }
+  },
+  {
+    "character": "关",
+    "pinyin": "guān",
+    "meaning": "close; switch off; concern",
+    "strokes": 6,
+    "radical": "丷",
+    "traditional": "關",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 3 vocabulary PDF includes 关; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "关 pairs naturally with 开 for door and light instructions. It also helps learners recognise the reassuring phrase 没关系 without translating every character literally.",
+    "components": [
+      {
+        "character": "关",
+        "explanation": "Two short upper strokes sit above a 天-shaped lower section. The final left- and right-falling strokes spread beneath the horizontals."
+      }
+    ],
+    "readingNotes": "关 is guān with a level first tone. In 没关系 (méi guānxi), 系 is normally neutral; keep 关 clear and level.",
+    "usageTitle": "Using 关 in everyday Chinese",
+    "usage": "关门 means to close a door and 关灯 means to turn off a light. 没关系 is a reassuring 'it does not matter'; its 关系 is a compound, not an instruction to close something.",
+    "writingTip": "Keep the top pair small, separate the two horizontal levels, and balance the final spreading strokes around the centre.",
+    "examples": [
+      {
+        "hanzi": "关门",
+        "pinyin": "guān mén",
+        "meaning": "close the door"
+      },
+      {
+        "hanzi": "关灯",
+        "pinyin": "guān dēng",
+        "meaning": "turn off the light"
+      },
+      {
+        "hanzi": "关系",
+        "pinyin": "guānxi",
+        "meaning": "relationship"
+      },
+      {
+        "hanzi": "没关系",
+        "pinyin": "méi guānxi",
+        "meaning": "it does not matter"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "请关门。",
+        "pinyin": "Qǐng guān mén.",
+        "meaning": "Please close the door."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "没关系，明天再来。",
+        "pinyin": "Méi guānxi, míngtiān zài lái.",
+        "meaning": "It is all right; come again tomorrow."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "离开教室以前，请关灯。",
+        "pinyin": "Líkāi jiàoshì yǐqián, qǐng guān dēng.",
+        "meaning": "Please turn off the light before leaving the classroom."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "天",
+      "guidance": "关 adds two short upper strokes above a 天-shaped body. Leaving them out changes the character to 天."
+    },
+    "relatedCharacters": [
+      "开",
+      "天",
+      "出"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "关 (guān) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 关 (guān): Stroke Order, Meaning & Examples",
+      "description": "Write 关 (guān) for closing and switching off. Compare it with 天, explore 没关系, and see the simplified form alongside traditional 關."
+    }
+  },
+  {
+    "character": "回",
+    "pinyin": "huí",
+    "meaning": "return; turn around; time or occasion",
+    "strokes": 6,
+    "radical": "囗",
+    "traditional": "回",
+    "structure": "Enclosed",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 回; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Returning home and answering a teacher are common beginner tasks. 回 supports both, while its nested boxes provide a clear enclosure-order writing exercise.",
+    "components": [
+      {
+        "character": "回",
+        "explanation": "A small 口 sits inside a larger 囗 enclosure. Finish the inner box before closing the bottom of the outer frame."
+      }
+    ],
+    "readingNotes": "回 is huí with a second tone. In 回来 and 回去, the directional complement may be lighter in speech, while 回 keeps the main rising tone.",
+    "usageTitle": "Using 回 in everyday Chinese",
+    "usage": "回家 means to go home, 回来 means to come back, and 回答 means to answer. The destination or following word tells you whether 回 describes returning or responding.",
+    "writingTip": "Centre the small box with visible space on every side, and leave the outer bottom open until the inner strokes are complete.",
+    "examples": [
+      {
+        "hanzi": "回家",
+        "pinyin": "huí jiā",
+        "meaning": "go home"
+      },
+      {
+        "hanzi": "回来",
+        "pinyin": "huí lái",
+        "meaning": "come back"
+      },
+      {
+        "hanzi": "回去",
+        "pinyin": "huí qù",
+        "meaning": "go back"
+      },
+      {
+        "hanzi": "回答",
+        "pinyin": "huídá",
+        "meaning": "answer"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我回家了。",
+        "pinyin": "Wǒ huí jiā le.",
+        "meaning": "I have gone home."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "你什么时候回来？",
+        "pinyin": "Nǐ shénme shíhou huí lái?",
+        "meaning": "When will you come back?"
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "请先看问题，然后回答老师。",
+        "pinyin": "Qǐng xiān kàn wèntí, ránhòu huídá lǎoshī.",
+        "meaning": "Please read the question first, then answer the teacher."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "口",
+      "guidance": "口 contains one empty box; 回 has a second, smaller box inside. Do not merge the inner bottom with the outer enclosure."
+    },
+    "relatedCharacters": [
+      "来",
+      "去",
+      "口"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "回 (huí) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 回 (huí): Stroke Order, Meaning & Examples",
+      "description": "Follow 回 (huí) stroke order, including when to close the outer box. Practise returning home, coming back, and answering with clear examples."
+    }
+  },
+  {
+    "character": "出",
+    "pinyin": "chū",
+    "meaning": "go out; emerge",
+    "strokes": 5,
+    "radical": "凵",
+    "traditional": "出",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 2",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 2 vocabulary PDF includes 出; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Exits and outward movement use 出 in signs and conversation. Pairing it with 进 gives learners a practical way to distinguish opposite directions.",
+    "components": [
+      {
+        "character": "出",
+        "explanation": "Two open-top 凵 shapes are joined by one central vertical. The lower section is wider, giving the stacked form a stable base."
+      }
+    ],
+    "readingNotes": "出 is chū with a first tone. Distinguish its aspirated ch from the unaspirated zh of 住 (zhù).",
+    "usageTitle": "Using 出 in everyday Chinese",
+    "usage": "出去 means to go out, 出来 means to come out, and 出口 is an exit. The choice between 来 and 去 depends on movement toward or away from the reference point.",
+    "writingTip": "Keep both open tops clear, carry the middle vertical through the form, and make the bottom section slightly wider than the top.",
+    "examples": [
+      {
+        "hanzi": "出去",
+        "pinyin": "chū qù",
+        "meaning": "go out"
+      },
+      {
+        "hanzi": "出来",
+        "pinyin": "chū lái",
+        "meaning": "come out"
+      },
+      {
+        "hanzi": "出口",
+        "pinyin": "chūkǒu",
+        "meaning": "exit"
+      },
+      {
+        "hanzi": "出门",
+        "pinyin": "chū mén",
+        "meaning": "leave home"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "请出来。",
+        "pinyin": "Qǐng chū lái.",
+        "meaning": "Please come out."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "出口在你的右边。",
+        "pinyin": "Chūkǒu zài nǐ de yòubiān.",
+        "meaning": "The exit is on your right."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "下课以后，我们一起出去走走。",
+        "pinyin": "Xià kè yǐhòu, wǒmen yìqǐ chū qù zǒuzou.",
+        "meaning": "After class, let us go out for a walk together."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "山",
+      "guidance": "山 has one lower open-top outline; 出 has two levels. Do not omit the upper side strokes when writing 出."
+    },
+    "relatedCharacters": [
+      "进",
+      "山",
+      "去"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "出 (chū) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 出 (chū): Stroke Order, Meaning & Examples",
+      "description": "Learn 出 (chū), its two open-top levels, and the difference between 出来 and 出去. Watch the sequence and practise exit and movement words."
+    }
+  },
+  {
+    "character": "进",
+    "pinyin": "jìn",
+    "meaning": "enter; advance",
+    "strokes": 7,
+    "radical": "辶",
+    "traditional": "進",
+    "structure": "Semi-enclosed",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 2",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 2 vocabulary PDF includes 进; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "进 is useful in both classroom invitations and descriptions of learning progress. Its 辶 component also prepares learners to compare movement-related character forms.",
+    "components": [
+      {
+        "character": "进",
+        "explanation": "井 sits above the sweeping 辶 component. The walking component is written after the inner 井 in this simplified form."
+      }
+    ],
+    "readingNotes": "进 is jìn with a fourth tone. It differs in tone and meaning from 今 (jīn), the first character of 今天.",
+    "usageTitle": "Using 进 in everyday Chinese",
+    "usage": "进来 means to come in and 进去 means to go in. 进步 describes making progress, so the movement idea can also describe learning rather than walking into a room.",
+    "writingTip": "Complete 井 first, then write 辶 with a long final sweep that supports the inner form without cutting through it.",
+    "examples": [
+      {
+        "hanzi": "进来",
+        "pinyin": "jìn lái",
+        "meaning": "come in"
+      },
+      {
+        "hanzi": "进去",
+        "pinyin": "jìn qù",
+        "meaning": "go in"
+      },
+      {
+        "hanzi": "进步",
+        "pinyin": "jìnbù",
+        "meaning": "make progress"
+      },
+      {
+        "hanzi": "进入",
+        "pinyin": "jìnrù",
+        "meaning": "enter"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "请进来。",
+        "pinyin": "Qǐng jìn lái.",
+        "meaning": "Please come in."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "你的汉语进步很快。",
+        "pinyin": "Nǐ de Hànyǔ jìnbù hěn kuài.",
+        "meaning": "Your Chinese is improving quickly."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "老师让我们先进去，再坐下。",
+        "pinyin": "Lǎoshī ràng wǒmen xiān jìn qù, zài zuò xià.",
+        "meaning": "The teacher asked us to go in first, then sit down."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "近",
+      "guidance": "近 contains 斤 inside 辶; 进 contains 井. The shared walking component and similar sound do not make their meanings the same."
+    },
+    "relatedCharacters": [
+      "出",
+      "今",
+      "来"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "进 (jìn) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 进 (jìn): Stroke Order, Meaning & Examples",
+      "description": "Write 进 (jìn) with 井 inside 辶. Compare 进 and 近, practise entering and making progress, and view the traditional counterpart 進."
+    }
+  },
+  {
+    "character": "走",
+    "pinyin": "zǒu",
+    "meaning": "walk; leave",
+    "strokes": 7,
+    "radical": "走",
+    "traditional": "走",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 2",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 2 vocabulary PDF includes 走; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Walking to school and telling someone that you are leaving both use 走. Its contrast with 足 links an everyday action to a related body-part character.",
+    "components": [
+      {
+        "character": "走",
+        "explanation": "土 forms the upper section. Below it, a vertical and short horizontal lead into the left-falling stroke and long right-falling finish."
+      }
+    ],
+    "readingNotes": "走 is zǒu with a third tone. Keep its initial z distinct from the zh in 周 (zhōu).",
+    "usageTitle": "Using 走 in everyday Chinese",
+    "usage": "走路 means to walk, while 我走了 can mean 'I am leaving'. 走开 tells someone to move away and can sound abrupt; 请往这边走 is a more polite direction.",
+    "writingTip": "Keep the upper 土 compact and reserve space for the long final right-falling stroke, which carries the lower form outward.",
+    "examples": [
+      {
+        "hanzi": "走路",
+        "pinyin": "zǒu lù",
+        "meaning": "walk"
+      },
+      {
+        "hanzi": "走开",
+        "pinyin": "zǒu kāi",
+        "meaning": "move away"
+      },
+      {
+        "hanzi": "走进",
+        "pinyin": "zǒu jìn",
+        "meaning": "walk into"
+      },
+      {
+        "hanzi": "走出",
+        "pinyin": "zǒu chū",
+        "meaning": "walk out of"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我们走吧。",
+        "pinyin": "Wǒmen zǒu ba.",
+        "meaning": "Let us go."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我每天走路去学校。",
+        "pinyin": "Wǒ měitiān zǒu lù qù xuéxiào.",
+        "meaning": "I walk to school every day."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "请往前走，再向左转。",
+        "pinyin": "Qǐng wǎng qián zǒu, zài xiàng zuǒ zhuǎn.",
+        "meaning": "Please walk forward, then turn left."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "足",
+      "guidance": "足 starts with 口, while 走 starts with 土. Their lower shapes are similar, so check the top before writing."
+    },
+    "relatedCharacters": [
+      "去",
+      "足",
+      "站"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "走 (zǒu) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 走 (zǒu): Stroke Order, Meaning & Examples",
+      "description": "Practise 走 (zǒu) for walking and leaving. Compare its 土 top with 足, follow the sweeping final stroke, and learn polite directions."
+    }
+  },
+  {
+    "character": "坐",
+    "pinyin": "zuò",
+    "meaning": "sit; travel by a vehicle",
+    "strokes": 7,
+    "radical": "土",
+    "traditional": "坐",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 坐; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "坐 is needed for classroom seating and travelling as a passenger. Comparing it with 座 prevents a common same-sound writing error.",
+    "components": [
+      {
+        "character": "坐",
+        "explanation": "Two small 人 shapes sit above a broad 土 base. The central vertical runs between them and continues into the lower section."
+      }
+    ],
+    "readingNotes": "坐 is zuò with a fourth tone. 座 has the same pronunciation, but is used for seats and as a classifier, not as the ordinary verb 'sit'.",
+    "usageTitle": "Using 坐 in everyday Chinese",
+    "usage": "坐下 means to sit down. 坐车 and 坐火车 describe travelling as a passenger; use 开车 when you mean driving the vehicle yourself.",
+    "writingTip": "Keep the two 人 shapes small and separated by the centre line; use a broad final horizontal to support the whole character.",
+    "examples": [
+      {
+        "hanzi": "坐下",
+        "pinyin": "zuò xià",
+        "meaning": "sit down"
+      },
+      {
+        "hanzi": "请坐",
+        "pinyin": "qǐng zuò",
+        "meaning": "please sit"
+      },
+      {
+        "hanzi": "坐车",
+        "pinyin": "zuò chē",
+        "meaning": "travel by vehicle"
+      },
+      {
+        "hanzi": "坐火车",
+        "pinyin": "zuò huǒchē",
+        "meaning": "take a train"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "请坐。",
+        "pinyin": "Qǐng zuò.",
+        "meaning": "Please sit down."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我坐车去学校。",
+        "pinyin": "Wǒ zuò chē qù xuéxiào.",
+        "meaning": "I travel to school by vehicle."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我们坐火车去北京，不开车。",
+        "pinyin": "Wǒmen zuò huǒchē qù Běijīng, bù kāi chē.",
+        "meaning": "We are taking a train to Beijing, not driving."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "座",
+      "guidance": "座 adds a 广 enclosure around 坐. Write 坐 for the action of sitting, and 座 in 座位, a seat."
+    },
+    "relatedCharacters": [
+      "站",
+      "人",
+      "车"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "坐 (zuò) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 坐 (zuò): Stroke Order, Meaning & Examples",
+      "description": "Learn 坐 (zuò) for sitting and travelling by vehicle. See the two 人 shapes over 土, compare 坐 with 座, and practise passenger phrases."
+    }
+  },
+  {
+    "character": "站",
+    "pinyin": "zhàn",
+    "meaning": "stand; station",
+    "strokes": 10,
+    "radical": "立",
+    "traditional": "站",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 3",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 3 vocabulary PDF includes 站; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "站 connects a classroom action, standing up, with a travel destination, a station. Its two-component form can be practised alongside 坐 as an action contrast.",
+    "components": [
+      {
+        "character": "站",
+        "explanation": "立 is compressed on the left, beside 占 on the right. The right side has a vertical above a small 口."
+      }
+    ],
+    "readingNotes": "站 is zhàn with a fourth tone and a retroflex zh. Avoid replacing it with the plain z in 暂 (zàn).",
+    "usageTitle": "Using 站 in everyday Chinese",
+    "usage": "站 can be the verb stand, as in 站起来, or the noun station in 车站. 网站 extends the station idea to a website, so the meaning depends on the compound.",
+    "writingTip": "Keep 立 narrow and let its final stroke rise slightly as a left-side component; place the right 口 below the upper horizontal.",
+    "examples": [
+      {
+        "hanzi": "站起来",
+        "pinyin": "zhàn qǐ lái",
+        "meaning": "stand up"
+      },
+      {
+        "hanzi": "车站",
+        "pinyin": "chēzhàn",
+        "meaning": "station"
+      },
+      {
+        "hanzi": "火车站",
+        "pinyin": "huǒchēzhàn",
+        "meaning": "train station"
+      },
+      {
+        "hanzi": "网站",
+        "pinyin": "wǎngzhàn",
+        "meaning": "website"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "请站起来。",
+        "pinyin": "Qǐng zhàn qǐ lái.",
+        "meaning": "Please stand up."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "车站在学校前面。",
+        "pinyin": "Chēzhàn zài xuéxiào qiánmiàn.",
+        "meaning": "The station is in front of the school."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "明天我们在火车站见面。",
+        "pinyin": "Míngtiān wǒmen zài huǒchēzhàn jiàn miàn.",
+        "meaning": "We will meet at the train station tomorrow."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "占",
+      "guidance": "占 is only the right part of 站. The left 立 distinguishes standing or a station from the separate character 占."
+    },
+    "relatedCharacters": [
+      "坐",
+      "车",
+      "走"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "站 (zhàn) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 站 (zhàn): Stroke Order, Meaning & Examples",
+      "description": "Write 站 (zhàn) with 立 and 占. Distinguish standing from a station, follow the animation, and practise train-station and everyday examples."
+    }
+  },
+  {
+    "character": "买",
+    "pinyin": "mǎi",
+    "meaning": "buy",
+    "strokes": 6,
+    "radical": "大",
+    "traditional": "買",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 买; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "Buying a book or a ticket is a concrete first shopping task. 买 is especially valuable when practised beside 卖 so that tone and shape reinforce the distinction.",
+    "components": [
+      {
+        "character": "买",
+        "explanation": "A horizontal hook caps the simplified 头-shaped lower section. Two small dots sit above a horizontal crossed by the final long slant and dot."
+      }
+    ],
+    "readingNotes": "买 is mǎi with a third tone, while 卖 is mài with a fourth tone. The tone contrast changes buying into selling.",
+    "usageTitle": "Using 买 in everyday Chinese",
+    "usage": "买 takes the thing purchased as its object: 买书 means to buy books. 买给 describes buying something for someone, while 买到 stresses successfully obtaining it.",
+    "writingTip": "Keep the top hook distinct from the lower section, and place the two inner dots above the long horizontal rather than on it.",
+    "examples": [
+      {
+        "hanzi": "买书",
+        "pinyin": "mǎi shū",
+        "meaning": "buy books"
+      },
+      {
+        "hanzi": "买票",
+        "pinyin": "mǎi piào",
+        "meaning": "buy a ticket"
+      },
+      {
+        "hanzi": "买东西",
+        "pinyin": "mǎi dōngxi",
+        "meaning": "shop or buy things"
+      },
+      {
+        "hanzi": "买到",
+        "pinyin": "mǎi dào",
+        "meaning": "manage to buy"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "我想买书。",
+        "pinyin": "Wǒ xiǎng mǎi shū.",
+        "meaning": "I want to buy books."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "你在哪儿买的票？",
+        "pinyin": "Nǐ zài nǎr mǎi de piào?",
+        "meaning": "Where did you buy the ticket?"
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "我给妈妈买了一本汉语书。",
+        "pinyin": "Wǒ gěi māma mǎi le yì běn Hànyǔ shū.",
+        "meaning": "I bought a Chinese-language book for Mum."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "卖",
+      "guidance": "卖 has an extra 十 above the 买-shaped portion. Compare both the extra strokes and the third-tone versus fourth-tone pronunciation."
+    },
+    "relatedCharacters": [
+      "卖",
+      "钱",
+      "书"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "买 (mǎi) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 买 (mǎi): Stroke Order, Meaning & Examples",
+      "description": "Learn 买 (mǎi), buying phrases, and its contrast with 卖 (mài). Follow the simplified shape and compare it with traditional 買."
+    }
+  },
+  {
+    "character": "卖",
+    "pinyin": "mài",
+    "meaning": "sell",
+    "strokes": 8,
+    "radical": "十",
+    "traditional": "賣",
+    "structure": "Top-bottom",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 2",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 2 vocabulary PDF includes 卖; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "卖 completes the buyer-and-seller contrast with 买. Sold-out signs and simple shop descriptions give the fourth-tone word an immediate practical setting.",
+    "components": [
+      {
+        "character": "卖",
+        "explanation": "十 sits above the 买-shaped lower portion. Keep the top cross separate from the hooked horizontal beneath it."
+      }
+    ],
+    "readingNotes": "卖 is mài with a falling fourth tone. 买 is mǎi with a third tone; practise the pair aloud as well as comparing their shapes.",
+    "usageTitle": "Using 卖 in everyday Chinese",
+    "usage": "卖 describes selling an item, and 卖给 introduces its buyer. 卖完 means sold out; 卖掉 focuses on disposing of something by selling it.",
+    "writingTip": "Keep 十 small so the lower strokes still have room; do not let the top vertical run into the hook below.",
+    "examples": [
+      {
+        "hanzi": "卖书",
+        "pinyin": "mài shū",
+        "meaning": "sell books"
+      },
+      {
+        "hanzi": "卖票",
+        "pinyin": "mài piào",
+        "meaning": "sell tickets"
+      },
+      {
+        "hanzi": "卖完",
+        "pinyin": "mài wán",
+        "meaning": "sell out"
+      },
+      {
+        "hanzi": "卖给",
+        "pinyin": "mài gěi",
+        "meaning": "sell to"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这里卖书。",
+        "pinyin": "Zhèli mài shū.",
+        "meaning": "Books are sold here."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "今天的票卖完了。",
+        "pinyin": "Jīntiān de piào mài wán le.",
+        "meaning": "Today's tickets are sold out."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "他把不用的书卖给了朋友。",
+        "pinyin": "Tā bǎ bú yòng de shū mài gěi le péngyou.",
+        "meaning": "He sold the books he no longer used to a friend."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "买",
+      "guidance": "买 lacks the upper 十 of 卖. Leaving it out reverses the transaction, and changing mài to mǎi also changes the spoken word."
+    },
+    "relatedCharacters": [
+      "买",
+      "钱",
+      "本"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "卖 (mài) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 卖 (mài): Stroke Order, Meaning & Examples",
+      "description": "Practise 卖 (mài) for selling and sold-out items. Compare its extra 十 with 买, learn the tone contrast, and view traditional 賣."
+    }
+  },
+  {
+    "character": "钱",
+    "pinyin": "qián",
+    "meaning": "money",
+    "strokes": 10,
+    "radical": "钅",
+    "traditional": "錢",
+    "structure": "Left-right",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 钱; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "钱 is central to asking prices and handling small change. Its metal component links a common shopping word to the wider 金 character family.",
+    "components": [
+      {
+        "character": "钱",
+        "explanation": "The metal component 钅 is narrow on the left. 戋 occupies the right, with two horizontals crossed by a slanting hook and a final dot."
+      }
+    ],
+    "readingNotes": "钱 is qián with a rising second tone. It sounds the same as 前, but the metal component helps distinguish the written money word.",
+    "usageTitle": "Using 钱 in everyday Chinese",
+    "usage": "多少钱 asks a price, while 花钱 means to spend money and 省钱 means to save money by spending less. 钱 alone does not specify a currency.",
+    "writingTip": "Reserve more width for 戋, keep its two horizontals separate, and place the final dot clearly above the right side of the slanting hook.",
+    "examples": [
+      {
+        "hanzi": "多少钱",
+        "pinyin": "duōshao qián",
+        "meaning": "how much money"
+      },
+      {
+        "hanzi": "花钱",
+        "pinyin": "huā qián",
+        "meaning": "spend money"
+      },
+      {
+        "hanzi": "省钱",
+        "pinyin": "shěng qián",
+        "meaning": "save money"
+      },
+      {
+        "hanzi": "零钱",
+        "pinyin": "língqián",
+        "meaning": "small change"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这本书多少钱？",
+        "pinyin": "Zhè běn shū duōshao qián?",
+        "meaning": "How much is this book?"
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我没有零钱。",
+        "pinyin": "Wǒ méiyǒu língqián.",
+        "meaning": "I do not have any small change."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "走路去学校可以省钱。",
+        "pinyin": "Zǒu lù qù xuéxiào kěyǐ shěng qián.",
+        "meaning": "Walking to school can save money."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "线",
+      "guidance": "线 has 纟 on the left instead of 钱's 钅. Both share 戋 on the right, so identify the left component before writing."
+    },
+    "relatedCharacters": [
+      "买",
+      "卖",
+      "金"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "钱 (qián) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 钱 (qián): Stroke Order, Meaning & Examples",
+      "description": "Write 钱 (qián) with the metal component 钅. Learn price questions and spending phrases, compare 钱 with 线, and see traditional 錢."
+    }
+  },
+  {
+    "character": "本",
+    "pinyin": "běn",
+    "meaning": "book classifier; root; original",
+    "strokes": 5,
+    "radical": "木",
+    "traditional": "本",
+    "structure": "Single-component",
+    "hsk": [
+      {
+        "system": "HSK 2.0",
+        "level": "Level 1",
+        "evidenceKind": "standalone",
+        "note": "The University of Manchester Confucius Institute's HSK 1 vocabulary PDF includes 本; this also matches the local HSK 2.0 catalogue."
+      }
+    ],
+    "learningTier": "Beginner",
+    "importance": "本 lets learners count the books they use every day. Its short added line also offers a precise, easily checked contrast with 木.",
+    "components": [
+      {
+        "character": "本",
+        "explanation": "本 uses the 木 shape with an extra short horizontal near the foot of the central vertical. The added line is lower than 木's main crossbar."
+      }
+    ],
+    "readingNotes": "本 is běn with a third tone. In 本子 (běnzi), 子 is neutral; 本 keeps its lexical third tone, often shortened before another syllable.",
+    "usageTitle": "Using 本 in everyday Chinese",
+    "usage": "本 counts books and similar bound volumes: 一本书. 本子 means a notebook, while 本来 means originally; the classifier meaning does not replace every use of 本.",
+    "writingTip": "Write the 木-shaped strokes first, then add the short lower horizontal. Keep that line visibly shorter than the main upper crossbar.",
+    "examples": [
+      {
+        "hanzi": "一本书",
+        "pinyin": "yì běn shū",
+        "meaning": "one book"
+      },
+      {
+        "hanzi": "本子",
+        "pinyin": "běnzi",
+        "meaning": "notebook"
+      },
+      {
+        "hanzi": "本来",
+        "pinyin": "běnlái",
+        "meaning": "originally"
+      },
+      {
+        "hanzi": "课本",
+        "pinyin": "kèběn",
+        "meaning": "textbook"
+      }
+    ],
+    "exampleSentences": [
+      {
+        "learningLabel": "Starter",
+        "hanzi": "这是我的本子。",
+        "pinyin": "Zhè shì wǒ de běnzi.",
+        "meaning": "This is my notebook."
+      },
+      {
+        "learningLabel": "Developing",
+        "hanzi": "我买了两本书。",
+        "pinyin": "Wǒ mǎi le liǎng běn shū.",
+        "meaning": "I bought two books."
+      },
+      {
+        "learningLabel": "Stretch",
+        "hanzi": "请把名字写在课本的第一页。",
+        "pinyin": "Qǐng bǎ míngzi xiě zài kèběn de dì yī yè.",
+        "meaning": "Please write your name on the first page of the textbook."
+      }
+    ],
+    "confusableCharacter": {
+      "character": "木",
+      "guidance": "木 lacks the short line near the bottom of 本. Do not move the added line to the top, which would suggest a different form."
+    },
+    "relatedCharacters": [
+      "木",
+      "书",
+      "买"
+    ],
+    "publicationStatus": "complete",
+    "seo": {
+      "title": "本 (běn) Stroke Order, Meaning & Examples",
+      "h1": "How to Write 本 (běn): Stroke Order, Meaning & Examples",
+      "description": "Learn 本 (běn), the short line that distinguishes it from 木, and its use for counting books. Practise 一本书, 本子, and original-meaning examples."
+    }
+  }
+]
