@@ -1,0 +1,39 @@
+name: Submit production pages to IndexNow
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  checks: read
+
+concurrency:
+  group: indexnow-production
+  cancel-in-progress: false
+
+jobs:
+  submit:
+    if: github.repository == 'leontinasilva493-glitch/gridhanzi' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test the submitter without network access
+        run: node --test scripts/indexnow.test.mjs
+      - name: Wait for Cloudflare, verify ownership and submit public pages
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/indexnow.mjs --submit --wait-for-deployment
+      - name: Keep submission receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: indexnow-receipts-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/indexnow-report.json
+          if-no-files-found: warn
+          retention-days: 30
