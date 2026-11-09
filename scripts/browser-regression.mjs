@@ -80,6 +80,26 @@ async function seed(context, storage, key, value) {
 
 try {
   for (const zh of [false, true]) {
+    await scenario(`bookmark-prompt-${zh ? 'zh-mobile' : 'en-desktop'}`, zh ? { viewport: { width: 390, height: 844 }, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1' } : {}, async (page, context) => {
+      await visit(page, zh ? '/zh/templates' : '/templates');
+      const prompt = page.getByRole('status', { name: zh ? '收藏 GridHanzi' : 'Bookmark GridHanzi' });
+      await prompt.waitFor({ timeout: 20_000 });
+      if (zh) {
+        assert.match(await prompt.innerText(), /使用浏览器菜单将本页加入书签/);
+        await prompt.getByRole('button', { name: '关闭书签提醒' }).click();
+      } else {
+        assert.match(await prompt.innerText(), /Ctrl \+ D/);
+        await prompt.getByRole('button', { name: 'Got it', exact: true }).click();
+      }
+      await prompt.waitFor({ state: 'detached' });
+      assert.equal(await page.evaluate(() => localStorage.getItem('gridhanzi-bookmark-prompt-dismissed-v1')), '1');
+      await page.reload({ waitUntil: 'domcontentloaded' });
+      await page.waitForTimeout(12_500);
+      assert.equal(await prompt.count(), 0, 'Dismissal persists after revisit');
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+    });
+  }
+  for (const zh of [false, true]) {
     await scenario(`parameter-index-boundaries-${zh ? 'zh' : 'en'}`, {}, async (page, context) => {
       const prefix = zh ? '/zh' : '';
       // Alternating state and base requests also guards against sharing a

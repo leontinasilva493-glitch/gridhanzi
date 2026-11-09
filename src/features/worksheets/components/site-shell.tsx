@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 
 import { LocaleSwitch } from "./locale-switch";
 import { EmailFeedbackLink } from "./email-feedback-link";
+import { BookmarkPrompt } from "./bookmark-prompt";
 
 const templateMenuLinks = [
   ["All Templates", "/templates"],
@@ -289,6 +290,7 @@ export function PublicPageShell({
       <HanziSiteHeader active={active} />
       {children}
       {footer ? <HanziSiteFooter /> : null}
+      <BookmarkPrompt />
     </div>
   );
 }
