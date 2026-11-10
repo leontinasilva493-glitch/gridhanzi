@@ -3,9 +3,13 @@
   "name": "gridhanzi",
   "compatibility_date": "2026-02-12",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "vinext/server/app-router-entry",
+  "main": "src/worker.ts",
   "assets": {
-    "not_found_handling": "none"
+    "not_found_handling": "none",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/_public-pages/*"
+    ]
   },
   "ratelimits": [
     {

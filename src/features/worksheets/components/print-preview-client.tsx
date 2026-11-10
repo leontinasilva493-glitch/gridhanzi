@@ -192,7 +192,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
               ? t("Could not load your worksheet. Return to the editor and open the preview again. Your browser may be blocking site storage.", "无法载入字帖，请返回编辑器重新打开预览。浏览器可能限制了网站存储。")
               : t("Loading your worksheet…", "正在载入字帖……")}
           </p>
-          <Link href="/generator" className="hs-secondary-button mt-5">
+          <Link href={templateSlug ? `/generator?template=${templateSlug}` : "/generator?resume=1"} className="hs-secondary-button mt-5">
             {t("Back to editor", "返回编辑器")}
           </Link>
         </div>

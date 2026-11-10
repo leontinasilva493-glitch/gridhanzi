@@ -12,7 +12,9 @@
     "deploy": "sh -c 'set -a && [ -f .env.production ] && . ./.env.production; set +a && exec npx vinext deploy'",
     "test:indexnow": "node --test scripts/indexnow.test.mjs",
     "indexnow:check": "node scripts/indexnow.mjs",
-    "indexnow:submit": "node scripts/indexnow.mjs --submit"
+    "indexnow:submit": "node scripts/indexnow.mjs --submit",
+    "build:public": "node scripts/clean-public-build.mjs && vinext build && node scripts/prerender-public.mjs",
+    "deploy:public": "pnpm run build:public && vinext deploy --skip-build"
   },
   "dependencies": {
     "clsx": "^2.1.0",
