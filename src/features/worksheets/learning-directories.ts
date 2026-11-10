@@ -8,6 +8,7 @@ export interface Radical {
   id: number; glyph: string; pinyin: string; meaning: string; strokes: number;
   variants: string; examples: LearningExample[]; slug?: string;
   shape?: string; usage?: string; practice?: string; componentSlug?: string;
+  readingNote?: string;
 }
 export const radicals: Radical[] = radicalData;
 export const radicalGuides = radicals.filter((r): r is Radical & { slug: string } => Boolean(r.slug));
@@ -22,7 +23,25 @@ export function normalizePinyin(value: string): string {
   return value.toLowerCase().replace(/u:|v/g, "ü").normalize("NFD").replace(/[\u0300\u0301\u0304\u030c]/g, "").normalize("NFC").replace(/[1-5]/g, "").trim();
 }
 export function findRadical(glyph: string): Radical | undefined {
-  return radicals.find(r => r.glyph === glyph || r.variants.split(" ").includes(glyph));
+  if (!glyph.trim()) return undefined;
+  return radicals.find(r => r.glyph === glyph || r.variants.split(" ").filter(Boolean).includes(glyph));
+}
+export function getPinyinGuidesForCharacter(character: string, defaultReading: string) {
+  return pinyinGuides.filter(p => p.slug === normalizePinyin(defaultReading) || p.examples.some(e => e.character === character));
+}
+
+// Compare an actual shared sound or a stated contrast, rather than arbitrary neighbours.
+const pinyinComparisonGroups = [
+  ["ai", "mai", "lai"], ["ba", "ma", "da"], ["ben", "ren"],
+  ["bu", "du"], ["chi", "shi"], ["de", "di"],
+  ["ge", "he"], ["guo", "wo"], ["hao", "he", "hua", "hui"],
+  ["ji", "jia", "jin"], ["kan", "ben", "ren"], ["ming", "jin"],
+  ["ni", "ji"], ["shui", "shi", "hui"], ["xie", "ji"],
+  ["zhong", "shi", "chi"],
+];
+export function getRelatedPinyinGuides(slug: string) {
+  const candidates = new Set(pinyinComparisonGroups.filter(group => group.includes(slug)).flat());
+  return pinyinGuides.filter(p => p.slug !== slug && candidates.has(p.slug)).slice(0, 4);
 }
 export function learningWorksheetEntries(key: unknown): WorksheetEntry[] | undefined {
   if (typeof key !== "string") return undefined;

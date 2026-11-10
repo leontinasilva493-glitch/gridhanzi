@@ -11,20 +11,22 @@
   {
     "id": 2,
     "glyph": "丨",
-    "pinyin": "shù",
-    "meaning": "line",
+    "pinyin": "gǔn",
+    "meaning": "vertical line",
     "strokes": 1,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "The radical name is gǔn. Shù names the vertical stroke shape; it is not the selected radical reading."
   },
   {
     "id": 3,
     "glyph": "丶",
-    "pinyin": "diǎn",
+    "pinyin": "zhǔ",
     "meaning": "dot",
     "strokes": 1,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "The radical reading is zhǔ. Diǎn is the everyday name of a dot stroke."
   },
   {
     "id": 4,
@@ -104,11 +106,12 @@
   {
     "id": 10,
     "glyph": "儿",
-    "pinyin": "ér",
-    "meaning": "legs",
+    "pinyin": "rén",
+    "meaning": "legs; human form",
     "strokes": 2,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "Rén is the traditional radical-table reading. Do not confuse this heading with simplified 儿 (ér), corresponding to 兒 in words such as 儿子."
   },
   {
     "id": 11,
@@ -167,11 +170,12 @@
   {
     "id": 17,
     "glyph": "凵",
-    "pinyin": "qiǎn",
+    "pinyin": "kǎn",
     "meaning": "open box",
     "strokes": 2,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "Kǎn is used in the cited radical tables; qiǎn is also recorded in other dictionary traditions."
   },
   {
     "id": 18,
@@ -281,11 +285,12 @@
   {
     "id": 25,
     "glyph": "卜",
-    "pinyin": "bo",
+    "pinyin": "bǔ",
     "meaning": "divination",
     "strokes": 2,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "Bǔ is the divination reading. Neutral bo occurs in words such as 萝卜 and is not the radical heading used here."
   },
   {
     "id": 26,
@@ -299,11 +304,12 @@
   {
     "id": 27,
     "glyph": "厂",
-    "pinyin": "chǎng",
+    "pinyin": "hǎn",
     "meaning": "cliff",
     "strokes": 2,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "This historical cliff radical is hǎn. Simplified 厂 meaning factory, corresponding to 廠, is chǎng."
   },
   {
     "id": 28,
@@ -447,7 +453,8 @@
     "meaning": "evening",
     "strokes": 3,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "Xī is used in mainland Mandarin and this directory. Taiwan references may use xì for the evening character."
   },
   {
     "id": 37,
@@ -491,7 +498,7 @@
   {
     "id": 39,
     "glyph": "子",
-    "pinyin": "zi",
+    "pinyin": "zǐ",
     "meaning": "child",
     "strokes": 3,
     "variants": "",
@@ -516,12 +523,13 @@
     "shape": "子 has a curved hook, a crossing horizontal, and an upper turning stroke. Its lower horizontal may rise when the component sits on the left, as in 孩 and 孙.",
     "usage": "Child-related meanings are visible in 孩 and 孙. 字 means a written character, so grouping it under 子 does not make its modern meaning child.",
     "practice": "Compare 子 at the bottom of 字 with its left-side form in 孩 and 孙. Print the three examples and mark the change in the crossing stroke.",
-    "componentSlug": ""
+    "componentSlug": "",
+    "readingNote": "Use full third-tone zǐ for the radical. Neutral zi occurs as a suffix in words such as 本子."
   },
   {
     "id": 40,
     "glyph": "宀",
-    "pinyin": "gài / mián",
+    "pinyin": "mián",
     "meaning": "roof",
     "strokes": 3,
     "variants": "",
@@ -546,7 +554,8 @@
     "shape": "宀 is a three-stroke roof: a top dot, a short left dot, and a horizontal hook. It must shelter the lower components without flattening them.",
     "usage": "Homes and rooms give a useful connection for 家 and 室. 安 has a historical construction, but its modern meaning should not be reduced to a literal claim about the components underneath a roof.",
     "practice": "Place 家, 安, and 室 on one worksheet. Align the roof heights, then compare how much vertical space each lower part needs.",
-    "componentSlug": ""
+    "componentSlug": "",
+    "readingNote": "Mián is the selected radical reading; 宝盖头 (bǎogàitóu) is a descriptive classroom name, not the isolated reading gài."
   },
   {
     "id": 41,
@@ -569,11 +578,12 @@
   {
     "id": 43,
     "glyph": "尢",
-    "pinyin": "yóu",
-    "meaning": "lame",
+    "pinyin": "wāng",
+    "meaning": "bent-legged form",
     "strokes": 3,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "Wāng is the radical-table reading. Other readings, including yóu, occur in dictionaries for the independent character."
   },
   {
     "id": 44,
@@ -629,7 +639,7 @@
     "pinyin": "chuān",
     "meaning": "river",
     "strokes": 3,
-    "variants": "",
+    "variants": "川",
     "examples": []
   },
   {
@@ -662,11 +672,12 @@
   {
     "id": 51,
     "glyph": "干",
-    "pinyin": "gàn",
-    "meaning": "dry",
+    "pinyin": "gān",
+    "meaning": "shield; dry",
     "strokes": 3,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "Use gān here. The gàn reading belongs to other uses of simplified 干, including forms corresponding to 幹."
   },
   {
     "id": 52,
@@ -680,11 +691,12 @@
   {
     "id": 53,
     "glyph": "广",
-    "pinyin": "guǎng",
-    "meaning": "dotted cliff",
+    "pinyin": "yǎn",
+    "meaning": "shelter",
     "strokes": 3,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "The historical shelter radical is yǎn. Simplified 广 for 廣, meaning broad, is guǎng; some reference tables use a different tone for the radical name."
   },
   {
     "id": 54,
@@ -794,7 +806,7 @@
     "pinyin": "hù",
     "meaning": "door",
     "strokes": 4,
-    "variants": "",
+    "variants": "户",
     "examples": []
   },
   {
@@ -842,7 +854,7 @@
     "pinyin": "pū",
     "meaning": "rap",
     "strokes": 4,
-    "variants": "",
+    "variants": "攵",
     "examples": []
   },
   {
@@ -857,11 +869,12 @@
   {
     "id": 68,
     "glyph": "斗",
-    "pinyin": "dòu",
-    "meaning": "dipper",
+    "pinyin": "dǒu",
+    "meaning": "dipper; measure",
     "strokes": 4,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "Dǒu names the dipper or measure. Dòu meaning fight corresponds to traditional 鬥, a different Kangxi radical."
   },
   {
     "id": 69,
@@ -1163,8 +1176,9 @@
     "pinyin": "qiáng",
     "meaning": "half tree trunk",
     "strokes": 4,
-    "variants": "",
-    "examples": []
+    "variants": "丬",
+    "examples": [],
+    "readingNote": "Qiáng is used by the cited traditional radical tables; pán is the common mainland reading of this character."
   },
   {
     "id": 91,
@@ -1340,11 +1354,12 @@
   {
     "id": 103,
     "glyph": "疋",
-    "pinyin": "pǐ",
-    "meaning": "bolt of cloth",
+    "pinyin": "shū",
+    "meaning": "foot (radical)",
     "strokes": 5,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "Shū is the foot and radical reading. Pǐ is a separate cloth-measure sense, not the meaning selected here."
   },
   {
     "id": 104,
@@ -1353,7 +1368,8 @@
     "meaning": "sickness",
     "strokes": 5,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "Nè is a dictionary reading of this sickness radical; chuáng and other readings appear in traditional radical-name references."
   },
   {
     "id": 105,
@@ -1475,7 +1491,7 @@
     "pinyin": "shì",
     "meaning": "spirit",
     "strokes": 5,
-    "variants": "",
+    "variants": "礻",
     "examples": []
   },
   {
@@ -1640,7 +1656,7 @@
     "pinyin": "wǎng",
     "meaning": "net",
     "strokes": 6,
-    "variants": "",
+    "variants": "罒",
     "examples": []
   },
   {
@@ -1667,7 +1683,7 @@
     "pinyin": "lǎo",
     "meaning": "old",
     "strokes": 6,
-    "variants": "",
+    "variants": "耂",
     "examples": []
   },
   {
@@ -1703,7 +1719,7 @@
     "pinyin": "yù",
     "meaning": "brush",
     "strokes": 6,
-    "variants": "",
+    "variants": "肀",
     "examples": []
   },
   {
@@ -1781,11 +1797,12 @@
   {
     "id": 138,
     "glyph": "艮",
-    "pinyin": "gěn",
+    "pinyin": "gèn",
     "meaning": "stopping",
     "strokes": 6,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "Gèn is the radical and stopping reading; gěn occurs in other descriptive uses."
   },
   {
     "id": 139,
@@ -1842,7 +1859,8 @@
     "meaning": "insect",
     "strokes": 6,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "Chóng is the familiar insect reading. Huǐ is the older snake-related reading retained in some radical tables."
   },
   {
     "id": 143,
@@ -1868,16 +1886,16 @@
     "pinyin": "yī",
     "meaning": "clothes",
     "strokes": 6,
-    "variants": "",
+    "variants": "衤",
     "examples": []
   },
   {
     "id": 146,
     "glyph": "襾",
     "pinyin": "yà",
-    "meaning": "west",
+    "meaning": "cover",
     "strokes": 6,
-    "variants": "",
+    "variants": "覀",
     "examples": []
   },
   {
@@ -1886,7 +1904,7 @@
     "pinyin": "jiàn",
     "meaning": "see",
     "strokes": 7,
-    "variants": "",
+    "variants": "见",
     "examples": []
   },
   {
@@ -1970,7 +1988,7 @@
     "pinyin": "bèi",
     "meaning": "shell",
     "strokes": 7,
-    "variants": "",
+    "variants": "贝",
     "examples": []
   },
   {
@@ -1986,7 +2004,7 @@
     "id": 156,
     "glyph": "走",
     "pinyin": "zǒu",
-    "meaning": "run",
+    "meaning": "walk; run (historical)",
     "strokes": 7,
     "variants": "",
     "examples": []
@@ -1997,7 +2015,7 @@
     "pinyin": "zú",
     "meaning": "foot",
     "strokes": 7,
-    "variants": "",
+    "variants": "⻊",
     "examples": []
   },
   {
@@ -2015,7 +2033,7 @@
     "pinyin": "chē",
     "meaning": "cart",
     "strokes": 7,
-    "variants": "",
+    "variants": "车",
     "examples": []
   },
   {
@@ -2135,11 +2153,12 @@
   {
     "id": 168,
     "glyph": "長",
-    "pinyin": "zhǎng",
+    "pinyin": "cháng",
     "meaning": "long",
     "strokes": 8,
-    "variants": "",
-    "examples": []
+    "variants": "长 镸",
+    "examples": [],
+    "readingNote": "Cháng matches long and the radical heading. Zhǎng means grow or senior in other words."
   },
   {
     "id": 169,
@@ -2147,7 +2166,7 @@
     "pinyin": "mén",
     "meaning": "gate",
     "strokes": 8,
-    "variants": "",
+    "variants": "门",
     "examples": []
   },
   {
@@ -2166,7 +2185,8 @@
     "meaning": "slave",
     "strokes": 8,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "Lì is used in modern simplified 隶 corresponding to 隸. Traditional radical tables also call this heading dài; do not treat slave as a complete definition of every indexed character."
   },
   {
     "id": 172,
@@ -2192,7 +2212,7 @@
     "pinyin": "qīng",
     "meaning": "blue",
     "strokes": 8,
-    "variants": "",
+    "variants": "青",
     "examples": []
   },
   {
@@ -2228,7 +2248,7 @@
     "pinyin": "wéi",
     "meaning": "tanned leather",
     "strokes": 9,
-    "variants": "",
+    "variants": "韦",
     "examples": []
   },
   {
@@ -2253,10 +2273,11 @@
     "id": 181,
     "glyph": "頁",
     "pinyin": "yè",
-    "meaning": "leaf",
+    "meaning": "head (radical); page (word)",
     "strokes": 9,
-    "variants": "",
-    "examples": []
+    "variants": "页",
+    "examples": [],
+    "readingNote": "This radical groups many head-related characters. Yè is its conventional radical name and the modern page reading; xié is recorded for the historical head sense. Leaf here would misleadingly suggest a plant leaf."
   },
   {
     "id": 182,
@@ -2264,7 +2285,7 @@
     "pinyin": "fēng",
     "meaning": "wind",
     "strokes": 9,
-    "variants": "",
+    "variants": "风",
     "examples": []
   },
   {
@@ -2273,7 +2294,7 @@
     "pinyin": "fēi",
     "meaning": "fly",
     "strokes": 9,
-    "variants": "",
+    "variants": "飞",
     "examples": []
   },
   {
@@ -2282,7 +2303,7 @@
     "pinyin": "shí",
     "meaning": "eat",
     "strokes": 9,
-    "variants": "",
+    "variants": "飠 饣",
     "examples": []
   },
   {
@@ -2309,7 +2330,7 @@
     "pinyin": "mǎ",
     "meaning": "horse",
     "strokes": 10,
-    "variants": "",
+    "variants": "马",
     "examples": []
   },
   {
@@ -2360,11 +2381,12 @@
   {
     "id": 193,
     "glyph": "鬲",
-    "pinyin": "gé",
-    "meaning": "cauldron",
+    "pinyin": "lì",
+    "meaning": "ancient cooking vessel",
     "strokes": 10,
     "variants": "",
-    "examples": []
+    "examples": [],
+    "readingNote": "Lì names the ancient cooking vessel and this radical. Gé is a different reading in other historical uses."
   },
   {
     "id": 194,
@@ -2381,7 +2403,7 @@
     "pinyin": "yú",
     "meaning": "fish",
     "strokes": 11,
-    "variants": "",
+    "variants": "鱼",
     "examples": []
   },
   {
@@ -2390,7 +2412,7 @@
     "pinyin": "niǎo",
     "meaning": "bird",
     "strokes": 11,
-    "variants": "",
+    "variants": "鸟",
     "examples": []
   },
   {
@@ -2399,7 +2421,7 @@
     "pinyin": "lǔ",
     "meaning": "salt",
     "strokes": 11,
-    "variants": "",
+    "variants": "卤",
     "examples": []
   },
   {
@@ -2417,7 +2439,7 @@
     "pinyin": "mài",
     "meaning": "wheat",
     "strokes": 11,
-    "variants": "",
+    "variants": "麦",
     "examples": []
   },
   {
@@ -2435,7 +2457,7 @@
     "pinyin": "huáng",
     "meaning": "yellow",
     "strokes": 12,
-    "variants": "",
+    "variants": "黄",
     "examples": []
   },
   {
@@ -2468,11 +2490,12 @@
   {
     "id": 205,
     "glyph": "黽",
-    "pinyin": "miǎn",
-    "meaning": "frog",
+    "pinyin": "mǐn",
+    "meaning": "frog form (radical)",
     "strokes": 13,
-    "variants": "",
-    "examples": []
+    "variants": "黾",
+    "examples": [],
+    "readingNote": "Mǐn is the conventional radical-table reading. The old frog word also has the reading měng; miǎn is recorded in other traditions and contexts."
   },
   {
     "id": 206,
@@ -2516,7 +2539,7 @@
     "pinyin": "qí",
     "meaning": "even",
     "strokes": 14,
-    "variants": "",
+    "variants": "齐",
     "examples": []
   },
   {
@@ -2525,7 +2548,7 @@
     "pinyin": "chǐ",
     "meaning": "tooth",
     "strokes": 15,
-    "variants": "",
+    "variants": "齿",
     "examples": []
   },
   {
@@ -2534,7 +2557,7 @@
     "pinyin": "lóng",
     "meaning": "dragon",
     "strokes": 16,
-    "variants": "",
+    "variants": "龙",
     "examples": []
   },
   {
@@ -2543,7 +2566,7 @@
     "pinyin": "guī",
     "meaning": "turtle",
     "strokes": 16,
-    "variants": "",
+    "variants": "龟",
     "examples": []
   },
   {

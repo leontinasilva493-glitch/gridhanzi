@@ -10,7 +10,7 @@
       {
         "character": "矮",
         "pinyin": "ǎi",
-        "meaning": "short"
+        "meaning": "short-in-height"
       },
       {
         "character": "挨",
@@ -51,7 +51,7 @@
       {
         "character": "本",
         "pinyin": "běn",
-        "meaning": "root"
+        "meaning": "classifier-for-books"
       },
       {
         "character": "笨",
@@ -225,7 +225,7 @@
         "meaning": "song"
       }
     ],
-    "sound": "The g initial is unaspirated and made at the back of the mouth. The final e is not English gee and should not acquire a final y sound.",
+    "sound": "The g initial is unaspirated and made at the back of the mouth. The final e is not English gee and should not acquire a final y sound. Keep the g distinct from aspirated k, then contrast first-tone gē with fourth-tone gè.",
     "contrast": "哥 and 歌 share gē but differ in meaning and shape. 个 is usually gè in careful counting, can be unstressed in phrases, and has a special gě reading in 自个儿.",
     "practice": "Practise 一个 and 哥哥, then write 歌. Use the examples to distinguish tone changes from separate characters with the same first-tone syllable."
   },
@@ -468,6 +468,11 @@
         "meaning": "mother"
       },
       {
+        "character": "麻",
+        "pinyin": "má",
+        "meaning": "hemp; numb"
+      },
+      {
         "character": "马",
         "pinyin": "mǎ",
         "meaning": "horse"
@@ -484,8 +489,8 @@
       }
     ],
     "sound": "Close the lips for m and open directly into a. Keep the initial and vowel constant while changing pitch or making the syllable neutral.",
-    "contrast": "妈, 马, 骂, and 吗 distinguish first, third, fourth, and neutral tone. The ordinary yes-no question particle is neutral ma, not má.",
-    "practice": "Print all four characters. Say 妈妈, 马, 骂人, and 好吗 to hear why the neutral question ending must not receive the horse's third tone."
+    "contrast": "妈, 麻, 马, 骂, and 吗 illustrate first, second, third, fourth, and neutral tone. 麻 is má in 麻木 (numb); the ordinary yes-no question particle 吗 is neutral ma, not má.",
+    "practice": "Print the five characters. Read 妈妈, 麻木, 马, 骂人, and 好吗, then sort them by their first syllable tone. Keep the question-ending ma light instead of giving it the rising tone of 麻."
   },
   {
     "slug": "mai",

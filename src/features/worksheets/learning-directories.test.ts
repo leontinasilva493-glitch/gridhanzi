@@ -4,6 +4,36 @@ import { readFileSync } from "node:fs";
 import { radicals, radicalGuides, pinyinGuides, pinyinChart, normalizePinyin, findRadical, learningWorksheetEntries, learningDirectoryPaths, radicalTitle, radicalDescription, pinyinTitle, pinyinDescription } from "./learning-directories";
 import { buildPublicSitemapPaths, hasWorksheetStateQuery } from "./seo";
 import { convertWorksheetEntries } from "./traditional";
+import { getPinyinGuidesForCharacter, getRelatedPinyinGuides } from "./learning-directories";
+
+test("radical headings keep reviewed contextual readings instead of general dictionary defaults", () => {
+  const expected: Record<string,string> = {"丨":"gǔn","丶":"zhǔ","儿":"rén","凵":"kǎn","卜":"bǔ","厂":"hǎn","子":"zǐ","宀":"mián","尢":"wāng","干":"gān","广":"yǎn","斗":"dǒu","疋":"shū","艮":"gèn","長":"cháng","鬲":"lì","黽":"mǐn"};
+  for(const [glyph,reading] of Object.entries(expected)) {
+    assert.equal(findRadical(glyph)?.pinyin,reading,glyph);
+    assert.ok(findRadical(glyph)?.readingNote,glyph);
+  }
+  assert.match(findRadical("頁")!.meaning,/head/);
+  assert.match(findRadical("疋")!.meaning,/foot/);
+  assert.equal(findRadical(""),undefined);
+  assert.equal(findRadical(" "),undefined);
+  assert.equal(findRadical("门")?.glyph,"門");
+  assert.equal(findRadical("马")?.glyph,"馬");
+  assert.equal(findRadical("阝"),undefined,"ambiguous left/right component must not be guessed");
+});
+
+test("all five ma tones survive worksheet handoff and alternate-reading pages get backlinks", () => {
+  const ma=learningWorksheetEntries("pinyin:ma")!;
+  assert.deepEqual(ma.map(e=>e.pinyin),["mā","má","mǎ","mà","ma"]);
+  assert.equal(ma.find(e=>e.hanzi==="麻")!.english,"hemp; numb");
+  assert.ok(getPinyinGuidesForCharacter("地","de").some(p=>p.slug==="di"));
+  assert.ok(getPinyinGuidesForCharacter("都","dōu").some(p=>p.slug==="du"));
+  for(const p of pinyinGuides) {
+    const related=getRelatedPinyinGuides(p.slug);
+    assert.ok(related.length>0 && related.length<=4,p.slug);
+    assert.ok(related.every(other=>other.slug!==p.slug));
+    assert.equal(new Set(related).size,related.length);
+  }
+});
 
 test("Kangxi directory covers the exact 214 headings and each reviewed example resolves to its family", () => {
   assert.deepEqual(radicals.map(r=>r.id),Array.from({length:214},(_,i)=>i+1));
