@@ -1,5 +1,6 @@
 "use client";
 
+import { classroomEditorHref } from "../classroom-example";
 import { trackWorksheetEvent } from "../analytics";
 import { UiText } from "./ui-text";
 import { RepeatFillControl } from "./repeat-fill-control";
@@ -1069,6 +1070,7 @@ function GeneratorSupportSections({
             ["Family practice sheet", "/generator?template=family"],
             ["Numbers writing worksheet", "/generator?template=numbers"],
             ["Colors practice sheet", "/generator?template=colors"],
+              ["Nature characters classroom practice", classroomEditorHref("write")],
             ["HSK 1 writing practice", "/generator?template=hsk-1"],
           ].map(([label, href]) => (
             <Link

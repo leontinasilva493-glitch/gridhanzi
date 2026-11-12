@@ -94,7 +94,7 @@ const chinese: Readonly<Record<string, string>> = {
   "Printable worksheet controls": "字帖设置", "Worksheet settings teachers and parents expect": "适合教师与家长的练习设置",
   "Tian Zi Ge and Mi Zi Ge Hanzi grid paper": "田字格与米字格", "Tracing, handwriting practice, and recall test modes": "新字精学、描红临写和默写测试",
   "Optional Pinyin and stroke-order guidance": "可选拼音与笔顺引导", "A4, US Letter, and tablet PDF formats": "A4、美式信纸和平板 PDF",
-  "Example worksheets": "字帖示例", "Examples you can generate and edit": "可以直接编辑的字帖示例",
+  "Nature characters classroom practice": "自然主题四字练习", "Example worksheets": "字帖示例", "Examples you can generate and edit": "可以直接编辑的字帖示例",
   "Family practice sheet": "家庭词汇字帖", "Numbers writing worksheet": "数字字帖", "Colors practice sheet": "颜色字帖", "HSK 1 writing practice": "HSK 一级书写练习",
   "Generator FAQ": "生成器常见问题", "Chinese worksheet generator questions": "字帖生成器使用问答",
   "Home": "首页", "Home / Templates": "首页 / 字帖模板", "Printable Chinese Writing Worksheets": "可打印的汉字字帖",
