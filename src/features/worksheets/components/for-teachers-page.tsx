@@ -18,6 +18,9 @@ import { PublicPageShell } from "./site-shell";
 import { StructuredData } from "./structured-data";
 import { WorksheetMiniature } from "./worksheet-miniature";
 
+import { classroomEditorHref, classroomWords, type ClassroomMode } from "../classroom-example";
+import { ClassroomDownloadLink } from "./template-pack-download-link";
+
 const featuredSlugs = [
   "school-classroom",
   "numbers",
@@ -135,30 +138,31 @@ export function ForTeachersPage() {
         </section>
 
         <section className="hs-container py-14">
-          <p className="hs-kicker">One checked list, three classroom jobs</p>
+          <p className="hs-kicker">Printable classroom examples</p>
           <h2 className="hs-display mt-2 text-3xl font-bold sm:text-4xl">
             Learn, practise, and test
           </h2>
+          <p className="mt-3 text-[#4f5d71]">Use {classroomWords.join(" · ")} to teach four nature characters. Each sheet uses the same readings and meanings. Open the editable version to change the words or paper size.</p>
           <div className="mt-7 grid gap-5 lg:grid-cols-3">
             <UseCaseCard
               icon={BookOpen}
               title="Introduce new characters"
               description="Show the stroke sequence first, then give students a model character to copy."
-              href="/generator?mode=trace"
+              mode="trace"
               linkLabel="Open Learn mode"
             />
             <UseCaseCard
               icon={PencilLine}
               title="Set handwriting practice"
               description="Print model, tracing, and blank cells on the same page for classwork or homework."
-              href="/generator?mode=write"
+              mode="write"
               linkLabel="Open Practice mode"
             />
             <UseCaseCard
               icon={GraduationCap}
               title="Check recall"
               description="Keep the Pinyin or English prompt and remove the model character for a short written test."
-              href="/generator?mode=quiz"
+              mode="quiz"
               linkLabel="Open Test mode"
             />
           </div>
@@ -302,13 +306,13 @@ function UseCaseCard({
   icon: Icon,
   title,
   description,
-  href,
+  mode,
   linkLabel,
 }: {
   icon: typeof BookOpen;
   title: string;
   description: string;
-  href: string;
+  mode: ClassroomMode;
   linkLabel: string;
 }) {
   return (
@@ -318,7 +322,9 @@ function UseCaseCard({
       </span>
       <h3 className="hs-display mt-5 text-2xl font-bold">{title}</h3>
       <p className="mt-3 flex-1 leading-7 text-[#5b687a]">{description}</p>
-      <Link href={href} className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-[#b62822]">
+      <img src={`/downloads/classroom/${mode}.png`} width={382} height={540} loading="lazy" alt={`First page of the four-character worksheet: ${title}`} className="mt-4 w-full rounded border border-[#ded7ca]" />
+      <ClassroomDownloadLink mode={mode} />
+      <Link href={classroomEditorHref(mode)} className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-[#b62822]">
         {linkLabel} <ArrowRight className="size-4" />
       </Link>
     </article>

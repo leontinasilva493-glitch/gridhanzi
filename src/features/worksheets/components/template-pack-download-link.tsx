@@ -31,3 +31,17 @@ export function TemplatePackDownloadLink({
     </a>
   );
 }
+
+
+export function ClassroomDownloadLink({ mode }: { mode: import("../classroom-example").ClassroomMode }) {
+  return (
+    <a
+      href={`/downloads/classroom/${mode}.pdf`}
+      download={`gridhanzi-classroom-${mode}-a4.pdf`}
+      className="hs-secondary-button mt-4"
+      onClick={() => trackTemplatePackDownloadClick(`classroom-${mode}`, "a4")}
+    >
+      Download PDF · A4 · 1 page
+    </a>
+  );
+}
