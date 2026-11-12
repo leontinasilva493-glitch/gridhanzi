@@ -1,3 +1,4 @@
+import { UiText } from "./ui-text";
 import {
   ArrowRight,
   BookOpen,
@@ -60,53 +61,36 @@ export function ForTeachersPage() {
         }}
       />
       <main>
-        <section className="hs-container pt-6" aria-label="Beginner lesson resources">
-          <p className="text-sm leading-7 text-[#4f5d71]">
-            Planning a first lesson? Use the <Link href="/templates/greetings" className="underline">Greetings worksheet</Link>
-            {" "}for hello, thanks and polite questions, or choose a review set from the
-            {" "}<Link href="/hsk/2-0/level-1" className="underline">150-word HSK 2.0 Level 1 list</Link>.
-            {" "}The HSK list is a vocabulary reference; the Greetings template is a focused conversation activity.
-          </p>
-        </section>
         <section className="hs-container pb-12 pt-6 sm:pt-10">
-          <div className="text-sm text-[#617084]">
-            Home &nbsp;/&nbsp; For Teachers
-          </div>
+          <div className="text-sm text-[#617084]"> <UiText>{"Home  /  For Teachers"}</UiText> </div>
           <div className="mt-5 grid items-center gap-9 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
-              <p className="hs-kicker">Chinese worksheets for teachers</p>
-              <h1 className="hs-display mt-3 max-w-3xl text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.4rem]">
-                Chinese Worksheets for Teachers, Made from Your Word List
-              </h1>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#4f5d71]">
-                Paste vocabulary from a lesson plan or spreadsheet, check the
-                Hanzi and Pinyin, then print a tracing page, handwriting
-                practice, or a short recall test.
-              </p>
+              <p className="hs-kicker"><UiText>{"Chinese worksheets for teachers"}</UiText></p>
+              <h1 className="hs-display mt-3 max-w-3xl text-4xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.4rem]"> <UiText>{"Chinese Worksheets for Teachers, Made from Your Word List"}</UiText> </h1>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-[#4f5d71]"> <UiText>{"Paste vocabulary from a lesson plan or spreadsheet, check the Hanzi and Pinyin, then print a tracing page, handwriting practice, or a short recall test."}</UiText> </p>
+              <div className="mt-4">
+                <p className="text-sm font-semibold"><UiText>{"Classroom samples · A4 · one page each"}</UiText></p>
+                <div className="flex flex-wrap gap-x-2">
+                  {(["trace", "write", "quiz"] as const).map(mode => <ClassroomDownloadLink key={mode} mode={mode} />)}
+                </div>
+              </div>
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link href="/generator" className="hs-primary-button min-w-52">
-                  <FileText className="size-5" /> Create a worksheet
+                  <FileText className="size-5" /> <UiText>{"Create a worksheet"}</UiText> </Link>
+                <Link href="/templates" className="hs-secondary-button min-w-44"> <UiText>{"Browse word lists"}</UiText> <ArrowRight className="size-4" />
                 </Link>
-                <Link href="/templates" className="hs-secondary-button min-w-44">
-                  Browse word lists <ArrowRight className="size-4" />
+                <Link href={hskPickerHref} className="hs-secondary-button min-w-44"> <UiText>{"Choose an HSK list"}</UiText> <ArrowRight className="size-4" />
                 </Link>
-                <Link href={hskPickerHref} className="hs-secondary-button min-w-44">
-                  Choose an HSK list <ArrowRight className="size-4" />
-                </Link>
-                <Link href="/hsk" className="hs-secondary-button min-w-44">
-                  Review HSK vocabulary <ArrowRight className="size-4" />
+                <Link href="/hsk" className="hs-secondary-button min-w-44"> <UiText>{"Review HSK vocabulary"}</UiText> <ArrowRight className="size-4" />
                 </Link>
               </div>
               <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-[#45556a]">
                 <li className="flex items-center gap-2">
-                  <Check className="size-4 text-[#267254]" /> No account needed
-                </li>
+                  <Check className="size-4 text-[#267254]" /> <UiText>{"No account needed"}</UiText> </li>
                 <li className="flex items-center gap-2">
-                  <Check className="size-4 text-[#267254]" /> A4 and US Letter
-                </li>
+                  <Check className="size-4 text-[#267254]" /> <UiText>{"A4 and US Letter"}</UiText> </li>
                 <li className="flex items-center gap-2">
-                  <Check className="size-4 text-[#267254]" /> Download as PDF
-                </li>
+                  <Check className="size-4 text-[#267254]" /> <UiText>{"Download as PDF"}</UiText> </li>
               </ul>
             </div>
             <div className="relative mx-auto w-full max-w-[520px] lg:pr-4">
@@ -123,26 +107,23 @@ export function ForTeachersPage() {
           </div>
         </section>
 
+        <section className="hs-container pt-6" aria-label="Beginner lesson resources">
+          <p className="text-sm leading-7 text-[#4f5d71]"> <UiText>{"Planning a first lesson? Use the"}</UiText> <Link href="/templates/greetings" className="underline"><UiText>{"Greetings worksheet"}</UiText></Link>
+            {" "}<UiText>{"for hello, thanks and polite questions, or choose a review set from the"}</UiText> {" "}<Link href="/hsk/2-0/level-1" className="underline"><UiText>{"150-word HSK 2.0 Level 1 list"}</UiText></Link>.
+            {" "}<UiText>{"The HSK list is a vocabulary reference; the Greetings template is a focused conversation activity."}</UiText> </p>
+        </section>
         <section className="hs-container hs-card grid gap-4 px-5 py-5 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-center">
-          <TeacherStep icon={ClipboardPaste} number="1" title="Paste the lesson words">
-            Add one word per line or paste rows from a spreadsheet.
-          </TeacherStep>
+          <TeacherStep icon={ClipboardPaste} number="1" title="Paste the lesson words"> <UiText>{"Add one word per line or paste rows from a spreadsheet."}</UiText> </TeacherStep>
           <ArrowRight className="hidden size-6 text-[#657083] md:block" />
-          <TeacherStep icon={CheckCircle2} number="2" title="Check every field">
-            Edit the characters, Pinyin, and meaning before printing.
-          </TeacherStep>
+          <TeacherStep icon={CheckCircle2} number="2" title="Check every field"> <UiText>{"Edit the characters, Pinyin, and meaning before printing."}</UiText> </TeacherStep>
           <ArrowRight className="hidden size-6 text-[#657083] md:block" />
-          <TeacherStep icon={Printer} number="3" title="Use it in class">
-            Download the page or print copies for students.
-          </TeacherStep>
+          <TeacherStep icon={Printer} number="3" title="Use it in class"> <UiText>{"Download the page or print copies for students."}</UiText> </TeacherStep>
         </section>
 
         <section className="hs-container py-14">
-          <p className="hs-kicker">Printable classroom examples</p>
-          <h2 className="hs-display mt-2 text-3xl font-bold sm:text-4xl">
-            Learn, practise, and test
-          </h2>
-          <p className="mt-3 text-[#4f5d71]">Use {classroomWords.join(" · ")} to teach four nature characters. Each sheet uses the same readings and meanings. Open the editable version to change the words or paper size.</p>
+          <p className="hs-kicker"><UiText>{"Printable classroom examples"}</UiText></p>
+          <h2 className="hs-display mt-2 text-3xl font-bold sm:text-4xl"> <UiText>{"Learn, practise, and test"}</UiText> </h2>
+          <p className="mt-3 text-[#4f5d71]"><UiText>{"Use"}</UiText> {classroomWords.join(" · ")} <UiText>{"to teach four nature characters. Each sheet uses the same readings and meanings. Open the editable version to change the words or paper size."}</UiText></p>
           <div className="mt-7 grid gap-5 lg:grid-cols-3">
             <UseCaseCard
               icon={BookOpen}
@@ -172,36 +153,22 @@ export function ForTeachersPage() {
           <div className="hs-container">
             <div className="flex flex-wrap items-end justify-between gap-5">
               <div>
-                <p className="hs-kicker">Ready to edit</p>
-                <h2 className="hs-display mt-2 text-3xl font-bold sm:text-4xl">
-                  Classroom word lists
-                </h2>
-                <p className="mt-3 max-w-2xl leading-7 text-[#566276]">
-                  Start with a topic, then replace any word to match the lesson
-                  you are teaching.
-                </p>
+                <p className="hs-kicker"><UiText>{"Ready to edit"}</UiText></p>
+                <h2 className="hs-display mt-2 text-3xl font-bold sm:text-4xl"> <UiText>{"Classroom word lists"}</UiText> </h2>
+                <p className="mt-3 max-w-2xl leading-7 text-[#566276]"> <UiText>{"Start with a topic, then replace any word to match the lesson you are teaching."}</UiText> </p>
               </div>
-              <Link href="/templates" className="hs-secondary-button">
-                View all templates <ArrowRight className="size-4" />
+              <Link href="/templates" className="hs-secondary-button"> <UiText>{"View all templates"}</UiText> <ArrowRight className="size-4" />
               </Link>
             </div>
-            <p className="mt-4 text-sm text-[#566276]">
-              Need a level list instead?{" "}
-              <Link href={hskPickerHref} className="font-semibold text-[#24466e] hover:text-[#b62822]">
-                Choose an HSK list
-              </Link>
+            <p className="mt-4 text-sm text-[#566276]"> <UiText>{"Need a level list instead?"}</UiText>{" "}
+              <Link href={hskPickerHref} className="font-semibold text-[#24466e] hover:text-[#b62822]"> <UiText>{"Choose an HSK list"}</UiText> </Link>
               .
             </p>
-            <p className="mt-3 text-sm text-[#566276]">
-              Preparing a bilingual list? Start with{" "}
+            <p className="mt-3 text-sm text-[#566276]"> <UiText>{"Preparing a bilingual list? Start with"}</UiText>{" "}
               <Link
                 href="/english-to-chinese-writing-practice"
                 className="font-semibold text-[#24466e] hover:text-[#b62822]"
-              >
-                English to Chinese writing practice
-              </Link>{" "}
-              and check every matched Hanzi and Pinyin row before printing.
-            </p>
+              > <UiText>{"English to Chinese writing practice"}</UiText> </Link>{" "} <UiText>{"and check every matched Hanzi and Pinyin row before printing."}</UiText> </p>
             <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {featuredTemplates.map((template) => (
                 <article key={template.slug} className="hs-card p-5">
@@ -212,8 +179,7 @@ export function ForTeachersPage() {
                     {template.title}
                   </h3>
                   <p className="mt-1 text-sm text-[#6a7586]">
-                    {template.chineseTitle} · {template.wordCount} words
-                  </p>
+                    {template.chineseTitle} · {template.wordCount} <UiText>{"words"}</UiText> </p>
                   <div className="mt-4 flex flex-wrap gap-1.5">
                     {template.entries.slice(0, 4).map((entry) => (
                       <span
@@ -227,8 +193,7 @@ export function ForTeachersPage() {
                   <Link
                     href={`/generator?template=${template.slug}&profile=${template.recommendedProfile}`}
                     className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-[#24466e]"
-                  >
-                    Use this list <ArrowRight className="size-4" />
+                  > <UiText>{"Use this list"}</UiText> <ArrowRight className="size-4" />
                   </Link>
                 </article>
               ))}
@@ -238,23 +203,13 @@ export function ForTeachersPage() {
 
         <section className="hs-container grid gap-6 py-14 lg:grid-cols-[0.9fr_1.1fr]">
           <article className="hs-card bg-[#102e52] p-7 text-white sm:p-9">
-            <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#f2aaa4]">
-              Before you print
-            </p>
-            <h2 className="hs-display mt-3 text-3xl font-bold !text-white">
-              Keep the final check with the teacher.
-            </h2>
-            <p className="mt-4 leading-7 text-blue-100/80">
-              Automatically filled characters and Pinyin stay editable. Read
-              through the list once so names, regional wording, and lesson
-              meanings match your class.
-            </p>
-            <Link href="/generator" className="hs-primary-button mt-7">
-              Start with my words
-            </Link>
+            <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#f2aaa4]"> <UiText>{"Before you print"}</UiText> </p>
+            <h2 className="hs-display mt-3 text-3xl font-bold !text-white"> <UiText>{"Keep the final check with the teacher."}</UiText> </h2>
+            <p className="mt-4 leading-7 text-blue-100/80"> <UiText>{"Automatically filled characters and Pinyin stay editable. Read through the list once so names, regional wording, and lesson meanings match your class."}</UiText> </p>
+            <Link href="/generator" className="hs-primary-button mt-7"> <UiText>{"Start with my words"}</UiText> </Link>
           </article>
           <article className="hs-card p-7 sm:p-9">
-            <h2 className="hs-display text-3xl font-bold">Teacher questions</h2>
+            <h2 className="hs-display text-3xl font-bold"><UiText>{"Teacher questions"}</UiText></h2>
             <div className="mt-5 divide-y divide-[#ded7ca] border-y border-[#ded7ca]">
               <Faq
                 question="Can I paste from Excel or Google Sheets?"
@@ -294,7 +249,7 @@ function TeacherStep({
       </span>
       <div>
         <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#7a5145]">
-          {number}. {title}
+          {number}. <UiText>{title}</UiText>
         </p>
         <p className="mt-1 text-sm leading-6 text-[#617084]">{children}</p>
       </div>
@@ -320,12 +275,12 @@ function UseCaseCard({
       <span className="grid size-12 place-items-center rounded-full border border-[#9fc5af] bg-[#f7fbf8] text-[#267254]">
         <Icon className="size-6" />
       </span>
-      <h3 className="hs-display mt-5 text-2xl font-bold">{title}</h3>
-      <p className="mt-3 flex-1 leading-7 text-[#5b687a]">{description}</p>
+      <h3 className="hs-display mt-5 text-2xl font-bold"><UiText>{title}</UiText></h3>
+      <p className="mt-3 flex-1 leading-7 text-[#5b687a]"><UiText>{description}</UiText></p>
       <img src={`/downloads/classroom/${mode}.png`} width={382} height={540} loading="lazy" alt={`First page of the four-character worksheet: ${title}`} className="mt-4 w-full rounded border border-[#ded7ca]" />
       <ClassroomDownloadLink mode={mode} />
       <Link href={classroomEditorHref(mode)} className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-[#b62822]">
-        {linkLabel} <ArrowRight className="size-4" />
+        <UiText>{linkLabel}</UiText> <ArrowRight className="size-4" />
       </Link>
     </article>
   );
@@ -334,8 +289,8 @@ function UseCaseCard({
 function Faq({ question, answer }: { question: string; answer: string }) {
   return (
     <details className="py-4">
-      <summary className="cursor-pointer font-semibold">{question}</summary>
-      <p className="mt-3 text-sm leading-6 text-[#5f6d80]">{answer}</p>
+      <summary className="cursor-pointer font-semibold"><UiText>{question}</UiText></summary>
+      <p className="mt-3 text-sm leading-6 text-[#5f6d80]"><UiText>{answer}</UiText></p>
     </details>
   );
 }

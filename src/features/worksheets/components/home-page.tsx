@@ -36,13 +36,13 @@ export function HomePage() {
         <section className="hs-container grid items-start gap-8 pb-12 pt-6 sm:pt-10 lg:grid-cols-[1.02fr_0.9fr] lg:pt-12">
           <div>
             <h1 className="hs-display max-w-3xl text-3xl font-bold leading-[1.08] sm:text-5xl lg:text-[3.55rem]"><UiText>{"Free Chinese Character Worksheet Generator"}</UiText></h1>
+            <div className="mt-5 sm:mt-8">
+              <HomeWorkbench />
+            </div>
             <p className="mt-3 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8 text-[#435166]"><UiText>{"Create printable Chinese worksheets with your own word list. Choose a Hanzi grid layout—Tian Zi Ge, Mi Zi Ge, or blank squares—then add Pinyin and tracing practice. Download an A4 or US Letter PDF for free, with no sign-up."}</UiText></p>
             <Link href="/grids" className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-[#24466e] underline underline-offset-4 hover:text-[#b62822]">
               <UiText>{"Download blank Hanzi grid paper"}</UiText><ArrowRight className="size-4 shrink-0" />
             </Link>
-            <div className="mt-5 sm:mt-8">
-              <HomeWorkbench />
-            </div>
             <div className="hs-card mt-4 grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
               <TrustItem icon={ShieldCheck} label="Free to use" />
               <TrustItem icon={CheckCircle2} label="No sign-up" />

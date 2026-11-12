@@ -65,6 +65,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
   const [downloads, setDownloads] = useState(0);
   const [helpPanel, setHelpPanel] = useState<HelpPanel>(null);
   const [previewReady, setPreviewReady] = useState(Boolean(templateSnapshot));
+  const [emptySession, setEmptySession] = useState(false);
   const [loadError, setLoadError] = useState(false);
   const [storageWarning, setStorageWarning] = useState(false);
   const profilePreset = getWorksheetProfilePreset(snapshot.settings.profile);
@@ -92,8 +93,8 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
       const saved =
         sessionStorage.getItem(WORKSHEET_STORAGE_KEY) ??
         sessionStorage.getItem(LEGACY_WORKSHEET_STORAGE_KEY);
-      if (!saved) {
-        setLoadError(true);
+      if (saved === null) {
+        setEmptySession(true);
         return;
       }
       const parsed = JSON.parse(saved) as unknown;
@@ -187,6 +188,14 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
     return (
       <main className="min-h-screen bg-[#eeeeec] px-6 py-16 text-[#14253f]">
         <div className="hs-card mx-auto max-w-xl p-6">
+          {emptySession ? <>
+            <h1 className="hs-display text-2xl font-bold">{t("Create your first worksheet", "先创建一份练习纸")}</h1>
+            <p className="mt-2">{t("Add a word list or choose a template to see your print preview.", "输入词表或选择模板后，就能在这里预览打印效果。")}</p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link href="/generator" className="hs-primary-button">{t("Create a worksheet", "制作练习纸")}</Link>
+              <Link href="/templates" className="hs-secondary-button">{t("Browse templates", "浏览模板")}</Link>
+            </div>
+          </> : <>
           <p role={loadError ? "alert" : "status"}>
             {loadError
               ? t("Could not load your worksheet. Return to the editor and open the preview again. Your browser may be blocking site storage.", "无法载入字帖，请返回编辑器重新打开预览。浏览器可能限制了网站存储。")
@@ -195,6 +204,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
           <Link href={templateSlug ? `/generator?template=${templateSlug}` : "/generator?resume=1"} className="hs-secondary-button mt-5">
             {t("Back to editor", "返回编辑器")}
           </Link>
+          </>}
         </div>
       </main>
     );

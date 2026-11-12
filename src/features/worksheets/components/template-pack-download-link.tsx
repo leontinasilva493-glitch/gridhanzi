@@ -1,5 +1,6 @@
 "use client";
 
+import { UiText } from "./ui-text";
 import type { ReactNode } from "react";
 
 import { trackTemplatePackDownloadClick } from "../analytics";
@@ -41,7 +42,7 @@ export function ClassroomDownloadLink({ mode }: { mode: import("../classroom-exa
       className="hs-secondary-button mt-4"
       onClick={() => trackTemplatePackDownloadClick(`classroom-${mode}`, "a4")}
     >
-      Download PDF · A4 · 1 page
+      <UiText>{({ trace: "Download Learn PDF", write: "Download Practice PDF", quiz: "Download Recall Test PDF" })[mode]}</UiText>
     </a>
   );
 }

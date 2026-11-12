@@ -246,8 +246,13 @@
 
   .hs-primary-button:focus-visible,
   .hs-secondary-button:focus-visible {
-    outline: 3px solid rgb(183 36 30 / 0.22);
+    outline: 3px solid #96312c;
     outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hs-primary-button, .hs-secondary-button { transition: none; }
+    .hs-primary-button:hover { transform: none; }
   }
 
   .hs-primary-button:disabled {
