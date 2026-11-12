@@ -6,6 +6,7 @@ import { ChevronDown, Menu } from "lucide-react";
 import { Link } from "@/core/i18n/navigation";
 import { cn } from "@/lib/utils";
 
+import { DesktopNavigation } from "./desktop-navigation";
 import { LocaleSwitch } from "./locale-switch";
 import { EmailFeedbackLink } from "./email-feedback-link";
 import { BookmarkPrompt } from "./bookmark-prompt";
@@ -86,11 +87,11 @@ export function HanziSiteHeader({ active }: { active?: string }) {
           />
         </Link>
 
-        <nav className="hidden items-stretch self-stretch xl:flex">
+        <DesktopNavigation>
           {navMenus.map((menu) => (
             <DesktopNavMenu key={menu.key} menu={menu} active={active} />
           ))}
-        </nav>
+        </DesktopNavigation>
 
         <div className="hidden items-center gap-3 xl:flex">
           <EmailFeedbackLink />
@@ -138,7 +139,7 @@ function DesktopNavMenu({
   active?: string;
 }) {
   return (
-    <details className="group relative flex">
+    <details name="gridhanzi-desktop-navigation" className="group relative flex">
       <summary
         className={cn(
           "relative flex cursor-pointer list-none items-center gap-1 px-3 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822] xl:px-4 [&::-webkit-details-marker]:hidden",

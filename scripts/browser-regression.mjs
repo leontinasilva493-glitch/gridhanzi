@@ -18,7 +18,7 @@ const filter = process.env.QA_FILTER;
 async function scenario(name, options, run) {
   if (filter && !name.includes(filter)) return;
   const context = await browser.newContext({ baseURL, timezoneId: 'UTC', viewport: { width: 1280, height: 900 }, ...options });
-  await context.route(/clarity\.ms|google-analytics\.com|googletagmanager\.com|plausible\.io/, route => route.abort());
+  await context.route(/clarity\.ms|google-analytics\.com|googletagmanager\.com|plausible\.io|pvuv\.ai/, route => route.abort());
   // Font delivery is unchanged by these fixes. Isolate the third-party CSS chain
   // so its availability does not gate hydration/storage regression tests.
   await context.route(/cdn\.jsdelivr\.net\/npm\/lxgw-wenkai-gb-web.*\.css/, route => route.fulfill({ contentType: 'text/css', body: '' }));
@@ -846,7 +846,7 @@ try {
   });
   await scenario('bounce-local-analytics-isolation', {}, async page => {
     const requests = [];
-    page.on('request', request => { if (/clarity\.ms|google-analytics\.com|googletagmanager\.com|plausible\.io/.test(request.url())) requests.push(request.url()); });
+    page.on('request', request => { if (/clarity\.ms|google-analytics\.com|googletagmanager\.com|plausible\.io|pvuv\.ai/.test(request.url())) requests.push(request.url()); });
     await visit(page, '/generator');
     assert.deepEqual(requests, []);
     assert.equal(await page.evaluate(() => typeof window.gtag), 'undefined');

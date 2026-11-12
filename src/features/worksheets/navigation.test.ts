@@ -297,7 +297,7 @@ test("teacher landing page is public, specific, and limited to current features"
   assert.match(componentSource, /href="\/templates"/);
   assert.match(
     componentSource,
-    /hs-display[^"\n]*!text-white[^"\n]*">\s*Keep the final check/,
+    /hs-display[^"\n]*!text-white[^"\n]*">\s*<UiText>\{"Keep the final check/,
   );
   assert.doesNotMatch(
     componentSource,

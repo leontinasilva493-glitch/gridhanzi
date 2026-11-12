@@ -46,6 +46,74 @@ export function HomeWorkbench() {
           {t("Up to 40 rows", "最多 40 行")}
         </span>
       </div>
+      <label className="sr-only" htmlFor="hero-vocabulary">
+        {t("Vocabulary list", "词汇表")}
+      </label>
+      <textarea
+        id="hero-vocabulary"
+        value={value}
+        maxLength={MAX_VOCABULARY_CHARS}
+        onChange={(event) => setValue(event.target.value)}
+        onKeyDown={(event) => {
+          if ((event.metaKey || event.ctrlKey) && event.key === "Enter") submit();
+        }}
+        className="mt-3 min-h-44 w-full resize-y rounded-[5px] border border-[#315ed4] bg-white p-3 text-[15px] leading-7 shadow-inner outline-none focus:ring-4 focus:ring-blue-100"
+        placeholder={
+          mode === "chinese"
+            ? "家庭\n妈妈\n爸爸"
+            : mode === "mixed"
+              ? "family, 家庭\nmother, 妈妈"
+              : "family\nmother\nfather"
+        }
+      />
+      {hasUnsupportedInputScript ? (
+        <p
+          id="hero-vocabulary-language-notice"
+          role="status"
+          aria-live="polite"
+          className="mt-2 flex items-start gap-2 rounded border border-[#e6c98f] bg-[#fff8e8] px-3 py-2 text-[13px] leading-5 text-[#8a5a12]"
+        >
+          <AlertCircle className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+          <span>
+            {t(
+              "Currently supports English or Hanzi input. More languages are in development.",
+              "目前暂仅支持英语或汉字输入，更多语言持续开发中。",
+            )}
+          </span>
+        </p>
+      ) : null}
+      <div className="mt-2 flex justify-between gap-4 text-xs text-[#657083]">
+        <p>
+          {t(
+            "One item per line; tab-separated spreadsheet rows also work. Press Ctrl/⌘ + Enter to continue.",
+            "每行一个词条；也支持粘贴以制表符分隔的表格内容。按 Ctrl/⌘ + Enter 继续。",
+          )}
+        </p>
+        <span>{value.length}/{MAX_VOCABULARY_CHARS}</span>
+      </div>
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+        {!value.trim() ? (
+          <button
+            type="button"
+            className="inline-flex min-h-11 items-center rounded px-1 text-sm font-semibold text-[#24466e] underline decoration-[#9eacbc] underline-offset-4 transition-colors hover:text-[#b62822] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#b62822]/20"
+            onClick={() => {
+              setMode("english");
+              setValue(familyExample);
+            }}
+          >
+            {t("Use a family example", "使用家庭词汇示例")}
+          </button>
+        ) : null}
+        <button
+          type="button"
+          className="hs-primary-button ml-auto"
+          onClick={submit}
+          disabled={!value.trim()}
+        >
+          <Sparkles className="size-4" />
+          {t("Build my worksheet", "生成我的字帖")}
+        </button>
+      </div>
       <div className="mt-4 flex flex-wrap items-end justify-between gap-3 border-b border-[#ded7ca]">
         <div className="flex" role="tablist">
           {(["english", "chinese", "mixed"] as const).map((tab) => (
@@ -121,74 +189,6 @@ export function HomeWorkbench() {
             </button>
           ))}
         </div>
-      </div>
-      <label className="sr-only" htmlFor="hero-vocabulary">
-        {t("Vocabulary list", "词汇表")}
-      </label>
-      <textarea
-        id="hero-vocabulary"
-        value={value}
-        maxLength={MAX_VOCABULARY_CHARS}
-        onChange={(event) => setValue(event.target.value)}
-        onKeyDown={(event) => {
-          if ((event.metaKey || event.ctrlKey) && event.key === "Enter") submit();
-        }}
-        className="mt-3 min-h-44 w-full resize-y rounded-[5px] border border-[#315ed4] bg-white p-3 text-[15px] leading-7 shadow-inner outline-none focus:ring-4 focus:ring-blue-100"
-        placeholder={
-          mode === "chinese"
-            ? "家庭\n妈妈\n爸爸"
-            : mode === "mixed"
-              ? "family, 家庭\nmother, 妈妈"
-              : "family\nmother\nfather"
-        }
-      />
-      {hasUnsupportedInputScript ? (
-        <p
-          id="hero-vocabulary-language-notice"
-          role="status"
-          aria-live="polite"
-          className="mt-2 flex items-start gap-2 rounded border border-[#e6c98f] bg-[#fff8e8] px-3 py-2 text-[13px] leading-5 text-[#8a5a12]"
-        >
-          <AlertCircle className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-          <span>
-            {t(
-              "Currently supports English or Hanzi input. More languages are in development.",
-              "目前暂仅支持英语或汉字输入，更多语言持续开发中。",
-            )}
-          </span>
-        </p>
-      ) : null}
-      <div className="mt-2 flex justify-between gap-4 text-xs text-[#657083]">
-        <p>
-          {t(
-            "One item per line; tab-separated spreadsheet rows also work. Press Ctrl/⌘ + Enter to continue.",
-            "每行一个词条；也支持粘贴以制表符分隔的表格内容。按 Ctrl/⌘ + Enter 继续。",
-          )}
-        </p>
-        <span>{value.length}/{MAX_VOCABULARY_CHARS}</span>
-      </div>
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-        {!value.trim() ? (
-          <button
-            type="button"
-            className="inline-flex min-h-11 items-center rounded px-1 text-sm font-semibold text-[#24466e] underline decoration-[#9eacbc] underline-offset-4 transition-colors hover:text-[#b62822] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#b62822]/20"
-            onClick={() => {
-              setMode("english");
-              setValue(familyExample);
-            }}
-          >
-            {t("Use a family example", "使用家庭词汇示例")}
-          </button>
-        ) : null}
-        <button
-          type="button"
-          className="hs-primary-button ml-auto"
-          onClick={submit}
-          disabled={!value.trim()}
-        >
-          <Sparkles className="size-4" />
-          {t("Build my worksheet", "生成我的字帖")}
-        </button>
       </div>
     </div>
   );
