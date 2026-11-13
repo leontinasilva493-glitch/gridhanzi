@@ -96,6 +96,7 @@ function estimateWorksheetPages(
       worksheetEntries,
       layout,
       settings.extraBlankRows,
+      settings.keepWordsTogether,
     ).length;
   }
 

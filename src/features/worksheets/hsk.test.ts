@@ -172,7 +172,12 @@ test("summarizeHskSelection uses practice pagination for write page counts", () 
     mode: "write",
   });
 
-  assert.equal(summary.estimatedPageCount, 3);
+  assert.equal(summary.estimatedPageCount, 2);
+  assert.equal(summarizeHskSelection(entries, {
+    ...defaultWorksheetSettings,
+    mode: "write",
+    keepWordsTogether: true,
+  }).estimatedPageCount, 3);
 });
 
 test("summarizeHskSelection matches initial renderer learn pagination", () => {

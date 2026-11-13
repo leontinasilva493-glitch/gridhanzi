@@ -1210,7 +1210,7 @@ function SettingsPanel({ settings, setSettings, onCharacterStandardChange, conve
               <SettingSection title={t("Extra blank row", "额外空白行")}><Segmented value={String(settings.extraBlankRows)} options={[["0", t("Off", "关闭")], ["1", t("Add one", "增加一行")]]} onChange={(value) => patch({ extraBlankRows: value === "1" ? 1 : 0 })} /></SettingSection>
             </>}
             {!isFlashcards && settings.mode === "trace" && <SettingSection title={t("Learning layout", "教学排版")}>
-              <ToggleRow label={t("Keep each word on one page when it fits", "同一词尽量保持同页")} checked={settings.keepWordsTogether !== false} onChange={(keepWordsTogether) => patch({ keepWordsTogether })} />
+              <ToggleRow label={t("Keep each word on one page when it fits", "同一词尽量保持同页")} checked={settings.keepWordsTogether === true} onChange={(keepWordsTogether) => patch({ keepWordsTogether })} />
               <ToggleRow label={t("Teach each repeated character once", "相同字只教一次")} checked={!!settings.uniqueCharactersOnly} onChange={(uniqueCharactersOnly) => patch({ uniqueCharactersOnly })} />
               <p className="mt-2 text-xs text-[#657083]">{t("Your word list stays unchanged. Turn these off for character-by-character teaching.", "词表保持不变。关闭后恢复逐字精学。")}</p>
             </SettingSection>}
