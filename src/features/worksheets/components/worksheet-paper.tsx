@@ -249,6 +249,7 @@ export function WorksheetPaper({
         entries,
         layout,
         settings.extraBlankRows,
+        settings.keepWordsTogether,
       ).map((units) => ({ kind: "practice" as const, units }));
     } else if (settings.mode === "quiz") {
       resolvedPages = paginateTestEntries(entries, layout).map((pageEntries) => ({

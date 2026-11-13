@@ -78,7 +78,7 @@ const PROFILE_VERTICAL_METRICS: Record<
     headerHeight: 26,
     footerHeight: 8,
     strokeCellSize: 10,
-    learnPageWeight: 12,
+    learnPageWeight: 10,
   },
   tablet: {
     contextHeight: 32,
@@ -228,6 +228,7 @@ export function paginatePracticeEntries(
   entries: WorksheetEntry[],
   layout: WorksheetLayoutSpec,
   extraBlankRows: 0 | 1 = 0,
+  keepWordsTogether = false,
 ): CharacterPracticeUnit[][] {
   const capacity = Math.max(
     1,
@@ -248,7 +249,7 @@ export function paginatePracticeEntries(
     if (units.length === 0) continue;
 
     if (
-      units.length <= capacity &&
+      keepWordsTogether && units.length <= capacity &&
       currentPage.length > 0 &&
       currentPage.length + units.length > capacity
     ) {

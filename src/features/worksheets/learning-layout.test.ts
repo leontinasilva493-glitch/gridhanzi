@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { buildLearnUnits, paginateLearnUnits, resolveWorksheetLayout } from "./layout";
+import { buildLearnUnits, paginateLearnUnits, paginatePracticeEntries, resolveWorksheetLayout } from "./layout";
 import { defaultWorksheetSettings, type WorksheetEntry } from "./types";
 
 const entry = (id: string, hanzi: string): WorksheetEntry => ({ id, hanzi, pinyin: "test", english: "test", status: "complete" });
@@ -21,4 +21,21 @@ test("a word that fits on one page remains together; oversized words still pagin
   assert.ok(pages.every((page) => page.length <= 3));
   const positions = pages.flatMap((page, index) => page.filter((unit) => unit.entryId === "b").map(() => index));
   assert.equal(new Set(positions).size, 1);
+});
+
+test("poem lines flow onto the preceding page instead of leaving gaps", () => {
+  const layout = { ...resolveWorksheetLayout(defaultWorksheetSettings), learnPageWeight: 6 };
+  const units = buildLearnUnits([entry("first", "春眠不觉晓"), entry("second", "处处闻啼鸟")]);
+  const pages = paginateLearnUnits(units, new Map(), "off", layout, 0, false);
+  assert.deepEqual(pages.map((page) => page.map((unit) => unit.character).join("")), ["春眠不觉晓处", "处闻啼鸟"]);
+});
+
+test("practice rows flow across word boundaries by default", () => {
+  const layout = { ...resolveWorksheetLayout(defaultWorksheetSettings), rowsPerPage: 6 };
+  const entries = [entry("first", "春眠不觉晓"), entry("second", "处处闻啼鸟")];
+  const pages = paginatePracticeEntries(entries, layout);
+  assert.deepEqual(pages.map((page) => page.length), [6, 4]);
+  assert.equal(pages[0]?.at(-1)?.character, "处");
+  assert.equal(pages[1]?.[0]?.showContext, true);
+  assert.deepEqual(paginatePracticeEntries(entries, layout, 0, true).map((page) => page.length), [5, 5]);
 });

@@ -1,7 +1,7 @@
 export const PDF_EXPORT_TIMEOUT_MS = 60_000;
 
 export function getPdfExportTimeoutMs(pageCount: number): number {
-  return Math.min(180_000, Math.max(PDF_EXPORT_TIMEOUT_MS, pageCount * 8_000));
+  return Math.min(600_000, Math.max(PDF_EXPORT_TIMEOUT_MS, pageCount * 20_000));
 }
 
 export function createPdfExportGuard(signal?: AbortSignal, timeoutMs = PDF_EXPORT_TIMEOUT_MS) {

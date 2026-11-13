@@ -169,7 +169,9 @@ export function normalizeWorksheetSnapshot(value: unknown): WorksheetSnapshot {
       practiceStrength: validPracticeStrength(rawSettings.practiceStrength),
       extraBlankRows: rawSettings.extraBlankRows === 1 ? 1 : 0,
       repeatToFill: rawSettings.repeatToFill === true,
-      keepWordsTogether: rawSettings.keepWordsTogether !== false,
+      keepWordsTogether: typeof rawSettings.keepWordsTogether === "boolean"
+        ? rawSettings.keepWordsTogether
+        : defaultWorksheetSettings.keepWordsTogether,
       uniqueCharactersOnly: rawSettings.uniqueCharactersOnly === true,
       strokeOrderMode,
       flashcardsPerPage: validFlashcardsPerPage(rawSettings.flashcardsPerPage),

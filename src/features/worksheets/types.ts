@@ -94,7 +94,7 @@ export const defaultWorksheetSettings: WorksheetSettings = {
   practiceStrength: "balanced",
   extraBlankRows: 0,
   repeatToFill: false,
-  keepWordsTogether: true,
+  keepWordsTogether: false,
   uniqueCharactersOnly: false,
   strokeOrderMode: "detailed",
   flashcardsPerPage: 6,
