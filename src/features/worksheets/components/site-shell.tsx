@@ -72,7 +72,7 @@ const navMenus = [
 export function HanziSiteHeader({ active }: { active?: string }) {
   return (
     <header className="hs-no-print sticky top-0 z-50 border-b border-[#ded7ca] bg-[#fffdf8]/95 backdrop-blur">
-      <div className="hs-container flex h-16 items-center justify-between gap-5">
+      <div className="hs-container flex h-16 items-center justify-between gap-2 xl:gap-5">
         <Link
           href="/"
           className="flex shrink-0 items-center"
@@ -91,10 +91,10 @@ export function HanziSiteHeader({ active }: { active?: string }) {
           {navMenus.map((menu) => (
             <DesktopNavMenu key={menu.key} menu={menu} active={active} />
           ))}
-          <Link href="/hanzi-gacha" aria-current={active === "hanzi-gacha" ? "page" : undefined} className={cn("relative flex items-center px-3 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822] xl:px-4", active === "hanzi-gacha" && "text-[#b62822] after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-[#b62822]")}><UiText>{"Hanzi Gacha"}</UiText></Link>
+          <Link href="/hanzi-gacha" aria-current={active === "hanzi-gacha" ? "page" : undefined} className={cn("relative flex items-center whitespace-nowrap px-2 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822] xl:px-4", active === "hanzi-gacha" && "text-[#b62822] after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-[#b62822]")}><UiText>{"Hanzi Gacha"}</UiText></Link>
         </DesktopNavigation>
 
-        <div className="hidden items-center gap-3 xl:flex">
+        <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-3">
           <EmailFeedbackLink />
           <LocaleSwitch />
           {active !== "generator" ? (
@@ -102,7 +102,7 @@ export function HanziSiteHeader({ active }: { active?: string }) {
           ) : null}
         </div>
 
-        <div className="ml-auto flex items-center gap-2 xl:hidden">
+        <div className="ml-auto flex items-center gap-2 lg:hidden">
           <EmailFeedbackLink />
           {active !== "generator" ? (
             <Link href="/generator" className="hs-primary-button min-h-9 px-3 py-2 text-xs sm:text-sm"><UiText>{"Create"}</UiText></Link>
@@ -144,7 +144,7 @@ function DesktopNavMenu({
     <details name="gridhanzi-desktop-navigation" className="group relative flex">
       <summary
         className={cn(
-          "relative flex cursor-pointer list-none items-center gap-1 px-3 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822] xl:px-4 [&::-webkit-details-marker]:hidden",
+          "relative flex cursor-pointer list-none items-center gap-1 whitespace-nowrap px-2 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822] xl:px-4 [&::-webkit-details-marker]:hidden",
           active === menu.key &&
             "text-[#b62822] after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-[#b62822]",
         )}
