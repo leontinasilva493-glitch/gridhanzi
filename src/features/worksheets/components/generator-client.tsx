@@ -59,6 +59,7 @@ import {
 } from "../types";
 import type { HskLevel, HskSystem } from "../hsk";
 import { HskPicker } from "./hsk-picker";
+import { cardsToEntries, GACHA_HANDOFF_KEY } from "../gacha";
 import { PublicPageShell } from "./site-shell";
 import { WorksheetRenderer } from "./worksheet-renderer";
 
@@ -368,12 +369,23 @@ function GeneratorEditor({
     const date = new Intl.DateTimeFormat("en-US", {
       month: "short", day: "numeric", year: "numeric",
     }).format(new Date());
-    const initialSnapshot = {
-      ...currentSnapshot,
-      settings: { ...currentSnapshot.settings, date },
-    };
     setSettings((current) => current.date ? current : { ...current, date });
     try {
+      let incomingEntries = currentSnapshot.entries;
+      if (window.location.hash === "#gacha") {
+        const raw = sessionStorage.getItem(GACHA_HANDOFF_KEY);
+        const incoming = raw ? cardsToEntries(JSON.parse(raw)) : [];
+        if (!incoming.length) {
+          setEntries([]);
+          setResumeError(true);
+          setMessage(t("Could not load your selected characters. Return to Hanzi Gacha and try again.", "无法载入所选汉字，请返回汉字扭蛋重试。"));
+          return;
+        }
+        incomingEntries = incoming;
+        setEntries(incoming);
+        setMessage(t("Your Hanzi Gacha characters are ready to edit.", "已载入扭蛋选字，可继续编辑。"));
+      }
+      const initialSnapshot = { ...currentSnapshot, entries: incomingEntries, settings: { ...currentSnapshot.settings, date } };
       if (new URLSearchParams(window.location.search).get("resume") === "1") {
         const saved = sessionStorage.getItem(WORKSHEET_EDITOR_SESSION_KEY);
         if (!saved) throw new Error("Missing editor session");
@@ -386,9 +398,9 @@ function GeneratorEditor({
         setMessage(t("Back to your worksheet. All rows have been kept.", "已返回当前字帖，所有词条均已保留。"));
         return;
       }
-      const draft = parseWorksheetDraft(
-        localStorage.getItem(WORKSHEET_DRAFT_STORAGE_KEY),
-      );
+      let savedDraft: string | null = null;
+      try { savedDraft = localStorage.getItem(WORKSHEET_DRAFT_STORAGE_KEY); } catch { /* Editing works without persistent storage. */ }
+      const draft = parseWorksheetDraft(savedDraft);
       if (draft && !isSameWorksheetSnapshot(draft.snapshot, initialSnapshot)) {
         setPendingDraft(draft);
       } else if (draft) {
@@ -396,7 +408,7 @@ function GeneratorEditor({
       }
     } catch {
       setDraftSavedAt(null);
-      if (new URLSearchParams(window.location.search).has("resume")) {
+      if (new URLSearchParams(window.location.search).has("resume") || window.location.hash === "#gacha") {
         setEntries([]);
         setResumeError(true);
         setMessage(t("Your editing session could not be restored. Please reopen your saved draft or paste your list again.", "无法恢复本次编辑，请重新打开保存的草稿或粘贴词表。"));

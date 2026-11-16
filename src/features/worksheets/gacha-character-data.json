@@ -1,0 +1,512 @@
+{
+  "爱": {
+    "strokes": 10,
+    "radical": "爫",
+    "traditional": "愛"
+  },
+  "年": {
+    "strokes": 6,
+    "radical": "干",
+    "traditional": "年"
+  },
+  "佛": {
+    "strokes": 7,
+    "radical": "亻",
+    "traditional": "佛"
+  },
+  "的": {
+    "strokes": 8,
+    "radical": "白",
+    "traditional": "的"
+  },
+  "一": {
+    "strokes": 1,
+    "radical": "一",
+    "traditional": "一"
+  },
+  "是": {
+    "strokes": 9,
+    "radical": "日",
+    "traditional": "是"
+  },
+  "在": {
+    "strokes": 6,
+    "radical": "土",
+    "traditional": "在"
+  },
+  "了": {
+    "strokes": 2,
+    "radical": "亅",
+    "traditional": "了"
+  },
+  "我": {
+    "strokes": 7,
+    "radical": "戈",
+    "traditional": "我"
+  },
+  "你": {
+    "strokes": 7,
+    "radical": "亻",
+    "traditional": "你"
+  },
+  "人": {
+    "strokes": 2,
+    "radical": "人",
+    "traditional": "人"
+  },
+  "来": {
+    "strokes": 7,
+    "radical": "木",
+    "traditional": "來"
+  },
+  "去": {
+    "strokes": 5,
+    "radical": "厶",
+    "traditional": "去"
+  },
+  "说": {
+    "strokes": 9,
+    "radical": "讠",
+    "traditional": "說"
+  },
+  "学": {
+    "strokes": 8,
+    "radical": "子",
+    "traditional": "學"
+  },
+  "经": {
+    "strokes": 8,
+    "radical": "纟",
+    "traditional": "經"
+  },
+  "体": {
+    "strokes": 7,
+    "radical": "亻",
+    "traditional": "體"
+  },
+  "议": {
+    "strokes": 5,
+    "radical": "讠",
+    "traditional": "議"
+  },
+  "牛": {
+    "strokes": 4,
+    "radical": "牛",
+    "traditional": "牛"
+  },
+  "好": {
+    "strokes": 6,
+    "radical": "女",
+    "traditional": "好"
+  },
+  "不": {
+    "strokes": 4,
+    "radical": "一",
+    "traditional": "不"
+  },
+  "没": {
+    "strokes": 7,
+    "radical": "氵",
+    "traditional": "沒"
+  },
+  "有": {
+    "strokes": 6,
+    "radical": "月",
+    "traditional": "有"
+  },
+  "上": {
+    "strokes": 3,
+    "radical": "一",
+    "traditional": "上"
+  },
+  "下": {
+    "strokes": 3,
+    "radical": "一",
+    "traditional": "下"
+  },
+  "大": {
+    "strokes": 3,
+    "radical": "大",
+    "traditional": "大"
+  },
+  "小": {
+    "strokes": 3,
+    "radical": "小",
+    "traditional": "小"
+  },
+  "家": {
+    "strokes": 10,
+    "radical": "宀",
+    "traditional": "家"
+  },
+  "水": {
+    "strokes": 4,
+    "radical": "水",
+    "traditional": "水"
+  },
+  "书": {
+    "strokes": 4,
+    "radical": "乛",
+    "traditional": "書"
+  },
+  "吃": {
+    "strokes": 6,
+    "radical": "口",
+    "traditional": "吃"
+  },
+  "喝": {
+    "strokes": 12,
+    "radical": "口",
+    "traditional": "喝"
+  },
+  "二": {
+    "strokes": 2,
+    "radical": "二",
+    "traditional": "二"
+  },
+  "再": {
+    "strokes": 6,
+    "radical": "冂",
+    "traditional": "再"
+  },
+  "得": {
+    "strokes": 11,
+    "radical": "彳",
+    "traditional": "得"
+  },
+  "地": {
+    "strokes": 6,
+    "radical": "土",
+    "traditional": "地"
+  },
+  "坏": {
+    "strokes": 7,
+    "radical": "土",
+    "traditional": "壞"
+  },
+  "汉": {
+    "strokes": 5,
+    "radical": "氵",
+    "traditional": "漢"
+  },
+  "字": {
+    "strokes": 6,
+    "radical": "子",
+    "traditional": "字"
+  },
+  "中": {
+    "strokes": 4,
+    "radical": "丨",
+    "traditional": "中"
+  },
+  "国": {
+    "strokes": 8,
+    "radical": "囗",
+    "traditional": "國"
+  },
+  "天": {
+    "strokes": 4,
+    "radical": "大",
+    "traditional": "天"
+  },
+  "他": {
+    "strokes": 5,
+    "radical": "亻",
+    "traditional": "他"
+  },
+  "她": {
+    "strokes": 6,
+    "radical": "女",
+    "traditional": "她"
+  },
+  "们": {
+    "strokes": 5,
+    "radical": "亻",
+    "traditional": "們"
+  },
+  "日": {
+    "strokes": 4,
+    "radical": "日",
+    "traditional": "日"
+  },
+  "月": {
+    "strokes": 4,
+    "radical": "月",
+    "traditional": "月"
+  },
+  "个": {
+    "strokes": 3,
+    "radical": "人",
+    "traditional": "個"
+  },
+  "和": {
+    "strokes": 8,
+    "radical": "禾",
+    "traditional": "和"
+  },
+  "多": {
+    "strokes": 6,
+    "radical": "夕",
+    "traditional": "多"
+  },
+  "这": {
+    "strokes": 7,
+    "radical": "辶",
+    "traditional": "這"
+  },
+  "那": {
+    "strokes": 6,
+    "radical": "阝",
+    "traditional": "那"
+  },
+  "谁": {
+    "strokes": 10,
+    "radical": "讠",
+    "traditional": "誰"
+  },
+  "也": {
+    "strokes": 3,
+    "radical": "乙",
+    "traditional": "也"
+  },
+  "三": {
+    "strokes": 3,
+    "radical": "一",
+    "traditional": "三"
+  },
+  "四": {
+    "strokes": 5,
+    "radical": "囗",
+    "traditional": "四"
+  },
+  "五": {
+    "strokes": 4,
+    "radical": "二",
+    "traditional": "五"
+  },
+  "六": {
+    "strokes": 4,
+    "radical": "八",
+    "traditional": "六"
+  },
+  "七": {
+    "strokes": 2,
+    "radical": "一",
+    "traditional": "七"
+  },
+  "八": {
+    "strokes": 2,
+    "radical": "八",
+    "traditional": "八"
+  },
+  "九": {
+    "strokes": 2,
+    "radical": "乙",
+    "traditional": "九"
+  },
+  "十": {
+    "strokes": 2,
+    "radical": "十",
+    "traditional": "十"
+  },
+  "百": {
+    "strokes": 6,
+    "radical": "白",
+    "traditional": "百"
+  },
+  "千": {
+    "strokes": 3,
+    "radical": "十",
+    "traditional": "千"
+  },
+  "口": {
+    "strokes": 3,
+    "radical": "口",
+    "traditional": "口"
+  },
+  "手": {
+    "strokes": 4,
+    "radical": "手",
+    "traditional": "手"
+  },
+  "足": {
+    "strokes": 7,
+    "radical": "足",
+    "traditional": "足"
+  },
+  "目": {
+    "strokes": 5,
+    "radical": "目",
+    "traditional": "目"
+  },
+  "耳": {
+    "strokes": 6,
+    "radical": "耳",
+    "traditional": "耳"
+  },
+  "心": {
+    "strokes": 4,
+    "radical": "心",
+    "traditional": "心"
+  },
+  "火": {
+    "strokes": 4,
+    "radical": "火",
+    "traditional": "火"
+  },
+  "山": {
+    "strokes": 3,
+    "radical": "山",
+    "traditional": "山"
+  },
+  "土": {
+    "strokes": 3,
+    "radical": "土",
+    "traditional": "土"
+  },
+  "木": {
+    "strokes": 4,
+    "radical": "木",
+    "traditional": "木"
+  },
+  "田": {
+    "strokes": 5,
+    "radical": "田",
+    "traditional": "田"
+  },
+  "力": {
+    "strokes": 2,
+    "radical": "力",
+    "traditional": "力"
+  },
+  "女": {
+    "strokes": 3,
+    "radical": "女",
+    "traditional": "女"
+  },
+  "子": {
+    "strokes": 3,
+    "radical": "子",
+    "traditional": "子"
+  },
+  "父": {
+    "strokes": 4,
+    "radical": "父",
+    "traditional": "父"
+  },
+  "母": {
+    "strokes": 5,
+    "radical": "母",
+    "traditional": "母"
+  },
+  "王": {
+    "strokes": 4,
+    "radical": "王",
+    "traditional": "王"
+  },
+  "玉": {
+    "strokes": 5,
+    "radical": "玉",
+    "traditional": "玉"
+  },
+  "白": {
+    "strokes": 5,
+    "radical": "白",
+    "traditional": "白"
+  },
+  "红": {
+    "strokes": 6,
+    "radical": "纟",
+    "traditional": "紅"
+  },
+  "蓝": {
+    "strokes": 13,
+    "radical": "艹",
+    "traditional": "藍"
+  },
+  "绿": {
+    "strokes": 11,
+    "radical": "纟",
+    "traditional": "綠"
+  },
+  "金": {
+    "strokes": 8,
+    "radical": "金",
+    "traditional": "金"
+  },
+  "雨": {
+    "strokes": 8,
+    "radical": "雨",
+    "traditional": "雨"
+  },
+  "云": {
+    "strokes": 4,
+    "radical": "二",
+    "traditional": "雲"
+  },
+  "风": {
+    "strokes": 4,
+    "radical": "风",
+    "traditional": "風"
+  },
+  "电": {
+    "strokes": 5,
+    "radical": "田",
+    "traditional": "電"
+  },
+  "车": {
+    "strokes": 4,
+    "radical": "车",
+    "traditional": "車"
+  },
+  "马": {
+    "strokes": 3,
+    "radical": "马",
+    "traditional": "馬"
+  },
+  "鸟": {
+    "strokes": 5,
+    "radical": "鸟",
+    "traditional": "鳥"
+  },
+  "鱼": {
+    "strokes": 8,
+    "radical": "鱼",
+    "traditional": "魚"
+  },
+  "米": {
+    "strokes": 6,
+    "radical": "米",
+    "traditional": "米"
+  },
+  "茶": {
+    "strokes": 9,
+    "radical": "艹",
+    "traditional": "茶"
+  },
+  "花": {
+    "strokes": 7,
+    "radical": "艹",
+    "traditional": "花"
+  },
+  "草": {
+    "strokes": 9,
+    "radical": "艹",
+    "traditional": "草"
+  },
+  "猫": {
+    "strokes": 11,
+    "radical": "犭",
+    "traditional": "貓"
+  },
+  "狗": {
+    "strokes": 8,
+    "radical": "犭",
+    "traditional": "狗"
+  },
+  "早": {
+    "strokes": 6,
+    "radical": "日",
+    "traditional": "早"
+  }
+}

@@ -13,6 +13,7 @@ other.
 | --- | --- |
 | `/` | Chinese Character Worksheet Generator |
 | `/generator` | Chinese Worksheet Generator from Your Word List |
+| `/hanzi-gacha` | Hanzi Gacha and Chinese character collection game with a printable worksheet handoff |
 | `/huong-dan-tao-giay-luyen-viet-tieng-trung` | Vietnamese guide to creating Chinese handwriting worksheets |
 | `/english-to-chinese-writing-practice` | English to Chinese Writing Practice |
 | `/templates` | Printable Chinese Writing Worksheets |
