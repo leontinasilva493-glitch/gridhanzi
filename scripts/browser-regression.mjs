@@ -109,6 +109,27 @@ async function assertBookmarkPromptRemainsHidden(page) {
 }
 
 try {
+  await scenario('gacha-landscape-reveal-fits-screen', { viewport: { width: 568, height: 320 }, isMobile: true, hasTouch: true }, async (page, context) => {
+    await context.addInitScript(() => { Math.random = () => 0; });
+    const fits = async (locator, label) => {
+      const box = await locator.boundingBox();
+      assert.ok(box && box.x >= -1 && box.y >= -1 && box.x + box.width <= 569 && box.y + box.height <= 321, `${label} must fit the landscape viewport: ${JSON.stringify(box)}`);
+    };
+    await visit(page, '/hanzi-gacha');
+    await page.getByRole('button', { name: 'PULL ×10' }).click();
+    await page.locator('.gacha-ceremony.phase-machine').waitFor();
+    await fits(page.locator('.ceremony-machine-object'), 'Gacha machine');
+    await page.locator('.gacha-ceremony.phase-anticipate').waitFor();
+    await fits(page.locator('.ceremony-grid'), 'Card grid');
+    await page.locator('.gacha-spotlight-ssr').waitFor();
+    await page.waitForTimeout(600);
+    await fits(page.getByRole('button', { name: 'View details for 爱' }), 'Rare card');
+    await fits(page.getByRole('button', { name: 'Continue →' }), 'Continue button');
+    await page.getByRole('button', { name: 'Continue →' }).click();
+    await page.getByRole('button', { name: 'Skip all →' }).click();
+    assert.equal(await page.locator('.gacha-card-button').count(), 10);
+  });
+
   await scenario('gacha-navigation-and-metadata', {}, async page => {
     await visit(page, '/');
     const navigation = page.locator('header nav:visible').first();
