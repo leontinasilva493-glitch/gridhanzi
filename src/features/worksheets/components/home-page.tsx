@@ -84,6 +84,10 @@ export function HomePage() {
           ><UiText>{"Look up the strokes before adding a character to your worksheet."}</UiText></TaskLink>
         </section>
 
+        <section className="hs-container mt-5 grid" aria-label="Hanzi Gacha">
+          <ToolLink href="/hanzi-gacha" icon={Sparkles} title="Hanzi Gacha: Chinese Character Collection Game"><UiText>{"Draw and collect Hanzi cards, explore their meanings, and turn your favourites into a printable worksheet."}</UiText></ToolLink>
+        </section>
+
         <section className="hs-container hs-content-visibility py-14" aria-labelledby="learning-guides-title">
           <h2 id="learning-guides-title" className="hs-display text-3xl font-bold"><UiText>{"Chinese Learning Guides"}</UiText></h2>
           <p className="mt-3 max-w-3xl leading-7 text-[#566276]"><UiText>{"Explore everyday expressions, place names, and language in context before practising the characters."}</UiText></p>

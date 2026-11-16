@@ -2,6 +2,13 @@ import { isProductionAnalyticsHost } from "../../components/analytics/host";
 import type { WorksheetSettings } from "./types";
 import type { FeedbackContext } from "./feedback";
 
+export function trackGachaEvent(event: "gacha_pull" | "gacha_select" | "gacha_stroke_open" | "gacha_worksheet_open", count: number) {
+  if (typeof window === "undefined" || !isProductionAnalyticsHost(window.location.hostname)) return;
+  try {
+    (window as Window & { gtag?: (...args: unknown[]) => void }).gtag?.("event", event, { count, page_location: window.location.origin + window.location.pathname });
+  } catch { /* Analytics is optional. */ }
+}
+
 /** Allowlisted action categories only. No free text, roles, emails or worksheet data. */
 export function trackHelpEvent(
   event: "worksheet_help_open" | "worksheet_help_action" | "worksheet_feedback_sent" | "worksheet_use_selected",

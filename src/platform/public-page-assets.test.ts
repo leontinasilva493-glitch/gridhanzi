@@ -6,6 +6,7 @@ const manifest: PublicPageManifest = { build: "test-build", compatibilityId: "te
 test("public prerender accepts only GET/HEAD with presentation-neutral parameters", () => {
   const request=(path:string,init?:RequestInit)=>new Request("https://gridhanzi.org"+path,init);
   for(const path of ["/radicals","/radicals?utm_source=test","/radicals.rsc?_rsc=abc"])assert.equal(eligiblePublicRequest(request(path)),true);
+  assert.equal(eligiblePublicRequest(request("/generator#gacha")), true, "Gacha handoff can use the static generator page");
   for(const path of ["/generator?learning=pinyin:ma","/generator?words=私密","/generator?template=family","/stroke-order?character=水","/radicals?unknown=1"])assert.equal(eligiblePublicRequest(request(path)),false);
   assert.equal(eligiblePublicRequest(request("/radicals",{method:"POST"})),false);
   for(const header of ["authorization","next-action","next-router-segment-prefetch","x-vinext-mounted-slots"]) assert.equal(eligiblePublicRequest(request("/radicals",{headers:{[header]:"x"}})),false);

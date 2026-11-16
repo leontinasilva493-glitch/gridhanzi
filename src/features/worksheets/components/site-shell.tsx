@@ -91,6 +91,7 @@ export function HanziSiteHeader({ active }: { active?: string }) {
           {navMenus.map((menu) => (
             <DesktopNavMenu key={menu.key} menu={menu} active={active} />
           ))}
+          <Link href="/hanzi-gacha" aria-current={active === "hanzi-gacha" ? "page" : undefined} className={cn("relative flex items-center px-3 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822] xl:px-4", active === "hanzi-gacha" && "text-[#b62822] after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-[#b62822]")}><UiText>{"Hanzi Gacha"}</UiText></Link>
         </DesktopNavigation>
 
         <div className="hidden items-center gap-3 xl:flex">
@@ -115,6 +116,7 @@ export function HanziSiteHeader({ active }: { active?: string }) {
               {navMenus.map((menu) => (
                 <MobileNavMenu key={menu.key} menu={menu} />
               ))}
+              <Link href="/hanzi-gacha" aria-current={active === "hanzi-gacha" ? "page" : undefined} className="block rounded border-t border-[#ded7ca] px-3 py-2.5 text-sm font-medium text-[#17253c] hover:bg-[#f7f1e7] hover:text-[#b62822]"><UiText>{"Hanzi Gacha"}</UiText></Link>
               {active !== "generator" ? (
                 <div className="border-t border-[#ded7ca] p-2">
                   <Link href="/generator" className="hs-primary-button w-full text-sm"><UiText>{"Create Worksheet"}</UiText></Link>

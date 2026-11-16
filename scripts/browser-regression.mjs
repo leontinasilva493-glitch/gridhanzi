@@ -109,6 +109,59 @@ async function assertBookmarkPromptRemainsHidden(page) {
 }
 
 try {
+  await scenario('gacha-navigation-and-metadata', {}, async page => {
+    await visit(page, '/');
+    const navigation = page.locator('header nav:visible').first();
+    assert.equal(await navigation.getByRole('link', { name: 'Hanzi Gacha' }).getAttribute('href'), '/hanzi-gacha');
+    assert.equal(await page.locator('main').getByRole('link', { name: /Hanzi Gacha: Chinese Character Collection Game/ }).isVisible(), true);
+    await navigation.getByRole('link', { name: 'Hanzi Gacha' }).click();
+    await page.waitForURL('**/hanzi-gacha');
+    assert.match(await page.title(), /Hanzi Gacha: Chinese Character Collection Game/);
+    assert.match(await page.locator('h1').innerText(), /Chinese Character Collection Game/);
+    assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'), 'https://gridhanzi.org/hanzi-gacha');
+    assert.match(await page.locator('meta[name="description"]').getAttribute('content'), /Draw and collect Chinese character cards/);
+  });
+
+  await scenario('gacha-reveal-and-worksheet-handoff', {}, async (page, context) => {
+    await context.addInitScript(() => { Math.random = () => 0; });
+    await visit(page, '/hanzi-gacha');
+    await page.getByRole('button', { name: 'PULL ×10' }).click();
+    const stage = page.getByRole('region', { name: 'Opening cards' });
+    await stage.waitFor();
+    const box = await stage.boundingBox();
+    assert.deepEqual([box.width, box.height], [1280, 900], 'Opening stage fills the viewport');
+    await page.locator('.gacha-spotlight-ssr').waitFor();
+    assert.equal(await page.locator('.gacha-spotlight .gacha-character').innerText(), '爱');
+    await page.waitForTimeout(2300);
+    assert.equal(await page.locator('.gacha-spotlight-ssr').isVisible(), true, 'Rare card waits for the player');
+    await page.getByRole('button', { name: 'View details for 爱' }).click();
+    assert.equal(await page.getByRole('dialog', { name: '爱 card details' }).isVisible(), true);
+    await page.getByRole('button', { name: 'Close card details' }).click();
+    await page.getByRole('button', { name: 'Skip all', exact: true }).click();
+    assert.equal(await page.locator('.gacha-card-button').count(), 10);
+    await page.getByRole('button', { name: 'Select all', exact: true }).click();
+    await page.getByRole('button', { name: 'CREATE WORKSHEET' }).click();
+    await page.waitForURL('**/generator#gacha');
+    await page.getByLabel('Chinese row 1').first().waitFor();
+    assert.equal(await page.getByLabel('Chinese row 1').first().inputValue(), '爱');
+    assert.equal(await page.getByLabel('Pinyin row 1').first().inputValue(), 'ài');
+  });
+
+  await scenario('gacha-damaged-selection-preserves-collection', { reducedMotion: 'reduce' }, async (page, context) => {
+    await context.addInitScript(() => {
+      if (sessionStorage.getItem('gacha-test-seeded')) return;
+      sessionStorage.setItem('gacha-test-seeded', '1');
+      localStorage.setItem('gridhanzi:gacha:selection:v1', '{bad json');
+      localStorage.setItem('gridhanzi:gacha:collection:v1', '{"爱":2}');
+    });
+    await visit(page, '/hanzi-gacha');
+    await page.getByRole('button', { name: /Collection/ }).click();
+    assert.equal(await page.getByRole('button', { name: '爱 ×2' }).isVisible(), true);
+    await page.reload({ waitUntil: 'networkidle' });
+    await page.getByRole('button', { name: /Collection/ }).click();
+    assert.equal(await page.getByRole('button', { name: '爱 ×2' }).isVisible(), true);
+  });
+
   await scenario('bookmark-prompt-homepage-en-desktop', {}, async page => {
     await visit(page, '/');
     assert.equal(await page.evaluate(() => localStorage.getItem('gridhanzi-bookmark-prompt-dismissed-v1')), null, 'Fresh context starts without a dismissal marker');
