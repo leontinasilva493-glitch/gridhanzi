@@ -24,5 +24,5 @@ export function DesktopNavigation({ children }: { children: ReactNode }) {
       document.removeEventListener("keydown", dismissWithEscape);
     };
   }, []);
-  return <nav ref={nav} className="hidden items-stretch self-stretch xl:flex">{children}</nav>;
+  return <nav ref={nav} className="hidden items-stretch self-stretch lg:flex">{children}</nav>;
 }

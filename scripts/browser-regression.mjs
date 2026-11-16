@@ -109,6 +109,35 @@ async function assertBookmarkPromptRemainsHidden(page) {
 }
 
 try {
+  await scenario('desktop-navigation-laptop-width', { viewport: { width: 1024, height: 768 } }, async page => {
+    for (const path of ['/', '/zh']) {
+      await visit(page, path);
+      const navigation = page.locator('header nav:visible').first();
+      assert.equal(await navigation.isVisible(), true);
+      assert.equal(await page.getByText('Open navigation', { exact: true }).isVisible(), false);
+      const gacha = navigation.getByRole('link', { name: /Hanzi Gacha|汉字扭蛋/ });
+      assert.equal(await gacha.isVisible(), true);
+      const [logo, nav, actions] = await Promise.all([
+        page.getByRole('link', { name: 'GridHanzi home' }).boundingBox(),
+        navigation.boundingBox(),
+        page.locator('header').first().locator(':scope > div > div.hidden').first().boundingBox(),
+      ]);
+      assert.ok(logo && nav && actions && logo.x + logo.width <= nav.x && nav.x + nav.width <= actions.x, `Header items overlap at ${path}`);
+      assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
+    }
+    await page.locator('header nav:visible').first().getByRole('link', { name: /Hanzi Gacha|汉字扭蛋/ }).click();
+    await page.waitForURL('**/hanzi-gacha');
+  });
+
+  await scenario('mobile-navigation-gacha-link', { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true }, async page => {
+    await visit(page, '/');
+    const menu = page.getByText('Open navigation', { exact: true });
+    assert.equal(await menu.isVisible(), true);
+    await page.locator('header').first().locator('summary').filter({ has: menu }).tap();
+    await page.locator('header nav:visible').getByRole('link', { name: 'Hanzi Gacha' }).tap();
+    await page.waitForURL('**/hanzi-gacha');
+  });
+
   await scenario('gacha-landscape-reveal-fits-screen', { viewport: { width: 568, height: 320 }, isMobile: true, hasTouch: true }, async (page, context) => {
     await context.addInitScript(() => { Math.random = () => 0; });
     const fits = async (locator, label) => {
