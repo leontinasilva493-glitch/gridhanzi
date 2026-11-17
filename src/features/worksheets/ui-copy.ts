@@ -1,6 +1,8 @@
 import { isChineseLocale } from "./i18n";
 
 const chinese: Readonly<Record<string, string>> = {
+  "Chinese Pinyin Chart": "汉语拼音表",
+  "Radical Worksheets": "部首练习纸",
   "Planning a first lesson? Use the": "准备第一节课？可以先用",
   "Greetings worksheet": "问候语练习纸",
   "for hello, thanks and polite questions, or choose a review set from the": "练习打招呼、致谢和礼貌提问，也可以从这里选复习词：",

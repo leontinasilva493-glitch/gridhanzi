@@ -3,6 +3,14 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  /* Main-site UI palette; worksheet print and game rarity colors stay separate. */
+  --color-hs-ink: #17253c;
+  --color-hs-link: #24466e;
+  --color-hs-muted: #566276;
+  --color-hs-seal: #b62822;
+  --color-hs-paper: #fffdf8;
+  --color-hs-line: #ded7ca;
+  --color-hs-hover: #f7f1e7;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
