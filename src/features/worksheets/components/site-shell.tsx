@@ -71,7 +71,7 @@ const navMenus = [
 
 export function HanziSiteHeader({ active }: { active?: string }) {
   return (
-    <header className="hs-no-print sticky top-0 z-50 border-b border-[#ded7ca] bg-[#fffdf8]/95 backdrop-blur">
+    <header className="hs-no-print sticky top-0 z-50 border-b border-hs-line bg-hs-paper/95 backdrop-blur">
       <div className="hs-container flex h-16 items-center justify-between gap-2 xl:gap-5">
         <Link
           href="/"
@@ -91,7 +91,7 @@ export function HanziSiteHeader({ active }: { active?: string }) {
           {navMenus.map((menu) => (
             <DesktopNavMenu key={menu.key} menu={menu} active={active} />
           ))}
-          <Link href="/hanzi-gacha" aria-current={active === "hanzi-gacha" ? "page" : undefined} className={cn("relative flex items-center whitespace-nowrap px-2 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822] xl:px-4", active === "hanzi-gacha" && "text-[#b62822] after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-[#b62822]")}><UiText>{"Hanzi Gacha"}</UiText></Link>
+          <Link href="/hanzi-gacha" aria-current={active === "hanzi-gacha" ? "page" : undefined} className={cn("relative flex items-center whitespace-nowrap px-2 text-sm font-medium text-hs-ink transition-colors hover:text-hs-seal xl:px-4", active === "hanzi-gacha" && "text-hs-seal after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-hs-seal")}><UiText>{"Hanzi Gacha"}</UiText></Link>
         </DesktopNavigation>
 
         <div className="hidden shrink-0 items-center gap-2 lg:flex xl:gap-3">
@@ -116,13 +116,13 @@ export function HanziSiteHeader({ active }: { active?: string }) {
               {navMenus.map((menu) => (
                 <MobileNavMenu key={menu.key} menu={menu} />
               ))}
-              <Link href="/hanzi-gacha" aria-current={active === "hanzi-gacha" ? "page" : undefined} className="block rounded border-t border-[#ded7ca] px-3 py-2.5 text-sm font-medium text-[#17253c] hover:bg-[#f7f1e7] hover:text-[#b62822]"><UiText>{"Hanzi Gacha"}</UiText></Link>
+              <Link href="/hanzi-gacha" aria-current={active === "hanzi-gacha" ? "page" : undefined} className="block rounded border-t border-hs-line px-3 py-2.5 text-sm font-medium text-hs-ink hover:bg-hs-hover hover:text-hs-seal"><UiText>{"Hanzi Gacha"}</UiText></Link>
               {active !== "generator" ? (
-                <div className="border-t border-[#ded7ca] p-2">
+                <div className="border-t border-hs-line p-2">
                   <Link href="/generator" className="hs-primary-button w-full text-sm"><UiText>{"Create Worksheet"}</UiText></Link>
                 </div>
               ) : null}
-              <div className="border-t border-[#ded7ca] p-2">
+              <div className="border-t border-hs-line p-2">
                 <LocaleSwitch />
               </div>
             </nav>
@@ -144,9 +144,9 @@ function DesktopNavMenu({
     <details name="gridhanzi-desktop-navigation" className="group relative flex">
       <summary
         className={cn(
-          "relative flex cursor-pointer list-none items-center gap-1 whitespace-nowrap px-2 text-sm font-medium text-[#17253c] transition-colors hover:text-[#b62822] xl:px-4 [&::-webkit-details-marker]:hidden",
+          "relative flex cursor-pointer list-none items-center gap-1 whitespace-nowrap px-2 text-sm font-medium text-hs-ink transition-colors hover:text-hs-seal xl:px-4 [&::-webkit-details-marker]:hidden",
           active === menu.key &&
-            "text-[#b62822] after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-[#b62822]",
+            "text-hs-seal after:absolute after:inset-x-3 after:bottom-0 after:h-0.5 after:bg-hs-seal",
         )}
       >
         <UiText>{menu.label}</UiText>
@@ -161,7 +161,7 @@ function DesktopNavMenu({
           <Link
             key={href}
             href={href}
-            className="block rounded px-3 py-2.5 text-sm font-medium text-[#17253c] hover:bg-[#f7f1e7] hover:text-[#b62822]"
+            className="block rounded px-3 py-2.5 text-sm font-medium text-hs-ink hover:bg-hs-hover hover:text-hs-seal"
           >
             <UiText>{label}</UiText>
           </Link>
@@ -173,8 +173,8 @@ function DesktopNavMenu({
 
 function MobileNavMenu({ menu }: { menu: (typeof navMenus)[number] }) {
   return (
-    <details className="border-t border-[#ded7ca] first:border-t-0">
-      <summary className="flex cursor-pointer list-none items-center justify-between rounded px-3 py-2.5 text-sm font-medium text-[#17253c] hover:bg-[#f7f1e7] [&::-webkit-details-marker]:hidden">
+    <details className="border-t border-hs-line first:border-t-0">
+      <summary className="flex cursor-pointer list-none items-center justify-between rounded px-3 py-2.5 text-sm font-medium text-hs-ink hover:bg-hs-hover [&::-webkit-details-marker]:hidden">
         <UiText>{menu.label}</UiText>
         <ChevronDown className="size-4" aria-hidden="true" />
       </summary>
@@ -183,7 +183,7 @@ function MobileNavMenu({ menu }: { menu: (typeof navMenus)[number] }) {
           <Link
             key={href}
             href={href}
-            className="block rounded py-1.5 pl-2 text-sm text-[#17253c] hover:bg-[#f7f1e7]"
+            className="block rounded py-1.5 pl-2 text-sm text-hs-ink hover:bg-hs-hover"
           >
             <UiText>{label}</UiText>
           </Link>

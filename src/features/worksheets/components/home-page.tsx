@@ -40,7 +40,7 @@ export function HomePage() {
               <HomeWorkbench />
             </div>
             <p className="mt-3 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8 text-[#435166]"><UiText>{"Create printable Chinese worksheets with your own word list. Choose a Hanzi grid layout—Tian Zi Ge, Mi Zi Ge, or blank squares—then add Pinyin and tracing practice. Download an A4 or US Letter PDF for free, with no sign-up."}</UiText></p>
-            <Link href="/grids" className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-[#24466e] underline underline-offset-4 hover:text-[#b62822]">
+            <Link href="/grids" className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-hs-link underline underline-offset-4 hover:text-hs-seal">
               <UiText>{"Download blank Hanzi grid paper"}</UiText><ArrowRight className="size-4 shrink-0" />
             </Link>
             <div className="hs-card mt-4 grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
@@ -90,7 +90,7 @@ export function HomePage() {
 
         <section className="hs-container hs-content-visibility py-14" aria-labelledby="learning-guides-title">
           <h2 id="learning-guides-title" className="hs-display text-3xl font-bold"><UiText>{"Chinese Learning Guides"}</UiText></h2>
-          <p className="mt-3 max-w-3xl leading-7 text-[#566276]"><UiText>{"Explore everyday expressions, place names, and language in context before practising the characters."}</UiText></p>
+          <p className="mt-3 max-w-3xl leading-7 text-hs-muted"><UiText>{"Explore everyday expressions, place names, and language in context before practising the characters."}</UiText></p>
           <div className="mt-5 grid gap-3 sm:grid-cols-3">
             <ToolLink href="/thank-you-in-chinese" icon={BookOpen} title="How to Say Thank You in Chinese"><UiText>{"Learn when to use 谢谢 and practise writing it."}</UiText></ToolLink>
             <ToolLink href="/shenzhen-in-chinese" icon={BookOpen} title="Shenzhen in Chinese"><UiText>{"Read 深圳, understand the name, and practise its characters."}</UiText></ToolLink>
@@ -101,7 +101,7 @@ export function HomePage() {
         <section className="hs-container hs-content-visibility py-14">
           <p className="hs-kicker"><UiText>{"One site, clear starting points"}</UiText></p>
           <h2 className="hs-display mt-2 text-3xl font-bold"><UiText>{"Choose the Right Chinese Writing Tool"}</UiText></h2>
-          <p className="mt-3 max-w-3xl leading-7 text-[#566276]"><UiText>{"Start with the page that matches the job: build from your own words, open a ready-made list, print empty grids, or focus on vocabulary and stroke order."}</UiText></p>
+          <p className="mt-3 max-w-3xl leading-7 text-hs-muted"><UiText>{"Start with the page that matches the job: build from your own words, open a ready-made list, print empty grids, or focus on vocabulary and stroke order."}</UiText></p>
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             <ToolLink
               href="/generator"
@@ -114,13 +114,13 @@ export function HomePage() {
               title="Printable Chinese writing worksheets"
             ><UiText>{"Choose an editable topic, classroom, or HSK word list."}</UiText></ToolLink>
             <div className="hs-card p-5">
-              <Link href="/grids" className="font-bold text-[#24466e] hover:text-[#b62822]">
+              <Link href="/grids" className="font-bold text-hs-link hover:text-hs-seal">
                 <UiText>{"Printable Hanzi Grid Paper"}</UiText>
               </Link>
-              <p className="mt-2 text-sm leading-6 text-[#566276]"><UiText>{"Choose Tian Zi Ge for cross-guided practice, Mi Zi Ge for diagonal guides, or blank squares for independent writing."}</UiText></p>
+              <p className="mt-2 text-sm leading-6 text-hs-muted"><UiText>{"Choose Tian Zi Ge for cross-guided practice, Mi Zi Ge for diagonal guides, or blank squares for independent writing."}</UiText></p>
               <div className="mt-3 grid grid-cols-3 gap-2">
                 {gridPaperPages.map((page) => (
-                  <Link key={page.slug} href={`/grids/${page.slug}`} className="rounded border border-[#ded7ca] p-2 text-center text-xs font-semibold text-[#24466e] hover:border-[#b62822] hover:text-[#b62822]">
+                  <Link key={page.slug} href={`/grids/${page.slug}`} className="rounded border border-hs-line p-2 text-center text-xs font-semibold text-hs-link hover:border-hs-seal hover:text-hs-seal">
                     <img src={page.pdfHref.replace(/\.pdf$/, ".svg")} alt="" loading="lazy" width={210} height={297} className="mb-2 h-24 w-full bg-white object-cover object-top" />
                     <UiText>{page.slug === "blank" ? "Blank squares" : page.slug === "mi-zi-ge" ? "Mi Zi Ge" : "Tian Zi Ge"}</UiText>
                   </Link>
@@ -166,8 +166,8 @@ export function HomePage() {
             <ProcessItem icon={Printer} title="Print the PDF"><UiText>{"Choose tracing grids, blank writing cells, paper size, and PDF output."}</UiText></ProcessItem>
           </div>
           <p className="mt-5 text-sm leading-6 text-[#5b687a]"><UiText>{"Need a faster start? Browse"}</UiText>{" "}{" "}
-            <Link href="/templates" className="font-semibold text-[#b62822]"><UiText>{"Chinese character practice sheet templates"}</UiText></Link>{" "}<UiText>{"and open any topic in the worksheet generator. Need empty practice cells instead? Download"}</UiText>{" "}{" "}
-            <Link href="/grids" className="font-semibold text-[#b62822]"><UiText>{"Chinese grid paper PDFs"}</UiText></Link>
+            <Link href="/templates" className="font-semibold text-hs-seal"><UiText>{"Chinese character practice sheet templates"}</UiText></Link>{" "}<UiText>{"and open any topic in the worksheet generator. Need empty practice cells instead? Download"}</UiText>{" "}{" "}
+            <Link href="/grids" className="font-semibold text-hs-seal"><UiText>{"Chinese grid paper PDFs"}</UiText></Link>
             .
           </p>
         </section>
@@ -180,7 +180,7 @@ export function HomePage() {
             </div>
             <Link
               href="/templates"
-              className="hidden items-center gap-1 text-sm font-semibold text-[#b62822] sm:flex"
+              className="hidden items-center gap-1 text-sm font-semibold text-hs-seal sm:flex"
             ><UiText>{"View all templates"}</UiText><ArrowRight className="size-4" />
             </Link>
           </div>
@@ -234,7 +234,7 @@ export function HomePage() {
           </div>
           <aside className="hs-card border-[#243e62] p-7 sm:p-9">
             <h2 className="hs-display text-2xl font-bold"><UiText>{"Use one list for lessons, practice, and review"}</UiText></h2>
-            <p className="mt-3 text-[#566276]"><UiText>{"Turn the same checked vocabulary into a guided lesson, a handwriting page, or a short recall test."}</UiText></p>
+            <p className="mt-3 text-hs-muted"><UiText>{"Turn the same checked vocabulary into a guided lesson, a handwriting page, or a short recall test."}</UiText></p>
             <ul className="mt-5 grid gap-3 sm:grid-cols-2">
               {[
                 "Learn pages with stroke order",
@@ -258,7 +258,7 @@ export function HomePage() {
           <div className="p-8 sm:p-10">
             <p className="hs-kicker"><UiText>{"Practice at home"}</UiText></p>
             <h2 className="hs-display mt-2 text-3xl font-bold"><UiText>{"Print Chinese character practice sheets for home"}</UiText></h2>
-            <p className="mt-4 max-w-xl leading-7 text-[#566276]"><UiText>{"Print the words from class and let your child trace them before writing them without a model. No extra app or account is needed."}</UiText></p>
+            <p className="mt-4 max-w-xl leading-7 text-hs-muted"><UiText>{"Print the words from class and let your child trace them before writing them without a model. No extra app or account is needed."}</UiText></p>
             <ul className="mt-5 space-y-3 text-sm">
               {[
                 "Review this week’s words",
@@ -288,7 +288,7 @@ export function HomePage() {
         >
           <p className="hs-kicker"><UiText>{"Questions before you print"}</UiText></p>
           <h2 className="hs-display mt-2 text-3xl font-bold"><UiText>{"Frequently asked questions"}</UiText></h2>
-          <div className="hs-card mt-6 divide-y divide-[#ded7ca]">
+          <div className="hs-card mt-6 divide-y divide-hs-line">
             {[
               [
                 "What can I make with this Chinese character worksheet generator?",
@@ -323,7 +323,7 @@ export function HomePage() {
           </div>
         </section>
         <div className="hs-container pb-10 text-sm">
-          <a lang="vi" href="/huong-dan-tao-giay-luyen-viet-tieng-trung" className="font-semibold text-[#24466e] underline underline-offset-4">Hướng dẫn tạo giấy luyện viết tiếng Trung bằng tiếng Việt</a>
+          <a lang="vi" href="/huong-dan-tao-giay-luyen-viet-tieng-trung" className="font-semibold text-hs-link underline underline-offset-4">Hướng dẫn tạo giấy luyện viết tiếng Trung bằng tiếng Việt</a>
         </div>
       </main>
     </PublicPageShell>
@@ -357,7 +357,7 @@ function ProcessItem({
   children: React.ReactNode;
 }) {
   return (
-    <article className="rounded border border-[#ded7ca] bg-white p-5">
+    <article className="rounded border border-hs-line bg-white p-5">
       <span className="grid size-12 place-items-center rounded-full bg-[#f3eee3] text-[#315f47]">
         <Icon className="size-5" />
       </span>
@@ -389,7 +389,7 @@ function TaskLink({
       <span className="min-w-0 flex-1">
         <span className="hs-display flex items-start justify-between gap-3 text-lg font-bold">
           <UiText>{title}</UiText>
-          <ArrowRight className="mt-0.5 size-4 shrink-0 text-[#b62822] transition-transform group-hover:translate-x-1" />
+          <ArrowRight className="mt-0.5 size-4 shrink-0 text-hs-seal transition-transform group-hover:translate-x-1" />
         </span>
         <span className="mt-2 block text-sm leading-6 text-[#617084]">
           {children}
@@ -413,7 +413,7 @@ function ToolLink({
   return (
     <Link
       href={href}
-      className="group rounded border border-[#ded7ca] bg-[#fffefa] p-5 transition hover:-translate-y-0.5 hover:border-[#b62822] hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b62822] focus-visible:ring-offset-2"
+      className="group rounded border border-hs-line bg-[#fffefa] p-5 transition hover:-translate-y-0.5 hover:border-hs-seal hover:shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-hs-seal focus-visible:ring-offset-2"
     >
       <span className="flex items-start gap-3">
         <span className="grid size-10 shrink-0 place-items-center rounded-full bg-[#f3eee3] text-[#315f47]">
@@ -422,7 +422,7 @@ function ToolLink({
         <span className="min-w-0">
           <span className="hs-display flex items-start justify-between gap-3 font-bold text-[#172942]">
             <UiText>{title}</UiText>
-            <ArrowRight className="mt-0.5 size-4 shrink-0 text-[#b62822] transition-transform group-hover:translate-x-1" />
+            <ArrowRight className="mt-0.5 size-4 shrink-0 text-hs-seal transition-transform group-hover:translate-x-1" />
           </span>
           <span className="mt-2 block text-sm leading-6 text-[#617084]">
             {children}
@@ -446,7 +446,7 @@ function PracticeCard({
     <article className="hs-card grid gap-5 p-5 sm:grid-cols-[0.9fr_1fr] lg:grid-cols-1">
       <PracticeModePreview mode={mode} />
       <div>
-        <h3 className="hs-display text-xl font-bold text-[#b62822]"><UiText>{title}</UiText></h3>
+        <h3 className="hs-display text-xl font-bold text-hs-seal"><UiText>{title}</UiText></h3>
         <p className="mt-2 text-sm leading-6 text-[#58667a]">{children}</p>
         <Link
           href={`/generator?template=family&mode=${mode}`}
@@ -461,7 +461,7 @@ function PracticeCard({
 function PracticeModePreview({ mode }: { mode: "trace" | "write" | "quiz" }) {
   return (
     <div
-      className="rounded border border-[#d8d0c3] bg-[#fffdf8] p-3"
+      className="rounded border border-[#d8d0c3] bg-hs-paper p-3"
       aria-label={`${mode} worksheet mode preview`}
     >
       <div className="mb-3 flex items-center justify-between text-xs font-semibold text-[#607086]">
@@ -471,7 +471,7 @@ function PracticeModePreview({ mode }: { mode: "trace" | "write" | "quiz" }) {
       <div className="space-y-3">
         {family.entries.slice(0, 2).map((entry) => (
           <div key={entry.id} className="grid grid-cols-[minmax(0,1fr)_repeat(3,2.5rem)] items-center gap-2">
-            <span className="truncate text-xs text-[#566276]">
+            <span className="truncate text-xs text-hs-muted">
               {mode === "quiz" ? entry.english : entry.pinyin}
             </span>
             {[0, 1, 2].map((cell) => (

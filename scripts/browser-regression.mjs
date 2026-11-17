@@ -109,6 +109,37 @@ async function assertBookmarkPromptRemainsHidden(page) {
 }
 
 try {
+  await scenario('home-worksheet-steps-mobile', { viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true }, async page => {
+    await visit(page, '/');
+    const steps = page.getByRole('list', { name: 'Worksheet steps' });
+    assert.equal(await steps.getByText('Paste words').isVisible(), true);
+    assert.equal(await steps.getByText('Review entries').isVisible(), true);
+    assert.equal(await steps.getByText('Preview & print').isVisible(), true);
+    await page.getByRole('button', { name: 'Use a family example' }).tap();
+    await page.getByRole('button', { name: 'Build my worksheet' }).tap();
+    await page.waitForURL('**/generator?**');
+    await page.getByRole('heading', { name: 'Chinese Worksheet Generator', exact: true }).waitFor();
+    await page.locator('input[aria-label="Chinese row 1"]:visible').waitFor();
+  });
+
+  await scenario('home-worksheet-steps-chinese', {}, async page => {
+    await visit(page, '/zh');
+    const steps = page.getByRole('list', { name: '制作字帖的步骤' });
+    for (const label of ['输入词表', '核对词条', '预览和打印']) {
+      assert.equal(await steps.getByText(label).isVisible(), true);
+    }
+    assert.equal(await page.getByText('下一步先核对汉字和拼音，再预览练习纸。').isVisible(), true);
+  });
+  await scenario('design-foundation-chinese-navigation', { viewport: { width: 1024, height: 768 } }, async page => {
+    await visit(page, '/zh');
+    await page.getByRole('heading', { name: '免费汉字字帖生成器' }).waitFor();
+    assert.equal(await page.getByRole('button', { name: '生成我的字帖' }).isVisible(), true);
+    const nav = page.locator('header nav:visible').first();
+    assert.equal(await nav.getByRole('link', { name: '汉字扭蛋' }).isVisible(), true);
+    await nav.getByText('笔顺', { exact: true }).click();
+    assert.equal(await nav.getByRole('link', { name: '汉语拼音表' }).isVisible(), true);
+    assert.equal(await nav.getByRole('link', { name: '部首练习纸' }).isVisible(), true);
+  });
   await scenario('desktop-navigation-laptop-width', { viewport: { width: 1024, height: 768 } }, async page => {
     for (const path of ['/', '/zh']) {
       await visit(page, path);

@@ -38,6 +38,20 @@ export function HomeWorkbench() {
 
   return (
     <div className="hs-card p-4 sm:p-5">
+      <ol
+        aria-label={t("Worksheet steps", "制作字帖的步骤")}
+        className="mb-4 grid grid-cols-3 gap-1 rounded-md border border-hs-line bg-hs-hover p-1 text-[11px] font-semibold sm:text-xs"
+      >
+        <li aria-current="step" className="rounded bg-white px-2 py-2 text-hs-seal shadow-sm">
+          <span aria-hidden="true">1 · </span>{t("Paste words", "输入词表")}
+        </li>
+        <li className="px-2 py-2 text-hs-muted">
+          <span aria-hidden="true">2 · </span>{t("Review entries", "核对词条")}
+        </li>
+        <li className="px-2 py-2 text-hs-muted">
+          <span aria-hidden="true">3 · </span>{t("Preview & print", "预览和打印")}
+        </li>
+      </ol>
       <div className="flex items-center justify-between gap-4">
         <h2 className="hs-display text-xl font-bold">
           {t("1. Paste your word list", "1. 粘贴词汇表")}
@@ -106,7 +120,7 @@ export function HomeWorkbench() {
         ) : null}
         <button
           type="button"
-          className="hs-primary-button ml-auto"
+          className="hs-primary-button ml-auto w-full sm:w-auto"
           onClick={submit}
           disabled={!value.trim()}
         >
@@ -114,6 +128,9 @@ export function HomeWorkbench() {
           {t("Build my worksheet", "生成我的字帖")}
         </button>
       </div>
+      <p className="mt-2 text-xs leading-5 text-hs-muted">
+        {t("Next, review the Hanzi and Pinyin before previewing your worksheet.", "下一步先核对汉字和拼音，再预览练习纸。")}
+      </p>
       <div className="mt-4 flex flex-wrap items-end justify-between gap-3 border-b border-[#ded7ca]">
         <div className="flex" role="tablist">
           {(["english", "chinese", "mixed"] as const).map((tab) => (
