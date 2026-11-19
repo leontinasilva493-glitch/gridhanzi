@@ -39,7 +39,7 @@ export function HomePage() {
             <div className="mt-5 sm:mt-8">
               <HomeWorkbench />
             </div>
-            <p className="mt-3 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8 text-[#435166]"><UiText>{"Create printable Chinese worksheets with your own word list. Choose a Hanzi grid layout—Tian Zi Ge, Mi Zi Ge, or blank squares—then add Pinyin and tracing practice. Download an A4 or US Letter PDF for free, with no sign-up."}</UiText></p>
+            <p className="mt-3 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8 text-[#435166]"><UiText>{"Use your word list to make a Chinese character worksheet with Pinyin and tracing. If you only need handwriting paper, choose a blank Hanzi grid with a centre cross, diagonal guides, or plain squares. Both options are free in A4 and US Letter."}</UiText></p>
             <Link href="/grids" className="mt-3 inline-flex items-center gap-2 text-sm font-bold text-hs-link underline underline-offset-4 hover:text-hs-seal">
               <UiText>{"Download blank Hanzi grid paper"}</UiText><ArrowRight className="size-4 shrink-0" />
             </Link>

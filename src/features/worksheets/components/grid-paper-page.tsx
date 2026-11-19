@@ -1,6 +1,6 @@
 
 import { UiText } from "./ui-text";
-import { ArrowRight, Download, FileText, Printer } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 
 import { Link } from "@/core/i18n/navigation";
 import { envConfigs } from "@/config";
@@ -8,6 +8,7 @@ import { envConfigs } from "@/config";
 import type { GridPaperPage } from "../grid-pages";
 import { PublicPageShell } from "./site-shell";
 import { StructuredData } from "./structured-data";
+import { GridPaperDownloads } from "./grid-paper-downloads";
 import { GridPaperPreview } from "./grid-paper-preview";
 
 export function GridPaperPageView({ page }: { page: GridPaperPage }) {
@@ -69,27 +70,14 @@ export function GridPaperPageView({ page }: { page: GridPaperPage }) {
             <div className="mt-5 max-w-3xl space-y-4 text-lg leading-8 text-[#4f5d71]">
               {page.intro.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
             </div>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a
-                href={page.pdfHref}
-                download={page.pdfFilename}
-                className="hs-primary-button min-w-64"
-              >
-                <Download className="size-5" /><UiText>{"Download PDF"}</UiText></a>
-              <Link href={page.generatorHref} className="hs-secondary-button min-w-56">
-                <FileText className="size-5" /> Make a custom sheet
-              </Link>
-            </div>
-            <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-[#536176]">
-              <span className="inline-flex items-center gap-2"><Printer className="size-4 text-[#267254]" /> A4 printable PDF</span>
-              <span className="inline-flex items-center gap-2"><Download className="size-4 text-[#267254]" /> No sign-up required</span>
-            </div>
+            <Link href={page.generatorHref} className="hs-secondary-button mt-5">
+              <FileText className="size-5" /> Make a custom sheet
+            </Link>
           </div>
           <div>
+            <GridPaperDownloads pdfHref={page.pdfHref} slug={page.slug} />
+            <p className="my-3 text-sm text-[#536176]"><UiText>{"A4 preview"}</UiText></p>
             <GridPaperPreview page={page} />
-            <p className="mt-3 text-center text-xs text-[#697487]">
-              Preview of the downloadable PDF · <a href={page.pdfHref} className="font-semibold text-[#24466e] underline">open the PDF</a>
-            </p>
           </div>
         </section>
 

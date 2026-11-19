@@ -1,11 +1,12 @@
 
 import { UiText } from "./ui-text";
-import { ArrowRight, Download, FileText } from "lucide-react";
+import { ArrowRight, FileText } from "lucide-react";
 
 import { Link } from "@/core/i18n/navigation";
 import { envConfigs } from "@/config";
 
 import { gridPaperPages } from "../grid-pages";
+import { GridPaperDownloads } from "./grid-paper-downloads";
 import { GridPaperPreview } from "./grid-paper-preview";
 import { PublicPageShell } from "./site-shell";
 import { StructuredData } from "./structured-data";
@@ -54,7 +55,7 @@ export function GridPaperIndexPage() {
                 name: "How do I print the grid paper?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Open a template, download its A4 PDF, and print it from your browser or PDF viewer at the intended paper size.",
+                  text: "Open a template, choose its A4 or US Letter PDF, and print it from your browser or PDF viewer at the intended paper size.",
                 },
               },
             ],
@@ -71,7 +72,7 @@ export function GridPaperIndexPage() {
         <header className="mt-3 max-w-4xl">
           <p className="hs-kicker"><UiText>{"Printable Hanzi practice"}</UiText></p>
           <h1 className="hs-display mt-3 text-4xl font-bold sm:text-5xl"><UiText>{"Free Chinese Grid Paper for Hanzi Writing"}</UiText></h1>
-          <p className="mt-4 text-lg leading-8 text-[#566276]"><UiText>{"Choose Chinese grid paper for the way you practise: Tian Zi Ge has a centre cross, Mi Zi Ge adds diagonal guides, and blank writing paper leaves every cell ready for your own characters. Download a free A4 PDF, or open the worksheet maker to add your own word list."}</UiText></p>
+          <p className="mt-4 text-lg leading-8 text-[#566276]"><UiText>{"Compare three kinds of Hanzi grid paper: Tian Zi Ge has a centre cross, Mi Zi Ge adds diagonal guides, and plain squares have no guides inside. Choose A4 or US Letter to match the paper in your printer."}</UiText></p>
           <Link href="/templates" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-[#24466e] hover:text-[#b62822]">
             Browse filled Chinese writing worksheets <ArrowRight className="size-4" />
           </Link>
@@ -90,10 +91,9 @@ export function GridPaperIndexPage() {
                 <div className="mt-5 grid gap-2">
                   <Link href={`/grids/${page.slug}`} className="hs-primary-button w-full"><UiText>{"View printable page"}</UiText><ArrowRight className="size-4" />
                   </Link>
-                  <a href={page.pdfHref} download={page.pdfFilename} className="hs-secondary-button w-full">
-                    <Download className="size-4" /><UiText>{"Download PDF"}</UiText></a>
+                  <GridPaperDownloads pdfHref={page.pdfHref} slug={page.slug} />
                   <Link href={page.generatorHref} className="inline-flex items-center justify-center gap-2 py-2 text-sm font-bold text-[#24466e]">
-                    <FileText className="size-4" /><UiText>{"Customise this grid"}</UiText></Link>
+                    <FileText className="size-4" /><UiText>{page.slug === "blank" ? "Make a custom worksheet" : "Customise this grid"}</UiText></Link>
                 </div>
               </div>
             </article>
@@ -118,7 +118,7 @@ export function GridPaperIndexPage() {
             </div>
             <div>
               <h3 className="font-bold">How do I print?</h3>
-              <p className="mt-2 text-sm leading-6 text-[#5f6d80]">Open a page, download its A4 PDF, and print from your browser or PDF viewer.</p>
+              <p className="mt-2 text-sm leading-6 text-[#5f6d80]">Open a page, choose its A4 or US Letter PDF, and print from your browser or PDF viewer.</p>
             </div>
           </div>
         </section>

@@ -3,25 +3,29 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const outputDir = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "public", "downloads");
-const width = 595.28;
-const height = 841.89;
+const sizes = [
+  { suffix: "", width: 595.28, height: 841.89 },
+  { suffix: "-letter", width: 612, height: 792 },
+];
 const sheets = [
   ["tian-zi-ge-grid-paper", "Tian Zi Ge Grid Paper", "tian"],
   ["mi-zi-ge-grid-paper", "Mi Zi Ge Grid Paper", "mi"],
-  ["blank-chinese-writing-practice-paper", "Blank Chinese Writing Paper", "tian"],
+  ["blank-chinese-writing-practice-paper", "Blank Chinese Writing Paper", "plain"],
 ];
 
 await mkdir(outputDir, { recursive: true });
 for (const [name, title, grid] of sheets) {
-  const { pdf, svg } = draw(title, grid);
-  await Promise.all([
-    writeFile(path.join(outputDir, name + ".pdf"), makePdf(pdf.join("\n"))),
-    writeFile(path.join(outputDir, name + ".svg"), svg.join("\n")),
-  ]);
+  for (const { suffix, width, height } of sizes) {
+    const { pdf, svg } = draw(title, grid, width, height);
+    await Promise.all([
+      writeFile(path.join(outputDir, name + suffix + ".pdf"), makePdf(pdf.join("\n"), width, height)),
+      ...(!suffix ? [writeFile(path.join(outputDir, name + ".svg"), svg.join("\n"))] : []),
+    ]);
+  }
 }
 
-// One set of A4 drawing commands produces both the download and its preview.
-function draw(title, grid) {
+// One set of drawing commands produces both the download and its preview.
+function draw(title, grid, width, height) {
   const pdf = ["q", "1 1 1 rg", `0 0 ${width} ${height} re f`, "Q"];
   const svg = [`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="${title}">`,
     `<rect width="${width}" height="${height}" fill="#fff"/>`];
@@ -64,6 +68,7 @@ function draw(title, grid) {
         line(x + cell, y, x + cell, y + cell, "#b9c1ca");
         line(x + cell, y + cell, x, y + cell, "#b9c1ca");
         line(x, y + cell, x, y, "#b9c1ca");
+        if (grid === "plain") continue;
         line(x + cell / 2, y + 1.5, x + cell / 2, y + cell - 1.5, guide, true);
         line(x + 1.5, y + cell / 2, x + cell - 1.5, y + cell / 2, guide, true);
         if (mi) {
@@ -73,12 +78,12 @@ function draw(title, grid) {
       }
     }
   }
-  text("Page 1 / 1", width / 2, 823, 8, "#5b6573", true);
+  text("Page 1 / 1", width / 2, height - 18.89, 8, "#5b6573", true);
   svg.push("</svg>");
   return { pdf, svg };
 }
 
-function makePdf(content) {
+function makePdf(content, width, height) {
   const objects = [
     "<< /Type /Catalog /Pages 2 0 R >>",
     "<< /Type /Pages /Kids [3 0 R] /Count 1 >>",
