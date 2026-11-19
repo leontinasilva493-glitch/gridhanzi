@@ -39,12 +39,12 @@ export const gridPaperPages: GridPaperPage[] = [
     generatorHref: "/generator?grid=tian-zi-ge",
     intro: [
       "Tian Zi Ge is the four-part Chinese writing grid used to help learners place a character inside a square. The horizontal and vertical guide lines divide each cell into clear reference areas, making it easier to check proportion, balance, and the position of the centre of a Hanzi.",
-      "This one-page A4 printable PDF gives you clean blank practice rows for handwriting lessons, home review, or quick character drills. Print it as many times as you need, or open the generator to add your own Hanzi, Pinyin, and tracing guidance before saving a custom worksheet.",
+      "This one-page A4 or US Letter PDF gives you clean blank practice rows for handwriting lessons, home review, or quick character drills. Print it as many times as you need, or open the generator to add your own Hanzi, Pinyin, and tracing guidance before saving a custom worksheet.",
     ],
     sections: [
       {
         heading: "Download Printable Tian Zi Ge PDF",
-        body: "Use the download button to open the ready-to-print A4 Tian Zi Ge grid paper. The PDF is a real blank file with square cells and cross guide lines, so it works from a browser, PDF viewer, or classroom printer without an account.",
+        body: "Use the download button to open the ready-to-print Tian Zi Ge grid paper. The PDF is a real blank file with square cells and cross guide lines, so it works from a browser, PDF viewer, or classroom printer without an account.",
       },
       {
         heading: "How to Use Tian Zi Ge Grid Paper",
@@ -64,7 +64,7 @@ export const gridPaperPages: GridPaperPage[] = [
       {
         question: "Is this Tian Zi Ge PDF free to print?",
         answer:
-          "Yes. The one-page A4 PDF is free to download and print, with no sign-up required.",
+          "Yes. The one-page A4 or US Letter PDF is free to download and print, with no sign-up required.",
       },
       {
         question: "Can I add characters to the Tian Zi Ge sheet?",
@@ -89,12 +89,12 @@ export const gridPaperPages: GridPaperPage[] = [
     generatorHref: "/generator?grid=mi-zi-ge&profile=brush",
     intro: [
       "Mi Zi Ge is a Chinese character writing grid with a horizontal line, a vertical line, and two diagonal lines. Together they form a 米 shape that gives learners extra reference points for stroke direction, slant, and the outer limits of a character.",
-      "This printable A4 Mi Zi Ge PDF is useful for brush practice, careful handwriting, and learners who want more visual guidance than a plain square. Download the blank sheet for immediate practice, or use the generator to turn a word list into an editable Mi Zi Ge worksheet.",
+      "This printable Mi Zi Ge PDF is useful for brush practice, careful handwriting, and learners who want more visual guidance than a plain square. Download the blank sheet for immediate practice, or use the generator to turn a word list into an editable Mi Zi Ge worksheet.",
     ],
     sections: [
       {
         heading: "Download Printable Mi Zi Ge PDF",
-        body: "The download button opens a real one-page A4 PDF with blank Mi Zi Ge cells and diagonal guide lines. Print it directly for handwriting practice or keep a copy as a reusable classroom handout.",
+        body: "The download button opens a real one-page A4 or US Letter PDF with blank Mi Zi Ge cells and diagonal guide lines. Print it directly for handwriting practice or keep a copy as a reusable classroom handout.",
       },
       {
         heading: "Tian Zi Ge vs Mi Zi Ge: What's the Difference",
@@ -130,7 +130,7 @@ export const gridPaperPages: GridPaperPage[] = [
     profile: "kids",
     title: "Chinese Writing Paper - Free Printable Blank Grids (PDF)",
     description:
-      "Free blank Chinese writing practice paper with Tian Zi Ge guide cells. Download an A4 PDF with no printed characters for copying, dictation, and handwriting.",
+      "Free blank Chinese writing practice paper with plain square cells. Download an A4 or US Letter PDF with no printed characters for copying, dictation, and handwriting.",
     h1: "Blank Chinese Writing Practice Paper",
     eyebrow: "Blank Chinese writing paper",
     previewTitle: "Blank Chinese Writing Paper",
@@ -138,17 +138,17 @@ export const gridPaperPages: GridPaperPage[] = [
     pdfFilename: "blank-chinese-writing-practice-paper.pdf",
     generatorHref: "/generator?grid=tian-zi-ge",
     intro: [
-      "This blank Chinese writing practice paper leaves every Tian Zi Ge cell empty. There are no model characters or vocabulary on the PDF, while the horizontal and vertical guides remain visible for handwriting.",
-      "Print the A4 sheet for dictation, copying a textbook passage, or practising characters your class has already learned. For printed models, Pinyin, or tracing steps, open the generator and add the exact words you need.",
+      "This blank Chinese writing practice paper uses plain squares with no internal guide lines, printed Hanzi, or vocabulary.",
+      "Print either size for dictation, copying a textbook passage, or practising characters your class has already learned. For printed models, Pinyin, or tracing steps, open the generator and add the exact words you need.",
     ],
     sections: [
       {
         heading: "Download Blank Chinese Writing Practice Paper",
-        body: "Download the one-page A4 PDF for a clean set of blank Chinese writing cells. It is ready to print and does not require an account, so you can make a few copies before a lesson or keep it beside a vocabulary book.",
+        body: "Download the one-page A4 or US Letter PDF for a clean set of blank Chinese writing cells. It is ready to print and does not require an account, so you can make a few copies before a lesson or keep it beside a vocabulary book.",
       },
       {
-        heading: "What Blank Means on This Practice Paper",
-        body: "Blank means the PDF has no model characters or vocabulary printed inside the cells. The downloadable sheet still uses Tian Zi Ge cross guides. For diagonal guidance, choose the separate Mi Zi Ge PDF; for a worksheet with printed Hanzi, open the generator.",
+        heading: "When to Choose Plain Squares",
+        body: "Use plain squares for dictation or independent writing. For help placing strokes around the centre, use Tian Zi Ge. For diagonal alignment, choose Mi Zi Ge.",
       },
       {
         heading: "Make Custom Practice Sheets",
@@ -159,12 +159,12 @@ export const gridPaperPages: GridPaperPage[] = [
       {
         question: "Is the blank Chinese writing paper really empty?",
         answer:
-          "Yes. The downloadable PDF contains no printed vocabulary or model characters. Its empty cells retain Tian Zi Ge cross guides so you can copy from any lesson source.",
+          "Yes. The downloadable PDF contains no printed vocabulary or model characters. Each cell has only a square outline.",
       },
       {
         question: "Which grid should I choose for Chinese handwriting?",
         answer:
-          "Choose this blank Tian Zi Ge sheet for centre and proportion guides, or use the separate Mi Zi Ge sheet when the learner needs additional diagonal guidance.",
+          "Choose plain squares for independent practice, Tian Zi Ge for centre guides, or Mi Zi Ge for additional diagonal guidance.",
       },
       {
         question: "Can I turn the blank paper into a custom worksheet?",

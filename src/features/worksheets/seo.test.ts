@@ -273,7 +273,7 @@ test("core acquisition pages publish focused titles and matching social metadata
     [
       grids,
       "Chinese Grid Paper - Free Tian Zi Ge & Mi Zi Ge PDFs",
-      "Print free Chinese grid paper for handwriting practice. Compare Tian Zi Ge, Mi Zi Ge, and blank A4 PDFs, or create a worksheet from your own Hanzi.",
+      "Print free Chinese grid paper for handwriting practice. Compare Tian Zi Ge, Mi Zi Ge, and plain square PDFs in A4 and US Letter, or create a worksheet from your own Hanzi.",
     ],
     [
       comparisons,

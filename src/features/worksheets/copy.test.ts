@@ -20,7 +20,7 @@ test("homepage distributes worksheet search terms across useful copy", async () 
   );
   assert.match(
     homeSource,
-    /Create printable Chinese worksheets with your own word list\. Choose a Hanzi grid layout—Tian Zi Ge, Mi Zi Ge, or blank squares/,
+    /choose a blank Hanzi grid with a centre cross, diagonal guides, or plain squares/,
   );
   assert.match(
     homePageSource,
