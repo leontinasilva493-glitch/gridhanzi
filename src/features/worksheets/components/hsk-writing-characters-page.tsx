@@ -6,6 +6,7 @@ import { Check, Copy, Search } from "lucide-react";
 import { Link } from "@/core/i18n/navigation";
 
 import catalog from "../hsk-writing-characters.json";
+import { getHskWritingGroupSlugByLevel } from "../hsk-writing-groups";
 
 type Group = (typeof catalog.groups)[number];
 const MAX_SELECTION = 30;
@@ -133,16 +134,36 @@ function WritingGroup({
   selected: string[];
   onToggle: (character: string) => void;
 }) {
+  const slug = getHskWritingGroupSlugByLevel(group.level);
   return (
     <section aria-labelledby={`writing-${group.level}`}>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="hs-kicker">Syllabus group</p>
           <h2 id={`writing-${group.level}`} className="hs-display mt-1 text-2xl font-bold">
-            {group.label}
+            {slug ? (
+              <Link
+                href={`/hsk/3-0-writing-characters/${slug}`}
+                className="text-hs-ink hover:text-hs-seal hover:underline"
+              >
+                {group.label}
+              </Link>
+            ) : (
+              group.label
+            )}
           </h2>
         </div>
-        <span className="text-sm text-[#617084]">{group.count} characters</span>
+        <div className="flex items-center gap-4 text-sm">
+          <span className="text-[#617084]">{group.count} characters</span>
+          {slug ? (
+            <Link
+              href={`/hsk/3-0-writing-characters/${slug}`}
+              className="font-semibold text-hs-link underline underline-offset-4 hover:text-hs-seal"
+            >
+              Open practice sets →
+            </Link>
+          ) : null}
+        </div>
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
         {group.characters.map((character) => {

@@ -36,6 +36,7 @@ other.
 | `/hsk/[system]/[level]` | Version-specific HSK vocabulary and writing practice |
 | `/hsk/3-0-exam-guide` | Official HSK 3.0 exam dates, source notes, and version FAQ |
 | `/hsk/3-0-writing-characters` | Official HSK 3.0 writing-character groups and focused practice selection |
+| `/hsk/3-0-writing-characters/[group]` | Level-specific official HSK 3.0 handwriting list (`level-1-2`, `level-3`–`level-6`, `level-7-9`) with 30-character printable practice sets |
 | `/practice` | Continuous on-screen character practice product surface (`noindex`) |
 | `/chinese-slang/niu-lai` | Niu Lai meaning and Chinese movie meme context |
 | `/shenzhen-in-chinese` | Shenzhen in Chinese: 深圳, Mandarin Pinyin, character meanings, examples, and writing practice |
