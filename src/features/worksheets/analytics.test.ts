@@ -25,6 +25,27 @@ test("business events use aggregate fields and a query-free page URL", () => {
     else Reflect.deleteProperty(globalThis, "window");
   }
 });
+test("export failures add only allowlisted diagnostics", () => {
+  const original = Object.getOwnPropertyDescriptor(globalThis, "window");
+  const calls: unknown[][] = [];
+  try {
+    Object.defineProperty(globalThis, "window", { configurable: true, value: {
+      location: { hostname: "gridhanzi.org", origin: "https://gridhanzi.org", pathname: "/worksheet/preview" },
+      gtag: (...args: unknown[]) => calls.push(args),
+    } });
+    trackWorksheetEvent("worksheet_download_failure", defaultWorksheetSettings, 3, {
+      failureStage: "capture", pageCount: 6, elapsedMs: 1234.6, wasHidden: true,
+    });
+    assert.deepEqual(calls, [["event", "worksheet_download_failure", {
+      worksheet_mode: "trace", worksheet_output: "worksheet", paper_size: "a4", row_count: 3,
+      failure_stage: "capture", page_count: 6, elapsed_ms: 1235, was_hidden: "yes",
+      page_location: "https://gridhanzi.org/worksheet/preview",
+    }]]);
+  } finally {
+    if (original) Object.defineProperty(globalThis, "window", original);
+    else Reflect.deleteProperty(globalThis, "window");
+  }
+});
 test("disabled or broken analytics does not interrupt the worksheet", () => {
   const original = Object.getOwnPropertyDescriptor(globalThis, "window");
   try {
