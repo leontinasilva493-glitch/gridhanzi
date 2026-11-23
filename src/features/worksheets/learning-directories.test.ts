@@ -82,4 +82,8 @@ test("all 62 directory paths are indexed once and lesson metadata and teaching s
   assert.equal(new Set(titles).size,60);assert.equal(new Set(descriptions).size,60);
   const paragraphs=[...radicalGuides.flatMap(r=>[r.shape,r.usage,r.practice]),...pinyinGuides.flatMap(p=>[p.sound,p.contrast,p.practice])];
   assert.equal(new Set(paragraphs).size,180);
+  const ge = pinyinGuides.find(p => p.slug === "ge")!;
+  const bu = pinyinGuides.find(p => p.slug === "bu")!;
+  assert.match(pinyinTitle(ge), /个.*哥.*歌/);
+  assert.match(pinyinTitle(bu), /不.*bù \/ bú/);
 });

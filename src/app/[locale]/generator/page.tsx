@@ -47,9 +47,9 @@ const englishGeneratorCopy = {
 } as const;
 
 const chineseGeneratorCopy = {
-  title: "在线汉字字帖生成器",
+  title: "汉字字帖生成器：免费在线打印田字格与米字格",
   description:
-    "输入中文或英文词汇，生成带汉字、拼音、描红格和空白练习格的可打印中文练习纸。",
+    "输入中文或英文词表，免费在线制作田字格、米字格汉字字帖，支持拼音、描红与笔顺，一键导出 A4/美式信纸 PDF 打印。",
   applicationName: "GridHanzi 在线汉字字帖生成器",
   applicationDescription:
     "输入中文或英文词汇，生成可编辑的汉字、拼音、描红格、书写格、笔顺提示和 PDF 字帖。",

@@ -262,7 +262,7 @@ test("core acquisition pages publish focused titles and matching social metadata
   const expectations = [
     [
       home,
-      "Chinese Character Worksheet Generator",
+      "Hanzi Grid & Chinese Character Worksheet Generator",
       "Create free Chinese worksheets with Hanzi grid layouts, Pinyin and tracing. Download A4 or US Letter PDFs, or print blank grid paper. No sign-up required.",
     ],
     [
@@ -598,15 +598,15 @@ test("the indexable Chinese generator localizes search metadata and application 
     params: Promise.resolve({ locale: "zh" }),
   });
 
-  assert.equal(metadata.title, "在线汉字字帖生成器");
+  assert.equal(metadata.title, "汉字字帖生成器：免费在线打印田字格与米字格");
   assert.equal(
     metadata.description,
-    "输入中文或英文词汇，生成带汉字、拼音、描红格和空白练习格的可打印中文练习纸。",
+    "输入中文或英文词表，免费在线制作田字格、米字格汉字字帖，支持拼音、描红与笔顺，一键导出 A4/美式信纸 PDF 打印。",
   );
-  assert.equal(metadata.openGraph?.title, "在线汉字字帖生成器");
+  assert.equal(metadata.openGraph?.title, "汉字字帖生成器：免费在线打印田字格与米字格");
   assert.equal(
     metadata.openGraph?.description,
-    "输入中文或英文词汇，生成带汉字、拼音、描红格和空白练习格的可打印中文练习纸。",
+    "输入中文或英文词表，免费在线制作田字格、米字格汉字字帖，支持拼音、描红与笔顺，一键导出 A4/美式信纸 PDF 打印。",
   );
 
   const page = await GeneratorPage({
