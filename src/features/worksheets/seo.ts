@@ -1,5 +1,6 @@
 import { learningDirectoryPaths } from "./learning-directories";
 import { p1GuidePaths } from "./p1-learning-pages";
+import { hskWritingGroupPaths } from "./hsk-writing-groups";
 import type { Metadata } from "next";
 
 import { worksheetTemplates } from "./data";
@@ -42,6 +43,7 @@ export function buildPublicSitemapPaths(): string[] {
     "/hsk",
     "/hsk/3-0-exam-guide",
     "/hsk/3-0-writing-characters",
+    ...hskWritingGroupPaths,
     ...hskPublicPages.map(getHskPublicPath),
     "/hsk-level-checker",
     "/compare",
