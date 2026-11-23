@@ -30,8 +30,21 @@ export function trackHelpEvent(
 type WorksheetEvent = "worksheet_editor_open" | "worksheet_preview_open" | "worksheet_review_blocked" |
   "worksheet_download_start" | "worksheet_download_success" | "worksheet_download_failure";
 
+/** Allowlisted aggregate export diagnostics. Never error text or worksheet content. */
+export type WorksheetExportDiagnostics = {
+  failureStage?: "fonts" | "assets" | "tools" | "capture" | "compose" | "save" | "timeout" | "unknown";
+  pageCount?: number;
+  elapsedMs?: number;
+  wasHidden?: boolean;
+};
+
 /** Only aggregate fields; never vocabulary, titles, names, or error messages. */
-export function trackWorksheetEvent(event: WorksheetEvent, settings: WorksheetSettings, rowCount: number) {
+export function trackWorksheetEvent(
+  event: WorksheetEvent,
+  settings: WorksheetSettings,
+  rowCount: number,
+  diagnostics: WorksheetExportDiagnostics = {},
+) {
   if (typeof window === "undefined" || !isProductionAnalyticsHost(window.location.hostname)) return;
   const analyticsWindow = window as Window & { gtag?: (...args: unknown[]) => void };
   try {
@@ -40,6 +53,10 @@ export function trackWorksheetEvent(event: WorksheetEvent, settings: WorksheetSe
       worksheet_output: settings.output,
       paper_size: settings.paperSize,
       row_count: rowCount,
+      ...(diagnostics.failureStage ? { failure_stage: diagnostics.failureStage } : {}),
+      ...(typeof diagnostics.pageCount === "number" ? { page_count: diagnostics.pageCount } : {}),
+      ...(typeof diagnostics.elapsedMs === "number" ? { elapsed_ms: Math.round(diagnostics.elapsedMs) } : {}),
+      ...(typeof diagnostics.wasHidden === "boolean" ? { was_hidden: diagnostics.wasHidden ? "yes" : "no" } : {}),
       page_location: window.location.origin + window.location.pathname,
     });
   } catch {

@@ -339,23 +339,39 @@ try {
           if (this.rel === 'stylesheet') {
             clone.rel = 'alternate';
             window.__pdfCaptureChecks.removed += 1;
-            window.__pdfStylesheetClone = clone;
           }
           return clone;
         };
+        // Inspect html2canvas's document while it exists; it is removed after capture.
+        const timer = setInterval(() => {
+          const captureFrame = document.querySelector('iframe[data-gridhanzi-pdf-capture]');
+          const cloneFrame = captureFrame?.contentDocument?.querySelector('iframe.html2canvas-container');
+          const cloneDocument = cloneFrame?.contentDocument;
+          const cell = cloneDocument?.querySelector('[data-gridhanzi-pdf-capture] .hs-grid-cell');
+          const view = cloneDocument?.defaultView;
+          if (!cell || !view) return;
+          clearInterval(timer);
+          window.__pdfCaptureChecks.styled = view.getComputedStyle(cell).display === 'grid';
+          // Measure GridHanzi's own capture document, before html2canvas's internal clone.
+          const ownHost = captureFrame.contentDocument.querySelector('body > [data-gridhanzi-pdf-capture]');
+          window.__pdfCaptureChecks.inlineStyleBytes = ownHost ? [...ownHost.querySelectorAll('*')]
+            .reduce((total, node) => total + (node.getAttribute('style') || '').length, 0) : -1;
+          window.__pdfCaptureChecks.cloneNodes = cloneDocument.querySelectorAll('*').length;
+        }, 5);
       });
       const downloading = page.waitForEvent('download', { timeout: 60_000 });
       await page.getByRole('button', { name: zh ? '下载 PDF' : 'Download PDF', exact: true }).click();
       const download = await downloading;
       assert.equal(await download.failure(), null);
       await download.saveAs(path.join(output, `editor-capture-styles-${zh ? 'zh' : 'en'}.pdf`));
-      const checks = await page.evaluate(() => ({
-        ...window.__pdfCaptureChecks,
-        styled: window.__pdfStylesheetClone?.ownerDocument
-          .querySelector('[data-gridhanzi-pdf-capture] .hs-grid-cell')?.style.display === 'grid',
-      }));
-      assert.ok(checks.removed > 0, 'Missing-stylesheet fault was exercised');
+      // The capture document carries CSSOM rule text, so the grid stays styled
+      // even when html2canvas cannot use any cloned stylesheet link.
+      const checks = await page.evaluate(() => window.__pdfCaptureChecks);
       assert.equal(checks.styled, true, 'Capture retains the visible grid layout without stylesheet links');
+      assert.ok(checks.inlineStyleBytes >= 0 && checks.inlineStyleBytes < 200_000, `Capture must not inline every computed style (${checks.inlineStyleBytes} bytes)`);
+      const previewNodes = await page.evaluate(() => document.querySelectorAll('*').length);
+      assert.ok(checks.cloneNodes < previewNodes, `html2canvas clones the small capture document (${checks.cloneNodes} < ${previewNodes} nodes)`);
+      assert.equal(await page.locator('[data-gridhanzi-pdf-capture]').count(), 0, 'Capture document is removed');
     });
   }
   for (const zh of [false, true]) {
@@ -781,6 +797,29 @@ try {
     const download = await downloading;
     assert.equal(await download.failure(), null);
     await download.saveAs(path.join(output, 'multi-page-worksheet.pdf'));
+  });
+  await scenario('preview-pdf-slow-cpu-template', {}, async (page, context) => {
+    // Mid-range laptops previously hit the export deadline while every page
+    // re-cloned the full preview document.
+    await visit(page, '/worksheet/preview?template=hsk-1');
+    const pageCount = await page.locator('.hs-paper').count();
+    assert.ok(pageCount >= 5, `Template has several pages (${pageCount})`);
+    const cdp = await context.newCDPSession(page);
+    await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
+    try {
+      const startedAt = Date.now();
+      const downloading = page.waitForEvent('download', { timeout: 120_000 });
+      await page.getByRole('button', { name: 'Download PDF', exact: true }).click();
+      const download = await downloading;
+      const elapsed = Date.now() - startedAt;
+      assert.equal(await download.failure(), null);
+      assert.equal(await page.getByRole('alert').count(), 0, 'No export error is shown');
+      assert.equal(await page.locator('[data-gridhanzi-pdf-capture]').count(), 0, 'Capture document is removed');
+      await download.saveAs(path.join(output, 'slow-cpu-template.pdf'));
+      console.log(`    slow CPU x4: ${pageCount} pages in ${elapsed} ms`);
+    } finally {
+      await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
+    }
   });
   await scenario('preview-controls-and-font-fallback', {}, async (page, context) => {
     await seed(context, 'sessionStorage', 'gridhanzi:worksheet:v1', JSON.stringify(snapshot));

@@ -10,7 +10,7 @@ import {
   getPdfHeaderCropHeight,
   getPdfHeaderCropHeightForPage,
   getPdfPageSize,
-  preparePdfCaptureClone,
+  collectPdfCaptureStyles,
   shouldClearPdfHeader,
   shouldRecomposeWorksheetPdfHeader,
 } from "./pdf";
@@ -191,102 +191,28 @@ test("PDF export keeps system fallbacks when the web font cannot load", async ()
   );
 });
 
-test("preparePdfCaptureClone recursively copies computed styles and preserves capture root overrides", () => {
-  type PropertyTuple = [name: string, value: string, priority?: string];
-  type FakeNode = {
-    style: {
-      setProperty(name: string, value: string, priority?: string): void;
-      applied: PropertyTuple[];
-    };
-    children: FakeNode[];
+test("collectPdfCaptureStyles copies readable CSSOM rules and links unreadable cross-origin sheets", () => {
+  const unreadable = {
+    href: "https://cdn.example/font.css",
+    get cssRules(): ArrayLike<{ cssText: string }> {
+      throw new Error("SecurityError");
+    },
   };
-
-  const createTargetNode = (): FakeNode => {
-    const applied: PropertyTuple[] = [];
-    return {
-      style: {
-        applied,
-        setProperty(name: string, value: string, priority = "") {
-          applied.push([name, value, priority]);
-        },
-      },
-      children: [],
-    };
-  };
-
-  const rootTarget = createTargetNode();
-  const childTarget = createTargetNode();
-  rootTarget.children.push(childTarget);
-
-  const rootSource: FakeNode = {
-    style: rootTarget.style,
-    children: [
-      {
-        style: childTarget.style,
-        children: [],
-      },
-    ],
-  };
-
-  const computedStyles = new Map<object, Record<string, string>>([
-    [
-      rootSource,
-      {
-        display: "grid",
-        "--card-gap": "12px",
-        width: "794px",
-        transform: "scale(0.9)",
-      },
-    ],
-    [
-      rootSource.children[0]!,
-      {
-        color: "rgb(20, 37, 63)",
-        "font-size": "16px",
-      },
-    ],
+  const styles = collectPdfCaptureStyles([
+    { href: "https://gridhanzi.org/assets/app.css", cssRules: [{ cssText: ".hs-grid-cell { display: grid; }" }, { cssText: ":root { --ink: #17233a; }" }] },
+    // Client navigation can insert rules without a stylesheet link.
+    { href: null, cssRules: [{ cssText: ".hs-paper { background: white; }" }] },
+    unreadable,
+    unreadable,
   ]);
 
-  const getComputedStyleForNode = (node: {
-    style: { setProperty(name: string, value: string, priority?: string): void };
-    children: ArrayLike<unknown>;
-  }) => {
-    const style = computedStyles.get(node) ?? {};
-    const names = Object.keys(style);
-    return {
-      length: names.length,
-      item(index: number) {
-        return names[index] ?? null;
-      },
-      getPropertyValue(name: string) {
-        return style[name] ?? "";
-      },
-      getPropertyPriority(_name: string) {
-        return "";
-      },
-    };
-  };
-
-  preparePdfCaptureClone(
-    rootSource,
-    rootTarget,
-    getComputedStyleForNode,
+  assert.equal(
+    styles.cssText,
+    ".hs-grid-cell { display: grid; }\n:root { --ink: #17233a; }\n.hs-paper { background: white; }",
   );
+  assert.deepEqual(styles.externalHrefs, ["https://cdn.example/font.css"]);
+});
 
-  assert.deepEqual(rootTarget.style.applied, [
-    ["display", "grid", ""],
-    ["--card-gap", "12px", ""],
-    ["width", "794px", ""],
-    ["transform", "scale(0.9)", ""],
-    ["width", "100%", ""],
-    ["height", "100%", ""],
-    ["min-height", "0", ""],
-    ["margin", "0", ""],
-    ["transform", "none", ""],
-    ["box-shadow", "none", ""],
-  ]);
-  assert.deepEqual(childTarget.style.applied, [
-    ["color", "rgb(20, 37, 63)", ""],
-    ["font-size", "16px", ""],
-  ]);
+test("PDF capture no longer inlines every computed style property", () => {
+  assert.equal("preparePdfCaptureClone" in pdfModule, false);
 });

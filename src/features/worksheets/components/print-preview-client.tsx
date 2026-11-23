@@ -3,7 +3,7 @@ import { trackWorksheetEvent } from "../analytics";
 import { RepeatFillControl } from "./repeat-fill-control";
 import { WorksheetHelp, type HelpPanel } from "./worksheet-help";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useLocale } from "next-intl";
 import {
   ArrowLeft,
@@ -21,6 +21,7 @@ import {
 } from "../types";
 import type { PaperSize, PrintMargin } from "../types";
 import { downloadWorksheetPdf, type PdfExportProgress } from "../pdf";
+import { getPdfExportFailureStage } from "../pdf-export-guard";
 import { localize } from "../i18n";
 import { getWorksheetProfilePreset } from "../profiles";
 import { normalizeWorksheetSnapshot } from "../snapshot";
@@ -119,13 +120,23 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
     }
   }, [templateSnapshot]);
 
-  const printSettings = {
+  const printSettings = useMemo(() => ({
     ...snapshot.settings,
     paperSize,
     printMargin,
     showStrokeOrder:
       canShowAnswers && showAnswers && snapshot.settings.showStrokeOrder,
-  };
+  }), [snapshot.settings, paperSize, printMargin, canShowAnswers, showAnswers]);
+  const renderedPages = useMemo(() => (
+    // Stable element: PDF progress updates must not re-render every worksheet page.
+    <WorksheetRenderer
+      entries={snapshot.entries}
+      settings={printSettings}
+      showBackground={backgroundGraphics}
+      showAnswers={canShowAnswers ? showAnswers : false}
+      onPageCountChange={setPageCount}
+    />
+  ), [snapshot.entries, printSettings, backgroundGraphics, canShowAnswers, showAnswers]);
   useEffect(() => {
     if (!previewReady || templateSnapshot) return;
     try {
@@ -144,10 +155,21 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
     const pageElements = Array.from(
       printPagesRef.current?.querySelectorAll<HTMLElement>(".hs-paper") ?? [],
     );
-    trackWorksheetEvent("worksheet_download_start", printSettings, snapshot.entries.length);
+    trackWorksheetEvent("worksheet_download_start", printSettings, snapshot.entries.length, { pageCount: pageElements.length });
     setPdfError("");
     setPdfNotice("");
     setPdfProgress({ current: 0, total: pageElements.length, stage: "preparing" });
+    const startedAt = performance.now();
+    let wasHidden = document.visibilityState === "hidden";
+    const noteVisibility = () => {
+      if (document.visibilityState === "hidden") wasHidden = true;
+    };
+    document.addEventListener("visibilitychange", noteVisibility);
+    const diagnostics = () => ({
+      pageCount: pageElements.length,
+      elapsedMs: performance.now() - startedAt,
+      wasHidden,
+    });
 
     try {
       await downloadWorksheetPdf({
@@ -162,7 +184,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
         signal: controller.signal,
       });
       if (controller.signal.aborted) return;
-      trackWorksheetEvent("worksheet_download_success", printSettings, snapshot.entries.length);
+      trackWorksheetEvent("worksheet_download_success", printSettings, snapshot.entries.length, diagnostics());
       setDownloads(value => value + 1);
     } catch (error) {
       if (exportController.current !== controller) return;
@@ -170,13 +192,17 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
         setPdfNotice(t("PDF creation cancelled. Your worksheet is unchanged. You can print or try again.", "已取消生成 PDF，字帖未更改。可以直接打印或重新下载。"));
         return;
       }
-      trackWorksheetEvent("worksheet_download_failure", printSettings, snapshot.entries.length);
+      trackWorksheetEvent("worksheet_download_failure", printSettings, snapshot.entries.length, {
+        ...diagnostics(),
+        failureStage: getPdfExportFailureStage(error),
+      });
       setPdfError(
         error instanceof Error && !locale.startsWith("zh")
           ? error.message
           : t("The PDF could not be created. Try Print instead.", "无法生成 PDF，请尝试打印。"),
       );
     } finally {
+      document.removeEventListener("visibilitychange", noteVisibility);
       if (exportController.current === controller) {
         exportController.current = null;
         setPdfProgress(null);
@@ -349,13 +375,7 @@ export function PrintPreviewClient({ templateSnapshot, templateSlug }: {
               marginBottom: `${Math.max(0, zoom - 85) * 8}px`,
             }}
           >
-            <WorksheetRenderer
-              entries={snapshot.entries}
-              settings={printSettings}
-              showBackground={backgroundGraphics}
-              showAnswers={canShowAnswers ? showAnswers : false}
-              onPageCountChange={setPageCount}
-            />
+            {renderedPages}
           </div>
         </main>
 

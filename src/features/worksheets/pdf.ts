@@ -1,5 +1,5 @@
 import type { PaperSize, WorksheetOutput } from "./types";
-import { createPdfExportGuard, getPdfExportTimeoutMs } from "./pdf-export-guard";
+import { createPdfExportGuard, PdfExportError } from "./pdf-export-guard";
 
 export type PdfExportProgress = {
   current: number;
@@ -19,20 +19,21 @@ export type DownloadWorksheetPdfOptions = {
   signal?: AbortSignal;
 };
 
-type StylePropertyReader = {
-  length: number;
-  item(index: number): string | null;
-  getPropertyValue(name: string): string;
-  getPropertyPriority(name: string): string;
-};
-
 type StylePropertyWriter = {
   setProperty(name: string, value: string, priority?: string): void;
 };
 
-type StyleCopyNode = {
-  style: StylePropertyWriter;
-  children: ArrayLike<StyleCopyNode>;
+/** Minimal CSSStyleSheet shape, so style collection can be tested without a browser. */
+export type PdfStyleSheetSource = {
+  href: string | null;
+  readonly cssRules: ArrayLike<{ cssText: string }>;
+};
+
+export type PdfCaptureStyles = {
+  /** Same-origin rules read from the live CSSOM, including client-navigation styles. */
+  cssText: string;
+  /** Cross-origin sheets whose rules cannot be read, such as the web-font CDN. */
+  externalHrefs: string[];
 };
 
 export function buildWorksheetPdfFilename(
@@ -143,23 +144,12 @@ export async function loadPdfHeaderFont(
 }
 
 const PDF_ASSET_TIMEOUT_MS = 8_000;
-const PDF_CAPTURE_TIMEOUT_MS = 15_000;
-
-function copyComputedStyleDeclaration(
-  sourceStyle: StylePropertyReader,
-  targetStyle: StylePropertyWriter,
-) {
-  for (let index = 0; index < sourceStyle.length; index += 1) {
-    const propertyName = sourceStyle.item(index);
-    if (!propertyName) continue;
-
-    targetStyle.setProperty(
-      propertyName,
-      sourceStyle.getPropertyValue(propertyName),
-      sourceStyle.getPropertyPriority(propertyName),
-    );
-  }
-}
+/** Loading the PDF libraries; a stalled CDN or chunk request fails visibly. */
+const PDF_TOOLS_TIMEOUT_MS = 15_000;
+/** One isolated page normally captures in about a second, even on slower laptops. */
+const PDF_CAPTURE_TIMEOUT_MS = 30_000;
+/** Capture-document fonts are best effort: system fallbacks keep the export usable. */
+const PDF_CAPTURE_FONT_TIMEOUT_MS = 3_000;
 
 function applyPdfCaptureRootOverrides(targetStyle: StylePropertyWriter) {
   targetStyle.setProperty("width", "100%");
@@ -170,63 +160,138 @@ function applyPdfCaptureRootOverrides(targetStyle: StylePropertyWriter) {
   targetStyle.setProperty("box-shadow", "none");
 }
 
-function copyComputedStylesRecursive(
-  sourceNode: StyleCopyNode,
-  targetNode: StyleCopyNode,
-  getComputedStyleForNode: (node: StyleCopyNode) => StylePropertyReader,
-) {
-  copyComputedStyleDeclaration(
-    getComputedStyleForNode(sourceNode),
-    targetNode.style,
-  );
-  const childCount = Math.min(
-    sourceNode.children.length,
-    targetNode.children.length,
-  );
-  for (let index = 0; index < childCount; index += 1) {
-    const sourceChild = sourceNode.children[index];
-    const targetChild = targetNode.children[index];
-    if (!sourceChild || !targetChild) continue;
-    copyComputedStylesRecursive(
-      sourceChild,
-      targetChild,
-      getComputedStyleForNode,
-    );
+/**
+ * Reads the page's CSS from the live CSSOM. Copying rule text instead of
+ * stylesheet links keeps styles that client navigation inserted without links.
+ */
+export function collectPdfCaptureStyles(sheets: ArrayLike<PdfStyleSheetSource>): PdfCaptureStyles {
+  const cssParts: string[] = [];
+  const externalHrefs: string[] = [];
+  for (let index = 0; index < sheets.length; index += 1) {
+    const sheet = sheets[index];
+    if (!sheet) continue;
+    try {
+      const rules = sheet.cssRules;
+      for (let ruleIndex = 0; ruleIndex < rules.length; ruleIndex += 1) {
+        const rule = rules[ruleIndex];
+        if (rule?.cssText) cssParts.push(rule.cssText);
+      }
+    } catch {
+      // Cross-origin rules are unreadable; load the same stylesheet by URL instead.
+      if (sheet.href && !externalHrefs.includes(sheet.href)) externalHrefs.push(sheet.href);
+    }
+  }
+  return { cssText: cssParts.join("\n"), externalHrefs };
+}
+
+type PdfExportGuard = ReturnType<typeof createPdfExportGuard>;
+
+/** Best-effort wait that still honours cancellation and the export watchdog. */
+async function waitOptional(guard: PdfExportGuard, promise: Promise<unknown>, timeoutMs: number) {
+  try {
+    await guard.wait(promise, timeoutMs);
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "AbortError") throw error;
+    guard.check();
   }
 }
 
-export function preparePdfCaptureClone<T extends StyleCopyNode>(
-  sourceNode: T,
-  targetNode: T,
-  getComputedStyleForNode: (node: StyleCopyNode) => StylePropertyReader,
+/**
+ * html2canvas clones the whole owner document for every capture. Capturing in a
+ * small dedicated document avoids re-cloning the full preview (all pages, editor
+ * controls and help) once per page, which made exports slow enough to time out.
+ */
+async function createPdfCaptureFrame(
+  width: number,
+  height: number,
+  guard: PdfExportGuard,
 ) {
-  copyComputedStylesRecursive(sourceNode, targetNode, getComputedStyleForNode);
-  applyPdfCaptureRootOverrides(targetNode.style);
+  const frame = document.createElement("iframe");
+  frame.setAttribute("aria-hidden", "true");
+  frame.tabIndex = -1;
+  frame.dataset.gridhanziPdfCapture = "true";
+  Object.assign(frame.style, {
+    position: "fixed",
+    top: "0",
+    left: "-100000px",
+    width: `${width}px`,
+    height: `${height}px`,
+    border: "0",
+    opacity: "0",
+    pointerEvents: "none",
+  });
+  document.body.append(frame);
+
+  const frameDocument = frame.contentDocument;
+  if (!frameDocument) {
+    frame.remove();
+    throw new PdfExportError("Unable to prepare the worksheet PDF pages.", "capture");
+  }
+  frameDocument.open();
+  frameDocument.write("<!doctype html><html><head><meta charset=\"utf-8\"></head><body></body></html>");
+  frameDocument.close();
+
+  const sourceRoot = document.documentElement;
+  frameDocument.documentElement.lang = sourceRoot.lang;
+  frameDocument.documentElement.dir = sourceRoot.dir;
+  frameDocument.documentElement.className = sourceRoot.className;
+  const rootStyle = sourceRoot.getAttribute("style");
+  if (rootStyle) frameDocument.documentElement.setAttribute("style", rootStyle);
+  frameDocument.body.className = document.body.className;
+  Object.assign(frameDocument.body.style, { margin: "0", background: "#ffffff" });
+
+  const styles = collectPdfCaptureStyles(document.styleSheets as unknown as ArrayLike<PdfStyleSheetSource>);
+  const style = frameDocument.createElement("style");
+  style.dataset.gridhanziPdfStyles = "true";
+  style.textContent = styles.cssText;
+  frameDocument.head.append(style);
+
+  const linkLoads = styles.externalHrefs.map((href) => new Promise<void>((resolve) => {
+    const link = frameDocument.createElement("link");
+    link.rel = "stylesheet";
+    link.href = href;
+    link.crossOrigin = "anonymous";
+    link.addEventListener("load", () => resolve(), { once: true });
+    link.addEventListener("error", () => resolve(), { once: true });
+    frameDocument.head.append(link);
+  }));
+  if (linkLoads.length) {
+    await waitOptional(guard, Promise.all(linkLoads), PDF_ASSET_TIMEOUT_MS);
+  }
+
+  return {
+    frameDocument,
+    mount(page: HTMLElement) {
+      const geometry = getPdfCaptureGeometryFromPage(page);
+      const host = frameDocument.createElement("div");
+      Object.assign(host.style, {
+        position: "absolute",
+        top: "0",
+        left: "0",
+        width: `${geometry.width}px`,
+        height: `${geometry.height}px`,
+        overflow: "hidden",
+        background: "#ffffff",
+      });
+      host.dataset.gridhanziPdfCapture = "true";
+      const clonedPage = frameDocument.importNode(page, true) as HTMLElement;
+      applyPdfCaptureRootOverrides(clonedPage.style);
+      host.append(clonedPage);
+      frameDocument.body.append(host);
+      return { geometry, host };
+    },
+    dispose() {
+      frame.remove();
+    },
+  };
 }
 
-function createPdfCapturePage(page: HTMLElement) {
-  const geometry = getPdfCaptureGeometryFromPage(page);
-  const host = document.createElement("div");
-  const clonedPage = page.cloneNode(true) as HTMLElement;
-
-  Object.assign(host.style, {
-    position: "absolute",
-    top: "0",
-    left: "0",
-    width: `${geometry.width}px`,
-    height: `${geometry.height}px`,
-    overflow: "hidden",
-    pointerEvents: "none",
-    zIndex: "2147483647",
-    background: "#ffffff",
-  });
-  host.dataset.gridhanziPdfCapture = "true";
-  applyPdfCaptureRootOverrides(clonedPage.style);
-
-  host.append(clonedPage);
-  document.body.append(host);
-
-  return { geometry, host };
+async function waitForCaptureFonts(frameDocument: Document, host: HTMLElement, guard: PdfExportGuard) {
+  // Layout requests the web-font subsets used by this page.
+  host.getBoundingClientRect();
+  const fonts = (frameDocument as Document & { fonts?: FontFaceSet }).fonts;
+  if (!fonts || fonts.status === "loaded") return;
+  await waitOptional(guard, fonts.ready, PDF_CAPTURE_FONT_TIMEOUT_MS);
 }
 
 function createPdfHeaderCanvas({
@@ -278,18 +343,11 @@ function createPdfHeaderCanvas({
   return canvas;
 }
 
-async function waitForWorksheetAssets(pages: HTMLElement[], title: string, guard: ReturnType<typeof createPdfExportGuard>) {
+async function waitForWorksheetAssets(pages: HTMLElement[], title: string, guard: PdfExportGuard) {
   if (typeof document !== "undefined" && "fonts" in document) {
-    await guard.wait(
-      loadPdfHeaderFont(document.fonts, title),
-      PDF_ASSET_TIMEOUT_MS,
-      "Worksheet fonts did not finish loading. Try the PDF download again.",
-    );
-    await guard.wait(
-      document.fonts.ready,
-      PDF_ASSET_TIMEOUT_MS,
-      "Worksheet fonts did not finish loading. Try the PDF download again.",
-    );
+    const fontMessage = "Worksheet fonts did not finish loading. Try the PDF download again.";
+    await guard.wait(loadPdfHeaderFont(document.fonts, title), PDF_ASSET_TIMEOUT_MS, fontMessage, "fonts");
+    await guard.wait(document.fonts.ready, PDF_ASSET_TIMEOUT_MS, fontMessage, "fonts");
   }
 
   const deadline = Date.now() + 8_000;
@@ -300,7 +358,7 @@ async function waitForWorksheetAssets(pages: HTMLElement[], title: string, guard
     await guard.wait(new Promise((resolve) => setTimeout(resolve, 120)));
   }
   if (pages.some((page) => page.querySelector('[data-stroke-loading="true"]'))) {
-    throw new Error("Stroke-order assets are still loading. Try the PDF download again.");
+    throw new PdfExportError("Stroke-order assets are still loading. Try the PDF download again.", "assets");
   }
 }
 
@@ -316,19 +374,21 @@ export async function downloadWorksheetPdf({
   signal,
 }: DownloadWorksheetPdfOptions): Promise<void> {
   if (pages.length === 0) {
-    throw new Error("No worksheet pages are ready to export.");
+    throw new PdfExportError("No worksheet pages are ready to export.", "capture");
   }
 
-  const guard = createPdfExportGuard(signal, getPdfExportTimeoutMs(pages.length));
+  const guard = createPdfExportGuard(signal);
   guard.check();
   onProgress?.({ current: 0, total: pages.length, stage: "preparing" });
   await waitForWorksheetAssets(pages, title, guard);
+  guard.progress();
 
   const [{ default: html2canvas }, { jsPDF }] = await guard.wait(Promise.all([
     import("html2canvas-pro"),
     import("jspdf"),
-  ]), PDF_CAPTURE_TIMEOUT_MS, "PDF tools could not finish loading. Use Print or try again.");
+  ]), PDF_TOOLS_TIMEOUT_MS, "PDF tools could not finish loading. Use Print or try again.", "tools");
   guard.check();
+  guard.progress();
   const size = getPdfPageSize(paperSize);
   const pdf = new jsPDF({
     orientation: "portrait",
@@ -337,15 +397,14 @@ export async function downloadWorksheetPdf({
     compress: true,
     putOnlyUsedFonts: true,
   });
-  const previousScroll = { x: window.scrollX, y: window.scrollY };
   let documentHeaderCanvas: HTMLCanvasElement | null = null;
-  const capturePage = async (page: HTMLElement) => {
-    const { geometry, host } = createPdfCapturePage(page);
-    const existingClones = new Set(
-      Array.from(document.querySelectorAll<HTMLIFrameElement>("iframe.html2canvas-container")),
-    );
+  const firstGeometry = getPdfCaptureGeometryFromPage(pages[0]!);
+  const captureFrame = await createPdfCaptureFrame(firstGeometry.width, firstGeometry.height, guard);
 
+  const capturePage = async (page: HTMLElement) => {
+    const { geometry, host } = captureFrame.mount(page);
     try {
+      await waitForCaptureFonts(captureFrame.frameDocument, host, guard);
       return await guard.wait(html2canvas(host, {
         backgroundColor: "#ffffff",
         scale: Math.min(2, window.devicePixelRatio || 1.5),
@@ -369,30 +428,14 @@ export async function downloadWorksheetPdf({
           clonedDocument.body.style.margin = "0";
           clonedHost.style.top = "0";
           clonedHost.style.left = "0";
-          const clonedPage = clonedHost.firstElementChild;
-          if (clonedPage instanceof HTMLElement) {
-            // Client navigation can leave styles in the source CSSOM without
-            // stylesheet links in html2canvas's document. Freeze the visible
-            // layout for worksheets as well as flashcards before capture.
-            preparePdfCaptureClone(
-              page as unknown as StyleCopyNode,
-              clonedPage as unknown as StyleCopyNode,
-              (node) =>
-                window.getComputedStyle(node as unknown as Element),
-            );
-          }
         },
-      }), PDF_CAPTURE_TIMEOUT_MS, "This page took too long to prepare. Try the PDF download again.");
+      }), PDF_CAPTURE_TIMEOUT_MS, "This page took too long to prepare. Try the PDF download again.", "capture");
     } finally {
       host.remove();
-      for (const clone of document.querySelectorAll<HTMLIFrameElement>("iframe.html2canvas-container")) {
-        if (!existingClones.has(clone)) clone.remove();
-      }
     }
   };
 
   try {
-    window.scrollTo(0, 0);
     // Animation frames stop in background tabs. A task yield also lets layout settle.
     await guard.wait(new Promise<void>((resolve) => setTimeout(resolve, 0)));
     for (let index = 0; index < pages.length; index += 1) {
@@ -410,7 +453,7 @@ export async function downloadWorksheetPdf({
         const composedContext = composedCanvas.getContext("2d");
 
         if (!composedContext) {
-          throw new Error("Unable to compose the worksheet PDF page.");
+          throw new PdfExportError("Unable to compose the worksheet PDF page.", "compose");
         }
 
         composedCanvas.width = canvas.width;
@@ -453,14 +496,20 @@ export async function downloadWorksheetPdf({
         exportCanvas.width = 0;
         exportCanvas.height = 0;
       }
+      guard.progress();
       await guard.wait(new Promise<void>((resolve) => setTimeout(resolve, 0)));
     }
     pdf.deletePage(pages.length + 1);
   } finally {
-    window.scrollTo(previousScroll.x, previousScroll.y);
+    captureFrame.dispose();
   }
 
   guard.check();
   onProgress?.({ current: pages.length, total: pages.length, stage: "saving" });
-  await guard.wait(pdf.save(buildWorksheetPdfFilename(title, output), { returnPromise: true }));
+  await guard.wait(
+    pdf.save(buildWorksheetPdfFilename(title, output), { returnPromise: true }),
+    undefined,
+    "The PDF could not be saved. Use Print or try again.",
+    "save",
+  );
 }
