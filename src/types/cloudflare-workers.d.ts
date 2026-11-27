@@ -18,5 +18,7 @@ declare module "cloudflare:workers" {
     };
     FEEDBACK_TO_EMAIL?: string;
     FEEDBACK_FROM_EMAIL?: string;
+    PVUV_SITE?: string;
+    PVUV_INGEST_TOKEN?: string;
   };
 }
